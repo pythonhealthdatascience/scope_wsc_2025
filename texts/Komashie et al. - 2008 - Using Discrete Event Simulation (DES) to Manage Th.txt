@@ -1,0 +1,484 @@
+                               Tenth International Conference on Computer Modeling and Simulation
+
+
+
+
+          Using Discrete Event Simulation (DES) to Manage Theatre Operations in
+                          Healthcare: An Audit-based Case Study
+
+           Alexander Komashie              Ali Mousavi                   Justin Gore
+       Brunel University, School of Brunel University, School of North West London Hospitals
+         Engineering and Design,     Engineering and Design,          NHS Trust (R&D),
+          London, UB8 3PH, UK         London, UB8 3PH, UK          London, HA1 3UJ, UK
+    Alexander.Komashie@brunel.ac.uk Ali.Mousavi@brunel.ac.uk      Justin.Gore@nwlh.nhs.uk
+
+
+                              Abstract                                  led to better management of operations where the
+                                                                        pressures for operational efficiency under ever
+         This paper discusses the application of Discrete               increasing system constraints as in healthcare prevail.
+      Event Simulation (DES) in modelling the complex                       This paper discusses an application of DES for
+      relationship between patient types, case-mix and                  auditing and managing theatre operations within an
+      operating theatre allocation in a large National Health           NHS hospital in London, UK. The Trust is committed
+      Service (NHS) Trust in London. The simulation model               to providing the highest level of service that resources
+      that was constructed described the main features of               allow, and medical staff and managers have various
+      nine theatres, focusing on operational processes and              views on how the current level of service could be
+      patient throughput times. The model was used to test              maximized. Due to the complexity of theatre
+      three scenarios of case-mix and to demonstrate the                operations, it is normally difficult to justify such views
+      potential of using simulation modelling as a cost                 or approaches to problem solving exclusively in
+      effective method for understanding the issues of                  anecdotal terms. Therefore, an evidence based
+      healthcare operations management and the role of                  approach is required for quantifying the potential
+      simulation techniques in problem solving. The results             impact on patient care and minimising the need and
+      indicated that removing all day cases will reduce                 cost of testing out different initiatives for improvement
+      patient throughput by 23.3% and the utilization of the            on the real system.
+      orthopaedic theatre in particular by 6.5%. This                       The aim of this project was to use DES in a hospital
+      represents a case example of how DES can be used by               setting to predict and understand the impact of various
+      healthcare managers to inform decision making.                    case-mix scenarios on patient throughput and
+                                                                        utilization of theatres. The methodology employed is
+      1. Introduction                                                   outlined in section 2, while section 3 highlights the
+          The application of Discrete Event Simulation (DES)            description of the theatre operations which was used to
+      modelling techniques for studying healthcare systems              build the model. The schedules for the theatres are
+      is a relatively new but rapidly growing field of research         given in section 4 and section 5 explains the patient
+      and service improvement. The value of the application             pathways on which the model’s logic was based.
+      of industrial techniques for improving healthcare                 Section 6 summarises the load distribution for the
+      systems is extensively debated [12]. However, DES in              theatres and describes the methods of patient
+      particular has seen an increase in application covering           classification used. In section 7, the technical approach
+      almost all areas of healthcare in the past decade [13].           to the modelling process is presented. Model validation
+      DES has been used in Emergency Departments (ED)                   is presented in section 8. Section 9 deals with
+      for modelling operations and for the analysis of patient          experimental results and finally discussions and
+      flows and throughput time [11], [3], [5], [7], and [6].           conclusions are presented in section 10.
+      Others have used DES to forecast future capacity                      This paper is not an assessment of performance at
+      requirements and expansion of new or existing ED                  the hospital, but a case example of using DES to
+      facilities [8], [9]. To utilize the flexibility of DES,           inform decision making in healthcare.
+      researchers have integrated simulation with other
+      techniques like Integer Linear Programming (ILP), Six
+      Sigma etc for specific applications [4], [10]. This has
+
+
+0-7695-3114-8/08 $25.00
+978-0-7695-3114-4/08    © 2008
+                     $25.00    IEEEIEEE
+                            © 2008                                360
+DOI 10.1109/UKSIM.2008.112
+
+2. Methodology                                                    The three important elements of this model are the
+                                                                  patients, theatres (resources) and the process paths.
+   The structure of the simulation model that was
+developed is based on patient flow through nine
+theatres. It was necessary to commence with an
+                                                                  5. Patient pathways
+accurate description of the operations of the theatres to            There are four main streams of patients that flow
+provide a current picture of activity that would be used          through the theatres. These are identified by the NHS
+in the model. This was achieved by conducting a                   Standard Codes termed Intended Management. These
+service audit, involving routine activity data analysis           are reduced to three in this study because one category
+and discussions with managers. Throughput was                     constitutes less than 1% of total cases. More
+assessed, various activities and waiting areas defined,           appropriate classifications of patients termed ‘short
+and different routes (pathways) that patients may take            stay’ and ‘inpatients’ are presented below.
+during a visit identified. DES was then applied, as
+described in the proceeding sections.                             6. Theatre load distribution and patient
+3. Operation of the theatres                                      categories
+   Most of the nine theatres at the Trust site were                  The theatre load distribution was analysed from the
+dedicated:                                                        theatre data in order to decide how to distribute entities
+    9 Theatre 1 – Ear, Nose and Throat (ENT)                      (patients) into various theatres. This analysis showed
+    9 Theatre 2 – Urology                                         that theatre 1 processes the highest value of 25.94% of
+    9 Theatre 3 – General Surgery                                 patients whilst theatre 7 has the least load of 1.20% of
+    9 Theatre 4 – Elective Orthopaedic                            total cases.
+    9 Theatre 5 – Colorectal                                         Four main categories of patients are distinguished
+    9 Theatre 6 – Gynaecology                                     based on their intended management codes. These are:
+    9 Theatre 7 – Monday: Other Unit; Tuesday:                      a. Day care
+        Community Dental etc                                        b. Short stay
+    9 Theatre 8 – Vascular                                          c. Inpatients
+    9 Theatre 9 – Orthopaedic Trauma                                d. Emergency (have highest priority)
+                                                                     For the purposes of this project, another form of
+   The theatres are served by one transfer control area           patient classification was introduced based on the
+and one recovery unit. Each theatre however has a                 duration of operation. This produced the patient classes
+dedicated anaesthetics room.                                      named Minor, Major or Major +, Intermediate,
+                                                                  Complex Major. The detail of this classification is
+4. Theatre schedules                                              excluded from the volume of this paper.
+   The theatres are scheduled to operate in one of the            7. Technical approach
+following modes:
+9 Morning list (8:30 to 12:30)                                       This simulation work was accomplished using the
+9 Afternoon list (1:30pm to 5:30pm)                               Arena simulation software from Rockwell Automation.
+9 All day list (8:30 to 5pm)                                      The model comprises all activities between when a
+9 Private ops (Theatre 7 on Wednesdays.)                          patient leaves the ward to theatres and when he or she
+9 Reserved for another unit (Theatre 7 on Mondays.)               returns to the ward after recovery. It however does not
+9 Comm. Dental ops (Theatre 7 on Tuesdays.)                       include the details of any activities that take place
+9 Idle                                                            within the wards.
+   The current model only considers NHS patients;                    This section briefly describes the various parts of
+hence theatre 7 is modelled as not being available on             the department that have been included in the model.
+Mondays, Tuesdays and Wednesdays. Regular
+                                                                  7.1 Transfer control room
+operations of the theatres take place from Monday to
+Friday 8:30 to 17:30 even though emergency cases are                 This is the first point of call for all patients except
+treated outside these hours.                                      day cases. Activities that take place here include:
+   The simulation model was constructed to reproduce              9     Patient waiting to be seen by staff
+the various paths that patients can take in the theatres.         9     Staff checking patient is fit for operation
+This was done in consultation with staff of the                   9     Patient waiting to be picked up by anaesthetist
+department who have expert knowledge of its
+operations and through analysis of theatre activity data.
+
+
+
+                                                            361
+
+   The time spent in this area may vary from about                7.5 Model output
+10min to 25min. The model input therefore was chosen
+to be a Triangular distribution of parameters 10, 15, 25.            The performance measures of interest in the system
+                                                                  are displayed during the simulation run. These are also
+7.2 Anaesthetics room                                             written to data files at the end of the simulation run for
+                                                                  further analysis.
+   From transfer control, patients are sent to the                   The evidence presented in this paper is based
+anaesthetics room of the corresponding theatre.                   mainly on activity data (July-Nov 2005) provided by
+Activities that take place here depend on the kind of             the Information Department of the hospital. However,
+anaesthetics required and include:                                not all data or data interpretation (e.g. appropriate
+9 Connecting patient to monitors                                  coding), were available and therefore we had to
+9 Anaesthetizing patient                                          sometimes rely on opinions of the clinicians/managers
+9 Transferring patient into theatre                               (e.g.    classifying      operations      into    ‘minor’,
+9 And usually at least one anaesthetist to maintain               ‘intermediate’, ‘major’). This work was not designed to
+     anaesthesia during operation                                 produce final models of performance for
+   The time it takes to do all these depends on the type          implementation, but provide guidance to clinicians and
+of anaesthesia required for the operation. By analyzing           managers on decision making. Data items used as input
+the theatre activity data on duration of this process, a          to the model include the following: Physical system
+histogram was obtained and the distribution that best             layout, Resources (Theatres) data and Entities
+described the histogram was a normal distribution with            (patients) data. The following subsection explains the
+a mean of 20.1 minutes and a standard deviation of                modelling of the arrival processes.
+12.3 minutes.
+                                                                  7.6 Arrival patterns and schedule
+7.3 Theatres
+                                                                     From the theatre data, the daily arrival pattern was
+    The theatre process normally involves:                        obtained (figure 1). It would be observed that although
+9 Setting up                                                      arrival patterns for the days of the week look somewhat
+9 Actual operation                                                similar, specific values on different days vary quite
+9 Clean-up                                                        significantly. For this reason it was considered more
+9 Preparing for next operation                                    accurate to model the arrivals on a schedule which has
+    Patients are normally sent for towards the end of an          not been described in this paper, rather than use
+existing operation. As a result, the next patient will            statistical distributions.
+normally be in the anaesthetics room whilst the theatre
+is being set up after the last operation.                                                                         Patient arrival rates by day
+    In this model, the duration of the theatre process                                        10
+                                                                     Average arrival rate
+
+
+
+
+was identified from the theatre data and analysed. The                                          8
+                                                                                                                                                                           Sunday
+analysis was carried out based on the patient                                                   6                                                                          Monday
+classifications. Thus for example, for minor patients,                                          4                                                                          Tuesday
+the data revealed a triangular distribution with                                                2
+                                                                                                                                                                           Wednesday
+                                                                                                                                                                           Thursday
+parameters 0, 10.5 and 29.5.                                                                    0                                                                          Friday
+                                                                                                            9        9       9         9       9         9        9    9   Saturday
+                                                                                                         :5 5:5 8 :5                :5 4:5            : 5 0: 5 3: 5
+7.4 Recovery room                                                                                  to
+                                                                                                      02
+                                                                                                            to
+                                                                                                               0
+                                                                                                                     to
+                                                                                                                        0
+                                                                                                                             to
+                                                                                                                                 11
+                                                                                                                                       to
+                                                                                                                                          1
+                                                                                                                                               to
+                                                                                                                                                   17
+                                                                                                                                                         to
+                                                                                                                                                            2
+                                                                                                                                                                  to
+                                                                                                                                                                     2
+                                                                                                 0        0        0       0         0       0         0        0
+                                                                                               :0 5:0           :0       :0 4:0            :0 0:0            :0
+                                                                                            02      0         08       11      1         17      2         23
+   This area marks the end of the theatre process as                                                                         Hours of day
+described in this modelling project. From this area,
+patients go either to the ward, short stay area or day                                      Figure 1. Daily patient arrival patterns
+care unit. The following are the procedures that are
+normally carried out:                                             8. Model validation
+9 Airways management
+9 Patient retention (selected patients only)                         In order to validate the model, its output was
+9 Wait for ward nurse and porter                                  compared with some of the actual theatre activity data.
+   Patients spend about 30 to 108minutes in this area.            This comparison shows that the model represents the
+The model was therefore based on a Triangular                     real system considerably well. The validation was
+distribution with parameters 30, 90, 108.                         based on values of total throughput and throughput of
+                                                                  individual theatres as shown in fig. 2 below.
+
+
+
+
+                                                            362
+
+                           Correlation between model data and actual theatre
+                                                data
+
+                        6000
+    Throughput values
+
+
+
+                        5000
+                        4000
+                                                                         Actual values
+                        3000
+                                                                         Model values
+                        2000
+                        1000
+                          0
+                           ea 1
+
+                           ea 2
+
+                           ea 3
+
+                           ea 4
+
+                           ea 5
+
+                           ea 6
+
+                           ea 7
+
+                           ea 8
+                          O 9
+                                 ll
+                               ra
+                        Th tre
+
+                        Th tre
+
+                        Th tre
+
+                        Th tre
+
+                        Th tre
+
+                        Th tre
+
+                        Th tre
+
+                        Th tre
+                             tre
+                            ve
+                           ea
+                        Th
+
+
+
+
+                                           Theatres
+
+
+  Figure 2. Plot of correlation between model                                                      Figure 3. Theatre utilisation by scenario
+         and actual throughput values
+
+9. Experimental results                                                                        Table 1. Comparison of utilisation for scenario
+                                                                                                                  0 and 1
+   The experiments carried out on the model were                                                Theatre   Scenario 0 Scenario 1 %
+aimed at the key performance measures of the system.                                                      (%)          (%)            Change
+The next section discusses run conditions for the model                                         Theatre 1 92           86             -6.5
+and then the results for the experiments conducted are
+presented in the following section.                                                             Theatre 2 43           42             -2.3
+                                                                                                Theatre 3 27           28             +3.7
+9.1 Model run conditions                                                                        Theatre 4 38           28             -26.3
+                                                                                                Theatre 5 11           11             0
+   The theatre department operates mainly by the
+                                                                                                Theatre 6 38           30             -21.1
+schedule presented in section 4. However, there is
+always an emergency list available at all times. The                                            Theatre 7 3            2              -33.3
+model was therefore developed to run 24 hours a day, 7                                          Theatre 8 25           24             -4
+days a week but with the theatres scheduled mainly                                              Theatre 9 36           32             -11.1
+within the regular times. After a number of tests, it was
+concluded to run the model for 152 days and 10                                                 9.2.2 Analysis of utilization results. Figure 4 shows
+replications.                                                                                  the Box-and-Whisker plots of the scheduled
+                                                                                               utilizations for theatre 1 over the different scenarios.
+9.2 Scenarios and results                                                                      According to Govaerts et al. [1], Box-and-Whisker
+                                                                                               plots give a graphic view as accurate as possible of a
+   In all the charts and tables used in this section,                                          population that does not necessarily have a normal
+scenarios 0 through 3 are defined below.                                                       distribution. In this case there is no assumption of
+9 SCENARIO 0 – System as it is now (As Is                                                      normality that may flaw analysis if the data were not
+    Scenario)                                                                                  normally distributed. The parameters for the plots in
+9 SCENARIO 1 – Assuming no day cases through                                                   fig. 4 have been omitted from the volume of this paper.
+    theatres                                                                                   The extreme minimum value is zero (0) for all
+9 SCENARIO 2 – Assuming no day cases and only                                                  scenarios since utilization cannot be less than zero. The
+    20% of short stay cases                                                                    other parameters vary according to the scenarios.
+9 SCENARIO 3 – Assuming no day cases and no                                                        Boyer et al. [2] used Box-and-Whisker plots with
+    short stay patients                                                                        notches in the boxes that represent the 95% CI of the
+                                                                                               median. They concluded that when the notches
+9.2.1 Utilizations. Fig. 3 shows the chart of the theatre                                      between boxes do not overlap, the medians may be
+utilizations as they varied over the various scenarios. It                                     considered significantly different. By similar argument
+will be observed that theatre 1 has the highest                                                and observation of the plots from the various scenarios
+utilization for all the scenarios. This is entirely                                            as shown, we conclude that there may not be a
+consistent with the discussion under theatre load                                              significant difference between scenario 0 (current
+distribution above where theatre 1 was observed to                                             operation level of the theatres) and scenario 1 (no day
+have the highest load amongst all the theatres. Table 1                                        cases at site under investigation). On the other hand, it
+shows the comparison of the utilizations between                                               can be seen that the utilizations of the other two
+scenarios 0 and 1 for all theatres.                                                            scenarios 2 and 3 are significantly different from that
+
+
+
+                                                                                         363
+
+of scenario 0. This means that removing all day cases              the existence of the system and to be able to survive in
+from the present site plus 80% of short stay patients              an increasingly competitive environment. In this
+(scenario 2) or removing all of both day cases and                 project, service managers were interested in finding the
+short stay patients (scenario 3) will cause a significant          best scenario of case-mix without unduly affecting the
+reduction in the utilization of the theatres. Note that in         level of utilization and throughput. DES was used as an
+this analysis, results of theatre 1 have been used but a           evidence-based approach in this endeavour. The
+similar procedure could be carried out for each of the             validated model still remains a platform for further
+theatres.                                                          investigation if necessary. Since this is a systems
+                                                                   approach to problem solving, and further data can be
+                                                                   inputted, managers can make decisions while taking
+                                                                   into account other aspects of the system e.g. patient
+                                                                   outcomes.
+                                                                       The impact of not having day cases (scenario 1), on
+                                                                   theatre 1 for example, was a reduction of 6.5% in its
+                                                                   utilization from 92% to 86%. This is not very
+                                                                   significant in view of the fact that it remains at a
+                                                                   considerably high utilization. On the other hand, this
+                                                                   also caused a reduction in the utilization of the other
+                                                                   theatres. This does not seem a very high impact,
+                                                                   however, probably because it has been found that there
+                                                                   are not many day cases that go through the theatres. It
+                                                                   turns out that almost all the theatres have considerably
+ Figure 4. Box and Whisker plot for theatre 1
+                                                                   less day care patients than short stay or inpatients.
+            utilization by scenario
+                                                                       It is evident that none of the scenarios tested
+                                                                   improves utilization or patient throughput beyond the
+9.2.3 Patient throughputs. It is found that by
+                                                                   original values of scenario 0. Implementing any option
+removing all day cases from the present site (scenario
+                                                                   may have to depend on the reason for which the
+1), the total throughput of patients reduces by 23.3%.
+                                                                   decision needs to be made which is outside the scope
+The corresponding reduction in theatre utilization for
+                                                                   of this model. The argument presented in this paper,
+this scenario is given in table 1. Theatre 1 is seen to
+                                                                   however, is that it is important to understand (in
+have its utilization reduced by 6.5% to 86% which is
+                                                                   measurable terms) the likely impact of all alternative
+still considerably high. The worst case of 33.3%
+                                                                   decisions (scenarios) so that managers can make
+reduction occurred in theatre 7, which already takes
+                                                                   informed predictions and decisions. Other methods,
+only a minimal load as mentioned in section 4.
+                                                                   such as spreadsheet data analysis etc, are unable to
+9.2.4 Analysis of throughput results. By conducting                capture the dynamics of the system as effectively as
+similar analysis to that presented under ‘analysis of              DES. This model clearly shows, in quantifiable terms,
+utilization results’, it is observed that there are                the degree of impact each scenario may have on the
+significant differences between the results of the                 chosen performance measures (theatre utilization and
+various scenarios. These results are discussed in the              patient throughput). In this regard, scenario 1 (no day
+next section.                                                      cases) may be a preferred option since it has the least
+                                                                   impact on the performance measures. Finally, having
+10. Discussion and conclusions                                     validated the model, it is possible to experiment with
+                                                                   further combinations of case-mix as may be necessary.
+    In the final analysis, it can be said that the general
+                                                                       It should be noted that this model did not take into
+impact of all the scenarios tested has been a reduction
+                                                                   account other variables such as the interest a consultant
+in both theatre utilization and patient throughput. This
+                                                                   may have in undertaking a minor case or a major case.
+impact is seen to be greatest when both day cases and
+                                                                   This is because the model did not focus on manpower
+short stay patients are taken out of the site under
+                                                                   or working patterns at this phase. These issues may be
+investigation (scenario 3).
+                                                                   important if scenario 1 means there will be only major
+   Utilization is an indicator of how well available
+                                                                   cases to deal with. From the data available, it seems
+resources are used. Throughput on the other hand
+                                                                   that there are a certain amount of minor cases amongst
+refers to the amount of work that has been through the
+                                                                   short stay patients, inpatients and even emergency
+system in a period of time. In any given system, it is
+                                                                   patients.
+desirable to maintain these two performance measures
+                                                                       Some lessons learnt from this project include the
+at a reasonably high level so as to economically justify
+                                                                   notion that DES can be used to model and predict the
+
+
+
+                                                             364
+
+operations of operating theatres in healthcare, as long          [7] S. Mahapatra, C. P. Koelling, L. Patvivatsiri, B.
+as a picture of current activity is developed as                      Fraticelli, D. Eitel, and L. Grove, “Pairing
+accurately and thoroughly as possible and used as the                 emergency severity index5-level triage data with
+basis of the model. It was also learnt that, though the               computer aided system design to improve
+impact of patient case-mix may seem obvious, DES is                   emergency department access and throughput”, In
+a better option for problem solving and understanding                 Proc. 2003 Winter Simulation Conference, S.
+since it is able to quantify the impact of the scenario,              Chick, P. J. Sanchez, D. Ferrin, and D. J. Morrice
+taking into account the dynamics of system behaviour.                 (eds), pp. 1917-1925, 2003.
+This suggests that DES is a useful and reliable tool             [8] F. F. Baesler, E. H. Jahnsen, and M. Da Costa,
+enabling service managers and clinicians to make                      “The use of simulation and design of experiments
+decisions with greater confidence.                                    for estimating maximum capacity in an emergency
+                                                                      room”, In Proc. 2003 Winter Simulation
+Acknowledgments                                                       Conference, S. Chick, P. J. Sanchez, D. Ferrin, and
+   We would like to thank Miss Sophie Renton,                         D. J. Morrice (eds), pp. 1903-1906, 2003.
+Consultant General Surgeon, for her invaluable input             [9] A. Wiinamaki, and R. Dronzek, “Using simulation
+and all the managers and clinicians who provided                      in the architectural concept phase of an emergency
+direction throughout the audit project.                               department design”, In Proc. 2003 Winter
+                                                                      Simulation Conference, S. Chick, P. J. Sanchez, D.
+References                                                            Ferrin, and D. J. Morrice (eds), pp. 1912-1916,
+                                                                      2003.
+[1] P. J. Govaerts, T. Somers, F. E. Offeciers, “Box
+                                                                 [10] J. M. Miller, and M. D. Ferrin, “Simulating six
+    and whisker plots for graphic presentation of
+                                                                      sigma improvement ideas for a hospital emergency
+    audiometric results of conductive hearing loss
+                                                                      department”, In Proc. 2003 Winter Simulation
+    treatment”, Otolaryngology Head Neck Surgery,
+                                                                      Conference, S. Chick, P. J. Sanchez, D. Ferrin, and
+    vol. 118(6) pp. 892-895, 1998.
+                                                                      D. J. Morrice (eds), pp. 1926-1929, 2003.
+[2] J. N. Boyer, P. Sterling, R. D. Jones, “Maximizing
+                                                                 [11] A. Komashie, and A. Mousavi, “Modelling
+    information from a water quality monitoring
+                                                                      emergency departments using discrete event
+    network through visualization techniques”,
+                                                                      simulation techniques”, In Proc. 2005 Winter
+    Estuarine, Coastal and Shelf Science vol. 50, pp.
+                                                                      Simulation Conference, Kuhl, M. E., Steinger, N.
+    39-48, 2000.
+                                                                      M., Armstrong, F. B., and Joines, J. A., (eds.), pp.
+[3] E. R. Blasak, W. D. Starks, S. W. Armel, and C.
+                                                                      2681-2685, 2005.
+    M. Hayduk, “The use of simulation to evaluate
+                                                                 [12] T. Young, S. Brailsford, C. Connell, R. Davies, P.
+    hospital operations between the emergency
+                                                                      Harper, and J. H. Klein, “Using industrial
+    department and a medical telemetry unit”, In Proc.
+                                                                      processes to improve patient care”, BMJ Vol. 328,
+    2003 Winter Simulation Conference, S. Chick, P.
+                                                                      pp.162-164, 2004
+    J. Sanchez, D. Ferrin, and D. J. Morrice (eds), pp.
+                                                                 [13] S. C. Brailsford, “Tutorial: Advances and
+    1887-1893, 2003.
+                                                                      challenges in healthcare simulation modeling”, In
+[4] M. A. Centeno, R. Giachetti, R. Linn, and M. A.
+                                                                      Proc. 2007 Winter Simulation Conference, S. G.
+    Ismail, “A simulation-ILP based tool for
+                                                                      Henderson, B. Biller, M.-H. Hsieh, J. Shortle, J. D.
+    scheduling ER staff”, In Proc. 2003 Winter
+                                                                      Tew, and R. R. Barton, (eds.), pp. 1436-1448,
+    Simulation Conference, S. Chick, P. J. Sanchez, D.
+                                                                      2007.
+    Ferrin, and D. J. Morrice (eds), pp. 1930-1938,
+    2003.
+[5] S. Samaha, S. W. Armel, and W. D. Starks, “The
+    use of simulation to reduce the length of stay in an
+    emergency department”, In Proc. 2003 Winter
+    Simulation Conference, S. Chick, P. J. Sanchez, D.
+    Ferrin, and D. J. Morrice (eds), pp. 1907-1911,
+    2003.
+[6] S. Takakuwa, and H. Shiozaki, “Functional
+    analysis for operating emergency department of a
+    general hospital”, In Proc. 2004 Winter Simulation
+    Conference, R. G. Ingalls, M. D. Rossetti, J. S.
+    Smith, and B. A. Peters (eds), pp. 2003-2011,
+    2004.
+
+
+
+
+                                                           365
+

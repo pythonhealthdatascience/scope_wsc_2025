@@ -1,0 +1,496 @@
+See discussions, stats, and author profiles for this publication at: https://www.researchgate.net/publication/268508258
+
+
+
+A Hybrid Modeling and Simulation Methodology for Formulating Overbooking
+Policies
+
+Conference Paper · January 2013
+
+
+
+CITATIONS                                                                                                 READS
+
+3                                                                                                         514
+
+
+6 authors, including:
+
+            Muyuan Li                                                                                                José A. Sepúlveda
+            University of Central Florida                                                                            University of Central Florida
+            2 PUBLICATIONS 11 CITATIONS                                                                              57 PUBLICATIONS 555 CITATIONS
+
+              SEE PROFILE                                                                                                 SEE PROFILE
+
+
+
+            Ali Bozorgi                                                                                              Waldemar Karwowski
+            The University of Sydney                                                                                 University of Central Florida
+            17 PUBLICATIONS 311 CITATIONS                                                                            580 PUBLICATIONS 12,245 CITATIONS
+
+              SEE PROFILE                                                                                                 SEE PROFILE
+
+
+
+
+ All content following this page was uploaded by Ali Bozorgi on 30 August 2015.
+
+ The user has requested enhancement of the downloaded file.
+
+Proceedings of the 2013 Industrial and Systems Engineering Research Conference
+A. Krishnamurthy and W.K.V. Chan, eds.
+
+  A Hybrid Modeling and Simulation Methodology for Formulating
+                      Overbooking Policies
+                                                  Yiling He
+                                        University of Central Florida
+                                             Orlando, Florida
+
+                                                 Muyuan Li
+                                        University of Central Florida
+                                             Orlando, Florida
+
+                                           Serge Sala-Diakanda
+                                        University of Central Florida
+                                             Orlando, Florida
+
+                                              Jose Sepulveda
+                                        University of Central Florida
+                                             Orlando, Florida
+
+                                                 Ali Bozorgi
+                                        University of Central Florida
+                                             Orlando, Florida
+
+                                          Waldemar Karwowski
+                                        University of Central Florida
+                                             Orlando, Florida
+
+                                                     Abstract
+
+System dynamics modeling and discrete-event simulation have been applied in the health care industry in system
+improvement initiatives. Although each has its strengths and weaknesses, few studies have demonstrated how these
+two approaches could be brought together to improve the quality of health delivery. In this paper, a feedback-based
+hybrid modeling and simulation methodology has been developed, one that uses a system dynamics model for policy
+making and a discrete-event model for day-to-day clinic operations. This method is applied to support the
+formulation of overbooking policies in an Orthopedic clinic to achieve the strategic goal of a maximum appointment
+delay of 30 days. First, the system dynamics model is run to identify the best overall overbooking policy, which is
+then fed into the discrete-even model to evaluate its impact on day-to-day operations in terms of the patients’ time in
+system. In this way, the policies developed by this hybrid modeling and simulation method address both the strategic
+(long-term) as well operational (short-term) goals of a clinic. Additionally, the approach also demonstrates that
+though overbooking is a commonly practiced to mitigate the negative effects of no-shows, it also can be an effective
+intervention strategy to reduce appointment delays.
+
+Keywords
+Overbooking, Appointment Schedule, Discrete-Event Simulation, System dynamics modeling
+
+1. Introduction
+Studies have shown that the U.S. health care delivery system is poorly prepared to meet the growing demands of its
+population [1]. Access to health services is increasingly difficult as evidenced by long wait time, also known as
+
+                             He, Li, Sala-Diakanda, Sepulveda, Bozorgi, and Karwowski
+
+appointment delay. In addition, high rates of patients’ no-shows result in significant waste of already rare resources
+in clinics [2]. Both of these issues however, are not unrelated. Indeed, researchers have found that a somewhat linear
+relationship does exist between appointment delay and no-shows [3]. Therefore, effective intervention strategies
+aimed at decreasing appointment delays will also decrease no-shows, thereby enhancing health care delivery. As
+such, appointment delay may be regarded as a performance measure to assess the quality of health care delivery
+systems.
+
+In Veterans Administration Medical Centers (VAMCs), appointment delay is a critical performance measure. A
+closely related and probably more recognizable measure within VAMC’s is the percentage of patients seen within
+30 days of their appointment requests. However, interviews and data analysis performed during the course of this
+project has revealed that this threshold is rarely met for most patients. Indeed, delays of 3 months or more are not
+uncommon. The primary reasons cited is insufficient capacity (i.e. providers and nurses) given the volume of both
+new and established patients. However, time studies performed at the site in some of the specialty clinics have
+shown that while clinic capacity is defined in terms fixed appointment slots size (e.g. 40 minutes for new patients in
+Orthopedics), most providers rarely use more than half the time of those slots with patients.
+
+In this paper, the practice of overbooking has been studied in light of the apparent availability of additional capacity.
+Specifically, the objective is to quantify the potential impact of an overbooking policy, not only from a strategic and
+long term point of view, but also from an operational and short term one. Indeed, while it is expected that some
+overall overbooking rates may allow the clinic to achieve the aforementioned appointment delay goal, those same
+rates may potentially, when the right conditions are present, threaten operational performance, particularly in terms
+of patients’ total time in system. The total time in the system of a patient may increase dramatically, thereby
+resulting in patients’ dissatisfaction. It results therefore that overbooking rates that are promising from a strategic
+standpoint may not necessarily be appropriate for clinic day-to-day operations. Therefore, it is necessary to consider
+overbooking policies formulating both strategically and operationally. This paper has discussed the hybrid modeling
+and simulation methodology – composed of a systems dynamics model on one hand, and a discrete-event model on
+the other – which was developed to help formulate overbooking policies. An Orthopedic specialty clinic has been
+used as an example to demonstrate this methodology.
+
+First, a review of the literature is presented. Section 3 then describes the methodology. In section 4, the hybrid
+methodology is applied in a real world example, an Orthopedics specialty clinic in a VAMC, to illustrate how a
+practical overbooking policy may be formulated.
+
+2. Literature Review
+The application of systems engineering tools to improve health care delivery system has been advocated,
+particularly in the joint report from the National Academy of Engineering (NAE) and Institute of Medicine (IOM)
+[4]. Systems engineering focuses on the design, control and orchestration of system activities to meet performance
+objectives [5]. System modeling and simulation methodologies in particular have been successfully in a wide variety
+of applications, both in and outside of the healthcare field.
+
+Indeed, system dynamics modeling has been recognized as an appropriate method for improving healthcare
+management, and therefore used in various healthcare settings to explore strategies or policies [6]. Moreover,
+researchers argue that the strategic perspective offered by the system dynamics approach and its emphasis on the
+interactions between processes facilities the study of health care systems [7]. On the other than, discrete-event
+simulation has proven particularly useful as an analysis and improvement tool to assist operational decision makings
+in healthcare settings as they are often plagued by complexities and uncertainties [8]. Discrete-event simulation,
+system operations can be represented by a set of states, with transitions among states occurring when certain events
+take place, often in a probabilistic manner [9].
+
+Research abounds on the applications of both modeling and simulation paradigms in healthcare. However, little has
+been published in regards to harnessing the benefits that a hybrid modeling approach could provide to resolve issues
+in a complex environment. One of the exceptions however, is Rohleder et al. who used discrete-event simulation to
+support new facility design and then a system dynamics model to help predict implementation problems of new
+design [10]. Nevertheless, while they applied both types of simulation to the same problem, a feedback of
+information between these two worlds was never discussed.
+
+                            He, Li, Sala-Diakanda, Sepulveda, Bozorgi, and Karwowski
+
+3. Methodology
+This study was conducted in an Orthopedic clinic that provided health care services for three types of patients: new
+patients, regular established patients and ambulatory surgery patients. After their first visits, new patients might be
+sent to either ambulatory surgery or back to the regular clinic for established follow-ups. Upon completion of
+ambulatory surgeries, patients were sent back to the regular clinic for subsequent follow-ups. Since ambulatory
+surgery patients were operated in an operating area that is separated from the Orthopedic clinic, we only focused on
+the regular clinic services for new patients and established patients in this study. Nevertheless, the provider’s
+absence from the clinic when performing surgery was accounted for in the resource availability component of the
+models.
+
+In this study, each overbooking policy was evaluated from two perspectives. From a strategic standpoint, they were
+evaluated with respect to their ability to achieve the strategic goal of reducing appointment delays to maximum of
+30 days. From an operational standpoint, they were evaluated with respect to the time patients would be expected to
+spend within the clinic on any particular day. This latter evaluation was performed by first assessing the feasibility
+of the allocation of the overbooking capacity to the different types of patients. The system dynamics model focused
+on the strategic factors that impacted the overbooking policy and the relationships between them. The discrete-event
+model focused on the clinic operational processes. Through the system dynamics model, an overall overbooking rate
+that made the model achieve the strategic goal (maximum 30 days of appointment delay) was obtained; as well as
+such overbooking capacity was allocated between different types of patients. Then, this overbooking rate and
+allocation policies were implemented in the discrete-event model to investigate the expected operational
+performance of the clinic. The operational performance measurement being used in this study was the patients’ total
+time in system. A total time in system that did not exceed 30 minutes plus the time spent with the provider was set
+as a performance goal.
+
+3.1 System Dynamics model
+First, a system dynamics model was used to study the impact of various overall overbooking rates on appointment
+delay. The system dynamics model distinguished two types of patients, new patients and established patients by
+building a scheduling system for each type of patients. A meta-model represented the generic scheduling process, as
+shown in Figure 1. The input rate of patient’s backlog was generated by the number of appointment requests per
+month; while the output rate was regulated by the number of requests getting scheduled per month. Given the
+strategic goal of appointment delay, the monthly demand of patients was determined by the total number of patients
+in backlog divided by the maximum appointment delay. Then the available capacities were determined by both
+monthly demands of patients and overbooking rate. This logic was developed for both new patients and established
+patients and integrated into a single model where clinic capacities were shared. The result of this logic was an
+essentially balancing loop that constantly sought to bring the system to the desired strategic goal.
+
+The capacities were distributed between new patients and established patients based on their monthly demand. For
+instance, if the demand of established patients in one month was four times as much as new patients, system
+dynamics model would distribute one fifth of capacities to new patients, and the rest to established patients. For this
+model, capacity allocation was only determined by the ratio of monthly demands of established patients over those
+of new patients, and would adjust dynamically with varying monthly demands to achieve the long term strategic
+goal. In this way, the capacity allocation policies might change within a certain range. However, some margin
+values within those ranges may cause clinic to miss their time in system performance goal. For example, if the
+system distributed too many overbooked capacities to established patients, increasing number of established patients
+would be scheduled at the same time. Then with the number of arrival patients increasing dramatically, both
+established patients and new patients would have long in-clinic waiting time for their appointments. In order to
+investigate these potential risks, a discrete-event model was built and used to evaluate the overbooking policy
+proposed by the systems dynamics model.
+
+                                                He, Li, Sala-Diakanda, Sepulveda, Bozorgi, and Karwowski
+
+
+
+
+                                                           Figure 1: Meta-Model of Scheduling System
+
+3.2 Discrete-Event Model
+In Orthopedic clinic, there were three providers, two nurses and three exam rooms. Furthermore, new patients had
+40 minutes appointment time slot and established patients have 20 minutes appointments time slot. The discrete
+model was developed in Flexsim Healthcare®, and used data from internal reports and from a time study that was
+performed by the research team. The patient flow was shown in Figure 2, and patient track implemented in Flexsim
+Healthcare was shown in Figure 3.
+
+     ORTHO
+
+                             PT/PCP                    Clerks                                  Nurses                     Provider         Comments
+
+                                                                                                                       When provider is
+                            PT arrives for            Clerks print PT                         Nurse gathers PT        ready, Nurse calls
+                              scheduled              “router” and slip                        routers from front       PT and brings to
+                             appointment             in folder with ID                        desk and puts on        schedule providers
+                            and checks-in                   card                                providers door        room and confirms
+                                                                                                                            social
+     Check-In
+
+
+
+
+                                                                         PT will be seen
+
+
+                                                      Clerks inform
+                             PT walks-in
+                                                       nurse of PT                          Nurse/Provider decide
+                             and goes to
+                                                      condition and                          if PT must be seen
+                              front desk
+                                                      circumstance
+
+
+
+                                                                                             PT will not be seen
+     Provider Encounter
+
+
+
+
+                                                                                                                      Provider encounter
+
+
+
+
+                            PT sent out for                                                                            Does PT need
+                           additional x-rays/                  PT needs additional x-rays/tests                       additional x-rays/
+                                  test                                                                                       tests
+     PT Check-out
+
+
+
+
+                          PT Leaves system                                 PT does not need additional x-rays/tests
+
+
+
+
+                                                        Figure 2: Patient Flow of Orthopedic Clinic
+
+                            He, Li, Sala-Diakanda, Sepulveda, Bozorgi, and Karwowski
+
+
+
+
+                   Figure 3: Flexsim Healthcare Patient Track for Orthopedic Established Patient
+
+The model generated patients based on hourly arrival rates obtained from scheduling records. The process times (i.e.
+check-in, nurse screening, consulting, and check-out) used by the model were the distributions fitted with data from
+the time study. Data analysis showed that the average no-show rate of Orthopedics is 7.4% for established patients
+and there was no significant difference between providers in terms of their process time. It was assumed however
+that new patients would show up for their appointment. Overbooking was implemented by increasing the hourly
+arrival rates of two types of patients, according to the capacity allocation ratio provided by system dynamics model.
+For instance, if the overall overbooking rate was 50% of initial clinic capacities and system dynamics model
+distributed one fourth of capacities to new patients and the rest to established patients, the number of new patients
+generated would be increased by 10% of initial number in base model, and 40% for established patients.
+
+3.3 A Hybrid Modeling and Simulation Methodology
+The mechanism of this hybrid methodology was to involve operational constraints or feedbacks from the discrete-
+event simulation back to the system dynamics model to enhance strategic decision-making capability. This was
+captured conceptually in Figure 4. The policies proposed by the system dynamics model, including overall
+overbooking rate and corresponding capacity allocations, were implemented in the discrete-event model to
+investigate their operational merits. If patients’ time in system was unacceptable of one certain policy, then a
+constraint would be send back to system dynamics model so that a better policy could be found. Conceptually, this
+feedback loop would be travelled until a satisfactory policy from both a strategic and operational perspective was
+found.
+
+
+                                            Overbooking Policy
+                 System Dynamics                                                 Discrete Simulation
+                                            · Overall Overbooking Rate
+                      Model                                                            Model
+                                            · Capacity Allocation
+
+
+
+
+                                                                       No         In-Clinic Waiting
+                                                    Constraints
+                                                                                  Time Acceptable
+
+
+                         Figure 4: Mechanism of Hybrid Modeling and Simulation Method
+
+                            He, Li, Sala-Diakanda, Sepulveda, Bozorgi, and Karwowski
+
+4. Results
+Based on our time study, we found that the average consulting time that the providers spend with patient was about
+21minutes for new patients and 11minutes for established patients, which were both much smaller than the slot size,
+40 minutes for new patients and 20 minutes for established patients. Thus, it was reasonable, at least in theory to
+investigate high overbooking rates, even up to 100%. Therefore, several simulation experiments were performed, in
+which the overbooking rate varied from 10% to 100% in increment of 10%. In addition, an additional scenario was
+investigated in which the overbooking rate was chosen to match the average no show rate of 7.4%. This was a
+common practice in veterans’ medical centers, as it mitigated the negative effect of no shows on the utilization of
+resources. Furthermore, as stated earlier, a strategic appointment delay goal of 30 days was adopted.
+
+The outcome of these experiments was summarized in the boxplot shown in Figure 5. It was evident that the
+common approach to overbooking by the average no-show rates did not result in significant improvement in
+appointment delay performance. In other hand, this practice was largely ineffective with respect to patients’
+experience. The results also indicated that in this clinic, overbooking rates of 80% or higher were necessary to
+achieve the appointment delay goal of 30 days. In fact, with a 90% overbooking rate, 75% of the patients in the
+Orthopedic clinic would be seen by their providers within 30 days of their appointment request date. In addition one
+could observe that the variability in appointment delay decreased dramatically as the overbooking rate increased.
+Therefore, in theory, overbooking could be a very powerful strategy toward maintaining consistency in the
+performance of the clinic.
+
+
+
+
+                           Figure 5: Appointment Delay of Different Overbooking Rates
+
+However, what remained to be established was whether such high overbooking rates could be implemented in day to
+day operations. The discrete-event simulation model discussed in section 3.2 was used for that purpose, considering
+an overbooking rate of 90%. The allocation of this overbooking rate between new and established was determined.
+This was achieved by first using the systems dynamics model outputs in order to calculate the ratios of monthly
+demands of established patients by monthly demands of new patients were generated by system dynamics model. As
+shown in Figure 6, these ratios ranged from 3 to 26, with an average of 10. As the distribution of the overbooking
+capacity between new and established patients’ changed constantly over time in the system dynamics model, five
+allocation points were identified and retained for the discrete-event model: the minimum, first quartile, median, third
+quartile, and maximum. This information was summarized in Table 1.
+
+                                         He, Li, Sala-Diakanda, Sepulveda, Bozorgi, and Karwowski
+
+
+                        60                                                                                   100.00%
+                                                                                                             90.00%
+                        50
+                                                                                                             80.00%
+
+
+
+
+                                                                                                                       Cumulative Frequency
+                                                                                                             70.00%
+            Frequency
+
+                        40
+                                                                                                             60.00%
+                        30                                                                                   50.00%
+                                                                                                             40.00%
+                        20
+                                                                                                             30.00%
+                                                                                                             20.00%
+                        10
+                                                                                                             10.00%
+                         0                                                                                   0.00%
+                             3   4   5   6   7    8   9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+                                     Ratios of Monthly Established Demands to Monthly New Patients Demands
+
+
+
+       Figure 6: Frequencies of Ratios of Monthly Established Demands to Monthly New Patients Demands
+
+                                                      Table 1: Overbooked Capacity Allocation
+
+                                        Ratio of
+                                                                     New Patients           Established Patients              Total
+                                 Established over New
+      Minimum                              3                            22.5%                      67.5%                         90%
+      1st Quartile                           6                           13%                        77%                          90%
+      Mean                                   10                           9%                        81%                          90%
+       rd
+      3 Quartile                             12                           7%                        83%                          90%
+      Maximum                                26                           4%                        86%                          90%
+
+The overbooking rates above were implemented by increasing hourly arrival rates of new patients and established
+patients respectively in discrete-event model. We assumed that overbooking was distributed evenly per hour, since it
+was assumed that there was no significant difference between providers. After running the discrete-event simulation
+model, the patients’ total time in system were analyzed as shown in Figure 7 and Figure 8. These boxplots compared
+the patients’ total time in system for different monthly demand ratios.
+
+
+
+
+                                                      Figure 7: Time in System of New Patients
+
+                             He, Li, Sala-Diakanda, Sepulveda, Bozorgi, and Karwowski
+
+
+
+
+                                   Figure 8: Time in System of Established Patients
+
+
+5. Discussion
+According to Figure 7 and Figure 8, for baseline, the average time in system is about 67 minutes of new patients
+(additional 27 minutes besides consulting) and 44 minutes (additional 22 minutes besides consulting) of established
+patients, which are both acceptable based on our assumption (additional 30 minutes besides consulting). In general,
+patients’ total time in system will increase with overbooking; the average time in system in overbooking situation is
+longer than that of baseline. Furthermore, it is observed that average time in system fluctuates for both types of
+patients with different allocation policies (ratios of established patients’ demand to new patients’ demand).
+
+When the ratio is 3 and the overbooking rate of new patients is 32.5%, system generates extra new patients that
+clinic cannot “consume” within acceptable time period; also with those “redundant” new patients, established
+patients have to wait for longer time, even over two hours in system as outliners in Figure 8. The situation is similar
+with the ratio of 6. These two situations illustrate that in these two allocation policies, system allocates excessive
+capacities to new patients and then results in long time in system and large variability, which decreases patients’
+satisfaction.
+
+On the other hand, when the ratio is 26 and the overbooking rate of established patients is 86%, system generates
+extra established patients that exceeds the capabilities of clinic; and it results long time in system of both types of
+patients. According to the time in system of established patients, the variability increases dramatically with those
+outliners in Figure 8. Similarity, when the ratio is 12, the average patients’ time in system and variability increases.
+These situations illustrate that with these two allocation policies, system allocates excessive capacities to established
+patients and then results in long time in system and large variability, which decrease patients’ satisfaction. However,
+clinic rarely as outliners in allocation policy of ratio of 12; then it indicates that this policy actually decrease the
+variability comparing to that with ratio of 6.
+
+When the ratio is 10 and the overbooking rate of new patients is 9% (81% of established patients), patients’ time in
+system stays at the same level as baseline, in general. The fact that there is no significant increase in variability
+means that the system’s performance is expected to be consistent. The allocation policy may therefore be seen as
+appropriate for clinic operations.
+
+Since system dynamics model adjusts the capacity depending on the monthly demands of patients dynamically, it is
+highly possible that clinic will use the ratios that may increase time in system and results patients’ dissatisfaction of
+clinic operational performance. Therefore, in order to maintain operations in clinic, ratio of allocating capacity of
+established patients to new patients should not fall all out of the range of 6 to 12. This range should be feedback to
+system dynamics so that the best overbooking policy within that as a constraint may be found to improve current
+model. In this way, the policies made by this feedback-based hybrid method consider not only the strategic goals,
+but also the practical operations in clinic.
+
+                                                He, Li, Sala-Diakanda, Sepulveda, Bozorgi, and Karwowski
+
+            6. Conclusion
+            Both system dynamics modeling and discrete-event simulation have found numerous applications in healthcare
+            settings. However, much remains to be done to effectively harness each of these paradigms’ strengths by combining
+            them to address a single problem space. Through a case study, this paper attempted to demonstrate how harnessing
+            those strengths could be achieved. Though overbooking is a widely used in practice to eliminate the negative effects
+            of no-shows, it can also be used as an effective intervention strategy to reduce appointment delay. In this paper, an
+            overbooking policy formulation problem was used to demonstrate how a feedback-based hybrid modeling and
+            simulation method could work to improve both short and long term performance. The paper demonstrates how
+            overbooking policies suggested a system dynamics model that is focused on the long term may be evaluated for day-
+            to-day performance in the clinic using a discrete-event model. The analysis shows that not all policies that work for
+            long term are good for the short term, and demonstrated how the discrete event model can impose policy constraints
+            given a set operational performance goal such as the patients’ total time in system. Such constraint should be fed
+            back to the systems dynamics model such as an acceptable compromise may be reached.
+
+            Acknowledge
+            This research was funded by Veterans Administration Medical Center. Acknowledgments are due to the outstanding
+            Orlando Veteran’s Affair Medical Center leadership team support.
+
+            Reference
+                         1.  Ishida, Y., 2000, “Deficiencies in US Medical Care,” The Journal of the American Medical Association,
+                             284(17), 2184-2185.
+                         2. Giachetti, R., 2008, “A simulation study of interventions to reduce appointment lead-time and patient no-
+                             show rate,” Proc. of the Winter Simulation Conference, December 7-10, Miami, Florida, 1463-1468.
+                         3. Gallucci, G., Swartz, W., Hackerman, F., 2005, “Impact of the wait for an initial appointment on the rate of
+                             kept appointments at a mental health center,” Psychiatric Services, 56(3), 344-347.
+                         4. Proctor, P., Compton, W., Grossman, J., and Fanjiang, G., 2005, “Building a Better Delivery System: A
+                             New Engineering,” Health Care Partnership.
+                         5. Kopach-Konrad, R., Lawley, M., Criswell, M., Hasan, I., Chakraborty, S., Pekny, J., and Doebbeling, B. N.,
+                             2007, “Applying systems engineering principles in improving health care delivery,” Journal of general
+                             internal medicine, 22, 431-437.
+                         6. Young, T., 2005, “An agenda for healthcare and information simulation,” Health care management science,
+                             8(3), 189-196.
+                         7. Taylor, K., and Lane, D., 1998, “Simulation applied to health services: opportunities for applying the
+                             system dynamics approach,” Journal of health services research & policy, 3(4), 226.
+                         8. Rohleder, T., Lewkonia, P., Bischak, D., Duffy, P., and Hendijani, R., 2011, “Using simulation modeling to
+                             improve patient flow at an outpatient orthopedic clinic,” Health Care Management Science, 14(2), 135-145.
+                         9. Banks, J., Carson, J. S., and Nelson, B., 2009, Discrete-event system simulation, 5th Edition, Prentice-Hall,
+                             New Jersey.
+                         10. Rohleder, T., Bischak, D., and Baskin, L., 2007, “Modeling patient service centers with simulation and
+                             system dynamics,” Health care management science, 10(1), 1-12.
+
+
+
+
+View publication stats
+

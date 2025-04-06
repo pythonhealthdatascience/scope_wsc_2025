@@ -1,0 +1,637 @@
+Health Care Manag Sci (2010) 13:182–191
+DOI 10.1007/s10729-009-9122-y
+
+
+
+
+Analysing management policies for operating room planning
+using simulation
+Marie Jeanette Persson & Jan A. Persson
+
+
+
+
+Received: 7 May 2009 / Accepted: 6 November 2009 / Published online: 5 December 2009
+# Springer Science+Business Media, LLC 2009
+
+
+Abstract In this paper we analyse the operating room                makes the Operating Room (OR) planning very complex.
+planning at a department of orthopaedic surgery in Sweden.          Also the resources to be planned, i.e. OR with highly skilled
+We focus on the problem of meeting the uncertainty in               personnel, are rather expensive, thus, management efforts to
+demand of patient arrival and surgery duration and at the           increase performance are needed. The performance of the
+same time maximizing the utilization of Operating Room              operating room department concerns various aspects such as
+(OR) time. With a discrete-event model we simulate how              costs, patient waiting time, OR utilization, patient through-
+different management polices affect different performance           put, surgery cancellation, surgery delay and staff overtime
+metrics such as patient waiting time, cancellations and the         work, and many of these aspects are more or less inter-
+utilization of OR time. The experiments show that the               connected. Considering different metrics of performance, we
+performance of the operating room department can be                 focus on the problem of how to allocate the available OR
+improved significantly by applying a different policy in            time between elective and emergency cases at an orthopaedic
+reserving OR-capacity for emergency cases together with a           department, i.e., how much of the available orthopaedic OR
+policy to increase staff in stand-by. Moreover, the devel-          capacity should be reserved for emergency and for elective
+oped simulation model provides estimates for a what-if              cases, respectively. The aim is to assign the OR time for
+situation related to the prognosis of an increasing number of       elective and emergency cases to maximize the performance
+hip-joint replacements.                                             of the operating room department.
+                                                                       We use discrete event simulation and optimization
+Keywords Simulation . Optimisation . Healthcare .                   modelling to study the impact of the uncertainty in patient
+Management . Operating room planning                                arrivals and in surgery durations, subject to different
+                                                                    management policies concerning the allocation of OR time.
+                                                                    With the developed simulation tool we use probability
+1 Introduction                                                      distributions based on historical data to generate the
+                                                                    stochastic patient arrivals and surgical procedure times.
+Operating room planning is a very challenging task from a           Moreover, we provide a method to investigate and analyse
+number of perspectives. The uncertainty in patient arrival          relevant what-if situations such as an increase in orthopaedic
+and surgery duration, together with the occurrence of               surgeries. The number of orthopaedic surgeries has in
+multiple interactions with other departments in the hospital,       general increased along with technological and medical
+                                                                    advances. Today, some orthopaedic surgeries are carried
+M. J. Persson (*) : J. A. Persson                                   out that would not have been considered for surgery five to
+Department of Systems and Software Engineering,                     ten years ago. For instance, one of the presented scenarios
+Blekinge Institute of Technology,
+                                                                    represents a 30% increase of hip-joint surgeries which is one
+Soft Center,
+372 25 Ronneby, Sweden                                              type of surgery that increases substantially [1]. A prediction
+e-mail: Marie.Persson@bth.se                                        of how such an increase could influence the performance of
+J. A. Persson                                                       the current operating room planning in relation to different
+e-mail: Jan.Persson@bth.se                                          management policies is also demonstrated.
+
+Health Care Manag Sci (2010) 13:182–191                                                                                  183
+
+
+   The number of applications using discrete-event simu-        24 h before surgery without any medical complications
+lations in healthcare is rather large and started to increase   which is not the case for general emergency surgeries. Also
+significantly at the end of 1990s [2]. Simulation techni-       the occurrence of a stand-by system (further explained in
+ques provide a range of possibilities for healthcare            section 2.1) is of more importance to orthopaedic patients
+analysis, for instance: performance analysis (e.g. what is      why we let stand-by patients to be one of the main
+the capacity of current system?) and what-if analysis (e.g.     parameters in this research. All of the before mentioned
+what is the effect of changes to staff planning or of other     studies overlook the cost of possible surgery cancellation
+changes to management policies?). The literature reports        which we argue is one of the main problems when
+on several studies which analyse the performance of             considering operating room planning and cost. In this study
+medical clinics, i.e. emergency departments, operating          we investigate a real problem of how to reserve emergency
+room department, geriatric departments and outpatient           capacity in an orthopaedic surgery department at a Swedish
+clinics which use simulation and/or optimization techni-        hospital. We examine how different management policies
+ques [3–6]. Marshal et al. [7] emphasize the importance of      affect the overall performance. The performance is here
+modelling the patient-flow when analysing the complexity        defined to measure OR efficiency, cost, medical respon-
+of healthcare activities. With patient-flow simulation          siveness (meeting the demand of different medical priorities
+models, the stochastic behaviour of the system can be           in waiting times) and patient ease (a surgery cancellation
+taken into account and provide out-comes for different          could be very inconvenient to the patient). Also we
+performance metrics [7]. One successful application of a        emphasise the importance of simultaneously consider all
+simulation modelling approach is suggested by Harper [8].       these performance metrics in order to facilitate an accurate
+His model simulates patient-flows under uncertainty in          and proper analysis of the overall performance. The
+service times in relation to different proposal schedules in    complex trade-off decisions related to the operating room
+order to reduce patient waiting times in an outpatient          planning are modelled with an optimization model and
+department.                                                     incorporated with the simulation model. It is a modification
+   Examples of performance metrics in the context of            of the model used in previous research used for studying
+hospital operating room planning are: cost, patient through-    long-time effects of different policies concerning elective
+put, length of stay, waiting time, cancellations, over-time     waiting list management [16]. In contrast to the model used
+work, idle operating room time or on-time starts. VanBerkel     in [16] this model is developed to analyse the effects of the
+and Blake [9] present a discrete event simulation model to      stochastic influences related to operating room planning,
+analyse consequences (patient through-put and waiting           e.g. emergency cases and unexpected disturbances in
+times for elective patients) of redistributing beds and OR-     surgical procedure times.
+time between two sites of a general surgery division. A.           The rest of the paper is organised as follows. Section 2
+Jebali et al. [10] examine different strategies of operating    introduces the studied problem and we then present our
+room scheduling with respect to cost minimization. They         approach in Section 3. This is followed by Section 4 in
+use performance metrics such as staff overtime, staff under     which the simulation model and results are reviewed. The
+time and patient waiting time which they convert into a cost    last section features conclusions and some pointers to future
+function.                                                       work.
+   Additionally, there are several studies exploring the
+operating room planning and the uncertainty related to
+surgical procedure time and patient arrival and its effects     2 Problem description
+[11–14]. Denton et al. analyse the surgery sequencing in
+relation to the stochastic surgery durations [13]. They use     In this study we investigate the operating room planning in
+waiting times, idle OR-times and tardiness to compute           an orthopaedic department at Blekinge Hospital, located in
+performance of their OR analysis. In [15] a stochastic          the south of Sweden. The hospital is a medium sized
+model for surgery scheduling with respect to emergencies is     hospital and the orthopaedic department consists of
+presented. With an optimization algorithm they show how         approximately 25 surgeons at different educational levels.
+the cost of waiting time and overtime can be reduced. Van
+Houdenhoven et al. [11] use discrete event simulation to        2.1 Emergency vs. elective OR time
+compare two approaches of how to reserve OR capacity for
+emergency surgery in order to increase performance of an        Figure 1, demonstrates the problem of how to allocate
+operating room department. Different to [11], this study        available OR capacity between elective and emergency
+focuses on orthopaedic surgeries with a rather different        surgical cases. If too little time is allocated for elective
+setting. As for example, the emergency waiting time is here     surgeries, the waiting list may increase; and if too much
+of minor concern since orthopaedic surgeries often can wait     time is allocated for elective surgeries, cancelations and
+
+184                                                                                         Health Care Manag Sci (2010) 13:182–191
+
+                    Operating Room Time                                     Monday - Thursday
+        Elective                           Emergency               OR 1
+
+Fig. 1 An illustration of the problem related to balancing the     OR 2
+allocation of operating room time between elective and emergency
+surgical cases                                                              Friday - Sunday
+                                                                   OR 2
+
+                                                                          OR time for elective surgies
+
+overtime may increase due to requirements of emergency                    Reserved OR time for emergency surgeries. On Mon-Thu,
+patient operations. In addition to choosing a proper                      stand-by patients are prepared in case of idle OR-time
+allocation of resources for elective and emergency surgical        Fig. 2 Current allocation of OR time between elective and emergency
+cases, it is important to achieve a high throughput, or as in      surgeries for different days of the week
+this case, to reduce idle time. To reduce idle OR time at the
+operating room when the number of emergency surgeries
+temporarily is lower than expected, stand-by patients can be
+admitted. A stand-by patient is prepared for surgery at            time. However, the distribution of these hours does not
+home (or at work) and called upon when an opportunity              necessarily correspond to the demand on a daily basis due
+occurs. In advance, the Orthopaedic Department and the             to the uncertainty associated with emergency arrivals and
+stand-by patient have agreed upon dates for which the              surgical procedure time. Thus, a more exhaustive investi-
+stand-by patient could be alerted. This is especially suitable     gation of the OR need would be suitable.
+for waiting list management at an orthopaedic department
+due to the characteristics of orthopaedic disease and              2.3 System description
+injuries, and is frequently used at Blekinge Hospital. By
+accepting the stand-by offer the patient’s waiting time could      The system we study includes the main processes from the
+be considerably reduced. However, not every patient or             point when the patient arrives (either as an emergency
+surgery is suitable for the stand-by system. In this study we      patient or elective patient that has decided upon surgery
+assume there are a sufficient number of patients that accept       after an appointment) to the point when the patient surgery
+the stand-by offer. This means that we do not expect the           ends. The three main processes included are: patient
+system to run out of potential stand-by patients.                  arrival, patient queuing and operating room scheduling
+                                                                   (see Fig. 3). In Patient Arrival patients enter the system
+2.2 The operating room department of orthopaedic surgery           and form a queue. Patient Queuing represents how the
+at Blekinge Hospital                                               patient queue is designed. After entering the system
+                                                                   patients are given a medical priority according to patient
+The department of orthopaedic surgery at Blekinge Hospital         need (the medical priority is given by a surgeon either at
+is assigned two operating rooms to manage emergency and            the emergency department or at the out-patient clinic).
+elective patients, i.e. patients preferably operated within        Also, the possibility of a stand-by OR-time is considered
+24 h and the latter within 4–6 weeks. The remaining, long-         at this point. A stand-by OR-time is offered to patients
+term elective patients are managed within another setting          who are planned for surgery that is especially suitable for
+(all long-term elective patients are managed by a nearby           a short-time notice and who also are willing to accept the
+hospital) and are therefore not included in this study.            pre-requirements related to a stand-by surgery (i.e. short-
+    Presently, the OR time is assigned according to Fig. 2.        time notice). Dependent on the given priority and the
+For Monday to Thursday, all OR time in OR 1 and                    stand-by possibility, a patient queue is formed. Finally, in
+approximately 1/3 of the OR time in OR 2 are exclusively           the Operating Room Scheduling process, the schedule is
+assigned to elective surgeries and 2/3 of the OR time in OR        decided based on the patient queue and available resour-
+2 is reserved for emergency surgeries. On weekends (here           ces. The operating room schedule is performed by a
+Fri–Su) there are no planned surgeries (elective surgeries),       coordinator.
+i.e., all OR time in OR 2 is reserved for emergency
+surgeries, and no OR time in OR 1 is allocated to
+orthopaedic surgery.                                               3 Simulation model
+    The OR-time assigned to the orthopaedic department is
+based on the total number of orthopaedic surgeries                 As a simulation model provides estimates of some
+performed during one year and its’ mean surgical procedure         properties of system performance under a set of given
+
+Health Care Manag Sci (2010) 13:182–191                                                                                    185
+
+Fig. 3 The system we study can
+be divided into three main pro-
+cesses, patient arrival, patient
+queuing and operating room
+scheduling
+
+
+
+
+constrains [17, 18], we propose a discrete-event simulation       current overtime need, and patients allocation to operating
+to analyse the efficiency of the Operating Room Depart-           rooms (scheduling) and other management issues related to
+ment of orthopaedic surgery with respect to the uncertainty       the OR performance are performed by an optimization
+of patient demand and surgery procedure time.                     model, i.e. we incorporate an optimization model to
+                                                                  simulate the complexity of the decisions taken related to
+3.1 Queuing system                                                the operating room planning. In addition, the optimization
+                                                                  model also involves the prioritization related to the waiting
+We compose a queuing system which includes an optimi-             list management (patient queue) and is further described in
+zation model as further described below and the three             the next section on queuing discipline.
+characteristics earlier expressed by E. El-Darzi et al. [3]:          The expected surgical durations are based on the
+                                                                  particular type of surgery and its mean, calculated from
+&   arrival process—here, patient arrival
+                                                                  historical data, i.e. all surgeries of a particular type of
+&   service mechanism—here, operating room scheduling
+                                                                  surgery performed during one year. Different to the
+    and policies
+                                                                  expected surgical duration, the actual surgical duration is
+&   queuing discipline—here, patient priority and queuing
+                                                                  modelled according to a lognormal probability distribution,
+                                                                  also based on the particular type of surgery. The lognormal
+3.1.1 Arrival process                                             probability distribution is in previous research commonly
+                                                                  used for model surgical procedure times [17, 19, 20]. The
+The patient arrival is modelled by a Poisson process. We          discrepancy between the expected and the actual surgical
+use the intensity parameter λ to represent the mean               procedure times represents how the uncertainty in surgery
+expected number of patient arrivals per time period for           durations impacts the performance of operating room
+each type of surgery (there are approximately 300 different       planning.
+types of orthopaedic surgeries performed in Blekinge
+Hospital). The parameter λ is based on the observed daily         3.1.3 Queuing discipline
+mean, here calculated from historical data of one year of
+patient arrivals per type of surgery. The simulated patient       Patients included in this study are orthopaedic emergency
+arrival describes both the elective patient arrival (i.e. those   patients needing surgery within 24 h and orthopaedic
+that are entering the surgery waiting list after an appoint-      elective patients needing surgery within 4–6 weeks. The
+ment with the surgeon) and the emergency patient arrival.         decisions taken to determine which elective patients to
+The simulated number of emergency arrivals among the              schedule for surgery are modelled by the optimisation
+arrivals is also based on historical data.                        model. We argue that the alternative of using a strict First-
+                                                                  In-First-Out policy (FIFO) is a too crude policy for
+3.1.2 Service mechanism                                           modelling patient queuing of elective patients. Our
+                                                                  observations indicate that strict FIFO is currently not
+Policies related to the operating room management con-            employed, since other aspects than patient arrival date,
+cerns allocation of OR time (for both elective and                such as expected surgery durations, medical priority and
+emergency surgeries), policies for stand-by patients, over-       costs, are accounted for. Hence, we model the queuing as a
+time policies, surgery cancellation policies and surgery          bin packing problem (the bin representing the operating
+delay policies. Due to the multi objective problem                room time in a certain day). We use the objective function
+associated with the operating room management, we have            of minimising the cost of not operating on a patient. We
+chosen to model the policies with optimization technique.         use a patient related cost which increases with waited time
+The decisions taken with respect to current patient queue,        (for every simulation step, the patient related cost is
+
+186                                                                                        Health Care Manag Sci (2010) 13:182–191
+
+
+increased for those patients that are not scheduled for                                   Simulation System
+surgery, i.e. still waiting for surgery in patient queue), and     Java Framework
+                                                                 A. Patient arrival put     Updated                Optimization
+hence, the principle of FIFO is partly accounted for. The                                   patient queue
+increase is non-linearly according to cð1 þ aÞ#week , where      in a patient queue.
+c is the cost and a is an increase factor and # week is the                                                     B. Surgery scheduling
+number of weeks the patient has been waiting for surgery.        C. Simulation state
+Other cost parameters such as cost for cancelling a surgery      variables are updated
+and over time cost are also accounted for and included in                                     Updated
+the model. Stand-by patients deviates from the queuing                                        schedule
+discipline of FIFO in order to make better use of the            Fig. 4 Description of the simulation model. The simulation starts with
+resources. The emergency arrivals enter the waiting list         A, patient arrival, and further to B, operating room scheduling, and
+under the constraint of getting surgery within 24 h, here,       finally to C where the simulation state variables are updated due to the
+                                                                 new schedule and the process is re-iterated
+they are scheduled for surgery the next day, i.e. next
+simulation step.
+                                                                 3.3 Scenarios
+3.2 Overview of the simulation model
+                                                                 3.3.1 Base scenario
+We use discrete event simulation combined with optimisa-
+tion to model the system of patient arrival, surgery duration    We intruduce a base scenario to represent the current
+and surgery scheduling. The rules related to the planning        system. By this we also attain an opportunity to validate the
+and scheduling of the surgery operations are represented by      model through a comparison with the real system. In a
+constraints in an optimisation model as described above. A       continuous dialogue with the chief surgeon and chief nurse
+detailed account of the optimisation model is attached in        at the department of orthopaedics, validation follow-ups
+Appendix. Each operating room, here one or two rooms             with techniques like Event Validity and Face Validity have
+depending on the day of week, acts as a server that serves       been embedded throughout the work [21].
+patients with OR-time for surgery. The servers supply a             An initial set of experiment aim at learning how the
+queuing system that exhibits the characteristics of a            resources are utilized. After 20 separate simulation runs
+combination of FIFO, medical priority and a stand-by             (using different random seeds) on the base scenario, where
+system, hence the simulation system can be referred to an        one simulation run representing 364 days (one year), the
+M/G/2–system [18].                                               difference in utilisation of the OR-time reserved for
+   Every simulation step, here representing 24 h in time,        emergency surgeries between week-days and week-ends
+starts with the generation of instances of patients (each        appears significant and is presented in Table 1. Not very
+patient is instantiated with a cost parameter that increases     surprisingly, the precautions taken in week-ends result in
+through the simulation as explained above) which are added       low OR-time utilisation and on the contrary, high OR-time
+to a queue. Considering the patient queue with the               utilisation in week-days as the OR-time seem scarce.
+estimated surgery durations and operating room time                 The overutilization in weekdays indicate that the
+available (see Section 2.2), the optimisation model deter-       reserved OR-time for emergency patients is insufficient
+mines the surgery schedule. The schedule has a four week         and therefore overtime work and/or elective surgery
+time-frame and is gradually filled with patients and partly      cancellations are enforced in order to meet the emergency
+re-planned. When performing the scheduling, we let the           demand. The underutilization in week-ends indicates idle
+surgical procedure time be the expected mean (as used for        OR-time meaning that expensive resources, already paid
+scheduling the four week time-frame) and which typically         for, are not used. In addition to expensive idle OR-time,
+is different from the actual surgery procedure time. Further
+on the day of operation a randomly generated surgery             Table 1 Utilisation rate of OR-time reserved for emergency surgeries
+procedural time based on a lognormal probability distribu-       in base scenario. In week-days the utilisation exceeds available OR-
+tion is used. Hence, the optimisation model has to decide        time and emergency surgeries can only be performed due to staff
+upon a surgery schedule for the current day based on             overtime work and/or elective surgery cancellations
+constraints related to that particular day (i.e. new emergen-    Utilization of OR-time reserved for emergency surgeries in the base
+cy arrivals, actual surgical procedure times, cancelations       scenario
+and over-time restrictions) and in addition, continue to fill
+up the four week time schedule and reschedule, if                                             Mon–Thu                 Fri–Sun
+necessary. In Fig. 4 an illustration of the simulation system    Mean utilization                      1.17                  0.71
+is presented.
+
+Health Care Manag Sci (2010) 13:182–191                                                                                              187
+
+
+overtime work and surgery cancellations are very expensive       surgeries when it is not in use by any of the other operating
+actions to take and thus we believe that further analyses in     departments (general surgery and gynaecological surgery).
+how to reserve OR capacity for emergency patients are            Hence, we believe that a stand-by system applied to the
+needed.                                                          staff (OR-staff working with orthopaedic surgery) can be
+   The current decision to reserve longer OR-time for            justified.
+emergency patients in week-ends is taken to ensure emergen-
+cy capacity in case of unexpected number of emergency            3.3.3 Main differences between base scenario and proposal
+surgeries. In the week-days there is always the possibility of   scenario
+using the OR-time assigned to the elective surgeries to
+emergency surgeries by cancelling elective surgeries or by
+using overtime work. The overtime work is caused by the          Base scenario:           Proposal scenario:
+uncertainty related to both emergency arrivals and surgery       - Patient stand-by       - Extended time for patient stand-by system
+duration. In an effort to increase OR performance (here,           system
+minimizing surgery cancellations, idle OR-time, overtime         - No stand-by system     - Extended opening hours in OR 2 in
+work and elective waiting times) we introduce a proposal           for staff                week-days (i.e. extended OR time reserved
+                                                                                            for emergency patients)
+scenario to simulate.
+                                                                                          - A stand-by system for staff is introduced
+
+3.3.2 Proposal scenario
+                                                                    The extended opening hours in OR 2 in the proposal
+In the proposal scenario we have tried to compose a policy       scenario implies a higher accumulated cost for staff but this
+of OR allocation that better meets the demand of both            cost is compensated for by the stand-by system for staff that
+emergency and elective surgeries on a daily basis with           is introduced in week-ends. Accordingly, the cost for a
+respect to OR performance, i.e. a more efficient OR-time
+utilization, less surgery cancelations, less overtime work       Base Scenario
+and stable waiting times. The fixed costs (equipments and               Monday - Thursday
+staff costs excluding overtime costs, etc) in the proposal       OR 1
+scenario should preferably not exceed the fixed costs in the
+base scenario. Thus, by reducing the overtime work a             OR 2
+reduction of total cost is expected.
+   In order to prevent overtime utilisation Monday to                   Friday - Sunday
+Thursday we extend the opening hours in OR 2 by 1 h in           OR 2
+week-days. We also expand on the possibility of stand-by
+patients to keep elective waiting times reasonable but also
+to reduce idle OR time, see Fig. 5.
+   The idea is to perform a reasonable amount of surgeries
+also on days with few emergencies. Similar to the base
+scenario we assume there is a sufficiently number of
+patients accepting the stand-by offer. In weekends we            Proposal Scenario
+introduce a stand-by resource (stand-by system) applied to
+the staff, meaning that one operating team (i.e. operating              Monday - Thursday
+nurses, nurse anaesthetist) is scheduled to work but can stay    OR 1                                                    Extended
+home and being prepared to work if required, i.e. in case of                                                             opening hours
+                                                                 OR 2
+emergency surgeries. If the stand-by staffs are not called
+upon, the cost is much less than if being on duty at the                Friday - Sunday
+                                                                 OR 2
+hospital. Emergency cases of general surgery and gynaeco-
+logical surgeries are often recognized to have a higher                 OR time for elective surgeries
+urgency level compared to orthopaedic emergency surger-
+                                                                        Reserved OR time for emergency surgeries,
+ies. Therefore, the OR-time reserved for general and                    stand-by patients is prepared in case of idle OR-time
+gynaecological emergency surgeries is sufficiently allocat-             Stand-by system for staffs. Called upon if required, i.e.,
+ed, i.e. the opening hours of in Blekinge Hospital 24-hours             in case of emergency surgery.
+a day (Figs. 2 and 5 only shows the OR-time allocation for       Fig. 5 In proposal scenario, the opening hours in OR 2 is extended
+the Orthopaedic Department). This means that this OR             and no elective patients are scheduled in OR 2. In week-end a stand-
+could also be used by some shorter orthopaedic emergency         by system for the staff is introduced
+
+188                                                                                            Health Care Manag Sci (2010) 13:182–191
+
+
+stand-by system for staff in week-ends is lower than having             they might even die). This factor is not accounted for in this
+staff on duty in a regular way in week-ends. Hence, the                 study which might indicate an over estimate of the time
+requirement of retaining the fixed cost intact (or reducing             waited.
+the fixed cost) when introducing a proposal scenario is
+fulfilled. All costs are calculated and based on present                4.1 Costs
+union agreements and salaries at the Blekinge Hospital.
+                                                                        As discussed above, the fixed costs related to the proposal
+                                                                        scenario turned out to be approximately the same as in the
+4 Results                                                               base scenario. This means that the cost for equipment and
+                                                                        staff (excluding overtime work) was not increased, even
+In Table 2, a summary of the simulation output is displayed             though a stand-by system for staff was introduced. The
+and grouped according to scenario type. In the proposal                 overtime work was significantly reduced and hence, the
+scenario the results indicate a significantly decreased                 variable cost (here, cost for overtime work) was decreased.
+number of surgery cancellations and overtime work                       Besides a total cost reduction, a reduction in surgery
+compared to the base scenario. However, the elective                    cancellations also occurred.
+waiting time is more than twice as long as in the base
+scenario, but still, the timeframe of 4–6 weeks in which the            4.2 Steady-state
+elective surgeries preferably should be operated, is fulfilled
+and the longer waiting times are therefore of no major                  In order to validate that the warm-up period (of one year) is
+concern. The patient through-put is almost the same as in               enough and that the system has reach steady state (i.e.
+the base scenario.                                                      waiting times and patient queues are stable) 12 simulation
+   A paired t-test validation technique is used to see if there         runs (6 for each scenario) were studied more carefully. In
+is a significant decrease in overtime work and the number               these set of experiments, 20 years (including the warm-up
+of cancellations in proposal scenario compared to base                  period) were simulated for both scenarios. The results are
+scenario. The overtime work, the cancellations and the                  presented in Figs. 6 and 7.
+average waiting times from the compared scenarios were                     These graphs (Figs. 6 and 7) indicate that the simulations
+found to be significantly different, p<0.01. When emer-                 are stable and that a reasonable steady state is reached after
+gency resources are insufficient, as the case in the base               1 year in both scenarios.
+scenario, elective surgeries are cancelled and/or overtime
+work increases in order to manage the effects of unexpected             4.3 A potential future scenario
+events (i.e., emergency patients, surgery complications
+indicating longer surgery durations than expected). How-                A potential future scenario in which there is a 30% increase
+ever, the average time spent in queue (weeks) were                      in hip-joint surgeries added to the patient arrival has been
+increased but remained within the limit of 4–6 weeks. In                studied (a general opinion is that the hip-joint surgeries will
+total, 10 % of the patients did not meet the requirement of             increase the coming years). The results are presented in
+meeting the time limit (of 6 weeks) but none had to wait                Table 3, based on the previous scenarios (base scenario and
+more than 10 weeks. In reality, there are always a number               proposal scenario). The results indicate even greater stress
+of surgeries that are postponed or cancelled on patient                 to the emergency resources which promotes more cancella-
+initiative (patients get better, they get ill and inoperable or         tions and increased overtime work. Furthermore, in these
+                                                                        simulation runs the mean waiting time firmly increases and
+                                                                        indicates an unstable situation if no additional resources are
+Table 2 Results from 20 separate simulation runs from each scenario     added to the system.
+considering 364 days, i.e. base scenario and proposal scenario
+
+            Number         Number          Avg. time spent   Overtime
+            of surgeries   of surgery      in queue          hours      5 Conclusion and future work
+                           cancellations   (weeks)
+
+Base scenario                                                           This paper presents estimates on the performance of an
+ Mean      1,916              15                2.1            132      operating room department related to two different manage-
+ St.Dev. 32                    5.4              0.56            18      ment policies for operating room planning with the use of a
+Proposal scenario
+                                                                        discrete-event simulation. We analyse the performance of the
+ Mean      1,914               2.15             4.4             62
+                                                                        operating room department, focusing on the problem of
+ St.Dev. 29                    1.8              0.53            15
+                                                                        meeting uncertainty in demands, i.e. the focus is on
+                                                                        uncertainty related to patient arrival and surgical procedure
+
+Health Care Manag Sci (2010) 13:182–191                                                                                                         189
+
+                                  3,5
+
+                                      3
+
+                                  2,5
+
+                                      2                                                                               4
+                          Weeks
+                                  1,5
+
+                                      1
+
+                                  0,5
+
+                                      0
+                                          2           5                   10                                     20
+                                                                               Years
+
+Fig. 6 The mean waiting times in weeks for 6 randomly chosen runs              plotted waiting times and the continuous line represents how the mean
+from base scenario taken at 4 separate occasions in time, i.e. during          changes throughout the simulation
+year 2, 5, 10 and 20. The dashed line represents the mean of all the
+
+
+time. Two scenarios, representing two different management                     resources would manage with such an increase. The
+policies for operating room planning, are demonstrated and                     difference in cancellations, overtime and queue time
+simulated for which one, i.e. base scenario, expresses current                 between the base scenario and proposal scenario are further
+practice at the department of orthopaedics that we have                        accentuated compared to the situation without the increase
+studied.                                                                       in hip-joint surgeries.
+   The simulation of one year using the base scenario                              With the developed simulation approach we have
+demonstrates insufficiency in meeting the demand of                            demonstrated how different management policies can be
+emergency cases. Here, the negative effects of disturbances                    analysed and assist in decision-makings related to the
+increase, i.e., surgery cancellation and overtime work. A                      performance of the operating theatre. The policies are
+proposal scenario is suggested, representing a management                      modelled by using an optimization technique that is re-
+policy that better meets the demand of uncertainty to                          iterated every 24th hour in the simulation model in order to
+approximately the same fixed cost as in the base scenario                      represent decisions taken on a daily level. We emphasize
+(cost of overtime work is excluded from the fixed cost). The                   the benefits of using optimization techniques to simulate
+management policy in proposal scenario showed to better                        the complexity related to operating room planning. Addi-
+meet the patient demand as a significant decrease in surgery                   tional scenarios representing different management policies
+cancellation and overtime work was achieved. As based on                       are of interest to study, in particular with respect to resource
+the results from the simulation experiment we conclude that                    allocation of different resources, i.e., operating rooms,
+the simulated performance of the operating room department                     operating teams (nurses, anaesthetist etc.) and surgeons.
+was improved, except for a smaller increase in mean waiting                    For instance, a flexible number of operating teams in
+time, when applying the proposal scenario.                                     relation to operating rooms and surgeons seems to be a
+   Moreover, we simulate a plausible scenario specifying a                     promising approach for increasing the resource utilisation
+30% increase in hip-joint surgeries. We study how the                          and one point of future research could be to investigate how
+different management policies given current available                          to achieve the potential of such flexibility.
+
+                                  8
+
+                                  7
+
+                                  6
+
+                                  5
+
+                          Weeks 4
+                                  3
+
+                                  2
+
+                                  1
+
+                                  0
+                                          2           5                    10                                             20
+                                                                           Years
+
+Fig. 7 The mean waiting times in weeks for 6 randomly chosen runs              the plotted waiting times and the continuous line represents how the
+from proposal scenario taken at 4 separate occasions in time, i.e.             mean changes throughout the simulation
+during year 2, 5, 10 and 20. The dashed line represents the mean of all
+
+190                                                                                                       Health Care Manag Sci (2010) 13:182–191
+
+Table 3 Results from base scenario and proposal scenario with a 30%         Variables:
+increase in hip-joint surgeries added to the patient arrival. 20 separate
+simulations runs from each scenario were performed                          g           Overtime exceeding maximum per week. Could
+                                                                                        correspond to extra personnel.
+             Number of    Number of       Avg. time spent      Overtime
+             surgeries    surgery         in queue (weeks)     hours        sj          1 if patient j is not operated during period, 0
+                          cancellations                                                 otherwise.
+                                                                            vmt         Number of single overtime hours in room m at
+Base scenario 30% increase hip-joint surgeries                                          time slot t.
+ Mean      1,976           19.4                3.0                170       wmt         Number of double overtime hours in room m at
+ St.Dev. 28.3               6.5                0.81                24                   time slot t.
+Proposal scenario 30% increase hip-joint surgeries                          wwmt        Number of overtime hours exceeding 4 in room m
+ Mean      1,967            2.15               5.02                83                   at time slot t.
+ St.Dev. 31                 1.76               0.97                24       yjmt        1 if patient j is operated/scheduled in operating
+                                                                                        room m in time slot t, 0 otherwise.
+                                                                            zcurrent
+                                                                             j          1 if patient j is cancelled current operating day
+                                                                                        from schedule, 0 otherwise.
+Appendix                                                                    zother      1 if patient j is cancelled other day than current
+                                                                             j
+                                                                                        operating day from schedule, 0 otherwise.
+Optimisation model
+                                                                                minimise z =
+This model is similar to the model presented in [16].                               X        X X X prio                                 X
+                                                                            cprio
+                                                                             jðpþ4Þ     sj þ                c jdt= t e
+                                                                                                                       y jmt þ c cancel
+                                                                                                                                            zcurrent
+                                                                                                                                             j
+J       Index for patient set J                                                     j2J       j2J m2M t2T :                             j2J
+M       Index for operating room set M                                                                 X                          XX
+P       Index for time periods (weeks) in the scheduling set                               þ ccancel 2     zother
+                                                                                                            j       þ covert 1              vmt
+        P = {1,.., p}, where p is the number of time periods in P.                                         j2J                   m2M t2T
+                                                                                                          XX                         XX
+T       Index for time slot (days) set T, where T= {1,..,|T|} =                              þ covert 2             wmt þ covert 3               wwmt
+        {1,..,| p |*t}, where t represents the number of time                                             m2M t2T                    m2M t2T
+        periods in T (days) per time periods in P (weeks).
+                                                                                             þ covert exp g
+Parameters, where some of the values have been included                      subject to:
+    within parentheses:                                                     XX
+                                                                                  yjmt ¼ 1  sj                                      8j                ð1Þ
+amt          Number of opening hours at operating room m in
+                                                                            m2M t2T
+             time slot t.
+bj           1 if patient j has been scheduled before, 0 otherwise.
+cprio        Cost related to an estimation of patient need and              X
+ jp                                                                                yjmt esched
+                                                                                         j      amt                                 8m; t > 1         ð2Þ
+             suffering.                                                     j2J
+covert 1     Cost of 1 h single over-time (3600 SEK).
+covert 2     Cost of 1 h double over-time (7200 SEK).
+                                                                            X
+covert 3     Cost of exceeding the limitation of the weekly                        yjmt eoper  amt þ vmt þ wmt þ wwmt               8m; t ¼ 1         ð3Þ
+                                                                                         j
+             overtime work. (10000 SEK).                                    j2J
+ccancel      Cost of cancel an operation on operating day
+             (15000 SEK).
+                                                                            X               X
+ccancel 2    Cost of cancel an operation on other days (2000                       hjmt          yjmt þ zother                      8j; t > 1         ð4Þ
+                                                                                                          j
+             SEK).                                                          m2M             m2M
+d week       Limitation of the weekly overtime work.
+esched
+  j          Estimated surgical procedure time for patient j.               X               X
+eoper
+  j          Surgical procedure time for patient j.                                hjmt          yjmt þ zcurrent
+                                                                                                          j                          8j; t ¼ 1         ð5Þ
+f restr 1    Available single overtime (2 h).                               m2M             m2M
+f restr 2    Available double overtime (2 h).
+f restr 3    Available maximum overtime (8 h).                              X
+hjmt         1 if patient j is scheduled for operation in                          vmt  f restr 1                                   8t                ð6Þ
+             operating room m at time slot t, 0 otherwise.                  m2M
+
+Health Care Manag Sci (2010) 13:182–191                                                                                                     191
+
+
+X                                                                              occupancy, emptiness and bed blocking in a hospital geriatric
+      wmt  f restr 2                                8t             ð7Þ        department. Health Care Manage Sci 1:143–149. doi:10.1023/
+m2M                                                                            A:1019054921219
+                                                                            4. Gunal MM, Pidd M (2006) Understanding accident and emergeny
+                                                                               department performace using simulation, Proceedings of the 2006
+                                                                               Winter Simulation Conference Perrone, L.F., Wieland, F.P., Liu,
+wwmt þ wmt þ vmt  d week                            8m; t          ð8Þ        J.,Lawson, B.G.,Nicol, D.M. and Fujimoto, R.M., eds.
+                                                                            5. Rohleder TR, Bischak DP, Baskin LB (2007) Modeling patient
+                                                                               service centers with simulation and system dynamics. Health Care
+                                                                               Manage Sci 10:1–12. doi:10.1007/s10729-006-9001-8
+d week  f restr 3 þ g                                              ð9Þ     6. Taylor GJ, McClean SI, Millard PH (1998) Using a continuous-
+                                                                               time Markov model with Poisson arrivals to describe the move-
+                                                                               ments of geriatric patients. Appl Stochastic Models Data Anal
+bj þ zcurrent
+      j       1                                     8j           ð10Þ         14:165–174. doi:10.1002/(SICI)1099-0747(199806)14:2<165::
+                                                                               AID-ASM344>3.0.CO;2-#
+                                                                            7. Marshall A et al (2005) Length of stay-based patient flow models:
+   The objective function minimises different costs related
+                                                                               recent developments and future directions. Health Care Manage
+to operating room planning. First we have costs related to                     Sci 8:213–220. doi:10.1007/s10729-005-2012-z
+not scheduling a patient for surgery. If a patient is not                   8. Harper PR, Gamlin HM (2003) Reduced outpatient waiting times
+selected for surgery within the four-week schedule, we                         with improved appointment scheduling: a simulation modeling
+                                                                               aporach. OR-Spectrum 25:207–222. doi:10.1007/s00291-003-
+assume the patient to be scheduled for operation in four
+                                                                               0122-x
+weeks after the considered time horizon, and hence, a                       9. VanBerkel PT, Blake JT (2007) A comprehensive simulation for
+penalty corresponding to that the patient waits 8 weeks in                     wait time reduction and capacity planning applied in general
+the queue is included. Also we have a cost related to when                     surgery. Health Care Manage Sci 10:373–385. doi:10.1007/
+                                                                               s10729-007-9035-6
+to operate on a patient (naturally this cost requires that the
+                                                                           10. Jebali A et al (2006) Operating rooms scheduling. Int J Prod Econ
+patient has been selected for surgery). This controls in                       99:52–62. doi:10.1016/j.ijpe.2004.12.006
+which week patients should be scheduled in the four-week                   11. Van Houdenhoven M et al (2007) A norm utilisation for scarce
+operation schedule. Less cost is incurred in the beginning of                  hospital resources: evidence from operating rooms in a Dutch
+                                                                               University Hospital. J Med Syst 31:231–236. doi:10.1007/s10916-
+the schedule and more later. Further we have costs related
+                                                                               007-9060-5
+to surgery cancellations and overtime. All costs are set up                12. Denton BT, Rahman AS, Nelson H, Baily AC (2006) Simulation
+in order to achieve a behaviour which corresponds to the                       of a multiple operating room surgical suite, Proceedings of the
+real system behaviour.                                                         2006 Winter Simulation Conference. In: Perrone LF, Wieland,FP,
+                                                                               Liu J,Lawson BG,Nicol DM, Fujimoto RM (eds)
+   Constraint (1) specifies that patients can only be
+                                                                           13. Denton BT, Viapiano J, Vogl A (2007) Optimization of surgery
+scheduled for surgery once and forces the variable sj to                       sequencing and scheduling decisions under uncertainty. Health
+become one if patient is not operated on. Constraint (2) and                   Care Manage Sci 10:13–24. doi:10.1007/s10729-006-9005-4
+(3) balances the estimated/actual time for surgeries sched-                14. Ferrin DM, Miller MJ, Wininger S (2004) Neuendorf MS,
+                                                                               Proceedings of the 2006 Winter Simulation Conference. Ingalls
+uled with opening hours at the operating theatre included
+                                                                               RG, Rossettin MD, Smith JS, Peters BA (eds)
+overtime in constraint (3). Constraint (4) and (5) connects                15. Lamiri M et al (2008) A stockastic model for operating room
+patients scheduled for surgery from one simulation step to                     planning with elective and emergency demand for surgery. Eur J
+the next simulation step and keeps track of possible                           Oper Res 185:1026–1037. doi:10.1016/j.ejor.2006.02.057
+                                                                           16. Persson M, Persson JA (2008) Health economical modelling to
+cancellations. Constraints (6–9) define restrictions related
+                                                                               support surgery management at a Swedish hospital. International
+to overtime and constraint (10) delimits the cancellations to                  Conference On Health and Social Care Modelling and Applica-
+a maximum of one per patient. Further the variable g and                       tions, HSCM2006 19–21 April 2006, Adelaide, South Australia.
+parameter hjmt are transferred into next simulation step in                    Omega 37(4):853–863
+                                                                           17. Dexter F, Macario A, Traub DR (1999) Which algorithm for
+order to keep track of the weekly overtime and the
+                                                                               scheduling add-on elective cases maximizes operating room
+operating room schedule.                                                       utilization? American Society of Anesthesiologists 91:1491–1500
+                                                                           18. Law AM, Kelton WD (2000) Simulation modeling and analysis,
+                                                                               3 rd edn. The McGraw-Hill Companies
+                                                                           19. Strum DP, May JH, Vargas LG (2000) Modeling the Uncertainty
+References
+                                                                               of Surgical Procedure Times. American Society of Anesthesiolo-
+                                                                               gists 92:1160–1167
+ 1. Lindblom B, Wigzell K (2003) Socialstyrelsens riktlinje för vård och   20. Spangler WE, Strum DP, Vargas LG, May JH (2004) Estimating
+    behandling av höftfraktur. The National Swedish Board of Health            procedure times for surgeries by determining location parameters
+    and Welfare, ISBN: 91-7201-758-9 (Bergslagens grafiska AB)                 for the lognormal model. Health Care Manage Sci 7:97–104.
+ 2. Jun JB, Jacobsen SH, Swisher JR (1999) Appliction of discrete-event        doi:10.1023/B:HCMS.0000020649.78458.98
+    simulation in health clinics: a servey. J Oper Res Soc 50:109–123      21. Sargent GR (2004) Validation and verification of simulation
+ 3. El-Darzi E, Vasilakis C, Chaussalet T, Millard PH (1998) A                 models. Proceedings of the 2006 winter simulation conference, In:
+    simulation modelling approach to evaluating length of stay,                Ingalls RG, Rossettin MD, Smith JS, Peters BA (eds)
+

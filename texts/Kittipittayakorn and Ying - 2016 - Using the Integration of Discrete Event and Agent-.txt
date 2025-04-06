@@ -1,0 +1,518 @@
+Hindawi Publishing Corporation
+Journal of Healthcare Engineering
+Volume 2016, Article ID 4189206, 8 pages
+http://dx.doi.org/10.1155/2016/4189206
+
+
+
+
+Research Article
+Using the Integration of Discrete Event and
+Agent-Based Simulation to Enhance Outpatient
+Service Quality in an Orthopedic Department
+
+          Cholada Kittipittayakorn1 and Kuo-Ching Ying2
+          1
+           Graduate Institute of Industrial and Business Management, National Taipei University of Technology,
+           No. 1, Section 3, Zhongxiao E. Road, Taipei 10608, Taiwan
+          2
+           Department of Industrial Engineering and Management, National Taipei University of Technology,
+           No. 1, Section 3, Zhongxiao E. Road, Taipei 10608, Taiwan
+
+          Correspondence should be addressed to Kuo-Ching Ying; kcying@ntut.edu.tw
+
+          Received 1 August 2015; Revised 29 January 2016; Accepted 22 February 2016
+
+          Academic Editor: John S. Katsanis
+
+          Copyright © 2016 C. Kittipittayakorn and K.-C. Ying. This is an open access article distributed under the Creative Commons
+          Attribution License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is
+          properly cited.
+
+          Many hospitals are currently paying more attention to patient satisfaction since it is an important service quality index. Many Asian
+          countries’ healthcare systems have a mixed-type registration, accepting both walk-in patients and scheduled patients. This complex
+          registration system causes a long patient waiting time in outpatient clinics. Different approaches have been proposed to reduce
+          the waiting time. This study uses the integration of discrete event simulation (DES) and agent-based simulation (ABS) to improve
+          patient waiting time and is the first attempt to apply this approach to solve this key problem faced by orthopedic departments. From
+          the data collected, patient behaviors are modeled and incorporated into a massive agent-based simulation. The proposed approach
+          is an aid for analyzing and modifying orthopedic department processes, allows us to consider far more details, and provides more
+          reliable results. After applying the proposed approach, the total waiting time of the orthopedic department fell from 1246.39 minutes
+          to 847.21 minutes. Thus, using the correct simulation model significantly reduces patient waiting time in an orthopedic department.
+
+
+
+1. Introduction                                                          time reflects negatively on the quality of the hospital and
+                                                                         cripples its competitive advantages [10]. Outpatient waiting
+The concept of improving the quality of healthcare service               time means the time spent by an outpatient in a queue
+has been repeatedly discussed in recent years. Healthcare                waiting to be served. Throughput time is the amount of time
+providers try to provide patients with better service and excel-         required for a patient to pass through a hospital process. The
+lent treatment. Patients who are satisfied with their service            throughput time includes process time, service time, move
+experience are more likely to come back to the hospital in the           time, and waiting time. Utilization rate means the percentage
+future [1]. Many studies have regarded patient waiting time as           of time a doctor spends doing diagnosis. A direct way to
+a significant component of patient satisfaction/dissatisfaction          improve patient satisfaction and service quality is to reduce
+[2–7]. Bernhart et al. [8] presented the relative importance             the waiting time. Groome and Mayeaux Jr. [7] explained
+of various patient satisfaction factors, finding the service             some factors that affect waiting time, including arrival time,
+waiting time to be one of the key factors. Patient satisfaction          failure to show up for appointments, consultation time, and
+is an important indicator of healthcare outcomes and plays               registration time. Bailey [11] and Welch [12] proposed a
+a key role in improving healthcare service quality to attract            single-block/individual system in which the best scheduling
+patients [9].                                                            policy for patient waiting time is to place two patients at
+     Patient satisfaction and patient waiting time are impor-            the beginning of the period and then schedule patients
+tant factors in the field of healthcare service. A long waiting          evenly over the intervals based on average service time.
+
+2                                                                                               Journal of Healthcare Engineering
+
+Wijewickrama and Takakuwa [13] analyzed the long-waiting-            factor in a simulation model [31]. It is a new approach for
+time problem in outpatient clinics with a mixed-type regis-          modeling systems of autonomous, interacting agents [32].
+tration, using the simulation approach to test four scheduling       An agent can be described as an autonomous entity that
+rules in comparison with the original case. They found that          makes decisions based on a set of rules [33]. In the system,
+implementing the rule that “first priority is given to shorter       agents communicate with one another; they adapt and change
+processing of patients for consultation with a physician” can        their behavior based on the outcome of the interaction [34].
+achieve the best waiting-time performance. Su and Shih [14]          Crooks and Hailegiorgis [35] developed ABS further to
+applied the simulation approach to test four assumed models,         explore the spread of cholera. They modeled the spread of
+such as changing patient sequencing and assigning an interval        cholera by explicitly representing the interaction between
+time for scheduled patients. Reynolds et al. [15] tested eight       humans and their environment.
+cases to determine how different numbers of doctors and
+nurses affect waiting time. Baril et al. [16] applied a simulation       In outpatient clinic modeling, behaviors related to
+model to improve performance at an outpatient orthopedic             patients and healthcare providers can be modeled to investi-
+clinic, focusing on the relationships and interactions among         gate patient flow, in order to improve waiting time. Aburukba
+patient flows, resource capacity (number of consulting rooms         et al. [36] used a distributed multiagent approach to model
+and number of nurses), and appointment scheduling rules.             an intelligent dynamic scheduling solution in advertisement.
+In short, there are different ways to improve patient waiting        They believed that the agent-based model is appropriate due
+time amongst which healthcare providers should select the            to its ability to support both dynamic behavior and dis-
+approach that best fits their situation.                             tributed structure. Hutzschenreuter et al. [37] demonstrated
+    Operation-management tools, which are well known                 an agent-based simulation and evaluation tool for patient
+in industrial engineering, are being effectively used in the         admission scheduling, with the aim of achieving the efficient
+healthcare industry for enhancing both the use of limited            use of hospital resources through the combination of different
+resources and system efficiency [17–19]. Recently, the use           profiles of resource use.
+of computing simulation for achieving a more effective                   The main aim of this work is to improve clinical services
+decision-making has exhibited a rising trending [20]. Com-           by reducing patient waiting time in an orthopedic depart-
+puter simulation uses computer software to simulate an               ment. The integration of DES and ABS is used to determine
+abstract model of a specific system representing real-world          the optimal scheduling for each consultation session. To
+situations. Computer simulation was applied to hospital              the best of our knowledge, this paper is the first study
+systems in 1979 to improve the scheduling of staff members           applying the integration of DES and ABS models to solve the
+[21]. Rohleder et al. [2] used a simulation model to identify        operational problem in a hospital. The integration of DES
+certain elements, such as staffing level, patient scheduling,        and ABS can take advantage of both approaches [38]. DES
+and promptness of service that could reduce patient waiting          provides an environment for agents as well as work rules. The
+time at an orthopedic outpatient clinic. Reilly et al. [22]          orthopedic outpatient clinic environment can be constructed
+proposed a delay-scheduling model for patients in a walk-            by using DES for orthopedic outpatient flow and by applying
+in clinic and applied computer simulation to evaluate the            ABS for human decision-making.
+clinical performance with different physician staffing patterns
+                                                                         The rest of the paper is organized as follows. Section 2
+and different rules for delay scheduling.
+                                                                     describes the patient flow at the outpatient clinic of an
+    DES is a computer-based methodology that provides                orthopedic department and explains a simulation model.
+an intuitive and flexible approach for representing complex          Section 3 shows the results after applying the proposed
+systems. It allows users to estimate the impact of operational       approach. Section 4 discusses the results before and after
+changes before expending resources to implement those                applying the proposed approach. Finally, Section 5 presents
+changes [23]. A DES model can represent the patient visit            our conclusions.
+process, identify process bottlenecks, and adjust resource
+allocation, without disturbing the actual system [24]. Gul
+and Guneri applied a DES model to determine the optimal              2. Methods
+staff level to reduce the patient average length of stay (LOS)       The community hospital in this research is a 689-patient-
+in an emergency department, as well as to improve patient            bed medical center with more than 20 clinical departments
+throughput and utilization of resources [25]. Lu et al. [26]         and has approximately seven hundred employees, including
+employed DES to improve outpatient service quality in an             one hundred physicians, three hundred nurses, and three
+orthopedic surgery department. Kim et al. [27] improved a            hundred staff members. The patient volume in the orthopedic
+mental health clinic design by using DES.
+                                                                     department at this community hospital is over 5500 per
+    Entities built into a DES model are typically simple,            year and faces the challenge of increasing patient visits. The
+reactive, and limited in decision-making [28]. Moreover,             department, which has nine doctors, is divided into three
+human capabilities such as multitasking need to be used              different teams: hand and foot, trauma, and sports. Current
+to set up a validated model [29]. Thus, using only DES               data show that the outpatients on average spend only about 14
+is insufficient to model human behavior since the possible           minutes to get serviced but almost two hours (104 minutes)
+path of the entity is predetermined in a DES model [30].             waiting in line; waiting time accounts for over 88% of the total
+ABS has been proposed to model the human discretion                  process time.
+
+Journal of Healthcare Engineering                                                                                                      3
+
+
+      Scheduled    Scheduled
+                    patient
+       entrance      arrival                                                          Examination
+
+                                                                                                     Yes
+
+
+                                                   Over 85
+                                                 years of age Yes                                 Need     No
+                                                  or special        Special    Consultation        an         Pharmacy     Home
+                                                                    patient       room         examination
+                                                  condition
+
+
+
+                                                       No
+
+                                                   Waiting
+                                                    room
+
+
+
+      Walk-in      Walk-in      Registration
+                   patient
+      entrance     arrival        counter
+
+                               Figure 1: Patient flow at the outpatient clinic of the orthopedic department.
+
+
+
+2.1. Description of the Outpatient Orthopedic Department.                 (viii) After a patient consults a doctor, it is decided whether
+The orthopedic department operates from 8:30 a.m. to                             the patient needs to have a medical examination. If so,
+10:00 p.m. on weekdays and has 12 consultation sessions per                      the patient goes for the examination and will return
+week. The five consultation sessions are treated by doctors                      to see the doctor again. The doctor will prescribe
+from the sports team, the four consultation sessions are                         medicine if required. The patient then receives the
+treated by doctors from the trauma team, and the three                           medicine and leaves the hospital or receives a pre-
+consultation sessions are treated by doctors from the hand                       scription, picks up the drug, and leaves the hospital.
+and foot team. The types of patients for each consultation
+session depend on the doctor team. For instance, if the                 2.2. System Analysis. The department’s operations and details
+session is seen by a doctor from the trauma team, then most             of each consultation section were investigated through inter-
+patients in this session would be injured patients. Based on            views with staff members, close observations of the depart-
+the observations of this department, we formulate a patient             ment’s daily operations, and collecting the hospital database.
+flowchart, as shown in Figure 1. The following processes are            Focus groups were formed, including orthopedic surgeons,
+typical for an orthopedic outpatient visit:                             nurses, healthcare assistants, and radiologists.
+                                                                             The orthopedic department contains different zones,
+    (i) A walk-in patient stands in line for registration;              including registration area, waiting area, treatment area,
+        during registration, basic information such as name,            examination room, and pharmacy. The department shares the
+        birth date, and identity number is collected.                   examination room and pharmacy with other departments.
+   (ii) After registration, the walk-in patient goes to the             Figure 2 shows the layout of the department.
+        orthopedic clinic and waits for consultation.                        All data were collected from Monday to Friday from
+                                                                        the orthopedic department over a two-month period (June
+  (iii) A scheduled patient can go directly to the clinic and
+                                                                        to July) by hospital staff. Different orthopedic department
+        wait for consultation.
+                                                                        areas were observed with the purpose of analyzing and taking
+   (iv) Both types of patients can be seen according to their           notes about how the different processes take place, and data
+        registered numbers.                                             were collected on registration time, patient queues, clinic
+   (v) For current scheduling policy, odd numbers are                   start time, consultation period, clinic end time, arrival time,
+       assigned to walk-in patients and even numbers are                consultation time, late rate, no-show rate, examination time,
+       assigned to scheduled patients (a doctor will see one            and examination rate. The collected data were formed into
+       walk-in patient and then one scheduled patient).                 two groups. The June data were denoted as model-building
+                                                                        data and were used to build a simulation model. The July
+   (vi) The orthopedic department has a special policy:                 data were used to validate the simulation model. All data
+        patients who are over 85 years of age or have a special         were analyzed statistically and used to construct a simulation
+        condition have first priority to see a doctor. In this          model.
+        study, we define these patients as “special patients.”
+  (vii) Appointments for patients who arrive late will be               2.3. Orthopedic Department Modeling. Developing a simu-
+        postponed until the following three patients have               lation model consists of the following steps: describing a
+        been seen.                                                      problem, formulating a problem, collecting and processing
+
+4                                                                                                  Journal of Healthcare Engineering
+
+
+
+
+                                                                                 Registration
+                                                            Pharmacy               counter
+
+
+                                 Waiting area
+
+
+                  Consultation
+                     room
+
+                                                                    Hospital garden
+
+                  Consultation
+                     room
+
+
+
+                                                                              Examination center
+
+
+
+
+                                                Figure 2: Orthopedic department layout.
+
+
+
+
+real system data, formulating and developing a model,                  model. The results of the simulation provide a baseline for
+verifying and validating a model, documenting a model                  comparing operational changes.
+for future use, selecting appropriate experimental design,
+establishing experimental conditions for runs, performing              2.4. Simulation and Implementation. The simulation model
+simulation runs, and interpreting results [39]. The orthopedic         is implemented in AnyLogic 7. This is the only simulation
+department model defined by this study is an integration of            tool that supports all of the most common simulation
+ABS and DES, incorporating a population of simulated real-             methodologies, such as system dynamics and discrete event
+world outpatient-use data with a discrete event simulation of          and agent-based modeling, and enables the user to capture
+an orthopedic department. We observe that the orthopedic               the complexity and heterogeneity of business, economic, and
+department processes consist of continuous changes, so that            social systems to any desired level of detail.
+when we analyze these processes, it is better to divide                     The current version of the simulator includes the registra-
+a continuous process into discrete parts to simplify the               tion counter, waiting room, consultation room, examination
+analysis. In this case, DES is the best choice when the system         center, and pharmacy. Through the information obtained
+under analysis can naturally be described as a sequence of             during interviews carried out with the orthopedic staff,
+operations.                                                            this study identifies two kinds of agents: active agents and
+    Since the orthopedic department is a dynamic environ-              passive agents [40]. The active agents in this simulation are
+ment with full human interactions, human behaviors affect              orthopedic outpatients, doctors, nurses, healthcare assistants,
+the outcome of those interactions. The entities of an orthope-         radiologists, biomedical scientists, and administration staffs.
+dic department, such as doctors, nurses, and administration            The passive agents represent solely reactive aspects of the
+staff, are humans with emotions and reasoning abilities.               system, such as the patient information system, examination
+These agents adapt and change their behavior during the                center, and loudspeaker system.
+simulation. ABS allows us to explore the system, which has a                In the simulation model, orthopedic outpatients arrive
+natural representation consisting of interacting agents. In this       at the orthopedic clinic by their own means and go to the
+situation, it is best to apply agent-based modeling to capture         registration counter. In the simulation the input information
+emergent phenomena. For modeling purposes, patients are                is read from a text file within the data given by the hospital.
+considered as static objects. This study develops a simulation         Once the registration process has been carried out, the
+model using AnyLogic 7 to represent the patient flow in the            patients go to the waiting area. Patients who are over 85 years
+orthopedic department. We choose AnyLogic 7, because it                of age or have a condition can be seen by a doctor first. The
+supports DES and ABS and allows us to efficiently combine              patients’ scheduling changes depending on the numbers of
+it with other modeling approaches. The simulation of the               walk-in patients and scheduled patients inside the waiting
+current system without any changes is run as the case-based            area. Once the patient is seen by a doctor, the doctor decides
+
+Journal of Healthcare Engineering                                                                                               5
+
+whether the patient needs an examination. After seeing a           reducing patient waiting time in the orthopedic department.
+doctor, the patient goes to the pharmacy and then leaves the       These results underscore the benefits of modeling operational
+hospital.                                                          changes before implementation, particularly under a resource
+                                                                   limitation situation. This study shows that simulation models
+3. Results                                                         can be useful decision-support tools for healthcare provider
+                                                                   management, not only for waiting time reduction in an
+3.1. Model Validation. The model validation ensures that the       orthopedic department, but also for the hospital as a whole.
+model correctly represents the real world. The simulation
+model is validated by comparing data generated by the model        5. Conclusions
+and data collected from the orthopedic department. Table 1
+shows confidence intervals of the simulation outputs at the        Service quality, which always influences hospital patient
+95% (𝛼 = 0.05) confidence level and the actual values              satisfaction, has recently become an important index in
+obtained from the collected data. The comparison verifies          the healthcare field. Our previous study has shown that
+that, for waiting time, throughout time, and utilization, there    waiting time is a key performance index of patient satis-
+are no significant differences between the results obtained        faction. Computer simulation is an efficient approach to
+using the simulation and those that occurred in the real           study such a complex system. The increasing interest in the
+system. We conclude that the model is truly representative of      integration of simulation approaches may be explained by
+the existing environment. Therefore, the validated model can       the increasingly complex nature of the problems being faced.
+be used for subsequent analysis.                                   Several problems involve interacting elements of a different
+                                                                   nature. Thus, modelers face the choice of identifying the best
+                                                                   single paradigm or adopting multiple paradigms, such as an
+3.2. Main Results. This research applies the integration of
+                                                                   integration of the simulation approach and applying it to the
+DES and ABS to an orthopedic clinic. The different consul-         whole system.
+tation sessions yield different results, which are shown in
+                                                                       In this paper we have integrated DES and ABS simulation
+Table 2. To further verify the effectiveness of the proposed
+                                                                   models to evaluate proposed strategies applied toward an
+approach, the study performs the paired 𝑡-test on the average
+                                                                   orthopedic department so as to reduce patient waiting time.
+real-world waiting time to compare the waiting times before
+                                                                   The integration of DES and ABS allows us to utilize the
+and after applying the approach. At the confidence level 𝛼 =
+                                                                   advantages of both simulations. DES helps us to understand
+0.05, the results in Table 3 clearly confirm the superiority of    the orthopedic department processes and to replicate the
+the proposed approach.                                             orthopedic department system, whereas ABS allows us to
+                                                                   consider the variation in individual behavior in order to
+4. Discussion                                                      model a situation with interdependencies between work
+                                                                   entities. The simulation model herein correctly emulates the
+The main objective of this study is to reduce the outpatient       patient flow in the orthopedic department and can be used
+waiting time in the orthopedic department. After applying          to analyze the effects of potential improvement policies.
+the proposed approach, the results show that the waiting           The research results indicate that the proposed approach
+time dropped significantly: for consultation session 1, the        achieves a considerable reduction in waiting time. Moreover,
+waiting time fell to 39.28 minutes (32.47%); for consultation      the reduction in waiting time does not need any additional
+session 2, the waiting time fell to 43.72 minutes (35.16%); for    resources.
+consultation session 3, the waiting time fell to 21.97 minutes         Although our results suggest that the integration of DES
+(27.89%); for consultation session 4, the waiting time fell        and ABS can improve the waiting time in an orthopedic
+to 16.75 minutes (26.35%); for consultation session 5, the         clinic, there are several important limitations to discuss.
+waiting time fell to 22.27 minutes (27.64%); for consultation      First, since this research provides only one example, more
+session 6, the waiting time fell to 35.67 minutes (30.51%); for    case studies implementing the model are needed for external
+consultation session 7, the waiting time fell to 23.85 minutes     validity. Second, the proposed simulation model only gener-
+(28.60%); for consultation session 8, the waiting time fell        ates a method of evaluating a solution but does not generate
+to 55.97 minutes (38.23%); for consultation session 9, the         solutions themselves. Finally, the proposed simulation model
+waiting time fell to 22.8 minutes (29.34%); for consultation       does not yield an answer. It merely provides a set of the
+session 10, the waiting time fell to 37.79 minutes (31.78%); for   system’s responses to different operating conditions, and so
+consultation session 11, the waiting time fell to 56.62 minutes    the results need to be well interpreted and understood before
+(37.65%); for consultation session 12, the waiting time fell       any changes are implemented.
+to 22.5 minutes (26.64%). The average waiting time after               The approach of this research not only is applicable to the
+applying the proposed approach of 12 consultation sessions         orthopedic department at this hospital but also can be applied
+fell to 33.27 minutes (32.03%).                                    to reduce patient waiting time at other orthopedic depart-
+     It is obvious from Tables 2 and 3 that the proposed           ments nationwide. Furthermore, the results can be helpful for
+approach is very effective for improving clinical services by      other hospital departments in addition to orthopedics.
+
+6                                                                                               Journal of Healthcare Engineering
+
+
+
+                   Table 1: Validation of simulation model by a comparison between simulated and collected data.
+
+                                         Simulation model          Confidence interval         Collected data      Difference (%)
+Consultation session variable 1
+  Average waiting time (minute)                124.36                 [105.08, 143.64]              121.77             2.083
+  Average throughput time (minute)             132.54                 [120.27, 144.81]              134.12             1.192
+  Average utilization (%)                       92.16                 [76.26, 106.06]                93.51              1.46
+Consultation session variable 2
+  Average waiting time (minute)                122.57                [100.66, 144.48]              125.98               2.78
+  Average throughput time (minute)             129.92                 [118.53, 141.31]             131.45               1.18
+  Average utilization (%)                      88.56                  [74.54, 102.58]              84.97                1.79
+Consultation session variable 3
+  Average waiting time (minute)                 77.75                 [48.84, 106.68]               75.41               3.00
+  Average throughput time (minute)              85.47                  [71.45, 99.49]               86.68               1.42
+  Average utilization (%)                       85.63                  [54.95, 116.31]              82.78               3.33
+Consultation session variable 4
+  Average waiting time (minute)                 65.15                  [49.37, 80.93]               66.13               1.50
+  Average throughput time (minute)              72.31                  [50.4, 94.22]                74.14               2.53
+  Average utilization (%)                       91.53                 [76.19, 106.87]               90.23               1.42
+Consultation session variable 5
+  Average waiting time (minute)                 81.36                 [61.64, 101.08]               79.65               2.10
+  Average throughput time (minute)              89.37                 [71.23, 107.51]               90.98               1.80
+  Average utilization (%)                       87.67                  [72.24, 103.1]               86.36               1.49
+Consultation session variable 6
+  Average waiting time (minute)                 116.3                 [107.01, 125.59]             117.24               0.81
+  Average throughput time (minute)              137.0                 [126.92, 147.08]             138.38               1.01
+  Average utilization (%)                       91.7                  [70.66, 112.74]               89.68               2.20
+Consultation session variable 7
+  Average waiting time (minute)                  85.1                 [66.79, 103.41]               86.76               1.95
+  Average throughput time (minute)              102.0                 [86.97, 117.03]               103.51              1.48
+  Average utilization (%)                       92.6                  [88.66, 96.54]                92.57               0.03
+Consultation session variable 8
+  Average waiting time (minute)                 145.3                 [137.41, 153.19]             144.12               0.81
+  Average throughput time (minute)              156.0                 [137.33, 174.67]             158.98               1.91
+  Average utilization (%)                        95.5                  [78.85, 112.15]             93.97                1.60
+Consultation session variable 9
+  Average waiting time (minute)                 75.3                   [59.43, 91.17]               74.12               1.57
+  Average throughput time (minute)              90.0                  [72.66, 107.34]               88.32               1.87
+  Average utilization (%)                       91.8                   [66.47, 117.13]              94.21               2.63
+Consultation session variable 10
+  Average waiting time (minute)                 122.1                 [115.08, 129.12]             122.97               0.71
+  Average throughput time (minute)             130.63                  [117.6, 143.66]             132.45               1.39
+  Average utilization (%)                      89.84                   [75.2, 104.48]               88.41               1.59
+Consultation session variable 11
+  Average waiting time (minute)                151.51                 [136.08, 166.94]             154.01               1.65
+  Average throughput time (minute)             159.83                 [145.63, 174.03]             157.63               1.38
+  Average utilization (%)                      96.09                   [74.09, 118.09]             98.34               −2.34
+Consultation session variable 12
+  Average waiting time (minute)                 82.82                  [72.5, 93.14]                83.68               1.04
+  Average throughput time (minute)              95.52                 [74.39, 116.65]               97.66               2.24
+  Average utilization (%)                       94.21                 [71.71, 116.71]               91.96               2.39
+
+Journal of Healthcare Engineering                                                                                                                7
+
+                                     Table 2: Waiting time improvement for the orthopedic department.
+
+Consultation session           Average real-world waiting                    Average waiting time after                        Waiting time
+                                          time                             applying the proposed approach                    improvement (%)
+1                                        2:00:59∗                                       1:21:42                                     32.47
+2                                         2:04:21                                       1:20:38                                     35.16
+3                                         1:18:46                                       0:56:48                                     27.89
+4                                         1:03:34                                       0:46:49                                     26.35
+5                                         1:20:34                                       0:58:18                                     27.64
+6                                         1:56:54                                        1:21:14                                    30.51
+7                                         1:23:24                                       0:59:33                                     28.60
+8                                         2:26:24                                       1:30:26                                     38.23
+9                                         1:17:42                                       0:54:54                                     29.34
+10                                        1:58:55                                       1:21:08                                     31.83
+11                                        2:30:23                                       1:33:46                                     37.65
+12                                        1:24:27                                       1:01:57                                     26.64
+∗
+    hh:mm:ss.
+
+
+Table 3: Paired 𝑡-tests performed on average real-world waiting             [5] O. A. Soremekun, J. K. Takayesu, and S. J. Bohan, “Framework
+time (after applying the approach versus before applying the                    for analyzing wait times and other factors that impact patient
+approach).                                                                      satisfaction in the emergency department,” The Journal of
+                                                                                Emergency Medicine, vol. 41, no. 6, pp. 686–692, 2011.
+After applying the approach            Before applying the approach
+                                                                            [6] E. D. Boudreaux and E. L. O’Hea, “Patient satisfaction in
+Difference                                        1995.5                        the emergency department: a review of the literature and
+Dof                                                 11                          implications for practice,” The Journal of Emergency Medicine,
+𝑡-value                                           −8.347                        vol. 26, no. 1, pp. 13–26, 2004.
+One-tail significance                            <0.0001                    [7] L. J. Groome and E. J. Mayeaux Jr., “Decreasing extremes in
+                                                                                patient waiting time,” Quality Management in Health Care, vol.
+                                                                                19, no. 2, pp. 117–128, 2010.
+                                                                            [8] M. H. Bernhart, I. G. P. Wiadnyana, H. Wihardjo, and I. Pohan,
+Competing Interests                                                             “Patient satisfaction in developing countries,” Social Science &
+                                                                                Medicine, vol. 48, no. 8, pp. 989–996, 1999.
+The authors declare that there is no competing interests.
+                                                                            [9] A. B. Tehrani, S. R. Feldman, F. T. Camacho, and R. Balkrishnan,
+                                                                                “Patient satisfaction with outpatient medical care in the United
+Acknowledgments                                                                 States,” Health Outcomes Research in Medicine, vol. 2, no. 4, pp.
+                                                                                e197–e202, 2011.
+The authors would like to thank the Ministry of Science and                [10] B.-L. Chen, E.-D. Li, K. Yamawuchi, K. Kato, S. Naganawa,
+Technology of the Republic of China, Taiwan, for financially                    and W.-J. Miao, “Impact of adjustment measures on reducing
+supporting this research under Contract no. MOST104-2221-                       outpatient waiting time in a community hospital: application of
+E-027-045.                                                                      a computer simulation,” Chinese Medical Journal, vol. 123, no. 5,
+                                                                                pp. 574–580, 2010.
+                                                                           [11] N. T. J. Bailey, “A study of queues and appointment systems
+References                                                                      in hospital outpatient departments, with special reference to
+                                                                                waiting-times,” Journal of the Royal Statistical Society, vol. 14,
+[1] K. Freeman and S. A. Denham, “Improving patient satisfaction                no. 2, pp. 185–199, 1952.
+    by addressing same day surgery wait times,” Journal of Perianes-
+    thesia Nursing, vol. 23, no. 6, pp. 387–393, 2008.                     [12] J. D. Welch, “Appointment system in hospital outpatient depart-
+                                                                                ment,” Operational Research Quarterly, vol. 15, no. 3, pp. 224–
+[2] T. R. Rohleder, P. Lewkonia, D. P. Bischak, P. Duffy, and R.                232, 1964.
+    Hendijani, “Using simulation modeling to improve patient flow          [13] A. K. A. Wijewickrama and S. Takakuwa, “Simulation analysis
+    at an outpatient orthopedic clinic,” Health Care Management                 of an outpatient department of internal medicine in a university
+    Science, vol. 14, no. 2, pp. 135–145, 2011.                                 hospital,” in Proceedings of the Winter Simulation Conference
+[3] C. A. Feddock, A. R. Hoellein, C. H. Griffith III et al., “Can phys-        (WSC ’06), pp. 425–432, IEEE, Monterey, Calif, USA, December
+    icians improve patient satisfaction with long waiting times?”               2006.
+    Evaluation & the Health Professions, vol. 28, no. 1, pp. 40–52,        [14] S. Su and C.-L. Shih, “Managing a mixed-registration-type
+    2005.                                                                       appointment system in outpatient clinics,” International Journal
+[4] G. M. Eilers, “Improving patient satisfaction with waiting time,”           of Medical Informatics, vol. 70, no. 1, pp. 31–40, 2003.
+    Journal of American College Health, vol. 53, no. 1, pp. 41–43,         [15] J. Reynolds, Z. Zeng, J. Li, and S.-Y. Chiang, “Design and analy-
+    2004.                                                                       sis of a health care clinic for homeless people using simulations,”
+
+8                                                                                                         Journal of Healthcare Engineering
+
+     International Journal of Health Care Quality Assurance, vol. 23,      [30] M. M. Gunal and M. Pidd, “Understanding accident and
+     no. 6, pp. 607–620, 2010.                                                   emergency department performance using simulation,” in Pro-
+[16] C. Baril, V. Gascon, and S. Cartier, “Design and analysis of an             ceedings of the Winter Simulation Conference (WSC ’06), pp.
+     outpatient orthopaedic clinic performance with discrete event               446–452, Monterey, Calif, USA, December 2006.
+     simulation and design of experiments,” Computers & Industrial          [31] B. Dubiel and O. Tsimhoni, “Integrating agent based modeling
+     Engineering, vol. 78, pp. 285–298, 2014.                                    into a discrete event simulation,” in Proceedings of the Winter
+[17] J. L. Wiler, R. T. Griffey, and T. Olsen, “Review of modeling               Simulation Conference, pp. 9–15, IEEE, December 2005.
+     approaches for emergency department patient flow and crowd-           [32] M. J. North and C. M. Macal, “Agent-based modeling and
+     ing research,” Academic Emergency Medicine, vol. 18, no. 12, pp.            systems dynamics model reproduction,” International Journal
+     1371–1379, 2011.                                                            of Simulation and Process Modeling, vol. 5, no. 3, pp. 256–271,
+                                                                                 2009.
+[18] P. M. Carter, J. S. Desmond, C. Akanbobnaab et al., “Optimizing
+     clinical operations as part of a global emergency medicine            [33] P. Escudero-Marin and M. Pidd, “Using ABMS to simulate
+     initiative in Kumasi, Ghana: application of lean manufacturing              emergency departments,” in Proceedings of Winter Simulation
+     principals to low-resource health systems,” Academic Emer-                  Conference (WSC ’11), vol. 1, pp. 1239–1250, Phoenix, Ariz, USA,
+     gency Medicine, vol. 19, no. 3, pp. 338–347, 2012.                          December 2011.
+[19] P. P. Reid, W. D. Compton, J. H. Grossman, and G. Fanjiang,           [34] E. Cabrera, E. Luque, M. Taboada, F. Epelde, and M. L.
+     Building a Better Delivery System: A New Engineering/Health                 Iglesias, “ABMS optimization for emergency departments,” in
+     Care Partnership, National Academies Press, Washington, DC,                 Proceedings of the Winter Simulation Conference (WSC ’12), pp.
+     USA, 2005.                                                                  1–12, IEEE, Berlin, Germany, December 2012.
+                                                                           [35] A. T. Crooks and A. B. Hailegiorgis, “An agent-based modeling
+[20] S. H. Jacobson, S. N. Hall, and J. R. Swisher, “Discrete-event sim-
+                                                                                 approach applied to the spread of cholera,” Environmental
+     ulation of health care systems,” in Patient Flow: Reducing Delay
+                                                                                 Modelling & Software, vol. 62, pp. 164–177, 2014.
+     in Healthcare Delivery, R. W. Hall, Ed., vol. 91 of International
+     Series in Operations Research & Management Science, pp. 211–          [36] R. Aburukba, H. Ghenniwa, and W. Shen, “Agent-based
+     252, Springer, New York, NY, USA, 2006.                                     approach for dynamic scheduling in content-based networks,”
+                                                                                 in Proceedings of the IEEE International Conference on e-
+[21] W. M. Hancock and P. F. Walter, “The use of computer simu-                  Business Engineering (ICEBE ’06), pp. 425–432, Shanghai,
+     lation to develop hospital systems,” ACM SIGSIM Simulation                  China, October 2006.
+     Digest, vol. 10, no. 4, pp. 28–32, 1979.
+                                                                           [37] A. K. Hutzschenreuter, P. A. N. Bosman, I. Blonk-Altena, J.
+[22] T. A. Reilly, V. P. Marathe, and B. E. Fries, “A delay-scheduling           van Aarle, and H. La Poutré, “Agent-based patient admission
+     model for patients using a walk-in clinic,” Journal of Medical              scheduling in hospitals,” in Proceedings of the 7th International
+     Systems, vol. 2, no. 4, pp. 303–313, 1978.                                  Joint Conference on Autonomous Agents and Multiagent Systems:
+[23] W. Abo-Hamad and A. Arisha, “Simulation-based framework                     Industrial Track (AAMAS ’08), pp. 45–52, International Founda-
+     to improve patient experience in an emergency department,”                  tion for Autonomous Agents and Multiagent Systems, Estoril,
+     European Journal of Operational Research, vol. 224, no. 1, pp.              Portugal, May 2008.
+     154–166, 2013.                                                        [38] B. Dubiel and O. Tsimhoni, “Integrating agent based modeling
+[24] T. Wang, A. Guinet, A. Belaidi, and B. Besombes, “Modelling                 into a discrete event simulation,” in Proceedings of Winter
+     and simulation of emergency services with ARIS and Arena.                   Simulation Conference, pp. 9–15, Orlando, Fla, USA, December
+     Case study: the emergency department of Saint Joseph and Saint              2005.
+     Luc hospital,” Production Planning & Control, vol. 20, no. 6, pp.     [39] M. Anu, “Introduction to modeling and simulation,” in Proceed-
+     484–495, 2009.                                                              ings of the 29th Conference on Winter Simulation (WSC ’97), pp.
+[25] M. Gul and A. F. Guneri, “A computer simulation model to                    7–13, Atlanta, Ga, USA, December 1997.
+     reduce patient length of stay and to improve resource utilization     [40] M. Taboada, E. Cabrera, M. L. Iglesias, F. Epelde, and E.
+     rate in an emergency department service system,” Journal of                 Luque, “An agent-based decision support system for hospitals
+     Industrial Engineering International, vol. 19, no. 5, pp. 221–231,          emergency departments,” Procedia Computer Science, vol. 4, pp.
+     2012.                                                                       1880–1889, 2011.
+[26] T.-P. Lu, J.-T. Shih, C. Kittipittayakorn, and G.-F. Lian, “Improv-
+     ing outpatient service quality in department of orthopedic
+     surgery by using collaborative approaches,” in Proceedings of
+     the IEEE 17th International Conference on Computer Supported
+     Cooperative Work in Design (CSCWD ’13), pp. 515–520, IEEE,
+     British Columbia, Canada, June 2013.
+[27] B. Kim, Y. Elstein, B. Shiner, R. Konrad, A. S. Pomerantz, and B.
+     V. Watts, “Use of discrete event simulation to improve a mental
+     health clinic,” General Hospital Psychiatry, vol. 35, no. 6, pp.
+     668–670, 2013.
+[28] C. A. Chung, Simulation Modeling Handbook: A Practical
+     Approach, CRC Press, New York, NY, USA, 2003.
+[29] T. J. Schriber, D. T. Brunner, and J. S. Smith, “How discrete-event
+     simulation software works and why it matters,” in Proceedings
+     of the Winter Simulation Conference (WSC ’12), pp. 15–22, IEEE,
+     Berlin, Germany, December 2012.
+

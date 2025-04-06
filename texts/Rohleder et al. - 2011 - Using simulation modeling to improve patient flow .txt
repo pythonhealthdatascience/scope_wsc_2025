@@ -1,0 +1,668 @@
+Health Care Manag Sci (2011) 14:135–145
+DOI 10.1007/s10729-010-9145-4
+
+
+
+
+Using simulation modeling to improve patient flow
+at an outpatient orthopedic clinic
+Thomas R. Rohleder & Peter Lewkonia &
+Diane P. Bischak & Paul Duffy & Rosa Hendijani
+
+
+
+
+Received: 21 June 2010 / Accepted: 24 November 2010 / Published online: 9 December 2010
+# Springer Science+Business Media, LLC 2010
+
+
+Abstract We report on the use of discrete event simulation           schedule appointments for patients in advance, and patients
+modeling to support process improvements at an orthopedic            arrive to the clinic expecting service to begin at their
+outpatient clinic. The clinic was effective in treating              scheduled time. However, due to the patient arrival time
+patients, but waiting time and congestion in the clinic              and service time variation described in Noon, Hankins, &
+created patient dissatisfaction and staff morale issues. The         Cote [1], patients end up waiting even though they have
+modeling helped to identify improvement alternatives                 reserved time slots. Further, it is common practice at many
+including optimized staffing levels, better patient schedul-         outpatient clinics for providers to book multiple patients at
+ing, and an emphasis on staff arriving promptly. Quantita-           the same time. Part of the reason for this is to ensure that
+tive results from the modeling provided motivation to                patients are always available to see doctors or other
+implement the improvements. Statistical analysis of data             expensive, scarce health care resources. However, if all
+taken before and after the implementation indicate that              scheduled patients show up on time or early, significant
+waiting time measures were significantly improved and                patient waiting is a certainty.
+overall patient time in the clinic was reduced.                         The concern with this waiting is the patient dissatis-
+                                                                     faction it may cause. In their study of outpatients,
+Keywords Outpatient clinic . Discrete event simulation .             McCarthy, McGee, & O’Boyle [2] found that 64% of
+Process improvement . Patient waiting                                patients rated waiting times as unsatisfactory. In addition,
+                                                                     that study reported that a significant number of patients
+                                                                     who decline to attend their appointment do so because of
+1 Introduction                                                       the expectation of long waiting times. Such “no-shows” are
+                                                                     an obviously undesirable occurrence where they can be
+Visiting hospital outpatient clinics is a very common way            avoided. In the similar environment of appointments for
+for patients to access health care. These clinics typically          physicians, survey results show patient waiting time as one
+                                                                     of the top three differentiators for “best practice” offices
+                                                                     versus average offices [3]. This suggests that for health care
+T. R. Rohleder (*)
+                                                                     systems where patients have a choice of health care
+Division of Health Care Policy and Research, Mayo Clinic,            providers, shorter waiting times are apparently a competi-
+200 First Street SW,                                                 tive advantage.
+Rochester, MN 55905, USA                                                How much waiting at an outpatient clinic is acceptable
+e-mail: rohleder@mayo.edu
+                                                                     depends on many factors. Individual “patience”, the type of
+P. Lewkonia : P. Duffy                                               clinic, and the pleasantness of the waiting area all affect
+University of Calgary,                                               patients’ tolerance for waiting. As Cartwright & Windsor
+Calgary, Alberta, Canada                                             [4] note, patients will accept short waiting periods.
+D. P. Bischak : R. Hendijani
+                                                                     However, there is a limit to the length that patients will
+Haskayne School of Business, University of Calgary,                  accept graciously. The study by Huang [5] found that
+Calgary, Alberta, Canada                                             patients who arrived on time for appointments were
+
+136                                                                                     Health Care Manag Sci (2011) 14:135–145
+
+
+satisfied with wait times of 37 minutes or less. In 1991 the    industry, there are numerous academic studies that use it
+UK’s National Health Service’s Patient’s Charter set a 30       as a research method in that setting. In their review article,
+minute target for appointment waiting times [6]. Thus, it       Jun, Jacobson, & Swisher [10], cite over 100 articles
+seems that wait times in the neighborhood of a half hour are    applying simulation to health care processes and systems.
+considered acceptable.                                          As simulation tools have improved and an emphasis on cost
+   In this research, we study the patient flow at an            control and efficiency has become more important in health
+outpatient orthopedic clinic in Calgary, Alberta. The clinic    care, researchers continue to suggest its use. Ledlow &
+is nicknamed the “cast clinic” since many patients come to      Bradshaw [11] point out the value of animation and
+have casts put on and taken off—we will use this term in        visualization when applying simulation to health care
+the remainder of the article. At the start of the study,        settings, and Young [12] discusses how simulation can
+waiting times and patient congestion at the clinic were         assist health care organizations explore alternative patient
+substantial. The average time patients spent at the clinic      pathways with the “lean” methodology so many of them
+was nearly an hour and a half, with the majority of that time   are adopting. Finally, in their evaluation of modeling
+spent waiting. It was not uncommon for patients to wait         methods for health care, Cooper, Brailsford, & Davies
+over two hours after their assigned appointment times.          [13] note that simulation may be particularly useful where
+   The negative effects of waiting on patients are well         “queuing for resources, resource constraints or the inter-
+documented (e.g., [7]). However, clinic staff also experi-      actions between individuals” are important. This would
+ence negative effects due to patient congestion. Growing        seem to encompass a great many health care settings,
+lines of patients put the staff under significant work          including outpatient clinics like the cast clinic studied in
+pressure and often requires them to deal with unhappy           this research.
+patients. In the long run, such pressure can create morale          To support the use of simulation in health care, there
+problems and likely contributes to absenteeism. Therefore,      appears to be a growing list of applied case studies in the
+the researchers for this study were brought in to help the      literature. Recent examples of this are the studies of Kumar &
+cast clinic diagnose the causes of poor patient flow and to     Shim [14] and VanBerkel & Blake [15] who consider
+identify effective solutions. We used simulation modeling       capacity planning and wait time reductions in surgical
+as the main tool to help in our diagnostic and improvement      settings. Similarly, Kim, Horowitz, Young, & Buckley [16]
+efforts.                                                        use simulation to evaluate capacity management strategies in
+   One major contribution of our work is to show how a          an intensive care unit (ICU). In more case studies using
+structured analysis of patient flow can significantly improve   simulation, Rohleder, Bischak, & Baskin [17] discuss its use
+waiting time and patient congestion in a cast clinic. We        in redesigning patient laboratory sample collection sites and
+believe our study is the first of its kind for an orthopedic    Brasted [18] uses it to model the case of an ultrasound
+clinic. Another major contribution is to show how               waiting list. Finally, in a setting somewhat similar to that of
+simulation modeling and the “hard” quantitative analysis        this paper, Merkle [19] uses simulation to improve the
+it provides can assist in convincing involved parties to        operations at a family care clinic.
+implement improvements. The clinic previously attempted             Thus, it is apparent that simulation is finding good
+to improve patient waiting-time performance by testing          application in health care. To this body of work, our study
+localized initiatives using standard Plan-Do-Study-Act          adds the specific setting of an outpatient cast clinic. Further,
+(PDSA) methods [8]. While this approach likely helped in        while the previous set of case studies often propose
+creating a culture more accepting of change, the modeling       alternative modes of operation, in most cases the research-
+we performed provided a systems perspective in addition to      ers and modeling activity were not embedded in the
+the quantitative evidence that showed that the improve-         improvement process with the intent of implementation.
+ments should work. With the preponderance of scientific         In our study we take an action research approach with a
+staff in healthcare settings, we believe a quantitative         focus on improving patient service. With large numbers of
+evidence-based approach can be important for a successful       patients served in the cast clinic, the potential overall
+implementation.                                                 impact is large and changes can be implemented and their
+                                                                effect easily measured. Sachdeva, Williams, & Quigley [20]
+                                                                also show that the use of operations research tools in
+2 Computer simulation in healthcare                             general, and simulation specifically, led to improved health
+                                                                care outcomes. We also view this approach to research in a
+Many authors have suggested that computerized discrete-         positive light and note that our study resulted in the
+event simulation is a useful analysis and improvement tool      mutually beneficial outcomes of better patient service for
+in industry settings that exhibit high levels of complexity     the clinic studied and new knowledge for the researchers to
+and uncertainty [9]. Because health care is one such            apply and disseminate.
+
+Health Care Manag Sci (2011) 14:135–145                                                                                       137
+
+
+3 Description of the cast clinic                                  diagnostic imaging equipment (x-ray) and the staff running
+                                                                  this equipment.
+In this section we will describe the cast clinic’s processes
+with a focus on its purpose, resources, and operations.           3.3 Operations
+
+3.1 Overview                                                      Patients are assigned to see particular surgeons and the
+                                                                  surgeons decide on the overall strategy for scheduling their
+Foothills Medical Centre is the only Level I trauma centre and    patients. The unit clerks perform the actual scheduling
+spine surgery hospital serving Calgary and additional subur-      function based on a combination of patient availability and
+ban areas for a total patient population of around 1.2 million.   the surgeon’s preferred strategy. Daily volumes at the clinic
+The cast clinic is an outpatient clinic which accommodates the    vary significantly, but 50–100 patients are typical. A small
+majority of outpatient orthopedic patient appointments for the    proportion of patients “walk-in” to the clinic without a pre-
+hospital including fractures, some spinal injuries, hand and      scheduled appointment time. This occurrence is sometimes
+wrist disorders, and some joint replacement patients. The         due to clerical errors by either staff or patients, and at other
+clinic sees a variety of patients including:                      times, patients may choose to come to the clinic for
+                                                                  emergency visits without calling ahead. If the patient has
+&   New referrals
+                                                                  been to the clinic in the past, all reasonable efforts are made
+&   New patients from the Emergency Department
+                                                                  to accommodate them.
+&   Repeat patients returning for review of their progress
+                                                                      Patient flow through the clinic is highly variable. Data
+    with either surgical or non-surgical treatment
+                                                                  showed that surgeons typically had 20–30 different patient
+   The majority of patients visit the clinic multiple times       sequences through the staff and resources described above.
+during their orthopaedic care. The clinic has had an average      It is not uncommon for a patient to see the same resource
+monthly volume of 1000 appointments with some variation           more than once during a visit to the clinic. Thus, patient
+in recent years. The clinic is generally open from 7 am to 4      flow is a highly jumbled and unpredictable process. Figure 1
+pm Monday through Friday and is closed for holidays.              shows a simplified version of the layout of the cast clinic
+                                                                  used for animating the cast clinic when running simulations
+3.2 Staff/resources                                               and Fig. 2 shows examples of two of the 18 different
+                                                                  patient pathways for one of the surgeons.
+There have been some changes in use of the clinic by local            While the patients’ paths vary significantly through all
+surgeons over the past few years due to a change in practice      the clinic resources, by a significant margin, the x-ray
+pattern. At any given time, up to ten surgeons have staffed       machines/technicians and the surgeons are the busiest
+the clinic per week. On most days two surgeons are                resources. Essentially all patients see the surgeons and
+scheduled at the clinic. However, from one to four may            90–95% of patients have x-rays, depending on the surgeon.
+be scheduled depending on holidays, vacations, and                Most (but not all) x-rays are pre-ordered and completed before
+variations in surgeon and clinic schedules. Most surgeons         a patient is invited in to an examination room. Other clinic
+are assisted by trainees (either resident physicians or           resources such as the orthopedic technicians (OT) have lower
+medical students). While the surgeons drive the operations        patient treatment interaction utilization levels; however, they
+of the clinic, the following staff and resources are also key     have other duties that take additional work time. These
+elements of the clinic’s operations:                              additional duties have traditionally been ill-defined but
+                                                                  include assisting the unit clerks in administrative management
+&   7 examination rooms (plus a patient waiting area);
+                                                                  and streamlining patient transfers between resources.
+&   2 unit clerks who check patients in when they arrive and
+                                                                      Overall, the clinic’s structure may seem simple on the
+    schedule appointments;
+                                                                  surface, but there is actually significant complexity in its
+&   2 x-ray machines, primarily used for cast clinic patients—
+                                                                  operations. This makes it difficult to easily identify
+    however, some inpatients (not clinic patients) also use
+                                                                  appropriate interventions and supports the role of modeling
+    these machines;
+                                                                  in identifying the causes of performance problems and
+&   2 x-ray technicians;
+                                                                  options for improvement.
+&   2 orthopedic technicians who manage cast care and
+    dressing changes among other duties.
+   A variety of other staff also participate in the clinic,       4 Simulation modeling process
+including residents, students, nurses, and physiotherapists.
+A clinic administrator oversees the management of the             The major steps in the modeling process were i) process
+clinic, and a separate administrator oversees the use of          understanding and data collection; ii) building a simplified
+
+138                                                                                             Health Care Manag Sci (2011) 14:135–145
+
+Fig. 1 Simplified physical
+layout of the cast clinic
+
+
+
+
+                                                      Waiting                           Waiting
+                 Reception
+                                                       Area                              Area
+  Patient                          Unit Clerk                             X-ray                        Exam Room
+
+
+
+
+                                                        Patient Departs
+                  Wait in
+                  Room
+                               Exam with Surgeon
+
+
+Patient Type 2 – Example of more Complex Flow with Revisit
+
+
+                                                        Waiting                            Waiting                       Wait in
+                   Reception
+                                                         Area                               Area                         Room
+Patient                              Unit Clerk                             X-ray                        Exam Room
+
+
+
+
+                                                                                                       Patient Departs
+                                      Wait in                      Wait in
+                                      Room                         Room
+                   Exam with                         Orthopedic                     Exam with
+                    Surgeon                          Technician                      Surgeon
+
+Fig. 2 Example of patient flow through resources (with waiting)
+
+Health Care Manag Sci (2011) 14:135–145                                                                                      139
+
+
+generic simulation model using the Arena Software                  they visited. However, while some of the data collected
+(Rockwell Automation Technologies, Inc., version 12.0,             using this approach was useful, much of it was not precise
+2007) to test scheduling options, iii) building valid models       enough for use in building a model. In particular, histo-
+for the participating physicians to thoroughly test proposed       grams showed that data collected by patients led to unusual
+scheduling and operational changes, iv) analyzing the model        spikes at 5, 10, and 15 minutes. Issues such as this
+results to identify appropriate improvements to implement; v)      “rounding” problem prompted us to use independent data
+implementing the changes suggested by the models, and vi)          collectors to obtain more precise time data. To this end, four
+evaluating the system performance to determine if the              undergraduate business students collected data in February
+implemented changes resulted in real improvement. The              and March 2008. Accurate data on 201 patients seen by
+following will briefly discuss each of these steps.                three doctors were collected over this time period for the
+                                                                   following categories:
+4.1 Process description and data collection
+                                                                   1. Patient arrival times (to determine a probability
+                                                                      distribution of the amount of time patients were early
+Meetings were held with staff to understand the process
+                                                                      or late to their appointments).
+flow of patients, determine a set of performance measures
+                                                                   2. Service times for all the resources (x-ray, orthopedic
+to be used throughout the study, and map out a data
+                                                                      technician, surgeon, resident, exam room, etc.).
+collection procedure. Five primary performance measures
+                                                                   3. Patient paths—used to develop a frequency distribution
+were chosen to quantify the impact that any changes to the
+                                                                      of resource usage and sequencing (combined with
+clinic’s processes might have: i) the total time a patient
+                                                                      previously collected patient data which was deemed
+spends in the clinic, ii) the time a patient waits for an x-ray,
+                                                                      accurate for this component).
+iii) the time a patient waits for the surgeon, iv) the
+percentage of patients whose clinic visits were completed
+in 60 minutes or less, and v) the time of day when all             4.2 Model building and validation
+patients had completed their visits.
+    The first four measures clearly relate to patient satisfac-    Collected data on patient earliness/lateness and patient
+tion with waiting and clinic congestion. In particular,            service times were used as input to the ExpertFit software
+measure iv) was included because Clinic administrators             [21] to establish appropriate probability distributions to use
+were given a target of getting all patients through the clinic     in the simulation model. Through a process of evaluating
+in 60 minutes or less. However, it was recognized that             statistical fit (Kolmogorov-Smirnov test) and graphical
+measures i) and iv) were not completely under the control          evaluation (comparing the histogram of the data to a
+of the Clinic, as some patients were arriving very early for       graphical representation of the distribution function), the
+their appointments. As patient satisfaction is most directly       distributions in Table 1 were selected.
+related to how long a patient waits to be seen, a sixth               Interestingly, as in Alexopoulos, Goldsman, Fontanesi,
+measure, length of the initial wait in the waiting room, was       Kopald, & Wilson [22], the amount of time that the patient
+added. As the patient arrival pattern is unlikely to change in     was early or late for their appointment at the cast clinic was
+the short run, a combined reduction in this measure and in         best approximated by the Johnson SU distribution (see
+measures i) and iv) would indicate that system performance         Fig. 3). We used this distribution to offset from scheduled
+has truly improved and it is not simply that patients are          appointment times in the simulation models. The few walk-
+arriving less early to their appointments. In the long run,        in patient arrivals were distributed randomly across the
+process improvements would hopefully lead to shorter and           clinic hours. Patients were generally seen in a First-Come-
+more consistent waiting times that in turn would lead to less      First-Serve (FCFS) manner in the real system and therefore
+variability in patient arrival times.                              were always processed this way in the model. Because
+    Measure v) was of particular interest to the surgeons due      patients frequently arrived earlier or later than their
+to their busy schedules that included many duties outside of       appointment times, FCFS processing meant that patients
+the cast clinic even on days during which the cast clinic          could be seen in a different order than their appointment
+was the primary activity. Earlier completion could allow           sequence. The data showed this frequently occurred in
+more time to attend to these other duties. Other Clinic staff      practice. The “unfair” nature of this occurrence likely
+may not be able to leave early due to faster completion of a       contributed to the variability in patient adherence to their
+day’s slate of patients, but prompt completion would allow         assigned appointment time.
+for reduced overtime or a more relaxed preparation for the            After arrival, the simulated patients were routed to the
+next day’s clinic.                                                 appropriate resources based on the frequencies determined
+    Initially, data collection sheets were sent with patients      from the patient path data. Depending on the surgeon, some
+for them to fill in the appropriate time stamps and resources      resources were explicitly modeled in all paths and some
+
+140                                                                                                                      Health Care Manag Sci (2011) 14:135–145
+
+Table 1 Example input distributions for simulation model
+
+Purpose                                           Distribution (Parameters)                             Discussion
+
+Patient arrivals                                  Johnson SU (-4.15,14.35,0.31,.98)                     Negative values = early
+X-ray time                                        Lognormal (6.17,4.10)
+Orthopedic Tech time                              Gamma (7.88,1) + 0.78
+Resident exam time                                Weibull (8.38,1.69)
+Surgeon exam time Returning                       SA: Weibull (9.46, 2.42) m=8.4*                       The distributions represent two different surgeons (A and B)
+                                                  SB: LogLogistic (4.15,2.57) m=4.98
+Surgeon exam time New                             SA: Weibull (15.18, 2.17) m=14                        These patients were not previously seen by the surgeon
+                                                  SB: Lognormal (9.16, 9.92) m=9.16
+
+* m mean (minutes)
+
+
+were not. For example, for Surgeon A, residents always                                   time the patient arrived (including total waiting and service
+visited the patient with the surgeon and left when the                                   times for all resources). As the figure shows, the confidence
+surgeon left. By analyzing the data, it was clear the surgeon                            intervals created from the model output contain the average
+was the delaying resource, not the residents. Thus, the                                  value from the actual system. This was true for other
+resident was not modeled explicitly for Surgeon A’s                                      performance measures including x-ray waiting time and
+patients. A resource was included if it contributed to patient                           clinic end time (when the last patient left). The only
+delay for a particular surgeon, otherwise it was not. In this                            measure for which there was some discrepancy was waiting
+way, the model was kept as simple as possible. For the                                   time for the surgeon. For some surgeons and surgeon
+resources that were included, service times were randomly                                combinations, the model slightly underestimated this wait-
+generated using the probability distributions shown in                                   ing time. This was likely due to the fact that the model
+Table 1. It should be noted that while all the surgeons at                               assumed that surgeons were always available to meet with
+the clinic are trauma surgeons their interests in treating                               patients when not examining another patient. In practice,
+particular types of patients differ. This helps account for                              surgeons frequently have short interruptions that may
+some of the differences in examination times reported in                                 somewhat limit their availability. This was viewed as a
+Table 1.                                                                                 minor issue since the more comprehensive simulation
+   To determine if our modeling approach was valid, we                                   outputs such as total patient time and clinic end time
+compared the model output to the performance of the actual                               matched well with real system performance.
+system. Figure 4 graphically shows one evaluation for the
+total patient time in the clinic. This measure was the                                   4.3 Identification of options for improvement
+difference between when the patient left the clinic less the
+                                                                                         One of the key uses of the simulation model was to
+                 Comparison of Arrival Time Data with Johnson SU Distribution Function   diagnose causes of delay in patient flow in the cast clinic.
+                                                                                         We discovered three key areas in which we could
+          0.20
+                                                                                         potentially produce a significant improvement in clinic
+                                                                                         efficiency without dramatically altering clinic practice.
+          0.15
+
+                                                                                                                 Simulation Model vs. Actual Results
+Density
+
+
+
+
+                                                                                                                         Patient Clinic Time
+          0.10                                                                                    100
+                                                                                                   95
+                                                                                                   90
+                                                                                                   85
+                                                                                         Minute
+
+
+
+
+                                                                                                   80
+          0.05
+                                                                                                   75
+                                                                                                   70
+                                                                                                   65
+                                                                                                   60
+          0.00                                                                                     55
+             -193.00 -153.00 -113.00     -73.00   -33.00    7.00     47.00    87.00
+                                                                                                   50
+                                   Arrival Time (Appointment Time = 0)                                           Surgeon A                     Surgeon B
+                           Histogram of Data      Johnson SU Distribution Function                                       Actual    Simulation 95% CI
+
+Fig. 3 Patient arrival time earliness/lateness distribution                              Fig. 4 Validation analysis—comparison of average clinic times
+
+Health Care Manag Sci (2011) 14:135–145                                                                                     141
+
+
+   First, the model indicated that it was necessary for both      was kept the same and matched the average number of
+of the x-ray machines to be operating continuously to avoid       clinic appointments for each surgeon in reality.
+significant patient backlog. However, in actual practice the         To further improve appointment scheduling, we also
+clinic’s two x-ray technicians needed to take occasional          considered changes in the scheduling of certain types of
+breaks that caused one (and sometimes both) x-ray                 patients. Based on the results of Klassen & Rohleder [23],
+machines to become unavailable. Thus, one improvement             we knew that patients with greater variability in service
+option identified was to add a third x-ray technician to          times would be more likely to disrupt the schedule. New
+cover for breaks and to coordinate staff schedules to ensure      patients were statistically identified as having a higher
+that the two x-ray machines were always available during          mean and variance than returning patients. Therefore, for
+the busy days in the clinic.                                      scheduling purposes we also moved these patients to the
+   Secondly, the model identified that the arrival of             end of a surgeon’s schedule.
+surgeons to the clinic 30 to 60 minutes after the clinic
+opened—a common occurrence—was another problem
+that, not surprisingly, caused significant delay for patients     5 Modeling results
+arriving early in the day’s schedule. When this happened, it
+sometimes took until mid-morning to reduce the patient            Using simulation models of the specific surgeon and clinic
+backlog. Of course, it is important that not only the             configurations, we estimated the performance of the three
+surgeons but also all the rest of the staff are available when    improvement options for several key measures. Table 2
+the clinic opens to ensure that patients are ready for their      shows the average “before and after” results for several
+examinations, so the second improvement option identified         performance measures if all three options are implemented.
+was simply to ensure the punctuality of all staff members.        The model results clearly suggest that patient waiting time
+   Thirdly, the model also identified the important role that     and thus overall time in the clinic would be reduced.
+appointment scheduling played in patient waiting time, so a       Further, total clinic time (i.e., the time interval over which
+revised scheduling procedure was the third improvement            surgeons see patients) would not be increased. In fact, the
+option. The cast clinic scheduled a block of n patients over      model predicts a slight improvement. The reason that total
+intervals of length t. The exact value of n and t differed by     clinic time is not as improved as patient waiting is because
+surgeon and by hour of the day, but it was common practice        the new schedule spreads the patients across the clinic day
+to “front load” the schedule and have larger n values in          more evenly. This offsets the benefits due to the surgeons
+early hours of the day (and have more patients arrive in the      arriving promptly at the start of the clinic and due to the
+early hours). A typical schedule in the first hour was 5          additional x-ray technician. Nonetheless, it appeared that
+patients scheduled for 7:00, 4 patients scheduled for 7:15,       combining the three improvement options would meet the
+and no more patients scheduled until 8:00. Having block           performance objectives of the cast clinic.
+sizes with n>1 makes sense since there is significant                The results in Table 2 hold if all improvement options
+variability in patient arrival times (see Fig. 3) and it is not   are implemented simultaneously. However, we were
+desirable for the surgeons to be idle, waiting for patients.      concerned that one of the options might be driving the
+However, given that most patients arrive early, we                majority of the performance gains that were obtained. Thus
+determined that reducing the number of patients scheduled         we also studied the individual effects of the three options
+in blocks and working with consistent intervals would lead        on several performance measures. We ran each of the
+to less waiting without creating significant surgeon idle         improvement options individually for the different clinic
+time.                                                             configurations as separate scenarios for this purpose.
+   Working with a “generic” model created to represent a             Figure 5 shows the results for total patient time in the
+typical surgeon at the clinic, we ran experiments to evaluate     clinic and the percentage of patients completing their visits
+which combinations of n and t would work well. Block              in 60 minutes or less. All three options contribute relatively
+sizes of n=1 to 3 and intervals of t=10, 15, 20 and 30            equally to the reduction in total patient clinic time.
+minutes were tested. These combinations were selected as          However, adding the x-ray technician has a significantly
+practical values that could potentially be implemented.           smaller effect on the percentage of patients completing in
+Results showed that n=3 and t=20 was the best combina-            60 minutes or less than improved scheduling or ensuring
+tion to reduce patient waiting time and simultaneously keep       that the surgeons arrive promptly. It is also interesting to
+the time to see all patients in the clinic (and corresponding     note the additive values across options and how they
+surgeon idle time) to a minimum. However, since most              compare to the percentage improvement values in Table 2.
+surgeons scheduled in 15-minute intervals, we decided to          Concerning average patient clinic time, there appear to be
+test the combination of n = 2 and t = 15 for possible             diminishing returns when all options are added, as the total
+implementation. In all cases, the number of appointments          improvement for the options (50.2%) is less than the sum of
+
+142                                                                                                         Health Care Manag Sci (2011) 14:135–145
+
+Table 2 Model results: the impact of improvement options (averages for all surgeons and clinic configurations)
+
+                                     Length of initial        Total patient       X-ray         Wait time for    Clinic end    % Patients completed
+                                     wait (min)               clinic time (min)   wait (min)    surgeon (min)    time (hr)     in 60 minutes or less
+
+Model results without                         33.42                   86.85          36.27          29.97            7.23              40.9%
+ improvements
+Model results WITH                             4.66                   43.26           1.54          16.87            7.07              78.3%
+ improvements
+% improvement                             86%                       50%            96%             44%             2%                92%
+
+
+
+the improvement due to the three individual options                                  completed in 60 minutes or less are actually better than
+(61.2%). However, there appears to be a synergistic impact                           what was projected by the model. In addition, the average
+of implementing all three options for the percentage of                              time a patient was sitting in the waiting room at the start of
+patients completing in 60 minutes. The improvement                                   a visit dropped from more than a half hour to under fifteen
+percentage due to all three together (91.5%) is significantly                        minutes,
+greater than the sum of the individual improvement                                      Figure 6 shows the results for total patient time in the
+percentages (59.3%). Thus, it appears that combining the                             clinic, comparing original performance with model projec-
+options together has a greater effect on the variability of                          tions and post-implementation results for the three clinic
+wait times in the clinic than on their average value.                                configurations originally considered. The fact that the
+                                                                                     model projected better performance than actually resulted
+                                                                                     for the waiting time measures is not entirely surprising. The
+6 Implementation results                                                             model assumed perfect adherence to the improvements
+                                                                                     suggested. In particular, patients’ preferences likely re-
+As our analysis clearly indicated that each of the improve-                          quired compromising on the planned clinic schedule of 2
+ment options tested was worthwhile, all three options were                           patients every 15 minutes which the model assumed, as
+implemented at the clinic and evaluated using a data                                 well as the plan of putting all new patients at the end of the
+collection process similar to that used for the model                                schedule. Furthermore, the times when the first patients
+building phase. Post-implementation data were collected                              were processed suggests the surgeons were not as prompt in
+for three surgeons during the period October 2008 to                                 arriving as was assumed in the model. Nonetheless, the
+February 2009. Over this period six separate clinic days                             surgeon arrival times to the clinic were better than they
+were used for data collection on 380 patients, for a total of                        were before the surgeons had been provided with results
+581 patients.                                                                        from modeling that gave evidence of the value of this
+   The overall results averaged across the clinics are shown                         practice.
+in Table 3. All measures show significant improvements.                                 One difficulty in trying to make a comparison between
+Although improvement percentages for three of the five                               the clinic’s performance before and after implementation of
+measures were lower than those projected by the model, the                           the improvements is that a number of factors, such as
+average patient time in the clinic dropped from around 90                            patient mix, were somewhat different in the pre- and post-
+minutes to under an hour, and percentage improvements for                            implementation data. For example, for the post-
+clinic end time and the proportion of patient visits                                 implementation data collection Surgeon A had individual
+                                                                                     clinics, while Surgeons B and C had combined clinics.
+                70.0%                                                                However, for the pre-implementation (i.e., model building)
+                60.0%                                                                data collection Surgeon B also had an individual clinic day.
+                50.0%        21.7%                                                   Regression analysis can be used to control for such
+% Improvement
+
+
+
+
+                                                                  28.4%              unplanned changes that might otherwise obscure the
+                40.0%
+                                                                                     reasons for differences in pre- and post-implementation
+                30.0%        17.7%
+                                                                                     performance. Table 4 shows the results of such a regression
+                20.0%                                             22.3%
+                                                                                     analysis in Stata (StataCorp LP, 2009, version 10.1 for
+                             21.7%
+                10.0%                                                                Windows) with total patient time as the dependent variable
+                                                                  8.6%
+                0.0%                                                                 and a number of independent variables that help to explain
+                        Patient Clinic Time                % 60 Minutes or Less
+                                                                                     the variation in clinic time across patients. The coefficient
+                                       Performance Measure
+                                     X-Ray     MD Prompt   Schedule
+                                                                                     on the “After” variable, which is set to 0 for the pre-
+                                                                                     implementation data and 1 for the post- implementation
+Fig. 5 Main effects % improvement                                                    data, indicates that, after controlling for the impact of the
+
+Health Care Manag Sci (2011) 14:135–145                                                                                                                         143
+
+Table 3 Implementation results: comparison of before and after implementation of improvements (averages for all surgeons and clinic
+configurations)
+
+                                   Length of initial               Total patient            X-ray         Wait time for      Clinic end       % Patients completed
+                                   wait (min)                      clinic time (min)        wait (min)    surgeon (min)      time (hr)        in 60 minutes or less
+
+Actual results without                       34.5                        85.00                 35.55           38.46             7.18                   26.0%
+ improvements
+Actual results WITH                          13.3                        56.66                 10.87           24.87             6.59                   62.0%
+ improvements
+% improvement                            61%                           33%                   69%             35%               8%                     139%
+
+
+
+other explanatory variables, there is a statistically signifi-                                7 Conclusions
+cant reduction in patient time in the clinic of approximately
+twelve minutes per patient on average that can be directly                                    In this study we report the successful process improvement
+attributed to the improvements made in the clinic. Although                                   efforts undertaken at an orthopedic outpatient clinic (cast
+this is less than the 30-minute reduction indicated without                                   clinic). The use of discrete event simulation models was
+regression analysis, it is clearly of practical significance.                                 shown to be particularly valuable for identifying process
+    Results on the other independent variables in Table 4                                     improvement alternatives and quantifying potential
+provide insight into the factors affecting clinic performance                                 improvements in performance. This provided motivation
+and suggest places where future improvements might be                                         to implement the alternatives and also helped in establish-
+made. Patients who are walk-ins experience an 11-minute                                       ing target outcome levels for several key performance
+longer average time in the clinic than other patients.                                        measures.
+Patients who arrive earlier in the day have a slightly longer                                    Results from running the model suggested changes to
+wait, probably because surgeons are still arriving a bit late                                 clinic procedures that included adding an x-ray technician
+to their clinics. Every patient that is in the clinic when a                                  staff member, scheduling patients in blocks of 2, 15
+patient arrives adds about three minutes to that patient’s                                    minutes apart, and scheduling the new patients who have
+expected time in the clinic, so there is still some congestion                                not been to the clinic at the end of the clinic schedules.
+in the clinic. Surprisingly, the number of minutes that a                                     Also, the model showed the value of ensuring that surgeons
+patient is early or late to the clinic has no effect on that                                  arrived promptly at the start of the clinic sessions. These
+patient’s clinic time, but every additional trip to the                                       were all significant changes from original practice that itself
+examination room or the x-ray adds 15 to 17 minutes to a                                      was mainly based on tradition rather than careful analysis
+clinic visit. Finally, it is clear that there is a good deal of                               of the most effective work pattern.
+variation in how surgeons practice, as a patient seeing                                          The model projected that these improvements would
+Surgeon A or 2 can expect to get through the clinic more                                      lead to an average reduction in patient time in the clinic of
+than twenty minutes faster than Surgeon C’s patients.                                         over 40 minutes. Because no changes occurred in the
+                                                                                              examination times (i.e., time with providers), this time
+                  Patient Clinic Time Analysis
+                                                                                              Table 4 Regression analysis results on patient clinic time
+          100                                                                                 Variable                             Coefficient    t          P-value
+                                                              96
+           90
+           80                 76             73
+                                                                                              After (0/1)                           −11.966        4.98      0.000
+           70                                                                                 Walk-In (0/1)                          11.289        3.13      0.002
+                                                                                                                                     −1.520       −2.60
+Minutes
+
+
+
+
+                                        65
+           60                                            63
+                                                                                              Hour of Arrival Time (hr)                                      0.010
+           50
+                       51
+                                                                                              Minutes Early or Late                   −.008       −0.23      0.821
+                                                    58
+           40                                                                                 Number of Patients Present              2.973        8.92      0.000
+           30                                                                                 Minutes Early or Late                   −.008       −0.23      0.821
+                                   31
+           20     26                                                                          Number of Visits to Exam Room          17.330        3.77      0.000
+                                                                        Original Results
+            10                                                                                Number of Visits to X-ray              15.572        5.19      0.000
+                                                                     After Implementation
+            0                                                                                 Surgeon A (0/1)                       −24.786       −8.42      0.000
+                                                               Model Predicted
+                 SA
+                              SB                                                              Surgeon B (0/1)                       −21.296       −7.49      0.000
+                                              SA&SB
+                            Surgeon                                                           Constant                               54.160        7.32      0.000
+
+Fig. 6 Comparing original, model, and post-implementation results                             (n=581; Prob>F=0.00; Adjusted R2 =0.368)
+
+144                                                                                           Health Care Manag Sci (2011) 14:135–145
+
+
+basically represents reduction in patient waiting time.            the performance gains were worth this added cost. As
+Furthermore, the model predicted that nearly 80% of                discussed in the Introduction, patients do care about waiting
+patients would finish their visits in 60 minutes or less.          time, and a reduction of waits helps to improve patient
+The actual result after implementing the improvements was          satisfaction. In addition, because there appears to be a link
+a substantial reduction in time in the clinic of about 22          between patient satisfaction and employee morale [26]
+minutes per patient on average. The fact that the model            there is value to the organization in such system improve-
+predicted better results than those achieved is likely due to      ments. More satisfied employees will be more productive
+the difficulty in adhering exactly to the improvement              and will create a virtuous cycle that improves both patient
+policies in practice. It also takes time for a system to fully     satisfaction and operational performance.
+adapt to process changes, and in our case the majority of             It is hard to quantify the benefit of employee and patient
+the data were collected immediately after implementation.          satisfaction in financial terms, and thus future work may
+Nonetheless, the performance improvements clearly                  entail identifying ways of avoiding adding staff. In
+resulted in less waiting time for patients. When taking into       particular, the modeling identified some workload imbal-
+account the differences in the pre- and post-implementation        ances among staff, and it may be possible to cross-train
+patient groups through regression analysis, and with an            employees in such a way as to maintain the new and
+average monthly volume of 1000 appointments, the time              improved patient flow without adding staff. Additionally,
+savings of 12 minutes per patient works out to a total of          modeling can be used to show the value of using a central
+200 hours of patient time saved every month.                       referral system that would balance patient loads more
+   Implementing the improvement changes over the long              evenly across the clinics. Currently, some clinics are more
+term will undoubtedly present a significant challenge. A           heavily loaded than others due to patient arrival patterns
+culture change encouraging doctors to arrive at the clinic         and surgeon on-call schedules. By balancing patient loads,
+on-time, for example, breaks with a common tradition that          the effects of variability may be reduced, which would
+has led to doctors scheduling meetings and other commit-           further advance the course of the cast clinic’s continuous
+ments during the first part of their clinic. Previous              improvement efforts.
+observational studies assessing behavior change in activi-            Finally, although our research discusses a specific
+ties such as hand hygiene have shown that senior                   outpatient clinic setting, we believe the results may be
+physicians and those in specialty fields are less likely to        generalizable to other similar healthcare operations.
+adopt new practices [24]. Obviously, these trends are              Similar orthopedic clinics in Canada appear to have
+worrying to those encouraging new practice behavior.               comparable performance issues [27] and, at least anecdot-
+   To ensure the improvements at the Cast Clinic are               ally, the problems and potential solutions described herein
+sustained, we plan to continue to advocate for the                 would apply to many high volume outpatient clinics,
+implementation of our findings. Scott et al. [25] emphasize        worldwide.
+the various considerations in cultural change in health
+systems. Primarily, these strategies focus on ways to adapt        Acknowledgements We wish to thank the following individuals for
+                                                                   their assistance with this research: Taurean Berger, Andrew Hartman,
+current culture rather than re-creating new cultural para-
+                                                                   Megan Macadam, and Nolan Sontag. We also thank Bev Campbell
+digms. In our setting, this strategy seems particularly            and the staff of the Orthopaedic Clinic at the Foothills Medical Center.
+applicable as the clinic must fit with the overall goals,          The third author's research was supported by the Natural Sciences and
+traditions, and limitations of the hospital in which it resides.   Engineering Research Council of Canada under Grant No. 239153-05.
+Clear diagnoses of the current problems have already been
+outlined and will be discussed with all of the appropriate
+players. Encouraging those players to take ownership of the        References
+most relevant changes in their role will also help with
+motivation and quality assurance. Finally, and perhaps most
+                                                                    1. Noon CE, Hankins CT, Cote MJ (2003) Understanding the impact
+importantly, we will need to demonstrate the relevance and             of variation in the delivery of healthcare services. J Healthc
+direct benefit of the changes we propose to all team                   Manag 48:82–98
+members so that the specific and overall goals remain clear         2. McCarthy K, McGee HM, O’Boyle CA (2000) Outpatient clinic
+                                                                       waiting times and non-attendance as indicators of quality. Psych
+over the long term. Combined with role-specific education,
+                                                                       Health Med 5:287–293
+an on-going audit of clinic performance will help to                3. Blizzard R (2009) Patient satisfaction starts in the waiting room.
+maintain a culture of sustained improvement in the process             Gallup Poll News Service, July 15
+of patient care.                                                    4. Cartwright A, Windsor J (1992) Outpatients and their doctors.
+                                                                       HMSO, London
+   Given that the implementation of the improvements
+                                                                    5. Huang XM (1994) Patient attitude towards waiting in an
+required additional resources—in particular, an x-ray                  outpatient clinic and its applications. Health Serv Manag Res
+technician was added—it is important to consider whether               7:2–8
+
+Health Care Manag Sci (2011) 14:135–145                                                                                                    145
+
+ 6. Hart M (1995) Improving out-patient clinic waiting times:            17. Rohleder TR, Bischak DP, Baskin LB (2007) Modeling patient
+    methodological and substantive issues. Int J Health Care Qual            service centers with simulation and system dynamics. Health Care
+    Assur 8:14–22                                                            Manag Sci 10:1–12
+ 7. Katz KL, Larson BM, Larson RC (1991) Prescription for the            18. Brasted C (2008) Ultrasound waiting lists: rational queue or
+    waiting-in-line blues: entertain, enlighten and engage. Sloan            extended capacity? Health Care Manag Sci 11:196–207
+    Manage Rev 32:44–53                                                  19. Merkle JF (2002) Computer simulation: a methodology to
+ 8. Walley P, Silvester K, Mountford S (2006) Health-care process            improve the efficiency in the brooke army medical center family
+    improvement decisions: a systems perspective. Int J Health Care          care clinic. J Healthc Manag 47:58–67
+    Qual Assur 19:93–104                                                 20. Sachdeva R, Williams T, Quigley J (2007) Mixing methodologies
+ 9. Law AM, Kelton WD (2000) Simulation modeling & analysis,                 to enhance the implementation of healthcare operational research.
+    3rd edn. McGraw-Hill, Inc., New York                                     J Oper Res Soc 58:159–167
+10. Jun J, Jacobson S, Swisher J (1999) Application of discrete-event    21. ExpertFit (2002) Averill M. Law and Associates
+    simulation in health care clinics: a survey. J Oper Res Soc          22. Alexopoulos C, Goldsman D, Fontanesi J, Kopald D, Wilson JR
+    50:109–123                                                               (2008) Modeling patient arrivals in community clinics. Omega
+11. Ledlow GR, Bradshaw DM (1999) Animated simulation: a                     36:33–43
+    valuable decision support tool for practice improvement. J Healthc   23. Klassen KJ, Rohleder TR (1996) Scheduling outpatient appoint-
+    Manag 44:91–101                                                          ments in a dynamic environment. J Oper Manag 14: 83–101
+12. Young T (2005) An agenda for healthcare and information              24. Pittet D, Simon A, Hugonnet S, Pessoa-Silva CL, Sauvan V,
+    simulation. Health Care Manag Sci 8:189–196                              Perneger TV (2004) Hand hygiene among physicians: perfor-
+13. Cooper K, Brailsford SC, Davies R (2007) Choice of modelling             mance, beliefs, and perceptions. Ann Intern Med 14:1–8
+    technique for evaluating health care interventions. J Oper Res Soc   25. Scott T, Mannion R, Davies HT, Marshall MN (2003) Implement-
+    58:168–176                                                               ing culture change in health care: theory and practice. Int J Qual
+14. Kumar A, Shim SJ (2005) Using computer simulation for surgical           Health Care 15:111–118
+    care process reengineering in hospitals. INFOR 43:303–319            26. Luthans KW, Lebsack SA, Lebsack RR (2008) Positivity in
+15. VanBerkel PT, Blake JT (2007) A comprehensive simulation for             healthcare: relation of optimism to performance. J Health Org
+    wait time reduction and capacity planning applied in general             Manag 22:178–187
+    surgery. Health Care Manag Sci 10:373–385                            27. Klassen R, Leitch K, Hora M (2008) Paediatric orthopaedic clinic
+16. Kim S-C, Horowitz I, Young KK, Buckley TA (2000) Flexible                at the Children’s Hospital of Western Ontario. Richard Ivey
+    Bed allocation and performance in the intensive care unit. J Oper        School of Business Case Study, Ivey Management Services (A)
+    Manag 18:427–443                                                         2008-12-23
+

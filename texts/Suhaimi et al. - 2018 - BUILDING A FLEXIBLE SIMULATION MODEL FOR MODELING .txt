@@ -1,0 +1,613 @@
+   Proceedings of the 2018 Winter Simulation Conference
+   M. Rabe, A. A. Juan, N. Mustafee, A. Skoogh, S. Jain, and B. Johansson, eds.
+
+
+
+                         BUILDING A FLEXIBLE SIMULATION MODEL FOR MODELING
+                               MULTIPLE OUTPATIENT ORTHOPEDIC CLINICS
+
+
+                                                                   Nurul Suhaimi
+                                                                   Vahab Vahdat
+                                                                 Jacqueline Griffin
+
+                                        Department of Mechanical and Industrial Engineering
+                                                      Northeastern University
+                                                       360 Huntington Ave
+                                                     Boston, MA 02115, USA
+
+
+
+   ABSTRACT
+   Often large health care organizations will have multiple satellite clinics in addition to the primary flagship
+   location. The value of having multiple clinics includes the ability to better serve patients by improving
+   accessibility while also increasing efficiencies from common structures and policies. Unlike most simulation
+   models of health care clinics, which are uniquely designed for one specific location and are not easily
+   adapted without significant effort, we develop one flexible discrete-event simulation model to represent two
+   orthopedic centers. In addition to demonstrating the validity of employing the same model for two clinics,
+   a graphical user interface is constructed to enable the clinic managers to modify simulation parameters,
+   minimizing the need for future model adaptations. The value of the simulation model is verified by
+   evaluating the effects of new policies impacting the role of mid-level providers and results show that the
+   best policy for improving timeliness of care varies among clinics.
+
+   1      INTRODUCTION
+   The application of simulation models for improving operations in health care settings is well studied.
+   Due to the extensive investments in both the cost and the time involved in the implementation of new
+   policies, mathematical modeling approaches, such as simulation modeling, present cost effective methods
+   for evaluating system costs and benefits. Studies on health care system process improvement through
+   the use of computer simulations emerged at the beginning of 21st century and have examined a variety
+   of different problems such as outpatient clinic layout design, patient flow redesign (Vahdat et al. 2017),
+   and appointment scheduling (Zacharias and Armony 2017). Although the benefits of computer simulation
+   models are clear, health care simulation models are traditionally designed specifically for a particular
+   setting or system and are highly limited by, and dependent on the underlying model assumptions and inputs.
+   As such, works focusing on specific clinics are abundant, but simulation model that represent multiple
+   clinics are still limited (Vanberkel et al. 2010). Ashton et al. (2005) use simulation to identify which
+   best practice from other centers can be transferred to the studied walk-in center. The paper concluded that
+   such an adoption is not trivial as no two centers are equal. Along with technology innovations, there are
+   often systematic changes regarding patient flows and resource usage that may result in previous simulation
+   models no longer being applicable in an updated clinic, even when allowing for parameter changes. With
+   the recent integration of features in simulation packages that allow developers to easily build Graphical
+   User Interfaces (GUIs), there are more opportunities to create simulations that can be reused and updated
+   in response to system changes.
+
+
+
+978-1-5386-6572-5/18/$31.00 ©2018 IEEE                                    2612
+       Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                       Suhaimi, Vahdat, and Griffin
+
+     Many studies restrict the developed computer simulation models to represent the features of particular
+centers such that the results of the model analysis can not easily be applied to other clinics. This difficulty
+in extending the results to other systems stems from the complexities that define distinct clinics including
+patient characteristics, provider specialties, physical layouts, and operational policies (Kovalchuk et al.
+2018). In order to address these difficulties in this study, we build one holistic simulation model that
+represents multiple clinics from different locations which provide analogous services. Instead of overly
+simplifying the assumptions, a fully detailed model is constructed in an object-oriented environment that is
+parameterized by a database. Therefore, using the flexible simulation model, it is possible to analyze different
+simulation scenarios for each clinic without construction of distinct simulation models. Additionally, all
+parameters can be altered during the simulation run by a dashboard enabling convenient changes in the
+model. Thus, flexibility of the model is defined by the use of one holistic simulation model, in which an
+identical change in policy can be analyzed for each clinic distinctly, to quantify the unique outcomes for
+different systems.
+     This study is designed to demonstrate the benefit of using a single simulation model in order to analyze
+operations at two distinct, but related, pediatric orthopedic outpatient clinics in Massachusetts. A simulation
+model with a built-in dashboard is constructed for the clinics using AnyLogic. The constructed simulation
+model has been proven to be a useful tool in anticipating the effects of changes in system features such
+as patient volume, provider team mix, and exam room assignment policies. With the development of a
+flexible simulation model the ultimate goal is to assist clinic managers in their efforts to reduce patient
+waiting time and lengths of stay in the two distinct orthopedic clinics.
+     This paper is organized as follows. In the next section we describe the motivation and background
+of the problem. In Section 3, we describe the similarities and differences of the two orthopedic clinics
+examined in this study. In Section 4, we provide a detail description of the development of the model and
+the validation of the model with both observed and historical data. We carry out the analysis of the model
+and discuss results from a case study focused on changing the role of mid-level providers within the clinics
+in Section 5. Finally, we conclude our study in Section 6 and provide a summary of the results and areas
+for future research.
+
+2      BACKGROUND
+Health care managers are constantly under pressure to control rapid escalating expenses while simultaneously
+fulfilling the growing demand for health care services. As a result, managers continuously analyze the
+efficiency of existing systems and seek opportunities for improvements. The evaluation of proposed
+interventions is crucial prior to implementation. But the evaluation is made more difficult by intrinsic
+uncertainties in patient demand in health care systems, limited budgets and resources, the underlying
+complexities of system operations, and the large number of system parameters that must be considered.
+Through simulation, research and examination of the impact of key resources on waiting times and patient
+throughput has been advanced significantly (Kaushal et al. 2015; Vahdat et al. 2018). For example,
+Samaha et al. (2003) develop a simulation model to analyze the effect of physical expansion of emergency
+departments (ED) on patient service times, La and Jewkes (2013) uses simulation to study optimal fast
+track strategies in ED. Simwita and Helgheim (2016) explores the implementation of flexible number of
+orthopedic surgeons and operating room capacity in different stages of the patient treatment process using
+a simulation model.
+     Traditionally, simulation models are created to address a specific problem and system setting, commonly
+with data and logic embedded in the models (Randell and Bolmsjö 2001). Thus, analyzing a second system,
+even if it shares many features with the first, can require a substantial investment in both resources and
+time to adapt the simulation to change the underlying code of the model. This is supported by Trybula
+(1994) and Perera and Liyanage (2000) who found that the most time consuming phase in the development
+of discrete event simulation models is the input of collected data and the model development. Chwif et al.
+(2000) and Vanberkel et al. (2010) found that the scope and the level of detail required in a simulation
+
+
+                                                                       2613
+    Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                       Suhaimi, Vahdat, and Griffin
+
+model leads to the model complexity. With the development of one simulation model to represent two
+distinct clinics coupled with a user-friendly dashboard for changing the system parameters, we aim to
+minimize the need for substantial changes to the model details, structure, and logic to analyze multiple
+settings. To the best of the author’s knowledge, no studies have examined modeling multiple locations in
+one simulation model.
+     One of the key system features addressed by the simulation model is the role of mid-level providers.
+Mid-level providers (MLPs) refer to non-physician providers,such as Physician Assistants (PAs) and Nurse
+Practitioners (NPs), who interact with patients and play a critical role in system performance since patient-
+provider interactions drive patient visit lengths and utilization of resources. For example, Santibáñez et al.
+(2009) found that when a resident is involved in a consultation, the patient-provider interaction time is as
+much as twice that of when there is a single consult. The involvement of these health care providers ranges
+from shadowing physicians, assisting physicians with patient information retrieval, as well as consultation
+and diagnosis which enables the physician to consult with another patient simultaneously. The Medical
+Group Management Association (2016) found that the presence of PAs and NPs in surgery clinics help the
+surgeons to be more available for surgery. They also acknowledged that the usage of PAs and NPs should
+not be the same across all health care facilities, as other factors such as costs and roles will differ from
+between organizations and clinics. It is therefore important to individually analyze the role of providers in
+each clinic accounting for the unique system features.
+
+3      PROBLEM DEFINITION
+The hospital under study is one of the largest pediatric medical centers in the United States and offers
+a complete range of health care services for children from birth through 21 years of age. The hospital’s
+pediatric orthopedic department is now known as one of the worlds largest and most experienced centers
+due to its fast access to care with several locations throughout the region. Every year, they attend to more
+than 100,000 patient visits and complete more than 6,000 surgeries. Each of the associated health centers
+throughout the region provides different specialty clinics to treat the full spectrum of orthopedic conditions,
+ranging from fractures and sports-related injuries to scoliosis, hip conditions, brachial plexus and cerebral
+palsy. In the following section, a detailed description of similarities and differences between the two clinics
+under study are provided.
+
+3.1 Clinics Characteristics
+Two orthopedic centers of the studied hospital are selected for this research to showcase the benefits of
+using the single computer simulation model in managing the multiple clinics effectively. The first center
+is located on the hospital’s main urban campus providing services to more than 40,000 orthopedic, sports
+medicine, and cerebral palsy patients each year. The second location is one of their satellite campuses which
+provides services primarily to orthopedics and sports medicine patients. Although these outpatient centers
+are located in distinct locations, they are managed by a common department and patients may be seen in
+either locations based on the visit type and availability of resources. While there are several physicians that
+visit patients in both locations, the service processes and patient experience in each location differs. The
+main clinic is a teaching-focused center where residents and mid-level providers (i.e. Nurse Practitioners,
+and Physician Assistants) are usually part of the physician consultation. In the satellite center, on the other
+hand, physicians primarily meet directly with patients with limited assistance from the mid-level providers.
+Having additional help for patient consultations can reduce the time patients spend in exam rooms, but it
+can also create the need for extra logistics management and communication between the physicians and
+mid-level providers.
+     Beyond differences in the structure of patient visits, staffing levels and the number of annual visits
+differ between the clinics. The main site is more congested with a higher number of patients visited per
+day, which requires a greater number of providers and staff. Also, the patient no-show rate is slightly
+
+
+
+                                                                       2614
+    Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                    Suhaimi, Vahdat, and Griffin
+
+higher in the main site. Another key difference between these locations is the clinic layout. According to
+Vahdatzad and Griffin (2016), the layout of outpatient centers can significantly impact patient flow and a
+clinic’s ability to adopt different policies such as flexible physician room assignments. Together, all these
+differences have been shown to drive dissimilarities in patient timeliness of care metrics, including average
+patient waiting time (WT) and length of stay (LOS). While the simulation model is designed to allow for
+differences pertaining to these features, and others, the underlying similarities in patient and provider flows
+are incorporated into the model logic and structure.
+
+3.2 Patient Flow
+Each patient is scheduled for an appointment with a specific physician and, correspondingly, patients arrive
+to the clinic at different times throughout the day. Although variations occur depending on the unique needs
+of the patients, Figure 1 depicts the patient’s journey in the orthopedic clinic during a typical appointment.
+
+
+
+
+                   Figure 1: A generic patient flow in the studied orthopedic outpatient center.
+
+     The description of the patient flow is as follows. Upon arrival, the patient is required to check-in and
+is served by one of the multiple check-in staff. Then, the patient waits in the Waiting Area (WA) until an
+examination room becomes available. Basic vitals and intake questionnaires are performed by the Clinical
+Assistant (CA) prior to rooming. The patient waits in the exam room until the designated provider becomes
+available for the visit. For a single consult visit, the provider will enter the room and meet with the patient.
+For a multiple consult visit, there will be multiple patient-provider interactions, where the provider will
+enter the room for the consultation and, after the provider leaves the room, the patient will wait for the next
+provider for a subsequent consultation to take place. After the final consultation is complete the patient will
+leave the room. For patients who need to book future appointments or other additional services, they will
+return to the registration desk to check-out before leaving the clinic. Other than the typical patient processes
+mentioned above, ancillary services, including radiology and cast services, may be required. Such services
+can occur either before or after the consultation with the provider. While this will not affect the patient
+flow in the clinic it will lead to an increase in the patient’s length of stay, as this time is calculated from
+the time they arrive at the clinic until they complete all processes.
+
+3.3 Provider Workflow
+During the orthopedic appointment, patients may be seen by their designated physician or one of the mid-
+level providers. Mid-level providers (MLPs) in this study refer to Nurse Practitioners (NPs) and Physician
+Assistants (PAs). The inclusion of collaboration between physicians and the MLPs is a key distinction
+between this study and others reported in the literature. In both clinic locations, each physician has a
+dedicated MLP. Accordingly, the patient visit consultation can happen in multiple different ways, but the
+three most prevalent patterns capture 91% of the appointments. In the first pattern, the patient will only
+be seen by their designated physician and both the patient and the physician will leave the room after the
+visit. Second, the patient will only be seen by the MLP and there is no need for further consultation with
+the physician. In the third visit pattern, multiple patient-provider interactions occur with both the MLP
+and the physician. Specifically, the MLP will enter the room for the first consult. After leaving the room,
+the MLP will provide a summary of the visit to the physician and then both the physician and the MLP
+will enter the room for the second consult. In any of the consultation patterns, providers need to complete
+patient documentation in their designated work stations prior to meeting with the next patient. Multiple
+patient-provider interactions are more prevalent in the teaching-focused main campus than in the satellite
+clinic.
+
+
+                                                                    2615
+ Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                       Suhaimi, Vahdat, and Griffin
+
+     The distinction in patient-provider interactions between these locations presents difficulties in the
+development of a common simulation model that can be used for both locations. As it is difficult to
+distinguish between the role of PAs and NPs in each consultation, we model both PAs and NPs as one
+resource type, namely MLPs. We will use the term MD, to denote physicians, and MLP, for mid-level
+providers, throughout the paper to address their presence in the consultation. Other than the need to specify
+various consultation processes, the inclusion of two distinct clinics in one model requires the need for a
+variations in the number of physicians per day, the number of patients per day, the distribution of visit types,
+and process times. In order to accomplish this, flexibility to adjust parameters in the model is required to
+accommodate the differences. The parameters defining each clinic in the common simulation model are
+described in more detail in the next section.
+
+4      METHODOLOGY
+In this section, a review of the steps taken to build the discrete-event simulation model are provided. First,
+inputs and parameters of the simulation model are captured through data analysis and clinic observation,
+as discussed in Section 4.1. The assumptions and model development process is presented in Section 4.2.
+The constructed graphical user interface that can be used in defining scenarios for each of the locations
+is further discussed in Section 4.3. Finally, this section concludes with an overview of the verification
+and validation of the simulation model in order to demonstrate its accuracy in capturing the current clinic
+operations and its capabilities in performing scenario analysis for predicting the effects of future changes.
+
+4.1 Data Collection
+Data used in this study is provided by the hospital and collected through a time study. Data from more
+than 120,000 appointments between December 2013 and December 2015 were analyzed. The data was
+analyzed to calculate several model inputs including hourly patient arrival patterns, the average number of
+patients per physician per day, and patient no-show rates. The hourly patient arrival pattern is modeled as
+a non-stationary Poisson process for each clinic. Other model inputs pertaining to the differences between
+the two clinics are shown in Table 1.
+                       Table 1: Resource, staffing, and scheduling parameters in the two clinics.
+
+        Daily Patient and Staff Levels                                   Main Site (per day)                Satellite Site (per day)
+        Average number of patients per physician                                      26                                   25
+        Average number of patients                                                   160                                  125
+        Number of physicians                                                          6                                    5
+        Staff in cast services                                                        3                                    2
+        Clinical assistant staff                                                      4                                    3
+
+    In addition to the information provided by historical databases, clinic observations were made to capture
+the complete patient and provider flow information that was not recorded in these database. Through
+observation of the system and interviews with the staff, a high-level process map of the appointment visit
+process was developed. The information was used to design a data collection process and for determining
+how many data collectors would be required and where they should be located. We sampled and observed
+both clinics during the course of several weeks, capturing process times for over 600 patient visits. The
+data provided considerable insight into the patient experience and resource utilization. Collected data was
+transformed into data-driven probability distribution functions for initial inputs to the simulation model.
+For ease of interpretation by hospital managers, a triangular distribution was fitted for each process. The
+results are shown in Table 2. As discussed earlier, while the processes in both clinics are similar, the time
+required to perform tasks are not necessarily the same.
+
+
+                                                                       2616
+    Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                    Suhaimi, Vahdat, and Griffin
+
+Table 2: Process time distributions. A non-symmetric triangular distribution, defined by the minimum,
+maximum, and mode parameters, is fitted for all patient processes.
+
+                         Process             Main Site                  %           Satellite Site                %
+                                             (in minutes)                           (in minutes)
+                         Check-in            TRIA(1,8,3)                100         TRIA(1,5,3)                   100
+                         Cast                TRIA(3,20,10)              11          TRIA(5,30,15)                 30
+                         X-Ray               TRIA(5,20,10)              40          TRIA(5,20,10)                 39
+                         Vitals              TRIA(1,3,2)                100         TRIA(1,5.5,1)                 100
+                         Check-out           TRIA(1,7,4)                42          TRIA(2,10,5)                  42
+                         % refers to the percentage of patients requiring the process
+     One of the major differences between the two clinics is the frequency of different patient-provider
+interaction types, as discussed in Section 3.3. The three major visit patterns were identified and the time
+required for the visits were collected for each clinic, as shown in Table 3. The combination of both the
+percentage of patients in patient-provider interaction processes and the distribution of the durations of these
+processes, including average and variance are shown to vary between the two clinic locations.
+     As it is not possible to incorporate all system details in the simulation, several assumptions were made
+in the model, as follows. The clinic stays open until all patients leave even though patients only arrive to
+the clinic between 7:00 am and 5:00 pm. Patients arrive to the clinic at the same time as their scheduled
+appointment time. No early or late arrivals are captured in the model. Each MD will have one dedicated
+MLP working with them as a team. In both clinics, each MD and their MLP have access to three dedicated
+exam rooms that are not shared with other MDs.
+Table 3: Patient-provider visit type distribution and process times. A patient may be seen only by one
+provider (Type 1 and 2) or a team of providers (Type 3). A non-symmetric triangular distribution, defined
+by the minimum, maximum, and mode parameters, is fitted for patient processes.
+
+       Visit Type            Visit Pattern                        Main Site                    %         Satellite Site              %
+                                                                  (in minutes)                           (in minutes)
+       Type 1                MD Only                              TRIA(4.5,36,9)               47        TRIA(9,33,12)               52
+       Type 2                MLP Only                             TRIA(2,24,14)                9         TRIA(3,27,9)                13
+       Type 3                1st visit: MLP                       TRIA(1,27,6)                 44        TRIA(2,20,5.5)              35
+                             2nd visit: MLP & MD                  TRIA(1,24,5)                           TRIA(2,25,7.5)
+       % refers to the percentage of patients requiring the process
+
+
+4.2 Model Development
+AnyLogic is used to build a discrete-event simulation (DES) model representing the two orthopedic clinics
+based on the collected data, identified process flows, and model assumptions. The DES is modeled as
+a terminating system with no warm-up period. At the beginning of each simulation run, all resources
+and patients are initialized and each day operates independently. Correspondingly, the model is replicated
+250 times for each scenario to generate tight confidence intervals on all metrics of interest, such that the
+half-width is within 5% of the average.
+    As shown in Figure 2, data-driven probability distributions for processes are stored in a database
+connected to the simulation model such that there is the ability to read the parameters and inputs before
+
+
+                                                                    2617
+ Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                    Suhaimi, Vahdat, and Griffin
+
+initiating the simulation runs. During simulation runs, instantaneous information about the state of the
+system is dynamically updated in a graphical user interface associated with the DES model. This includes
+information about the number of patients in different areas in the clinic such as Radiology, Cast, and
+Waiting Area. This information can help the decision maker to visually track the performance of the clinic
+throughout the operating hours. After running the simulation model, outputs of the model including a
+summary of the simulation parameters and statistical results based on the performance measures are exported
+into an embedded spreadsheet. Information pertaining to average patient length of stay and waiting time,
+percentage of patients visited within a target time frame, and comparison of scenarios are automatically
+presented graphically.
+
+
+
+
+                                             Figure 2: Simulation system overview.
+
+
+4.3 Graphical User Interface
+The simulation model is associated with a graphical user interface providing the ability for the user to
+choose which clinic (or location) to analyze prior to running the simulation (see Figure 3). The user also
+has the flexibility to make changes to more than 20 parameters in the simulation. These include changes to
+resource availability, resource assignments, and process times (see Figure 4 and 5). Resource controls (see
+Figure 4 top-left) refer to staffing levels such as the number of check-in and cast services staff members.
+Staffing decisions should be made in a way as to increase the efficiency of the clinic while the utilization
+of resources remains at a satisfactory level. Process time controls enable the decision maker to change the
+distribution parameters for the durations of each process. For instance, the consequences of a change in
+capacity or process times in cast services can be estimated by changing the parameters and exploring the
+outcomes of the simulation model. Additional controls focus on broader systems changes that may occur
+over the long term, such as changes in patient volumes and the frequency of radiology or cast services.
+     Apart from adjustments in parameters, four strategic assignments can be performed by the decision
+maker through the dashboard (see Figure 5): (1) Exam Room to MD assignment, (2) MLP to MD assignment,
+(3) Visit Pattern Mix, and (4) Visit Pattern Assignment. Currently, each MD team has three dedicated exam
+rooms. The model is constructed to allow for up to 10 MD teams and 27 exam rooms. The simulation
+model allows for the flexibility of room assignments to MD teams by introducing a partial room sharing
+concept between care teams. For example, one option would be for each MD team to have two dedicated
+rooms and to also have access to two rooms that are shared with another team. Room assignment policies
+have been shown to have had significant impact on the patient wait times (Vahdat et al. 2017).
+     MLP assignments to care teams are another feature that can support greater patient volumes in orthopedic
+outpatient centers. Larger care teams where multiple MLPs work with one physician are becoming more
+prevalent in outpatient clinics due to both financial and productivity benefits. The simulation model is able
+to be used to investigate the impact of sharing MLPs between physicians in which two MLPs work with
+two physicians rather than a one-to-one assignment of MLPs and MDs.
+     Finally, the way that physicians cooperate with their teams to visit patients may differ. An MD’s
+care team visit pattern mix refers to the frequency of different visit patterns that are used with the team’s
+patients. Two general patterns can be defined by the decision maker, Pattern A and Pattern B. In each of
+the patterns, the probability that a patient is only visited by the physician (MD only), seen by only the
+MLP (MLP only), or seen by both the physician and the MLP (MLP, MD&MLP) can be specified. Then
+
+
+
+                                                                    2618
+ Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                    Suhaimi, Vahdat, and Griffin
+
+
+
+
+Figure 3: Front page of the simulation model. The user can choose the location, patient volume and number
+of physicians per day.
+
+
+
+
+                                 Figure 4: Parameter control 1 in the simulation model.
+
+the decision maker can determine the number of care teams that work under each visit pattern and inspect
+the performance of the clinic based on different combinations of teams.
+
+4.4 Model Validation
+The simulation model is verified by experts within the clinic. Also, 2-dimensional and 3-dimensional
+animations of a simulated clinic day were presented to clinic managers and staff and the behavior of the
+model in terms of the number of patients in the waiting area during each hour of the day, the utilization of
+resources, and patient flow were confirmed. Extreme conditions were tested to ensure the model performed
+as intended. Both clinic managers and physicians were consulted to ratify high-level results. To evaluate
+
+
+                                                                    2619
+ Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                       Suhaimi, Vahdat, and Griffin
+
+
+
+
+                                    Figure 5: Parameter control 2 in the simulation model.
+
+the performance and validate the model, the following key metrics were examined: (i) patient wait time in
+waiting area (WTWA), (ii) patient wait times in the exam room (WT), (iii) patient lengths of stay in room
+(LOSR), and (iv) patient lengths of stay in the clinic (LOS). All these metrics are measured in averages
+and percentiles (box plot) and are presented in the embedded spreadsheet.
+    For verification and validation purposes, we only compared outputs with the actual collected data of
+WTWA, WT, and LOSR due to the complexities in capturing patient process times for additional services
+(radiology and cast services). Without access to data to effectively model the intricacies of these services the
+additional service processes were modeled using triangular distributions (shown in Table 2). The process
+time is derived from data sets provided by the radiology and cast services departments. We exploited the
+graphical capabilities of AnyLogic by embedding the floor plan of the satellite center in the simulation
+model and animating the entire system’s dynamics. This assisted in the process of validating the model
+with physicians and management staff as they were able to see what was happening in real time as the
+simulation took place. Correspondingly, no warm-up period is utilized in the analysis and each scenario
+is run for a 3-month period of time for both clinics, resulting in more than 10,000 simulated patients
+to account for the stochastic nature of the procedures. We compared the results between observed and
+simulated data with 95% Confidence Intervals (CI) as shown in Table 4. The results show no statistically
+significant differences between the means of the observed and simulated data. Therefore, we concluded
+that the model is an accurate representation of the system for both clinic sites.
+
+5      ANALYSIS OF FINDINGS
+With the use of the flexible simulation model defined above, there are many opportunities to analyze the
+effects of system changes on a variety of performance measures, including wait times, resource utilization,
+and LOS. Through analysis of the simulation results, it was identified that a significant contributing factor
+to long patient LOS is both locations is the wait time in the room prior to the first visit with the MLP. The
+underlying cause of these long waiting times is the need for the MLP to wait until the MD is available
+
+
+                                                                       2620
+    Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                    Suhaimi, Vahdat, and Griffin
+
+Table 4: Model validation. Results validate the model and show no statistically significant differences
+between observed and simulated outputs.
+
+            Location              Metric           Simulated                                      Actual
+                                                   Mean                 95% CI                    Mean            95% CI
+            Main Site             WTWA             28.09                [27.42, 28.76]            26.95           [24.00, 29.90]
+                                  WT               19.57                [19.22, 19.92]            19.37           [17.00, 21.74]
+                                  LOSR             39.31                [38.92, 39.70]            39.00           [33.00, 45.00]
+          Satellite Site          WTWA             11.31                [10.86, 11.76]            12.90           [7.04, 18.76]
+                                  WT               16.02                [15.63, 16.41]            16.93           [15.00, 18.86]
+                                  LOSR             36.21                [35.80, 36.62]            37.23           [32.00, 42.46]
+
+prior to entering the exam room for the second time. This correspondingly prevents the MLP from seeing
+another patient, resulting in the underutilization of their time. Thus, the average patient wait time in the
+room increases, even as the MD’s time with the patient decreases. To address these long wait times and
+underutilization of the MLPs, we examine the effects of new flexible policies pertaining to the role and
+use of the MLPs.
+     One strategy for updating the use of MLPs is to share the MLPs between physicians. In this case,
+the sharing of MLPs refers to two MLPs being jointly assigned to two physicians. Despite the sharing, to
+ensure continuity of care no patient is seen by more than one MLP. As the simulation model includes the
+flexibility of assigning MLPs to MDs, the joint assignment of an MLP to two physicians can be achieved by
+checking boxes for two physicians in the column corresponding to the MLP in the graphical user interface
+(see Figure 5 top-middle). This is also done for the second MLP in order to designate that both the MLPs
+may be used by either physician. The simulated results from two pairs of physicians sharing their MLPs
+in both the main and satellite sites are shown in Table 5.
+     A second strategy proposed by the clinic for expanding the roles of MLPs is to assign MLPs to run the
+consultation session independently throughout the day and see all of a physician’s patients. This is often
+used for urgent cases where the presence of physician is minimally required. This analysis is performed by
+adjusting the Visit Pattern Assignments to include 100% MLP-only visits and no MD-only or MLP-MD
+visits (see Figure 5 bottom-middle). The scenario in which one MLP visits patients independently are
+shown in Table 5.
+Table 5: Effects from implementation of MLP Sharing and Independent MLPs on average (95% CI)
+timeliness of care (WTWA = Waiting Time in Waiting Area, WT = Waiting Time, LOSR = Length of Stay
+in Room, LOS = Length of Stay).
+
+    Location             Scenario                         WTWA                  WT                    LOSR                   LOS
+   Main Site             Base Case                        28 (±0.67)            20 (±0.35)            39 (±0.39)             107 (±1.19)
+                         MLP Sharing                      26 (±0.63)            18 (±0.33)            38 (±0.36)             102 (±1.14)
+                         Independent MLPs                 28 (±0.67)            19 (±0.34)            39 (±0.38)             105 (±1.19)
+  Satellite Site         Base Case                        11 (±0.45)            16 (±0.39)            36 (±0.41)             90 (±1.09)
+                         MLP Sharing                      9 (±0.43)             15 (±0.37)            35 (±0.39)             86 (±0.99)
+                         Independent MLPs                 9 (±0.44)             15 (±0.37)            35 (±0.39)             86 (±1.05)
+
+    As shown in Table 5, either change in MLP usage policies will result in decreased average patient
+waiting and lengths of stay at both locations. At the main site, the greatest improvement is achieved with
+
+
+
+                                                                    2621
+ Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                       Suhaimi, Vahdat, and Griffin
+
+MLP Sharing resulting in a 6% improvement in the Waiting Time in Room (WT) and 4% in the Length of
+Stay (LOS), but only a 2% improvement with the use of Independent MLPs. At the satellite site, on the
+other hand, the same level of improvement is achieved for both policies with a 6% improvement in WT
+and a 5% decrease in LOS. Thus while either policy change can be implemented in the satellite site to
+improve timeliness in patient care, at the main site, MLP Sharing performs better.
+
+6      CONCLUSIONS
+As shown in the results here, even in clinics that have many similar features and clinical structures, similar
+policy changes can have different results. To assist a pediatric orthopedic department in examining the
+effects of changes to clinic operations at their multiple clinics in different locations, one simulation model,
+which was validated for both locations, was developed. Due to the need to represent the effects of a
+variety of policy changes in the clinics a graphical user interface was developed that allowed for changes
+in the assignment of rooms and staff to allow for more flexibility in the clinic. Additionally, the interface
+allows for changes to the model parameters to account for future changes in the make-up of the clinic or
+introduction of technological changes that can decrease process times.
+     In the analysis of the effects of new MLP usage policies, it was shown that while Independent MLPs
+and MLP Sharing had a similar 5% decrease in the average patient length of stay in one clinic, in the other
+clinic the improvement in LOS was only 2% with Independent MLPs and 4% with MLP Sharing. As the
+best policy for the different clinics varies, it is clear that each clinic needs to be analyzed independently.
+Through the development of one simulation model that can represent both, with the appropriate parameter
+changes, we can achieve personalized recommendations for each clinic without the need to invest in the
+development of two different models. Further with the integration of a database and graphical user interface
+this simulation model has the potential for continued use by decision makers as the system evolves and
+for use in modeling additional pediatric orthopedic outpatient clinics in the future.
+
+REFERENCES
+Ashton, R., L. Hague, M. Brandreth, D. Worthington, and S. Cropper. 2005. “A Simulation-Based Study
+    of a NHS Walk-in Centre”. Journal of the Operational Research Society 56(2):153–161.
+Chwif, L., M. Ribeiro, P. Barretto, and R. J. Paul. 2000. “On Simulation Model Complexity”. In Proceedings
+    of the 2000 Winter Simulation Conference, edited by J. A. Joines et al., 450–455. Piscataway, New
+    Jersey: Institute of Electrical and Electronics Engineer.
+Kaushal, A., Y. Zhao, Q. Peng, T. Strome, E. Weldon, M. Zhang, and A. Chochinov. 2015. “Evaluation of
+    Fast Track Strategies using Agent-Based Simulation Modeling to Reduce Waiting Time in a Hospital
+    Emergency Department”. Socio-Economic Planning Sciences 50(June):18–31.
+Kovalchuk, S. V., A. A. Funkner, O. G. Metsker, and A. N. Yakovlev. 2018. “Simulation of Patient Flow
+    in Multiple Healthcare Units using Process and Data Mining Techniques for Model Identification”.
+    Journal of Biomedical Informatics 82(June):128–142.
+La, J., and E. M. Jewkes. 2013. “Defining an Optimal ED Fast Track Strategy using Simulation”. Journal
+    of Enterprise Information Management 26(1):109–118.
+Medical Group Management Association 2016. “The Rising Trend of Nonphysician Provider Utilization in
+    Healthcare”. Technical report, MGMA. https://www.acponline.org/system/files/documents/about acp/
+    chapters/ga/rising trend of nonphysicianprovider utilization in healthcare 2017.pdf. Accessed March
+    22nd , 2018.
+Perera, T., and K. Liyanage. 2000. “Methodology for Rapid Identification and Collection of Input Data in
+    the Simulation of Manufacturing Systems”. Simulation Practice and Theory 7(7):645–656.
+Randell, L., and G. Bolmsjö. 2001. “Database Driven Factory Simulation: a Proof-of-Concept Demonstrator”.
+    In Proceedings of the 2001 Winter Simulation Conference, edited by B. A. Peters et al., 977–983.
+    Piscataway, New Jersey: Institute of Electrical and Electronics Engineer.
+
+
+
+                                                                       2622
+    Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+
+                                                    Suhaimi, Vahdat, and Griffin
+
+Samaha, S., W. S. Armel, and D. W. Starks. 2003. “Emergency Departments I: The Use of Simulation to
+    Reduce the Length of Stay in an Emergency Department”. In Proceedings of the 2003 Winter Simulation
+    Conference, edited by S. Chick et al., 1907–1911. Piscataway, New Jersey: Institute of Electrical and
+    Electronics Engineer.
+Santibáñez, P., V. S. Chow, J. French, M. L. Puterman, and S. Tyldesley. 2009. “Reducing Patient Wait
+    Times and Improving Resource Utilization at British Columbia Cancer Agency’s Ambulatory Care
+    Unit through Simulation”. Health Care Management Science 12(4):392–407.
+Simwita, Y. W., and B. I. Helgheim. 2016. “Simulation Analysis of Resource Flexibility on Healthcare
+    Processes”. Journal of Multidisciplinary Healthcare 9(2016):519–528.
+Trybula, W. 1994. “Building Simulation Models without Data”. In Proceedings of IEEE International
+    Conference of Systems, Man and Cybernetics, Volume 1, 209–214. Piscataway, New Jersey: Institute
+    of Electrical and Electronics Engineer.
+Vahdat, V., J. Griffin, S. Burns, and R. Azghandi. 2017. “Proactive Patient Flow Redesign for Integration
+    of Multiple Outpatient Clinics”. In Proceedings of the 2017 Winter Simulation Conference, edited
+    by W. K. V. Chan et al., 2893–2904. Piscataway, New Jersey: Institute of Electrical and Electronics
+    Engineer.
+Vahdat, V., J. Griffin, and J. E. Stahl. 2017. “Decreasing Patient Length of Stay via New Flexible Exam
+    Room Allocation Policies in Ambulatory Care Clinics”. Health Care Management Science:1–25.
+    https://doi.org/10.1007/s10729-017-9407-5.
+Vahdat, V., J. A. Griffin, J. E. Stahl, and F. C. Yang. 2018. “Analysis of the Effects of EHR Implementation
+    on Timeliness of Care in a Dermatology Clinic: a Simulation Study”. Journal of the American Medical
+    Informatics Association 25(7):827–832.
+Vahdatzad, V., and J. Griffin. 2016. “Outpatient Clinic Layout Design Accounting for Flexible Policies”. In
+    Proceedings of the 2016 Winter Simulation Conference, edited by T. M. K. Roeder et al., 3668–3669.
+    Piscataway, New Jersey: Institute of Electrical and Electronics Engineer.
+Vanberkel, P. T., R. J. Boucherie, E. W. Hans, J. L. Hurink, and N. Litvak. 2010. “A Survey of Health
+    Care Models that Encompass Multiple Departments”. International Journal of Health Management
+    and Information 1(1):37–69.
+Zacharias, C., and M. Armony. 2017. “Joint Panel Sizing and Appointment Scheduling in Outpatient Care”.
+    Management Science 63(11):3978–3997.
+
+AUTHOR BIOGRAPHY
+NURUL SUHAIMI is a PhD candidate at the Department of Mechanical and Industrial Engineering at North-
+eastern University, in Boston, MA. Her research interests include simulation modeling in healthcare systems
+and allocation of scarce medical resources during critical events. She is currently serving as the President
+of INFORMS Student Chapter at Northeastern University. Her email address is suhaimi.n@husky.neu.edu.
+
+VAHAB VAHDAT is a PhD candidate in the Department of Mechanical and Industrial Engineering at
+Northeastern University, in Boston, MA. His research interests include Markov chain modeling, simula-
+tion, and optimization methods to improve the processes within ambulatory care clinics. He served as
+Vice President for INFORMS Student Chapter at Northeastern University in 2016. His email address is
+vahdatzad.v@husky.neu.edu.
+
+JACQUELINE GRIFFIN is an Assistant Professor in the Department of Mechanical and Industrial
+Engineering at Northeastern University, in Boston, MA. Her research interests include the use of simulation
+and optimization methods to address challenges in complex healthcare systems. Her email address is
+ja.griffin@northeastern.edu.
+
+
+
+
+                                                                    2623
+ Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:00:25 UTC from IEEE Xplore. Restrictions apply.
+

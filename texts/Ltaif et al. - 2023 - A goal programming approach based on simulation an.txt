@@ -1,0 +1,764 @@
+      Journal of Simulation
+
+
+
+
+      ISSN: (Print) (Online) Journal homepage: www.tandfonline.com/journals/tjsm20
+
+
+
+
+A goal programming approach based on simulation and
+optimization to serve patients in an external orthopedic
+department
+
+Abdelmoneem Ltaif, Achraf Ammar & Lotﬁ Khrifch
+
+To cite this article: Abdelmoneem Ltaif, Achraf Ammar & Lotﬁ Khrifch (2023) A goal
+programming approach based on simulation and optimization to serve patients
+in an external orthopedic department, Journal of Simulation, 17:4, 509-519, DOI:
+10.1080/17477778.2022.2032432
+
+To link to this article: https://doi.org/10.1080/17477778.2022.2032432
+
+
+
+
+       Published online: 12 Feb 2022.
+
+
+
+       Submit your article to this journal
+
+
+
+       Article views: 144
+
+
+
+       View related articles
+
+
+
+       View Crossmark data
+
+
+
+       Citing articles: 3 View citing articles
+
+
+
+
+                      Full Terms & Conditions of access and use can be found at
+             https://www.tandfonline.com/action/journalInformation?journalCode=tjsm20
+
+JOURNAL OF SIMULATION
+2023, VOL. 17, NO. 4, 509–519
+https://doi.org/10.1080/17477778.2022.2032432
+
+
+RESEARCH ARTICLE
+
+A goal programming approach based on simulation and optimization to serve
+patients in an external orthopedic department
+Abdelmoneem Ltaif, Achraf Ammar and Lotfi Khrifch
+University of Sfax, Faculty of Economics and Management of Sfax, Sfax, Tunisia
+
+
+    ABSTRACT                                                                                                          ARTICLE HISTORY
+    This paper studies the problem of long waiting times for patients in the external department of                   Received 17 May 2021
+    orthopaedic surgery of Habib Bourguiba Hospital in Sfax, Tunisia. Three types of patients are                     Accepted 12 January 2022
+    treated and classified into two categories: those requiring only one treatment and those                          KEYWORDS
+    needing to consult doctors twice. In this paper, we aim to incorporate the priority-queue                         Simulation-optimisation;
+    discipline for the first and second consultation, using simulation-optimisation and goal pro­                     orthopaedic surgery; goal
+    gramming approach for the purpose of maximising patient satisfaction and reducing their                           programming; priority-
+    waiting time. Our approach allows reducing average waiting time by 35% and increasing                             queue discipline; patient
+    patient satisfaction by 30%.                                                                                      flow
+
+
+
+
+1. Introduction                                                               ● Defining a multi-objective and stochastic optimi­
+                                                                                 sation problem to obtain the optimal priority
+The study on the application of queuing theory is one
+                                                                                 queue disciplines. It is solved by a simulation-
+of the substantial criteria for assessing the perfor­
+                                                                                 based optimisation method.
+mance and efficiency of any service industry, including
+healthcare. Generally, queuing is a major challenge for
+                                                                              ● Determining which priority-queue discipline of
+healthcare systems. Hospitals, in particular, constitute
+                                                                                 patient assignment is when a doctor is available.
+a very important part of the service sector (Saadouli &
+                                                                              ● Testing the performance of patient satisfaction
+Ltaif, 2020; Nor Aziati & Salsabilah, 2018).
+                                                                                and the patient average waiting time by using
+   In this paper, this research mainly aims at over­
+                                                                                a simulation model reproducing the stochasticity
+coming the most outstanding problem of the outpati­
+                                                                                in arrivals, service times, and pathways through
+ent clinic of Habib-Bourguiba Hospital of Sfax,
+                                                                                the orthopaedic surgery.
+Tunisia. It consists in the long waiting time for differ­
+                                                                              ● We will focus on the proposed multi-objective of
+ent types of patients having to wait for too long during
+                                                                                maximising the level of three types of patient
+several stages of the process such as registration, con­
+                                                                                satisfaction with waiting time.
+sultation and payment.
+   The patient satisfaction and patient average waiting
+                                                                           The remainder of this article is organised as follows.
+time are eminent factors in the field of healthcare
+                                                                           Section 2 reviews the literature on simulation and
+service. This paper mainly aims at the performance
+                                                                           simulation optimisation in healthcare applications.
+of the optimal maximisation level for the three types of
+                                                                           Section 3 discusses the service problem. Section 4 pre­
+patient satisfaction towards the average waiting time,
+                                                                           sents the methodology of a coupling optimisation via
+which is generally better compared to the current
+                                                                           simulation based on goal programming and describes
+department.
+                                                                           the details of the simulation model and related para­
+   In this article, the methodology is a coupling opti­
+                                                                           meters, including sensitivity analysis to validate the
+misation via simulation based on goal programming
+                                                                           model. Experimental results are presented in
+to determine the maximisation level of three types of
+                                                                           Section 5. Eventually, Section 6 concludes the paper
+patient satisfaction towards waiting time.
+                                                                           and suggests future directions for research.
+   Specifically, the major contributions of this paper
+are as follows:
+                                                                           2. Literature review
+   ● Analysing the problem of managing the patient
+       flow in the orthopaedic surgery in a framework of                   The Operations Research (OR) literature presents
+       three types of patients, which is the stochastic                    a brief review of outpatient dynamic scheduling.
+       environment where there are different key per­                      Truong (2015) considers a dynamic scheduling
+       formance indicators.                                                model with two patient classes: one which must be
+
+CONTACT Abdelmoneem Ltaif              moneemltaif@gmail.com   University of Sfax, Faculty of Economics and Management of Sfax, Sfax 3018 Tunisia
+© Operational Research Society 2022.
+
+510      A. LTAIF ET AL.
+
+
+served immediately upon arrival and one which can be       may decrease the waiting time. Adelman (2007) and
+served at a future date. He introduces a non-committal     Tong & Topaloglu (2013) suggest an affine functional
+scheduling policy where future commitments do not          approximation to derive dynamic bid-price controls.
+have to be honoured. Our work extends this literature      Zhang and Adelman (2009) propose an approximate
+through analysing a multi-stage outpatient healthcare      dynamic programming model where customers
+program with no-shows but no same-day patients.            choose amongst several pre-specified flight options.
+Unlike previous work, patients in our setting may          Vossen and Zhang (2015) show that linear the value
+return for service, and the model we develop is the        function approximations used in network revenue
+first to capture this phenomenon.                          management studies can be reduced to more compact
+    Beginning by the recent paper of Kou et al. (2021)     linear programs.
+that developed simulation budget allocation rules for         However, similar to several other articles tackling
+the Motivated by the vector evaluation genetic algo­       multi-objective scheduling of patients, Gul et al.
+rithm (VEGA) in solving simulation optimisation pro­       (2011) and Saremi et al. (2013) do not offer a lot of
+blems, this research demonstrated the propose              solutions. They only provide a single solution for each
+simulation budget allocation rules via comparing           scenario instead. In addition, their methodology only
+with some existing allocation rules. In addition,          addresses the homogenous sequence of services and
+Yaping Fu et al. (2021) presented a hybrid approach        does not support multiple sequences.
+integrating the grey wolf optimisation algorithm and          Chen and Robinson (2014) present a multi-
+the simulation optimisation framework. They used the       objective optimisation problem in order to make
+grey wolf optimisation algorithm in order to search for    sequencing and scheduling decisions for same-day
+candidate solutions from the solution space, while the     and advanced patients with the objective of minimis­
+simulation helps the algorithm to identify the desired     ing the patients’ in-the-clinic wait time and practi­
+solutions such that the search is guided to more pro­      tioner idle/over time.
+mising regions.                                               Lee and Yih (2014) imply a simulation-based opti­
+    Tang et al. (2014) use heuristic algorithms to solve   misation method to schedule surgery cases in surgical
+the outpatient appointment scheduling problem for          suites. They develop a multi-objective method so as to
+two types of patients (i.e., routine and urgent), con­     minimise the patient waiting time, idleness of
+sidering no-show probability. They do not consider         resources and completion time of the schedules.
+clinical paths of patients.                                Their scheduling process includes two stages: sequen­
+    Nor Aziati and Salsabilah (2018) determine the         cing of surgeries and determining the exact timing of
+waiting for arrival time and service time of patients      each procedure. They use a genetic algorithm to fulfill
+at the outpatient counter to model a suitable queuing      the sequencing while the further scheduling is done by
+system, using simulation, too. Arena student version is    a “heuristic-decision”. They evidence that the outcome
+unable to develop more than 150 entities waiting, and      of their method outperforms simple scheduling rules
+to simulate the complex models. Only a simple flow         when used in regional hospitals.
+can be developed.                                             Oddoye et al. (2007) use a goal programming meth­
+    Afrane & Appah (2014); Feldman et al., (2014); and     odology for calculating the number of beds in
+Liu (2016) investigate applying the queuing theory and     a medical assessment unit. Their work is one of the
+modelling to the queuing problem at the outpatient         few papers dealing with multiple objective paradigms
+department at AngloGold Ashanti Hospital in Obuasi,        in healthcare.
+Ghana. This study, however, does not consider costs,          Güler (2013) studies scheduling appointment for
+and it would be interesting to include the cost dimen­     the assignment of the care providers to outpatient
+sion in another research in the future.                    rehabilitation clinics. He suggests a hierarchical goal
+    Gocgun & Puterman (2014) and Saure et al. (2012)       programming approach in order to develop schedules
+extend their work to include patients who can receive      taking into account the care- provider preferences and
+treatment across multiple time blocks and irregular        reduction of schedule disruptions.
+treatment durations.                                          With reference to this literature analysis, we could
+    Barz and Rajaram (2015) formulate an average-cost      underline several important points:
+MDP for determining whether patients requiring mul­
+tiple resources should be admitted to a hospital.            ● Most researchers have used simulation models to
+    More recently, Saremi et al. (2013) have proposed          understand the behaviour of a hospital system,
+a novel simulation-based optimisation method by                and to assess the various strategies for the system
+incorporating mathematical programming to                      operation.
+schedule day surgeries.                                      ● When the system is subjected to stochastics, dif­
+    Hossain et al. (2017) reduce the patient waiting           ferent types of the simulation models-such as
+time, and improve the overall throughput of the sys­           discrete, deterministic and stochastic events-
+tem. Increasing rerouting of patients to lab technicians       have been developed and utilised.
+
+                                                                                        JOURNAL OF SIMULATION        511
+
+
+  ● Optimisation is also taken into consideration in              The second problem consists in assigning
+     some research studies to determine the best              patients when a doctor is available. If the current
+     option for minimising waiting time and the               system chooses the patients through a small waiting
+     total cost, or maximising revenues.                      room (queue 2), the patients will wait there, and
+                                                              those of types Patient Second Appointment (SA)
+                                                              and Patient Third Appointment (THA) will wait
+3. Description of the service problem                         for a 2nd consultation (queue 3) with the doctor
+In this work, the major problem is approached as              on the same day.
+a queuing system for the orthopaedic surgery at                   The third problem consists in assigning return
+Habib-Bourguiba Hospital of Sfax. We have a set of            patients waiting for a 2nd consultation (queue 3).In
+N patients to be processed on a set D of Doctor,              fact, the current system selects the patients of types
+D = {D1, D2, D3}.                                             (SA) and (THA) waiting for a 2nd consultation
+    The external department of the orthopaedic surgery        (queue 3). If the doctor is available, the patients visit­
+treats three types of patient appointments:                   ing them on the same day are selected on the return
+    Patient First Appointment (FA) corresponds to the         list. The rule FIFO is used as an instruction for the
+new patients arriving for the first consultation, and then    patients when entering the doctor’s consultation
+leaving. Patient Second Appointment (SA) is about             room. The current system chooses the patients in the
+patients arriving at the system for the first consultation;   queue 2, and the other patients on the return list wait
+then directing to the radiology; next returning to            even longer.
+the second consultation; and finally leaving. Patient             The fourth problem consists in how patients
+Third Appointment (THA) deals with patients return­           returning on the same day at the second consultation
+ing there for a third time to the system for the first        are assigned.
+consultation; then directing towards the plaster room             We are interested in the allocation problems of
+and radiology; afterwards going back to the second            patients with long wait times in the orthopaedic sur­
+consultation; and eventually leaving (see Figure 1).          gery at Habib-Bourguiba Hospital of Sfax, which we
+    The current system treats three types of patients.        address here. They are characterised as depicted in
+Any patient arrives at this service must be registered.       Figure 1. Each Doctor has an upstream queue for
+The patient arrival is random in the waiting room             awaiting patients to be processed. We consider sys­
+(Queue 1). When the small waiting room (Queue 2)              tems where the operating hours and patient arrivals
+is empty, the current system sets each time selection of      can be random.
+patient waiting room (Queue 1) to short wait
+(Queue 2). The rule applies a single “first in first out”
+                                                              4. Methodology
+(FIFO) queue discipline rule. Several rules have been
+used in the literature for the queue discipline rules.        This paper focuses on the coupling of simulation and
+The first problem consists in which priority-queue            optimisation based on goal programming. First, the
+discipline rules to apply.                                    simulation techniques are used to evaluate the patient
+
+
+
+
+Figure 1. Queuing system of a doctor.
+
+512          A. LTAIF ET AL.
+
+
+
+
+Figure 2. Framework for simulation-optimisation.
+
+
+flow of the external orthopaedic surgery. Second, cou­                  Table 2. System state variables.
+pling optimisation via simulation is used to select                      S1  Number of patients in the waiting room
+                                                                         S2  Number of patients returning “2nd consultation” in queue 3
+priority queue 2 or queue 3 disciplines is the assign­                   S3  Number of patients in the queue 2
+ment of patients to the doctor. The process of the goal                  S4  The lower limits of the number of patients to the queue 2
+                                                                         S5  The upper limits of the number of patients to the queue 2
+programming to determine multi-objective is the level                    S6  Minimum, maximum and average process time on a doctor of
+maximisation of three types of patients satisfaction                           patient first Appointment
+with average waiting time as given in Figure 2.                          S7 Minimum, maximum and average process time on a doctor of
+                                                                               patient second Appointment
+                                                                         S8 Minimum, maximum and average process time on a doctor of
+                                                                               patient third Appointment
+4.1. Data collection                                                     S9 Minimum, maximum and average waiting time of patients in the
+                                                                               waiting room
+In this study, this paper studies the problem of long                    S10 Minimum, maximum and average waiting time of patients in the
+                                                                               queue 2
+waiting times for patients in the external department                    S11 Minimum, maximum and average waiting time of patients
+of orthopaedic surgery of Habib Bourguiba Hospital                             returning “2nd consultation” in queue 3
+in Sfax, Tunisia. Indeed, from a structural point of
+view, the external orthopaedic surgery department
+                                                                        orthopaedic service, taking into consideration the sto­
+has 6 functional sub-assemblies: admission, consulta­
+                                                                        chastic nature of task processing times. These distri­
+tion of surgery (doctor), plasters room, meeting room,
+                                                                        butions are released, using the “Input Analyzer”
+radiology and treatment room. The table below
+                                                                        module of the ARENA simulation software.
+(Table 1) shows the distribution of human and med­
+                                                                           Collected data about the patient arrivals and patient
+ical resources associated with each available set.
+                                                                        service times are used as input to the Input Analyser
+   Table 1. Breakdown Of Resources By Outpatient
+                                                                        tool of evaluating statistical fit. The latter is an Arena
+Department Of Orthopaedic Surgery (Ltaif et al.
+                                                                        tool, which is specifically designed to adjust the theo­
+(2018))
+                                                                        retical distributions with the observed data by estimat­
+   The system state characterised by the vector S (t),
+                                                                        ing their parameters. Input analyser in the ARENA
+which is defined at a current time t, is shown in
+                                                                        allows user to enter raw data and obtain the statistical
+Table 2.
+                                                                        distribution for the data as need.
+                                                                           The results are estimated according to exponential
+4.2. Simulation                                                         distribution inter-arrival time of each patient category
+                                                                        as shown in Table 3.
+In this paper, we develop a discrete event simulation
+                                                                           Table 4 gives the distributions of the service times
+model of the described facility using the Arena™ 12
+                                                                        at each stage of the process. The overall process of the
+software. The simulation model proposed is based on
+                                                                        external orthopaedic surgery has been modelled by
+the dynamic patient scheduling problem in an external
+                                                                        a discrete event simulation (DES) system.
+                                                                           The impact of the decision factors on performance
+Table 1. Breakdown of resources by outpatient department of             measures is evaluated from the patients and the doc­
+orthopaedic surgery (Ltaif et al., 2018).
+                                                                        tor’s point of view. The patient waiting time in the
+ Rooms                               Things to do       Medical staff
+                                                                        orthopaedic surgery of the Habib-Bourguiba Hospital
+ Reception                     Registration and       2 Input
+                                 payment                 operators
+                                                         2 Payments
+ Medical consultation          Medical consultation   3 doctors         Table 3. Statistical distributions patient arrival.
+    rooms
+ Room service                  Care                   A nurse            Patients category                           Inter arrival time (min)
+ Plaster room                  Plaster removal        A nurse            Patient first appointment (FA) arrival              EXPO(7)
+ Radiology                     Radiology              A nurse            Patient second-appointment (SA) arrival             EXPO(7)
+ Meeting room                  Making appointment     A nurse            Patient Third-appointment (THA) arrival            EXPO(10)
+
+                                                                                                                          JOURNAL OF SIMULATION             513
+
+
+Table 4. List of statistical distributions used in the DES model.                      and those that have occurred in the real system.
+ Process                                                       Time (min)              We conclude that the model is truly representative
+ Doctor                                                        UNIF(5,20)              of the existing environment. Therefore, the vali­
+    consultation 1st time                                        UNIF(5,20)
+    consultation 2nd time                                                              dated model can be used for a subsequent analysis
+ Plaster removal                                              TRIA (5,10, 15)          (Tables 6 and 7).
+ Radiology                                                     TRIA (5, 7,10)
+                                                                                          In the next step, by using a comparison test, the
+                                                                                       final results of the simulation model and real data
+of Sfax measures the effect of the average waiting time                                are compared, and no significant difference has
+at the orthopaedic surgery (Table 5) the level of patient                              been observed. Differences between the final results
+satisfaction.                                                                          of the simulation model and real data are also
+    The model validation ensures that the model                                        assessed by Student’s t-tests, with a α = 0.05 in
+correctly represents the real world. The simulation                                    SPSS software.
+model is validated by comparing data generated by                                         Since Sig is less than 0.05, the null hypothesis (H0:
+the model and data collected from the orthopaedic                                      μ1 ¼ μ2 , H1: μ1 �μ2 ) is accepted, and the simulation
+surgery of Habib-Bourguiba Hospital of Sfax.                                           model is considered to be valid.
+Tables 6 and 7 show confidence intervals of the
+simulation outputs at the 95% (α = 0.05) confi­                                        4.3. Priority queuing discipline
+dence level and the actual values obtained from
+the collected data. The comparison verifies that,                                      In this research, different priority rules will be com­
+for total average waiting time and total patient                                       pared. These are:
+satisfaction, there are no significant differences
+between the results obtained, using the simulation                                        ● Priority queue disciplines are assigned to queue 2:
+                                                                                          ● First in First out (FIFO),
+                                                                                          ● Shortest Processing Time (SPT),
+                                                                                          ● Longest Processing Time first (LPT),
+Table 5. Key performance indicators.
+ Key performance indicators                                                               ● Alternative Method (P1, P2, P3, P1, P2, P3 . . .).
+ Total Average Waiting Time                                                               ● Priority queue 2 or queue 3 disciplines are patient
+ Total Patients Satisfaction                                                                 assignment to the doctor
+
+
+Table 6.. Validation of simulation model by a comparison simulated and collected data.
+                                                                              Performance measures
+                                                                         average waiting time of patients
+
+                  Collected data           Simulation model                Confidence interval 95%              P-value            T- test      Difference (%)
+ Test case 1                114                  115                              [100,130]                      0.00              6.991            0.86%
+   N = 80 patients
+ Test case 2               136.5                  137                                 [110,150]                  0.00              11.625           0.36%
+   N = 90 patients
+ Test case 3               141.5                  142                                 [120,160]                  0.00              18.437           0.35%
+   N = 100 patients
+ Test case 4               334.5                  335                                 [310,360]                  0.00              10.597           0.14%
+   N = 120 patients
+ Test case 5               398.5                  399                                 [350,450]                  0.00              5.217            0.12%
+   N = 130 patients
+ Test case 6               449.5                  450                                 [400,500]                  0.05              2.843            0.11%
+   N = 150 patients
+
+
+
+Table 7. Validation of simulation model by a comparison simulated and collected data.
+                                                                                                  Performance measurestotal patients Satisfaction
+
+                                        Collected data                          Simulation model              Confidence interval 95%           Difference (%)
+
+                               Satisfied          Dissatisfied                SatisfiedDissatisfied
+ Test case 1                      47                  33                         48        32                           [20,80]                      0%
+   N = 80 patients
+ Test case 2                       34                    56                      35         55                          [20,90]                      0%
+   N = 90 patients
+ Test case 3                       54                    46                      54         46                          [20,100]                     0%
+   N = 100 patients
+ Test case 4                       77                    43                      78         42                          [20,95]                     0.2%
+   N = 120 patients
+ Test case 5                       75                    55                      76         54                          [20,95]                     0.2%
+   N = 130 patients
+ Test case 6                       86                    64                      86         64                          [20,95]                      0%
+   N = 150 patients
+
+514       A. LTAIF ET AL.
+
+
+      ○ First In First Out (FIFO),                                  The aim of this model is to maximise the level of
+      ○ Shortest Processing Time (SPT),                          three types of patient satisfaction with waiting time.
+      ○ Longest waiting time (LWT).                              The model proposed is characterised by a set of para­
+                                                                 meters and a set of decision variables as follows:
+                                                                 Indices:
+4.4. Goal programming model                                         i = index of patient,
+                                                                    j = types of patients j = 1, 2, 3 (j = 1: FA, j = 2:
+In this subsection, we formulate a mathematical model
+                                                                    SA, j = 3: THA).
+that is based on goal programming.
+                                                                 Set and Parameters used in this model are as follows:
+   Goal Programming model with satisfaction func­
+                                                                    N: Number ofpatient
+tion introduced by Aouni et al. (2005) is formally
+                                                                    Nbmini = Lower limits of the number of patients i
+represented as:
+                                                                    to the queue 2.
+                                                                    Nbmaxi = Upper limits of the number of patients
+                                                                    i to the queue 2.
+                                                                    WTij = Average waiting times ofpatient i types j,
+S/C
+   fi ðxÞ þ δi     δþ
+                    i ¼ gi "i ¼ 1 . . . p
+            þ
+   δi ; �δi � 0"i ¼ 1 . . . p
+   0 � δi � �αij �; 0 � δþ           þ
+                             i � αij � "i ¼ 1 . . . p
+                        þ                                        α2 = Upper limits of the waiting times of patient First
+   The coefficients wi , wi express the relative impor­
+                                                                 Appointment
+tance of the different objectives. Where δi and δþ          i
+indicate, in order, positive and negative deviations
+on the gap between the level of achievement of objec­
+tive i (fi ðxÞ) and the level of the target (goal gi ) set by
+the decision maker.
+                                                                 α0 2 = Upper limits of the waiting times of patient­
+                                                                 second Appointment
+                                                                        0
+                                                                     α0 1 = Lower limits of the waiting times of patient
+                                                                 third Appointment.
+                                                                        0
+                                                                     α0 2 = Upper limits of the waiting times of patient
+The general form of satisfaction functions as:                   third Appointment.
+   F (δi ): Satisfaction level                                       pj = weighted weight.
+   αi1 : Indifference threshold.                                     Decision Variables:
+   αi2 : Nil satisfaction threshold.                                 V1 : is vector the size of the queue 2.
+   αi3 : Veto threshold.                                             V2 : is vector of decision variable values priority-
+The indifference threshold (αi1 ): the decision-maker’s is       queue 1 disciplines in the assignment of patients to
+totally satisfied when the ith goals’ deviations are within      queue 2 (1: FIFO, 2: SPT, 3: LPT, 4: ALTERNATIVE).
+the interval [0, αi1 ]. The nil satisfaction threshold (αi2 ):       V3: is decision variable values assignment of
+the decision-maker’s draws no satisfaction when the ith          patient to the doctor (1: selection of patients
+goal’s deviation reaches this threshold but the solution         through queue 2, 2: selection of patients in the
+is not rejected. The veto threshold (αi3 ): the decision-        queue 3, 3: if the doctor is available, select the
+maker’s rejects any solution that lead to deviations from        patients in the return list who visits this doctor in
+his fixed goals larger than this threshold.                      the queue 3).
+
+                                                                                           JOURNAL OF SIMULATION       515
+
+                                                                                                       0
+   V4: is vector of decision variable values priority-           the deviations WTi2 is within [0, α i1 ], the decision
+queue 2 or queue 3 disciplines in the assignment of              maker is fully satisfied and the satisfaction level is
+patients to the doctor (1: FIFO, 2: SPT, 3: LWT).                                                   0
+                                                                 1. As the deviation exceeds α i1 , the satisfaction
+                                                                                                      0
+                                                                 level falls until reaches zero at α i2 . If the deviation
+4.4.1. Optimisation model: Maximising the function               exceeds this level, the decision maker may still
+of patient satisfaction.                                         consider the solution. But the solution is rejected
+                                                                                                  0
+                                                                 if it exceeds veto threshold α i3 .
+                                                                     The third objective is to maximise Patients Third
+                                                                 Appointment Satisfaction Function F(WTi3 ) must
+   S/C:                                                          take the value 1 when the deviations WTi3 belong
+                                                                                                                        00
+                                                                 to a specific interval defined by the threshold α 1 .
+                                                                 According to this model, when the deviations WTi3
+                                                                                  00
+                                                                 is within [0, α i1 ], the decision maker is fully satis­
+                                                                 fied and the satisfaction level is 1. As the deviation
+                                                                             00
+                                                                 exceeds α i1 , the satisfaction level falls until reaches
+                                                                            00
+                                                                 zero at α i2 . If the deviation exceeds this level, the
+                                                                 decision maker may still consider the solution. But
+                                                                 the solution is rejected if it exceeds veto thresh­
+                                                                        00
+                                                                 old α i3 .
+                                                                     The Constraint (2) determines the size of the
+The objective function can be divided into multiple              queue 2. The Constraint (3) determines a vector
+objectives: the primary objective is to maximise                 of decision variable values priority-queue 1 disci­
+Patients First Appointment Satisfaction Function                 plines in the assignment of patients to queue 2. The
+F (WTi1 ) must take the value 1 when the deviations              Constraint (4) determines a decision variable values
+WTi1 belong to a specific interval defined by the                assignment of patient to the doctor. The Constraint
+threshold αi1 .                                                  (5) determines a vector of decision variable values
+    According to this model, when the deviations WTi1            priority-queue 2 or queue 3 disciplines in the
+is within [0, αi1 ], the decision maker is fully satisfied       assignment of patients to the doctor. Equations
+and the satisfaction level is 1. As the deviation exceeds        (6) define the decision variables.
+αi1 , the satisfaction level falls until reaches zero at αi2 .
+If the deviation exceeds this level, the decision maker
+may still consider the solution. But the solution is             4.5. Optquest
+rejected if it exceeds veto threshold αi3 .
+                                                                 In this subsection, Simulation optimisation is
+                                                                 a stochastic optimisation method enabling
+                                                                 a search for solutions to problems where some or
+                                                                 all of the system parameters are stochastic. The
+The second objective is to maximise Patient                      metaheuristic also includes secondary heuristics
+SecondAppointment Satisfaction Function                          based on tabu search, integer programming, and
+   F (WTi2 ) must take the value 1 when the devia­               neural networks.
+tions WTi2 belong to a specific interval defined by                 The detailed simulation optimisation procedures
+               0                                                 are described as follows
+the threshold α 1 . According to this model, when
+
+516           A. LTAIF ET AL.
+
+
+Algorithm: 4 OptQuest for ARENA                                                            Improvement percentage of the patients satisfac­
+ Step 1. For each iteration, generate initial random values, which are
+    between the lower bound and the upper bound, for four decision
+                                                                                        tion function % = Total optquest    Totalsimulation
+                                                                                                                      Totaloptquest         *100%
+    variables: the size of the queue 2, vector of priority queue discipline is             Improvement percentage of the Average waiting
+    assigned to queue 2, variable values selection of patients to the doctor,
+    vector of priority queue 2 or queue 3 disciplines is a patient assignment           time % = Totalsimulation   Totaloptquest
+                                                                                                         Totalsimulation          *100%
+    to the doctor. Go to Step 2.                                                           Using the Optquest tool, the objective function and
+    Step 2. Perform 100 replications simulation of the current configurations
+    and record a summary of the simulation results.                                     constraints for 6 test cases are suggested in this article.
+    Step 3. Check the feasibility of the solution. If the results of the solution       Each case describes are follows:
+    satisfy all constraints, the solution will be a feasible solution then go to
+    Step 4. Otherwise, go to Step 6.                                                       The results by Table 9 in test case 1 show the
+    Step 4. If a feasible solution is better than the current best solution, go to      variable 1 determining the size of the queue 2 equal 2
+    Step 5. Otherwise, go to Step 6.
+    Step 5. Update the current best solution and go to Step 6.
+                                                                                        patients. Variable 2 determines a vector of decision
+    Step 6. The two common stopping rules of the simulation optimisation                variable values priority-queue 1 disciplines in the
+    procedures are maximum iterations and maximal programming                           assignment of patients to queue 2, which is equal to
+    running time. In order to ensure convergence of the simulation
+    optimisation procedures, the maximum iterations are used as the                     Alternative Method (P1, P2, P3, P1, P2, P3 . . .).
+    stopping rule. If the maximum of iterations is reached, go to Step 7.               Variable 3 determines assignment of patient to the
+    Otherwise, go to Step 8.
+    Step 7. Obtain the optimal or near-optimal solution. The proposed                   doctor, which is equal to selection of patients in the
+    procedures then stop.                                                               queue 3, and the variable 4 determines a vector of
+    Step 8. Update the values of the decision variables for the next iteration.
+    The procedures for generating a new solution are based on the scatter               priority-queue 2 or queue 3 disciplines in the assign­
+    search and tabu search. The scatter search uses a weighted linear                   ment of patients to the doctor, which is equal to First
+    combination of reference points to generate new values for the decision
+    variables. The tabu search is used to avoid revisiting the previous
+                                                                                        in First out (FIFO).
+    solutions in order to reduce the search time. Go to Step 2.                            The results in test case 2 show the variable 1 deter­
+                                                                                        mining the size of the queue 2 = 2 patients. Variable 2
+                                                                                        determines a vector of decision variable values prior­
+5. Results and discussion                                                               ity-queue 1 disciplines in the assignment of patients to
+In this section, we are interested in evaluating our                                    queue 2, which is equal to Alternative Methods (P1,
+approach. In fact, we consider an experimental analy­                                   P2, P3, P1, P2, P3 . . .). Variable 3 determines patients’
+sis which results in the computational performance of                                   assignment to the doctor, which is equal to selection of
+the goal programming proposed. The platform for                                         patients in the queue 3, and the variable 4 determines
+conducting the experiments is a LENOVO with 4 Go                                        a vector of priority queue 2 or queue 3 disciplines in
+RAM. Typically, a simulation optimisation runs based                                    the assignment of patients to the doctor, which is
+on 100 replications.                                                                    equal to Shortest Processing Time (SPT).
+                                                                                           The results in test case 3 show the variable 1
+   ● The weighted weight: p1 =0.3; p2 =0.3; p3 =0.4.                                    determining the size of the queue 2 equal 2
+                                                                                        patients. Variable 2 determines a vector of decision
+We have used the Optquest engine to optimise the                                        variable values priority-queue 1 disciplines in the
+model. The design variables considered as shown in                                      assignment of patients to queue 2, which is equal to
+Table 8.                                                                                Alternative Methods (P1, P2, P3, P1, P2, P3 . . .).
+                                                                                        Variable 3 determines assignment of patient to the
+Table 8. Defined design variables for optimisation.                                     doctor, which is equal to selection of patients in the
+ Variable          Lower bound           Suggested value          Upper bound           queue 3, and variable 4 determines a vector of
+ Variable 1             2                      10                     20                priority-queue 2 or queue 3 disciplines in the
+ Variable 2             1                       1                      4
+ Variable 3             1                       1                      3
+                                                                                        assignment of patients to the doctor, which is
+ Variable 4             1                       1                      3                equal to Longest waiting time (LWT).
+
+
+Table 9. Best parameter values.
+                                                                                                  Optimised value
+
+                                                 Variable 1                          Variable 2                     Variable 3           Variable 4
+ Test case 1                                         2                                   4                              2                    1
+   N = 80 patients
+ Test case 2                                          2                                  4                              2                    2
+   N = 90 patients
+ Test case 3                                          2                                  4                              2                    3
+   N = 100 patients
+ Test case 4                                          4                                  1                              3                    1
+   N = 120 patients
+ Test case 5                                          5                                  1                              2                    1
+   N = 130 patients
+ Test case 6                                          4                                  1                              2                    1
+   N = 150 patients
+
+                                                                                               JOURNAL OF SIMULATION        517
+
+
+Table 10. Comparison of simulation and optquest.                     and the variable 4 determines a vector of priority-queue
+               Performance measuresaverage waiting time of patient   2 or queue 3 disciplines in the assignment of patients to
+                          Simulation     Confidence     Difference   the doctor, which is equal to First in First out (FIFO).
+               Optquest     model       interval 95%        (%)         The results in test case 6 show the variable 1 deter­
+ Test case 1      83         115          [80,120]       27.82%      mining the size of the queue 2 equal 4 patients.
+   N = 80
+   patients                                                          Variable 2 determines a vector of decision variable
+ Test case 2     116         137          [110,140]      15.32%      values priority-queue 1 disciplines in the assignment
+   N = 90
+   patients                                                          of patients to queue 2, which is equal to First in First
+ Test case 3     108         142          [100,150]      23.94%      out (FIFO). Variable 3 determines assignment of
+   N = 100
+   patients
+                                                                     patient to the doctor, which is equal to selection of
+ Test case 4     220         335          [200,350]      34.32%      patients in the queue 3, and the variable 4 determines
+   N = 120                                                           a vector of priority-queue 2 or queue 3 disciplines in
+   patients
+ Test case 5     240         399          [200,400]      39.84%      the assignment of patients to the doctor, which is
+   N = 130                                                           equal to First in First out (FIFO).
+   patients
+ Test case 6     285         450          [200,500]      36.66%         In Table 10, for test case 1, our results show that the
+   N = 150                                                           improvement of average waiting time of patients is by
+   patients
+                                                                     27.82%, from 115 minutes to 83 minutes. For test case 2,
+                                                                     our findings evidence that the improvement of average
+   The results in test case 4 show the variable 1 determin­          waiting time of patients is by 15.32%, from 137 minutes
+ing the size of the queue 2 equal 4 patients. Variable 2             to 116 minutes. For test case 3, our outcomes indicate
+determines a vector of decision variable values priority-            that the improvement of average waiting time of
+queue 1 disciplines in the assignment of patients to queue           patients is by 94%, from 142 minutes to 108 minutes.
+2, which is equal to First in First out (FIFO). Variable 3           For test case 4, our results show that the improvement
+determines assignment of patient to the doctor, which is             of average waiting time of patients is by 34.32%, from
+equal to selection of patients in the queue 3, and the               335 minutes to 220 minutes. For test case 5, our findings
+variable 4 determines a vector of priority-queue 2 or                prove that the improvement of average waiting time of
+queue 3 disciplines in the assignment of patients to the             patients is by 39.84%, from 399 minutes to 240 minutes.
+doctor, which is equal to First in First out (FIFO).                 For test case 6, our results show that the improvement
+   The results in test case 5 show the variable 1 deter­             of average waiting time of patients is by 36.66%, from
+mining the size of the queue 2 equal 5. Variable 2                   450 minutes to 285 minutes as depicted in Figure 3.
+determines a vector of decision variable values priority-               In Table 11, for case 1, maximising satisfaction of
+queue 1 disciplines in the assignment of patients to                 the patients is by 30%, from 48 satisfied patients to 68
+queue 2, which is equal to First in First out (FIFO).                satisfied ones. For case 2, maximising satisfaction of
+Variable 3 determines assignment of patient to the doc­              the patients is by 53.94%, from 35 satisfied patients to
+tor, which is equal to selection of patients in the queue 3,         76 satisfied ones. For case 3, maximising satisfaction of
+
+
+
+
+Figure 3. Improvement of the average waiting time of patients.
+
+518        A. LTAIF ET AL.
+
+
+Table 11. Comparison of simulation and optquest.                     6. Conclusions and future research
+                  Performance measuresmaximising the function of
+                               patient satisfaction                  This paper introduces a new approach with the aim of
+                  Simulation              Confidence    Difference
+                                                                     solving long waiting times for patients in the external
+                    model      Optquest    interval         (%)      department of orthopaedic surgery of Habib-
+ Test case 1         48           68        [20,80]      29.41%      Bourguiba Hospital of Sfax, Tunisia.
+   N = 80
+   patients                                                             The external orthopaedic surgery department is
+ Test case 2          35         76         [20,90]      53.94%      represented by a simulation model developed with
+   N = 90
+   patients                                                          ARENA software aid, and supplemented with the
+ Test case 3          54         85        [20,100]      36.47%      gathered and fitted experimental data. The academic
+   N = 100
+   patients
+                                                                     contribution of this research is a simulation-
+ Test case 4          78         110       [20,120]       30%        optimisation OptQuest based on Goal Programming
+   N = 120                                                           using priority rules, combining stochastic parameters
+   patients
+ Test case 5          76         117       [20,130]      35.04%      (random patient arrival) with measures of perfor­
+   N = 130                                                           mance, including three types of patient satisfaction
+   patients
+ Test case 6          86         130       [20,150]      33.84%      and average waiting time. The findings of the simula­
+   N = 150                                                           tions model and optimisation provide evidence that
+   patients
+                                                                     the waiting time is reduced by 35% on average, while
+                                                                     the patient satisfaction increases by 30%.
+the patients is by 36.47%, from 54 satisfied patients to                Eventually, we come to the conclusion that simula­
+85 satisfied ones. For case 4, satisfaction of the patients          tion and optimisation could help the healthcare sector
+is by 30%, from 78 satisfied patients to 110 satisfied               without changing any processes and entities in
+ones. For case 5, maximising satisfaction of the                     a system. Through using Arena software, we have
+patients is by 35.04%, from 76 satisfied patients to                 been able to conduct analyses and achieve the purpose
+117 satisfied ones. For case 6, maximising satisfaction              of our study.For further development, we recommend
+of the patients is by 33.84%, from 86 satisfied patients             that future researchers consider the following research
+to 130 satisfied ones as depicted in Figure 4.                       directions..
+
+
+
+
+Figure 4. Maximising the satisfaction of patients.
+
+                                                                                               JOURNAL OF SIMULATION            519
+
+
+   ● Considering approaches based on metaheuristics,             Gul, S., Denton, B. T., Fowler, J. W., & Huschka, T. (2011). Bi-
+     namely taboo search, genetic algorithms, and                  criteria scheduling of surgical services for an outpatient proce­
+     simulated annealing, for solving patient-                     dure center. Production and Operations Management, 20(3),
+                                                                   406–417. https://doi.org/10.1111/j.1937-5956.2011.01232.x
+     scheduling problems in deterministic cases.                 Güler, G. (2013). A hierarchical goal programming model for
+   ● Examining a similar topic with the output of our              scheduling the outpatient clinics. Expert Systems with
+     results, using Optquest as input to                           Applications, 40(12), 4906–4914. https://doi.org/10.1016/j.
+     a mathematical model in a deterministic case.                 eswa.2013.02.015
+   ● Incorporating other performance measures                    Hossain, N. U., Khasawneh, M., & Jaradat, R. (2017), Reducing
+                                                                   patient waiting time in an outpatient clinic: A discrete event
+     through multi-objective simulation optimisation
+                                                                   simulation (DES) based approach. Proceedings of the 2017
+                                                                   industrial and systems engineering conference, Pittsburg, PA.
+                                                                 Kou, G., Xiao, H., Cao, M., & Lee, L. H. (2021). Optimal
+Acknowledgments                                                    computing budget allocation for the vector evaluated
+                                                                   genetic algorithm in multi-objective simulation
+The authors are grateful to thank Dr.Lajanf Hichem, general        optimization. Automatica, 129(July 2021), 109599.
+director of the Habib Bourguiba hospital’s external ortho­         https://doi.org/10.1016/j.automatica.2021.109599
+pedic surgery department in Sfax, for his invaluable help        Lee, S., & Yih, Y. (2014). Reducing patient-flow delays in
+and the time he gave me to answer my questions. Their              surgical suites through determining start-times of surgi­
+support is greatly appreciated.                                    cal cases. European Journal of Operational Research, 238
+                                                                   (2), 620–629. https://doi.org/10.1016/j.ejor.2014.03.043
+                                                                 Liu, N. (2016). Optimal choice for appointment scheduling
+Disclosure statement                                               window under patient no-show behavior. Production and
+                                                                   Operations Management, 25(1), 128–142. https://doi.org/
+No potential conflict of interest was reported by the              10.1111/poms.12401
+author(s).                                                       Ltaif, A., Ammar, A., Boujelbene, Y., & Khrifech, L. (2018).
+                                                                   Simulation based optimization models for reducing the
+                                                                   expected waiting time in an outpatient medical service.
+References
+                                                                   Conference Proceedings: EGCI’2018, Tunisia.
+Adelman, D. (2007). Dynamic Bid prices in revenue                Oddoye, J. P., Yaghoobi, M. A., Tamiz, M., Jones, D. F., &
+  management. Operational Research, 55(4), 647–661.                Schmidt, P. (2007). A multi-objective model to determine
+  https://doi.org/10.1287/opre.1060.0368                           efficient resource levels in a medical assessment unit.
+Afrane, S., & Appah, A. (2014). Queueing theory and the            Journal of the Operational Research Society, 58(12),
+  management of waiting-time in hospitals: The case of             1563–1573. https://doi.org/10.1057/palgrave.jors.2602315
+  anglo gold ashanti hospital in Ghana. International Journal    Saadouli, H., & Ltaif, A. (2020). Evaluating the impact of
+  of Academic Research in Business and Social Sciences, 4(2),      human resource management on the patient flow at an
+  34–44. https://doi.org/10.6007/IJARBSS/v4-i2/590                 outpatient orthopedic clinic. International Journal of
+Aouni, B., Abdelaziz, F. B., & Martel, J. M. (2005). Decision-     Healthcare Management, 14(4) , 1–9. https://doi.org/10.
+  maker’s preferences modeling in the stochastic goal pro­         1080/20479700.2020.1788335.
+  gramming. European Journal of Operational Research, 162        Saremi, A., Jula, P., ElMekkawy, T., & Wang, G. G. (2013).
+  (3), 610–618. https://doi.org/10.1016/j.ejor.2003.10.035         Appointment scheduling of outpatient surgical services in
+Aziati, A. H. N., & Salsabilah, H. N. (2018), Application of       a multistage operating room department. International
+  queueing theory model and simulation to patient flow at          Journal of Production Economics, 141(2), 646–658.
+  the outpatient department. Proceedings of the interna­           https://doi.org/10.1016/j.ijpe.2012.10.004
+  tional conference on industrial engineering and operations     Saure, A., Patrick, J., Tyldesley, S., & Puterman, M. L. (2012).
+  management, Bandung, Indonesia, 3016–3028.                       Dynamic multi-appointment patient scheduling for radia­
+Barz, C., & Rajaram, K. (2015). Elective patient admission and     tion therapy. European Journal of Operational Research,
+  scheduling under multiple resource constraints.                  223(2), 573–584. https://doi.org/10.1016/j.ejor.2012.06.046
+  Production Operational Management, 24(12), 1907–1930.          Tang, J., Yan, C., & Cao, P. (2014). Appointment scheduling
+  https://doi.org/10.1111/poms.12395                               algorithm considering routine and urgent patients. Expert
+Chen, R. R., & Robinson, L. W. (2014). Sequencing and              Systems with Applications, 41(10), 4529–4541. https://doi.
+  scheduling appointments with potential call-in patients.         org/10.1016/j.eswa.2014.01.014
+  Production and Operations Management, 23(9),                   Tong, C., & Topaloglu, H. (2013). On the approximate
+  1522–1538. https://doi.org/10.1111/poms.12168                    linear programming approach for network revenue man­
+Feldman, J., Liu, N., Topaloglu, H., & Ziya, S. (2014).            agement problems. INFORMS Journal on Computing, 26
+  Appointment scheduling under patient preference and              (1), 121–134. https://doi.org/10.1287/ijoc.2013.0551
+  no-show behavior. Operations Research, 62(4), 794–811.         Truong, V.-A. (2015). Optimal advance scheduling.
+  https://doi.org/10.1287/opre.2014.1286                           Management Science, 61(7), 1584–1597. https://doi.org/
+Fu, Y., Xiao, H., Lee, L. H., & Huang, M. (2021). Stochastic       10.1287/mnsc.2014.2067
+  optimization using grey wolf optimization with optimal com­    Vossen, T. W., & Zhang, D. (2015). Reductions of approx­
+  puting budget allocation. Applied Soft Computing, 103(May        imate linear programs for network revenue management.
+  2021), 107154. https://doi.org/10.1016/j.asoc.2021.107154        Operations Research, 63(6), 1352–1371. https://doi.org/
+Gocgun, Y., & Puterman, M. L. (2014). Dynamic scheduling           10.1287/opre.2015.1442
+  with due dates and time windows: An application to             Zhang, D., & Adelman, D. (2009). An approximate dynamic
+  chemotherapy patient appointment booking. Health                 programming approach to network revenue management
+  Care Management Science, 17(1), 60–76. https://doi.org/          with customer choice. Transportation Science, 43(3),
+  10.1007/s10729-013-9253-z                                        381–394. https://doi.org/10.1287/trsc.1090.0262
+

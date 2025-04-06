@@ -1,0 +1,438 @@
+574                                                                                                    Chin Med J 2010;123(5):574-580
+
+
+
+Original article
+Impact of adjustment measures on reducing outpatient waiting
+time in a community hospital: application of a computer
+simulation
+CHEN Bai-lian, LI En-dong, Kazunobu Yamawuchi, Ken Kato, Shinji Naganawa and MIAO Wei-jun
+
+Keywords: waiting time; outpatient; appointment system
+
+      Background As an important determinant of patient satisfaction, waiting time, has gained increasing attention in the
+      field of health care services. The present study aimed to illustrate the distribution characteristics of waiting time in a
+      community hospital and explore the impact of potential measures to reduce outpatient waiting time based on a computer
+      simulation approach.
+      Methods During a one-month study period in 2006, a cross-sectional study was conducted in a community hospital
+      located in Shanghai, China. Baseline data of outpatient waiting time were calculated according to the records of
+      registration time and payment time. A simulation technique was adopted to investigate the impact of perspective reform
+      methods on reducing waiting time.
+      Results Data from a total of 10 092 patients and 26 816 medical consultations were collected in the study and 19 947
+      medical consultations were included. The average of the total visit time for outpatients in this hospital was 43.6 minutes in
+      the morning, 19.1 minutes in the afternoon, and 34.3 minutes for the whole day studied period. The simulation results
+      suggested that waiting time for outpatients could be greatly reduced through the introduction of appointment system and
+      flexible demand-orientated doctor scheduling according to the numbers of patients waiting at different time of the
+      workday.
+      Conclusion Adoption of an appointment system and flexible management of doctor scheduling may be effective way to
+      achieve decreased waiting time.
+                                                                                                 Chin Med J 2010;123(5):574-580
+
+
+
+A    s an important determinant of patient satisfaction,
+     waiting time, has garnered attention in the field of
+health care services. In mainland of China, there are
+                                                                       further divided into two subcategories: waiting before
+                                                                       consultation and waiting after consultation. The waiting
+                                                                       before consultation is generally longer than after
+increasing numbers of visits to community hospitals for                consultation and waiting before consultation is prevalent
+medical consultation and help. The increase of visits to               in health care systems where patients are not given
+community hospitals can be partly explained by lower                   time-specific appointments and no appointment system is
+costs, increasing demands from patients, hospitals’                    established. Waiting can be greatly decreased by the
+improved service quality and medical insurance policy                  introduction of an appointment system. The effectiveness
+orientation. Consequently, these community hospitals are               of an appointment system depends on the rate of patients
+facing the challenge of improving service to meet patient              using this system, and higher rate of walk-in patients
+demands with limited staff resources. Many patient                     would limit its effect.9 However, the waiting time after
+complaints come from the long waiting time and long                    consultation relies on the collective efforts made by the
+waiting times at outpatient clinics has been shown to be               hospital auxiliary departments.
+the major dissatisfaction with medical care delivery and a
+barrier to further use of healthcare facilities by affected            Only a few attempts have been made to determine the
+patients.1-5                                                           importance of waiting time for clinical treatment and
+
+When considering patient waiting time, there are two                   DOI: 10.3760/cma.j.issn.0366-6999.2010.05.013
+separate types for outpatients. One is the interval between            Department of Medical Information and Management Science
+the date of the family doctors’ referral and the date of the           (Chen BL, Li ED, Yamawuchi K and Kato K), Department of
+                                                                       Radiology (Naganawa S), Graduate School of Medicine, Nagoya
+first appointment. Another is the time that elapses                    University, 65 Tsurumai-cho Showa-ku Nagoya, Japan
+between a patient’s arrival at the outpatient department               Scientific Research Management Department, Second Affiliated
+and his/her entry into the consulting room.6 The former                Hospital of Guangzhou Medical University, Guangzhou,
+was widely studied worldwide, especially in England;                   Guangdong 510260, China (Miao WJ)
+                                                                       Correspondence to: Dr. CHEN Bai-lian, Department of Medical
+partially due to the availability of medical resources and             Information and Management Science, Graduate School of
+easy access to the Health Care System.7 The latter for                 Medicine, Nagoya University, 65 Tsurumai-cho Showa-ku Nagoya,
+outpatients also attracted much attention,8 it can be                  Japan (Email: chenbailian69@hotmail.com)
+
+Chinese Medical Journal 2010;123(5):574-580                                                                               575
+
+hospital admission in mainland of China. With the
+reforms of the medical insurance system in China,
+patients have more options to select institutions for their
+consultation. Most patients want shorter waiting times
+along with accurate diagnosis and treatment. Many
+factors appear to contribute to the long waiting time.
+These factors include, but are not limited to; the health
+insurance system, the time sense of doctors and patients,
+patients’ behavior while seeking consultation, and
+insufficient outpatient service power. Increasing resources
+is the easiest way to solve the long waiting time problem,
+but resources are limited in mainland of China. It is
+critical for managers to know how to allocate the limited
+resources to the right place at the appropriate times. More
+data are needed for policy-making evaluation before the
+new plans are implemented, and simulation skill is a
+suitable decision-making support tool.
+
+The present study aimed to illustrate the distribution
+characteristics of waiting time in a community hospital
+located in Shanghai, China and explore the impact of
+potential measures to reduce outpatient waiting time in
+the studied hospital based on a computer simulation
+approach.
+
+                       METHODS
+
+Study setting                                                       Figure 1. The main process of medical consultation.
+In 2006, from July 1 to July 31, a cross-sectional study
+was conducted at a 55-bed community hospital in               register because they were receiving medical services and
+Shanghai, a typical community health center that provides     had registered on the previous day.
+basic health services mainly for nearby communities. As
+there was no significant difference in the pattern of         Data for each included patient were enrolled from the
+outpatients’ arrival and departure in different months, the   time of payment for registration until the time of payment
+month of July was selected at random as the study period.     for medication. Multiple elements of descriptive data
+This hospital is one of the earliest hospitals to utilize a   were entered for each patient visit, including name, data
+system of recording the patient’s exact payment time for      of visit, age, sex, final diagnosis, insurance type, time of
+medical services, which makes it possible to trace the        payment for triage registration, and time of payment for
+patients’ arrival, departure, and various occurrences         medication. Inclusion criteria were the following: (1)
+during clinical consultation. This hospital consists of 85    patients received a medical examination and/or laboratory
+staff members, including 53 doctors, 22 nurses and 10         test, but did not receive further medical treatment after
+technological staff. There are nine major clinical            consultation, (2) patients’ visit ended in payment for
+                                                              medication.
+departments and two adjunct departments. The outpatient
+department of this hospital does not provide emergency
+                                                              Waiting time definition
+services. The operations were performed between 8:00 to       Total visit time was defined as the time from the patient
+11:30 in the morning, and 13:00 to 16:00 in the afternoon     arrival until departure. In this study, arrival time was
+on weekdays and from 8:00 to 11:30 on Saturday.               defined as the payment time for registration, and
+                                                              departure time was defined as the time of payment for
+Data source and inclusion procedure                           medication. Two measurements of waiting time were
+Data of visits during the above mentioned period were         adopted in the present study: physician waiting time
+retrieved from the computerized hospital clinical database.   (PWT, defined as the time from triage registration until
+The whole process of medical consultation (Figure 1)          medical consultation) and total waiting time (TWT,
+included different combinations of the following events;      defined as the difference between total visit time and the
+triage registration, waiting for consultation, consultation   duration of medical service). Patients who only
+(which included simple physical examinations, such as         medication-taking waited mainly before the consultation
+auscultation or blood pressure measurement), physical         and those who had medical examinations and/or
+examination, laboratory tests, diagnosis, treatment and       laboratory tests waiting after consultation were a more
+payment. In some cases, outpatients did not need to           critical issue.
+
+ 576                                                                                                                   Chin Med J 2010;123(5):574-580
+
+ Simulation approach                                                                     Baseline characteristics of the daily average number of
+ A fictitious appointment system was introduced into the                                 patients and total visit time are presented in Table 2. On
+ study that let all patients arrive and register 10 minutes                              average, the hospital provided outpatient services for
+ before his or her consultation. In our database, the exact                              787.7 patients per day, among which, 457.4 patients
+ service time for outpatients was not available and the                                  (58.1%) came for medical consultations in the morning.
+ consultation duration was set as five minutes for all                                   Patients older than 50 years old were the majority,
+ patients. All included visits were divided into 13 groups                               composing more than 80% of all the patients. The total
+ according to their actual PWT. Saved time was defined as                                visit time followed the normal distribution, so the average
+ the actual PWT plus consultation period and the above                                   was adopted to describe the concentration tendency. The
+ mentioned 15 minutes. The rate and patterns of defaulted                                average of total visit time for outpatients in this hospital
+ appointments were then explored by the data.                                            was 43.6 minutes in the morning, 19.1 minutes in the
+                                                                                         afternoon and 34.3 minutes for the whole day during the
+ Four morning plans were designed on the premise that the                                study period. The total visit time for patients arriving in
+ same service ability of the outpatient department was                                   the morning was twice as long as that for patients arriving
+ maintained. For the first three plans, the adjustment scale                             in the afternoon. No statistically significant differences
+ was set as 10%, 20% and 30% for the period between                                      were found among the waiting time of different age
+ 8:00 and 9:00 and the period between 10:00 and 11:00.                                   groups, genders and working days; so these categories
+ For the fourth plan, 10% more doctors were arranged                                     were not adopted in the following analysis.
+ between 9:00 to 10:00 and 10% of the doctors were
+ removed from the schedule between 10:00 and 11:00.                                      Figure 2 shows the arrival and departure characteristics of
+ Saved waiting time and its corresponding average was                                    patients. On average, patient arrival peaked at 7:40 and
+ calculated according to the adjusted doctor schedule and                                7:50 and reached a trough during lunch time. The average
+ comparisons were made between the effects of these                                      number of departure patients was about 19 per 10 minutes
+ plans.                                                                                  for the whole work day. The largest number of patients on
+                                                                                         the consultation waiting list was 84.8. Figure 1 also
+ Statistical analysis                                                                    shows that there were about 10 patients in the waiting list
+ Descriptive statistics revealing the number and the
+                                                                                         at noon.
+ percentage of included visits were tabulated. Analysis of
+ qualitative data was performed using frequency distributions,
+                                                                                         Relationship between arrival time and total visit time
+ and a one-sample Kolmogorov-Smirnov test was used to test
+                                                                                         Figure 3 shows the relationship between arrival time and
+ whether variables were normally distributed. χ2 test was
+                                                                                         total visit time. Generally, total visit time for patients who
+ performed for the comparisons of waiting time:
+                                                                                         arrive in the morning exceeded 30 minutes. Those
+                                          (O − T ) 2 ,
+                               x2 = ∑                                                    patients who arrived later than 11:00 spent less time,
+                                             T                                           however they might take risks of not being treated until
+                                                                                         13:00. The relationship between arrival time and total
+ where O was the observed value and T was a theoretical
+                                                                                         visit time was that the earlier one arrived, the longer they
+ value with df=n–1, n was the number of observed values.
+ The level of statistical significance was set as 0.05 and P                             typically had to wait.
+ value less than 0.05 was considered statistically
+ significant. The data were managed by Microsoft Excel;                                  Relationship between arrival time and total visit time
+ the statistical analyses and stimulation were conducted                                 for re-consultation
+ using SPSS 12.0 for windows.                                                            Whether re-consultations may cost less total visit time
+                                                                                         was also investigated in the study. Included visits were
+                                   RESULTS                                               divided into four parts according to times of visit in the
+                                                                                         study period and patients who visited five times or more
+ Baseline characteristics                                                                in the month were excluded from this analysis. Table 3
+ During the study period a total of 10 092 patients and 26                               indicates that patients who visited the hospital twice or
+ 816 medical consultations were collected. About 25.6%                                   more usually spend more time for the latter visit than that
+ of the visits were excluded leaving 19 947 medical                                      for the former one. We also found that patients were
+ consultations included in the present study (Table 1).                                  unaware of the longer waiting time that occurred at the
+                                                                                         beginning of the day and tended to arrive earlier for the
+          Table 1. Description of collected and included visits                          re-consultation.
+Consultation process                      Total visits (n (%)) Included visits (n (%))
+Registry-consultation-departure                481 (1.8)                0 (0)            Adoption of appointment system
+Registry-consultation-pharmacy              21 711 (81.0)           19 164 (71.5)        The above-mentioned results indicated that the patients’
+Registry-consultation-check                    568 (2.1)              362 (1.3)
+                                                                                         arrival and departure pattern caused longer total visit
+Registry-consultation-laboratory               731 (2.7)              421 (1.6)
+Registry-consultation-medical treatment       2543 (9.5)                0 (0)            times. A simulation method was adopted to investigate
+Registry-consultation-other                     4 (0.0)                 0 (0)            the impact of perspective reform methods on reducing
+Registered in previous day                     778 (2.9)                0 (0)            waiting time. All included visits were divided into 13
+Total                                        26 816 (100)          19 947 (74.4)         groups according to their PWTs. Table 4 shows the PWT
+
+Chinese Medical Journal 2010;123(5):574-580                                                                                                          577
+
+                                Table 2. Characteristics of daily average number of patients and total visit time
+                                    Morning                                      Afternoon                                    Whole day
+Index
+                      Percent (%)     Total visit time (minutes)   Percent (%)     Total visit time (minutes)   Percent (%)    Total visit time (minutes)
+Total                    100.0                    43.6               100.0                     19.1               100.0                    34.3
+Age (years)
+  20–29                  1.3                     45.6                 1.3                     20.4                  1.3                   35.9
+  30–39                  3.5                     45.9                 3.2                     18.3                  3.3                   36.0
+  40–49                  11.5                    44.1                 12.0                    20.3                 11.7                   34.9
+  50–59                  25.0                    42.7                 25.3                    19.2                 25.2                   33.7
+  60–69                  27.2                    44.1                 28.1                    18.9                 27.6                   34.3
+  70–79                  23.7                    43.8                 22.4                    18.6                 23.1                   34.5
+  80–89                  7.8                     41.4                 7.7                     17.9                  7.8                   32.5
+  χ2 values                                     0.3336                                       0.2886                                      0.2616
+  P values                                      0.9993                                       0.9996                                      0.9997
+Sex
+  Male                   43.7                    44.1                 43.9                    19.3                 43.8                   34.7
+  Female                 56.3                    43.1                 56.1                    18.8                 56.2                   33.9
+  χ2 values                                     0.0115                                       0.0066                                      0.0093
+  P values                                      0.9147                                       0.9354                                      0.9231
+Working day
+  Monday                 17.6                    46.3                 25.3                    23.6                 20.8                   35.6
+  Tuesday                19.0                    46.1                 21.4                    18.3                 20.0                   34.7
+  Wednesday              17.7                    41.2                 19.3                    14.9                 18.4                   30.6
+  Thursday               13.9                    39.3                 17.4                    18.5                 15.4                   30.3
+  Friday                 16.2                    39.1                 16.6                    18.9                 16.3                   31.3
+  Saturday               15.7                    48.9                  –                        –                   9.1                   48.9
+  χ2 values                                     1.9789                                       2.0484                                      7.0522
+  P values                                      0.8521                                       0.7269                                      0.2168
+
+
+                                                                             and if 30% of patients were covered, the saved time
+                                                                             would be 15.8% (52.5%×30%).
+
+                                                                             Flexible management of doctor scheduling
+                                                                             The strategy to cope with waiting time was set as flexible
+                                                                             management of doctor scheduling. Whether flexible
+                                                                             doctor scheduling can work was explored in the study.
+                                                                             Four morning plans were designed to arrange more
+                                                                             doctors between 8:00 and 9:00 or from 9:00 to 10:00, and
+                                                                             reduce the number of doctors between 10:00 and 11:00.
+ Figure 2. Average arrival, departure, and waiting patient at                These plans maintained the same level of service. From
+ different time of a day.                                                    Table 5 and Figure 4, it can be seen that if more doctors
+                                                                             worked in the out-patient department between 8:00 and
+                                                                             9:00, waiting time would be reduced and the waiting list
+                                                                             would be shortened. For plan A, a coefficient of 1.3 or 0.7
+                                                                             was given to the total visit time and the number of
+                                                                             departure patients in the studied period, and the average
+                                                                             saved time could be calculated. Similar calculations were
+                                                                             made for the other three plans with different coefficients.
+                                                                             The effect of flexible doctor scheduling in the afternoon
+                                                                             was less significant than it was in the morning because of
+                                                                             fewer waiting patients (data not shown).
+
+ Figure 3. Average of total visit time of the patients that arrived                                        DISCUSSION
+ at different moment.
+                                                                             Patient satisfaction is a worthwhile goal of health care
+that might be saved if the appointment was strictly                          service,10-13 and there are a lot of reasons for imple-
+executed according to these assumptions. The reduced                         menting plans to achieve it. It has been suggested that
+waiting time under circumstances with different                              waiting time is the most important determinant of patient
+utilization rates was also explored. If 100% of patients                     satisfaction. And waiting time statistics have become an
+were covered by the appointment system and arrived                           important standard by which health care is measured.14-16
+punctually, the PWT could be reduced by 16.6 minutes                         Waiting time statistics also hold great promise to
+and the fractional time saving would be 52.5%                                facilitatethe evaluation of performance of health care
+(16.6/31.6×100%). If 60% of patients were covered, the                       institutions.17-21 Long waiting times induce negative
+fractional time saving would be 31.5% (52.5%×60%),                           effects on the quality of the hospital before finally
+
+578                                                                                                                              Chin Med J 2010;123(5):574-580
+
+                                                              Table 3. Visit times and total visit time
+                                                                      Total visit time (minutes (patients proportion of the whole day, %))
+Visit times          Time segments
+                                                     1st visit                             2nd visit                        3rd visit                      4th visit
+1 (n=5377)             Morning                     40.9 (60.9)
+                       Afternoon                   18.2 (39.1)
+                       Whole day                   32.0 (100)
+2 (n=2201)             Morning                     37.9 (60.0)                           48.0 (65.3)
+                       Afternoon                   18.8 (40.0)                           20.3 (34.7)
+                       Whole day                   30.3 (100)                            38.4 (100)
+3 (n=1183)             Morning                     39.5 (65.2)                           41.3 (64.7)                       51.4 (65.2)
+                       Afternoon                   18.5 (34.8)                           19.5 (35.3)                       18.9 (34.8)
+                       Whole day                   31.1(100)                             33.6 (100)                        40.1(100)
+4 (n=637)              Morning                     40.2 (58.9)                           41.3 (65.1)                       48.7 (62.2)                    53.9 (62.2)
+                       Afternoon                   18.6 (41.1)                           19.0 (34.9)                       21.9 (37.8)                    19.2 (37.8)
+                       Whole day                   31.3 (100)                            33.5 (100)                        38.6 (100)                     40.8 (100)
+
+                                        Table 4. Saved waiting time after the introduction of an appointment system
+                 Physician waiting time        Number of          Average physician waiting time Average total visit time after Total visit time            Saved time
+Groups        before consultation (minutes)     visits (n)         plus consultation (minutes)     consultation (minutes)         (minutes)                  (minutes)
+                           (1)                     (2)                         (3)                           (4)                 (5)=(3)+(4)             (6)=((3)–15)×(2)
+1                         1–4                     1063                          2.7                             6.1                        8.8              –13 033.8
+2                         5–9                     2872                          7.5                             3.6                       11.2              –21 405.7
+3                        10–14                    2625                         12.5                             2.4                       14.9               –6 563.9
+4                        15–19                    2261                         17.4                             2.6                       20.1                5 505.9
+5                        20–24                    1912                         22.4                             1.8                       24.2               14 121.3
+6                        25–29                    1632                         27.4                             2.6                       29.9               20 210.3
+7                        30–59                    5261                         42.3                             2.5                       44.8              143 793.1
+8                        60–89                    1630                         71.6                             1.5                       73.1               92 222.1
+9                        90–119                    395                        101.5                             2.5                      104.0               34 158.8
+10                      120–179                    155                        141.0                             2.6                      143.6               19 532.6
+11                      180–239                     34                        206.6                             1.4                      208.0                6 512.9
+12                      240–299                     36                        271.4                             3.2                      274.6                9 231.8
+13                      300–360                     71                        380.1                             5.1                      385.2               25 921.9
+Total                                            19 947                                                                                                     330 207.3
+Average                                                                        31.6                             2.7                       34.3                16.6
+
+                                                             Table 5. Saved waiting time for four plans
+                             Adjustment to the number of doctors (%)
+Plans                                                                                    Saved waiting time (minutes)          Average of saved waiting time (minutes)
+                       8:00–9:00           9:00–10:00           10:00–11:00
+A                         +30                   0                    –30                               4036                                        9.0
+B                         +20                   0                    –20                               2691                                        6.0
+C                         +10                   0                    –10                               1346                                        3.0
+D                          0                   +10                   –10                                760                                        1.7
+
+
+                                                                                       the Japan Ministry of Health, Labor, and Welfare, the
+                                                                                       percent of the outpatients whose waiting time before
+                                                                                       consultation was less than 30 minutes was 56.1%, 43.0%,
+                                                                                       and 37.3% for small, middle, and large scale hospitals,
+                                                                                       respectively. As it is difficult to know the waiting time
+                                                                                       distribution of different levels of hospitals, we just
+                                                                                       limited our focus to the community hospital. Community
+                                                                                       hospitals play an important role in the primary health care
+                                                                                       system, and there are increasing visits to community
+                                                                                       hospitals due to lower costs, medical insurance policies,
+                                                                                       and other reasons.
+Figure 4. Comparisons of actual and modeled patient distributions.
+                                                                                       This study found that patient arrivals tended to be
+crippling the competitive advantages of the hospital.                                  concentrated in early morning, and the departures
+Understanding the current situation of waiting time and                                occurred at a relatively stable rate. The relationship
+exploration of possible strategies to reduce waiting time                              between arrival time and waiting time was that the earlier
+are the objectives of the present study. Long waiting time                             one arrived, the longer they typically waited. We assumed
+in an outpatient setting is very common in hospitals in                                that the average service time was the same for every
+either Shanghai or other cities of China. Waiting times                                patient, and that gave us with two basic methods to
+varies among different scales of hospitals. According to                               reduce total visit time and waiting time for outpatients.
+
+Chinese Medical Journal 2010;123(5):574-580                                                                                    579
+
+One is to adjust the patients’ arrival, and the other is to     proportion of patients that keep their appointment. The
+adjust medical service provision. Comprehensive                 adoption of an appointment system is costly and the
+understanding of the waiting time distribution and              efficiency of this kind of adjustment is very sensitive to
+measures to reduce the number of patients arriving late         the proportion of walk-in patients and the proportion of
+for appointments are vital to improving the clinic              patients covered by the system. For the flexible doctor
+efficiency.22                                                   scheduling, no additional resources are needed and
+                                                                certain improvement can be obtained. On the premise that
+Implementing a new plan is costly and often requires            time distribution of patient visits is available, the
+additional changes in the current working process. The          appropriate schedule adjustments at different times are
+alternative is to use computer simulations to predict the       critical to success. Routine surveillance and analyses of
+impact of changes on outcomes. Computer simulation is a         the patient visit data and tendencies may contribute to the
+powerful tool that can support evidence-based health care       design of an adjustable schedule. The doctor resources
+policies and management in a risk-free environment. The         and compliance of the doctors may also affect the
+use of a simulation to test alternative plans can improve       feasibility of this kind of adjustment measure.
+efficiency at a minimal cost. The results of this case study
+in a community hospital indicated the usefulness of a           This study should be viewed in the context of our study’s
+simulation in decision-making under uncertain conditions.       limitations. One of the limitations is the bias associated
+The hospital management has entered into the era of             with survey research in general; the findings might not be
+informatics, patient-related data and information are           able to be generalized to community hospitals with
+easily collected and analyzed. Simulation techniques            different demographic characteristics, staff and resources.
+based on real data may facilitate managers’ understanding       The analysis could be limited by the sample size and by
+of the current situation regarding waiting time and             only being conducted in the summer and the lack of
+potential measures while avoiding the risks of making           statistical power. Additional attention should be paid to
+insufficiently informed decisions. This study indicated         differences with other studies that used different inclusion
+that patients who visited the hospital two or more times        criteria. In future analyses we will consider patients’ age
+usually spend more waiting time for the latter visit than       distribution, medical visit pattern and clinical needs in
+the former one. More dissemination about waiting time           different levels of hospitals, and try to incorporate the
+and other actions are needed to solve this problem.             information into our study of waiting time and patient
+                                                                satisfaction.
+Reducing outpatients’ waiting time is not only valuable
+for the patients but also is helpful to decrease the hospital   In summary, our results provide some insights into the
+workload. Appointment systems are widely used as a              waiting time, which is a barrier to healthcare delivery in
+good way to control rate of patients’ arriving for              community hospitals in the mainland of China. Adoption
+consultations. It has been widely used in western               of an appointment system and flexible management of
+countries,23,24 but not is prevalent in China. Appointments     doctor scheduling may be effective ways to cope with
+could be patient demand-orientated and doctor-orientated.       waiting time.
+Hospitals should not expect 100 % of outpatients to use
+the appointment system, or expect 100% of appointed                                      REFERENCES
+patients to honor their appointment time.25 However, with
+time, walk-in patients would be inclined to use the system      1.   Bamgboye EA, Jarallah JS. Long-waiting outpatients: target
+when they were made aware of the fact that appointment               audience for health education. Patient Educ Couns 1994; 23:
+patients spend less time waiting. Non-attendance is not a            49-54.
+big problem, for walk-in patients tend to come earlier.         2.   Matthews FJ, Probert CS, Battcock T, Frisby SD, Chandar M,
+Information on walk-in patients and non-attendance may               Mayberry JF. Are we wasting time in out-patients departments?
+be useful to improve the appointment system.                         Public Health 1991; 105: 239-242.
+                                                                3.   Ashitey GA, Wenapa FK, Belcher DW. Danfa rural health
+The simulation results indicate that demand-oriented                 center: its patients and services 1970–1977. Ghana Med J
+doctor scheduling, according to the various number of                1972; 11: 266-273.
+waiting patients throughout the day, could contribute to        4.   Ajayi IO, Oiumide EA, Oyediran O. Patients satisfaction with
+reducing waiting time. The other solution to reduce                  the services provided at a general outpatients’ clinic, Ibadan,
+waiting time lies in the idea of flexible scheduling of              oyostate, Nigeria. Afr J Med Med Sci 2005; 34: 133-140.
+doctors’ clinic time. Some hospitals have been scheduling       5.   Lees Y, KasperJD. Assessment of medical care by elderly
+different numbers of doctors on different weekdays                   people: general satisfaction and physician quality. Health Serv
+according to the expected number of patients. This idea              Res 1998; 32: 741-758.
+can also be applied to different working days. These two        6.   Weissmann G. The waiting outpatient. Lancet 1964; 2:
+adjustment measures have different advantages and                    1377-1378.
+limitations. For the introduction of appointment system,        7.   Duncan M, Beale K, Parry J, Miller RA. Outpatient; can we
+the efficiency improvement is very significant if all the            save time and reduce waiting lists? Br Med J 1988; 296:
+patients keep their appointment, but it relies on the                1247-1248.
+
+580                                                                                                        Chin Med J 2010;123(5):574-580
+
+8.    Robert BF, John DT. Patients’ waiting time and doctors’ idle            single-point-of-entry multidisciplinary outpatient cardiology
+      time in the outpatient setting. Health Serv Res 1966; 1: 66-90.         consultation program on wait times in Canada. Can J Cardiol
+9.    Su S, Shih CL. Managing a mixed-registration-type                       2009; 25: 697-702.
+      appointment system in outpatient clinics. Int J Med Inform        18.   Wu Y, Zhang Y, Li YQ, Hong BL, Huang CX. Factors
+      2002; 70: 31-40.                                                        associated with the extent of care-seeking delay for patients
+10.   Shea AM, Curtis LH, Hammill BG, DiMartino LD, Abernethy                 with acute myocardial infarction in Beijing. Chin Med J 2004;
+      AP, Schulman KA. Association between the medicare                       117: 1772-1777.
+      modernization act of 2003 and patient wait times and travel       19.   Kim YK, Song KE, Lee WK. Reducing patient waiting time
+      distance for chemotherapy. JAMA 2008; 300: 189-196.                     for the outpatient phlebotomy service using six sigma. Korean
+11.   Xie J, Wang J, Yang H. Hypertension control improved                    J Lab Med 2009; 29: 171-177.
+      through patient education. Chinese PEP Investigators. Chin        20.   Williams ME, Latta J, Conversano P. Eliminating the wait for
+      Med J 1998; 111: 581-584.                                               mental health services. J Behav Health Serv Res 2008; 35:
+12.   Zhang Q, Zhang RY, Qiu JP, Jin HG, Zhang JF, Wang XL, et al.            107-114.
+      Impact of different clinical pathways on outcomes of patients     21.   Slowiak JM, Huitema BE, Dickinson AM. Reducing wait time
+      with acute ST-segment elevation myocardial infarction                   in a hospital pharmacy to promote customer service. Qual
+      undergoing primary percutaneous coronary intervention: the              Manag Health Care 2008; 17: 112-127.
+      RAPID-AMI study. Chin Med J 2009; 122: 636-642.                   22.   Okotie OT, Patel N, Gonzalez CM. The effect of patient
+13.   Chand S, Moskowitz H, Norris JB, Shade S, Willis DR.                    arrival time on overall wait time and utilization of physician
+      Improving patient flow at an outpatient clinic: study of                and examination room resources in the outpatient urology
+      sources of variability and improvement factors. Health Care             clinic. Adv Urol 2008; 2008: 507436.
+      Manag Sci 2009; 12: 325-340.                                      23.   Cipriano LE, Chesworth BM, Anderson CK, Zaric GS. An
+14.   Su HY, Sykes PH, Su HY, Sykes PH. Waiting times for                     evaluation of strategies to reduce waiting times for total joint
+      gynaecological cancer surgery. N Z Med J 2009; 122: 26-33.              replacement in Ontario. Med Care 2008; 46: 1177-1183.
+15.   Kawakami J, Hopman WM, Smith-Tryon R, Siemens DR.                 24.   Mariotti G, Meggio A, de Pretis G, Gentilini M. Improving the
+      Measurement of surgical wait times in a universal health care           appropriateness of referrals and waiting times for endoscopic
+      system. Can Urol Assoc J 2008; 2: 597-603.                              procedures. J Health Serv Res Policy 2008; 13: 146-151.
+16.   Aboumater HJ, Winner LE, Davis RO, Trovitch PB, Berg MM,          25.   López Martínez P, Algarín H, Beauchamp VE, Lugo C, Ortiz
+      Violette KM, et al. No time to waste: decreasing patient wait           C, Vega M, et al. How do elderly veterans who fail to keep
+      times for chemotherapy administration using automated                   outpatient clinic appointments differ from those who do not. P
+      prioritization in an oncology pharmacy system. Am J Manag               R Health Sci J 1987; 6: 141-146.
+      Care 2008; 14: 309-316.
+17.   Bungard TJ, Smigorowsky MJ, Lalonde LD, Hogan T,
+      Doliszny KM, Gebreyesus G, et al. Cardiac EASE (Ensuring                                             (Received October 27, 2009)
+      Access and Speedy Evaluation) — the impact of a                                                              Edited by SUN Jing
+

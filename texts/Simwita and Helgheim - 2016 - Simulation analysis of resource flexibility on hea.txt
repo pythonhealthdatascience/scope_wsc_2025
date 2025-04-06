@@ -1,0 +1,689 @@
+                                                                                     Journal of Multidisciplinary Healthcare                                                                                                                                                                        Dovepress
+                                                                                                                                                                                                                                                         open access to scientific and medical research
+
+
+                                                                                         Open Access Full Text Article                                                                                                                                      ORIGINAL RESEARCH
+
+                                                                                     Simulation analysis of resource flexibility on
+                                                                                     healthcare processes
+
+                                                                                                                                  This article was published in the following Dove Press journal:
+Journal of Multidisciplinary Healthcare downloaded from https://www.dovepress.com/
+
+
+
+
+                                                                                                                                  Journal of Multidisciplinary Healthcare
+                                                                                                                                  13 October 2016
+                                                                                                                                  Number of times this article has been viewed
+
+
+
+                                                                                     Yusta W Simwita                              Purpose: This paper uses discrete event simulation to explore the best resource flexibility
+                                                                                     Berit I Helgheim                             scenario and examine the effect of implementing resource flexibility on different stages of
+                                                                                                                                  patient treatment process. Specifically we investigate the effect of resource flexibility on patient
+                                                                                     Department of Logistics, Molde
+                                                                                     University College, Molde, Norway            waiting time and throughput in an orthopedic care process. We further seek to explore on how
+                                For personal use only.
+
+
+
+
+                                                                                                                                  implementation of resource flexibility on patient treatment processes affects patient access to
+                                                                                                                                  healthcare services. We focus on two resources, namely, orthopedic surgeon and operating room.
+                                                                                                                                  Methods: The observational approach was used to collect process data. The developed model
+                                                                                                                                  was validated by comparing the simulation output with actual patient data collected from
+                                                                                                                                  the studied orthopedic care process. We developed different scenarios to identify the best
+                                                                                                                                  resource flexibility scenario and explore the effect of resource flexibility on patient waiting
+                                                                                                                                  time, throughput, and future changes in demand. The developed scenarios focused on creat-
+                                                                                                                                  ing flexibility on service capacity of this care process by altering the amount of additional
+                                                                                                                                  human resource capacity at different stages of patient care process and extending the use of
+                                                                                                                                  operating room capacity.
+                                                                                                                                  Results: The study found that resource flexibility can improve responsiveness to patient demand
+                                                                                                                                  in the treatment process. Testing different scenarios showed that the introduction of resource
+                                                                                                                                  flexibility reduces patient waiting time and improves throughput. The simulation results show
+                                                                                                                                  that patient access to health services can be improved by implementing resource flexibility at
+                                                                                                                                  different stages of the patient treatment process.
+                                                                                                                                  Conclusion: This study contributes to the current health care literature by explaining how
+                                                                                                                                  implementing resource flexibility at different stages of patient care processes can improve ability
+                                                                                                                                  to respond to increasing patients demands. This study was limited to a single patient process;
+                                                                                                                                  studies focusing on additional processes are recommended.
+                                                                                                                                  Keywords: agile strategy, waiting time, throughput, patient access, responsiveness
+
+
+                                                                                                                                  Introduction
+                                                                                                                                  Over the last twenty years healthcare industry has experienced significant changes,
+                                                                                                                                  with patient demands changing at an ever increasing speed.1–3 These changes require
+                                                                                                                                  greater flexibility at different stages of patient care processes, which can increase the
+                                                                                                                                  ability to respond quickly to changes in patient demands and needs.4–7 A new process
+                                                                                                                                  improvement technique – agile, has been proposed as a key strategy that can be used
+                                                                                     Correspondence: Yusta W Simwita
+                                                                                     Department of Logistics, Molde
+                                                                                                                                  to improve healthcare processes.8 Flexibility is a key characteristic of the agile strat-
+                                                                                     University College, Britvegen 2, 6410        egy and is needed in order to achieve prompt responses to rapidly changing demands
+                                                                                     Molde, Norway
+                                                                                                                                  and requirements from patients. Flexibility in patient care processes enhances care
+                                                                                     Tel +47 7119 5785
+                                                                                     Email simwita2009@gmail.com                  providers to handle unique patient demands and needs.5,9
+
+                                                                                     submit your manuscript | www.dovepress.com   Journal of Multidisciplinary Healthcare 2016:9 519–528                                                                                                                                      519
+                                                                                     Dovepress                                                           © 2016 Simwita and Helgheim. This work is published and licensed by Dove Medical Press Limited. The full terms of this license are available at https://www.dovepress.com/terms.
+                                                                                     http://dx.doi.org/10.2147/JMDH.S112713
+                                                                                                                                                         php and incorporate the Creative Commons Attribution – Non Commercial (unported, v3.0) License (http://creativecommons.org/licenses/by-nc/3.0/). By accessing the work
+                                                                                                                                  you hereby accept the Terms. Non-commercial uses of the work are permitted without any further permission from Dove Medical Press Limited, provided the work is properly attributed. For
+                                                                                                                                  permission for commercial use of this work, please see paragraphs 4.2 and 5 of our Terms (https://www.dovepress.com/terms.php).
+
+                                   Simwita and Helgheim                                                                                                           Dovepress
+
+
+                                       Despite the fact that the agile strategy has been proposed            The key objective of agile strategy is to enhance flex-
+                                   as a strategy for improving health care processes, its adoption       ibility in care processes in order to respond to the needs of
+                                   in this field is still at an embryonic stage. Little empirical        increasingly demanding patients.5 Working with flexible
+                                   research exists in the health care literature exploring the           capacity is the key component of an agile strategy to enhance
+                                   effect of agile strategy on healthcare processes. In general          reduced throughput time and increased response speed. Flex-
+                                   agile has been widely studied as a company-wide strategy              ible capacity requires high availability of extra personnel or
+                                   leading to limited research of agility at a process level.5,8,10,11   other resources required to perform processes in a timely
+                                   Also, most existing studies focus on creating flexibility on a        manner, regardless of the volume of real demand. The main
+                                   single resource such as human resource or facility resource           advantage of this approach is that adjacent steps in the pro-
+                                   (eg, operating room), thus lacking a holistic view of the pro-        cess receive reliable deliveries, ie, on-time deliveries. This
+                                   cess.4,12,13 In order to facilitate increased patient response for    reduces throughput time and increases access to services.2,5
+                                   the entire care process, from when patient arrives to the point           In this paper, resource flexibility is defined as “the ability
+                                   of discharge, flexibility on both human resource and facility         to dynamically reallocate units of resource from one stage
+                                   resource is vital.12 This study aims to fill part of this gap by      of production process to another in response to shifting
+                                   exploring the effect of creating flexibility on service capacity      bottlenecks”.4 To supplement this definition, literature points
+                                   of this care process by focusing on two critical resources,           out that resource flexibility can further be created by the
+                                   namely, orthopedic surgeons and operating room capacity.              ability to alter amount of resource or ability to extend the
+                                       This objective will be accomplished by using discrete-            use of a resource.7 Drawing from this description, resource
+                                   event simulation to explore the improvements that can be              flexibility in this study is created through altering amount of
+                                   achieved by deploying resource flexibility on different stages        resource capacity or extending the use of resource capacity
+                                   of patient treatment processes. The specific objective of this        at different stages of patient care process. When each unit
+                                   paper is two-fold: first, to explore the best resource flexibil-      of a resource can be allocated to any stage of the production
+                                   ity scenario and to investigate the effects of implementing           process, it leads to substantial improvements in operational
+                                   resource flexibility on patient waiting time and throughput           performance. The literature further asserts that resource
+                                   and, second, to explore how implementation of resource                flexibility positively and significantly contributes to agile
+                                   flexibility on different stages of patient treatment processes        process improvements.4,18
+                                   affects patient access to health care services. To achieve this           Despite the fact that the agile strategy has received the
+                                   objective, the following question will be addressed: how is           attention of many health care scholars, limited empirical
+                                   process outcome affected by resource flexibility? Here, pro-          research has been conducted to explore the possibility of
+                                   cess outcome is described in terms of process performance             applying this strategy in health care.10 Aronsson et al5 con-
+                                   measures: patient throughput and waiting time.                        ducted a study in a Swedish health care setting to explore
+                                       The rest of this paper is organized as follows: the second        the link between the agile strategy and health care supply
+                                   section presents a literature review while the third section          chain performance. By focusing on how lean and agile can
+                                   presents material and methods. The fourth section presents            be used as process strategies, they pointed out that the key
+                                   the simulation results from the scenario testing and model-           requirement in health care today is about organizing for
+                                   ing. The fifth section presents a discussion of the simulation        quick response and flexibility at the system level. Olsson and
+                                   results, followed by the conclusion section.                          Aronsson7 conducted a study in a Swedish hospital to iden-
+                                                                                                         tify strategies for different actions used in patient treatment.
+                                   Literature review                                                     They noted that the hospital’s agile actions were reactive and
+                                   The origin of the agile strategy can be traced back to the agil-      lacking in proactive measures. They found very few actions
+                                   ity forum of a group of scholars at Iacocca Institute, Lehigh         that directly managed external variation. In the current study,
+                                   University, in 1991.14 Agility was introduced as the response to      agile is used as a process improvement strategy whereby the
+                                   increasing business turbulence and uncertainties.15 Agility is a      main objective is to explore entire patient treatment process
+                                   multidimensional concept, hence several definitions have been         and to examine the effect of resource flexibility in different
+                                   offered since its conception. However all the definitions still       stages of patient treatment process. This study will focus
+                                   remain within the same theme of increasing responsiveness             on creating flexibility on the service capacity of this care
+                                   and flexibility to increasing uncertain customer demands.16           process by altering the amount of human resource capacity
+                                   In this paper agile is defined as the ability of being customer       at different stages of care process and extending the use of
+                                   responsive and mastering increasing demand changes.17                 operating room capacity.
+
+                                   520       submit your manuscript | www.dovepress.com                                          Journal of Multidisciplinary Healthcare 2016:9
+                                             Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Dovepress                                                                                        Simulation analysis of resource flexibility
+
+
+                                   Simulation in health care processes                                Kagera, Mara, Geita, Simiyu, and Shinyanga. In general,
+                                   Due to the complexity and uncertainty of the health care           this hospital serves a population of approximately 13 million.
+                                   process, simulation has become the most important tool in                Globally road traffic injuries are a growing concern
+                                   analyzing and evaluating the responses of systems under vari-      that put much pressure on healthcare providers on how to
+                                   ous scenarios. It has proven its viability and capability as a     meet increasing surgical demand.26 This is the same chal-
+                                   powerful technique and method in exploring ­resource-driven        lenge experienced by the Bugando orthopedic department.
+                                   processes.19–21 This has led to a number of simulation studies     It is faced with increasing surgical demand for orthopedic
+                                   on care processes.                                                 services. This is to a large extent associated by the increase
+                                       Weerawat et al22 deployed discrete-event simulation to         of road traffic injuries, frequently caused by motorcyclists
+                                   estimate the capability and service level of an orthopedic         across the region and Tanzania as a whole. One recent study
+                                   outpatient clinic. They found that allocating the availability     at this hospital reported that road traffic injuries contributed
+                                   of critical resources over an extended time span by employing      up to 68.5% of orthopedic cases. This trend is expected to
+                                   a flexible work schedule on the basis of patient demand can        continue unless critical measures are taken.27 The increasing
+                                   increase system efficiency. They developed a strategy that can     demand has led to high crowding and excessive waiting times
+                                   be used to match patient demand with resources. Rau et al23        and lists for orthopedic patients visiting this department.
+                                   constructed a discrete-event simulation model to explore the       Existing surgeons and operating room capacity are the main
+                                   bottlenecks of the operations in the physical therapy room.        constraints in this care process. Creating flexibility in these
+                                   They further discussed the impact of pooling resources on          critical resources is of paramount importance in order to
+                                   clinic efficiency, which they noted increases flexibility in       increase patient access to care at this clinic.
+                                   critical resource schedules. Baril et al24 studied the relation-
+                                   ships and interactions between patient flows, resource capaci-     Orthopedic department resources
+                                   ties, and appointment scheduling rules in order to improve         The hospital under study has four specialized orthopedic
+                                   an outpatient orthopedic clinic. They found that to achieve        surgeons and five operating theatres that serve the entire
+                                   this, the clinic’s performance, resources, and appointment         hospital community of 13 million people. The orthopedic
+                                   scheduling rules must be applied to different patient flows.       department has only been allocated two operating rooms
+                                   Duguay and Chetouane25 deployed discrete-event simulation          out of the existing five. Two orthopedic surgeons per day
+                                   in an emergency department to reduce patient waiting times         perform operations on Mondays, Wednesdays, and Fridays.
+                                   and to improve service delivery and throughput. They devel-        The total capacity for the three allocated days in the o­ perating
+                                   oped a linkage between patient waiting time and resource           theatre is equivalent to six rooms per week. At the clinic,
+                                   availability, and found that matching critical resources with      two orthopedic surgeons per day attend to patients on Tues-
+                                   patient demand reduces patient waiting time.                       days and Wednesdays. Other resources at the clinic include
+                                       This paper focuses on using discrete event simulation to       three nurses who take patients to surgeons for examination.
+                                   explore orthopedic care process and propose resource flex-         Bugando Hospital also has a central laboratory and an X-ray
+                                   ibility scenarios that can be used to reduce patient waiting       section, which serve the entire hospital community.
+                                   time and improve patient throughput. Further discrete event
+                                   simulation will be used to explore how the best scenario can       Describing clinical operations
+                                   accommodate future increasing demand.                              As part of the process exploration, and before mapping this
+                                                                                                      process, we held interviews with hospital management teams,
+                                   Material and methods                                               surgeons, and heads of departments related to orthopedic care
+                                   Bugando Orthopedic Clinic as empirical                             (laboratory, X-ray, registrations, and the orthopedic ward).
+                                   evidence                                                           Model credibility and validity was ensured by involving
+                                   The Bugando Medical Centre (BMC) is one of the four teach-         key surgeons at the orthopedic clinic and the head of the
+                                   ing and consultant hospitals in Tanzania. It serves primarily      operating rooms during the conceptual model development.
+                                   the Lake and Western zones of the United Republic of Tanza-        Further insight into the orthopedic care process was obtained
+                                   nia. The BMC is situated along the shores of Lake Victoria in      by holding discussions with nurses and patients at the clinic.
+                                   Mwanza City. This 900-bed hospital has approximately 1,000         The entire orthopedic care process is described below.
+                                   employees. The BMC is a referral center for tertiary special-          Upon arrival at the hospital, patients register with
+                                   ist care serving eight regions: Mwanza, Tabora, Kigoma,            the registration department. They usually arrive at the
+
+
+                                   Journal of Multidisciplinary Healthcare 2016:9                                                submit your manuscript | www.dovepress.com
+                                                                                                                                                                              521
+                                                                                                                                                              Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Simwita and Helgheim                                                                                                                               Dovepress
+
+
+                                                                                Patient                                            Nurse                                    Surgeon
+                                                                                                                Wait                                     Wait             examination
+                                                                             registration at                                       escort
+                                                      Wait
+                                                                              registration
+                                                                              department
+
+                                             Patient
+                                          arrives at the                                                                                                              Surgery
+                                             hospital                                                                                                                 decision
+                                                                                                                                                  No
+                                                                                                                                                                   No
+                                                                                                                                                                                        Yes
+
+                                                                                                                                  First visit             Discharged
+                                                                                                                 Patient
+                                                                                                                                                                                 Patient
+                                                                                                                waiting for
+                                                                                                                                                       Yes                       surgery
+                                                                                                                 results
+                                                                                                                                                                                 process
+                                                   Patient
+                                               collects results                                                                        Radiology or
+                                                                                                                                    laboratory patient
+                                                                                                                                       examination
+
+
+                                                                                             Radiology or                                                                  Recovery
+                                                                                                                                      Patient
+                                                                                           laboratory results                                                              process
+                                                                                                                                    leaves OR
+                                                                                                 ready
+
+                                   Figure 1 Current process in the orthopedic department.
+                                   Abbreviation: OR, operating room.
+
+
+
+                                   r­egistration department from approximately 6 am even                               Table 1 Simulation model input based on current orthopedic
+                                    though registration starts at 7 am and clinical services                           care process (minutes)
+                                    start at 8 am. Consequently, most patients arrive at the                           Process              Distribution (minutes)         Resources
+
+                                    clinic before the start of clinical services and must wait                         Patient arrivals     0.5+ EXPO (2.62a)
+                                                                                                                       Registration         5.5+ GAMM (1.97, 4.73)         Clerks
+                                    for the start of the clinical session, including the arrival of
+                                                                                                                       Nurse escort         1.5+ WEIB (3.59, 1.49)         Nurse
+                                    surgeons. Even though there is no clear reason as to why                           First examination    3.5+ WEIB (15.4, 1.74)         Surgeons
+                                    some patients tend to arrive before the start of registra-                         Second               3.5+ ERLA (2.66, 4)            Surgeons
+                                    tion and clinical services, it is most likely due to the high                      examination
+                                    number of patients attending registration and clinic per                           X-ray                13.5+ WEIB (3.79, 2.15)        X-ray technician
+                                                                                                                       Laboratory           NORM (25.4, 2.98)              Laboratory technician
+                                    day. Thus, some patients would like to arrive early so that                        Surgery                                             Surgeons
+                                                                                                                                            10+ GAMM (46.9, 1.34)
+                                    they can be among the first patients in the registration and                       Recovery             4.5+14× BETA (2.42, 1.65)      Operating room
+                                    treatment queues. Surgeons occasionally delay their arrival                                                                            personnel
+                                    at the clinic by 15–45 minutes after the clinic has opened                         Note: aMean.
+                                                                                                                       Abbreviations: EXPO, exponential; GAMM, gamma; WEIB, Weibull; ERLA, Erlang;
+                                    because of other tasks/obligations in the hospital. When                           NORM, normal.
+                                    surgeons arrive, examination services begin, and patients
+                                    are escorted by nurses to the examination rooms. During
+                                    the first examinations, surgeons normally order ancillary                          Data collection and analysis
+                                    tests such as X-ray or laboratory tests. Patients requiring                        This study was approved by the Research and Ethics commit-
+                                    the ordered tests will then undergo their respective tests,                        tee of the Catholic University of Health and Allied Sciences
+                                    which can be X-ray or laboratory tests. When ancillary                             and Bugando Medical Centre. Patient written consent was not
+                                    test results are ready, patients take their results back to the                    considered necessary by the committee as this was a process
+                                    nurse, who then takes the results to the surgeon for further                       improvement study and no medical or personal information
+                                    diagnosis. After a second examination, a patient is either                         was taken from the patients. Data collection was anonymous.
+                                    discharged or transferred for surgery. Conceptual model of                         This study is based on the interviews and observational data
+                                    the studied orthopedic care process that was translated into                       from the orthopedic clinic from June 2012 to August 2012.
+                                    the computer simulation model (Figure 1).                                          We followed patient from arrival at the registration ­department
+
+
+
+                                   522        submit your manuscript | www.dovepress.com                                                           Journal of Multidisciplinary Healthcare 2016:9
+                                              Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Dovepress                                                                                        Simulation analysis of resource flexibility
+
+
+                                   to the point of discharge. For data collection process we used           The simulation model was then developed within the
+                                   stopwatches and structured data sheets whereby each column           aforementioned assumptions and ran for 100 independent
+                                   represented either waiting or assessment time of the observed        replications and the system was reinitialized between rep-
+                                   patient activity. The time recorded includes waiting time and        lication. In this model each replication stands for a single
+                                   service time during registration, examination at the clinic          day of orthopedic care delivery at this clinic. The normal
+                                   by the surgeon, the surgical process, recovery, X-rays, and          operation of the studied clinic is from 8 am to 4 pm, however,
+                                   laboratory tests. Based on the observations, an average of 35        we simulated the model for 9 hours because during the data
+                                   patients attend the clinic per day, of which 20% undergo the         collection process the clinic usually closed at 5 pm. Patients
+                                   entire process up to surgery, while 80% are discharged. During       in this care process are examined based on first-in, first-out
+                                   the data collection period, 178 patients underwent the entire        service discipline. Likewise, in the simulation model patients
+                                   process from arrival, to surgery, to discharge.                      were also served using the same first-in, first-out queuing
+                                       We followed all necessary steps to perform the analysis of       discipline. Patient arrivals were generated based on the
+                                   the collected data for distribution fitting. We used scatter plots   observed schedule of the two allocated clinic days. Also, in
+                                   and linear correlation techniques to assess data independence.       the surgical room, the model simulates based on the schedule
+                                   Furthermore, we used summary statistics, histograms, and             of the observed three allocated surgical days.
+                                   box plot techniques to hypothesize the families of distribu-
+                                   tion. After identifying the distribution, we used a chi square       Model verification and validation
+                                   test to determine the representativeness of the fitted distri-       Model verification is a key step used to ensure that the
+                                   bution.28 Thus, chi square tests for goodness-of-fit led to the      conceptual model is well reflected in the simulation and
+                                   selection of the final distribution. Discrete event simulation       the model is running free of errors.30 To meet this require-
+                                   was used as the main methodology for this study. Addition-           ment we verified simulation model using Arena debugging
+                                   ally the model was developed using Arena (Version 13.0). We          tools and animation, and the model was running correctly.
+                                   used the Arena input analyzer to generate the parameters of          We took the following measures to validate the model:
+                                   the selected distribution, which were used in the simulation         firstly, we maintained high face validity of the model by
+                                   model. Table 1 shows the selected distribution.                      involving key orthopedic specialist surgeons and the head
+                                                                                                        of the operating theatre in the model’s development. The
+                                   Model development and assumptions                                    head of the operating room was also involved in the data
+                                   It is impossible to replicate complex health care delivery           collection process inside the operating room. Further, two
+                                   systems that involve human behavior and decisions in a               performance measures were used for validation: patient
+                                   simulation model.29 Thus, we made a number of assumptions            waiting time at the clinic and patient throughput per day in
+                                   that guided simulation model development. First, our study           the surgical room. Throughput was measured as the number
+                                   considers the operational system only between 6 am and 4 pm          of patients undergoing surgery per day. The average patient
+                                   because patients begin to arrive from 6 am. Second, the main         waiting time for a surgeon at the clinic was 2.8 hours, at a
+                                   objective of this study is to explore the entire patient treatment   95% confidence interval. This is not very different from the
+                                   process, thus it focused on patients who underwent the entire        observed patient waiting time for a surgeon: 2.4 hours. The
+                                   process from arrival to discharge after surgery. Third, based        average throughput based on observation was 7.3 while the
+                                   on the second assumption, decisions on whether surgery               average throughput based on the simulation, with a 95%
+                                   is needed are made only after the second examination (ie,            confidence interval, was 5. To increase model validation we
+                                   after surgeons receive the ordered X-ray and laboratory test         run the simulation model using the actual patients arrivals
+                                   results). Fourth, resources are available to orthopedic patients     instead of sampling from a selected exponential distribution,
+                                   for the two clinical and three allocated surgical days. Fifth,       and the same results were obtained.
+                                   this study assumes that the second examination queue has                 The major difference between simulation output and
+                                   priority over the first examination queue. The model limita-         observed data was found on waiting time for second exami-
+                                   tions were based on the following grounds: transfer times            nation at the clinic. The average waiting time from the simu-
+                                   (transport times) within the orthopedic department were not          lation model is 0.14 hours while based on the real data the
+                                   taken into consideration because the main focus of this study        average waiting time is 0.8 hours. This is probably because in
+                                   was the orthopedic department, particularly the interaction          the simulation model second visit patients were given prior-
+                                   between specialist surgeons and patients.                            ity over the first ­examination patients. Thus, in the model,
+
+
+                                   Journal of Multidisciplinary Healthcare 2016:9                                                submit your manuscript | www.dovepress.com
+                                                                                                                                                                              523
+                                                                                                                                                              Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Simwita and Helgheim                                                                                                                      Dovepress
+
+                                   Table 2 Scenarios and their corresponding resource changes                       Table 3 Simulation results according to scenario
+                                                  Additional          Additional          Extended use of the                                 Examination waiting          Throughput
+                                                  staff at the        staff in the        operating room by one                               time (hours)                 (number of
+                                                  clinic              operating           hour and a 10% increase                                                          patients)
+                                                                      room                in daily surgeries
+                                                                                                                    Base scenario             2.83                         5
+                                   Scenario 1     1                   0                   1                         Base scenario with        2.83                         7.56
+                                   Scenario 2     0                   1                   1                         1-hour increase in
+                                   Scenario 3     1                   1                   1                         operating room and
+                                   Scenario 4     1                   2                   1                         10% surgery increase
+                                   Scenario 5     2                   1                   1                         Scenario 1                1.47                         9.16
+                                                                                                                    Scenario 2                2.83                         7.56
+                                                                                                                    Scenario 3                1.47                         9.16
+                                   patients bringing their ancillary results for second examina-                    Scenario 4                1.47                         9.16
+                                   tion were always given first priority in the queue over the first                Scenario 5                0.77                         9.71
+                                   examination patients. Normally, patients with an ancillary test
+                                   coming for second examination are always preceded by other
+                                   patients in the queue. Despite this discrepancy the model is                     form of sharing these resources between the orthopedic clinic
+                                   considered valid because other performance measures such                         and operating room. To create flexibility that can increase the
+                                   as first waiting time, throughput, and surgeons utilization are                  speed of response in the operating room, we extended the use
+                                   close to the actual collected data.                                              of the operating room’s capacity by assuming that the surgical
+                                                                                                                    process starts 1 hour earlier. Based on discussions with depart-
+                                   Proposed resource flexibility scenario                                           ment personnel on current operating room capacity, we further
+                                   As stated previously, this department is facing increasing surgi-                suggested a 10% increase in daily surgeries. The extended
+                                   cal demand which is accompanied by constraint on surgeons                        operating room capacity will increase flexibility on this process
+                                   and operating room capacity. Thus, our proposal aimed at                         by allowing surgery process to start earlier than before. This in
+                                   exploring the entire orthopedic care process from when patient                   turn will increase patient throughput at this resource. Several
+                                   arrives to the point of discharge, and proposing the resource                    scenarios were developed, as presented in Table 2.
+                                   flexibility scenario that can be used to increase the speed of                       Using simulations, we explored the best resource flex-
+                                   responding to the current growing patient demand at this clinic.                 ibility scenario and explored its effect on the patient care
+                                   Based on the observation of this process during data collection,                 process. For simulation purposes, we assumed that addi-
+                                   we suggest implementation of resource flexibility by changing                    tional mid-level health workers are involved in the surgeons’
+                                   the care procedure from using not only specialist surgeons at                    treatment process because this proposal has not yet been
+                                   the clinic and surgical room but also utilizing mid-level health                 implemented. That is, data for mid-level health workers care
+                                   workers or nonclinician physicians.31,32 These resources are                     protocol is absent.
+                                   cross-trained to increase care capacity and usually perform                          From the queuing theory perspective, additional mid-level
+                                   multiple tasks, including internal medicine, minor surgery,                      staff and surgeons are considered as parallel multiple servers
+                                   gynecology, and obstetrics.33 They may be assigned to more                       and are assumed to have common service time distributions.34
+                                   routine parts of the orthopedic process in order to take care                    Thus, we make the following assumptions: 1) mid-level staff
+                                   of simple treatments such as closing and cleaning wounds or                      and surgeons maintain the same examination and surgery
+                                   minor surgery. This care procedure will increase flexibility in                  time distributions; 2) patients enter examination and surgery
+                                   orthopedic care process since simple cases will be dedicated to                  through common queues based on first-in first-out discipline;
+                                   mid-level health workers. This will release capacity to surgeons                 3) the service systems have identical and multiple servers.34,35
+                                   to deal with complex cases. Using mid-level health workers                            We know that the current protocol involves orthopedic cases
+                                   for routine and simple cases and surgeons for more complex                       which were treated by surgeons, but since the main focus is to
+                                   cases will increase the speed of response to the increasing                      know the impact of these additional resources before actual
+                                   patient demands. This will lead to reductions in patient delays                  implementation, we believe that the results based on these
+                                   and increased access to health services.                                         assumptions are still relevant for practical decision making.
+                                       We propose that flexibility can be achieved by reallocat-                        Patient waiting time is a key indicator of health care
+                                   ing these units of resources from one stage of the orthopedic                    accessibility. We thus used this as a benchmark for releas-
+                                   care process to another in order to increase the response to the                 ing these resources by assuming that when patient waiting
+                                   ever-increasing patient demand at this clinic,4 specifically in the              time is less than 2 hours, these resources should be released.
+
+                                   524       submit your manuscript | www.dovepress.com                                                     Journal of Multidisciplinary Healthcare 2016:9
+                                             Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Dovepress                                                                                                                                                     Simulation analysis of resource flexibility
+
+                                                              16.0
+                                                              15.0
+                                   Daily patient throughput (n)
+                                                              14.0
+                                                              13.0
+                                                              12.0
+                                                              11.0
+                                                              10.0
+                                                               9.0
+                                                               8.0
+                                                               7.0
+                                                               6.0
+                                                               5.0
+                                                               4.0
+                                                               3.0
+                                                               2.0
+                                                               1.0
+                                                                                                       o                         1                           2                       3                     4                             5
+                                                                                                 ari                       rio                         rio                     rio                   rio                           rio
+                                                                                            c en                       ena                     e     na                   ena                   ena                           e  na
+                                                                                        ses                         Sc                      Sc                         Sc                    Sc                            Sc
+                                                                                   Ba
+                                                                               Best scenario
+
+                                   Figure 2 Daily throughput according to scenario.
+                                   Note: Black lines represent insignificant scenarios and the significant scenario is represented in red.
+
+
+                                                                                        7.0
+                                                                                        6.0
+                                                                  Examination waiting
+
+
+
+
+                                                                                        5.0
+                                                                     time (hours)
+
+
+
+
+                                                                                        4.0
+                                                                                        3.0
+                                                                                        2.0
+                                                                                        1.0
+                                                                                        0.0
+                                                                                                                o                    o1                      o2                  o3                 o4                         o5
+                                                                                                             ari                 ari                      ari                 ari              ari                         ari
+                                                                                                      c    en                   n                    n                     n                 n                            n
+                                                                                                   es                      S ce                  Sce                  S ce               Sce                         S ce
+                                                                                                s
+                                                                                            Ba
+                                                                                Best scenario
+                                   Figure 3 Examination queue waiting time according to scenario.
+                                   Note: Black lines represent insignificant scenarios and the significant scenario is represented in red.
+
+
+                                   Table 4 Evaluating process characteristics when demand changes                                                                 implementing resource flexibility. It was also used to explore
+                                   along with corresponding waiting time (hours)                                                                                  how implementation of resource flexibility affects patient
+                                                                                                   Base scenario       Best scenario      Best scenario           access to healthcare services. Table 3 presents simulation
+                                                                                                   demand              (scenario 5)       with 84%
+                                                                                                                                                                  results of the base and six proposed scenarios. The most
+                                                                                                   declining by                           demand
+                                                                                                   26.3%                                  increase                significant scenario (scenario 5) shows improvements in
+                                   Patient                                                         2.01                0.77               1.9                     waiting time by 72.7% and throughput by 94%.
+                                   waiting time                                                                                                                       We used box plots and whisker charts to find statistically
+                                   Throughput                                                      5                   9.71               14.4                    significant scenarios at a 95% confidence interval in patient
+                                   (patients, n)
+                                                                                                                                                                  waiting time and throughput. Figures 2 and 3 present the
+                                                                                                                                                                  results, with red indicating a 95% chance of a best scenario.
+                                                                                                                                                                      The simulation result indicates that if current demand
+                                   Specifically, we explored the extent to which current demand
+                                                                                                                                                                  declines by 26.3% (see Table 4); it can be accommodated
+                                   can decline so that a patient waits a maximum of 2 hours. We
+                                                                                                                                                                  with current resources without patients waiting more than 2
+                                   further explored to what extent can these additional resources
+                                                                                                                                                                  hours. These additional resources can thus be used for other
+                                   accommodate future increases in demand without patients
+                                                                                                                                                                  clinical purposes. The simulation result further indicates that
+                                   waiting more than 2 hours.
+                                                                                                                                                                  with this flexibility scenario, up to 84% of the increase in
+                                                                                                                                                                  future demand can be accommodated with patients waiting
+                                   Results                                                                                                                        no longer than 2 hours.
+                                   Simulation results
+                                   This section presents the simulation results of the orthopedic                                                                 Discussion
+                                   care process. The simulation model was used to generate the                                                                    This paper explored how resource flexibility affects patient
+                                   best resource flexibility scenario and to exploring the effect of                                                              care process outcome. Specifically, the focus was on
+
+                                   Journal of Multidisciplinary Healthcare 2016:9                                                                                                             submit your manuscript | www.dovepress.com
+                                                                                                                                                                                                                                             525
+                                                                                                                                                                                                                           Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Simwita and Helgheim                                                                                                          Dovepress
+
+
+                                   e­ xploring improvements by deploying resource flexibility in       on how flexibility in these critical resources can improve
+                                    different stages of patient treatment processes. Discrete event    healthcare processes. Thus healthcare providers should focus
+                                    simulation was used to run the base scenario that represents       on adopting such innovative ways in order to improve health-
+                                    orthopedic care process and the proposed six scenarios. The        care processes and enhance increased patient access to care.
+                                    main objective was to ascertain which one is the best scenario.         It is worth noting that, to achieve the intended benefit,
+                                    The simulation results indicate that resource flexibility is       implementation of this proposal should be done with a care-
+                                    more beneficial at process stages with bottleneck resources        ful analysis of mid-level workforce capacity at the hospital.
+                                    and when processing times are dependent on additional              Two options can be used to obtain additional mid-level
+                                    resources. This finding is in line with the literature which       health workers in the orthopedic department. First, additional
+                                    demonstrates that resource flexibility is more beneficial in       ­mid-level health workers in the orthopedic department can be
+                                    areas with bottlenecks.4                                            taken from departments with more mid-level resources or low
+                                        The aim of introducing resource flexibility was to increase     service demand, so that service capacity in those departments
+                                    the speed in responding to orthopedic patient demands on            will not be affected. Second, because training time and cost
+                                    this clinic. The impacts of additional resources on patient         for mid-level health workers is much lower than specialized
+                                    waiting time and throughput at this clinic clearly indicate         surgeons,32 hospital providers can still opt to train more
+                                    that resource flexibility is a key strategy that can be used to     mid-level health workers. Training more mid-level health
+                                    improve healthcare processes. The introduction of a flexible        workers will reduce the effect of moving resources from one
+                                    workforce in the model showed improved throughput and               department to another, eg, some staff may feel overworked.
+                                    a significant reduction in patient waiting time. Improving              It should further be noted that additional resource in
+                                    throughput and decreasing patient waiting time indicate             this proposal has a cost implication, however this proposal
+                                    process improvement in terms of increasing response speed           is still viable and useful for practical purposes. Recently
+                                    to enhance patients’ access to care.                                several studies have suggested that shifting surgical tasks
+                                        We further tested how the best scenario can be used to          from surgeons to lower level staff (eg, clinical officers, non-
+                                    accommodate future demand. The simulation results demon-            physician clinicians) is an effective response to the shortage
+                                    strate that with introduction of resource flexibility, this care    of specialized medical staff in resource constrained settings.
+                                    process would increase rate of response to patient demands.         These studies acknowledged that dedicating tasks to mid-
+                                    The simulation results show that the improved process can           level health workers gives health care providers the ability
+                                    accommodate an increase of up to 84% in demand without              to deliver health care services to a large number of patients
+                                    patients waiting more than 2 hours at the clinic. This find-        at lower training and labor cost.32,37
+                                    ing is consistent with the literature asserting that more than
+                                    80% of orthopedic cases are non-surgical.36 Thus, increasing       Managerial implications
+                                   resource flexibility at the clinic would be more beneficial to      This study provides significant contribution to healthcare
+                                   a greater number of patients, given the fact that most cases        providers regarding the benefit of resource flexibility in
+                                   are non-surgical.                                                   patient care processes.
+                                        From the perspective of healthcare processes, this study           First, the simulation results suggest that the deployment
+                                   has shown that implementation of agile strategy can lead to         of resource flexibility can increase the speed of responding
+                                   improved care processes. The results presented in Table 3           to patient demand, leading to reduced crowding in clinics.
+                                   indicate that resource flexibility can reduce patient crowding      Health care providers should thus consider the possibility
+                                   and waiting time. Introducing resource flexibility created          of using mid-level resources in orthopedic fields. The fact
+                                   conditions for improved patient flows, decreasing response          that mid-level health workers have already performed major
+                                   times in addressing patient needs. In practice, this improve-       surgery in other surgical fields (Beard et al and Gupta et al)32,37
+                                   ment can be translated into increased patient access to care        might be a good indicator that they can manage simple cases
+                                   since the speed of response has increased; more patients can        at the orthopedic level.
+                                   thus be accommodated.                                                   Second, the simulation results of this study have a major
+                                        Worldwide, surgeons and operating rooms are the key con-       implication for healthcare providers aiming to improve
+                                   straint resources in patient care processes. Creating flexibility   healthcare processes. To meet increasing patient demand as
+                                   in these resources is of great importance in order to improve       well as reducing patient delays in care processes, healthcare
+                                   patient access to care. In this study we have demonstrated          managers should start focusing on introducing flexibility in
+
+
+
+                                   526       submit your manuscript | www.dovepress.com                                         Journal of Multidisciplinary Healthcare 2016:9
+                                             Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Dovepress                                                                                              Simulation analysis of resource flexibility
+
+
+                                   different parts of care processes. Retaining resources that can     would further like to express great thanks to associate
+                                   be shifted during different stages of the healthcare produc-        professor Ketil Danielsen of Molde University College for
+                                   tion process can increase the speed of responding to patient        comments on the simulation part.
+                                   needs and demands at the various stages of their treatment.
+                                                                                                       Disclosure
+                                   Conclusion                                                          The authors report no conflicts of interest in this work.
+                                   The results of this study indicate that if this scenario is to be
+                                   implemented, it can potentially improve patient access to care      References
+                                                                                                        1. Ford WE, Scanlon PD. Promise and problems with supply chain man-
+                                   and thereby contribute to reducing morbidity and mortality
+                                                                                                           agement approaches to healthcare purchasing. Health Care Manage
+                                   in orthopedic surgical cases. This paper focuses on showing             Rev. 2007;32(3):192–202.
+                                   the advantage of an agile strategy in the improvement of             2. Tolf S, Nyström ME, Tishelman C, Brommels M, Hansson J. Agile, a
+                                                                                                           guiding principle for health care improvement? Int J Health Care Qual
+                                   healthcare processes, particularly in resource-constraint set-          Assur. 2015;28(5):468–493.
+                                   tings. With the result of simulation modeling on the impact          3. Vissers JM, Bertrand JW, De Vries G. A framework for production
+                                                                                                           control in health care organizations. Production Planning and Control.
+                                   of resource flexibility, we point out that an agile strategy
+                                                                                                           2001;12(6):591–604.
+                                   can improve healthcare processes as well as patient access           4. Daniels RL, Mazzola JB, Shi D. Flow Shop Scheduling with Partial
+                                   to healthcare.                                                          Resource Flexibility. Manage Sci. 2004;50(5):658–669.
+                                                                                                        5. Aronsson H, Abrahamsson M, Spens K. Developing lean and agile health
+                                       This study faces some limitations. First, patient waiting           care supply chains. Supply Chain Management. 2011;16(3):176–183.
+                                   time includes the early arrival of patients before the start of      6. Lillrank P, Groop J, Venesmaa J. Processes, episodes and events in health
+                                                                                                           service supply chains. Supply Chain Management. 2011;16(3):194–201.
+                                   examination services as well as surgeons lateness. If surgeons
+                                                                                                        7. Olsson O, Aronsson H. Managing a variable acute patient flow: categoris-
+                                   could arrive at the start of clinic session patient waiting time        ing the strategies. Supply Chain Management. 2015;20(2):113–127.
+                                   could be decreased. Likewise, if patients could arrive a few         8. Vries J De, Huijsman R. Supply chain management in health services:
+                                                                                                           an overview. Supply Chain Management. 2011;16(3):159–165.
+                                   minutes before the start of the clinical session, this could         9. Christopher M. The agile supply chain competing in volatile markets.
+                                   further decrease their waiting time.                                    Ind Mark Manag. 2000;44:37–44.
+                                       Second, our model was limited to orthopedic treatment           10. Rahimnia F, Moghadasian M. Supply chain leagility in professional
+                                                                                                           services: how to apply decoupling point concept in healthcare deliv-
+                                   processes. Future research can focus on exploring more care             ery system. Supply Chain Management: An International Journal.
+                                   processes and evaluating how efficiently proposed flexible              2010;15(1):80–91.
+                                                                                                       11. Mclaughlin D, Hays JM. Healthcare Operations Management. 1st ed.
+                                   workforce can perform multiple tasks between several clinics            Washington, DC: Foundation of the American College of Healthcare
+                                   as well as the trade-offs involved when trying to introduce             Executives; 2008.
+                                   flexible workforce in multiple care processes.                      12. Pati D, Harvey T, Cason C. Inpatient unit flexibility: design characteris-
+                                                                                                           tics of a successful flexible unit. Environ Behav. 2008;40(2):205–232.
+                                       Lastly, observational data for additional mid-level health      13. Olsson NEO, Hansen GK. Identification of critical factors affecting
+                                   workers are missing, thus our simulation result is based on the         flexibility in hospital construction projects. HERD. 2010;3(2):30–47.
+                                                                                                       14. Ramesh G, Devadasan SR. Literature review on the agile manufacturing
+                                   collected surgeons’ service time data. After implementation             criteria. J Manuf Technol Manag. 2007;18(2):182–201.
+                                   the result may be slightly different because mid-level health       15. Ismail HS, Sharifi H. A balanced approach to building agile supply
+                                   workers will have their own protocol, ie, dealing with minor            chains. Int J Phys Distrib Logist Manag. 2006;36(6):431–444.
+                                                                                                       16. Swafford PM, Ghosh S, Murthy N. The antecedents of supply chain
+                                   and routine orthopedic cases. However, the impact of reduced            agility of a firm: Scale development and model testing. J Oper Manag.
+                                   waiting time and improved patient access to care will still             2006;24(2):170–188.
+                                                                                                       17. van Hoek RI, Harrison A, Christopher M. Measuring agile capabilities
+                                   be relevant. This is because the workload will be distributed           in the supply chain. Int J Oper Prod Manag. 2001;21(1/2):126–148.
+                                   between mid-level staff and surgeons. Hence, surgeon capac-         18. Daniels RL, Mazzola JB, Shi D. Flow shop scheduling with resource
+                                   ity will be freed up and they can focus on more complex                 flexibility. Manage Sci. 1993;50(5):658–669.
+                                                                                                       19. Farrar J, AbouRizk S, Mao X. Generic implementation of lean concepts
+                                   cases. Nevertheless, this limitation calls for further research         in simulation models. Lean Constr J. 2004;1(October 2004):1–23.
+                                   to investigate the impact of additional mid-level staff after       20. Sharma V, Abel J, Al-Hussein M, Lennerts K, Pfründer U. Simulation
+                                                                                                           application for resource allocation in facility management processes
+                                   implementation of this proposal.                                        in hospitals. Facilities. 2007;25(13/14):493–506.
+                                                                                                       21. Barjis J. Healthcare simulation potentials and challenges. Simulation.
+                                   Acknowledgments                                                         2010;86(8–9):459–462.
+                                                                                                       22. Weerawat W, Pichitlamken J, Subsombat P. A generic discrete-event
+                                   The authors would like to thank the management of Bugando               simulation model for outpatient clinics in a large public hospital.
+                                   Hospital for allowing us to collect data for this study. We             J Healthc Eng. 2013;4(2):285–305.
+                                                                                                       23. Rau CL, Tsai PF, Liang SF, et al. Using discrete-event simulation in
+                                   would also like to thank all health care providers for their            strategic capacity planning for an outpatient physical therapy service.
+                                   great help during the data collection period. The authors               Health Care Manag Sci. 2013;16(4):352–365.
+
+
+
+                                   Journal of Multidisciplinary Healthcare 2016:9                                                      submit your manuscript | www.dovepress.com
+                                                                                                                                                                                    527
+                                                                                                                                                                    Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Simwita and Helgheim                                                                                                                                               Dovepress
+
+                                   24. Baril C, Gascon V, Cartier S. Design and analysis of an outpatient                        31. Global Health Workforce Alliance. Mid-level Health Workers for D ­ elivery
+                                       orthopaedic clinic performance with discrete event simulation and                             of Essential Health Services. Geneva: World Health ­Organization; 2013.
+                                       design of experiments. Comput Ind Eng. 2014;78:285–298.                                       Available from: http://www.who.int/workforcealliance/knowledge/
+                                   25. Duguay C, Chetouane F. Modeling and improving emergency                                       resources/mlp2013/en/. Accessed September 25, 2016.
+                                       department systems using discrete event simulation. Simulation.                           32. Beard JH, Oresanya LB, Akoko L, Mwanga A, Mkony CA, Dicker RA.
+                                       2007;83(4):311–320.                                                                           Surgical task-shifting in a low-resource setting: outcomes after major
+                                   26. World Health Organization [reviewed September 2016]. Road traffic                             surgery performed by nonphysician clinicians in Tanzania. World J
+                                       injuries. Available from: http://www.who.int/mediacentre/factsheets/                          Surg. 2014;38(6):1398–1404.
+                                       fs358/en/. Accessed September 9, 2016.                                                    33. Mid-level health workers for delivery of essential health services: Annex
+                                   27. Chalya PL, Dass RM, McHembe MD, et al. Citywide trauma experience                             5. Tanzania. World Health Organization; 2013. Available from: http://
+                                       in Mwanza, Tanzania: a need for urgent intervention. J Trauma Manag                           www.who.int/workforcealliance/knowledge/resources/MLHWCountry-
+                                       Outcomes. 2013;7(1):9.                                                                        CaseStudies_annex5_Tanzania.pdf?ua=1. Accessed February 22, 2016.
+                                   28. Law AM, Kelton WD. Simulation Modeling and Analysis. 3rd ed.                              34. Altiok T, Melamed B. Simulation Modeling and Analysis with Arena.
+                                       New York, NY: McGraw Hill; 2000.                                                              1st Ed. Elsevier Inc. Boston; 2007.
+                                   29. Venkatadri V, Raghavan VA, Kesavakumaran V, Lam SS, Srihari K.                            35. Kim SC, Horowitz I, Young KK, Buckley TA. Analysis of capacity
+                                       Simulation based alternatives for overall process improvement at the                          management of the intensive care unit in a hospital. Eur J Oper Res.
+                                       cardiac catheterization lab. Simul Model Pract Theory. 2011;19(7):                            1999;115(1):36–46.
+                                       1544–1557.                                                                                36. Meer RB van der, Rymaszewski LA, Findlay H, Curran J. Using OR
+                                   30. Ruohonen T, Neittaanmäki P, Teittinen J. Simulation model for i­ mproving                     to support the development of an integrated Musculo-Skeletal service.
+                                       the operation of the emergency department of special health care:                             J Oper Res Soc. 2005;56(2):162–172.
+                                       Proceedings of the 38th Winter simulation conference. IEEE: Computer                      37. Gupta B, Huckman RS, Khanna T. Task shifting in surgery: Lessons
+                                       Society; 2006:453–458.                                                                        from an Indian Heart Hospital. Healthcare. 2015;3(4):245–250.
+
+
+
+
+                                       Journal of Multidisciplinary Healthcare                                                                                                            Dovepress
+                                       Publish your work in this journal
+                                       The Journal of Multidisciplinary Healthcare is an international, peer-                    care processes in general. The journal covers a very wide range of areas and
+                                       reviewed open-access journal that aims to represent and publish research                  welcomes submissions from practitioners at all levels, from all over the world.
+                                       in healthcare areas delivered by practitioners of different disciplines. This             The manuscript management system is completely online and includes a
+                                       includes studies and reviews conducted by multidisciplinary teams as well                 very quick and fair peer-review system. Visit http://www.dovepress.com/
+                                       as research which evaluates the results or conduct of such teams or health                testimonials.php to read real quotes from published authors.
+                                       Submit your manuscript here: https://www.dovepress.com/journal-of-multidisciplinary-healthcare-journal
+
+
+
+
+                                   528         submit your manuscript | www.dovepress.com                                                                       Journal of Multidisciplinary Healthcare 2016:9
+                                               Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+

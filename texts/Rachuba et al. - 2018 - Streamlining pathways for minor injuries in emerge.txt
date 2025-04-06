@@ -1,0 +1,1763 @@
+ORE Open Research Exeter
+
+
+
+
+TITLE
+Streamlining pathways for minor injuries in emergency departments through radiographer-led
+discharge
+
+
+AUTHORS
+Rachuba, S; Knapp, K; Ashton, L; et al.
+
+
+JOURNAL
+Operations Research for Health Care
+
+
+DEPOSITED IN ORE
+20 June 2018
+
+
+
+
+              This version available at
+
+              http://hdl.handle.net/10871/33260
+
+
+
+
+COPYRIGHT AND REUSE
+Open Research Exeter makes this work available in accordance with publisher policies.
+
+
+A NOTE ON VERSIONS
+The version presented here may diﬀer from the published version. If citing, you are advised to consult the published version for pagination, volume/issue and date of
+publication
+
+Manuscript Details
+Manuscript number                   ORHC_2017_50_R1
+
+Title                               Streamlining pathways for minor injuries in Emergency Departments through
+                                    radiographer-led discharge
+
+Article type                        Original Article
+
+Abstract
+Diagnostic imaging services are essential to the diagnosis pathway for many patients arriving at hospital emergency
+departments with a suspected fracture. Commonly, these patients need to be seen again by a doctor or emergency
+nurse practitioner after an X-Ray image has been taken in order finalise the diagnosis and determine the next stage in
+the patients' pathway. Here, significant waiting times can accrue for these follow-up consultations after radiographic
+imaging although the vast majority of patients are discharged. Research evidence from pilot studies suggests that
+patients with minor appendicular injuries could be safely discharged by a suitably qualified radiographer directly after
+imaging thereby avoiding queues for repeated consultation. In this study, we model patient pathways through an
+emergency department (ED) at a hospital in the South West of England using process mapping, interviews with ED
+staff and discrete event simulation (DES). The DES model allowed us to compare the current practice at the hospital
+with scenarios using radiographer-led discharge of patients directly after imaging and assess the reduction in patients'
+length of stay in ED. We also quantified trade-offs between the provision of radiographer-led discharge and its effects,
+i.e. reduction in waiting times and ED workload. Finally, we discuss how this decision support tool can be used to
+support understanding for patients and members of staff.
+
+Keywords                            Emergency department; early discharge; discrete event simulation; case study
+
+Manuscript region of origin         Europe
+
+Corresponding Author                Sebastian Rachuba
+
+Corresponding Author's              NIHR CLAHRC Southwest Peninsula
+Institution
+
+Order of Authors                    Sebastian Rachuba, Karen Knapp, Lucy Ashton, Martin Pitt
+
+
+Submission Files Included in this PDF
+File Name [File Type]
+ORHC_2017_50_Rachuba et al_Response to reviewers.pdf [Response to Reviewers]
+
+2017_rachuba_rld_v4.0.pdf [Manuscript File]
+
+
+Submission Files Not Included in this PDF
+File Name [File Type]
+LaTeX source files.zip [LaTeX Source File]
+
+To view all the submission files, including those not included in the PDF, click on the manuscript title on your EVISE
+Homepage, then click 'Download zip file'.
+
+Response to reviewers                                                                                                                                  14 November 2017
+ORHC_2017_50
+
+
+We are grateful for the reviewer’s constructive and focused feedback on our paper. This has helped to increase the flow of the paper and we believe that the
+content of the paper is now readily accessible for its readers. We have revised the paper accordingly and addressed all comments separately in the table below.
+On behalf of the authors
+Sebastian Rachuba
+
+
+Reviewer 1
+The authors are focused on evaluating the diagnosis pathway for patients with minor injuries in emergency departments (ED). In particular, the aim is to
+evaluate the impact of radiographer-led discharge under such circumstances and its impact in lengths of stay in ED, waiting times and ED workload. For this
+analysis, the authors propose to model patient pathways through an ED at a hospital in the South West of England using process mapping, interviews with ED
+staff and discrete event simulation.
+Overall, the article presents an interesting and relevant topic, and is well written. Also, the proposed tool shows clear potential for use in real practice.
+Nevertheless, I have several comments that should be addressed by the authors before publication.
+
+  Section               Comment                                                                    Response
+
+  Comment 1,            More details are required on each stage of the proposed methodology        Thanks for this comment. In line with the second reviewer’s
+  section 2.4           in Section 2.4. For instance, which was the key information gathered       comment, we have extended the information given in the
+                        in semi-structured interviews? How did the authors select the              methodology section. Since we also restructured the sections in
+                        stakeholders to be involved in the study?                                  order to do better justice to the overall modelling approach, this
+                                                                                                   is now part of chapter 3, section 3.2.
+
+  Comment 2,            Regarding the last issue referred in Comment #1 (selection of              Thanks for this remark. We did not use specific techniques such
+  section 2.4           stakeholders), this turns to be a critical point for the study, since      as CATWOE in our study. In fact, the stakeholders to be involved
+                        different stakeholders with different concerns can be identified, and      and the resulting KPIs were made clear by hospital staff
+                        so a wide variety of KPIs may arise depending on the stakeholders          (clinicians and managers) and hence the focus was
+                        involved. Within problem structuring methods, CATWOE analysis may          predetermined.
+                        be a good option to identify different groups of stakeholders, so as to
+                        justify which ones were included in the study, and finally, why specific
+                        KPIs were considered as the most relevant for the analysis.
+
+
+
+
+Sebastian Rachuba                                                                                                                                               Page 1 of 5
+
+Response to reviewers                                                                                                                                 14 November 2017
+ORHC_2017_50
+
+
+  Chapter 3             Chapter 3 could be improved if organized according to the three            This is very helpful indeed, thanks. We have restructured the
+                        methodological steps identified in Section 2.4.                            entire modelling process by reorganising the previous sections 3
+                                                                                                   and 4. We believe that this improves the flow of the paper and
+                                                                                                   makes it easier to follow.
+
+  Page 6, lines         Is this true at a national level? Otherwise, how can one argue that this   The sentence has been reworded and now reads “In this study,
+  211-212               study and the proposed tool can be applied to other hospitals at a         very few patients received ultrasound, CT or MRI scans as part
+                        national level?                                                            of their diagnosis. This is standard for minor injury pathways
+                                                                                                   because the majority of injuries presenting within this stream of
+                                                                                                   patients are readily diagnosed using radiographs alone. A
+                                                                                                   minority of patients may have other imaging if their presenting
+                                                                                                   symptoms are complex or they deteriorate during their time in
+                                                                                                   the hospital.”
+
+  Figure 3, page 9      Identifying pathways A and B in Figure 3 would greatly improve its         We have adapted the formatting for the arrows according to
+                        interpretation.                                                            figure 2 and this makes figure 3 easier to follow.
+
+  Section 3.5           A paragraph in Section 3.5 showing how to read Figure 4 would be           As part of the new section 3, we have included a paragraph
+                        useful to better understand all the flows and information shown in         explaining the graphical interface of the DES model.
+                        the figure.
+
+  Section 3.5 / 4       How did the authors model the impact of highly skilled radiographers?      The assumptions for the pathway redesign were added. The
+                        According to Section 3.5, historical data was used to model ‘regular’      idea was to have a short ‘consultation’ following image
+                        discharges, but nothing is said regarding discharges by highly skilled     acquisition. We assumed durations to be around 5 to 10
+                        radiographers (with this being expected to have impact on the              minutes. This is now part of the section ‘Pathway redesign’ in
+                        number of discharges used as KPI). What did the authors assume for         section 3.
+                        this particular situation?
+
+  Section 4             Differences between genders are referred in Chapter 4. Did the             We have added a sentence indicating that we did not test for
+                        authors consider using probability distributions from historical data to   differences, but the model could easily incorporate this for
+                        capture the differences between male and female? Did the authors           further analysis.
+                        test it to verify if no significant differences arise in final results?
+
+
+
+
+Sebastian Rachuba                                                                                                                                            Page 2 of 5
+
+Response to reviewers                                                                                                                                14 November 2017
+ORHC_2017_50
+
+Reviewer 2
+This is an application paper of simulation modelling in health and it is contributing to the literature on emergency departments (A&E in UK). I like the focus of
+the paper on simulating the impact of upskilling radiographers to undertake duties that are traditionally associated with other ED professionals. The
+engagement with real healthcare professionals and the use of good quality data in good supply is a strength. However I feel that the paper is not well enough
+structured and this is not doing justice to the worked undertaken. The information for the most part is there but it needs reorganising. In addition you are not
+using the available literature particularly in DES enough in sections such as the description of the methodology and the discussion section.
+We appreciate this feedback and in particular the suggested ideas for restructuring the paper. We have carefully revised our first version of this study and
+specifically paid attention to strong logical connections in the case study section. We believe that the revised version does more justice to our work and that is is
+easier to follow. However, as these suggestions imposed quite substantial changes to the work we presented, we paid careful attention to the fact that this is an
+interdisciplinary work and as such should contain sufficient amount of background on the medical application of interest. We think that this revision
+incorporates both, i.e. provides a clearer structure of the overall study and still focuses strongly on the medical application and exemplifies the use of this
+research.
+
+  Section                         Comment                                                            Response
+
+  1. Introduction                 The introduction is missing the contribution which is found        Thanks, we have brought the contributions forward to the
+                                  on page 5 (first paragraph only). The research questions are       Introduction. At the same time, the research questions have
+                                  not needed here.                                                   been integrated in the modelling objectives where we
+                                                                                                     believe, they fit best.
+
+  The general structure I         I would start with the literature on ED and upskilling medical     Thanks for this comment. We have moved the contribution
+  would suggest is:               staff to cope with increasing demand (think beyond                 to the front (see above). We do believe that our literature
+                                  radiographers to nurses), then simulation of ED and lastly         section follows a structure which is very similar to the one
+  2. Background                   literature specific to simulating radiology within ED if any. It   you suggested. However, we do not think that including the
+                                  will then be clear to the reader how your work is positioned       literature on upskilling staff in ED in general would add much
+                                  and the novelty of your focus within the ED simulation             but would rather distract from the studies focus, i.e.
+                                  literature.                                                        upskilling radiographers. Even with the current structure, we
+                                                                                                     believe that the novelty of this approach becomes clear.
+
+  3 Case study                    This section could be divided into:                                We appreciate the suggested structure and have revised this
+                                                                                                     section of the paper accordingly. Where necessary, we have
+
+
+
+
+Sebastian Rachuba                                                                                                                                           Page 3 of 5
+
+Response to reviewers                                                                                                                          14 November 2017
+ORHC_2017_50
+
+                                                                                              made minor amendments in some places which will be
+                                                                                              highlighted explicitly.
+
+  3.1 Description of the ED   Explain your involvement, motivation, project partners,         We have expanded this part and named collaborators and
+                              contributors from hospital, timeline, problem in that setting   highlighted the project motivation.
+                              etc
+
+  3.2 Methodology             Explain the choice of DES, DES software, and outline process    The section ‘Methodology’ has been revised. It now features
+                              followed (Consider Conceptual modelling, model coding and       the suggested aspects and we feel that it links well with the
+                              V&V, experimentation and implementation.                        following subsections.
+
+  3.3 CM                      Understanding the problem, simulation objectives, inputs,       We have included all the major topics you mentioned. In
+                              outputs, model content and data requirements                    addition, we have included the data analysis as a separate
+                                                                                              subsection following 3.3 because we believe the quality of
+                                                                                              the data is so good that it should have a prominent place in
+                                                                                              the modelling process.
+
+  3.4 Model coding            How you represented the data in the model,                      We have explained the DES model in a lot more detail. Given
+                              KPIs/parameters, calibration of the model (justify run time     the additionally introduced subsection on data analysis, we
+                              and warm up) and V&V                                            have add KPIs and key parameters to that section. Given the
+                                                                                              applied nature of this work, it appeared quite natural to link
+                                                                                              the data with the KPIs.
+
+  3.5 Experimentation         Outline the scenarios and how these were determined or if       Thanks, we have revised accordingly. In particular, we have
+                              necessary the design of the experiments                         brought forward the description of the scenarios, which were
+                                                                                              initially part of the results section. After consolidating these
+                                                                                              descriptions, we believe it now reads clearer and is easy to
+                                                                                              follow.
+
+  4. Results                  explain the findings of the scenarios outlined                  We kept most of this part, but excluded the scenario
+                                                                                              descriptions (see previous comment).
+
+
+
+
+Sebastian Rachuba                                                                                                                                     Page 4 of 5
+
+Response to reviewers                                                                                                                            14 November 2017
+ORHC_2017_50
+
+
+  5. Discussion / conclusion     discuss implementation, contribution and reflect on the          In addition to the critical reflection on challenges when
+                                 literature given your findings, propose subsequent work          implementing radiographer-led discharge, we have
+                                                                                                  expanded the last paragraph linking our findings with the
+                                                                                                  literature and proposed next steps.
+
+I hope this does not discourage you but a better structure will help the reader fully appreciate what you are putting forward.
+
+
+
+
+Sebastian Rachuba                                                                                                                                      Page 5 of 5
+
+            Streamlining pathways for minor injuries in Emergency Departments
+                            through radiographer-led discharge
+
+                      Sebastian Rachubaa,c,∗, Karen Knappb , Lucy Ashtonb , Martin Pittb,c
+                          a
+                              University of Wuppertal, Schumpeter School of Business and Economics
+                                                b
+                                                  University of Exeter Medical School
+                                             c
+                                               NIHR CLAHRC South West Peninsula
+
+
+
+
+     Abstract
+     Diagnostic imaging services are essential to the diagnosis pathway for many patients arriving at
+     hospital emergency departments with a suspected fracture. Commonly, these patients need to be
+     seen again by a doctor or emergency nurse practitioner after an X-Ray image has been taken in
+     order finalise the diagnosis and determine the next stage in the patients’ pathway. Here, significant
+     waiting times can accrue for these follow-up consultations after radiographic imaging although
+     the vast majority of patients are discharged. Research evidence from pilot studies suggests that
+     patients with minor appendicular injuries could be safely discharged by a suitably qualified radio-
+     grapher directly after imaging thereby avoiding queues for repeated consultation. In this study, we
+     model patient pathways through an emergency department (ED) at a hospital in the South West
+     of England using process mapping, interviews with ED staff and discrete event simulation (DES).
+     The DES model allowed us to compare the current practice at the hospital with scenarios using
+     radiographer-led discharge of patients directly after imaging and assess the reduction in patients’
+     length of stay in ED. We also quantified trade-offs between the provision of radiographer-led dis-
+     charge and its effects, i.e. reduction in waiting times and ED workload. Finally, we discuss how
+     this decision support tool can be used to support understanding for patients and members of staff.
+     Keywords: Emergency department, early discharge, discrete event simulation, case study
+
+
+
+ 1   1. Introduction
+
+ 2       The increasing demands on emergency departments (ED) in the United Kingdom (UK) are
+ 3   putting pressure on acute trusts and their staff, with some reports describing the pressures placed
+ 4   on staff and hospitals as being unsustainable [1]. Waiting times in EDs have increased and patients
+ 5   are being encouraged to use these services mindfully to try to reduce the pressure, with staff
+ 6   and resources frequently being stretched beyond capacity [2]. However, hospitals also need to
+ 7   assess the most appropriate methods for utilising staff effectively and streamlining the patient
+ 8   pathways to improve productivity. The current minor injuries (MI) pathway in ED is generally led
+ 9   by emergency-nurse practitioners (ENP), with additional medical support as necessary. Usually,
+10   around 60% of ED attendances require medical imaging, which is usually projection radiography
+11   (X-Ray). These images are most commonly interpreted within the ED by either junior doctors or
+
+       ∗
+           Corresponding author: rachuba@uni-wuppertal.de
+
+     Preprint submitted to Operations Research for Health Care                                       November 15, 2017
+
+12   ENPs who decide on and perform treatment or discharge based on the image. A formal report is
+13   later issued by a reporting radiographer or radiologist and The National Institute for Health and
+14   Care Excellence (NICE) guidelines for fracture recommend that this is now completed prior to
+15   the patient leaving ED [3]. However, the vast majority of patients requiring medical imaging will
+16   subsequently be discharged from ED. Those discharges sometimes include a referral to a patient’s
+17   General Practitioner (GP) or other services such as Fracture Clinic or physiotherapy. Patients who
+18   are discharged following imaging can spend up to 50% of their time in ED waiting for a decision
+19   to be made after an image has been taken.
+20       This paper combines evidence-based research looking at the benefits of radiographer-led dis-
+21   charge with operational research techniques and Discrete Event Simulation (DES) in particular.
+22   We build on existing studies but focus specifically on patients with minor injuries and suspected
+23   fractures. Most of these patients are likely to be discharged from ED and do not require any
+24   further treatment in the hospital. Secondly, we explicitly assess the trade-off between quality im-
+25   provements (i.e. time savings) and the related cost for which we use staffing time as a proxy. The
+26   DES model we develop provides a decision support tool to help quantify the impact of redesigning
+27   the minor injuries pathway in ED. It enables clinicians and hospital managers to identify benefits
+28   and drawbacks of such a pathway redesign. As the pathway we investigate is very generic, there are
+29   clear opportunities to transfer these findings to other care providers such as large academic hospi-
+30   tals, smaller district general hospitals, or MIUs. To summarise, our paper addresses the following
+31   three key aspects:
+
+32     1. Model evidence-based changes to an existing ED pathway
+33        The DES model serves as a safe environment and allows clinicians and managers to explore
+34        the impact of pathway changes and identify required changes to resource availabilities.
+35     2. Provide a DES model as a decision support tool
+36        Although driven from a single trust’s point of view, the model captures the common overall
+37        structure of a minor injuries pathway in ED. The DES model is designed to be possibly
+38        adapted by other hospitals. This allows the use of other trust’s historic or expert data to
+39        perform similar analyses to the ones conducted in this paper.
+40     3. Provide insights about the role of conceptual and mathematical modelling as part of inter-
+41        disciplinary projects in healthcare operational research.
+
+42       In order to address these questions, we examined related literature looking firstly at the evidence
+43   of the benefit of a radiographer-led discharge service, and then at how pathway analysis and
+44   modelling in ED has been applied using operational research techniques. A description of the
+45   Minor Injuries pathway in ED is subsequently presented in section 3 as a result of mapping and
+46   discussion sessions with ED staff. Building on this, we develop a discrete event simulation (DES)
+47   model as a suitable representation of the generic pathway which we present together with the
+48   extensive data sample we used for our study. In section 4, we present findings from a series of
+49   what-if simulation studies aiming to quantify the effects of introducing radiographer-led discharge.
+50   In particular, we analyse the trade-off between costs of providing such a streamlining concept and
+51   the resulting benefits, i.e. time savings. Finally, we outline how this study could inform practice
+52   at EDs in general and discuss benefits and drawbacks from this work.
+
+
+
+
+                                                       2
+
+53   2. Background
+
+54       The study presented in this paper brings together radiographic research looking at the potential
+55   for earlier patient discharge and staff training, with systems modelling using operational research
+56   techniques to support health service redesign. Hence both we will initially provide background on
+57   the medical application before addressing the role of operational research in this context.
+
+58   2.1. Medical background
+59       Typically, diagnostic images acquired for patients on a minor injuries pathway in ED are inter-
+60   preted in the first instance by nurses or junior doctors and the patients are treated or discharged
+61   based on these results. Radiologists or reporting radiographers then review the images either as
+62   soon as possible following imaging (hot reporting) or during the next available reporting session
+63   (delayed or cold reporting). Image acquisition is at the core of every radiographer’s role, who un-
+64   like radiologists are not doctors, but the exact specification of the job role, level of autonomy and
+65   responsibilities vary across the world. The educational pathways are also very distinct. In the UK,
+66   which is the origin of our study, a radiographer is required to have completed an undergraduate
+67   degree programme which entails both academic and clinical training. Once qualified they are then
+68   able to progress their career through participation in postgraduate education in order to achieve
+69   Advanced or even Consultant Practitioner status (this would include reporting duties, i.e. provid-
+70   ing a definitive diagnosis from an image). Undergraduate and postgraduate programmes of study
+71   must be recognised and accredited by the governing body of the profession, the Society and College
+72   of Radiographers (SCoR). Radiographer reporting has become widely accepted in recent years and
+73   a cross sectional survey in 2015 demonstrated that radiographer reporting was occurring in 55.1%
+74   of the respondent sites [4]. The SCoR recommend a minimum of a postgraduate certificate (PGC)
+75   taught at Masters level in the area of reporting for radiographers expanding in to this area of
+76   practice [5].
+77       The responsibilities of radiographers in the UK include the acquisition of images, but prelimi-
+78   nary clinical evaluation (PCE) is also recommended in the ED setting. This is a comment provided
+79   by the radiographer with regard to any normal or abnormal findings present on the image they
+80   have acquired. It should be noted that a PCE is not considered to be a conclusive report but is
+81   intended to alert the referrer of any potential abnormality assisting in the image interpretation
+82   undertaken by the ED doctors and ENPs, which underpin their decisions on further management
+83   of the patient, i.e. choosing the correct pathway for treatment or discharge. However, in a small
+84   minority of hospitals, radiographer discharge is undertaken at the point of imaging, but despite the
+85   reported benefits, this has yet to be adopted by other hospitals. Finally, radiographer reporting
+86   of projection radiography has become a standard aspect of advanced practice within the UK over
+87   the last 20 years and radiographers, with appropriate training, have consistently demonstrated
+88   the ability to accurately report radiographs at a standard comparable to Radiologists [6]. This
+89   portfolio might exceed the requirements of comparable jobs in other countries, but it marks the
+90   reference skill set for this study.
+91       In general, nurses undertaking image interpretation roles have considerably less image inter-
+92   pretation education than their reporting radiographer counterparts [7]. A number of authors have
+93   reported a reasonable accuracy of nurse-led image interpretation in the ED setting [8, 9, 10]. How-
+94   ever, radiographers with additional education in image interpretation were able to demonstrate
+95   greater accuracy in this area of practice [6]. Discrepancies between the initial diagnosis in the ED
+96   and the subsequent radiology report support the argument for RLD [11, 12, 13, 14]. Missed or
+                                                      3
+
+ 97   delayed fracture diagnosis constitutes a substantially large financial burden to the UK’s National
+ 98   Health Service (NHS) arising from litigation [15, 16, 17], so reducing missed or delayed diagnosis
+ 99   is key in any service development.
+100        A pilot study from a hospital in the UK explored the potential of radiographer-led immediate
+101   reporting and discharge or referral for treatment direct from the radiology department for patients
+102   who had care plans detailed by ED [18]. This showed that the mean journey time for patients
+103   discharged directly by radiographers was reduced by more than 50% compared to the time prior
+104   to the study (i.e. 52 versus 134 minutes). Also for patients being referred on by a radiographer
+105   time in ED could be reduced by more than 60 minutes. From a randomised controlled trial of
+106   immediate or delayed reporting, Snaith et al. [19] reported that the reporting did not increase
+107   the patient journey time. Besides the effects on time, a significant reduction of errors in image
+108   interpretation was also observed. A study by [20] explored the cost effectiveness and quality of
+109   life outcome measures. There was a potential cost-saving of GBP 23.40 per patient for immediate
+110   reporting, while there were no differences reported in patient quality of life as measured by the
+111   EQ-5D at 8 weeks following their ED visit between the two arms.
+112        Despite the clear benefits achievable by employing reporting radiographers within the ED and
+113   Minor Injury Unit (MIU) setting, there are currently insufficient numbers of radiographers in the
+114   UK to sustain an immediate reporting service. In fact, following a recent survey, just over half
+115   of hospitals responding (179 hospital sites in the UK and on the British Isles) have reporting ra-
+116   diographers [4]. Despite the benefits of the concept, smaller or medium-sized hospitals are unable
+117   to introduce radiographer-led discharge with immediate reporting because there are insufficient
+118   reporting radiographers available. Furthermore, most importantly, the evidence currently avail-
+119   able is not strong enough to demonstrate the benefits reported in the literature would apply to
+120   individual service providers due to differences in patient pathways and hospital sizes. Finally, with
+121   an increasing demand for nursing staff in the South West of the UK and nationally NHS providers
+122   are struggling to recruit. The strategic vision to develop the radiographers’ role in order to provide
+123   radiographer-led discharge from the ED is a potential resolution to ease the burden on ED services
+124   both locally, nationally, and potentially worldwide.
+
+125   2.2. Discrete Event Simulation in Emergency Departments
+126       EDs are among the most intensively studied areas within a hospital and numerous reviews
+127   support the choice of DES models to explore patient flows while taking into account various routing
+128   policies and stochasticity of both arrivals and activities along the process (e.g. Günal and Pidd [21]
+129   or Gul and Guneri [22] for comprehensive reviews). Crowded departments and excessive waiting
+130   times for patients are frequently cited as the main reasons why researchers aim to improve efficiency
+131   of service delivery [23, 24, 25, 26, 27]. DES has specifically been used to support streamlining efforts
+132   in EDs and has been widely applied for more than 20 years [24, 27, 28]. Besides DES studies, a
+133   large variety of techniques is applied ranging from Monte-Carlo-Simulation [29] to approaches using
+134   Queueing Networks [30] and hybrid approaches (e.g. combining agent-based simulation and DES)
+135   which are among the recently emerging trends in simulation in healthcare [31]. The vast majority
+136   of studies which support planning in ED originate from real world applications and address actual
+137   problems. However, most of the studies published do not to lead to implementation of findings as
+138   stated in Brailsford et al. [32].
+139       Over the last decades, DES has remained a popular tool to support decision problems in
+140   healthcare and particularly in EDs (e.g. [33, 34, 35, 36]). Recently, studies have focused on patient
+141   pathway changes in ED due to either newly issued medical guidelines or in light of newly available
+                                                         4
+
+142   medical evidence. Rachuba et al. [37] focus on pathways for patients presenting at ED with chest
+143   pain, whereas pathways related to stroke treatment are at the centre in the study by Komenda et al.
+144   [38]. Both papers employ DES models in order to assess the impact of the changes. Another study
+145   by Yang et al. [39] investigates how different triaging policies in ED affect the time patients spent
+146   in ED. In their DES study, greater time savings in ED can be observed with improved triaging
+147   when the workload for physicians is high. In relation, an empirical study by Kuntz and Sülz [40]
+148   found that higher or better qualified ED staff can treat patients faster when attendance level is
+149   elevated. On the opposite, slower durations for treatment were found with lower utilisation in
+150   ED. In contrast to the available literature, our paper is unique as the concept of radiographer-led
+151   discharge has only been addressed in medical pilot studies as outlined above. A pathway modelling
+152   and simulation study of this concept has not been published yet.
+
+153   3. Case Study
+
+154   3.1. Description of ED
+155       Our paper evolves from a study that investigated the benefits of a streamlining concept Radio-
+156   grapher-led Discharge (RLD) for patients on a Minor Injuries pathway in ED. The work was funded
+157   by Health Education England (South West, HESW) and carried out in collaboration with acute
+158   trusts in the South West of England. The wider project looked at image interpretation competence
+159   among radiographers and the impact of pathway redesign on the patient journey. The first part
+160   featured a training needs analysis to assess the current level of competency in regard to diagnostic
+161   image interpretation (i.e. X-Rays) among radiographers and other members of ED staff. The
+162   second part of the study – presented in this paper – aimed to model current practice in ED and
+163   subsequently quantify potential time savings for patients being suitable for early discharge from
+164   ED. This part of the project was carried out in collaboration with managers, clinicians, analysts,
+165   and administrators at two hospitals in the South West of England. The main project team consisted
+166   of two operational researchers and two radiographers based at the University of Exeter’s Medical
+167   School. It was intended to demonstrate how the concept of RLD could be beneficial at any hospital.
+168   Hence, we aimed to provide a sound modelling framework which could be applied to any hospital
+169   setting. The framework was aimed at medium-sized hospitals in the UK (district general hospital)
+170   in order to investigate the beneficial effects of RLD on the hospital’s practice – if any. This work
+171   was carried out over 9 months – independent of the training needs analysis which featured the
+172   major part of the overall study.
+
+173   3.2. Methodology
+174      We employed a phased approach which benefited from good links to clinicians. This helped to
+175   maximise the utility of our work, in particular of the DES model and its results. The following
+176   components – briefly highlight hereafter – serve as a framework for the remainder of the paper:
+177     1. Problem structuring approaches and assessing complexity
+178     2. Conceptual modelling and identification of key focus
+179     3. Data sourcing and analysis
+180     4. DES model building, coding, and verification & validation
+181     5. What-if experimentation and ways to implementation
+
+
+                                                       5
+
+182        The problem structuring took place in multiple sessions at a medium-size hospital in the South
+183   West of England and focused on the minor injuries pathway in ED. Together with consultants,
+184   nurses and information analysts, we captured the current practice at ED and visualised the flow of
+185   patients from admission to a final decision about discharge or admission. Methods employed were
+186   process mapping and semi-structured interviews with clinicians. The semi-structured interviews
+187   were intended to acquire a sound understanding of processes along the minor injuries pathway in
+188   ED i.e. sequencing, staff responsibilities, routing, etc. It was considered important to have both
+189   doctors, nurses, radiographers, radiologists, and analysts involved in this study as it would allow to
+190   capture many different views on challenges, opportunities, and potential limitations of this study.
+191   With respect to the specific individuals, some of the clinicians working at the hospital had existing
+192   links to the university and those clinicians suggested further links to administrators and data
+193   analysts. During the second phase, we simplified the underlying pathway to develop a conceptual
+194   model capturing key aspects of the pathway. This was done in close collaboration with clinicians
+195   and particularly information analysts in order to assess data availability. Clinicians then outlined
+196   the intended pathway redesign which was again captured in a conceptual flow chart diagram.
+197   One of the collaborating hospitals provided a well-documented historic data set which we used to
+198   populate the simulation model. We present a separate descriptive analysis in order to document the
+199   importance of good quality data in our study. Next, the conceptual models shaped the development
+200   of a discrete event simulation model which captured the current system pathways and allowed us to
+201   explore pathway redesign options, e.g. the introduction of radiographer-led discharge options. The
+202   model was verified and validated using both hospital experts and large historic data sets of good
+203   quality. Clinicians and managers specified the necessary changes to the minor injuries pathway
+204   and defined a series of what-if scenarios for analyses. Finally, during the experimentation phase
+205   we populated the DES model using historic data and quantified the effects of proposed pathway
+206   changes following the introduction of radiographer-led discharge. These experiments also highlight
+207   potential issues on the way to a wider implementation of the concept.
+208        The project lend itself very naturally to the use of DES as a visual interface using distinct
+209   software, capturing uncertainty in process durations and arrivals, and incorporating stochastic
+210   routing options were key requirements for the pathway modelling. As the concept of radiographer-
+211   led discharge is a novel approach in comparison to common ED practice, it was desirable to
+212   have a visual interface, in particular with the aim to potentially roll-out this concept to other
+213   hospitals. The visual interface was considered to be supportive to achieve the required buy-in at
+214   other hospitals. The potential to use the developed tool elsewhere was a major goal from the start.
+215   Hence, we decided to use Simul8 (Simul8 Corporation, [41]) which is widely used for DES modelling
+216   and in particular for healthcare applications. Its graphical interface allows to provide live output
+217   of performance measures which was considered helpful in this case. This feature would allow the
+218   users to track individual patients and also see impact of pathway changes developing over time.
+219        Engaging with information analysts alongside all phases was key to identify data availability and
+220   to confirm which key performance indicators could be quantified. Likewise, important stakeholders
+221   (i.e. clinical staff working in ED, but also analysts and managers at the hospital) confirmed the
+222   most important performance metrics which were then included in the DES model. These links
+223   were highly significant to the model development and the analysis of outputs. Since the focus of
+224   this study was very narrow from the outset, we did not include additional problem structuring
+225   techniques such as CATWOE analysis (the reader is referred to the work of Smyth and Checkland,
+226   e.g. [42]). It became clear during early stages of the project work that the metrics used herein and
+
+                                                        6
+
+227   the stakeholders involved were of particular interest and no deeper analysis was deemed necessary.
+
+228   3.3. Conceptual model building
+229       According to the widely used concepts proposed by Robinson [43, 44], we distinguish four
+230   aspects of the conceptual model development, i.e. objectives, inputs, outputs, model content. The
+231   project’s objectives were specified as follows:
+232     1. What changes to an existing minor injuries pathways are necessary to incorporate RLD?
+233        The main task is to capture the current practice at the hospital’s emergency department.
+234        This includes analysing the current pathway and available historic data records. Both is
+235        needed to inform the decision about reconfiguration of the current system.
+236     2. What is the impact of RLD for a minor injuries pathway on patients’ length of stay in ED?
+237        Based on the identified options to change the current system, i.e. what-if scenarios, a simu-
+238        lation model will be used to quantify the impact in terms of patients’ length of stay.
+239     3. What is the trade-off between the required staffing supply and desired effects when intro-
+240        ducing RLD? Explore, how different availabilities of RLD would affect the length of stay in
+241        department, e.g. limiting the availability to certain weekdays or days on the weekend.
+242       For this study, historic data sets from a hospital in the South West of the UK particularly
+243   looking at patient arrivals, process times (i.e. time of individual and between consecutive activities)
+244   and resource availabilities, were key input factors. Besides, the processes and patient pathways in
+245   ED were important for developing a useful model. The output of this modelling project is in fact
+246   a proof of concept, quantifying the effects of radiographic discharge in comparison to traditional
+247   discharge. This study wants to provide a generic model which can answer this question at a variety
+248   of hospitals.
+249       The structure of the underlying minor injuries pathway in ED is of crucial importance for the
+250   pathway simulation model. We captured the current practice at a hospital in the South West
+251   of England and held an inter-disciplinary mapping session together with an Emergency Nurse
+252   Practitioner, an ED administrator, and other key members of ED staff. This session enabled us to
+253   assess the complexity and variety of the pathways in the minor injuries unit. Most commonly, minor
+254   injuries include diagnosis such as appendicular fractures, bruises or sprains (i.e. hand, foot, wrist,
+255   ankles) or soft tissue injuries. Minor injuries regularly account for more than 55% of the overall ED
+256   attendance and are mostly cared for in a separate area of the department, but in close proximity to
+257   the Majors area. About half the patients presenting with minor injuries require medical imaging
+258   to assist with the diagnosis. The vast majority of those images (in our study more than 95%) are
+259   diagnostic X-Ray images. In this study, very few patients receive ultrasound, CT or MRI scans as
+260   part of their diagnosis. This is standard for minor injury pathways because the majority of injuries
+261   presenting within this stream of patients are readily diagnosed using radiographs alone. A minority
+262   may have other imaging if their presenting symptoms are complex or they deteriorate during their
+263   time in the hospital. The mapping session’s outcome is visualised in Figure 1. One might expect
+264   the pathway to be fairly linear with a few routing options but, in fact, it is complex incorporating
+265   a number of loops, such as repeated imaging or gathering expert advice. The hospital supports up
+266   to ten different discharge options for this pathway, which include various follow-up options such as
+267   plastering, physiotherapy or referral to the GP.
+268       Typically, patients register their attendance in ED at a dedicated desk before joining the waiting
+269   room. An ENP or another qualified nurse then assesses the severity of patient’s illness or injury
+270   during triage and diagnostic imaging might be requested at this point subject to certain conditions.
+                                                        7
+
+                Figure 1: Outcome of an inter-disciplinary mapping session at an acute trust with ED staff.
+
+
+271   For example, imaging for younger children cannot be requested at triage, but needs to be requested
+272   by a doctor during a medical assessment. Generally, the ordering of diagnostic imaging varies
+273   with medical experience and might also vary throughout the day or the week depending on the
+274   practitioner’s own scope of practice. However, the vast majority of images are requested at triage
+275   and subsequently interpreted during a clinical assessment led by a doctor or ENP. During triage,
+276   patients may also be streamlined to other specialised departments of the hospital (e.g. outpatient
+277   clinics such as Ear-Nose-Throat, Ophthalmology, or a Dental Unit) or to the Majors area in ED
+278   when necessary. Following triage, during a medical assessment, additional advice might be acquired
+279   from radiographers, radiologists, or consultants. Further imaging might be required to finalise a
+280   decision on further management of the patient. Once the diagnosis has been established and the
+281   appropriate treatment given (plaster, pain relief, dressing etc.), the patient can then be discharged
+282   to the care of the physiotherapy team, orthopaedics or other specialist service or their own GP as
+283   necessary. Admissions become necessary for only approximately 5% of all patients. An abnormal
+284   image indicating a fracture does not usually lead to an admission, unless surgical intervention is
+285   required. However, a normal image regularly leads to a discharge unless other reasons require
+286   an admission into hospital, such as other or multiple conditions. Most EDs are based close to
+287   Radiology, where patients are sent for imaging, while others will have one or more X-Ray rooms
+288   within the emergency department. Alongside the flow of patients (as described), data requirements
+289   and their availabilities were linked to process activities or resource requirements as part of the
+290   mapping sessions.
+291       The simplified pathway in Figure 2 focuses on the key activities which are performed on a minor
+292   injuries pathway. As part of our discussions with ED staff, three distinct routes were identified
+293   and we will refer to those as Pathway Options A, B, and C. The major differentiation being
+294   whether imaging is required (A, B) or not (C) and subsequently when X-Ray imaging is performed
+295   during the minor injuries attendance. The first and most common option is that imaging is taken
+296   after triage where it was requested (solid line, Option A). Secondly, imaging may be requested
+297   as part of the medical assessment by a doctor (dotted line, Option B). Finally, for some patients
+
+                                                            8
+
+                                                          Registration                                  Registration
+
+
+
+
+                                                                                                          Triage
+                                                            Triage
+
+
+                                                                                            Imaging                    Assessment
+
+                                         Imaging                             Assessment
+
+                                                                                           Decision                     Imaging
+
+                                                           Decision
+                                                                                                         Follow-up
+                                                                                                        consultation
+
+
+                                                                                           Discharge     Discharge
+                                        Discharge                             Admission                                Admission
+                                                                                          Radiography   Consultation
+
+
+                                       Pathway Option A               Pathway Option C
+
+                                       Pathway Option B                  All pathways
+
+
+                                 Figure 2: Generic pathway for minor injuries in ED.
+
+
+298   imaging is not required and only a consultation is held during which a decision is made whether to
+299   admit or to discharge (dashed line, Option C). In general, approximately 50% - 60% of all minor
+300   injuries attendances require medical imaging and the vast majority of those sees the Triage nurse
+301   requesting the X-Ray imaging. Only 5% - 20% of all images are requested during the clinical
+302   assessment. Exact figures might slightly differ for hospitals across England and internationally, yet
+303   the general classification in options A, B, and C holds as well as the proportions of patients being
+304   a key parameter for the routing in ED. The conceptual model excludes activities which follow the
+305   attendance at ED, i.e. plastering or physiotherapy since those processes do not affect the changes
+306   of interest to this study or impact the potential service redesign options.
+
+307   3.4. Descriptive data analysis
+308       The collaborating hospital provided 23 months-worth of data covering all ED attendances from
+309   April 2014 to February 2016 on the minor injuries pathway. In total, 2810 individual patient
+310   episodes were considered with slightly more male (55%) than female (45%) patients. The average
+311   age of patients was 31.8 yrs with a median of 26 (male: 29.2 average and 24 median, female: 35.0
+312   average and 29 median). For 56% of all attendances imaging was not required. In the remainder
+313   of this work we do not differentiate either process durations or routing probabilities by gender or
+314   age. This was beyond the scope of this study but could be included in the DES model for further
+315   experiments. Here, clinicians confirmed there were no notable differences across those categories
+316   – statistical testing was omitted to verify this. A monthly average of 120 patients attended ED
+317   with minor injuries, with a maximum of 213 patients during a busy period in autumn 2015 and a
+318   minimum of 64 patients in early 2015. A slight positive trend over the observed period of time was
+319   present which is in line with the general increase of ED attendances in England over the last years
+                                                               9
+
+                                                                     1000                                                               750
+                                                                                  Number of patients        Inter-arrival times
+
+
+
+
+                                 Average level of daily attendance
+
+
+
+
+                                                                                                                                              Inter-arrival times (in min)
+                                                                     800
+
+                                                                                                                                        500
+                                                                     600
+
+
+                                                                     400
+                                                                                                                                        250
+
+                                                                     200
+
+
+                                                                       0                                                                0
+                                                                            MON   TUE     WED      THU     FRI       SAT     SUN
+
+
+
+                                Figure 3: Attendance levels and inter-arrivals per day of week.
+
+
+
+                                Discharged                                                     ●                 ●● ●   ●●   ●      ●   ●
+
+
+
+
+                                          Admitted                                   ●●
+                                                                                      ●
+                                                                                      ●●● ●●           ●         ●                ● ●   ●
+
+
+
+
+                                                                             0     60    120 180 240 300 360 420 480 540
+                                                                                           Length of stay in ED (in min)
+
+
+      Figure 4: Boxplots representing LOS in ED for patients being admitted or discharged. Dots inside the boxes indicate
+      the respective mean values.
+
+
+320   (NHS England 2017 [45]). Arrivals varied significantly according to different weekdays and also
+321   during days. Figure 3 shows in graph (a) that more than 50% of arrivals were on a weekend and
+322   Wednesday had the lowest average daily attendance rate. Average inter-arrival rates as depicted
+323   in the same graph varied similarly to the arrivals and were shortest on weekends. Furthermore,
+324   the hourly inter-arrival times vary throughout the day with different effect sizes on weekdays and
+325   weekends. Approximately 5% of patients have to be admitted to inpatient wards, either to receive
+326   specialised care or in order to be monitored over a certain period. Admitting a patient commonly
+327   leads to longer stays in ED because admissions require more organisational tasks to be carried out
+328   before a patient can actually be transferred from the emergency department to an inpatient ward
+329   or to a clinic.
+330       The average LOS on the investigated minor injuries pathway was 139min (184min, 95th per-
+331   centile) for discharged patients and 212min (237min, 95th percentile) for admissions (Figure 4).
+332   The overall length of stay - as the weighted average across both categories - was 143.5min for all
+333   patients (199min, 95th percentile). Discharged patients had on average a shorter LOS with almost
+334   no 4 hour target breaches, whereas admitted patients - even though they stayed longer - had a
+335   similarly low probability of breaching the aforementioned 4 hour target. For the given data set,
+336   the target of 95% of patients not breaching 4 hours is met and thus we neglect the number of
+337   those actually breaching this target in further analyses. A more detailed analysis of the LOS in
+338   ED indicated variation with respect to the previously mentioned Pathway Options A, B, and C
+339   (Table 1). Patients spend on average significantly less time in ED when no imaging is required
+340   (140min versus 148min). Also, the LOS is significantly longer when imaging is requested at triage
+                                                                                                   10
+
+                                                                         Length of stay (in min)
+                                                # patients        %   Avg     Median    0.25    0.75    > 4h
+              Overall                              2810               143.5    141      97     189.8     32
+              Imaging                              1303       46.4     148     146      102     191      10
+               Triage – Imaging – Seen (A)          748       26.6     153     153      111     193       3
+               Triage – Seen – Imaging (B)          555       19.8    141.3    131      94      189       7
+              No imaging
+              Triage – Seen (C)                    1507       53.6    139.7    138       90     187      22
+
+      Table 1: Key performance indicators of the data provided by the collaborating hospital. Columns Q1 and Q3 report
+      the 25th and the 75th percentile respectively of the LOS and the rightmost column shows the number of 4 hour
+      breaches.
+
+
+341   and thus takes place before the assessment (141min versus 153min).
+342       Similar effects could be observed across the sub groups regarding patients being admitted and
+343   those being discharged. As only a small proportion of around 5% of all patients are admitted, the
+344   impact of their LOS on the overall LOS can be neglected and no further analysis is needed. Since
+345   RLD will only affect pathway options A and B, these require a more detailed analysis. Pathway
+346   option C, however, is included in the simulation study later on, as a significant amount of patients
+347   attending ED affect the queues, e.g. at the consultation, and therefore we still include it in this
+348   more detailed analysis of the process times. Figure 5 allows the identification of potential savings
+349   which could result from introducing RLD. If imaging is requested during triage (Pathway Option
+350   A) there is a delay of approximately 90 minutes on average from imaging being performed until the
+351   patient finally leaves ED. When imaging is requested during the consultation, there is still a wait
+352   of on average of 50 minutes between imaging and discharging the patient, which could be reduced.
+353   Additionally, earlier discharge would free ENPs’ and doctors time and could have beneficial effects
+354   on other patients on the minor injuries pathway as doctors’ availability would be increased. The
+355   previously mentioned durations for process steps, e.g. Triage to Imaging, include the durations
+356   of the actual process activities, i.e. triaging or imaging. The hospital information system only
+357   provides a single time stamp for each of the steps along the pathway. It is therefore necessary to
+358   make the assumption that those time intervals capture start-to-start relations of activities.
+
+359   Key performance metrics and system parameters
+360   Building upon the available data records we identified three key metric to indicate changes in
+361   performance which will be highlighted subsequently. Moreover, we link this to a key parameter,
+362   i.e. the availability of RLD and propose to investigate to what extent the changes in performance
+363   depend on the availability of the streamlining concept.
+364   Length of stay in ED: RLD aims to reduce delays prior to discharge from ED, in particular for
+365   patients without a fracture and no other complicating diagnosis. Therefore, the length of stay
+366   (LOS) in ED is a key performance metric to assess the effects of radiographer-led discharge after
+367   imaging. EDs in England have to deal with the 4 hour target which intends to limit the time
+368   patients spend in ED in order to reduce the number of unnecessarily long stays. Introduced by the
+369   Department of Health in 2004, this standard requires that 95% of all ED attendances should be
+370   no longer than four hours for any hospital in the England. Generally, the LOS on a minor injuries
+371   pathway is likely to be shorter compared to the overall ED figures. Thus, an analysis on historical
+372   data later on will help quantify the impact on the number of 4 hour breaches.
+                                                             11
+
+                                                                                      Imaging                                                           Triage to
+
+
+
+
+                                                                                                                                  Pathway Opti
+                                                                                                                                                                                      ●                 ●
+                                                                                                                                                                                                       ●●●
+                                                                                                                                                                                                         ●●●
+                                                                                                                                                                                                          ● ●● ● ● ●        ●
+                                                                                                                                                          Imaging
+
+
+
+
+                                                                 Pathway
+                                                                                    Imaging to                           ●                                 ●
+                                                                                                                                                           ●  ●
+                                                                                                                                                            ●●●●●●
+                                                                                          Seen                                                       Imaging to                       ●                          ●
+                                                                                                                                                                                                                 ●  ●
+                                                                                                                                                                                                                  ●●●●●●
+
+                                                                                       Seen to                                                                   Seen
+                                                                                                                     ●                               ●●●●
+                                                                                                                                                     ●   ●●●●●
+                                                                                                                                                        ●●    ●●●●
+                                                                                         Leave                                                             Seen to                ●                     ●●●●
+                                                                                                                                                                                                        ●   ●●●●●
+                                                                                                                                                                                                           ●●   ●●●●
+                                                                                                                                                               Leave
+                                                                                                             0           60         120 180 240 300
+                                                                                                                                  Time in minutes 0 60                                           120 180 240 300
+                                                                                                                                                                                               Time in minutes
+
+                                                                   Arrival to                                    ●       ●●
+                                                                                                                         ●
+                                                                                                                         ●●
+                                                                                                                          ●●
+                                                                                                                           ●●●●
+                                                                                                                             ●
+                                                                                                                             ●● ●●
+                                                                                                                              ●
+                                                                         Triage
+
+
+
+
+                                                                 Pathway Option B
+                                    Arrival to       ●    ●
+                                                         ●●
+                                                         ●
+                                                         ●●●●
+                                                            ●●
+                                                             ●● ● ● ●●
+                                                                                                                                 Arrival to                                   ●       ●●
+                                                                                                                                                                                      ●
+                                                                                                                                                                                      ●●
+                                                                                                                                                                                       ●●
+                                                                                                                                                                                        ●●●●
+                                                                                                                                                                                          ●
+                                                                                                                                                                                          ●● ●●
+                                                                                                                                                                                           ●
+                Pathway Option A
+
+                                        Triage                                                                                           Triage
+
+
+
+
+                                                                                                                                  Pathway Option B
+                                                                    Triage to                                    ●       ●●
+                                                                                                                          ●●
+                                                                                                                           ●●
+                                                                                                                           ●●●
+                                                                                                                             ●
+                                                                                                                             ●●
+                                                                                                                              ●●
+                                                                                                                              ●  ●
+                                                                                                                               ●●●●● ● ●
+
+                                     Triage to                              Seen                                                  Triage to
+                                                       ●        ●●
+                                                                 ●●
+                                                                  ●●●
+                                                                   ● ●● ● ● ● ●                                                                                               ●                  ●
+                                                                                                                                                                                                 ●●
+                                                                                                                                                                                                  ●●
+                                                                                                                                                                                                  ● ●●
+                                                                                                                                                                                                     ●
+                                                                                                                                                                                                   ●●●●
+                                                                                                                                                                                                      ●●
+                                                                                                                                                                                                       ●●●
+                                                                                                                                                                                                         ●●● ●         ●
+                                      Imaging                         Seen to                                                             Seen
+                                                                                                                 ●   ●●
+                                                                                                                     ●
+                                                                                                                     ●●
+                                                                                                                      ●●
+                                                                                                                       ●
+                                                                                                                       ●
+                                                                                                                       ●●●●
+                                                                                                                         ●  ● ●
+
+                                   Imaging to                         Imaging                                                         Seen to
+                                                       ●              ●●
+                                                                       ●●●
+                                                                         ●●●●                                                                                                 ●               ●
+                                                                                                                                                                                              ●●
+                                                                                                                                                                                              ●●
+                                                                                                                                                                                               ●●
+                                                                                                                                                                                                ●
+                                                                                                                                                                                                ●
+                                                                                                                                                                                                ●●●●
+                                                                                                                                                                                                  ● ● ●
+                                          Seen                  Imaging to                                                           Imaging
+                                                                                                                   ●              ●●
+                                                                                                                                   ●●
+                                                                                                                                    ●
+                                                                                                                                    ● ●
+                                                                                                                                      ●●
+                                                                                                                                     ●●●   ●
+
+                                      Seen to                             Leave                                                Imaging to
+                                                         ●                          ●
+                                                                                    ●●●●
+                                                                                       ●●
+                                                                                        ●●●●●
+                                                                                            ●●●●                                                                                      ●                    ●
+                                                                                                                                                                                                           ●●
+                                                                                                                                                                                                           ●●●●●
+                                                                                                                                                                                                             ● ●
+                                                                                                                                                                                                               ●
+                                                                                                                                                                                                               ●       ●
+                                         Leave                                                                                           Leave
+                                                                                0 60 120 180 240 300
+                                                 0       60       120 180 240 300   Time in minutes 0 60 120 180 240 300
+                                                                Time in minutes                         Time in minutes
+
+                                                                                     Arrival to
+                                                                 Pathway Option C
+
+
+
+
+                                                                                                                 ●               ●
+                                                                                                                                 ●●
+                                                                                                                                 ●
+                                                                                                                                 ●●●
+                                                                                                                                   ●●
+                                                                                                                                    ● ●
+                                                                                                                                     ●●●
+                                                                                                                                       ●
+                                                                                                                                       ●
+                                                                                                                                       ● ●
+                                                                                                                                        ●●● ●● ●●           ●
+
+                                    Arrival to                                           Triage                                                       Arrival to
+
+
+
+                                                                                                                                  Pathway Option C
+                                                     ●       ●●
+                                                             ●
+                                                             ●●
+                                                              ●●●
+                                                               ● ●
+                                                                 ●●
+                                                                  ● ●●
+                                                                 ●●                                                                                                           ●               ●
+                                                                                                                                                                                              ●●
+                                                                                                                                                                                              ●
+                                                                                                                                                                                              ●●●
+                                                                                                                                                                                                ●●
+                                                                                                                                                                                                 ● ●●
+                                                                                                                                                                                                    ●
+                                                                                                                                                                                                  ●●●
+                                                                                                                                                                                                    ● ●
+                                                                                                                                                                                                     ●●● ●● ●●     ●
+                                        Triage                                                                                                            Triage
+                Pathway Option B
+
+
+
+
+                                                                                 Triage to                                   ●                                    ●●     ●●
+                                     Triage to       ●                  ●
+                                                                        ●●●
+                                                                         ●
+                                                                         ●  ●
+                                                                            ●
+                                                                          ●●●
+                                                                           ● ●●●●
+                                                                             ●● ●
+                                                                                      Seen
+                                                                                 ●● ● ●
+                                                                                                                                                       Triage to                          ●                                ●●   ●●
+                                          Seen                                           Seen to                                                            Seen
+                                                                                                                         ●                             ●
+                                                                                                                                                       ●
+                                                                                                                                                       ●●
+                                                                                                                                                        ●●
+                                                                                                                                                         ●●
+                                                                                                                                                          ●  ●●
+                                                                                                                                                              ●
+                                                                                                                                                           ●●●●●
+                                                                                                                                                               ●●●●
+                                                                                                                                                                 ●● ●●            ●
+                                      Seen to        ●         ●●
+                                                               ●
+                                                               ● ●
+                                                                 ●
+                                                                ●
+                                                                ●●
+                                                                 ●●●●
+                                                                   ● ● ●
+                                                                                           Leave                                                          Seen to                     ●                   ●
+                                                                                                                                                                                                          ●
+                                                                                                                                                                                                          ●●
+                                                                                                                                                                                                           ●●
+                                                                                                                                                                                                            ●●
+                                                                                                                                                                                                             ●   ●●
+                                                                                                                                                                                                              ●●●●●●
+                                                                                                                                                                                                                   ●●●●
+                                                                                                                                                                                                                     ●● ●●           ●
+                                      Imaging                                                                                                               Leave
+                                   Imaging to            ●                            ●
+                                                                                      ●●
+                                                                                       ●
+                                                                                      ● ● ●
+                                                                                          ●
+                                                                                          ●
+                                                                                        ●●●    ●             0           60         120 180 240 300
+                                         Leave                                                                                    Time in minutes 0
+                                                                                         120 180 240 300                                            60
+                                                                                       Time in minutes
+       Figure 5: Boxplots explaining
+                                0    60
+                                     process
+                                          120 times
+                                                180 for
+                                                     240pathway
+                                                         300    options. Dots inside the boxes show respective means.
+                                        Time in minutes
+
+373   Number of discharges: Another important criterion is the amount of radiographer discharges that
+      can actually Arrival to
+                Pathway Option C
+
+
+
+
+374                 be offered   by
+                                  ●   the hospital. A greater availability of highly skilled radiographers
+                                                               ●
+                                                               ●●
+                                                               ●
+                                                               ●●●
+                                                                 ●●
+                                                                  ● ●
+                                                                   ●●●
+                                                                     ●
+                                                                     ●
+                                                                     ● ●
+                                                                      ●●● ●● ●●            ●
+                       Triage
+375   (e.g. reporting radiographers) will support a higher level of RLD where no fracture is detected.
+                    Triage to
+376   Increasing the number
+                         Seen  of reporting
+                                     ●
+                                              radiographers, however, also increases staffing costs as those
+                                                                                                   ●●   ●●
+
+
+
+377                  Seen to staff ●and more expensive than lower grade radiographers. Also, as previous
+      are a highly qualified
+                                                                                     ●
+                                                                                     ●
+                                                                                     ●●
+                                                                                      ●●
+                                                                                       ●●
+                                                                                        ●●●●●
+                                                                                            ●●
+                                                                                             ●●●
+                                                                                              ● ●●
+                                                                                                ●● ●●                ●
+378                      there is a significant training need to upskill radiographers in order to facilitate
+      studies revealed,Leave
+379   direct discharge, and thus the hospital needs to decide to which volume of patients radiographer-led
+380   discharge should be made 0 available.
+                                    60 120 180 240 300
+                                                                Time in minutes
+381   Number of clinical assessments: The introduction of RLD intends to free time for doctors and
+382   ENPs which could be used for other patients with potentially more complex needs. Thus, the
+383   number of clinical assessments is considered a proxy for clinical workload occurring on a minor
+384   injuries pathway.
+385   Availability of RLD: The beneficial effects of introducing RLD will likely be limited by either (1) a
+386   hospital’s financial situation (higher costs for trained radiographers) or (2) the limited availability
+387   of accurately trained radiographers available to be scheduled. Thus, a hospital is interested in
+388   what time it should choose in order to allow suitably trained radiographers to discharge patients.
+389   Anticipated trade-offs: Finally, the configurations of the system (i.e. availability of resources) will
+390   affect the mentioned performance indicators, i.e. higher (lower) availability will lead to stronger
+391   (less strong) effects on the LOS, the number of patients actually being discharged, and fewer
+392   consultations in ED
+
+393   3.5. DES model development
+394       We used Simul8 (Simul8 Corporation, [41]) to develop a generic DES model for minor injuries
+395   pathways which can be adapted to different hospital settings. It is intended as an interactive tool
+                                                                                                                         12
+
+                     Figure 6: User interface of discrete event simulation model developed in Simul8.
+
+
+396   for both decision-makers and the other stakeholders affected by potential pathway changes. The
+397   two main parts of this decision support tool are the DES model at the front-end and the data set
+398   required to populate the simulation model at the back-end. As shown in Figure 6, the model sup-
+399   ports decision-making through visualising the pathway, highlighting volume data and performance
+400   information of ED such as length of stay, and information focused on a single patient, e.g. waits
+401   before seen by a clinician. Our discussions with practitioners demonstrated that an interactive in-
+402   terface facilitates engagement and supports working towards implementing successfully evaluated
+403   changes.
+404       The simulation model’s graphical user interface (GUI), as shown in figure 6, visualises the
+405   patient’s way through ED (left to right) and builds upon the conceptual models introduced earlier
+406   (figures 2 and 7). All steps of the patient journey from arrival, via registration, triage, imaging,
+407   assessment, and finally admission or discharge are captured visually as individual entities. The
+408   GUI provides live outputs on model parameters (bottom left corner, e.g. mean of inter-arrival
+409   time distribution, day of week etc.) or waiting times before an activity starts (below individual
+410   activities). Furthermore, information on key performance indicators such as average time spent
+411   in ED (box on the right) is captured as well as aggregated patient numbers/attendance (with the
+412   activities, and also in table at bottom left corner). Finally, individual patient data (i.e. process
+413   times) and their pathway option are captured in the top right corner of the GUI.
+414       The model captures time-dependent inter-arrival times and also varying process times along
+415   the pathway through ED. Upon arrival the pathway option for patients (being either A, B, or C
+416   as shown in figure 2) is sampled from a distribution based on the historic data set and routing
+417   along the pathway is based on labels assigned to patients. In the model, we considered queues and
+418   their associated activities as a single step of process. This is because the recorded timestamps for
+419   process activities is not coherently reported. Thus, for example, we modelled the time from triage
+420   to imaging as a delay in the queue and do not consider durations for the activities themselves.
+421   The user is enabled to specify the extent to which RLD is to be carried out, e.g. only on one day
+422   per week, during the weekend or 24/7. After patients have completed their pathway through ED
+423   they are either admitted or discharged which is sampled from a distribution based on the historic
+424   data set. According to the decision-makers preferred level of detail, both inter-day and intra-day
+425   variation can be captured. Various members of ED staff pointed out that another key feature
+
+                                                           13
+
+426   would be to have real-time output of information on waits and the level of attendance. In response
+427   to these ED staff requests we incorporated information on patient waits, the average length of stay
+428   in department and patient counts for the various pathway options in order to make the DES model
+429   more useful. The developed model also features a dedicated section to analyse the pathway from
+430   a single patient’s perspective which allows quantification of individual savings from the status quo
+431   setting to the radiographer-led discharge.
+432       Our model is intended to inform how radiographer-led discharge affects the length of stay of
+433   various patient subgroups as previously outlined. This means that the routing of patients, e.g. at
+434   triage, is based on historic facts, i.e. we assume that for a particular patient the pathway option
+435   (such as A, B, or C) is known before triaging takes place. Discussions with ED practitioners
+436   pointed out that an analysis of different pathway proportions could be informative as it would
+437   capture different attitudes towards ordering imaging at Triage or Assessment respectively. Also,
+438   we assume that no repeated imaging during one visit takes place as this would again have to
+439   take into account doctor’s decision making process which cannot be quantified satisfactory using
+440   only the available data set. In contrast to what the outcome of the mapping session suggested
+441   follow-up treatments at the hospital, such as plastering or physiotherapy, are not included in the
+442   pathway. The effects on the number of patients requiring those treatments within hospital should
+443   not be affected from a change to radiographer-led discharge as radiographers will mainly discharge
+444   patients. Assessing the impact on the overall LOS including those additional services is therefore
+445   out of the scope for this study.
+
+446   Verification & validation of DES model
+447   Verifying the model was in, fact, done in constant feedback discussions with clinicians, in particular
+448   with radiographers involved in this study. Clinicians at the hospital confirmed that time stamps are
+449   commonly recorded while the activity takes place but not necessarily to mark either the beginning
+450   or the end of an activity. With a sufficiently large number of patients going through this system,
+451   we assume that biases towards either start or end of activities are levelled out. We validated the
+452   DES model against the historic data to assess how it represents the status quo. Data was captured
+453   over a period of 699 days after a warm-up period of 2 years, we ran a trial with five individual
+454   simulation runs. The run time was chosen in order to be able to compare model outputs directly
+455   to the provided data set covering an uninterrupted series of the most recent patient records. The
+456   warm-up period of two years was chosen experimentally capturing the variation in the LOS as
+457   the major LOS. For the this study it was important to calibrate the model towards the historic
+458   data in order to be able to demonstrate effects in relation to most recent patient attendance. A
+459   comparison against 1 or 3 years of warm-up led to model results (i.e. KPIs) which had greater
+460   deviation from the historic values. Figure 2 shows that both the LOS in ED and also the number
+461   of patients attending ED on either of the three pathway options form a good representation of the
+462   historic data set.
+
+463   3.6. Study design and experimentation
+464   3.6.1. Pathway redesign
+465       The introduction of radiographer-led discharge adds a new routing option to the studied path-
+466   way. Figure 7 represents how this affects Pathway Options A and B, i.e. those where acquiring
+467   X-Ray images would be needed. Initially, the hospital aims to select a subgroup of all those patients
+468   receiving diagnostic imaging, who will then benefit from the proposed changes, e.g. all those with
+469   minor appendicular injuries or those with injured lower limbs. If, under clearly defined conditions,
+                                                       14
+
+                                   Historic Data                 DES Model
+          Model parameter             Average        Average     95% Confidence Interval     Relative deviation
+          Length of stay in ED
+            Overall                     143.5       143.4528          [142.5, 144.4]                0.03%
+             Option A                  153.03       152.5655          [151.3, 153.9]                0.30%
+             Option B                  141.26       141.3876          [138.0, 144.8]                0.09%
+             Option C                  139.67       139.8262          [138.0, 141.7]                0.11%
+            Discharges                  139.7       140.043           [139.1, 141.0]                0.25%
+            Admissions                  212.3       209.3986          [207.3, 211.4]                1.37%
+          Attendance
+            Overall                     2810          2826           [2730.3, 2922.1]               0.57%
+            Discharges                  2655         2684.8          [2602.7, 2767.3]               1.12%
+            Admissions                   150         141.2            [127.6, 154.8]                5.87%
+
+                 Table 2: Validation of model output against the status quo setting based on historic data
+
+
+470   a radiographer decides to discharge a patient this can then be done immediately after the image
+471   has been taken and interpreted. In this case, no further assessment would be required and patients
+472   could be sent to physiotherapy, the plaster room, or home with further advice on pain management,
+473   e.g. using specific information leaflets etc. Radiographer-led discharge would require doctors’ pre-
+474   authorisation for discharge on the basis of normal images and no other conditions being present
+475   which would require specialised help. In addition, a high level of confidence would be necessary
+476   for radiographic discharge to proceed on the basis of an X-Ray image. Given those conditions and
+477   acknowledging that the vast majority of patients are discharged from ED, the proposed changes
+478   could significantly affect a large number of patients on the minor injuries pathway. In addition,
+479   the positive effect to be expected on the use of doctors’ time can be considered equally important.
+480   During discussions with clinicians it was suggested that the required time for a radiographer-led
+481   discharge activity should take on average ten minutes, allowing for some variability. We therefore
+482   suggest to model this using a log-normal distribution with mean 10 and standard deviation of 5.
+483   In contrast to the common way of discharge, this additional option using highly skilled radiog-
+484   raphers shortens the patient journey significantly and helps sending patients home much quicker.
+485   Basically, clinicians suggested that the radiographer-led discharge would be a brief consultation
+486   following image acquisition and interpretation.
+
+487   3.6.2. What-If-Scenarios
+488       In order to investigate whether and to what extent RLD is beneficial we analysed a number
+489   of what-if-scenarios alongside the current situation (i.e. Status Quo). These scenarios represent
+490   the extent to which RLD would be rolled out, i.e. on one or two days of the weekends, or all
+491   day long every day of the week. This could, in fact, also reflect the number of effectively trained
+492   radiographers who are authorised to discharge. We compare these scenarios to the Status Quo and
+493   identify the likely savings in terms of LOS. We are interested to find out how and to what extend
+494   the overall cohort of patients is affected by this streamlining option, and specifically we want
+495   to quantify savings along the pathway options A and B. We simulated the same period as was
+496   covered through the historic data set, i.e. 699 days. This was expected by collaborators to make
+497   the comparison easier. We performed trial runs with five simulation runs, each with independent
+498   pseudo-random number seeds. Every single run included a warm-up phase of two years which then
+                                                            15
+
+                   Registration                                  Registration                                           Registration
+
+
+
+                                                     Option A                    Option B
+                                                                   Triage
+                     Triage                                                                                               Triage
+
+
+                                                     Imaging                    Assessment
+
+  Imaging                            Assessment                                                        Imaging                            Assessment
+
+                                                    Decision                      Imaging
+
+                    Decision                                                                                             Decision
+                                                                  Follow-up
+                                                                 consultation
+
+
+                                                    Discharge     Discharge
+ Discharge                            Admission                                  Admission            Discharge                            Admission
+                                                   Radiography   Consultation
+
+
+Pathway Option A               Pathway Option C                                                      Pathway Option A               Pathway Option C
+                 Figure 7: Redesigned pathway including potential radiographer-led discharging option. Formatting for pathway
+Pathway Option B            All pathways                                                                Pathway Option B      All pathways
+                 options A (imaging ordered during triage) and B (imaging ordered during assessment) according to figure 2.
+
+
+             499   ensured that the confidence intervals for performance indicators are close to the simulated mean.
+             500   The obtained results for the key performance indicators are compared across the different what-
+             501   if-scenarios and the Status Quo with a primary focus on savings in average LOS. We conducted a
+             502   series of experiments with different levels of detail for the time-dependency of process durations.
+                   The model allows for hour-of-arrival-dependent process durations which we have aggregated into
+             Modified version for revised paper
+             503
+
+             504   groups of four hours length. This was sufficiently accurate and led to good results during the
+             505   validation of the model as reported above and is also in line with recent simulation studies in ED
+             506   [37]. However, for inter-arrival times we chose detailed blocks of one hour length in order to ensure
+             507   that ED attendance was sufficiently close to the historic data.
+
+             508   3.6.3. Trade-off analysis
+             509       The beneficial effects of radiographer-led discharge, however, might be restricted due to limited
+             510   availability of qualified staff to take over the roles of discharging radiographers. As radiographers
+             511   need to be upskilled and trained to be able to discharge patients immediately after imaging, we
+             512   are interested in the trade-off between the improvement of the LOS and the associated costs to
+             513   achieve this. We propose to use the time during which radiographer-led discharge is available
+             514   as a proxy for the costs involved and link this to (1) LOS in ED, (2) the number of patients
+             515   discharged by a radiographer, and (3) the number of assessments carried out by clinicians. Hence,
+             516   this section extends the previously shown analysis and explores on which days of the week the
+             517   effects of introducing this concept would be largest. We compare each weekday as on/off shifts and
+             518   allow two shifts on weekends (morning and afternoon) as on/off which leads to a total number of
+             519   512 scenarios. For all these scenarios we compare results from simulated trials as specified above.
+
+
+                                                                     16
+
+                                                                150
+
+
+
+
+                                Length of stay in ED (in min)
+                                                                120
+
+
+                                                                 90
+
+
+                                                                 60
+                                                                          Status Quo           Streamlined pathway
+
+                                                                      Overall     Discharge   Radiographer-led discharge
+
+
+      Figure 8: Length of stay for all patients and only those being discharged with respect to different intensity of
+      radiographer-led discharge. Error bars report the confidence intervals at a 95% level.
+
+
+520   4. Results
+
+521       We present the computational results in two consecutive steps. Firstly, we highlight the effects
+522   on the LOS in ED when RLD is introduced. This is further analysed by looking at effects on the
+523   different pathway options. We also analyse the reduction in assessments and the actual number of
+524   radiographer discharges. Secondly, all these effects are linked to staffing requirements in order to
+525   be able to streamline patient pathways.
+
+526   4.1. General findings
+527       Figure 8 clearly demonstrates the beneficial effects of implementing an early discharge strategy
+528   on a minor injuries pathway. The sections Status Quo and Streamlined pathway in the graph
+529   compare the current setting at the hospital with a setting where RLD is fully implemented. The
+530   length of stay for all patients (LOS overall) could be reduced by more than 20min on average, which
+531   is particularly achieved by the shortened process between imaging and discharging patients. On
+532   average, all discharged patients spent 25min less in the department. This reduction is mainly driven
+533   through beneficial effects of RLD which allows to shorten the delay until discharge by 50min (on
+534   overall average) - with individual savings being a lot higher. Since approximately 55% of all patients
+535   received imaging this limits savings in this particular setting. However, reductions are significantly
+536   higher than 50min when imaging was requested at triage. The potential savings for the overall
+537   attendance in ED obviously vary according to the proportion of patients for which imaging is
+538   required and thus the effects might be either less or more prominent with other hospital settings.
+539   Another effect might be the seniority of staff triaging patients: more junior nurses or doctors could
+540   tend to request imaging more freely than more experienced members of staff. However, this was
+541   beyond the scope of our study and is therefore not included in this analysis.
+542       The following analyses add further detail to the findings above. Firstly, gradually increasing
+543   the intensity of RLD shortens the length of stay for discharged patients, which then also reduces
+544   the overall LOS in ED. Figure 9 shows how the average LOS decreases when RLD is provided more
+545   frequently. The latter one is a key performance criterion for hospitals and RLD helps to reduce
+546   the risk of breaching the four hour target. With only 5% of all patients on the minors pathway
+547   requiring an admission the effect of RLD on the overall LOS in ED is very positive. For the two
+548   pathway options for patients who require imaging, it becomes apparent that especially for patients
+549   without a medical consultation, but a radiographer-led discharge consultation instead, RLD will
+550   significantly shorten their time in ED (Table 3). Patients whose imaging is requested during a
+                                                                                        17
+
+                                            160
+            Length of stay in ED (in min)
+
+
+                                                                                                                             Pathway Option A
+                                                                                                                             Pathway Option B
+                                            140
+
+                                            120
+
+                                            100
+
+                                             80
+
+                                             60
+                                                  Status Quo   Saturday         Sunday        All Weekend    Only weekdays           RLD
+
+
+      Figure 9: Effects of RLD on average LOS for all patients and those being discharged. Error bars report the resulting
+      confidence intervals at 95% level.
+
+                                                                            Length of stay in ED (in min)
+                                                                          Status Quo              Streamlined                Relative savings
+                                                                   Overall    Discharged      Overall   Discharged     Overall        Discharged
+          With imaging
+          Triage - Imaging (A)                                      152.9         149          87.8          80.5       42.6%            46.0%
+          Triage - Seen - Imaging (B)                               142.3        139.5        108.2         103.5       35.0%            37.6%
+          No imaging
+          Triage - Seen (C)                                         139.5        135.6        139.5         133.6            –                  –
+
+      Table 3: Average length of stay Status Quo and streamlined pathway (RLD) setting comparing overall and discharge
+      only benefits.
+
+
+551   medical consultation could potentially leave the department more than half an hour earlier. In
+552   both cases (Pathway Options A and B), the main benefit results from time savings while patients
+553   wait for the final assessment and the actual discharge procedure itself. The reduction in waiting
+554   times could become more prominent when a different case-mix is considered. In this study, a large
+555   number of patients do not receive imaging. For those patients, the length of stay is not directly
+556   affected through the suggested pathway changes. It is likely however that those patients will benefit
+557   from higher doctor availability, yet time-wise benefits are potentially not significant.
+
+558   4.2. Trade-off analysis
+559       In the following, the time-wise availability of radiographer-led discharge serves as a proxy for
+560   the likely costs. We analyse in particular effects on the LOS in ED, the number of discharges by a
+561   radiographer, and the number of assessments carried out by clinicians.
+562   Overall effects: Firstly, the overall effect is in line with the generally positive results presented
+563   in the previous section. Allowing radiographers to discharge patients on selected days of the week
+564   only, however, allows a specific focus on the most impactful time periods such as weekends. This
+565   is particularly interesting when limited budgets or resource availabilities need to be taken into
+566   account, e.g. only few radiographers are trained to discharge patients. Figure 10 demonstrates
+567   that already very limited availability of RLD (i.e. one day per week) can reduced the average
+568   length of stay in ED (note that this includes all three previously mentioned pathway options).
+569   Separating out the two options, which actually involve image acquisition, we find similar effects
+570   that are stronger for patients whose imaging was requested at triage (option A). Although those
+                                                                                         18
+
+                                                    150                                                                                                        160
+                                                                                                                                                                                                Pathway Option A
+            Length of saty in ED (in min)
+
+
+
+
+                                                                                                                         Length of stay in ED (in min)
+                                                                                                                                                                                                Pathway Option B
+                                                    140                                                                                                                                         All pathway options
+                                                                                                                                                               140
+
+                                                    130
+                                                                                                                                                               120
+                                                    120
+
+                                                                                                                                                               100
+                                                    110
+
+                                                    100                                                                                                         80
+                                                          0       24    48    72     96     120 144     168                                                          0       24    48    72     96     120 144        168
+      (a)                                                         Hours of Radiographer-led discharge              (b)                                                       Hours of Radiographer-led discharge
+
+      Figure 10: Trade-off between LOS in ED and the availability of RLD. (a) Scenario solutions represented as dots,
+      and efficient solutions highlighted in black. (b) Efficient solutions visualising the trade-off between LOS in ED and
+      the availability of radiographer-led discharge for two pathway options involving imaging (diamonds correspond with
+      non-dominated solutions in (a)).
+
+                                                    1400                                                                                                       3000
+                                                                                                                              Number of Clinical Assessments
+                  Discharges through radiographer
+
+
+
+
+                                                    1200
+                                                                                                                                                               2800
+                                                    1000
+                                                     800                                                                                                       2600
+
+                                                     600                                                                                                       2400
+                                                     400
+                                                                                                                                                               2200
+                                                     200
+                                                          0                                                                                                    2000
+                                                              0    24 48 72 96 120 144 168                                                                               0    24 48 72 96 120 144 168
+                                                                  Hours of Radiographer-led discharge                                                                        Hours of Radiographer-led discharge
+      (a)                                                                                                          (b)
+      Figure 11: Trade-off between (a) radiographer-led discharge and (b) clinical assessments against resource require-
+      ments. Scenario solutions represented as dots, and efficient solutions highlighted in black.
+
+
+571   patients spend more time in ED in the current setting without RLD, with 48 hours of radiographers
+572   working per week (i.e. on Saturdays and Sundays) the length of stay in the department can be
+573   reduced by roughly 10%. Any further rolling-out of RLD should always include an attendance
+574   level which is at least as high as the weekend attendance which accounts for more than 50% of the
+575   attendance. Figure 14 focuses only on the non-dominated solutions for the two pathway options
+576   including imaging. The steeper descent for Option A shows stronger effects with additional hours
+577   of RLD.
+578   Discharges versus assessments: We now focus on the patient volume – i.e. those that would be
+579   discharged by a radiographer – rather than on LOS reductions. Figure 11 reiterates the beneficial
+580   effects of introducing RLD on weekends and Saturdays in particular, as those days regularly see
+581   very high attendance. This comparison nicely outlines the diminishing returns of scale, i.e. the
+582   effects decrease with an additional day of RLD because the share of patients per remaining day
+583   decreases as well. These findings can be immediately linked to the reduction in assessments as
+584   shown in graph (b). However, this effect is less strong, mainly because the subset of patients whose
+
+                                                                                                              19
+
+                                                    160
+                    Length of stay in ED (in min)                                                                    All discharged         Discharge without seen   Dischare with seen
+                                                    140
+
+                                                    120
+
+                                                    100
+
+                                                     80
+
+                                                     60
+                                                                                       Status Quo   SUN        SAT          MON              TUE          WED         FRI         THU
+
+
+      Figure 12: Maxium effects when introducing radiographer-led discharge step-wise, i.e. add only one day. Error bars
+      report the 95% confidence level.
+
+                                                                                      1500                                                                                   3000
+                                                     Discharges through radiography
+
+
+
+
+                                                                                                           RLD patients                 Number of assessments
+                                                                                      1250
+
+
+
+
+                                                                                                                                                                                    Clinical assessments
+                                                                                                                                                                             2750
+                                                                                      1000
+
+                                                                                       750                                                                                   2500
+
+                                                                                       500
+                                                                                                                                                                             2250
+                                                                                       250
+
+                                                                                         0                                                                                   2000
+                                                                                              SQ     SUN      SAT         MON         TUE       WED         FRI      THU
+
+      Figure 13: Comparison of increase in discharges and reduction in clinical assessments. The error bars indicate
+      confidence intervals at 95%.
+
+
+585   image is not requested at triage (requiring pre-imaging assessment) is still a substantially large
+586   proportion of the overall attendance. Hence, the above effect is mainly driven by the population
+587   of pathway option A. As introducing RLD requires upskilling of radiographers and/or financial
+588   resources to employ sufficient reporting radiographers; hospitals would aim to assess the impact of
+589   a step-wise introduction of RLD. Overall, we were interested to find out which sequence of days
+590   of RLD provision would lead to biggest effects on the total LOS in ED. We were interested which
+591   additional day would yields the minimum LOS given only one extra day can be chosen. This
+592   optimal sequence is
+
+                                                    (Sunday, Saturday, Monday, Tuesday, Wednesday, Friday, Thursday)
+
+593   and was obtained using a greedy search strategy for all scenarios results. Figure 12 reports the
+594   resulting LOS changes when following this sequence. Finally, taking the above sequence into
+595   account, Figure 13 demonstrates how the introduction of RLD reduces the number of clinical
+596   assessments. Again, diminishing effects can be observed and a lot of clinical time could be set free
+597   on weekends only which would account for roughly 300 clinical assessments. At the same time,
+598   over 500 discharges could be initiated by radiographers, i.e. this also impacts other, e.g. ENP-led,
+599   discharge routes.
+
+
+
+                                                                                                                                20
+
+600   5. Discussion and outlook
+
+601       This paper presents a generic modelling approach which both enables users to evaluate po-
+602   tential pathway changes to ED and facilitates engagement and communication about such system
+603   changes to management, staff, and patients. Process mapping the current pathways through ED,
+604   in particular, helped both operational researchers and clinicians to identify key bottlenecks and
+605   informed the subsequent development of the DES model. The process of capturing the ED as
+606   a system was supported by an extensive data analysis which generated additional insights and
+607   helped to identify the level of detail needed for the DES model. We found that an iterative process
+608   of modelling, analysis, and inter-disciplinary meetings with clinicians and operational researchers
+609   helped to develop a comprehensive and collaborative decision support context to assess the likely
+610   impact of pathway redesign options. The study demonstrates that even a relatively small prede-
+611   fined subset of patients made suitable for radiographer-led discharge can impact on time spent in
+612   ED particularly for those patients discharged earlier than usually. While patients being discharged
+613   benefit most, the restructuring of the pathway also impacts more generally on the time patients
+614   wait to be seen by a doctor because these events are less frequent with RLD. The strategic view of
+615   the minor injuries pathway provided by the model can also inform decisions about the frequency
+616   at which radiographer-led discharge should be offered. During meetings with clinicians, the DES
+617   model was able to assess the impact of other potential pathway changes that were raised during the
+618   discussion. Finally, as a generic model, the DES can be adapted to support similar restructuring of
+619   pathways at other Emergency Departments. Hence local variations can be accommodated which is
+620   likely to enhance credibility of the model among clinical staff and management at specific locations.
+621   For all mentioned stakeholders a clear and compelling visualisation of the model and its outputs
+622   is key to achieve a sufficient level of engagement.
+623       Although the simulation study and the Training Needs Analysis (see section 1) were carried out
+624   independently during the overall project, findings from the pathway mapping and the simulation
+625   study have informed the training of future radiographers, i.e. students will work with pathway
+626   models that were derived from this study. Also, the pathway mapping and potentially the modelling
+627   will assist junior radiographers (and others) to visualise the benefits of this approach and provide
+628   a decision support tool. Importantly, we believe the use of process mapping and DES pathway
+629   modelling can critically assist in the decision making processes in health service delivery. Our
+630   study demonstrates how this can be achieved in the context of RLD in ED and shows how these
+631   approaches can provide clarity and a stronger evidence-informed basis for policy. Many other
+632   strategic issues however are fundamental to system changes in healthcare. In the context of our
+633   study, for instance, there are many issues relating to workforce and accountability which would
+634   bear on the application of radiographic discharge in ED. The currently availability, status, and
+635   salary of skilled radiographers able and willing to implement RD across the UK NHS is a key issue
+636   set against the current context of nursing shortages, shortage of radiologists and increasing ED
+637   attendances. Alternative strategies to balance workload in the department as well as proactive
+638   training programmes need to be investigated. In this sense, our work has quantified benefits in
+639   terms of workload reductions for doctors in ED, in particular at a senior level, who would interpret
+640   images. The necessary discussion around accountability and control, i.e. whether a system is
+641   acceptable to ED consultants, can be supported by a modelling approach as presented in this
+642   paper. Recently issued national guidelines have also highlighted the need for immediate reporting
+643   when diagnostic imaging is performed. The actual implementation and the transformation of
+644   processes into daily practice demands confident decision makers (and potentially pilot phases of
+                                                       21
+
+645   the new intervention). The confidence aspect has transferred to the University side and led to the
+646   development of an MSc Programme Medical Imaging: Skeletal Reporting.
+647       This study has shown that the application of RLD can potentially provide substantial reductions
+648   in patient journey times through ED as well as reduce load on nurses and consultants. However, as
+649   with all models, applying RLD in any particular hospital context demands that many other factors
+650   (such as patients and/or staff behaviour) are taken in to account. In general therefore, operational
+651   research methods can provide indicative outputs which guide decision making but they do not give
+652   hard and fast definitive solutions. Despite ongoing discussions about the potentials of DES [46, 47],
+653   this paper has given a profound demonstration of the effectiveness of this method for streamlining
+654   patient pathways in ED. In addition to a published case study by Snaith [18], our work shows how
+655   this concept can be rolled out to various hospitals in general. Hence, we address the often neglected
+656   way to implementation [32]. From a methodological point of view, the inclusion of staff scheduling
+657   within an iterative scheduling and optimisation approach but also the integration of longer term
+658   development in terms of a hybrid combination of System Dynamics and Discrete Event Simulation
+659   appear to be promising avenues for future research.
+
+660   Acknowledgements
+661      The authors are grateful for the supportive feedback received from the associate editor and
+662   the anonymous reviewers which helped to improve this publication. Part of this research, i.e. the
+663   work of Martin Pitt and Sebastian Rachuba, was supported by the National Institute for Health
+664   Research (NIHR) Collaboration for Leadership in Applied Health Research and Care South West
+665   Peninsula. The views expressed are those of the authors and not necessarily those of the NHS, the
+666   NIHR or the Department of Health.
+
+667   Bibliography
+668    [1] N. Triggle, A&es struggle after ’sharp rise’ in demand (2016).
+669        URL http://www.bbc.co.uk/news/health-35440422
+670    [2] A. Guttmann, M. J. Schull, M. J. Vermeulen, T. A. Stukel, Association between waiting times and short term
+671        mortality and hospital admission after departure from emergency department: population based cohort study
+672        from ontario, canada, BMJ 342.
+673    [3] N. I. f. H. NICE, C. Excellence, Fractures (non-complex): assessment and management (2016).
+674    [4] B. Snaith, M. Hardy, E. F. Lewis, Radiographer reporting in the uk: A longitudinal analysis, Radiography
+675        21 (2) (2015) 119–123.
+676    [5] S. of Radiographers, Learning (2017).
+677        URL http://www.sor.org/
+678    [6] K. J. Piper, A. M. Paterson, R. C. Godfrey, Accuracy of radiographers’ reports in the interpretation of radio-
+679        graphic examinations of the skeletal system: a review of 6796 cases, Radiography 11 (1) (2016) 27–34.
+680    [7] M. Hardy, C. Barrett, Interpretation of trauma radiographs by radiographers and nurses in the uk: a comparative
+681        study, Br J Radiol 77 (920) (2004) 657–61.
+682    [8] C. A. McLauchlan, K. Jones, H. R. Guly, Interpretation of trauma radiographs by junior doctors in accident
+683        and emergency departments: a cause for concern?, J Accid Emerg Med 14 (5) (1997) 295–8.
+684    [9] J. R. Benger, Can nurses working in remote units accurately request and interpret radiographs?, Emerg Med J
+685        19 (1) (2002) 68–70.
+686   [10] M. Hardy, C. Barrett, Interpreting trauma radiographs, J Adv Nurs 44 (1) (2003) 81–7.
+687   [11] J. R. Benger, I. D. Lyburn, What is the effect of reporting all emergency department radiographs?, Emerg Med
+688        J 20 (1) (2003) 40–3.
+689   [12] H. Sharma, S. Bhagat, W. Gaine, Reducing diagnostic errors in musculoskeletal trauma by reviewing non-
+690        admission orthopaedic referrals in the next-day trauma meeting, Annals of the Royal College of Surgeons of
+691        England 89 (7) (2007) 692.
+
+                                                              22
+
+692   [13] M. Hardy, B. Snaith, The impact of radiographer immediate reporting on patient outcomes and service delivery
+693        within the emergency department: Designing a randomised controlled trial, Radiography 17 (4) (2011) 275–279.
+694   [14] M. Hardy, B. Snaith, A. Scally, The impact of immediate reporting on interpretive discrepancies and patient
+695        referral pathways within the emergency department: a randomised controlled trial, Br J Radiol 86 (1021) (2013)
+696        20120112.
+697   [15] C. L. Talbot, J. Ring, E. M. Holt, Litigation relating to conditions affecting the shoulder and elbow: an analysis
+698        of claims against the national health service, Bone Joint J 96-b (5) (2014) 574–579.
+699   [16] W. Harrison, A. W. Newton, G. Cheung, The litigation cost of negligent scaphoid fracture management, Eur J
+700        Emerg Med 22 (2) (2015) 142–143.
+701   [17] J. Ring, C. Talbot, J. Price, P. Dunkow, Wrist and scaphoid fractures: a 17-year review of nhsla litigation data,
+702        Injury 46 (4) (2015) 682–6.
+703   [18] B. A. Snaith, Radiographer-led discharge in accident and emergency; the results of a pilot project, Radiography
+704        13 (1) (2007) 13–17.
+705   [19] B. Snaith, M. Hardy, Emergency department image interpretation accuracy: The influence of immediate re-
+706        porting by radiology, Int Emerg Nurs 22 (2) (2014) 63–8.
+707   [20] M. Hardy, J. Hutton, B. Snaith, Is a radiographer led immediate reporting service for emergency department
+708        referrals a cost effective initiative?, Radiography 19 (1) (2013) 23–27.
+709   [21] M. M. Gn̈al, M. Pidd, Discrete event simulation for performance modelling in health care: a review of the
+710        literature, Journal of Simulation 4 (1) (2010) 42–51.
+711   [22] M. Gul, A. F. Guneri, A comprehensive review of emergency department simulation applications for normal
+712        and disaster conditions, Computers and Industrial Engineering 83 (2015) 327–344.
+713   [23] D. Hoot, Nathan R.and Aronsky, Systematic review of emergency department crowding: Causes, effects, and
+714        solutions, Annals of Emergency Medicine 52 (2) (2008) 126–136.e1.
+715   [24] S. A. Paul, M. C. Reddy, C. J. Deflitch, A systematic review of simulation studies investigating emergency
+716        department overcrowding, Simulation 86 (8-9) (2010) 559–571.
+717   [25] K. Katsaliaki, N. Mustafee, Applications of simulation within the healthcare context, Journal of the Operational
+718        Research Society 62 (8) (2011) 1431–1451.
+719   [26] J. L. Wiler, R. T. Griffey, T. Olsen, Review of modeling approaches for emergency department patient flow and
+720        crowding research, Academic Emergency Medicine 18 (12) (2011) 1371–1379.
+721   [27] S. Norouzzadeh, J. Garber, M. Longacre, S. Akbar, N. Riebling, R. Clark, A modular simulation study to
+722        improve patient flow to inpatient units in the emergency department, Journal of Hospital Administration 3 (6)
+723        (2014) 205–215.
+724   [28] J. T. Blake, M. W. Carter, S. Richardson, An analysis of emergency room wait time issues via computer
+725        simulation, INFOR: Information Systems and Operational Research 34 (4) (1996) 263–273.
+726   [29] M. A. Badri, J. Hollingsworth, A simulation model for scheduling in the emergency room, International Journal
+727        of Operations & Production Management 13 (3) (1993) 13–24.
+728   [30] J. K. Cochran, K. T. Roche, A multi-class queuing network analysis methodology for improving hospital emer-
+729        gency department performance, Comput. Oper. Res. 36 (5) (2009) 1497–1512.
+730   [31] S. Saghafian, G. Austin, S. J. Traub, Operations research/management contributions to emergency department
+731        patient flow optimization: Review and research prospects, IIE Transactions on Healthcare Systems Engineering
+732        5 (2) (2015) 101–123.
+733   [32] C. S. Brailsford, R. P. Harper, B. Patel, M. Pitt, An analysis of the academic literature on simulation and
+734        modelling in health care, Journal of Simulation 3 (3) (2009) 130–140.
+735   [33] K. Kotiadis, A. Tako, Facilitated post-model coding in discrete event simulation (des): A case study in health-
+736        care, European Journal of Operational Research.
+737   [34] C. Baril, V. Gascon, J. Miller, N. Ct, Use of a discrete-event simulation in a kaizen event: A
+738        case study in healthcare, European Journal of Operational Research 249 (1) (2016) 327 – 339.
+739        doi:https://doi.org/10.1016/j.ejor.2015.08.036.
+740        URL http://www.sciencedirect.com/science/article/pii/S0377221715007912
+741   [35] R. Konrad, K. DeSotto, A. Grocela, P. McAuley, J. Wang, J. Lyons, M. Bruin, Modeling the impact of changing
+742        patient flow processes in an emergency department: Insights from a computer simulation study, Operations
+743        Research for Health Care 2 (4) (2013) 66 – 74.
+744   [36] W. Abo-Hamad, A. Arisha, Simulation-based framework to improve patient experience in an emergency depart-
+745        ment, European Journal of Operational Research 224 (1) (2013) 154 – 166.
+746   [37] S. Rachuba, A. Salmon, Z. Zhelev, M. Pitt, Redesigning the diagnostic pathway for chest pain patients in
+747        emergency departments, Health Care Management Science (online first, DOI: 10.1007/s10729-017-9398-2) (2017)
+
+                                                                23
+
+748        1–15.
+749   [38] I. Komenda, V. Knight, H. M. Williams, Compliance with national guidelines for stroke in radiology, Operations
+750        Research for Health Care 6 (2015) 33–39.
+751   [39] K. K. Yang, S. S. W. Lam, J. M. W. Low, M. E. H. Ong, Managing emergency department crowding through
+752        improved triaging and resource allocation, Operations Research for Health Care 10 (2016) 13–22.
+753   [40] L. Kuntz, S. Sl̈z, Treatment speed and high load in the emergency departmentdoes staff quality matter?, Health
+754        Care Management Science 16 (4) (2013) 366–376.
+755   [41] S. Corporation, Simul8 (2017).
+756        URL https://www.simul8.com/
+757   [42] D. Smyth, P. Checkland, Using a systems approach: The structure of root definitions, Journal of Applied
+758        Systems Analysis 5 (1) (1976) 75–83.
+759   [43] S. Robinson, Conceptual modelling for simulation part i: definition and requirements, Journal of the Operational
+760        Research Society 59 (2008) 278–290.
+761   [44] S. Robinson, Conceptual modelling for simulation part ii: A framework for conceptual modelling, Journal of the
+762        Operational Research Society 59 (2008) 291–304.
+763   [45] N. England, A&e attendances and emergency admissions (2017).
+764        URL https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/
+765   [46] S. Brailsford, Discrete-event simulation is alive and kicking!, Journal of Simulation 8 (1) (2014) 1–8.
+766   [47] P. O. Siebers, C. M. Macal, J. Garnett, D. Buxton, M. Pidd, Discrete-event simulation is dead, long live
+767        agent-based simulation!, Journal of Simulation 4 (3) (2010) 204–210.
+
+
+
+
+                                                              24
+

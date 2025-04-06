@@ -1,0 +1,452 @@
+                                                           Operations Research for Health Care 15 (2017) 13–18
+
+
+
+                                                              Contents lists available at ScienceDirect
+
+
+                                                Operations Research for Health Care
+                                                       journal homepage: www.elsevier.com/locate/orhc
+
+
+
+
+The development and practical application of a simulation model to
+inform musculoskeletal service delivery in an Australian public health
+service
+T.A. Comans a,b, *, A.T. Chang c , L. Standfield b , D. Knowles d , S. O’Leary e,f , M. Raymer f
+a
+  Metro North Hospital and Health Service, Queensland Health, Herston QLD 4029, Australia
+b
+  Menzies Health Institute Queensland and Centre for Applied Health Economics, Griffith University, Nathan campus, 170 Kessels Road, Nathan QLD 4111,
+Australia
+c
+  Centre for Allied Health Research, Royal Brisbane and Women’s Hospital, Herston QLD 4029, Australia
+d
+  Anthrodynamics Simulation Services. Minus Fifty Software, Canada
+e
+  School of Health and Rehabilitation Sciences, The University of Queensland, Therapies Building 84a, St Lucia QLD 4072, Australia
+f
+  Physiotherapy Department, Royal Brisbane and Women’s Hospital, Herston QLD 4029, Australia
+
+
+
+
+highlights
+
+• Simulation modelling is a valuable and informative tool in health service planning.
+• Existing services for patients with musculoskeletal conditions did not meet demand.
+• Advanced physiotherapy-led clinics form part of an efficient outpatient service.
+
+
+article              info                             a b s t r a c t
+Article history:                                      Timely access to orthopaedic and neurosurgery services in public hospitals is difficult to achieve due to
+Received 6 March 2017                                 constrained resources and rising demand with the result that waiting time targets are often not met.
+Accepted 27 July 2017                                 Advanced physiotherapy-led clinics can assist in managing demand by directly assessing and managing
+Available online 5 August 2017
+                                                      many patients without the need for consultation with a medical specialist. The purpose of this study was to
+                                                      develop and apply simulation modelling to determine the scale and mix of services required to efficiently
+Keywords:
+                                                      manage demand from patients with musculoskeletal conditions in one health district.
+Musculoskeletal diseases
+Computer simulations                                  Design
+Workforce                                                We designed a simulation model to estimate service demand over five years and test different service
+Physiotherapy                                         configurations (medical specialist-led or advanced physiotherapy-led) to meet waiting time targets and
+Physical therapy                                      reduce waiting lists in orthopaedic and neurosurgery services.
+Public health systems research
+                                                      Results
+                                                          Without intervention, the combined orthopaedic and neurosurgical outpatient waiting list is predicted
+                                                      to grow from 11,000 to over 15,000 patients over a five year period. To achieve waiting time targets within
+                                                      2 years the scale of services would need to approximately double and the most efficient combination
+                                                      would be to direct approximately 50% of referrals to medical specialist clinics and 50% to advanced
+                                                      physiotherapy-led clinics.
+                                                      Conclusions
+                                                         In the health system modelled, a significant gap was identified between future demand and current
+                                                      provision of services. Simulation modelling was able to assist service planners understand the demand
+                                                      and identify effective management strategies.
+                                                                                                                       © 2017 Elsevier Ltd. All rights reserved.
+
+
+
+
+    *
+    Correspondence to: School of Medicine, Nathan campus, Griffith University,
+170 Kessels Road, Nathan QLD 4111, Australia.
+    E-mail addresses: t.comans@griffith.edu.au (T.A. Comans),                             (L. Standfield), dylan.knowles@minusfiftysoftware.com (D. Knowles),
+angela.chang@health.qld.gov.au (A.T. Chang), lachlan.standfield@griffithuni.edu.au        s.oleary@uq.edu.au (S. O’Leary), maree.raymer@health.qld.gov.au (M. Raymer).
+
+http://dx.doi.org/10.1016/j.orhc.2017.07.002
+2211-6923/© 2017 Elsevier Ltd. All rights reserved.
+
+14                                        T.A. Comans et al. / Operations Research for Health Care 15 (2017) 13–18
+
+
+1. Introduction                                                                  approximately 11,000 referrals. It is therefore anticipated that the
+                                                                                 findings of this study may have a substantial influence on service
+    The demand for medical specialist outpatient services for pa-                planning and improved service delivery to many individuals with
+tients with musculoskeletal conditions substantially exceeds sup-                musculoskeletal disorders referred to these services in the future.
+ply. This imbalance over time has generated long waiting lists
+resulting in patients not being seen within clinically recommended               2. Experimental design
+timeframes. As a high proportion of these patients will not require
+surgery an initiative adopted in Queensland, Australia, has been the                A mixed method simulation model was developed in Anylogic⃝        R
+
+
+Neurosurgical and/or Orthopaedic Physiotherapy Screening Clinic                  to predict the demand for public specialist outpatient services for
+and Multidisciplinary Services (NPSC and OPSC hereafter referred                 patients with musculoskeletal conditions in Metro North over five
+to as N/OPSC) [1]. In the N/OPSC model, a physiotherapist work-                  years. This time frame was chosen to allow sufficient time to assess
+ing with an advanced scope of practice undertakes assessment,                    the impact of changing levels of activity, while also recognising that
+diagnosis and case management for selected patients with non-                    longer timeframes rely on assumptions that may not hold true in
+urgent (category 2 and 3) musculoskeletal conditions who have                    the future. The main structure of the model relies on a simplified
+been referred to either orthopaedic or neurosurgical specialist lists.           depiction of the clinic flow using DES. Individual characteristics
+Referrals are received predominantly from general practitioners                  of patients were modelled using agent-based methods. Monthly
+(GPs) and consist of a standardised referral template, although the              cycles were used for referrals and probabilities as this reflects usual
+level of detail provided is variable, and are usually accompanied                reporting time frames in the health service. A number of scenarios
+by imaging and test results. Referrals assigned to lower urgency                 were explored in the model over three experimental runs.
+triage categories may relate to conditions of many years duration.
+Physiotherapists working in these roles possess a high level of                  2.1. Scenarios explored in the model
+knowledge, skills and reasoning, developed through experience in
+relevant clinical practice areas and targeted post graduate profes-                 Firstly, a base case of the future demand on services over five
+                                                                                 years was estimated. This model applied the current levels of
+sional development and education beyond Masters level. Studies
+                                                                                 activity in clinics and proportion of patients managed by advanced
+specific to the N/OPSC, as well as studies evaluating similar services
+                                                                                 physiotherapists and incorporated increasing demand for services
+internationally, have shown this type of model to provide effective
+                                                                                 using projected population growth estimates over five years.
+patient care and a high quality of service, as well as reduce waiting
+                                                                                    Secondly, an optimisation experiment with 1000 repeated sim-
+times and staff costs [1–6]. Furthermore, a recent analysis using
+                                                                                 ulations was conducted to estimate the scale and mix of services
+discrete event simulation (DES) demonstrated that increasing the
+                                                                                 required to meet category specific waiting time targets 80% of the
+capacity of N/OPSC services within a single facility would be the
+                                                                                 time within the first two years. For this experiment, activity levels
+most cost-effective way to improve non-urgent patient throughput
+                                                                                 of clinics and the proportion of patients managed by advanced
+and reduce waiting times without exceeding available surgical
+                                                                                 physiotherapists were allowed to vary in each simulation with
+resources at that facility [7]. However, the current N/OPSC service
+                                                                                 the goal of minimising the total number of appointments while
+provided in most facilities in Queensland is not of adequate scale
+                                                                                 meeting target waiting times. Parameter variation and goal seeking
+to manage the proportion of those patients who would be suitable
+                                                                                 were performed by the OptQuest Optimization Engine included in
+to be directed to this pathway of care.
+                                                                                 AnyLogic [15,16].
+    Operations research, and in particular DES, has a growing role
+                                                                                    Following the optimisation experiment, results were presented
+in modelling and informing aspects of hospital and health service
+                                                                                 to stakeholders. Stakeholders were asked to consider what could
+delivery [8]. A review found that most DES models in hospitals                   feasibly be provided in terms of efficiency gains and increases in
+focus on emergency departments [9]. Where DES has been used                      advanced physiotherapy services to better meet demand based on
+for orthopaedic outpatient clinics, it has generally been focused                the optimisation results. Feasible changes to activity in medical
+on process improvement, including issues of patient flow such as                 specialist services were not within the scope of the study and were
+patient arrival times, no show impacts and waiting times once                    not modelled. The subsequent estimates of increased activity were
+the patient has physically arrived within the department [10,11].                then entered into the model as a comparison against the base case
+Models using DES have not focussed on the time delay from GP                     (no change) scenario.
+referral to specialist appointment and the matching of overall
+service capacity and demand to ensure patients are seen within                   2.2. Agents
+a clinically appropriate time from referral [12]. It is this latter
+concern that is the more significant priority for health services                    Four types of agents operate in the model: clinics, patients,
+planning and achieving government targets [13].                                  advanced physiotherapists and medical specialists (which repre-
+    The aim of this research was to estimate the scale and mix                   sent, as is appropriate to each clinic, orthopaedic and/or neuro-
+of services needed to effectively manage patients referred with                  surgery). Advanced physiotherapists and medical specialists exist
+musculoskeletal conditions within set time targets in a health                   in the model to provide services but are not assigned any specific
+service with multiple hospitals and clinics. Specifically, we applied            characteristics.
+a simulation model within the Metro North Hospital and Health                        The patient population is assigned musculoskeletal problems
+Service (Metro North) which is the largest public health provider                that require referral for specialist consultation. A patient with a
+in Queensland serving 20% of the state’s population (approximately               referral enters the model and proceeds to join the queue for the
+900 000 people) [14]. Three hospitals within Metro North (Royal                  clinic with the current shortest waiting time. From here, they will
+Brisbane & Women’s Hospital (RBWH), The Prince Charles Hospital                  proceed through the care pathway, which can result in surgical or
+(TPCH) and Redcliffe Hospital (Redcliffe)) offer orthopaedic ser-                non-surgical treatment, discharge without treatment, or ‘‘reneg-
+vices that include N/OPSC. Neurosurgery services are also provided               ing’’ due to excessive wait times. Up to 30% of referrals are known
+at RBWH to which patients from rural and regional areas outside                  to leave the current waiting lists (renege) and are never assessed.
+the health service are commonly referred. N/OPSC operates to                     The reasons for removal from the waiting list include: (i) inability
+manage a large proportion of these patients referred to neuro-                   to contact the patient; (ii) treatment is no longer necessary (condi-
+surgery with spinal pain conditions. At the end of 2015, the com-                tion resolved or self-management); (iii) patient shifted to private
+bined wait list for orthopaedic and neurosurgical assessment was                 care; (iv) patient moved away from the district; or (v) death.
+
+                                              T.A. Comans et al. / Operations Research for Health Care 15 (2017) 13–18                                 15
+
+
+
+
+                                                                Fig. 1. Simplified clinic structure.
+
+                          Table 1
+                          Range of services provided in each clinic.
+                            Clinic                  Medical specialist covers                Physiotherapy led (N/OPSC) service covers
+                            RBWH ortho              Orthopaedics all patient conditions      Cat 2 & 3 lower and upper limba
+                            RBWH neuro              Neurosurgery all patient conditions      Cat 2 & 3 spinal pain
+                            TPCH                    Orthopaedic all patient conditions       Cat 2 & 3 all patient conditions
+                            Redcliffe               Orthopaedic all patient conditions       Cat 2 & 3 all patient conditions
+                            Primary Care (OSiP)     No specialist                            Cat 2 & 3 all patient conditions
+                          N/OPSC = neuro/orthopaedic physiotherapy screening clinics; RBWH = Royal Brisbane and Women’s Hospital;
+                          TPCH = The Prince Charles Hospital; OSiP = Orthopaedic Screening in Primary Care; Cat = Urgency category.
+                          a
+                            Spinal pain patients from orthopaedics requiring physiotherapy led services are referred to the RBWH Neuro
+                          clinic N/OPSC service.
+
+
+   The modelled population begins with the current pool of re-                       treatment options, including surgery. Movement back to the med-
+ferrals waiting across the district. New referrals arrive based on                   ical specialist happens within the same clinic at RBWH, TPCH and
+the rate of referrals recorded at each facility in 2015 and assuming                 Redcliffe, with primary care/OSiP patients returned for assessment
+referral numbers increase in line with projected population growth                   at TPCH. After assessment by the medical specialist, a patient
+over time (8.6% over five years) [17]. Patients are assigned two                     may be referred for conservative management and/or review, be
+characteristics that affect demand and flow through each clinic:                     referred for surgery or be discharged.
+
+    • Condition (either lower limb, upper limb or spinal).                           2.4. Data inputs
+    • Urgency Category (either 1, 2, or 3).
+    Category 1 referrals are considered Urgent and an appointment                       Data was collated from routinely collected administrative data
+is recommended within 30 days. Category 2 is for Semi-urgent                         from the five clinics over the financial year 2014–15. Information
+referrals recommended for review within 90 days. Lastly, Category                    was obtained from the services directly and from hospital data
+3 referrals are considered Non-urgent and should be seen within                      management systems. Table 2 presents the key parameters used
+365 days. These outpatient urgency categories are standard across                    in the model. Fixed parameters represent those that are fixed
+Queensland public hospitals [18].                                                    for all runs of the model. Variable parameters represent those
+    Five clinics were modelled within the three hospitals provid-                    whose values are allowed to vary with different runs. The mini-
+ing Musculoskeletal Services. Four of these clinics provide both                     mum represents the base case scenario value and the maximum
+medical specialist and N/OPSC services. These services are a mix                     represents the maximum value that the variable was allowed to
+of orthopaedic and neurosurgery services, therefore patients with                    vary to in subsequent scenarios. This maximum value was set by
+spinal pathology may be referred to either orthopaedic or neuro-                     expert opinion at a level that would support timely convergence
+surgical services, as opposed to lower or upper limb cases which                     to a solution while still allowing a number of appointments that
+would only be seen by orthopaedics. Table 1 presents the five                        would enable all patients to be treated in time.
+clinics and the treatment options available.                                            To determine the maximum proportion of patients that could be
+                                                                                     appropriately directed to N/OPSC, an internal audit of 1441 refer-
+2.3. Model structure                                                                 rals across the various clinics was conducted. This audit found that
+                                                                                     up to 65% of referrals usually directed to orthopaedic surgeons and
+   The full structure of the hospital clinic model is shown in Fig. 1.               up to 40% of referrals usually directed to neurosurgeons could be
+   The initial decision point in the model splits patients to be seen                suitable for advanced physiotherapy assessment and management.
+either by a medical specialist or by an advanced physiotherapist.                    Therefore, for the modelling analysis, the proportion suitable for
+All category 1 patients are seen by a medical specialist and the                     physiotherapy management was varied between current provision
+remainder (Cat 2 and 3 referrals) are allocated between the two                      and the maximum proportion as identified in the audit (Table 2).
+pathways depending on a facility-specific probability given in Ta-
+ble 2, ‘‘Proportion of new patients referred to N/OPSC’’.                            2.5. Model validation
+   After assessment in the advanced physiotherapy-led arm of
+the model, a chance node moves the patient to either discharge,                         The pathways that patients follow were recorded and verified in
+conservative treatment or back to the medical specialist for either                  conjunction with clinicians working within the services, using pro-
+review or additional treatment (e.g. injection) as the problem may                   cess content diagrams and flowcharts as described in Jen et al. [19].
+be worse than anticipated or require consideration of additional                     A previous version of this model was extensively validated against
+
+16                                                T.A. Comans et al. / Operations Research for Health Care 15 (2017) 13–18
+
+Table 2
+Variables used in the model.
+     Category            Parameter description    Clinics                                                                                           Source (Year)
+                                                  RBWH ortho      RBWH neuro      TPCH        Redcliffe   Primary care clinic   Total metro north
+Fixed parameters
+  Patient                Age (mean (sd))                                                     57 (13.9)                                              Standfield et al. [7]
+  characteristics
+                         Gender (f%)                                                           56%                                                  Standfield et al. [7]
+                         Proportion category 1                                                 0.07                                                 R-Track (2015)
+                         Proportion category 2                                                 0.47                                                 R-Track (2015)
+                         Proportion category 3                                                 0.46                                                 R-Track (2015)
+                         Population growth                                               8.6% over 5 years                                          Population
+                                                                                                                                                    projections [17]
+  Patient currently      Awaiting initial         2406            2909            2360        3029        N/A                   10,704              HBCIS/OSIM
+  on waiting list        assessment at SOPD                                                                                                         (2014–2015)
+                         Awaiting initial         300             890             82          58          94                    1424                HBCIS/OSIM
+                         assessment N/OPSC                                                                                                          (2014–2015)
+                         Awaiting surgery         603             61              810         519         N/A                   1993                HBCIS/OSIM
+                                                                                                                                                    (2014–2015)
+  Referral rate          Referral arrivals per    337             93              256         312         17                    1015                HBCIS/OSIM
+                         month                                                                                                                      (2014–2015)
+Probabilities
+  Reneging               % drop out (per month)   0.02            0.02            0.02        0.02        0.02                  0.02                Audit data (2015)
+  Conversion to          Assessed by medical      0.25            0.25            0.25        0.25        0.25                  0.25                HBCIS (2015)
+  surgery rate           specialist
+                         Assessed by N/OPSC       0.27            0.27            0.27        0.27        0.27                  0.27                MARS and QHAPDC
+                         and returned to                                                                                                            (2012–2015)
+                         medical specialist
+  Patients discharged    After assessment and     0.29            0.30            0.41        0.35        0.49                  0.62                MARS (2014–2015)
+  to GP                  treatment by N/OPSC
+  Patients referred      After assessment and     0.25            0.28            0.46        0.53        0.32                  0.36                MARS (2014–2015)
+  for medical            treatment by N/OPSC
+  specialist follow up
+  Surgical slots         Surgery                  50              40              70          70                                230                 Expert opinion
+Variable parameters
+                         Current proportion of    0.12            0.34            0.13        0.16        0.13                  N/A                 HBCIS/OSIM (2015);
+  Assessment %
+                         new patients referred                                                                                                      R-Track (2015)
+                         to N/OPSC
+                         Maximum proportion       0.55            0.40            0.64        0.65        0.64
+                         of new patients
+                         referred to N/OPSC
+                         Medical                  165             91              222         158         N/A                   636                 HBCIS (2014–2015);
+  Appointments
+                         specialist—minimum                                                                                                         Expert opinion
+  given per month
+                         Medical                  495             273             666         474         N/A                   1908
+  (range)
+                         specialist—maximum
+                         N/OPSC—minimum           40–160          79–316          35–140      51–204      35–140                240                 HBCIS (2014– 2015);
+                         N/OPSC—maximum                                                                                         960                 Expert opinion
+RBWH = Royal Brisbane and Women’s Hospital; TPCH = The Prince Charles Hospital; N/OPSC = Neuro/orthopaedic physiotherapy screening clinic; SOPD = specialist
+outpatient department; HBCIS = hospital-based corporate information system; OSIM = Outpatient Services Information Management; MARS = Measurement Analysis and
+Reporting System; QHAPDC = Queensland Hospital Admitted Patient Data Collection; R-Track = R-Track referral management system.
+
+
+a Markov cohort model with queuing enabled and disabled in order                           specialist outpatient appointments currently provided per month.
+to perform data validation [20].                                                           The most efficient combination of services to achieve this level
+    To calibrate the model for rates of drop out, the monthly rate of                      of activity would be delivered by directing approximately 50% of
+reneging was varied over a range of plausible estimates to approx-                         patient referrals to the specialist medical consultants (932 of 1847
+imate the recorded 30% of all new referrals over the time period of                        new cases), and 50% of referrals to the advanced physiotherapy-
+five years. A rate of 2% per month gave the closest approximation                          led services (915 of 1847 new cases). This would require almost
+to audit data and was therefore used in the model.                                         tripling the existing physiotherapy services (281% increase to 915
+    Final model outputs were verified by stakeholders who agreed                           new cases per month) with an additional 47% increase in specialist
+that the model was performing as they would expect and that
+                                                                                           medical services (increase to 932 new cases per month). This
+results were representative of their system.
+                                                                                           solution is only suitable for the short term as following this, excess
+                                                                                           capacity is found in the system, waiting lists would drop to zero,
+3. Results
+                                                                                           and staff would be idle at times.
+    The base case model predicts an increase in waiting lists by 25%                           In response to the optimisation experiment results, stakehold-
+to over 15,000 patients over five years if activity levels remained                        ers identified that it would not be possible to expand existing
+unchanged from baseline (Fig. 2 and Table 3). At this level only 35%                       physiotherapy and specialist medical services to the levels iden-
+of category 3 patients would meet target waiting times by the end                          tified in the experiment. However, they identified that it would
+of the five year model period.                                                             be feasible to increase physiotherapy-led services in the short
+    The optimisation experiment solution for meeting category-                             to medium term through increases in efficiency, using current
+specific target waiting times 80% of the time within two years                             resources, and through additional funded activity. The efficiency
+(Table 3) would require approximately double the number of                                 gain was modelled and would improve waiting list size slightly but
+
+                                                    T.A. Comans et al. / Operations Research for Health Care 15 (2017) 13–18                                         17
+
+Table 3
+Results of the three experiments—total across all five clinics.
+                                                        Baseline            Optimised model (% change from baseline)           Feasible model (% change from baseline)
+  Average new case appointment provided per month
+  Medical specialist led service                           636              932 (47%)                                          636 (0%)
+  N/OPSC                                                   240              915 (281%)                                         537 (123%)
+  Total                                                    876              1847 (111%)                                        1173 (34%)
+  Waiting list impact of the appointments provided
+  Number of patients waiting at year 0                  12,128              12,128 (0%)                                        12,128 (0%)
+  Number of patients waiting at end year 5              15,160              1 (−100%)                                          9613 (−37%)
+N/OPSC = Neuro/orthopaedic physiotherapy screening clinic.
+
+
+
+                                                                                           predict the impact of advanced physiotherapy-led service changes
+                                                                                           deemed feasible to implement by health service stakeholders. We
+                                                                                           found that just a moderate increase in advanced physiotherapy-led
+                                                                                           services in conjunction with increases in efficiency within current
+                                                                                           constraints, would substantially control waiting list growth over
+                                                                                           a five-year period. These simulation results provide informed es-
+                                                                                           timates regarding the optimal scale and mix of services required
+                                                                                           to achieve waiting time targets for key decision makers to support
+                                                                                           both short and longer term service planning.
+                                                                                               There are a number of limitations within this study. This model
+                                                                                           was developed with the advanced physiotherapy-led service as
+                                                                                           the key stakeholder. Feasible changes to service delivery that were
+                                                                                           modelled took into account the ability to recruit to and accommo-
+                                                                                           date additional advanced physiotherapy led activity. We did not
+                                                                                           consider or model changes to medical specialist activity in this
+                                                                                           project or strategies aimed to reduce demand such as changing
+                                                                                           referral patterns from general practitioners as this was outside
+                                                                                           the scope for this project. Modelling strategies designed to reduce
+            Fig. 2. Estimated growth in total wait lists over five years.                  demand is an important focus for future studies given that demand
+                                                                                           for musculoskeletal services is growing faster than the population
+                                                                                           growth. To adequately manage this demand, the need for a com-
+would not reduce the waiting list over time (Fig. 2). The stakehold-                       prehensive strategic response has been highlighted [21]. There will
+ers identified an overall increase in activity in the physiotherapy-                       need to be focus on the role of primary care, not just secondary
+led service of 123% (to 537 new cases per month) would be possible                         referrals. One strategy that could assist is to shift the N/OPSC model
+to achieve within two years if additional funding was available                            out of hospitals and into a community setting where referrals can
+(Table 3).                                                                                 be received directly from general practice. Metro North has one
+   If implemented, the model identifies that this solution would                           such service currently operating successfully that was included in
+result in a downward trend in the size of the waiting lists up until                       the modelling for this project. In this service, early community
+year four to five where this stabilised at around 9,600 persons still                      based assessment by an advanced physiotherapist and access to
+waiting assessment (Fig. 2 and Table 3). This solution would also                          multidisciplinary care planning and treatment supports ongoing
+mean that waiting time targets could be achieved for all Category                          General Practitioner management. Other strategies that support
+1 and 2 patients and for approximately 50% of Category 3 patients.                         improved primary care management would also be required in-
+                                                                                           cluding building the capacity of the primary care workforce in the
+4. Discussion                                                                              management of musculoskeletal conditions, building the capacity
+                                                                                           of consumers to participate in self-management and reforming
+    The simulation model identified that current levels of service                         funding mechanisms to encourage preventive measures [22].
+delivery in Metro North are inadequate to manage demand for                                    It is difficult to accurately predict changes in service demand
+patients referred with musculoskeletal conditions to specialist out-                       over time. This study accounted for projected population growth
+patient services. If services remain unchanged a further growth in                         in the catchment area, but did not take into account other possible
+waiting lists by 25% will occur over five years with only 35% of                           increases in demand for musculoskeletal services. The prevalence
+Category 3 patients seen in clinically recommended timeframes.                             of musculoskeletal conditions has been predicted to rise signifi-
+    The simulation model identified that in the short term (within                         cantly, largely as a result of population ageing [23]. Additionally,
+two years), the scale of outpatient services in Orthopaedics and                           Australia operates a public/private mix of approximately 50% and
+Neurosurgery would have to approximately double for the ma-                                insurance premiums have been rising faster than inflation. People
+jority of patients to be seen within their clinically recommended                          leaving the private system due to premium increases could put
+timeframes. In addition, the most efficient combination of services                        additional demand on publicly funded services. We had limited
+to deliver this level of activity would be to direct approximately                         data to estimate the rate at which people drop out from waiting
+half of all patients to the physiotherapy-led service, and half to                         lists over time. However, we chose a range of plausible extremes to
+medical specialists. This however, would require increases in ex-                          demonstrate that regardless of drop out rate, the current capacity
+isting physiotherapy (280%) and specialist medical (50%) services                          to meet demand fell far short. Finally, the data used to inform
+that were deemed unlikely to be possible by health service stake-                          the model was specific to one health service. Other health service
+holders and were not required in the longer term as waiting lists                          districts will have a different range of facilities, services, case mix,
+would reduce to zero. Consequently, the model was then used to                             and patient profiles, which would influence simulation results
+
+18                                        T.A. Comans et al. / Operations Research for Health Care 15 (2017) 13–18
+
+
+and the transferability of these results. This study focussed on                 References
+the use of simulation modelling to identify the scale and mix of
+services required to address current and projected demand and the                [1] T. Comans, et al., Cost-effectiveness of a physiotherapist-led service for or-
+                                                                                     thopaedic outpatients, J. Health Serv. Res. Policy 19 (4) (2014) 216–223.
+predicted impact of making changes to physiotherapy-led service
+                                                                                 [2] P. Hattam, A. Smeatham, Evaluation of an orthopaedic screening service in
+activity. Identifying feasible changes to medical service delivery                   primary care, Clin. Perform. Qual. Health Care 7 (3) (1999) 121–124.
+was not within the scope of the study and was not modelled.                      [3] F. Desmeules, et al., Advanced practice physiotherapy in patients with mus-
+    This project also has a number of strengths. The research team                   culoskeletal disorders: a systematic review, BMC Musculoskelet. Disord. 13
+has wide experience in orthopaedic service delivery (specifically                    (2012) 107.
+                                                                                 [4] D. Smith, M. Raymer, Orthopaedic physiotherapy screening clinics - An ap-
+the N/OPSC) with detailed knowledge of patient pathways and                          proach to managing overburdened orthopaedic services (abstract), Physiotherapy
+simulation modelling. We were able to access administrative data                     93 (S1) (2007) S746.
+to provide precise estimates of the number of referrals entering the             [5] G. Daker-White, et al., A randomised controlled trial. Shifting boundaries
+system and the current resources available to meet that demand.                      of doctors and physiotherapists in orthopaedic outpatient departments, J.
+                                                                                     Epidemiol. Community Health 53 (10) (1999) 643–650.
+Facility-specific stakeholders were consulted in the collection and
+                                                                                 [6] L.B. Oldmeadow, et al., Experienced physiotherapists as gatekeepers to hospi-
+analysis of the data which informed the model and were involved                      tal orthopaedic outpatient care, Med. J. Aust. 186 (12) (2007) 625–628.
+in determining activity levels used in the modelled service delivery             [7] L. Standfield, et al., The efficiency of increasing the capacity of physiotherapy
+changes.                                                                             screening clinics or traditional medical services to address unmet demand in
+                                                                                     orthopaedic outpatients: A practical application of discrete event simulation
+                                                                                     with dynamic queuing, Appl. Health Econ. Health Policy 14 (4) (2016) 479–
+5. Conclusions                                                                       491.
+                                                                                 [8] L.V. Green, Using operations research to reduce delays for healthcare, Tutor.
+    This study identified that the scale of services provided for                    Oper. Res. (2008) 1–16.
+patients with musculoskeletal conditions in one health service was               [9] M.M. Günal, M. Pidd, Discrete event simulation for performance modelling in
+                                                                                     health care: a review of the literature, J. Simul. 4 (1) (2010) 42–51.
+inadequate to manage demand and provided key decision makers
+                                                                                [10] C. Baril, V. Gascon, S. Cartier, Design and analysis of an outpatient orthopaedic
+with information on the most efficient combination of services to                    clinic performance with discrete event simulation and design of experiments,
+address the problem. By varying several key model parameters                         Comput. Ind. Eng. 78 (2014) 285–298.
+using an automated optimisation process, the study identified that              [11] T.R. Rohleder, et al., Using simulation modeling to improve patient flow at an
+to achieve waiting time targets in the short term the scale of                       outpatient orthopedic clinic, Health Care Manag. Sci. 14 (2) (2011) 135–145.
+                                                                                [12] U. Naiker, et al., Time to wait: a systematic review of strategies that affect out-
+services would need to approximately double and it would be most                     patient waiting times, Aust. Health Rev. (2017).
+efficient to deliver this activity by directing approximately half              [13] D. Fone, et al., Systematic review of the use and value of computer simulation
+of all referrals to medical specialist clinics and half to advanced                  modelling in population health and health care delivery, J. Public Health 25 (4)
+physiotherapy-led clinics.                                                           (2003) 325–335.
+                                                                                [14] Service M.N.H.a.H., About Us. 2015. Available from: https://www.health.qld.
+    The use of simulation modelling in health service planning is
+                                                                                     gov.au/metronorth/about/ [cited 10.02.16].
+valuable as it provides insights into the impact of changing the con-           [15] M. Laguna, R. Martí, The OptQuest callable library, in: S. Voß, D.L. Woodruff
+figuration of services at a glance, without the time and expense of                  (Eds.), Optimization Software Class Libraries, Springer, US, Boston, MA, 2002,
+implementing and waiting to evaluate changes. Results can deliver                    pp. 193–218.
+clear and meaningful information to decision makers when making                 [16] A. Cimino, F. Longo, G. Mirabelli, A general simulation framework for supply
+                                                                                     chain modeling: state of the art and case study, Int. J. Comput. Sci. Issues 7 (2)
+service investment decisions about the scale and most efficient mix
+                                                                                     (2010).
+of medical specialist-led and advanced physiotherapy-led services               [17] Queensland Government, Queensland Government population projections:
+required to manage demand.                                                           2013 edition, Statistician’s Office, Editor. 2013: Brisbane.
+                                                                                [18] Queensland Government, Waiting Lists. 2016, Queensland Health: Brisbane.
+                                                                                [19] G.T. Jun, et al., Health care process modelling: which method when?, Int. J.
+Acknowledgements
+                                                                                     Qual. Health Care 21 (3) (2009) 214–224.
+                                                                                [20] L.B. Standfield, T.A. Comans, P.A. Scuffham, An empirical comparison of Markov
+    Elise Gane provided advice on an earlier version of this paper.                  cohort modeling and discrete event simulation in a capacity-constrained
+We would also like to thank the staff at each site who sourced data                  health care setting, Eur. J. Health Econ. 18 (1) (2017) 33–47.
+to input into this study and participated in consultation regarding             [21] E.P. Jack, T.L. Powers, A review and synthesis of demand management, capacity
+                                                                                     management and performance in health-care services, Int. J. Manag. Rev. 11 (2)
+results and feasible service changes.
+                                                                                     (2009) 149–174.
+    Funding: This work was supported by funding from the Metro                  [22] B.K. Armstrong, et al., Challenges in health and health care for Australia, Med.
+North Hospital and Health Service. The committee which provided                      J. Aust. 187 (9) (2007) 485–489.
+the funding (Metro North Resource Committee) had no input into                  [23] Arthritis and Osteoporosis Victoria, A problem worth solving: the rising cost
+data collection, analysis, manuscript preparation or submission.                     of musculoskeletal conditions in Australia, Deloitte Access Economics, Editor.
+                                                                                     2013: Elsternwick, Victoria.
+

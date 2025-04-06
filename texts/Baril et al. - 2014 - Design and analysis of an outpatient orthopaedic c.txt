@@ -1,0 +1,1082 @@
+                                                             Computers & Industrial Engineering 78 (2014) 285–298
+
+
+
+                                                                 Contents lists available at ScienceDirect
+
+
+                                                  Computers & Industrial Engineering
+                                                    journal homepage: www.elsevier.com/locate/caie
+
+
+
+
+Design and analysis of an outpatient orthopaedic clinic performance
+with discrete event simulation and design of experiments
+Chantal Baril a,⇑, Viviane Gascon b, Stéphanie Cartier a
+a
+    Department of Industrial Engineering, Université du Québec à Trois-Rivières, 3351 Boulevard des Forges, Trois-Rivières, Québec G9A 5H7, Canada
+b
+    Department of Management Science, Université du Québec à Trois-Rivières, 3351 Boulevard des Forges, Trois-Rivières, Québec G9A 5H7, Canada
+
+
+
+a r t i c l e           i n f o                           a b s t r a c t
+
+Article history:                                          Considering that demand for healthcare services is constantly increasing, outpatient services must
+Available online 17 May 2014                              improve their performance. Being able to satisfy the demand with a limited outpatient service capacity
+                                                          is an important operational challenge. The objective of our research consists in studying the relationships
+Keywords:                                                 and interactions between patient ﬂows, resource capacity (number of consulting rooms and number of
+Healthcare                                                nurses) and appointment scheduling rules in order to improve an outpatient orthopaedic clinic perfor-
+Outpatient clinic                                         mance. Discrete event simulation is used to model outpatient ﬂows. An experimental design was devel-
+Patient ﬂow
+                                                          oped to test how to assign consulting rooms and nurses to each orthopedist considering four
+Simulation
+Design of experiments
+                                                          appointment scheduling rules and three patient ﬂow types of varied complexity. Analysis of variance
+                                                          and the Tukey test are used to evaluate the simulation results. Our conclusion is that in order to improve
+                                                          the outpatient orthopaedic clinic performance, resources (consulting rooms, nurses) and appointment
+                                                          scheduling rules must be adapted to the different patient ﬂows.
+                                                                                                                            Ó 2014 Elsevier Ltd. All rights reserved.
+
+
+
+
+1. Introduction                                                                              and four nurses work in the outpatient orthopaedic clinic. On Mon-
+                                                                                             days, Tuesdays and Wednesdays consulting periods are reserved to
+    Considering a growing demand for healthcare services, it                                 speciﬁc orthopedists, two on each day. Table 1 presents the outpa-
+becomes essential for outpatient services to review how they do                              tient orthopaedic clinic schedule over a week. This schedule is con-
+things in order to improve and increase their performance. Outpa-                            structed according to each orthopedist’s surgery schedule.
+tient services such as consulting, treatments and follow-up of                                  Each consulting period is managed by an orthopedist using
+patients, coming through emergency or with a scheduled appoint-                              three examination rooms and working with two nurses. On Thurs-
+ment, are often grouped together in a unique location. Being able                            days and Fridays only half a day is reserved to a speciﬁc orthope-
+to satisfy the demand with a limited outpatient service capacity                             dist leaving the other periods free for any orthopedist wishing to
+is an important operational challenge.                                                       use them. The weekly number of consulting rooms and nurses
+    In this paper we study an outpatient orthopaedic clinic located                          required by an orthopedist depend on his or her patient caseload.
+in a public medical and social healthcare center in the province of                          For instance, some orthopedists may need to be at the clinic two
+Québec (CSSS) and that uses its radiology services. Approximately                            days a week while others may need only one day. Orthopedists’
+22,000 patients come to the clinic every year. This represents                               caseload is variable. For instance, an orthopedist may have to see
+between 400 and 450 patients per week depending on the number                                80 patients weekly and another one only 50. According to the
+of orthopedists present. The decision makers of the outpatient                               orthopaedists availability, the number of patients seen each day
+orthopaedic clinic are concerned by the importance of reducing                               may vary between 40 and 50 per orthopaedist. Consulting rooms
+patient waiting times while keeping a high proportion of occupied                            and periods must thus be assigned to each orthopaedist together
+time for medical staff. Indeed, they are receiving many complaints                           with nurses to assist them weekly. Since the clinic intends to hire
+about long patient waiting times.                                                            new orthopedists soon the assignment of consulting rooms and
+    The clinic is opened from 8h00 AM to 5h00 PM, Monday to Friday                           nurses to orthopedists and the appointment schedules (rules and
+and includes six examination rooms. A total of eight orthopedists                            number of patients) need to be reviewed.
+                                                                                                The number and the type of patients scheduled daily vary
+                                                                                             according to the number of consulting rooms and the number of
+    ⇑ Corresponding author.                                                                  nurses available. Generally each patient has an appointment with
+      E-mail address: chantal.baril@uqtr.ca (C. Baril).
+
+http://dx.doi.org/10.1016/j.cie.2014.05.006
+0360-8352/Ó 2014 Elsevier Ltd. All rights reserved.
+
+286                                                   C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298
+
+
+Table 1
+Weekly orthopedists’ schedules of the outpatient orthopaedic clinic.
+
+  Day                           Room 1                       Room 2                     Room 3                   Room 4                 Room 5               Room 6
+                                Nurses 1 et 2                                                                    Nurses 3 et 4
+  Monday                        Orthopedist 1                                                                    Orthopedist 2
+  Tuesday                       Orthopedist 3                                                                    Orthopedist 4
+  Wednesday                     Orthopedist 5                                                                    Orthopedist 6
+  Thursday                      Free                         Free                       Free                     Orthopedist 7
+  Friday                        Orthopedist 8                                                                    Free                   Free                 Free
+
+
+
+
+a speciﬁc orthopedist and the consulting periods assigned to each                                 The objective of our study consists in studying the relationships
+orthopedist are known in advance. Appointment schedules for                                    and interactions between patient ﬂow types, resource capacity
+each orthopedist cover a three month period.                                                   (number of consulting rooms and number of nurses) and
+    The appointment scheduling rule currently used by the outpa-                               appointment scheduling rules in order to ﬁnd a way to improve
+tient clinic consists in scheduling 2–3 patients per orthopedist                               an outpatient orthopaedic clinic performance. Our research
+every 10 min with a lunch break between 11h30 AM and 12h30                                     intends to verify, for orthopaedists needing more than one day
+PM. With this rule it is possible to schedule 57 patients per day                              weekly to see patients, if patients should be scheduled according
+for each orthopedist, most of them are scheduled before 11h30                                  to their trajectory. This research contributes to the literature in
+AM and only a few after 2h30 PM. This schedule usually generates                               three ways. First, it considers and evaluates different patient ﬂows
+bottlenecks and very long patient waiting times during mornings.                               for one process (one, two or three-step trajectories). Few papers
+This is one of the reasons why more efﬁcient appointment sched-                                exist on patient trajectories and on their relationship with appoint-
+uling rules needed to be deﬁned and tested.                                                    ment scheduling rules in the literature (Santibanez, Chow, French,
+    Patients may follow up to three trajectories (Fig. 1). Rectangles                          Putterman, & Tyldesley, 2009; White, Froehle, & Klassen, 2011).
+are for process steps, arrows for patients traveling through the                               Second, this research also takes into account resource assignment
+clinic and triangles for patients waiting:                                                     (consulting rooms, nurses), appointment scheduling rules and
+                                                                                               how they impact on the patient ﬂows. The study of the relationship
+  Trajectory 1: The patient must go to radiology before meeting                               between resource assignment, appointment scheduling rules and
+   with the orthopaedist. This trajectory has two steps.                                       patient ﬂows will allow a better understanding of how to plan
+  Trajectory 2: The patient only meets the orthopaedist. This tra-                            resources in complex systems. Finally, our model is about a real
+   jectory has only one step.                                                                  case study of an outpatient clinic which is not the case of many
+  Trajectory 3: The patient must have his plaster removed by the                              papers that are more theoretical (Cayirli, Veral, & Rosen, 2006;
+   nurse, go to radiology and meet the orthopaedist. This trajec-                              Liu & Liu, 1998; Rohleder & Klassen, 2000; Swisher, Jacobson,
+   tory has three steps.                                                                       et al., 2001; Yang, Lu, & Quek, 1998). Our model was built with
+                                                                                               empirical data representing real service times. It takes into account
+      Data provided by the clinic show that:                                                   orthopedists lateness and absence and walk-in patients.
+
+  35% of patients follow trajectory 1.                                                        2. Literature review
+  50% of patients follow trajectory 2.
+  15% of patients follow trajectory 3.                                                        2.1. Appointments scheduling
+
+   This is a mix ﬂow type which is the one usually observed in                                    Appointment scheduling in an outpatient clinic consists in
+most orthopaedic clinics. However percentages may differ.                                      determining the sequence of patients to optimize some perfor-
+   The decision makers wish to reduce the mean patient lead time                               mance measures. Many papers can be found in the literature on
+to less than 60 min and to determine rules for the assignment of                               appointments scheduling. They can be divided into two categories:
+consulting rooms and periods to host the new orthopedists. Some                                static and dynamic problems. When appointments are scheduled
+of the current orthopedists are afraid that improving patient lead                             without the possibility to modify the schedule, it is considered as
+times might reduce the daily number of patients they can see at                                a static problem. This is how appointments are scheduled in most
+the clinic and increase their idle time. They think that each ortho-                           healthcare services. Therefore many papers are devoted to these
+pedist should be able to see at least 50 patients daily, if they wish,                         scheduling appointment problems. When the appointment
+and that their proportion of occupied time should be at least 85%.                             schedule can be constantly reconsidered during a given day
+
+
+
+                                                 Remove
+                                               plaster and
+                                                   give
+                                              instrucons
+                                                  about
+                                                radiology
+                    Paent                                                                                                                       Schedule
+                                                                                                 Drop                      Meet the
+                    arrival                                                 Radiology                                                            another
+                                                                                                a paper                   orthopedist
+                                                    Give                                                                                       appointment
+                                                instrucon
+                                                   about
+                                                 radiology
+
+
+
+                                                                       Fig. 1. Mapping patient trajectories.
+
+                                          C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298                                  287
+
+
+depending on the current state of the clinic (or any other health-              that there are more advantages for doctors to share the use of
+care system), it is considered as a dynamic problem (Fries &                    the same examination rooms. Berg et al. (2009) showed that there
+Marathe, 1981; Liao, Pegden, & Rosenshine, 1993; Patrick, 2012).                is a positive linear relationship between the number of patients
+    Most appointment schedules are constructed based on speciﬁc                 examined and the number of examination rooms. They tested
+decision rules to minimize negative effects related to patients                 ratios of one examination room per doctor (1:1) and of two exam-
+arriving late, no-shows or walk-ins. Cayirli and Veral (2003) pres-             ination rooms per doctor (2:1). With a higher ratio, more auxiliary
+ent a literature review on decision rules to schedule appointments.             personnel (nurse, secretaries) are needed to improve performance.
+The most studied rules are: (1) variable blocks/ﬁxed intervals rule             They also came to the conclusion that a better appointment sche-
+consisting in planning appointment periods of varied size (one, two             dule could increase the number of patients seen without adding
+or more patients) while keeping ﬁxed intervals (Cayirli & Yang,                 resources. Hulshof et al. (2012) used two types of rules to assign
+2012; Denton & Gupta, 2001), (2) individual blocks/variable inter-              consulting rooms to doctors. The ﬁrst one called ‘‘patients to doc-
+vals rule consisting in planning appointment blocks of size one                 tor’’ assigns one consulting room to each doctor and the second
+with intervals of varied size (Ho & Lau, 1992; Vanden Bosch,                    one called ‘‘doctor to patients’’ assigns many consulting rooms to
+Dietz, & Simeoni, 2000; White et al., 2011) and (3) DOME rule con-              all doctors, doctors traveling from one room to the other to meet
+sisting in planning m appointment blocks during ﬁxed short peri-                their patients. The ‘‘doctors to patients’’ rule is more efﬁcient when
+ods of time (intervals) at the beginning and at the end of the day,             the traveling time between two rooms is less than the time
+and the remaining ones during ﬁxed long periods of time in the                  required to prepare the patient. They also developed a method to
+middle of the day (Robinson & Chen, 2003; White et al., 2011). In               compute the maximum number of consulting rooms to assign to
+our research the variable block/ﬁxed intervals rule is used to sche-            each doctor. In our research we vary the number of consulting
+dule patients in two ways: one patient every 10 min or two                      rooms and the number of nurses.
+patients every 20 min. Another rule, variable block/variable inter-
+vals, has been deﬁned and tested. A time study performed at the                 2.3. Patient trajectory
+clinic allowed us to determine the variable blocks and intervals.
+This rule is detailed in Section 3.2.                                              Patient trajectories in healthcare systems were mostly analyzed
+    Few authors worked on multiple steps healthcare systems                     using simulation models through continuous improvement
+(Saremi, Jula, ElMekkawy, & Wang, 2013; Swisher et al., 2001).                  processes. Jun, Jacobson, et al. (1999) surveyed more than 100
+For one-step healthcare systems, researchers worked mainly on                   papers on simulation modeling of healthcare systems. Young
+the patient arrival process. They studied the consequence on out-               (2005) explained how simulation can help healthcare decision
+patient services performance of late patients (Cayirli & Yang,                  makers determine alternative patient trajectories with a Lean
+2012; Robinson & Chen, 2003; Tai & Williams, 2012), of no-shows                 methodology. Cooper, Brailsford, and Davies (2007) mentioned
+(Chakraborty, Muthuraman, et al., 2010; Klassen & Rohleder, 1996,               that simulation is especially useful when there are queues for
+2004) and of walk-ins (Salzarulo, Bretthauer, Côté, & Schultz,                  limited resources, budgetary constraints or interactions between
+2011). The main strategies used to make up for late patients, no-               individuals (nurses, doctors, patients) which is the case for many
+shows and emergencies (unplanned patients) are overbooking                      hospitals including outpatient services. Rohleder et al. (2011) used
+(LaGanga, 2011; LaGanga & Lawrence, 2007) and leaving free                      discrete event simulation to reduce patient waiting time in an out-
+appointment blocks (Klassen & Rohleder, 2004). Some authors                     patient orthopaedic clinic. Through the simulation model, different
+studied how varied consulting times with the orthopedist                        solutions were tested to determine appointment schedules that
+impacted on service performance (Salzarulo et al., 2011; White                  can improve performance, make better use of human resources
+et al., 2011) while others measured the impact on service perfor-               and assure that the clinic could open on time. However they did
+mance of late patients and of the orthopedists’ service breaks                  not test combinations of trajectories.
+(Hart, 1995; Liu & Liu, 1998; Santibanez et al., 2009).                            Not so many studies present the interactions between appoint-
+    In the literature, most performance measures used to evaluate               ment scheduling rules, resource capacity and patient trajectories.
+appointment schedules are average patient waiting time, average                 Santibanez et al. (2009) used simulation modeling to evaluate
+personnel idle time and average personnel overtime. It may be dif-              the impact of a clinic opening time, the number of medical stu-
+ﬁcult to obtain the best values for those three measures at the                 dents, appointment planning (rules, consultation duration, adding
+same time. A multi-objective function is usually deﬁned with                    new appointments) and resource assignment (ﬁxed or ﬂexible) on
+weights allocated to each measure (Babes & Sarma, 1991; Denton                  patients waiting time, personnel overtime and proportion of occu-
+et al., 2001; Jared, Zhen, et al., 2010; Mital, 2010).                          pied time. He modeled three oncology services (radiology, surgery
+    Finally, all these appointment scheduling problems are either               and medical oncology) opened simultaneously and sharing 25
+solved with analytic methods (Denton et al., 2001; Robinson &                   examination rooms. The model takes into account the presence
+Chen, 2001; Guangfu & Williams, 2011) or with simulation tech-                  of residents and medical students during the patient’s examina-
+niques (Klassen & Yoogalingam, 2009; Rohleder, Lewkonia,                        tion. After analyzing the scenarios, Santibanez observed that the
+Bischak, Duffy, & Hendijani, 2011; Wijewickrama & Takakuwa,                     best results were obtained when simultaneous modiﬁcations were
+2012). Considering that our study includes many factors interact-               applied to the system. These led to a 70% reduction of patients’
+ing between each other, we used discrete event simulation to test               waiting time and a 25% reduction of the space required for the con-
+scheduling rules.                                                               sulting rooms without any decrease in the number of patients
+                                                                                seen. He concluded that for a better performance, clinics must
+2.2. Capacity management                                                        open on time, appointments must be planned carefully and con-
+                                                                                sulting rooms must be assigned dynamically to the different oncol-
+   Capacity management of outpatient services consists in deter-                ogy services according to their speciﬁc needs. Only one patient
+mining the resources required (consulting rooms, doctors, and                   trajectory was studied contrary to our research.
+nurses) to improve performance. Côté (1999) determined the num-                    White et al. (2011) developed a discrete event simulation model
+ber of consulting rooms required to serve all patients. He found                to study six scheduling rules, varied consulting times, up to 5 con-
+that having too many consulting rooms results in a transfer of                  sulting rooms and different percentages of patients ﬂowing
+the waiting time from the waiting room (patients) to the consult-               through radiology and how it had a joint impact on the proportion
+ing room (doctors and nurses). Santibanez et al. (2009) showed                  of occupied time for medical personnel and patients’ waiting time.
+
+288                                                 C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298
+
+
+Results suggest that planning appointments of small duration and                          with the orthopaedist the nurse helps the patient to get settled
+variance at the beginning of the day (and conversely, appointments                        in the consultation room. When an orthopaedist has a consult with
+of long duration and variance at the end of the day) reduces                              a patient, a nurse may assist him or not (prepare injections, ban-
+patients waiting time without reducing the proportion of occupied                         dages, etc.). The time spent by the nurse when meeting with the
+time for doctors or expanding clinic business hours. Moreover they                        patient and to get the patient settled has been measured and is
+showed, as expected, that increasing the number of consulting                             given in Table 2. After his consult with the orthopedist the patient
+rooms beyond a certain threshold has no effect on the proportion                          can schedule another appointment, if needed, and leave the clinic.
+of occupied time for orthopedists. However, having too few con-                           The orthopaedist completes ﬁles after meeting with the patient.
+sulting rooms will result in a negative effect on patient ﬂows. Their                     The time to complete the ﬁles has also been measured (Table 2).
+simulation model considers two patient trajectories (with and                             The times provided in Table 2 also include patient traveling times
+without a radiology step). Each doctor receives 32 patients during                        in the clinic.
+a 4 h period with 5 secretaries, 3 nurses and 2 radiologists. During                          Interarrival patient rates at the clinic were determined from
+that period radiologists’ work is dedicated to the clinic. Our                            real patient arrival times (or according to appointment schedules).
+research differs from White et al. (2011)’s as we consider a combi-                       To reﬂect reality adequately our model considered orthopedists
+nation of trajectories resulting in different ﬂow types. We also con-                     lateness and absence and walk-in patients as ﬁxed parameters
+sider a mix ﬂow with 3 steps instead of 2. Moreover we studied                            (they correspond to the worst values observed). According to the
+two additional ﬂow types to determine appointment schedules                               data collected there are on average 5 walk-ins every day. Interarri-
+and resource assignment when an orthopaedist’s caseload requires                          val walk-ins rates at the clinic were determined from real walk-ins
+more than one day.                                                                        arrival times.
+   In our research, interactions between appointment scheduling                               Orthopaedists are absent on average 177 min of their 8 h shift
+rules, the number of consulting rooms and the number of nurses                            (37%) because they arrive late or must perform other tasks in the
+assigned to orthopedists were studied considering three patient                           hospital. We focused on orthopaedist’s absence because nurses’
+ﬂow types. To our knowledge, our research is among the few ones                           absence time is very small and has no real impact on patient lead
+(White et al., 2011) taking into account a system with many                               times. We are aware that using ﬁxed parameters for walk-ins and
+patient ﬂow types characterized by multiple steps, different                              lateness does not reﬂect completely the reality. We intend to tests
+patient loads and the fact that many doctors must share limited                           varied values in future research.
+resources (six consulting rooms and four nurses). Our results will                            Two basic models were developed. The ﬁrst model is based on
+provide ways to assign patients to each orthopaedist’s working                            real values obtained from data collection, such as patient arrival
+days for a better use of resources when more than one day is nec-                         times, and is named the REAL model. The second model is based
+essary to see them, to schedule appointments daily and to assign                          on patient appointment schedules and is named the THEORETICAL
+consulting rooms and nurses to orthopedists weekly.                                       model. Both basic REAL and THEORETICAL models were built with
+                                                                                          statistical distributions of the service times at each step of the
+3. Research methodology                                                                   patient’s trajectory (Table 2).
+                                                                                              The REAL model reproduces the current process at the clinic and
+3.1. Discrete event simulation                                                            was tested to make sure that it represented the real data collected.
+                                                                                          It takes into account patients arriving on time or late. The REAL
+    Discrete event simulation has been used to model patient tra-                         model was validated by comparing the average observed and
+jectories at the outpatient orthopaedic clinic. Relevant data was                         simulated lead times (difference between the patient leaving time
+collected at the clinic to be able to build an appropriate simulation                     and arrival time) over the four days and with different patient
+model with the ARENA software. The model’s entities are patients.                         arrival rates daily (number of patients per period). Lead time is a
+It begins when a new patient arrives at the clinic. The patient then                      good indicator in such a process since it includes all independent
+waits to be called by the. The nurse will either:                                         variables (service time for each step, arrival rates, etc.) and their
+                                                                                          variance (Kelton, Sadowski, & Sturrock, 2007).
+   (1) Give instructions about radiology to the patient (trajectory                           The simulation model was run 150 times. Table 3 provides com-
+       1).                                                                                parison between observed patient lead times and simulated
+   (2) Invite him to meet directly the orthopedist (trajectory 2).                        patient lead times.
+   (3) Remove his plaster and give instruction about radiology                                The difference between the average observed patient lead time
+       (trajectory 3).                                                                    and the average simulated patient lead time according to real
+                                                                                          patient arrival rates is less than 5% for each simulated day. More-
+   Once the patient has ﬁnished with radiology he comes back to                           over our simulation model is validated by the fact that the same
+the clinic and drops a sheet in the required pigeonhole to inform                         model was used to simulate the clinic process for the four days
+the nurse that he is now ready to meet the orthopedist. The nurse                         (Monday to Thursday) and different data. Since the clinic activities
+will ﬁrst verify if the patient ﬁle is complete. Before the consult                       are over a ﬁnite horizon, there is no need to consider a warm-up
+
+Table 2
+Statistics used in the simulation model.
+
+  Steps                                                                      Mean observed                Standard           Statistical             Chi-square
+                                                                             service times (min)          deviation (min)    distribution (min)      (p-value)
+  Remove plaster                                                              4.58                        2.51               2 + Expo (3.42)         <0.005
+  Nurses give instruction for radiology                                       2.19                        1.41               Gamm (0.621, 3.53)      0.308
+  Radiology                                                                  21                           8.48               Norm (21, 8.41)         >0.75
+  Nurse service time to get the patient settled (before the consult)          1.75                        2.19               Expo (1.75)             <0.005
+  Meet the orthopaedist                                                       4.63                        2.84               Gamm (2.14, 2.16)       0.232
+  Nurse service time with the orthopaedist (during the consult)               2.01                        2.99               Logn (1.99, 3.04)       0.245
+  Time to complete ﬁles by the orthopaedist (after the consult)               1.22                        1.08               3Beta (0.531, 0.592)   >0.15
+  Schedule another appointment                                                2.20                        1.51               Logn (2.21, 1.55)       0.121
+
+                                                     C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298                                                 289
+
+
+Table 3
+Average observed and simulated patient lead times.
+
+  Day            Rooms 1 to 3                                                                    Rooms 4 to 6
+                 Average observed lead time       Average simulated lead time     Difference     Average observed lead time     Average simulated lead time   Difference
+                 (min)                            (min)                           (%)            (min)                          (min)                         (%)
+  Monday         142.48                           141.18                          0.91           139.83                         140.87                        0.74
+  Tuesday        Canceled                                                                        111.27                         116.40                        4.41
+  Wednesday      88.03                            91.86                           4.17           121.30                         118.20                        2.62
+  Thursday       Canceled                                                                        146.98                         147.73                        0.51
+
+
+
+period. However our simulation model makes sure that the clinic is                         time. We tested if this mix ﬂow type could be improved with less
+empty at the end of each run.                                                              consulting rooms, less nurses and new appointment scheduling
+   The THEORETICAL model is similar to the REAL one. Patient                               rules. We also veriﬁed if different trajectory combinations might
+arrivals in the THEORETICAL model are determined according to                              reduce patients waiting time, orthopaedist’s idle time and required
+the scheduled appointments. We assume that patients arrive on                              resources.
+time. Therefore it does not take into account patients lateness or                             Let us explain through an example how patients can be scheduled
+patients arriving before their appointment time. The latter repre-                         if the weekly orthopaedist’s caseload corresponds to 80 patients. The
+sents 76% of all patients. Many patients choose to arrive early. This                      80 patients would be divided as follows: 48 follow trajectory 2, 24
+voluntary waiting time is thus not taken into account in our model.                        trajectory 1 and 8, trajectory 3. These proportions correspond
+We decided to exclude patient lateness from this model to make                             approximately to the mix ﬂow. Considering that orthopaedist can
+sure that we could measure only the impact of the appointment                              only see 50 patients daily, resources must be assigned to that ortho-
+scheduling rules on patient lead times, the number of patients seen                        paedist over 1.5 days. Table 4 provides three solutions to distribute
+by an orthopedist and the proportion of occupied time for orthope-                         the 80 patients over 1.5 days depending on their ﬂow type.
+dists. Patients arrival was considered as a ﬁxed parameter (on time                            With solution 1, 15 trajectory 1 patients, 30 trajectory 2
+arrival) and appointment scheduling rules as multilevel decision                           patients and 5 trajectory 3 patients could be seen the ﬁrst day
+factors (Section 3.2).                                                                     (three consulting rooms and two nurses are required). On day 2,
+   Patients lateness will be tested in future research. However we                         9 trajectory 1 patients, 18 trajectory 2 patients, and 3 trajectory
+kept in our theoretical model orthopaedists lateness and walk-ins                          3 patients could be seen (three consulting rooms and two nurses
+for more realistic results. The THEORETICAL model was used to                              are required). This ﬂow type is the mix ﬂow type.
+simulate the experiments described in the next section.                                        With solution 2, 24 trajectory 1 patients, 18 trajectory 2
+                                                                                           patients, and 8 trajectory 3 patients could be seen the ﬁrst day
+3.2. Design of experiments, decision factors and performance measures                      (three consulting rooms and two nurses are required for this mix
+                                                                                           ﬂow type). On day 2, the orthopaedist would see 30 trajectory 2
+   Considering that the appointments at the clinic were canceled                           patients and no patient following other trajectories. This ﬂow type
+on Tuesday and Thursday, it left us two typical days for our exper-                        is the orthopaedist ﬂow type.
+iments. Monday was used in our design of experiments because it                                With solution 3, the ﬁrst day is devoted to trajectory 2 patients
+represented the worst case (the greatest number of patients sched-                         only (48). On day 2, 24 trajectory 1 patients and 8 trajectory 3
+uled) as its average patient lead time was the highest.                                    patients could be seen. This ﬂow type is the radiology ﬂow type.
+   Our experimental design considers four decision factors: (1)                                In the ﬁrst solution, 4 nurses and 6 consulting rooms are
+patient ﬂow types, (2) appointment scheduling rules based on                               required weekly by the orthopaedist. For solutions 2 and 3, the
+orthopedist service times, (3) number of nurses and (4) number                             number of consulting rooms and nurses required still need to be
+of consulting rooms.                                                                       determined since these solutions are not currently used by the
+                                                                                           clinic. We assume that it could be possible to see the same number
+3.2.1. Patient ﬂow types                                                                   of patients with less resource.
+   The proportion of patients going through the different trajecto-                            The following three ﬂow types were tested:
+ries was measured and different patient ﬂow types were deﬁned.
+The following mix ﬂow is the closest to the real outpatient clinic                           Flow type 1 (mix): 35% through trajectory 1, 50% of patients go
+process: 50% of patients go through trajectory 2, 35% through tra-                            through trajectory 2 and 15% through trajectory 3.
+jectory 1 and 15% through trajectory 3. This ﬂow type presently                              Flow type 2 (orthopedist): all patients go through trajectory 2.
+requires two nurses (to remove the plaster, prepare patients, etc.)                          Flow type 3 (radiology): 50% of patients go through trajectory 1
+and at least three consulting rooms to minimize orthopaedists ’idle                           and 50% through trajectory 3.
+
+
+Table 4
+Patient distribution among different ﬂow types.
+
+  Patient distribution                      Number of patients
+                                            Solution 1                                    Solution 2                                     Solution 3
+                                            Day 1 (8 h)            Day 2 (4 h)            Day 1 (8 h)            Day 2 (4 h)             Day 1 (8 h)          Day 2 (4 h)
+  Flow type                                 Mix                    Mix                    Mix                    Ortho                   Ortho                Radiology
+  Trajectory 1                              15                     9                      24                     0                       0                    24
+  Trajectory 2                              30                     18                     18                     30                      48                   0
+  Trajectory 3                              5                      3                      8                      0                       0                    8
+  Daily total number of patients            50                     30                     50                     30                      48                   32
+  Number of consulting rooms                3                      3                      3                      To be tested            To be tested         To be tested
+  Number of nurses                          2                      2                      2                      To be tested            To be tested         To be tested
+
+290                                         C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298
+
+
+   Those three ﬂow types were modeled in the simulation model.                    AM one patient going through trajectory 3 (orthopedist only) is
+Our objective is to determine if the same scheduling and resource                 scheduled followed by another one at 8h20 AM. The orthopaedist
+assignment rules should be used for all ﬂow types.                                working day begins at 8h10 AM. At 8h30 AM one patient needing
+                                                                                  to go through trajectory 3 (with plaster) and one through trajec-
+                                                                                  tory 1 (radiology) are planned. Let us note that at that time the
+3.2.2. Appointment scheduling                                                     orthopedist will be available to see the ﬁrst patients coming back
+    The appointment scheduling rules impose a patient arrival pat-                from radiology. Finally a trajectory 2 patient is scheduled at 8h50
+tern to the clinic. The choice of the rules to test was based on the              AM. Appointment scheduling rule 3 imposes different types of
+following: (1) low variability of orthopedists service times (ortho-              patients from period to period. With rule 3, it is possible to sche-
+pedists service times vary from 5 to 8 min per patient), (2) most                 dule 53 patients daily for each orthopedist which is more than
+orthopedists wish to see between 40 and 55 patients during an                     rules 1 and 2. We expect rule 3 to be better for ﬂow type 1 than
+eight-hour shift, and (3) the last patient’s appointment should be                rule 0.
+no later than 4h00 PM (the orthopedist has then enough time to                        The appointment scheduling rules can be summarized as
+complete his ﬁles). Since all orthopedist service times are less than             follows:
+10 min and to ease secretaries’ work, appointments were sched-
+uled every 10 min. We are aware that if the time between two                        Rule 0: schedule 57 patients daily for each orthopedist, most of
+appointments is close to the real orthopedist service time this will                 them before 11h30 AM.
+reduce the orthopedist waiting time.                                                Rule 1: schedule one patient every 10 min per orthopedist. With
+    The appointment scheduling rule currently used by the outpa-                     this rule it is possible to schedule 45 patients daily for each
+tient clinic (rule 0, Section 1) consists in scheduling 2 or 3 patients              orthopedist.
+per orthopedist every 10 min between 8h00 AM to 2h30 PM with a                      Rule 2: schedule two patients every 20 min per orthopedist.
+lunch break between 11h30 AM and 12h30 PM. The three appoint-                        With this rule it is possible to schedule 46 patients daily for
+ment scheduling rules described below schedule patients between                      each orthopedist.
+8h00 AM and 3h50 PM. The total scheduling period is longer since                    Rule 3: schedule seven patients per 60 min periods for each
+it ends at 3h50 PM instead of 2h30 PM for rule 0. It allows to                       orthopedist according to the type of service required by
+smooth appointments over the whole day. No patients are sched-                       patients. With rule 3, it is possible to schedule 53 patients daily
+uled between 12h00 and 12h30 PM during the lunch break which                         for each orthopedist.
+is reduced compared to rule 0.
+    Since the time spent by the orthopedist with a patient does not               3.2.3. Capacity allocation
+vary a lot and does not exceed 10 min, it makes sense scheduling a                   Management capacity of an outpatient services consists in
+patient every 10 min per orthopedist. This is rule 1. Orthopedists                determining the resources required (consulting rooms, doctors,
+do not really appreciate this rule because they think it can only                 and nurses) to improve performance. In our research we vary the
+be efﬁcient (meaning orthopedists will not wait) if patients arrive               number of consulting rooms (1–3) together with the number of
+on time. This rule performs very well when consulting times are                   nurses (1 and 2) assigned to each orthopaedist. Each nurse is
+short as shown in Klassen & Rohleder, 1996; Rohleder & Klassen,                   assigned to a speciﬁc orthopaedist as in the clinic under study.
+2000. They obtained reduced patient waiting time for a one step                      The decision factors and their respective levels can be found in
+process. We expect rule 1 to be adequate for ﬂow type 2.                          Table 5.
+    Appointment scheduling rule 2 consists in scheduling two
+patients every 20 min per orthopedist. With this rule, considering                3.2.4. Performance measures
+that it is more likely to have at least one of the two patients on                    The impact of the decision factors on performance measures
+time, orthopedists should wait less. This rule is efﬁcient when con-              was evaluated from the patients and the orthopedists point of
+sulting times are short. Indeed it reduces the risk for the orthopae-             view. The patient lead time in the outpatient clinic measures the
+dist to wait since one patient should be present if either one of                 impact on patients while the number of patients seen and the pro-
+them is late. In case the patient is late his waiting time might be               portion of occupied time for orthopedists measure the impact on
+longer. We expect rule 2 to be adequate for ﬂow type 2.                           orthopedists.
+    Appointment scheduling rules 1 and 2 are among the most                           A patient lead time is the time elapsed between his arrival and
+known and used in the healthcare sector especially for one-step                   his departure from the clinic. It includes waiting and service time.
+patient trajectories (patient–doctor). However as mentioned                       For our model, the number of patients seen by an orthopedist is the
+before, it is impossible to schedule 50 patients between 8h00 AM                  number of patients who completed all steps of a trajectory during
+and 4h00 PM (the minimum daily number of patients desired by                      regular opening hours. If some patients are still in the waiting
+the orthopedists) with appointment scheduling rules 1 and 2 (45                   room after regular opening hours, orthopedists and nurses have
+and 46 patients respectively). To schedule 50 patients for each                   to work overtime to see them. In the province of Québec, orthope-
+orthopedist every day, the outpatient orthopaedic clinic would                    dists are on fee for service. Therefore their salary depends on the
+have to be opened until 7h00 PM. Rules 1 and 2 do not consider                    number of patients seen which is thus an important performance
+services required by patients (plaster, radiology, etc.).                         measure for them. It is also an important performance measure
+    Rule 3 considers that the patient is always available when the                to evaluate the clinic efﬁciency. Nurses’ overtime is costly for the
+orthopaedist is ready to see him (every 10 min) regardless of the                 clinic. We are thus interested by the number of patients seen dur-
+trajectory type. For instance if the patient must go through radiol-              ing regular hours and our model does not count patients after reg-
+ogy before meeting with the orthopaedist, his appointment must                    ular hours. The proportion of occupied time for orthopedists is the
+be scheduled accordingly to avoid bottlenecks.                                    ratio of the time spent doing work related to patients (consulting,
+    Appointment scheduling rule 3 consists in scheduling seven                    ﬁlling ﬁles, verifying X-rays, etc.) over the total time spent at the
+patients per 60 min periods for each orthopedist according to the                 clinic (including idle time).
+type of service required by patients. Consider, for instance, the
+scheduling pattern of the ﬁrst period of the day starting at 8 h                  3.2.5. Design of experiments
+AM. Two patients needing radiology services (trajectory 1) are                       72 experiments were performed (3 consulting rooms  2
+scheduled at 8 h AM to be seen later by an orthopedist. At 8h10                   nurses  4 appointment scheduling rules  3 types of patient ﬂow)
+
+                                                    C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298                                                    291
+
+
+Table 5
+Decision factors and their respective levels.
+
+  Decision factor                                                         Number of levels                 Level descriptions
+  Number of consulting rooms (S) assigned to orthopedists                 3                                1 room
+                                                                                                           2 rooms
+                                                                                                           3 rooms
+  Number of nurses assigned to orthopedists (I)                           2                                1 nurse
+                                                                                                           2 nurses
+  Patient ﬂow type (F) according to trajectories:
+  (1) Radiology–orthopedist (2 steps)                                     3                                Mix: 35% (trajectory 1), 50% (trajectory 2), et 15% (trajectory 3)
+  (2) Orthopedist (1 step)                                                                                 Orthopedist: 100% (trajectory 2)
+  (3) Plaster–radiology–orthopedist (3 steps)                                                              Radiology: 50% (trajectory 1) et 50% (trajectory 3)
+  Appointment scheduling rule (R)                                         4                                Current (no speciﬁc rule) (rule 0)
+                                                                                                           Uniform: 1 patient every 10 min (rule 1)
+                                                                                                           Uniform: 2 patients every 20 min (rule 2)
+                                                                                                           Pattern of 7 patients every 60 min (rule 3)
+
+
+with the simulation model and 5 replications per experiment were                          appointment scheduling rule, number of consulting rooms assigned
+computed for a total of 360 simulations. Analysis of this experi-                         to orthopedists and number of nurses assigned to orthopedists, had
+mental design was done with the Minitab 16 software with a sig-                           a signiﬁcant effect on patient lead times in the outpatient clinic. The
+niﬁcance level of 5%. When a decision factor or an interaction was                        effect is measured by the change induced on the performance mea-
+signiﬁcant, the Tukey test was used to make a pairwise comparison                         sure by a change of level of the decision factor. A signiﬁcant factor
+of the means for each level of the decision factor or interaction. The                    indicates that at least one of the means of one of the factor levels is
+Tukey test allows to compare the 72 experiments and to group                              statistically different from the others.
+those with statistically equivalent patient lead times, number of                             Decision factors having the most important effect (largest mean
+patients seen by an orthopedist and proportion of occupied time                           square) on patient lead times are appointment scheduling rules,
+for orthopedists. Let us recall that the results provided in Section 4                    the number of consulting rooms and nurses assigned to orthope-
+are for Monday.                                                                           dists. It conﬁrms how important it is to schedule patients and to
+                                                                                          assign consulting rooms and nurses to orthopedists adequately.
+                                                                                          The effects of decision factors on patient lead times are shown in
+4. Results
+                                                                                          Fig. 2.
+                                                                                              The patient ﬂow type leading to the smallest average patient
+   The different decision factors and their impact on the perfor-
+                                                                                          lead time, 99 min, is the orthopedist ﬂow type (2) where all
+mance measures were examined to determine which ones mini-
+                                                                                          patients follow the same one-step trajectory. The patient ﬂow type
+mize patient lead times, maximize the number of patients seen
+                                                                                          leading to the longest average patient lead time, 163 min, is the
+by an orthopedist and the proportion of occupied time for
+                                                                                          radiology ﬂow type (3) with 50% of patients following the two-step
+orthopedists.
+                                                                                          trajectory 1 and 50% following the three-step trajectory 2. This sug-
+                                                                                          gests that a more complex trajectory (with more steps) produces
+4.1. Patient lead times                                                                   longer patient lead times as expected. Also a higher percentage
+                                                                                          of patients following complex trajectories results in a longer
+   The 72 experiments are denoted A to Z, AA to AZ and BA to BT.                          patient lead time. We can observe a reduction of the average
+Their respective results can be read from left to right and from top                      patient lead time by 37 min on average as the number of nurse
+to bottom. This notation was used in Tables 7, 9 and 11–13.                               increases from 1 to 2. When the number of consulting rooms
+   The analysis of variance (ANOVA) performed with Minitab 16                             increases to 2, the reduction is 54 min on average. Fig. 2 shows that
+shows (Table 6) that the four decision factors: patient ﬂow type,                         with the current appointment scheduling rule 0, the average
+
+
+Table 6
+ANOVA for patient lead times.
+
+  Sources                                                        DF                            SS                                  MS                                p-Value
+  Patient ﬂow type (F)                                             2                             245,378                           122,689                           0.000*
+  Rules (R)                                                        3                             646,179                           215,393                           0.000*
+  Patient ﬂow  Rules                                              6                               7882                              1314                            0.041*
+  Rooms (S)                                                        2                             278,325                           139,162                           0.000*
+  Patient ﬂow  Rooms                                              4                              23,517                             5879                            0.000*
+  Rules  Rooms                                                    6                               2884                                481                           0.560
+  Patient ﬂow  Rules  Rooms                                     12                              11,694                               975                           0.078
+  Nurses (I)                                                       1                             123,395                           123,395                           0.000*
+  Patient ﬂow  Nurses                                             2                              26,696                            13,348                           0.000*
+  Rules  Nurses                                                   3                               2016                                672                           0.334
+  Patient ﬂow  Rules  Nurses                                     6                                 671                               112                           0.980
+  Rooms  Nurses                                                   2                              14,991                             7496                            0.000*
+  Patient ﬂow  Rooms  Nurses                                     4                               9889                              2472                            0.003*
+  Rules  Rooms  Nurses                                           6                               6949                              1158                            0.071
+  Patient ﬂow  Rules  Rooms  Nurses                            12                               5783                                482                           0.634
+  Error                                                          288                             170,055                               590
+  Total                                                          359                           1,576,305
+
+The bold values are signiﬁcant factors and interactions.
+DF: degree of freedom; SS: sum of squares; MS: mean square.
+*
+  p-Value signiﬁcant at 5%.
+
+292                                                 C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298
+
+
+Table 7
+Experiments minimizing patient lead time sorted according to patient ﬂow types.
+
+  Experiments                         Q        K         V           X           P           J          L          R           BR            BN           BF        BT         BH          BL
+  Patient ﬂow                         1        1         1           1           1           1          1          1           3             3            3         3          3           3
+  Rules                               2        1         3           3           2           1          1          2           3             2            1         3          1           2
+  Rooms                               3        3         2           3           2           2          3          3           2             3            2         3          3           2
+  Nurses                              1        1         2           2           2           2          2          2           2             2            2         2          2           2
+  Average patient lead time (min)     95       94.6      77.4        72.6        64.4        60         56.8       55.8        85.4          76.2         73.2      71         68.6        68.6
+                                      AK       AU        AS          AT          AF          AL         AM         AI          AO            AV           AG        AN         AJ          AH          AP
+  Patient ﬂow                         2        2         2           2           2           2          2          2           2             2            2         2          2           2           2
+  Rules                               2        3         3           3           1           2          2          1           2             3            1         2          1           1           2
+  Rooms                               1        3         2           2           1           1          2          3           3             3            2         2          3           2           3
+  Nurses                              1        1         1           2           2           2          1          1           1             2            1         2          2           2           2
+  Average patient lead time (min)     98.2     86.4      86          84.6        83.2        73.4       67.6       67.2        64.4          57           55.2      48.6       46.8        43.6        43.2
+
+
+
+
+Table 8
+ANOVA for the number of patients seen by an orthopedist.
+
+  Sources                                                        DF                                     SS                                               MS                                         p-Value
+  Patient ﬂow (F)                                                2                                      9378.29                                          4689.14                                    0.000*
+  Rules (R)                                                      3                                      100.67                                           33.56                                      0.073
+  Patient ﬂow  Rules                                            6                                      153.47                                           25.58                                      0.101
+  Rooms (S)                                                      2                                      11876.94                                         5938.47                                    0.000*
+  Patient ﬂow  Rooms                                            4                                      586.58                                           146.64                                     0.000*
+  Rules  Rooms                                                  6                                      396.82                                           66.14                                      0.000*
+  Patient ﬂow  Rules  Rooms                                    12                                     212.47                                           17.71                                      0.255
+  Nurses (I)                                                     1                                      16714.47                                         16714.47                                   0.000*
+  Patient ﬂow  Nurses                                           2                                      657.16                                           328.58                                     0.000*
+  Rules  Nurses                                                 3                                      425.50                                           141.83                                     0.000*
+  Patient ﬂow  Rules  Nurses                                   6                                      497.04                                           82.84                                      0.000*
+  Rooms  Nurses                                                 2                                      300.01                                           150.00                                     0.000*
+  Patient ﬂow  Rooms  Nurses                                   4                                      275.14                                           68.79                                      0.001*
+  Rules  Rooms  Nurses                                         6                                      287.39                                           47.90                                      0.003*
+  Patient ﬂow  Rules  Rooms  Nurses                           12                                     209.19                                           17.43                                      0.268
+  Error                                                          288                                    4112.40                                          14.28
+  Total                                                          359                                    46183.53
+
+The bold values are signiﬁcant factors and interactions.
+DF: degree of freedom; SS: sum of squares; MS: mean square.
+*
+  p-Value signiﬁcant at 5%.
+
+
+
+Table 9
+Experiments maximizing the number of patients seen by an orthopedist sorted according to patient ﬂow types.
+
+  Experiments                                            F       V          X         D          L      R      AD         AV          AB          AP       AJ       AH     AT         AN        BB     BR
+  Patient ﬂow                                            1       1          1         1          1      1      2          2           2           2        2        2      2          2         3      3
+  Rules                                                  0       3          3         0          1      2      0          3           0           2        1        1      3          2         0      3
+  Rooms                                                  3       2          3         2          3      3      3          3           2           3        3        2      2          2         3      2
+  Nurses                                                 2       2          2         2          2      2      2          2           2           2        2        2      2          2         2      2
+  Average number of patients seen by an orthopedist      53.6    51.2       50        49.4       47.8   47.2   56.4       53.8        52.4        50.2     49.2     48.6   47.8       47        55     47.2
+
+
+
+
+patient lead time is far too high (202.3 min) if compared with rule                                  patient lead times vary from 43.2 to 98.2 min which can be consid-
+1 (98.3 min), rule 2 (101.2 min) and rule 3 (119.3 min).                                             ered as an important gap.
+   ANOVA also demonstrates that there are many signiﬁcant inter-                                        The most astounding ﬁnding from the Table 7 results is that the
+actions, meaning that a careful analysis of the impact of the deci-                                  current appointment scheduling rule (0) of the outpatient clinic
+sion factors must be done. There is a signiﬁcant interaction when                                    never minimizes patient lead times. Therefore it looks like that if
+a change in one factor produces a different change in the perfor-                                    the current appointment scheduling rule (0) was rather chosen
+mance measure at two levels of another factor. Since we observed                                     to please the orthopedists than to reduce patients’ waiting time.
+signiﬁcant double and triple interactions and in order to simplify                                      With mix ﬂow type 1 (experiments Q, K, V, X, P, J, L and R in
+the analysis, it is reasonable to analyze interactions involving the                                 Table 7), patient lead times vary from 55.8 to 95 min depending
+four decision factors. The Tukey test was used to analyze Patient                                    on the combination of the appointment scheduling rules, the num-
+ﬂow * Rules * Rooms * Nurses interaction. Only the 29 experiments                                    ber of consulting rooms and the number of nurses. Three experi-
+minimizing patient lead times are presented in Table 7 sorted                                        ments (J, L and R) succeed in reducing the average patient lead
+according to patient ﬂow types.                                                                      time to less or equal to 60 min as wished by the orthopaedic clinic
+   The patient ﬂow type is related to the demand and since the                                       decision makers. We can observe that the average patient lead
+demand can vary from one day to the other, it would be logical                                       time increases to 95 min (experiments Q and K) if there is only
+to adjust the clinic capacity (appointment scheduling rules, num-                                    one nurse. The average patient lead time also increases to 75 min
+ber of consulting rooms, and number of nurses) according to the                                      (mean patient lead time for experiments V and X) when appoint-
+patient ﬂow type. Results in Table 7 indicate that the average                                       ment scheduling rule 3 is used. With 2 nurses, 3 rooms and
+
+                                                       C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298                                                         293
+
+
+Table 10
+ANOVA – proportion of occupied time for orthopedists.
+
+  Sources                                                             DF                           SS                                     MS                                 p-Value
+  Patient ﬂow (F)                                                     2                            24182.1                                12091.1                            0.000*
+  Rules (R)                                                           3                            421.2                                  140.4                              0.013*
+  Patient ﬂow  Rules                                                 6                            638.6                                  106.4                              0.012*
+  Rooms (S)                                                           2                            30117.3                                15058.7                            0.000*
+  Patient ﬂow  Rooms                                                 4                            884.7                                  221.2                              0.000*
+  Rules  Rooms                                                       6                            762.6                                  127.1                              0.004*
+  Patient ﬂow  Rules  Rooms                                         12                           220.3                                  18.4                               0.926
+  Nurses (I)                                                          1                            48071.1                                48071.1                            0.000*
+  Patient ﬂow  Nurses                                                2                            1031.9                                 515.9                              0.000*
+  Rules  Nurses                                                      3                            2020.3                                 673.4                              0.000*
+  Patient ﬂow  Rules  Nurses                                        6                            641.6                                  106.9                              0.012*
+  Rooms  Nurses                                                      2                            971.0                                  485.5                              0.000*
+  Patient ﬂow  Rooms  Nurses                                        4                            567.3                                  141.8                              0.006*
+  Rules  Rooms  Nurses                                              6                            580.8                                  96.8                               0.021*
+  Patient ﬂow  Rules  Rooms  Nurses                                12                           317.4                                  26.5                               0.759
+  Error                                                               288                          11014.8                                38.2
+  Total                                                               359                          122443.1
+
+The bold values are signiﬁcant factors and interactions.
+SS: sum of squares; MS: mean square.
+*
+  p-Value signiﬁcant at 5%; DF: degree of freedom.
+
+
+
+Table 11
+Experiments maximizing the proportion of occupied time for orthopedists sorted according to patient ﬂow types.
+
+  Experiments                                                 F        D    X      V       L       R       AD   AB          AV     AJ     AT     AH       AP     AN     BB      AZ
+  Patient ﬂow                                                 1        1    1      1       1       1       2    2           2      2      2      2        2      2      3       3
+  Rules                                                       0        0    3      3       1       2       0    0           3      1      3      1        2      2      0       0
+  Rooms                                                       3        2    3      2       3       3       3    2           3      3      2      2        3      2      3       2
+  Nurses                                                      2        2    2      2       2       2       2    2           2      2      2      2        2      2      2       2
+  Average proportion of occupied time for orthopedists        94.8     92   88.4   87.6    80.8    79.8    96   94.8        92.6   87.6   87.2   84.4     84.2   82.6   91.4    80.4
+
+
+
+
+Table 12
+Best solutions versus patient ﬂow types.
+
+  Patient ﬂow                Experiments           Appointment              Number             Number               Patient lead          Number of              Proportion of
+  type                                             scheduling rule          of rooms           of nurses            time (min)            patients seen          occupied time (%)
+  Mix(1)                     V                     3                        2                  2                    77.4                  51.2                   88.4
+                             X                     3                        3                  2                    72.6                  50                     87.6
+                             L                     1                        3                  2                    56.8                  47.8                   80.8
+                             R                     2                        3                  2                    55.8                  47.2                   79.8
+  Orthopedist (2)            AT                    3                        2                  2                    84.6                  47.8                   87.2
+                             AV                    3                        3                  2                    57                    53.8                   92.6
+                             AN                    2                        2                  2                    48.6                  47                     82.6
+                             AJ                    1                        3                  2                    46.8                  49.2                   87.6
+                             AH                    1                        2                  2                    43.6                  48.6                   84.4
+  Radiology (3)              BR                    3                        2                  2                    85.4                  47.2                   73.4
+                             BB                    0                        3                  2                    140.6                 55                     91.4
+
+
+
+
+Table 13
+Multicriteria analysis versus patient ﬂow types.
+
+  Patient ﬂow           Experiments        Appointment            Number           Number          Number of                 Patient lead time       Number of patients        Total
+  type                                     scheduling rule        of rooms         of nurses       rooms 62 (50%)            660 min (30%)           seen P50 (20%)            score
+  Mix (1)               V                  3                      2                2               1                         0                       1                         0.7
+                        X                  3                      3                2               0                         0                       1                         0.2
+                        L                  1                      3                2               0                         1                       0                         0.3
+                        R                  2                      3                2               0                         1                       0                         0.3
+  Orthopedist (2)       AT                 3                      2                2               1                         0                       0                         0.5
+                        AV                 3                      3                2               0                         1                       1                         0.5
+                        AN                 2                      2                2               1                         1                       0                         0.8
+                        AJ                 1                      3                2               0                         1                       0                         0.3
+                        AH                 1                      2                2               1                         1                       0                         0.8
+  Radiology (3)         BR                 3                      2                2               1                         0                       0                         0.5
+                        BB                 0                      3                2               0                         0                       1                         0.2
+
+294                                         C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298
+
+
+
+
+                                                        Main effects plot for Lead time
+                                                     Patient flow                                     Rules
+                                      200
+
+                                      175
+
+                                      150
+
+                                      125
+
+                                      100
+                               Mean
+
+
+                                            1             2              3            0           1            2         3
+                                                        Rooms                                         Nurses
+                                      200
+
+                                      175
+
+                                      150
+
+                                      125
+
+                                      100
+                                            1              2             3                  1                        2
+
+
+                                                  Fig. 2. Effect of decision factors on patient lead times.
+
+
+
+
+appointment scheduling rules 1 or 2, we obtained the minimum                      and the number of nurses have a signiﬁcant effect on the number
+average patient lead time of 56 min (mean value for experiments                   of patients seen by an orthopedist. Appointment scheduling rules
+L and R). It is important to note that the average patient lead time              have no effect on the number of patients seen by an orthopedist.
+is 60 min (experiment J) with 2 rooms instead of 3 which is a dif-                Fig. 3 illustrates how decision factors impact on the number of
+ference of only 4 min if compared with the smallest patient lead                  patients seen by an orthopedist.
+time of experiment R (55.8 min). This result is interesting since                     Flow type 2 allows an orthopedist to see the greatest number of
+we get quite similar results with one room less. It thus seems pos-               patients (42 patients) while ﬂow type 3 allows for the smallest
+sible to schedule patients with 3 orthopedists and 2 rooms each                   number (30 patients). The number of patients seen by an orthope-
+instead of 2 orthopedists and 3 rooms each without increasing                     dist increases signiﬁcantly, by 14 patients on average, when the
+patient lead times.                                                               number of nurses increases from one to two. It also increases, by
+    Patient ﬂow times vary from 43.2 to 98.2 min for experiments                  11 patients on average, when the number of consulting rooms is
+AK, AU, AS, AT, AF, AL, AM, AI, AO, AV, AG, AN, AJ, AH and AP                     equal to two. However the appointment scheduling rule has no
+(Table 7) of orthopedist ﬂow type 2. For six of them (AV, AG, AN,                 effect on the number of patients seen by an orthopedist.
+AJ, AH and AP) patient lead times are less than 60 min which cor-                     ANOVA also shows that many double and triple interactions are
+respond to the decision makers’ goal. For experiments AG, AN and                  signiﬁcant, meaning that we must be careful when analyzing the
+AH only two consulting rooms instead of three were used allowing                  impact of decision factors. The Tukey test was used to analyze inter-
+one more orthopedist to be scheduled since one room becomes                       actions gathering all four decision factors. We present in Table 9
+available. Let us also note that with experiment AG, it is possible               only the 16 experiments maximizing the number of patients seen
+to assign one nurse to two rooms (instead of two nurses) while sat-               by an orthopedist sorted according to the patient ﬂow type.
+isfying the goal of a patient lead time less than 60 min. The patient                 We can observe that the average number of patients seen by an
+lead time is longer when only one nurse is working, 65 min on                     orthopedist varies from 47 to 56.4 patients. As shown by variance
+average, and when only one consulting room is available, 78 min                   analysis, the patient ﬂow type has a signiﬁcant effect on the num-
+on average.                                                                       ber of patients seen by an orthopedist and is involved in four of the
+    Experiments BR, BN, BF, BT, BH and BL of radiology ﬂow type 3                 signiﬁcant interactions. It is thus important to consider the
+result in patient lead times between 68.6 and 85.4 min. The deci-                 appointment scheduling rules, the number of consulting rooms
+sion makers’ goal of a patient lead time being less than 60 min                   and the number of nurses for each patient ﬂow type.
+could not be reached with this patient ﬂow type. This can be                          For experiments F, V, X, D, L and R of mix ﬂow type 1, the num-
+explained by the fact that this ﬂow type is more complex including                ber of patients seen by an orthopedist varies from 47.2 to 53.6.
+two and three-step trajectories. For experiments BH and BL we get                 Results of experiments F, V and X correspond to the orthopedists’
+the same patient lead time of 68.6 min but experiment BL uses two                 goal to see at least 50 patients daily. These three experiments
+consulting rooms and appointment scheduling rule 2 and experi-                    require two nurses with appointment scheduling rules 0 and 3.
+ment BH, three consulting rooms and appointment scheduling rule                   However with experiment V only two consulting rooms are
+1. None of the experiments of radiology ﬂow type 3 considers only                 required instead of three.
+one nurse.                                                                            For experiments AD, AV, AB, AP, AJ, AH, AT and AN of ﬂow type
+                                                                                  2, the number of patients seen by an orthopedist varies from 47 to
+4.2. Number of patients seen by an orthopedist                                    56.4. Results of experiments AD, AV, AB and AP correspond to the
+                                                                                  orthopedists’ goal to see at least 50 patients daily. These four
+   We also analyzed how the number of patients seen by an ortho-                  experiments require two nurses with appointments scheduling
+pedist varied depending on the decision factors. An ANOVA was                     rules 0, 2 and 3. However with experiment AB, only two consulting
+performed to verify which decision factors have a signiﬁcant effect               rooms are required instead of three.
+on the number of patients seen by an orthopedist (Table 8). Results                   For experiments BB and BR of ﬂow type 3 the number of
+show that the patient ﬂow type, the number of consulting rooms                    patients seen by an orthopedist varies from 47.2 to 55. Results of
+
+                                                C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298                                 295
+
+
+
+
+                                                      Main effects plot for Number of patients
+                                                        Patient flow                                     Rules
+                                      45
+
+                                      40
+
+                                      35
+
+                               Mean   30
+
+                                               1              2              3            0          1            2          3
+                                                           Rooms                                         Nurses
+                                      45
+
+                                      40
+
+                                      35
+
+                                      30
+
+                                               1              2              3                  1                        2
+
+
+                                           Fig. 3. Decision factors versus the number of patients seen by an orthopedist.
+
+
+experiment BB correspond to the orthopedists’ goal to see at least                    varies from 82.6% à 96%. Once again for all experiments, two nurses
+50 patients daily. This experiment is the one currently used by the                   are needed. Appointment scheduling rules 0, 1 and 3 result in the
+outpatient orthopaedic clinic. It requires two nurses (as for all                     greatest proportions of occupied time for orthopedists with exper-
+experiments) and three rooms with appointment scheduling rule                         iments AB and AT requiring only two rooms (allowing for more
+0. The maximum number of patients that can be seen if there are                       available capacity).
+two consulting rooms is 47.                                                               Radiology ﬂow type 3 includes only experiments BB and AZ. The
+                                                                                      proportion of occupied time for orthopedists varies from 80.4% to
+4.3. Proportion of occupied time for orthopedists                                     91.4%. Both of them require two nurses but experiment AZ neces-
+                                                                                      sitates two rooms.
+    Finally we also analyzed how the proportion of occupied time
+for orthopedists varied depending on the decision factors. Let us                     4.4. Analysis and validation
+recall that orthopedists aim to be occupied at a proportion of at
+least 85%. Results of the ANOVA (Table 10) show that the number                           Each performance measure was analyzed independently in Sec-
+of nurses is the factor having the greatest effect on the proportion                  tions 4.1–4.3. However, experiments minimizing patient lead
+of occupied time for orthopedists. Fig. 4 illustrates how decision                    times may not be the ones maximizing the number of patients seen
+factors impact on the proportion of occupied time for orthopedists.                   by an orthopedist or the proportion of occupied time for orthope-
+    The proportion of occupied time for orthopedists increases sig-                   dists. Therefore factors needed to optimize the performance mea-
+niﬁcantly, by 18% on average, when the number of consulting                           sures were determined according to the patient ﬂow types and
+rooms increases from 1 to 2. However when the number of con-                          to combined results of Tables 7, 9 and 11. Those combined results
+sulting rooms goes from 2 to 3, the proportion of occupied time                       can be found in Table 12.
+for orthopedists increases by 3% on average. The proportion of                            Multicriteria analysis was used to evaluate the best solutions
+occupied time for orthopedists increases signiﬁcantly, by 24% on                      (Table 13) for each patient ﬂow type. Multicriteria analysis is a
+average, when the number of nurses increases from 1 to 2 meaning                      decision support tool to help decision makers evaluate the impact
+that orthopedists need two nurses to improve their efﬁciency.                         of many criteria over a given performance measure. In our study,
+    Since many interactions are signiﬁcant, we must be careful                        we considered the following criteria values and their respective
+when analyzing the impact of decision factors. The Tukey test                         weights: (1) no more than two rooms (50%), (2) less than 60 min
+was used to analyze interactions gathering all four decision factors.                 patient lead times (30%) and (3) at least 50 patients seen by an
+We present in Table 11 only the 16 experiments maximizing the                         orthopedist (20%). Weights were determined with the outpatient
+proportion of occupied time for orthopedists sorted according to                      clinic decision makers. Each solution of Table 12 was evaluated
+the patient ﬂow type.                                                                 as follows: 1 point if criteria value is satisﬁed and 0 otherwise.
+    We can observe that the average proportion of occupied time                       Total score is the sum of the criteria score times its weight. The
+for orthopedists varies from 79.8% to 96%. As shown by variance                       highest total score is the most interesting solution. These solutions
+analysis, the patient ﬂow type has a signiﬁcant effect on the pro-                    are in bold in Table 13.
+portion of occupied time for orthopedists and is involved in ﬁve                          For the mix ﬂow type, results of experiments V, X, L and R were
+of the signiﬁcant interactions.                                                       present in the three Tables 7, 9 and 11. For the orthopedist ﬂow
+    For experiments F, D, X, V, L and R of ﬂow type 1 the proportion                  type, results of experiments AT, AV, AN, AJ and AH were also in
+of occupied time for orthopedists varies from 79.8% to 94.8%. For all                 the three tables. However results of the two experiments BR and
+experiments, two nurses are needed with appointment scheduling                        BB from the radiology ﬂow type were only found in two of the
+rules 0 and 3. The greatest proportions of occupied time for ortho-                   three Tables 7, 9 and 11.
+pedists were observed with experiments D and V requiring only                             For ﬂow type 1, the solution with the highest score requires two
+two rooms.                                                                            rooms and two nurses with appointment scheduling rule 3. With
+    For experiments AD, AB, AV, AJ, AT, AH, AP and AN of orthope-                     this solution, 53 patients could be scheduled. Our simulation
+dist ﬂow type, the proportion of occupied time for orthopedists                       results indicate however that only 51 patients can be seen by an
+
+296                                                       C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298
+
+
+
+
+                                                             Main effects plot for Proportion of occupied time
+                                                                  Patient flow                                     Rules
+                                            75
+                                            70
+                                            65
+                                            60
+                                            55
+                                     Mean
+
+
+                                                         1             2               3            0          1            2          3
+                                                                     Rooms                                         Nurses
+                                            75
+                                            70
+                                            65
+                                            60
+                                            55
+
+                                                         1              2              3                  1                        2
+
+
+                                                      Fig. 4. Decision factors versus proportion of occupied time for orthopedists.
+
+
+
+orthopedist without overtime. Considering that there are 5                                      scheduling rule 3, combined with two rooms and two nurses, is the
+walk-ins on average daily, the clinic should schedule 46 patients                               only one that may result in an excess capacity. However it would
+per orthopedist instead of 53. With around a patient lead time of                               lead to a patient lead time of 86 min, 47 patients seen by an ortho-
+78 min and a proportion of occupied time for orthopedists of                                    pedist and a 73% proportion of occupied time for orthopedists. In
+88%, this solution is the best one found with this patient ﬂow type.                            this case, none of the criteria is reached. With such results it would
+    For ﬂow type 2, appointment scheduling rules 1 and 2 com-                                   be interesting to consider other appointment scheduling rules for
+bined with two rooms and two nurses provide good solutions.                                     the radiology ﬂow type.
+The solution with appointment scheduling rule 1 gives a smaller                                     The ﬁrst series of tests included 5 replications of each experi-
+patient lead time than with appointment scheduling rule 2. It is                                ment. The conﬁdence interval is ±30 min for the patient lead time,
+thus the chosen solution for the orthopedist ﬂow type. Our results                              ±5 patients for the number of patients seen by an orthopaedist
+show that 48 patients can be seen by an orthopedist while 45 are                                and ±0.01 for the proportion of occupied time. To validate with
+scheduled. Therefore 3 of the average 5 walk-in patients could be                               more adequacies and over a longer period the best solutions of
+seen by the orthopedist. Considering that there are on average 5                                Table 13, 150 replications of each of them were performed. We
+walk-ins daily for each orthopedist, the clinic should then schedule                            took advantage of these new tests to verify if solutions involving
+43 patients instead of 45 for a total of 48 patients seen by each                               2 rooms were statistically equivalent to those involving 3 rooms.
+orthopedist. With an average patient lead time of 44 min and a                                  Table 14 compares the current observed solution with solutions
+proportion of occupied time for orthopedists of 84%, this solution                              of Table 13.
+is the best one found with this patient ﬂow type.                                                   For the current solution (mix ﬂow, appointment scheduling rule
+    For ﬂow type 3, no solution satisﬁes all criteria values. With                              0, 3 rooms and 2 nurses), patient lead time is equal to 141 min, the
+appointment scheduling rule 0, an orthopedist can see 55 patients                               number of patients seen by an orthopedist to 55 and the propor-
+on average daily and is occupied at a proportion of 91%. However                                tion of occupied time for orthopedists is 94.8%.
+the average patient lead time is 140 min which is very high and                                     Simulation tests showed that it is possible to reduce patient
+three rooms are needed. For the radiology ﬂow type, appointment                                 lead time. The reduction of patient lead time was obtained by
+
+
+Table 14
+Comparison of current solution and tested solutions versus patient ﬂow types.
+
+                                                 Performance measures
+                                                 Patient lead time (min)                      Number of patients seen                      Proportion of occupied time
+                                                 Mean                Half-width               Mean                 Half-width              Mean (%)              Half-width
+  Current observed solution
+  Rule (0) Rooms (3) Nurses (2)                  141                 <3.56                    55                   <0.75                   94.8                  0.01
+  Solutions – mix ﬂow
+  Rule (3) Rooms (2) Nurses (2)                  80                  <3.00                    49                   <0.64                   89                    0.01
+  Rule (3) Rooms (3) Nurses (2)                  77                  <3.56                    50                   <0.75                   92                    0.01
+  Solutions – orthopedist ﬂow
+  Rule (1) Rooms (2) Nurses (2)                  48                  <1.92                    48                   <0.53                   84                    0.01
+  Rule (1) Rooms (3) Nurses (2)                  47                  <2.00                    48                   <0.49                   87                    0.01
+  Solutions – radiology ﬂow
+  Rule (3) Rooms (2) Nurses (2)                  102                 <3.81                    43                   <0.75                   79                    0.01
+  Rule (3) Rooms (3) Nurses (2)                  87                  <3.10                    46                   <0.71                   83                    0.01
+
+The bold values are signiﬁcant factors and interactions.
+
+                                                         C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298                                      297
+
+
+Table 15
+Patients distribution according to ﬂow types.
+
+                                                Solution 1                                     Solution 2                             Solution 3
+                                                Day 1 (8 h)             Day 2 (4 h)            Day 1 (8 h)            Day 2 (4 h)     Day 1 (8 h)        Day 2 (4 h)
+     Flow type                                  Mix                     Mix                    Mix                    Orthopedist     Orthopedist        Radiology
+     Appointment scheduling rules               3                       3                      3                      1               1                  3
+     Number of rooms                            2                       2                      2                      2               2                  2
+     Number of nurses                           2                       2                      2                      2               2                  2
+     Patient lead time                          80 min                  80 min                 80 min                 48 min          48 min             102 min
+     Proportion of occupied timea               89%                     89%                    89%                    84%             84%                79%
+     Number of patients seena                   49                      31                     49                     31              48                 32
+ a
+      Depends on results of Table 14.
+
+
+modifying the appointment scheduling rule. Indeed with the best                                Knowing that the clinic intends to hire three new orthopaedist, this
+solution of the mix ﬂow type, patient lead time is equal to                                    would leave them two rooms daily to receive patients. However
+80 min (43% reduction compared with current solution), 49                                      this additional orthopedist needs two additional nurses to keep
+patients are seen by an orthopedist (11% difference with current                               the same level of performance (patient lead time, number of
+solution) and the proportion of occupied time for orthopedists is                              patients seen and occupied time rate). Our results differ slightly
+equal to 89% (6% difference with current solution). It is worth                                from White et al. In the clinic setting studied by White et al., better
+noting that appointment scheduling rules have an important                                     results (occupied time rate, patient lead time) are obtained when
+impact on patient lead times no matter which patient ﬂow type                                  at least three consulting rooms are assigned to each doctor instead
+is considered.                                                                                 of only two. However in their study they do not consider the pos-
+    Results also demonstrate that reducing the number of rooms                                 sibility for orthopaedists to share the use of consulting rooms as it
+from three to two does not make a signiﬁcant difference in patient                             is for us. Moreover radiology services are dedicated to the clinic
+lead times, the number of patients seen by an orthopedist or the                               which is not the case in our study. However, this new assignment
+proportion of occupied time for orthopedists, for the three patient                            of rooms and nurses with additional orthopedists would allow the
+ﬂow types except radiology ﬂow for which patient lead times vary                               clinic to schedule more patients therefore reducing the size of the
+more. The outpatient clinic could thus schedule the same number                                patients’ waiting list. From a medical point of view this would be
+of patients with only two rooms and two nurses per orthopedist                                 beneﬁcial to patients’ health condition.
+(total of 4 rooms and 4 nurses) while keeping good performance                                     Our study showed that modifying appointment scheduling
+measures.                                                                                      rules allows for a signiﬁcant reduction of patient lead time and
+    Finally, our study demonstrates how important it is to consider                            consequently of their waiting time, without affecting the number
+patient ﬂow types when generating appointment schedules. Our                                   of patients seen by an orthopedist or the proportion of occupied
+results are very interesting since they allow scheduling appoint-                              time for orthopedists. We showed that with the mix and radiology
+ments according to patient ﬂow types when an orthopaedist’s                                    ﬂow types, the best appointment scheduling rule is rule 3. This rule
+caseload requires more than one day. For the mix ﬂow and the                                   ensures that there is always a patient ready when the orthopaedist
+radiology patient ﬂow types, the best appointment scheduling rule                              needs to see one. For the orthopaedist ﬂow type (all patients follow
+is rule 3, while rule 1 is better for the orthopedist ﬂow type. It                             only a one step trajectory), the best appointment scheduling rule is
+shows how important it is to adjust appointment scheduling rules                               rule 1 (a patient is scheduled every 10 min). These results are con-
+to patients’ trajectories. Table 15 presents how the three solutions                           sistent with Rohleder and Klassen (2000). It is obvious that reduc-
+to distribute 80 patients over two days can be evaluated with our                              ing patient waiting times will increase patient satisfaction.
+three performance measures.                                                                        We also showed that when scheduling appointments according
+    If the clinic schedules appointments according to the mix ﬂow                              to ﬂow types, it was possible to reduce total patient lead times over
+type for the two days (solution 1), patient total lead time is                                 two days. A 20% decrease in total patient lead time (160 min for
+160 min. It is 128 min with solution 2 and 150 min with solution                               solution 1 and 128 min for 2 (Table 15)) contributes in improving
+3. It shows that scheduling appointments based on the ﬂow types                                patient satisfaction, reducing congestion in the waiting room and
+has an impact on patient total lead time and consequently on their                             therefore facilitating movements in a clinic where many patients
+waiting time, without affecting the proportion of occupied time for                            need technical aids. To our knowledge we are the ﬁrst ones to con-
+orthopedists                                                                                   sider different ﬂow types to schedule appointments.
+
+5. Discussion and limitations                                                                  5.2. Limitations
+
+5.1. Discussion                                                                                    In our study patient lead times take into account orthopaedists
+                                                                                               lateness and absences. If orthopaedists were present when the
+   Our results show that there are many ways to improve the clinic                             clinic opens patient lead times could decrease. It would be interest-
+performance from the patient’s and orthopaedist’s point of view.                               ing verifying the impact on patient lead times of an increase of the
+For different ﬂow types we identiﬁed the appointment scheduling                                orthopaedists presence.
+rules, the number of consulting rooms and the number of nurses                                     The solutions (appointment scheduling rule, number of rooms
+required to reduce patient lead time while maintaining the propor-                             and nurses) recommended according to each patient ﬂow are good
+tion of the orthopaedist’s occupied time and the number of                                     when patient are on time to their appointment. If patients arrive
+patients seen.                                                                                 early our solutions still hold since it was patients’ choice to arrive
+   The clinic studied could operate with 2 consulting rooms                                    early. However patients’ lateness may have an impact on the solu-
+instead of 3 for the three types of patient ﬂows. Actually and as                              tions to recommend. Future research could analyze how patient
+we showed in Table 1, two orthopedists use 3 rooms each every                                  lateness contributes in modifying the clinic performance.
+day for a total of 6 rooms used. If each of them uses 2 rooms                                      We intend to study how the clinic’s performance can be
+instead of 3, it leaves an extra 2 rooms for another orthopedist.                              improved if nurses are not assigned to a speciﬁc orthopedist or
+
+298                                                    C. Baril et al. / Computers & Industrial Engineering 78 (2014) 285–298
+
+
+rooms but can rather work in any room and with any orthopedist                               Denton, B., & Gupta, D. (2001). A sequential bounding approach for optimal
+                                                                                                  appointment scheduling. Unpublished working paper. Hamilton, Ontario:
+depending on the needs. Also, to get better patient lead times,
+                                                                                                  DeGroote School of Business, McMaster University.
+future works imply to review work organization (nurses and                                   Fries, B., & Marathe, V. (1981). Determination of optimal variable sized multiple-
+orthopedists) in order to reduce waste of time (traveling, waiting).                              block appointment systems. Operational Research, 29(2), 324–346.
+It would be interesting to verify how work organization inﬂuence                             Guangfu, T., & Williams, P. (2011). Optimization of scheduling patient appointments
+                                                                                                  in clinics using novel modelling technique of patient arrival. Computer Methods
+performance measures. We believe that it might be possible to                                     and Programs in Biomedicine. http://dx.doi.org/10.1016/j.cmpb.2011.02.010.
+schedule more patients with 4 nurses, 6 rooms and 3 orthopedists.                            Hart, M. (1995). Improving outpatient clinic waiting times: Methodological and
+    We studied three patient ﬂow types: mix (trajectories 1, 2 and                                substantive issues. International Journal of Health Care Quality Assurance, 8(6),
+                                                                                                  14–22.
+3), orthopaedist (trajectory 3) and radiology (trajectory 2 and 3).                          Ho, C., & Lau, H. (1992). Minimizing total costs in scheduling outpatient
+Future research projects may imply testing more complex ﬂow                                       appointments. Management Science, 38(12), 1750–1764.
+types with different trajectory combinations. Sensitivity analysis                           Hulshof, P. J. H., Vanberkel, P. T., Boucherie, R. J., Hans, E. W., van Houdenhoven, M.,
+                                                                                                  & Van Ommeren, J.-K. C. W. (2012). Analytical models to determine room
+could be performed on each ﬂow type by modifying the propor-                                      requirements in outpatient clinics. OR Spectrum, 34, 391–405.
+tions of patients following each trajectory. Our research explored                           Jared, R., Zhen, Z., et al. (2010). Design and analysis of a health care clinic for
+three scheduling rules. We are aware that many more rules could                                   homeless people using simulations. International Journal of Health Care Quality
+                                                                                                  Assurance, 23(6), 607–620.
+be tested according to the different ﬂow types.                                              Jun, J. B., Jacobson, S. H., et al. (1999). Application of discrete-event simulation in
+    In the longer term, our research will consist in developing deci-                             health care clinics: A survey. Journal of the Operational Research Society, 50(2),
+sion support systems to schedule appointments and determine                                       109–123.
+                                                                                             Kelton, W. D., Sadowski, R., & Sturrock, x. D. (2007). Simulation with arena (4th ed.).
+resources required while taking into account orthopedists’ case-
+                                                                                                  New York: McGraw-Hill, pp. 636.
+load. Even if each clinic has its own speciﬁcities we think that                             Klassen, K. J., & Rohleder, T. R. (1996). Scheduling outpatient appointments in a
+our results can provide insights to help them plan appointments                                   dynamic environment. Journal of Operations Management, 14(2), 83–101.
+according to patient ﬂow types when a doctor needs more than                                 Klassen, K. J., & Rohleder, T. R. (2004). Outpatient appointment scheduling with
+                                                                                                  urgent clients in a dynamic multi-period environment. International Journal of
+one day to see all his patients. Clinics could adapt our solutions                                Service Industry Management, 15(2), 167–186.
+to their own activities.                                                                     Klassen, K. J., & Yoogalingam, R. (2009). Improving performance in outpatient
+                                                                                                  appointment services with a simulation optimization approach. Production and
+                                                                                                  Operations Management, 18(4), 447–458.
+6. Conclusion                                                                                LaGanga, L. R. (2011). Lean service operations: Reﬂections and new directions for
+                                                                                                  capacity expansion in outpatient clinics. Journal of Operations Management, 29,
+                                                                                                  422–433.
+    In this paper we studied relations and interactions between
+                                                                                             LaGanga, L. R., & Lawrence, S. R. (2007). Clinic overbooking to improve patient
+patient ﬂow types, resource capacity (number of consulting rooms                                  access and increase provider productivity. Decision Sciences, 38(2), 251–276.
+and number of nurses) and appointment scheduling rules to be                                 Liao, C., Pegden, C. D., & Rosenshine, M. (1993). Planning timely arrivals to a
+                                                                                                  stochastic production or service system. IIE Transactions, 25(5), 63–73.
+able to propose new ways to improve an outpatient orthopaedic
+                                                                                             Liu, L., & Liu, X. (1998). Block appointment systems for outpatient clinics with
+clinic performance. For better values of performance measures,                                    multiple doctors. Journal of the Operational Research Society, 49(12), 1254–1259.
+one has to deﬁne appointment scheduling rules according to                                   Mital, K. M. (2010). Queuing analysis for outpatient and inpatient services: A case
+patient ﬂow types. Until now, researchers spent more time on try-                                 study. Management Decision, 48(3), 419–439.
+                                                                                             Patrick, J. (2012). A Markov decision model for determining optimal outpatient
+ing to schedule patients daily in outpatient clinics (operational                                 scheduling. Health Care Management Sciences, 15, 91–102.
+level) by studying scheduling rules and resource capacity. However                           Robinson, L. W., & Chen, R. R. (2003). Scheduling doctors’ appointments: Optimal
+orthopedists’ workload (number of patients and type of treatment                                  and empirically-based heuristic policies. IIE Transactions, 35(3), 295–307.
+                                                                                             Rohleder, T. R., & Klassen, K. J. (2000). Using client-variance information to improve
+required) can vary greatly from week to week. This research will                                  dynamic appointment scheduling performance. Omega, 28, 293–302.
+contribute to develop new weekly appointment schedules for out-                              Rohleder, T. R., Lewkonia, P., Bischak, D. P., Duffy, P., & Hendijani, R. (2011). Using
+patient orthopaedic clinics (tactical level) considering orthope-                                 simulation modeling to improve patient ﬂow at an outpatient orthopaedic
+                                                                                                  clinic. Health Care Management Sciences, 14, 135–145.
+dists’ patient load and their trajectories. An emphasis will be put                          Salzarulo, P., Bretthauer, A., Côté, K. M., & Schultz, M. J. (2011). The impact of
+on considering mix, orthopedist and radiology patient ﬂows                                        variability and patient information on health care system performance.
+according to their speciﬁc demand in patients on a weekly basis.                                  Production and Operations Management, 20(6), 848–859.
+                                                                                             Santibanez, P., Chow, V. S., French, J., Putterman, M. L., & Tyldesley, S. (2009).
+This research opens new opportunities for appointment scheduling
+                                                                                                  Reducing patient wait times and improving resource utilization at British
+according to patient ﬂow types.                                                                   Columbia Cancer Agency’s ambulatory care unit through simulation. Health
+                                                                                                  Care Management Science, 12, 392–407.
+                                                                                             Saremi, A., Jula, P., ElMekkawy, T., & Wang, G. G. (2013). Appointment scheduling of
+References
+                                                                                                  outpatient surgical services in a multistage operating room department.
+                                                                                                  International Journal of Production Economics, 141, 646–658.
+Babes, M., & Sarma, G. V. (1991). Out-patient queues at the Ibn-Rochd Health                 Swisher, J. R., Jacobson, S. H., et al. (2001). Modeling and analyzing a physician clinic
+    Centre. Journal of the Operational Research Society, 42(10), 845–855.                         environment using discrete-event (visual) simulation. Computers & Operations
+Berg, B., Denton, B., Nelson, H., Balasubramanian, H., Rahman, A., Bailey, A., et al.             Research, 28(2), 105–125.
+    (2009). A discrete event simulation model to evaluate operational performance            Tai, G., & Williams, P. (2012). Optimization of scheduling patient appointments in
+    of a colonoscopy suite. Medical Decision Making, 30(3), 1–8.                                  clinics using a novel modelling technique of patient arrival. Computer Methods
+Cayirli, T., & Veral, E. (2003). Outpatient scheduling in health care: A review of                and Programs in Biomedicine, 108(2), 467–476.
+    literature. Production and Operations Management, 12(4), 519–549.                        Vanden Bosch, P. M., Dietz, C. D., & Simeoni, J. R. (2000). Minimizing expected
+Cayirli, T., Veral, E., & Rosen, H. (2006). Designing appointment scheduling systems              waiting in a medical appointment system. IIE Transactions, 32(9), 841–848.
+    for ambulatory care services. Health Care Management Sciences, 9, 47–58.                 White, D. L., Froehle, C. M., & Klassen, K. J. (2011). The effect of integrated
+Cayirli, T., & Yang, K. K. (2012). A universal appointment rule in the presence of no-            scheduling and capacity policies on clinical efﬁciency. Production and Operations
+    shows and walk-ins. Production and Operations Management, 21(4), 682–697.                     Management Society, 20(3), 442–455.
+Chakraborty, S., Muthuraman, K., et al. (2010). Sequential clinical scheduling with          Wijewickrama, A. K. A., & Takakuwa, S. (2012). Designing outpatient appointment
+    patient no-shows and general service time distributions. IIE Transactions, 42(5),             systems with patient characteristics: A case study. International Journal of
+    354–366.                                                                                      Healthcare Technology and Management, 13(1–3), 157–169.
+Cooper, K., Brailsford, S. C., & Davies, R. (2007). Choice of modelling technique for        Yang, K. K., Lu, M. L., & Quek, S. A. (1998). A new appointment rule for a single-
+    evaluating health care interventions. Journal of Operational Research Society, 58,            server, multiple-customer service system. Naval Research Logistics, 45, 313–326.
+    168–176.                                                                                 Young, T. (2005). An agenda for healthcare and information simulation. Health Care
+Côté, M. J. (1999). Patient ﬂow and resource utilization in an outpatient clinic. Socio-          Management Science, 8, 189–196.
+    Economic Planning Sciences, 33(3), 231–245.
+

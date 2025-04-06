@@ -1,0 +1,631 @@
+      Journal of the Operational Research Society
+
+
+
+
+      ISSN: 0160-5682 (Print) 1476-9360 (Online) Journal homepage: www.tandfonline.com/journals/tjor20
+
+
+
+
+Using OR to support the development of an integrated
+musculo-skeletal service
+
+R B van der Meer, L A Rymaszewski, H Findlay & J Curran
+
+To cite this article: R B van der Meer, L A Rymaszewski, H Findlay & J Curran (2005) Using OR to
+support the development of an integrated musculo-skeletal service, Journal of the Operational
+Research Society, 56:2, 162-172, DOI: 10.1057/palgrave.jors.2601893
+
+To link to this article: https://doi.org/10.1057/palgrave.jors.2601893
+
+
+
+
+       Published online: 21 Dec 2017.
+
+
+
+       Submit your article to this journal
+
+
+
+       Article views: 63
+
+
+
+       View related articles
+
+
+
+       Citing articles: 1 View citing articles
+
+
+
+
+                      Full Terms & Conditions of access and use can be found at
+             https://www.tandfonline.com/action/journalInformation?journalCode=tjor20
+
+Journal of the Operational Research Society (2005) 56, 162–172    r 2005 Operational Research Society Ltd. All rights reserved. 0160-5682/05 $30.00
+
+                                                                                                                    www.palgrave-journals.com/jors
+
+
+
+
+Using OR to support the development of an
+integrated musculo-skeletal service
+RB van der Meer1*, LA Rymaszewski2, H Findlay2 and J Curran1
+1
+ University of Strathclyde, Glasgow, UK; and 2The Musculo-Skeletal Unit, Stobhill Hospital and Glasgow Royal
+Inﬁrmary, Glasgow, UK
+This paper discusses the question of how operational research in general, and discrete event simulation in particular, can
+help to meet management challenges in hospital-based orthopaedics medicine. It focuses on the reduction of waiting
+times for elective patients, both for a ﬁrst outpatient appointment and for the subsequent commencement of in-patient
+treatment. The research is based on a series of projects carried out by students from the Department of Management
+Science, University Strathclyde in Stobhill Hospital and the Glasgow Royal Inﬁrmary between 1999 and 2003. An
+increasingly detailed and complex simulation model was developed for the musculo-skeletal service provided by these
+hospitals. The paper discusses the application of a modelling methodology—based on the idea of requisite models
+evolving over time—that is participatory, iterative and focused on enhancing the clients’ understanding of the main
+performance drivers of the service. It concludes that this methodology ﬁts well with successful strategies to sustain
+reductions in waiting times.
+Journal of the Operational Research Society (2005) 56, 162–172. doi:10.1057/palgrave.jors.2601893
+Published online 17 November 2004
+
+Keywords: simulation; hospitals; orthopaedic medicine; waiting times
+
+
+
+
+Health challenges in orthopaedics                                           In the NHS, the main strategy to achieve shorter waiting
+                                                                         times has been to increase the number of orthopaedic
+This paper discusses the question of how operational
+                                                                         surgeons, or to fund waiting list initiatives on a recurrent
+research (OR) in general, and discrete event simulation in
+                                                                         basis. However, without a major reconﬁguration of tradi-
+particular, can help to meet management challenges in
+                                                                         tional orthopaedic work processes, the growing demand for
+hospital-based orthopaedics medicine. There are two types
+                                                                         hospital consultation and surgery cannot be met adequately.
+of orthopaedics patients—elective and non-elective—that
+                                                                         In England, over the most recent 5-year period 2000–2004,
+present quite different challenges for healthcare manage-
+                                                                         the number of written referrals by general practitioners
+ment. Non-elective patients are trauma and emergency
+                                                                         increased by about 25% for all specialities, and by about
+patients requiring acute healthcare, which is subject to a
+                                                                         26% for trauma and orthopaedics.6 But the most recently
+large uncertainty in demand. The treatment required by                   available data (relating to the quarter ended September
+elective patients is less acute and can, at least in principle, be       2003) show that only 65% of orthopaedics patients wait less
+planned (more or less accurately) in advance. Previous                   than 13 weeks from written referral by a general practitioner
+studies include papers by Bowers and Mould.1,2                           (GP) to outpatient consultation, as opposed to 80% for
+   At the point when we started these projects, patients with            all specialities.7 The situation is not dissimilar in Scotland.8
+musculo-skeletal problems formed one of the largest groups               In November 2002, the Scottish Health Minister stated
+waiting for a hospital outpatient appointment in the United              that the long waiting times in orthopaedics constitute ‘one
+Kingdom’s National Health Service (NHS), and the time                    of the toughest areas’ that NHS Scotland has had to deal
+before being seen was one of the longest. The majority of                with.9
+these patients had to wait for months, if not over a year,
+before ﬁnally being seen by an orthopaedic surgeon, despite
+some 80% of the conditions being non-surgical.3,4 But in                 Meeting health challenges with OR
+2000, the NHS Plan5 set a maximum waiting time for an
+outpatient appointment of 3 months and for in-patients, 6                OR offers a range of analysis methods10,11 that could be used
+months.                                                                  in the present context. In practice, one of the most popular
+                                                                         methods is discrete event simulation. In very general terms, a
+                                                                         simulation model represents a transformation system—in
+*Correspondence: RB van der Meer, Department of Management Science,
+University of Strathclyde, Glasgow, UK.                                  the present case, a service system that uses resources of
+E-mail: robert@mansci.strath.ac.uk                                       various kinds to provide appropriate health care to
+
+                                                                               RB van der Meer et al—Using OR to develop musculo-skeletal service 163
+
+
+patients.12 Simulation models are used to investigate two key     Understanding. Eldabi and Paul criticize most of the existing
+aspects of managing a healthcare system.10,13                     modelling approaches to healthcare simulation for not
+                                                                  giving enough attention to the problem formulation and
+(1) the management of patient ﬂows through the system;
+                                                                  structuring stage, which—they argue—is the most important
+(2) the allocation of the ‘transforming resources’ (staff,
+                                                                  stage for problem understanding in a healthcare system.
+    equipment, medicines and other materials), which are
+                                                                  Their MAPIU approach has three facets: its main purpose is
+    needed for the provision of the service to the patients.
+                                                                  to enhance stakeholders’ understanding and intercommuni-
+   These two aspects give rise to multiple performance            cations; its structure is participatory including the stake-
+measures, which may be grouped into two broad categories:         holders; and its behaviour is interactive rather than step-
+the level of service provided to patients and the efﬁciency       based. The modelling process in MAPIU has three
+with which resources are utilized. A key issue for manage-        components: modeling–communication–information. A key
+ment concerns the potential trade-off between service level       step in the modelling component is experimentation, which
+and resource efﬁciency. Simulation modelling is an effective      lies at the heart of the iterative process.
+tool for investigating the terms of the trade-off between these      Although Eldabi and Paul do not refer to the work by
+two broad objectives, both in a static and a dynamic              Phillips18 on requisite modelling, the two approaches would
+(improvement) setting.                                            appear to have strong similarities in their stress on iterative
+   However, OR modellers must take account of the fact that       and consultative (or better: participatory) interaction
+healthcare management decision-making often takes the             between the modellers and the various stakeholders, and—
+form of ﬁnding a consensus among different stakeholders           through their use of the model—between the stakeholders
+involved.14 In the context of hospital-based medicine, the        themselves.
+key stakeholders are: patients, medical staff, other healthcare
+professionals (nurses, physiotherapists, etc.), and managers
+at various organizational levels—all of whom may have             Outline of research methodology
+conﬂicting objectives.15 In particular, decisions on resource
+allocation are traditionally taken by hospital managers.16        In the Discussion section of this paper, we shall argue that
+But both resource efﬁciency and service level (including          the modelling methodology on which the present research is
+waiting times) are also strongly affected by decisions taken      based is one that is meant to incorporate the key aspects of
+by senior medical staff regarding the management of patient       the ‘requisite modelling’18 and MAPIU21 approaches. The
+ﬂows. In any simulation project that focuses on the latter        research is based on a series of projects carried out by
+issue, hospital consultants should, therefore, be regarded as     students from the Department of Management Science,
+key players.17                                                    University Strathclyde in Glasgow. In all, ﬁve consecutive
+   We would argue that the concept of ‘requisite’ modelling,      projects have been completed so far, to be numbered I, II,
+as developed by Phillips,18 is highly relevant in this context.   III, IV and V. The ﬁrst project started in September 1999.
+A model is ‘requisite’ when its form and content are              The last project discussed here was completed in April 2003
+sufﬁcient to resolve the issues of concern. According to          and was carried out by Curran. All projects were supervised
+Phillips, a requisite model is generated through iterative and    by Van der Meer (project I jointly with Valerie Belton).
+consultative interaction between the ‘providers’ of the model        The setting of projects I, II and III was the musculo-
+and the ‘clients’. What constitutes a requisite model should      skeletal unit at Stobhill Hospital, Glasgow. During the
+not be regarded as a static concept. On the contrary, as the      course of these projects, a process of increasing integration
+issues of concern evolve, then so should the form and             had begun between the Stobhill unit and the orthopaedics
+content of the model.                                             department at Glasgow Royal Inﬁrmary (GRI). Therefore,
+   The time and cost that is often involved in a relatively       projects IV and V were concerned with both Stobhill and the
+lengthy effort at building a simulation model of a complex        GRI. Both hospitals form part of the North Glasgow
+system, together with the difﬁculty of holding the interest of    University Hospitals NHS Trust. Each project has had its
+the stakeholders involved, are important reasons why such         own set of clients but Rymaszewski was a client for all of the
+studies might not be sustained.19 And even if a study is          projects. Findlay joined him as a client for projects III, IV
+brought to some sort of a conclusion, it might still be           and V. Both Rymaszewski and Findlay are members of the
+regarded as a failure by the intended users of the simulation     musculo-skeletal team of healthcare professionals, ﬁrst at
+model. Based on a survey of the academic literature,              Stobhill only, and now also at the GRI. Project I was
+Robinson and Pidd20 suggest a fairly long list of potential       initiated by a manager connected with the Stobhill unit. But
+reasons for this latter eventuality.                              direct involvement from management was minimal in
+   The ‘MAPIU’ approach proposed by Eldabi and Paul21             subsequent projects. Such involvement was only re-estab-
+for the simulation modelling of healthcare systems is a           lished in project V, but at a higher level of Trust manage-
+possible way of resolving this problem. MAPIU stands for a        ment. There has as yet been no direct involvement from
+Modelling Approach that is Participatory Iterative for            patients. Because all projects were carried out by students,
+
+164 Journal of the Operational Research Society Vol. 56, No. 2
+
+
+the funding requirements were comparatively low (similar to                              doubling, from 2226 to 4391 referrals.22 One of the reasons
+the case intervention reported by Lehaney et al19).                                      for the steep rise in referrals was thought to be that GPs
+                                                                                         reacted to the lower waiting times and redirected referrals
+                                                                                         away from other hospitals.
+Development of the Stobhill musculo-skeletal unit, until
+2002
+                                                                                         Using OR to support the development of the Stobhill
+The basic design of the musculo-skeletal unit was developed                              musculo-skeletal unit
+by Rymaszewski and his fellow healthcare professionals at
+Stobhill hospital over a 7-year period in the latter part of the                         The ﬁrst project started in September 1999 and was
+1990s.22 Stobhill is a District and General Hospital, with a                             completed in April 2000. The idea of doing a simulation
+catchment population of approximately 170 000 people,                                    project in the musculo-skeletal unit at Stobhill was ﬁrst
+which inter alia provides musculo-skeletal outpatient care                               suggested by a manager who had been impressed by the
+for elective patients. Until 2001 it also provided an in-patient                         results of OR projects carried out in other departments at
+service for these patients but that has since moved to the                               the hospital. Together with Rymaszewski (who was recog-
+GRI. (All non-elective patients are treated at the GRI.)                                 nized as one of the leaders in the development of the unit),
+   The musculo-skeletal unit at Stobhill is an innovative                                this manager acted as a client for the project. Project I used
+concept that was designed to integrate the activities of                                 the Simul8 package23 to develop a discrete event simulation
+orthopaedics and rheumatology with specialist physiother-                                model for the overall musculo-skeletal service, including
+apy and podiatry. The traditional consultant-based model,                                both the outpatient and in-patient parts of the system. The
+in which the consultant and his/her trainee saw all new                                  immediate problem faced by the service was that the
+patients referred to the hospital, was gradually replaced by a                           decrease in outpatient waiting times had been accompanied
+team approach based on a continuous reconﬁguration of                                    by a steep increase in the number of outpatients seen, with a
+roles. On the one hand, the hospital consultants (orthopae-                              corresponding increase in the number of patients scheduled
+dic surgeons and rheumatologist) accepted a retraction of                                for in-patient treatment. Therefore, in-patient waiting times
+their roles and became more specialized in their particular                              were increasing rapidly. The simulation model was intended
+areas of expertise. On the other hand, the roles of the other                            to give the clients a better understanding of this problem
+team members (specialist nurses, physiotherapists and                                    and to examine a range of actions that might be taken to
+podiatrists) were extended through multi-skilling. Improving                             resolve it.
+interdisciplinary communication aimed to facilitate the                                     The model was kept as simple as possible. In particular,
+breaking down of professional barriers and the development                               because the clients were mainly interested in reducing
+of a shared vision (Figure 1).                                                           maximum waiting times, it was not necessary to distinguish
+   More speciﬁcally, in the musculo-skeletal unit the tradi-                             between the different referral categories—urgent, soon and
+tional outpatient process was replaced by                                                routine—given that the maximum waiting times would
+                                                                                         invariably be associated with the latter category. This ﬁrst
+ protocol-based daily triage (by nursing staff) for all                                 model also contained a number of other simpliﬁcations,
+  referrals to the most appropriate health professional in the                           some of which were rather less defensible and were removed
+  team; and                                                                              in later versions. To a large extent, this reﬂected the early
+ allocation of appointments based on clinical priority, with                            stage of the modelling process and the relative inexperience
+  a ‘fast-track’ for urgent cases.                                                       of the student modeller.
+                                                                                            Experimentation with the model demonstrated that if a
+  Over the period 1995–1999, the typical waiting time for an                             podiatry service was reinstated, the maximum outpatient
+outpatient appointment at Stobhill was reduced from 19 to                                waiting time for the consultant specializing in foot and
+11 weeks, despite the number of new GP referrals virtually                               ankle conditions could be reduced from 20 weeks (95% CI:
+
+
+
+
+                                                                 Figure 1   Integrated musculo-skeletal service.
+
+                                                                                       RB van der Meer et al—Using OR to develop musculo-skeletal service 165
+
+
+                                   Table 1   Comparison of alternative scenarios for Mr Rymaszewski
+Alternative scenario                                                                  Annual number of procedures performed (95% CI)
+
+A—current schedule (with 17 beds for elective in-patients)                                                         195–202
+B—1 extra theatre session per week; 17 beds for elective in-patients                                               235–244
+C—2 extra theatre sessions per week; 17 beds for elective in-patients                                              244–254
+D—current conﬁguration, but with 21 beds for elective in-patients                                                  218–221
+E—1 extra theatre session per week, 21 beds for elective in-patients                                               246–255
+F—2 extra theatre sessions per week, 21 beds for elective in-patients                                              247–257
+
+
+
+
+                       Table 2     Comparison of alternative scenarios for the outcomes assessment (OA) service
+                           Number of patients seen at                   Number of patients in                                   Utilization of
+                              OA clinic per year                       OA system at end of year                                OA nurse (%)
+
+Year                   A               B                C          A              B                    C                 A              B               C
+
+2001–2002           750               906           1012          984            1067               1116                36              44             49
+2002–2003          1046              1171           1221         1321            1495               1588                50              56             59
+2003–2004          1088              1342           1485         1679            1938               2077                52              65             71
+2004–2005          1420              1607           1704         2029            2361               2535                68              77             82
+2005–2006          1442              1755           1943         2378            2783               3010                69              84             93
+
+
+
+19.6–20.4) to 15.8 weeks (95% CI: 15.7–15.9), with a                    the possibility of using twin-track operating theatres and of
+maximum waiting time for the podiatry clinic of 18.1 weeks              increasing theatre capacity for day-surgery.
+(95% CI: 17.4–18.9 weeks). The model was also used to                      The idea behind a twin-track process is that by having the
+examine the results of scheduling an additional (in-patient)            use of two operating theatres instead of one, the setup time
+theatre session for any of the other consultants and                    between successive procedures can be eliminated and the
+increasing the number of beds on the in-patient ward. Apart             consultant’s time used more efﬁciently. It allows the
+from the current schedule (scenario A), ﬁve alternative                 consultant to focus on the complex elements in each
+scenarios (B–F) were investigated (see Table 1). This                   operation, leaving a Registrar to carry out the more routine
+demonstrated the possibility of substantially increasing the            parts of the procedure, for example, closing and cleaning the
+annual number of procedures performed by Rymaszewski,                   wound. In all, 12 different scenarios were investigated based
+who is an elbow specialist—but the results were less                    on using additional theatre capacity—assuming that it could
+convincing for the other consultants, given the likely costs            be made available—for either twin-track procedures or
+involved.                                                               additional day cases, or both. The most favourable
+   None of these options were new, as all of them had ﬁrst              scenario—according to which in-patient waiting lists could
+been suggested by the clients. Although both clients greatly            be cut by as much as 80%—proved to be one in which the
+appreciated the ability of the model to explore the likely              consultants would adopt a twin-track approach as far as
+consequences of these options, none of them were actually               possible, as well as treating up to 20% of their inpatients as
+carried out at this early stage. (Actions to enhance the                day cases. However, as had been the case in project I, it
+podiatry service were underway by the time of project IV                became apparent that the implementation of such longer-
+and provided the focus for one of the most recent projects              term changes would be impeded by severe constraints on the
+(project VI). Similarly, the issue of additional theatre                necessary funding. Instead, in order to meet the 12-month
+sessions has remained under consideration ever since.)                  maximum waiting time for in-patient treatment, hospital
+   The manager involved in the ﬁrst project had to shift her            management decided on a different, less radical solution of
+attention towards preparing the impending integration of the            regular weekend theatre sessions.
+Stobhill unit with the orthopaedic department at the GRI.                  Project III started in June 2001 and was completed in
+But Rymaszewski felt that simulation modelling would be of              September 2001, having a more limited scope than the
+continuing beneﬁt. Therefore, Project II started in Septem-             previous two (see Table 2). It took the form of a speciﬁc
+ber 2000 and was completed in April 2001. The main focus                investigation of the expected workload of the Outcomes
+was still on the problem of long waiting times for in-patient           Assessment Nurse who had recently been appointed at the
+treatment. Project II examined a number of new strategies               Stobhill unit. The specialist nurse involved (Findlay) joined
+relating to the organization of the in-patient services, such as        Rymaszewski as a client for this and subsequent projects.
+
+166 Journal of the Operational Research Society Vol. 56, No. 2
+
+
+The role of the Outcomes Assessment Nurse is to provide             questions was evolving, the simulation models were steadily
+long-term follow-up to certain categories of routine patients       increasing in size and complexity.
+who have undergone surgery. In a traditional system, this
+work is all done by the orthopaedic surgeons themselves. In
+line with the overall strategy of the unit, the rationale for the
+appointment was therefore to enable the surgeons to                 Outline design of the new triage process, 2002–2003
+spend more time in the operating theatres. Three alter-             By the summer of 2002, the organization of the musculo-
+native scenarios were investigated, based on differences in         skeletal service at the GRI had moved towards the Stobhill
+the total number of patients eligible for outcomes assess-          model. The full integration of outpatient services across the
+ment. All joint replacement patients would be eligible in any       two hospitals now became a key issue of concern. In
+case; but in scenarios A, B and C, one-third, one-half and          consultation with the medical staff and other healthcare
+three-ﬁfths of other patients would also be eligible,               professionals at both hospitals, Rymaszewski began to
+respectively (with scenario A considered to be the least            outline the design for a new triage process, based on the
+likely of the three). The results showed that the planned new       establishment of sub-specialities among the orthopaedic
+Outcomes Assessment service could reach full capacity in as         surgeons.
+little as 5 years.                                                     In general, each consultant orthopaedic surgeon will have
+   Project IV started in September 2001 and ﬁnished in April        a preference for a particular type of surgery, based on a
+2002. By now, the clients were focusing on the opportunities        speciﬁc part of the body. For instance, and as already noted,
+generated by the integration of the musculo-skeletal services
+                                                                    Rymaszewski specializes in elbow conditions. Other specia-
+across the two hospitals. All in-patient activities of the
+                                                                    lizations might relate to foot and ankle conditions, knee,
+Stobhill unit was moved to the GRI. The situation also
+                                                                    spine, etc. However, in the traditional approach this
+called for much closer cooperation between the two hospitals
+                                                                    specialization is relatively unimportant for the purpose of
+on the outpatient side. However, the changes in the musculo-
+                                                                    assigning outpatient referrals to the various consultants. At
+skeletal unit at Stobhill unit prompted a similar reorganisa-
+                                                                    the GRI, for instance, referrals had been divided equally
+tion of the orthopaedics department at the GRI. Project IV
+                                                                    among all the orthopaedic consultants (with the exception of
+was meant to model an integrated service across the two
+                                                                    patients with hand conditions who were all directed to one
+hospitals for all patients with foot and ankle conditions.
+                                                                    particular surgeon specializing in that area).
+Unfortunately, as it became apparent that the new
+                                                                       In the outline design for the new triage process, a number
+model had not been properly validated and contained a
+                                                                    of sub-specialities were established across the two hospitals.
+number of serious ﬂaws, this project was not completed
+                                                                    The consultant(s) working in a particular sub-speciality are
+satisfactorily.
+   To sum up, by the summer of 2002, four separate                  to get the main share—but not necessarily 100%—of the
+simulation projects had been attempted—the ﬁrst three were          referrals related to that particular condition. However, there
+considered a success by their respective clients, the fourth        are a number of common surgical procedures—such as total
+one rather less so. But it is important to note what the term       hip or knee replacement surgery—that generate very high
+‘success’ means in this context. As Lagergren24 has noted,          numbers of referrals. Responsibility for these patients is still
+actual policy planning and decision-making in the health            to be shared between the consultants, although not
+service depend on a lot of factors, many of which will never        necessarily on an equal basis—because the workload that
+be captured by a quantitative model. In the ‘power game’            each consultant derives from his/her sub-speciality will not,
+between the different stakeholders—in this context, princi-         in general, be equal either.
+pally medical staff and other healthcare professionals versus          The new triage process entails an extension of the existing
+managers in control of ﬁnancial resources—model results             single-stage process to a two-stage process. In the new
+may be used more as ‘instruments for persuasion’ rather             process, all outpatient referral letters are sorted on a daily
+than analysis.25 But, although model results cannot shift the       basis by senior nursing staff. Each letter is routed to the
+fundamental power balance in the healthcare system,                 appropriate sub-speciality, or to a physiotherapist for
+they can successfully change the nature of the debate               assessment, or to another department in the hospital for
+by demonstrating the likely consequences of different               investigation or treatment. All letters received in a particular
+options.24                                                          sub-speciality are subsequently triaged by a consultant in
+   In the present case—and ignoring the fourth project—the          charge of that sub-speciality and directed to a relevant
+form and content of each successive model had been                  outpatient clinic. That clinic may be in the consultant’s own
+sufﬁcient to allow the clients to conduct simulated experi-         sub-speciality or, if appropriate, in another sub-speciality. In
+ments with respect to the management of the musculo-                summary, the main aim of the two-stage process is for
+skeletal unit and to predict their likely impact on service level   consultants to spend less time viewing patients with
+(especially patient waiting times) and resource efﬁciency.          conditions that are outside their main area of expertise and
+However, it became clear that as the nature of the client’s         more time applying their specialist skill—that is, performing
+
+                                                                                   RB van der Meer et al—Using OR to develop musculo-skeletal service 167
+
+
+
+
+                                       Figure 2   Triage by sub-speciality (two-stage process).
+
+
+
+surgery relating to their own particular sub-speciality                 The growing complexity of the model had an important
+(Figure 2).                                                          impact on the technical skills required from the student
+                                                                     modeller. So far, all models had been constructed using only
+                                                                     standard Simul8 functions. But it now became necessary to
+Using OR to support the design of the new triage process             write substantial amounts of additional code in Visual Logic
+Project V was started in September 2002 and completed in             (a form of Visual Basic used in Simul8). This means that any
+                                                                     modellers working on future projects must have, or be
+April 2003. By the autumn of 2002, the clients had developed
+                                                                     willing to acquire, more advanced programming skills. Also,
+an outline design for the new triage process—corresponding
+                                                                     the same factor made it more and more difﬁcult for the
+to a signiﬁcant change in the basic design of the musculo-
+                                                                     clients to understand the underlying structure of the model.
+skeletal services across the two hospitals. This design was
+                                                                     In particular, when the routings were shown they tended to
+approved in principle by their colleagues (medical staff and
+                                                                     obscure most of the picture (Figure 4).
+other healthcare professionals). Project V was intended to
+                                                                        It became necessary to reorganise the graphical presenta-
+enable the clients to perform simulated experiments with
+                                                                     tion of the model in order to hide most of the routing
+respect to speciﬁc design parameters to ﬁnd answers to the
+                                                                     complexity in sub-windows (Figure 5).
+following questions (relating to resource efﬁciency and
+                                                                        The experiences gained from the successive projects
+service level, respectively):
+                                                                     suggested an important modelling issue: how to improve
+                                                                     the model’s maintainability and long-term accuracy. A
+ What are the likely effects of the new process on the
+                                                                     clearer distinction had to be made between the two main
+  workloads of individual consultants and the other health
+                                                                     aspects of the model:
+  professionals in the team? Will they be able to cope? What
+  rules should be put in place for determining the precise
+                                                                      Its underlying logical/physical structure;21 principally the
+  patient mix for each member of the musculo-skeletal
+                                                                       nature of the work entry points, work stations (activities),
+  team?
+                                                                       and storage bins (queues), the potential routings between
+ What are the likely effects on waiting times and on the
+                                                                       all of the former, and the statistical distributions used.
+  quality of care provided?
+                                                                      The input data required; that is the actual numbers of
+                                                                       patients entering the system, the capacities and timings of
+   Before an attempt could be made to deal with these issues,          clinics, the percentages following one route or another,
+the model had to undergo the usual routine ‘maintenance’ to            etc. These data are used to determine the precise values of
+take account of various changes—relating to the number                 the model parameters, such as the parameters of the
+and timings of clinics and the availability of a specialist            statistical distributions, the routing-out percentages, etc.
+physiotherapist at the GRI, for instance—that had occurred
+since the last revision. But as well as this, the issues raised by     The clients readily agreed that the underlying structure
+the clients again shifted the deﬁnition of what constituted a        had to remain under the control of expert modellers; that is,
+requisite model towards the inclusion of greater detail. In          people educated in the theory and practice of simulation
+particular, whereas in previous versions, urgent and non-            modelling and the use of the Simul8 package. However, if
+urgent (soon, routine) patients had all been lumped together,        the model were to be used on an ongoing basis by the clients
+the clients were now interested in the waiting times                 themselves, then it would no longer be practical for the
+associated with each individual category (Figure 3).                 modellers to collect and enter the necessary input data on an
+
+168 Journal of the Operational Research Society Vol. 56, No. 2
+
+
+
+
+                                                          Figure 3   Patient ﬂows within the integrated unit.
+
+
+                                                                                     occasional basis. Instead, the end-users would have to take
+                                                                                     responsibility for that aspect of model maintenance.
+                                                                                        Accordingly, an important aim was added in the course of
+                                                                                     project V, namely the deﬁnition and creation of a number of
+                                                                                     spreadsheet-based input data interfaces (Figure 6). These are
+                                                                                     to be employed by the end-users to input the necessary data
+                                                                                     on a regular and frequent basis. To facilitate this, the
+                                                                                     underlying structure of the model has been made as ﬂexible
+                                                                                     as possible. For instance, patient routings have been
+                                                                                     included that are not yet used in practice, but that could
+                                                                                     become relevant at some future stage. A member of the
+                                                                                     musculo-skeletal team has already started collecting data on
+                                                                                     a weekly basis for the two hospitals, giving a comprehensive
+                                                                                     view of the actual activity of the integrated unit and how this
+                                                                                     shapes the service provided to patients. These data are
+                                                                                     currently recorded in an Excel spreadsheet. One of the
+Figure 4       Complexity of some of the routing in the simulation                   objectives of the current projects (see below) is to feed these
+model.                                                                               weekly data directly into the simulation model.
+
+                                                                               RB van der Meer et al—Using OR to develop musculo-skeletal service 169
+
+
+
+
+                                 Figure 5    Simulation model with sub-windows and buttons.
+
+
+
+
+                                  Figure 6   Example of spreadsheet interface for data entry.
+
+
+
+
+   In the end, the aims of project V had to be limited to        consultant workloads, patient waiting times, etc. with an
+building a logically correct simulation model of the basic       acceptable degree of conﬁdence.
+structure of the new triage process and creating spreadsheets      In any case, the new two-stage triage process is still being
+for the required input data. There had not been time to          implemented, and there are many details to be worked out.
+collect enough input data to provide quantitative results on     Responsibility is being devolved to each individual con-
+
+170 Journal of the Operational Research Society Vol. 56, No. 2
+
+
+sultant for setting out the work patterns relating to his/her                           the models and the clients. But the structure of the process
+sub-speciality. This prompted a request by the clients to                               was more than just consultative. As the clients became more
+develop a more detailed simulation model for each sub-                                  and more closely involved in the modelling process—project
+speciality that can be used to support these efforts. In                                V was a milestone in this respect—its structure became
+response, two further simulation projects (VI and VII) were                             genuinely participatory. Of course, this depended on the
+started in the summer of 2003. The speciﬁc clients for these                            clients’ willingness to engage in the necessary learning
+two projects are the consultant in charge of the sub-speciality                         process. Being involved in the practice of simulation
+relating to foot and ankle conditions and one of the                                    modelling was a new experience for them. Hospital
+consultants in charge of the sub-speciality relating to knee                            consultants and other healthcare professionals are not
+conditions, respectively.                                                               trained as managers and are not generally aware of
+                                                                                        appropriate scientiﬁc methods that are available to profes-
+                                                                                        sional managers.11
+                                                                                           Thinking about management problems in health care
+Discussion
+                                                                                        demands a certain discipline, in terms of stating clearly what
+In the modelling methodology applied to the present                                     the strategic and operational objectives are, what the basic
+research, the idea—ﬁrst developed by Phillips18—of requisite                            structure of the overall healthcare system is, what explicit
+models evolving over time has been a crucial theme from the                             and implicit decision rules are followed—all in order to
+very start. The form and content of the successive versions of                          determine how efﬁciently and effectively the system currently
+the simulation model was very much determined by the                                    operates, and what effects any changes in the system are
+speciﬁc questions that the clients wanted to ask at each                                likely to have on performance.26 OR modelling in general,
+particular stage. Then, as the clients’ questions became more                           and simulation modelling in particular, provides the
+complex, so did the model. But as the research progressed,                              scientiﬁc discipline to tackle these issues, even for the
+the key aspects of the methodology became increasingly                                  majority of healthcare professionals who have not been
+similar to the three facets of a modelling approach that                                formally educated in the use of such methods.10,13
+Eldabi and Paul21 have termed ‘MAPIU’—that is, a                                           In this research, the purpose of the modelling process was
+Modelling Approach that is Participatory Iterative for                                  focused throughout on enhancing the clients’ understanding
+Understanding.                                                                          of the main performance drivers of the musculo-skeletal
+   The modelling process used in this research has been                                 unit. As the clients’ understanding improved as a result of
+characterized by close interaction between the ‘providers’ of                           the information (output data) generated by the simulated
+
+
+
+                  The clients suggest a set of                                                                          Some of the recommended
+                 initial questions based on the                            Based on the results from                          changes may be
+                 structure and performance of                             the simulated experiments,                       implemented, but not
+                   a given system. A study is                            the study makes a number of                    necessarily in their original
+                     done by constructing a                              recommendations for system                         form. Others prove
+                      requisite model of the                              changes that are acceptable                     impractical (because of
+                     system and conducting                                       in principle.                            funding constraints, for
+                     simulated experiments.                                                                                      instance).
+
+
+
+
+                                                                                           In the light of changed circumstances
+                                                                                               (not necessarily all due to the
+                                                                                            previous study) and their enhanced
+                                                                                              understanding of the system, the
+                                                                                                clients suggest a new set of
+                                                                                           questions. A new, follow-up study is
+                                                                                             done by developing the previous
+                                                                                                model and conducting new
+                                                                                           experiments, in order to take account
+                                                                                            of system changes and the evolving
+                                                                                                   concerns of the clients.
+
+
+                                             Figure 7        Cyclical model of success in healthcare simulation studies.
+
+                                                                                 RB van der Meer et al—Using OR to develop musculo-skeletal service 171
+
+
+experiments conducted on the basis of each successive               The ability to deal with unexpected shocks—again, by
+model, their requirements (in terms of the speciﬁc questions         enabling stakeholders to conduct simulated experiments.
+that they wanted to ask the next version of the model)              The importance of clinical ownership and involvement—
+became more complex. Therefore, the modelling process has            by making the structure of modelling process genuinely
+been iterative in its behaviour, rather than step-based or           participatory and, ultimately, transferring ownership of the
+episodic. (This is, of course, fully in line with the concept of     simulation model to the clients/end-users.
+requisite modelling.)
+   A very important component of the modelling process in             Although the research is still ongoing and, in particular,
+the MAPIU approach21 is communication. This consists not           the new two-stage triage process is still being implemented,
+just of communication between the clients and the simula-          some lessons can be drawn at this stage. Even though the
+tion model (with the clients stating their requirements and        successive simulation projects have already spanned a period
+the model generating output data from simulated experi-            of 5 years, our modelling methodology has been effective in
+ments), but also intercommunication between the clients and        holding the interest of the key stakeholders involved
+the other stakeholders connected with the musculo-skeletal         (namely, the clinical members of the musculo-skeletal team).
+unit. With the commencement of projects VI and VII, the            Moreover, as all projects were carried out by students, the
+model is becoming an important tool to facilitate inter-           cost of the modelling effort has been comparatively low. The
+communication between all the clinical members of the              combination of these factors appears to have contributed
+musculo-skeletal team (that is, medical staff and other            signiﬁcantly to its sustainability.
+healthcare professionals), not just the original two clients. In
+line with this development, transferring ownership of the
+model—that is, full authority over its use—from the                References
+providers to the clients/end-users themselves has become            1 Bowers J and Mould G (2002). Concentration and the
+one of the ultimate goals of the research.                            variability of orthopaedic demand. J Opl Res Soc 53: 203–210.
+   To sum up this discussion, in contrast to the linear             2 Bowers J and Mould G (2002). The deferrable elective patient: a
+sequence suggested by the ‘four-stage model of success in             means of reducing waiting lists in orthopaedics. J M Med 16:
+simulation studies’ proposed by Robinson and Pidd,20 as               150–158.
+                                                                    3 Government Statistical Service (1999). Health and Personal
+described in Figure 7 our research has progressed in an               Social Services Statistics.. Government Statistical Service:
+iterative—or cyclical—fashion.                                        London.
+                                                                    4 NHS Executive (2000). NHS Trust Outpatient Waiting Times
+                                                                      (Red Book), Index 1999/00. NHS Executive: London.
+                                                                    5 Department of Health (2000). The NHS Plan. HMSO: London.
+                                                                    6 Department of Health (2004). Hospital Waiting Times/List
+Conclusions
+                                                                      Statistics. Available on-line at www.performance.doh.gov.uk
+In this research, we have applied a modelling methodology           7 Department of Health (2004). Health and Personal Social
+that is meant to incorporate the key aspects of the ‘requisite        Services Statistics—England. Available on-line at www.perfor-
+                                                                      mance.doh.gov.uk
+modelling’18 and ‘MAPIU’21 approaches. Based on our                 8 Audit Scotland (2002). Review of the Management of Waiting
+review of the professional and academic literature, the               Lists in Scotland. Auditor General for Scotland: Edinburgh.
+nature of the challenges considered here appear to be very          9 Scottish Executive Health Department (2002). NHS urged to
+similar to those experienced in other orthopaedics depart-            focus on longest waiting times. Scottish Executive: News Online,
+ments in the NHS. In particular, our methodology ﬁts well             28/11/2002. Available on-line at www.scotland.gov.uk
+                                                                   10 Davies R and Davies HTO (1994). Modelling patient ﬂows and
+with the ﬁve main themes identiﬁed by the King’s Fund in its          resource provision in health systems. Omega Int J Mngt Sci 22:
+recent report on successful strategies to sustain reductions in       123–131.
+waiting times,17 as shown below:                                   11 Young T, Brailsford S, Connell C, Davies R, Harper P and
+                                                                      Klein JH (2004). Using industrial processes to improve patient
+ The need for understanding whole systems—by focusing                care. BMJ 328: 162–164.
+  the modelling process on enhancing the clients’ under-           12 Davies HTO and Davies R (1995). Simulating health systems:
+  standing of the main performance drivers of the musculo-            modelling problems and software solutions. Eur J Opl Res 87:
+  skeletal service.                                                   35–44.
+                                                                   13 Jun JB, Jacobsen SH and Swisher JR (1999). Application of
+ The importance for sustained action over time—by                    discrete event simulation in health care clinics: a survey. J Opl
+  carrying out successive projects in order to make the               Res Soc 50: 109–123.
+  modelling process iterative in its behaviour.                    14 Rauner MS and Vissers JMH (2003). Editorial—OR applied to
+ The need not just to ‘catch up’ but also to ‘keep up’—by            health services: planning for the future with scarce resources.
+  enabling stakeholders to conduct simulated experiments              Eur J Opl Res 150: 1–2.
+                                                                   15 Sanchez SM, Ferrin DM, Ogazon T, Sepulveda JA and Ward
+  with respect to the overall management of the musculo-
+                                                                      TJ (2000). Emerging issues in healthcare simulation. In:
+  skeletal unit and the speciﬁc design parameters of the new          Joines JA et al (eds). Proceedings of the 2000 Winter Simulation
+  triage process.                                                     Conference. IEEE, Piscataway, New Jersey, USA, pp 1999–2003.
+
+172 Journal of the Operational Research Society Vol. 56, No. 2
+
+16 Delesie L (1998). Bridging the gap between clinicians and health     22 Rymaszewski LA, McGill PE, Sharma S, Murdoch A, Freeman
+   managers. Eur J Opl Res 105: 248–256.                                   S and Loh T (2004). A Team Approach to Musculo-Skeletal
+17 Appleby J, Boyle S, Devlin N, Harley M, Harrison A and                  Disorders. Musculo-Skeletal Unit, Stobhill Hospital: Glasgow.
+   Locock L (2003). Sustaining Reductions in Waiting Times:             23 Simul8 Corporation (2004). Simul8 Standard R10 http://
+   Identifying Successful Strategies. King’s Fund: London.                 www.simul8.com
+18 Phillips LD (1984). A theory of requisite decision models. Acta      24 Lagergren M (1998). What is the role and contribution of
+   Psychol 56: 29–48.                                                      models to management and research in the health services? A
+19 Lehaney B, Clarke SA and Paul RJ (1999). A case of an                   view from Europe. Eur J Opl Res 105: 257–266.
+   intervention in an outpatients department. J Opl Res Soc 50:         25 Jones LM and Hirst AJ (1987). Visual simulation in
+   877–891.                                                                hospitals: a managerial or a political tool? Eur J Opl Res 29:
+20 Robinson S and Pidd M (1998). Provider and customer                     167–177.
+   expectations of successful simulation projects. J Opl Res Soc        26 Ginter PM, Swayne LE and Duncan WJ (2002). Strategic
+   49: 200–209.                                                            Management of Health Care Organizations, 4th edn. Blackwell
+21 Eldabi T and Paul RJ (2001). A proposed approach for                    Publishers: Oxford.
+   modelling healthcare systems for understanding. In: Peters BA
+   et al (eds). Proceedings of the 2001 Winter Simulation Conference.                                   Received September 2003;
+   IEEE, Piscataway, New Jersey, USA, pp 1412–1420.                                      accepted August 2004 after three revisions
+

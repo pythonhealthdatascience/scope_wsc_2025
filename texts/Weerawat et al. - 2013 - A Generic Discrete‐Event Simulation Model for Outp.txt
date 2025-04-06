@@ -1,0 +1,1145 @@
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013 Page 285–305                           285
+
+
+
+
+   A Generic Discrete-Event Simulation Model for
+    Outpatient Clinics in a Large Public Hospital
+     Waressara Weerawat1*, Juta Pichitlamken2 and Peerapong Subsombat1
+1Department of Industrial Engineering, Mahidol University, Nakornpathom, Thailand
+   2Department of Industrial Engineering, Kasetsart University, Bangkok, Thailand
+
+
+          Submitted November 2012. Accepted for publication February 2013.
+
+
+ABSTRACT
+The orthopedic outpatient department (OPD) ward in a large Thai public hospital is modeled
+using Discrete-Event Stochastic (DES) simulation. Key Performance Indicators (KPIs) are used
+to measure effects across various clinical operations during different shifts throughout the day. By
+considering various KPIs such as wait times to see doctors, percentage of patients who can see a
+doctor within a target time frame, and the time that the last patient completes their doctor
+consultation, bottlenecks are identified and resource-critical clinics can be prioritized. The
+simulation model quantifies the chronic, high patient congestion that is prevalent amongst Thai
+public hospitals with very high patient-to-doctor ratios. Our model can be applied across five
+different OPD wards by modifying the model parameters. Throughout this work, we show how
+DES models can be used as decision-support tools for hospital management.
+
+Keywords: hospital management, outpatient department, discrete-event stochastic simulation,
+healthcare simulation
+
+
+
+1. INTRODUCTION
+This work studies the orthopedic outpatient department (OPD) wards of a large public
+teaching hospital in Bangkok, Thailand. On average, the hospital serves 6,800
+outpatients per day on weekdays and 1,800 outpatients per day during the weekends.
+The hospital is in the process of moving five wards (orthopedics, dermatology,
+otolaryngology, surgery, and medicine) out of 11 from the current location, which is
+highly congested and in disrepair, to a new building.
+   In this paper, our ultimate goal is to estimate the system capability and service level
+while quantifying the marginal impact of the new initiatives within the OPDs at the new
+hospital site. Besides some parameter changes, such as the number of staff or the patient
+arrival rates, the steps of outpatient flows remain the same in both settings; therefore,
+we will use a discrete-event simulation (DES) model of the as-is ward to assess
+performance at the new location.
+
+*Corresponding Author: Waressara Weerawat, Logistics Innovation Center, Department of Industrial
+Engineering, Faculty of Engineering, Mahidol University, 999 Phuttamonthon 4 Rd., Salaya, Nakornpathom
+73170, Thailand. Phone: (+662) 889-2138. Fax: (+662) 441-9731.
+Email: waressara.wee@mahidol.ac.th. Other authors: juta.p@ku.ac.th, psubsombat@gmail.com.
+
+286            A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+                                                             Large Public Hospital
+
+
+   One of the attractive features of simulation modeling is its ability to model complex
+systems with random inputs (see [1, 2] for the discrete-event simulation methodology).
+For example, in hospitals, patient arrival rates, patient types, treatment types, and
+treatment times are probabilistic. With computer models, what-if analysis and
+comparison of alternatives can be done without interfering with the real systems while
+generally using much less time and money to run experiments. These goals are common
+in most healthcare simulation publications.
+   Nevertheless, the implementation of simulation for operations improvement in
+healthcare is less widespread than in other industries. The hospital service sector is
+considered to be a secluded industry [3]. In particular, within the Thai public hospital
+setting, doctors or clinical experts often serve as the executive leaders, conducting a
+wide array of nonclinical operational activities such as accounting, IT, operations, and
+others. The Key Performance Indicators (KPIs) for non-clinical hospital operations
+have not been widely imposed by national health service associations such as the Thai
+Health Association (HA). They focus primarily on measuring clinical issues rather than
+OPD operations efficiency. The KPIs such as the average lengths of hospital stay for
+each inpatient visit, rate of unplanned readmission of the inpatient, and postoperative
+infection rate are examples of the clinical focused KPIs. Some service indicator
+measures such as satisfaction rates may be considered, but will be based mostly on
+opinion surveys of clinical service quality. In general, public hospitals receive major
+subsidy support from the government. The service prices at public hospitals can be
+30-80% cheaper than those at private hospitals. Many patients such as government
+employees will be reimbursed for using the public hospital services. Other
+non-government employees entitled to social security or universal coverage receive
+service at designated hospitals which are mostly public ones. From the patients’
+perspective, using the public hospital service can be seen as a trade off between cheap
+care and convenience. In using private hospitals, most patients need to pay out of their
+own pockets or use private insurance. With greater income, private hospitals create
+higher demand for their respective target customers by attracting well-known doctors,
+getting contract services, and offering higher levels of customer service.
+   In this paper, we propose various KPIs to be used for non-clinical operations’
+improvement. In our example, some of the proposed alternatives have already been
+implemented by executives in large public hospitals without formal measuring tools for
+non-clinical purposes. We recommend the proper KPIs and show a concrete example of
+using simulation as a tool to compare and quantify the marginal benefits of the proposed
+alternatives. This helps in justifying the trade-offs for investment in the Thai public
+hospital sector which traditionally focuses primarily on patient safety.
+   Seila and Brailsford discuss opportunities and challenges in applying DES and
+system dynamics (SD) simulation to healthcare [3]. Their survey paper begins by
+describing similarities and differences across healthcare systems. DES and SD
+simulations are described and compared using healthcare applications. They classify
+healthcare models into three groups: Level 1 models consider the human body; Level 2
+models cover operational or tactical levels, such as patient’s movements within the
+system; and Level 3 is strategic, system-wide models that do not consider patients
+
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013                                287
+
+
+
+individually. DES is mostly chosen to construct Levels 1–2 models whereas SD is
+preferred for Level 3. Our model belongs to Level 2, covering operational and tactical
+levels with a focus on patients’ movements within the OPD.
+    Weng and Houshmand model an outpatient clinic using Arena software which is one
+of the DES commercial packages [4]. Their goal is to compare different resident
+staffing scenarios in terms of cost, patient throughput and the total time in system.
+Similarly, Raouf and Ben-Daya consider the number of doctors for an outpatient clinic
+in Saudi Arabia such that the patient waiting time is within a pre-specified target [5]. In
+addition to the staffing problem, many simulation studies [6-8] compare appointment
+scheduling configurations with respect to performance measures that consider both
+customer satisfaction (such as the average length of queue, and patient waiting time)
+and system efficiency, e.g., doctor’s utilization and overtime.
+    Simulation models are also developed for process improvement or for determining
+the process bottlenecks and system capacity. Ballard and Kuhl model the surgical suite
+operating room using the DES commercial software Arena to determine its daily
+maximum capacity, defined as the number of patients treated [9]. They show that the
+capacity estimated by simulation is higher than what the management has calculated
+through considering only the ratio of available times and the required treatment time,
+and thus higher efficiency of the operating rooms can be realized. Beasler et al. consider
+a similar problem, but for emergency rooms [10]. Werker et al. aim to study the process
+improvement of radiation therapy treatment [11], while Duguay and Chetouane [12]
+and Brenner et al. [13] consider emergency departments. Raghavan et al. adopt a lean
+approach for process improvement at cardiac catheterization labs [14].
+    Related to process improvement, simulation models are often used to determine
+the best operational settings, i.e., for optimization purposes. Oddoye et al. integrate
+their DES model with goal programming (one of the techniques for solving multi-
+objective optimization problems) to determine bottlenecks in clinical workflow and
+determine the optimal number of beds for different types of patients [15]. Villamizar
+et al. use MedModel software to model a physiotherapy clinic, and their model is
+further applied to select the optimal operational strategy (patient schedules and the
+number of staff) in terms of patient throughput rates and patient waiting times [16].
+Su et al. also build their simulation models using MedModel to redesign a hospital
+registration process [17].
+    In this paper, we develop a simulation model for an orthopedic ward which serves
+approximately 2,600 patients per week. Through on-site observations and interviews
+with the hospital staff, especially the head nurses, at all five wards that will be relocated,
+we find that the patient flows are mostly similar; they differ only in details such as
+number and types of patients, number of staff, or office hours of special clinics. These
+common features allow us to construct a conceptual flow of outpatients as shown in
+Figure 1.
+    The OPD process for a by-appointment patient begins with presenting the
+appointment card at a registration desk. If a patient is scheduled for a blood test or an
+X-ray test, it must be done before vital sign checks which include taking measurements
+of temperature, respiratory rate, pulse rate and blood pressure. Then a doctor queue card
+
+                                                                                                                                                                                                                                                                                                                              288
+
+
+
+
+                                                                                                                                                                                                                                                          Medical record
+                                                                                                                                                                                                    Receive blood test                                    Blood result
+                                                                  Present an                                                                                                   5% of by               (technician)
+
+
+
+
+Figure 1.
+                                                                                                                                                            Require                                                                                       X-ray result
+                                                               appointment card         By-appointment                         Yes                                         Yes appointment                C10                                             Receive a
+                                            Arrival                                                                                                    additional testing?                                                      Weigh and check
+                                                                   (nurse)               patient or not?                 (By-appointment)
+                                                                                                                                                              D01                                                                                         queue card
+                                                                     C01                      D09                                                                                                                                 vital signs
+                                                                                                                                                                                                                                                           (Nurse)
+                                       By appointment (80%)                                                                                                                                                                          C02
+                                                                                             No                                                                                                      Receive X-ray                                           C03
+                                       Walk-in (15%)                                                                                      Accepted Walk-in/        No                 2% of by
+                                       Transferred (5%)                             (Walk-in/ Transferred)                                                                                           (technician)
+                                                                                                                                            Transferred                               appointment
+                                        - Assign time slot                                                Available                                                                                      C11
+                                        - Assign clinic type                                           treatment quota
+                                                                                          1 hr. before                                       Yes                    93% of by appointment, walk-in and transferred
+                                                                                                              No          Pass criterion 1
+                                                                                           slot end ?                       ato accept?
+                                                                                              D06                              D07
+
+                                                                                              Yes                                    No
+                                                                           Available
+                                                                       treatment capacity
+
+                                                                                        Pass criterion 2     Yes
+                                                                                          to accept ?
+                                                                                              D08
+                                                                                                             No                                 Rejected Walk-in/
+                                                                                                                                                  Transferred
+
+                                                                                                                                                                                                                          Receive
+                                                                                                                                                                                             Return a
+                                             See a doctor                Require        No           Require             No                        Require          No                                                appointment card               Refer to         Yes
+                                                                                                                                                                                           medical record
+                                          (doctor/resident)          other diagnosis?               injection?                 70%                 surgery?               95%                                          and prescription           other Clinic?
+                                                                                                                                                                                             (clerk)
+                                                C04                        D02                         D03                                           D04                                                                  (nurse)                     D11
+                                                                                                                                                                                               C07
+
+
+
+
+Patient flow of the orthopedic ward.
+                                                                                                                                                                                                                            C08
+                                                                             Yes                            Yes Receive injection                      Yes Receive diagnosis                                                                             No
+                                                                                                         30%     (nurse/doctor)                      5%       (resident)
+                                                                                                                      C05                                        C06
+
+                                                                                   Receive blood                   Blood result
+                                                                                        test                       X-ray result                                                                                                                        15% consult at other OPD
+                                                                            5%
+                                                                                    (technician)                                      70%                                                                                Pay at GP cashier counter     (exclude transferred patient)
+                                                                                                                                                      Accepted                              Proceed to
+                                                                                        C10                                                                                  Yes                               Yes        and receive medicine
+                                                                                                               Need to see           No                patient?                            GP pharmacy?
+                                                                                                                                                                         (accepted)                           (90%)         at GP pharmacy
+                                                                                                               doctor again?                             D12                                   D05                               C09
+                                                                                                                   D10
+                                                                                   Receive X-ray
+                                                                            2%     (technician)                                                                                                     No                  Pay at central cashier
+                                                                                                                         Yes                             No                                                              counter and receive
+                                                                                       C11                                                                                                                  5%                                                    Departure
+                                                                                                                                                      (Rejected)                                                       medicine at central pharmacy
+                                                                                                                                                                                                                                   C09
+                                                                                                           30%
+                                                                                                     (higher priority)                                                                                                   Pay at ER cashier counter
+                                                                                                                                                                                                            5%            and receive medicine
+                                                                                                                                                                                                                            at ER pharmacy
+                                                                                                                                                                                                                                 C09
+                                                                                                                                                                                                                                                                                                                                     Large Public Hospital
+                                                                                                                                                                                                                                                                                       A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013                               289
+
+
+
+is issued. After consulting with a doctor, a patient waits for an appointment card for the
+next visit and any prescription. Then, payment is made and medication received at one
+of the in-house pharmacies.
+    Patients without appointments (walk-in and transferred) also arrive at the OPD
+registration desk; however, if all doctor’s time slots are filled, they will be scheduled for
+visits on later days. Some patients arrive without appointments because they know that
+OPDs sometimes accept walk-in patients. Two different criteria are used to determine
+the admission of the non-appointment patients depending upon their arrival time. The
+first criterion is the expected remaining treatment slots in each shift (Module D07 in
+Figure 1), which applies in general. However, if a patient arrives within an hour of the
+shift end time, the modified second criterion which accounts for the remaining patients
+in the clinic (work in process, WIP) at the patient arrival time will be applied (Module
+D08 in Figure 1).
+    Besides data collection and data cleaning, the major challenge in the model
+construction is to compute statistics for KPIs. Because the OPD is highly congested,
+doctors in the real OPD often work past their finish time (e.g., during lunch break) as
+specified on schedules. Our model captures this fact by allowing doctors to do
+“overtime.” The duration of this overtime reflects the congestion in a ward; hospital
+management can use this simulation output to prioritize where service improvements
+are needed. Another facet of human behavior included in our model are the rules that
+head nurses employ to accept walk-in patients into appointment schedules. This
+decision is routinely made by intuition, and we establish concretely how it is done
+(Modules D06-08 in Figure 1).
+    After our simulation model is validated, we perform what-if analysis to experiment
+with our proposed improvement alternatives and the future scenario of increased
+number of patients. In the analysis, we illustrate how different KPIs can complement
+one another, and how they quantitatively reflect the actual performances of clinics.
+    The contributions of our work are (a) accumulating statistics for KPIs, with some of
+which complicated by human behaviors that try to accommodate high system
+congestion; (b) discussion of challenges in simulation model construction and our
+solutions; and (c) demonstrating that different KPIs can complement one another and
+shed light on the performance of clinics.
+
+
+2. METHODOLOGY
+2.1. Input Modeling
+The schedule of the orthopedic ward is divided based on ten types of specialized clinics:
+general practice (A), children (B), tumor (C), off-hour (D), sport injuries (E),
+osteoporosis (F), hands (G), backs (H), hips and knees (I), and special consultation (J).
+Table 1 shows the office hours of each ward. Some clinics are only open for limited
+time during the week; e.g., the children’s clinic is only open on Monday afternoons.
+Many clinics may be available simultaneously; e.g., both the sports injuries (E) and
+osteoporosis (F) clinics are scheduled on Tuesday afternoons, and the percentages of
+patients for both clinics are parenthesized. The office hours of clinics affect the patient
+
+290               A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+                                                                Large Public Hospital
+
+
+                    Table 1. The orthopedic OPD operation schedule
+
+Shift                 Mon             Tue       Wed             Thu         Fri        Sat       Sun
+
+1 (Morning)            A                A         A             A           A          D          D
+2 (Afternoon)       B (64%),         F (7%),   G (73%),         J           I          D          -
+                    C (36%)          E (93%)   H (27%)
+3 (Evening)            D                D         D             D           D           -         -
+
+
+
+arrival rates. Patient arrival rates depend on operating shifts (morning, afternoon and
+evening), days of the week, and time of the day.
+   Table 2 exhibits the total number of patient arrivals by shifts and days of the week,
+and Table A1 (see APPENDIX) presents the weekly distribution of patient arrivals by
+patient types and shifts. These data allow us to model the patient arrival with the non-
+stationary Poisson Process [18]. Both in the actual system and in simulation,
+appointment and walk-in patients arrive from 7.00 to 18.00 hours (to only 14.00 on
+weekends), and transferred patients enter the ward from 10.00 to 18.00 (14.00 on
+weekends). The resources’ schedule information of doctors, residents, and nurses is
+displayed in Table A2. The three types of patients (by-appointment, walk-in, and
+transferred) are given another attribute: either “simple” or “complicated” which denotes
+additional x-ray or blood tests required.
+   Besides interviews and paper/electronic records, our numerical data were
+collected from a stop-watch time study conducted during June 2010. The service
+time measures the length of time when service begins until it ends, and it does not
+include the waiting time before service begins. In fact, waiting time is part of our
+simulation output. We model the service time at different stages of patient care with
+the triangular distribution because it allows us to specify the minimum, maximum
+and most likely values when raw data are limited (sample size of 10–15 for each
+input process). When the sample size is small, the goodness-of-fit tests (e.g., Chi-
+square or Kolmogorov-Smirnov) tend to accept any probability distributions,
+whereas when the sample size is large, most distributions are rejected [19]. Thus, we
+choose the same probability distribution for all input data based on physical
+conditions. Details of our service times and their associated resources of some
+service processes are shown in Table 3.
+
+
+                Table 2. Patient arrival numbers of the orthopedic OPD
+
+                                                                                               Sum
+Patient Arrival     Mon        Tue      Wed    Thu        Fri         Sat       Sun          (Weekly)
+
+1 (Morning)          223       244      244    190        280       260           97          1538
+2 (Afternoon)         96       132      156    108        149       105            0           747
+3 (Evening)           63        70       68     38         83        0             0           321
+Total                382       446      468    336        512       365           97          2606
+
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013                               291
+
+
+
+       Table 3. Resources for service processes and service time parameters
+                    (module numbers correspond to Figure 1)
+
+                                                     Service time parameters
+ID              Process               Resource          (Min, Mode, Max)         Time Unit
+
+C01   Present an appointment card    Nurse                 (4, 5, 7)              Second
+C02   Weigh and check vital signs    Weight center         (30, 45, 60)           Second
+C03   Receive a queue card           Nurse                 (3, 8, 15)             Second
+C04   See a doctor                   Doctor                (2, 12, 25)            Minute
+C05   Receive injection              Nurse/Doctor          (5, 10, 15)            Second
+C06   Receive diagnosis              Doctor                (5, 15, 20)            Minute
+C07   Return medical record          Clerk                 (3, 4, 5)              Second
+C08   Receive appointment card       Nurse                 (5, 23, 45)            Second
+C09   Pay and receive medicine       Pharmacist            (30, 59, 105)          Second
+C10   Receive blood test             Technician            (2, 2.5, 3)            Minute
+C11   Receive X-ray                  Technician            (2, 9, 20)             Minute
+
+
+2.2. Simulation Model Construction
+We develop our simulation model using Arena (Rockwell Automation) which is a
+widely-used example of DES software. Arena uses a process view where an Entity is
+created and pushed into the system. A model is constructed by connecting built-in
+modules to form a flowchart through which an Entity flows and triggers events [18]. We
+have three types of patients as the Entities: By Appointment, Walk In and Transferred.
+They are further divided in terms of Attributes, such as Patient Number, Arrival Time,
+Simple (yes/no), Blood Test (yes/no), X Ray Test (yes/no), among others. Figure 1 shows
+the flow of patients in our simulation model which consists of clinical activities (C)
+modules and decision (D) modules. C-modules correspond to processes physically occur
+in the wards such as registration, vital sign checks, preparation of medical records, labs
+and x-ray, physician consultation, next-appointment scheduling, cashier, and
+pharmacies, while D-modules are logics for decisions.
+    The simulation model is designed such that it can represent all five OPD wards by
+merely changing parameters such as processing time, proportion of patient types
+(appointment or non-appointment), percentage of patients requiring additional testing,
+numbers of clinical doctors, residents and nurses, and percentage of patients using three
+pharmacies. Table 4 shows examples of ward-specific probabilities of decision modules.
+Having a single model is appealing because an analyst needs to maintain only one model.
+    Due to the complexities of the hospital service which involves specialized treatments
+for individual patients, large variations of output performances are not surprising. Our
+simulation model returns the following KPIs:
+
+•     Total time that a patient is in the hospital: time duration since a patient enters the
+      registration process until receiving a prescription and exiting the OPD.
+•     Patient waiting time: duration of time in queue, waiting to be called and excluding
+      service time.
+
+292              A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+                                                               Large Public Hospital
+
+
+      Table 4. Details of decision modules for different OPDs (module numbers
+                                 correspond to Figure 1)
+
+Module Name of decision                         Outpatient Department (OPD)
+
+#              module            Orthopedics    Skin      Otolaryngology Surgery   Medical
+
+D01      Require additional       (5%, 2%)     (2%, 1%)     (8%, 4%)    (7%, 15%) (60%, 10%)
+         testing? (Blood Test,
+         X-ray)
+D02      Require other            (5%, 2%)     (1%, 1%)     (2%, 1%)    (2%, 5%) (15%, 2%)
+         diagnosis? (Blood
+         Test, X-ray)
+D03      Require                  Yes (30%) Yes (40%)       Yes (2%)       No      Yes (5%)
+         injection?
+D04      Require surgery?          Yes (5%)    No              No       Yes (10%)    No
+D05      Proceed to               (90%, 5%, (0%, 100%,      (0%, 0%,   (0%, 100%, (0%, 100%,
+         General Practitioner        5%)       0%)           100%)         0%)       0%)
+         (GP) pharmacy?
+         (GP, Central, ER)
+
+
+•      Time when the last patient finishes the doctor consultation by shift. This is
+       important for determining the time duration that doctors spend beyond their
+       scheduled office hours. It indicates if the current office hours can accommodate
+       patient demand.
+•      Time-averaged number of patients in each clinic and in the overall OPD.
+•      Average utilization of chairs in the waiting area of the wards and at the
+       pharmacies: percentage of time that they are occupied.
+•      Resource utilization of supporting staff and doctors: ratio of busy time to total time.
+•      Patient service levels with respect to time:
+                Percentage of by-appointment patients who see doctors within 30
+                 minutes after their arrivals.
+                Percentage of walk-in and transferred patients who see doctors within 1
+                 hour after their arrivals.
+                Percentage of by-appointment patients who spend the total time in the
+                 system for less than 2 hours after their arrivals.
+                Percentage of walk-in and transferred patients who spend the total time
+                 in the system for less than 3 hours after their arrivals.
+
+   Since the level of hospital services vary widely, the percentage of measures delivered
+within the target range as well as the minimum and maximum values should be
+considered in addition to the average values.
+
+2.3. Challenges in Data Collection and Model Construction
+The process of developing a simulation model is insightful in itself because we have
+to understand the actual process flow and collect quantitative data from the real
+system. Similar to many public tertiary hospitals in Thailand, our orthopedic ward
+
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013                               293
+
+
+
+serves a large number of patients; therefore, its doctors and nurses are so busy and
+the facility so crowded that allow us little time for data collection or interviews.
+Unlike at private hospitals, patients arrive at this hospital much earlier than the
+beginning of the office hours to get a queue card; some of them arrive 2 hours before
+the beginning of doctors’ hours at 9 AM. The number of patient arrivals depends on
+the clinic office hours but not so much on the area of expertise of the doctor. In
+contrast, in private hospitals, the number of patients is dependent on the doctor’s
+reputation.
+    Prior to fitting probability distributions for input modeling, we check for input
+inconsistency and perform data cleanup; for example, if the time log indicates that a
+patient arrives when the ward is actually closed, this data point will be discarded. The
+time logs of when patients first register are ideal for estimating the patient arrival rates.
+Instead, we only have the hospital’s electronic time logs showing the times that patients
+are ready to see doctors. However, prior to meeting doctors, some patients may need
+medical scans or tests. We have to adjust the available time log data by considering the
+ratio of patients who need prior tests (and their respective time durations) and those who
+do not. In addition, the electronic time log does not specify if a patient is by
+appointment or a walk-in. After we manually determine the patients’ arrival times and
+types, we check data validity with the domain experts.
+    The OPD wards are managed independently. We consider their interaction through
+the ratio of patients using shared facilities for blood and x-ray testing, and pharmacies.
+The main interactions are between special clinics within wards and not across the
+wards. Dependence between OPD wards is treated exogenously. For example,
+transferred patients include patients from other wards.
+    Another challenge in model construction is to implement our own statistical
+collections in Arena to report KPIs that are averages over multiple criteria: time
+duration (hourly, daily, or weekly), clinic type, patient type (walk-in, by appointment,
+or transferred), patient arrival, and doctor’s round (Shift 1, Shift 2, or Shift 3). Many
+simulation outputs are time averages, e.g., resource utilization, number of patients in the
+waiting area, or number of patients in the OPD. Suppose we consider doctor utilization.
+Since doctors see a large number of patients daily, their actual finish times regularly
+exceed their scheduled office hours (this “overtime” is assumed to be > 1 hour for
+utilization calculation). We specify the simulation run time to be 24 hours; therefore,
+resource schedules must be 24 hours long as well. Assume Arena returns doctor
+utilization rate of ρArena defined as the integration (area underneath the plot) of the
+number of busy doctors (seeing patients)B(t) divided by the number of scheduled
+doctors B(t) with respect to time t:
+
+                                                  24
+                                                1 B( t )
+                                               24 ∫0 S (t )
+                                    ρArena =                dt.                          (1)
+
+
+   Let the actual operating time duration of clinic be T. Because the area under the
+        24
+curve   ∫ ( B(t ) / S (t )) dt remains the same, actual utilization is adjusted to
+        0
+
+294             A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+                                                              Large Public Hospital
+
+
+ Table 5. Two-sample t-test with unequal variance between the actual total time
+                          and the simulated total time
+
+                                            Empirical results               Simulation
+
+Mean (min)                                         124.8                        117.6
+Variance                                           6803.9                      7157.7
+Standard Deviation                                 82.49                       84.60
+Number of observations (patients)                    200                         200
+Hypothesized mean difference                          0
+Degree of freedom                                    398
+t Stat                                             0.859
+Prob (T ≤ t) two-tail                               0.391
+t Critical two-tail                                1.966
+
+
+
+                                                   24
+                                      ρ = ρArena      .                                  (2)
+                                                   T
+
+Other time-average outputs from Arena are adjusted in a similar manner.
+
+2.4. Model Validation
+We validate our simulation model via a two-sample t-test with unequal variance [19]
+between the actual total time in the OPD and the simulated total time. Let the population
+mean of the actual total time and the simulated value be µ1 and µ2, respectively. The two-
+sample t-test considers the null hypothesis (H0): µ1 is equal µ2. Table 5 displays the daily
+averages of simulated patients’ total time in the hospital based on the randomly selected
+values of 200 patients from a week-long (Monday through Saturday) simulation run.
+Similarly, the empirical data displayed in Table 5 is randomly selected from 200 different
+patients in one week. The two-sample t-test is employed to test the hypothesis, and the
+p-value of the two-sided test is 0.391; therefore, there is no evidence to disregard the
+validity of our simulation model compared with the actual system. Since there are
+limited data in the hospital settings, the validation process requires additional
+confirmation from the respective domain experts beyond the statistical testing, and the
+experts consider the KPIs estimated from our simulations reasonable.
+
+3. RESULTS AND DISCUSSION
+We first present the analysis of the as-is orthopedic ward in Section 3.1. Then we
+illustrate how the simulation model allows us to assess the impacts of process changes
+on service performance (Section 3.2). Our simulation model is naturally terminating
+because each day begins when no patients are in the system, and all resources are idle.
+The simulation run setup is: simulation run length is one week, and the number of
+replications is 30, resulting in a run time of approximately 12 minutes on a standard
+Intel Core i3 notebook PC with 4 GB installed memory (RAM).
+
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013                                        295
+
+
+
+3.1. The Present OPD
+The simulation outputs quantify and confirm patients’ comments that they spend most
+of their times in the ward waiting for doctors; the average total time in the ward is
+124.9 ± 1.2 minutes, most of which is the waiting time in queue (103.7 ± 1.2 minutes)
+or 83% of the total time. This implies that the current value-added service to the patient
+is less than 20% which is relatively low.
+    Figure 2 shows the total time distribution. The first part (Modules C01 to C03, C10
+and C11 in Figure 1) includes the steps from checking in until receiving the doctor
+queue card; the second part (Modules C04 to C08) covers the steps from being ready to
+see the doctor to the step of getting the next appointment; the third part (Module C09)
+considers the steps after receiving the future appointment to the step of receiving the
+medications outside the orthopedics ward. For all types of patients, waiting to see a
+doctor accounts for the major part of time expended.
+    The average number of patients in Figure 3 takes into account only those in the OPD
+waiting area. The long waits result in congestion in the waiting area and thus require
+more seats; the recommended number of seats is approximately twice the number of
+those currently available. As expected, these long delays are caused by a large number
+of patients compared to the number of available doctors (over some periods of times but
+not all the time). From Figure 3, we can see that the most congested days of the week
+are Tuesdays and Fridays because hips and knees and sports injuries clinics are
+
+
+
+                     4.0
+
+                     3.5
+
+                     3.0
+   Number of hours
+
+
+
+
+                     2.5
+
+                     2.0
+
+                     1.5
+
+                     1.0
+
+                     0.5
+
+                     0.0
+                              All          By-appoinment          Walk-in          Transferred
+                                       Make payment and get prescription
+                                       Take queue card to make next appointment
+                                       Receive queue card
+
+
+Figure 2.                  Distribution of time spent in the hospital by patient types.
+
+296                                 A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+                                                                                  Large Public Hospital
+
+
+
+                        100
+
+
+                         80
+   Number of patients
+
+
+
+
+                         60
+
+
+                         40
+
+
+                         20
+
+
+                          0
+                              Sun           Mon       Tue         Wed          Thu    Fri     Sat
+
+                                                      Day shift         Night shift
+
+
+Figure 3.                       Average numbers of waiting patients in the OPD area.
+
+
+scheduled on those days. Saturdays also see a large number of waiting patients because
+it is the off-hour clinic where the number of available doctors is small.
+    In terms of patient service levels, we can determine the percentage of patients
+who can either see the doctor or spend time in the hospital within a pre-determined
+target time frame as suggested in section 2.2. Simulation outputs show that 60% of
+the by-appointment patients wait for longer than 30 minutes, whereas 80% of the
+walk-in patients and 10% of the transferred patients wait for more than one hour.
+Similarly, when we consider the total time spent in the hospital, 38% of the by-
+appointment patients wait for longer than 2 hours, while 71% of the walk-in patients
+and 3% of the transferred patients are there for longer than 3 hours. (The graphical
+display of these results can be viewed in Figure 7 by subtracting the blue bar values
+from 100%).
+    Figure 4 shows data of doctor utilization rate (eqn. 1, 2) which reflect high patient-
+to-doctor ratios in most clinics except the osteoporosis clinic (F). By adding one
+additional doctors’ working hour beyond the normal operating hours for some clinics
+(see Tables A1-A2 in the APPENDIX), doctor utilization rate is still extremely high.
+Figure 4 also presents the utilization rates for different shifts of the off-hour clinic (D).
+The relatively low utilization rate of the off-hour clinic (D) on weekdays is due to the
+fact that this clinic generally does not have very high patient-to-doctor ratios. No patient
+is admitted during the last hour of operation. In actual hospital practice, doctors usually
+do not leave until all scheduled patients have been seen, even if working overtime. The
+doctors’ overtime data in Figure 4 show that clinics with higher utilization rate tend to
+have longer doctors’ overtime. Such data can support the decision concerning which
+
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013                                            297
+
+
+
+
+      Doctor utilization rate
+
+
+
+
+                                                                                  Overtime (hours)
+Figure 4.                       Doctor utilization rate and overtime by clinic.
+
+
+clinic deserves adding more doctors and/or operating hours. Apparently, Clinic I should
+have the first priority because it has the highest utilization rate (100%) and the longest
+doctor’s overtime hours.
+   The present simulation results indicate low nurse utilization rate (data not shown)
+which reflects the relatively short time they serve patients in OPD. However, in reality,
+nurses are occupied all the time; perhaps they spend much time on activities or tasks not
+directly related to serving patients.
+   The present results indicate that the orthopedic ward does not fare very well in terms
+of long patients’ waiting time. The situation will worsen if more patients need to be
+taken care of by the new hospital facility as the hospital has predicted. Possible
+improvements are proposed in the following sections.
+
+3.2. Proposed Measures to Improve the Present OPD
+Simulation models can be employed to predict impacts or effectiveness of process
+improvement plans without interfering with the real systems.
+
+3.2.1. Application of Information Technology
+Currently, medical records in OPD are paper based. They are made ready one day in
+advance of patients’ appointments; however, about 20-30% of the records are misfiled
+and need approximately 30 minutes per patient to be located when the patient checks
+in. If the electronic records are available, the retrieval times may be reduced to merely
+30-90 seconds. Electronic records can also reduce paper handling time and possibility
+of lost records. With the proposed electronic system, a patient can directly go to the
+pharmacy after seeing the doctor. Figure 5 compares the number of patients waiting in
+the OPD waiting area with and without the proposed electronic medical record system,
+and the data show statistically significant decreases in the number of patients waiting
+on every day of the week.
+
+298                                    A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+                                                                                     Large Public Hospital
+
+
+
+                                100
+
+
+                                 80
+   Number of patients waiting
+
+
+
+
+                                60
+
+
+                                40
+
+
+                                20
+
+
+                                 0
+                                      Sun      Mon        Tue       Wed          Thu    Fri       Sat
+
+                                                       Without IT      With IT
+
+
+Figure 5.                             Comparison of the overall average number of patients in the OPD waiting
+                                      area with and without the proposed electronic medical record (IT)
+                                      system. Each error bar indicates the 95% confidence interval.
+
+
+3.2.2. Resource Schedule Changes
+Because of the very high patient-to-doctor ratio (see the last column of Table A3),
+waiting time will decrease drastically if the number of doctors increases, especially in
+the highly congested clinics such as hips and knees (I) and sports injuries (E). Based
+on the doctor utilization rate data in Figure 4, we can categorize our clinics into three
+groups. The most congested group includes tumor (C), sport injuries (E), hands (G),
+and hips & knees (I) clinics where the doctor utilization rate is more than 97%. The
+second group includes general practice (A), children (B), off-hour (D) on Saturday,
+and special consultation (J) clinics, where the doctor utilization rate is between
+88–92%. The third group includes off-hour (D) on weekdays and Sunday, osteoporosis
+(F) and backs (H) clinics. These clinics can accept more patients since their utilization
+rate is less than 75%.
+   In general, if the overtime exceeds one hour, simulation experiment is conducted
+with increasing the number of doctors or rearranging the doctor’s schedules. Currently,
+the morning schedule is from 9–12 AM (see Table A3 in appendix). We propose the
+straddled schedule which uses the same doctor-hours by having 4 doctors in the
+morning during 7–10, 4 doctors 8–11 and another 3 9–12 noon (see Table A4 in
+APPENDIX). The rationale is that patients begin to arrive at 7 AM (partly due to the
+heavy city traffic constraints), and if doctors arrive earlier, resource usage can be more
+evenly spread throughout the morning and spanning over longer time. Under this
+proposal, the average total time a patient spends in the system reduces from 124.9 ± 1.2
+minutes (11 doctors, 9–12 AM) to 48.6 ± 9.6 minutes (11 doctors, straddled). Figure 6
+compares the average total time that a patient spends in the clinic before seeing a doctor
+
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013                                                       299
+
+
+
+                                       4.00
+
+                                       3.50
+    Time before seeing doctor (hour)   3.00
+
+                                       2.50
+
+                                       2.00
+
+                                       1.50
+
+                                       1.00
+
+                                       0.50
+
+                                       0.00
+                                               A     B       C       D      E            F   G    H     I   J
+                                                                                Clinic
+                                                         Without proposed change of doctors' schedule
+                                                         With proposed change of doctors' schedule
+
+Figure 6.                                     Comparison of average patient’s time before seeing a doctor with and
+                                              without proposed change of doctors’ schedule.
+
+
+with and without the proposed change of doctors’ schedule. The data show that with the
+proposed change of doctors’ schedule, such time is significantly reduced and more
+evenly distributed across all clinics.
+
+3.3. Prediction of Impacts of Patient Increase
+We hypothesize that when the orthopedic OPD wards move to a new and larger facility,
+the number of patients will increase. Under the current settings, we study how a 50%
+increase in patient arrival rates will impact the service performance (see Figure 7 and
+Table 6). In Figure 7, it is shown that 50% increase of patients has a higher impact on
+the total time service level with the by-appointment and transferred patients, and a lower
+impact with the walk-in patients. The walk-in patients are already required to wait for
+any available open slots, resulting in a very low service level. In Table 6, the overtime
+refers to the time that doctors have to beyond their scheduled working hours (see Table
+A2 for the current resource schedule). The clinics that operate in the evening, or the third
+shift, perform the best and can mostly complete services within one hour of overtime.
+The clinics that operate on Tuesday and Friday afternoons (Shift 2) are the most
+problematic. The morning shift of the Saturday clinic can experience some difficulties
+due to the limited numbers of doctors on duty, especially in case of higher demand.
+
+3.4. Further Discussion of the Results
+We have demonstrated how the DES model can be used as a decision-support tool for
+OPD management, especially for what-if analysis and resource capacity planning. This
+case study quantifies the problems of high congestion commonly encountered in large
+public hospitals in Thailand and other developing countries (e.g., in terms of waiting
+
+300                                        A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+                                                                                         Large Public Hospital
+
+
+
+  % Service level of total time   100%
+
+
+                                  80%
+                                                                                                           Without 50%
+                                                                                                           increase of
+                                  60%                                                                      patients
+
+
+                                  40%                                                                      With 50%
+                                                                                                           increase of
+                                                                                                           patients
+                                  20%
+
+
+                                   0%
+                                          By-appointment             Walk-in         Transferred
+
+
+Figure 7.                                 Comparison of service level of total time in system by patient types, as
+                                          well as with and without 50% increase in number of patients.
+
+
+ Table 6. Comparison of doctors’ overtime with and without 50% increase in the
+                     number of patients. All data in hours
+
+                                            Morning shift                Afternoon shift              Evening shift
+Day                                      Withouta    Withb             Without      With           Without      With
+
+Sunday                                   0.68 ± 0.06   1.65 ± 0.24               n/a                       n/a
+Monday                                   1.39 ± 0.05   2.50 ± 0.21    1.98 ± 0.07 3.56 ± 0.22   0.47 ± 0.06 0.67 ± 0.20
+Tuesday                                  1.46 ± 0.06   2.44 ± 0.23    4.63 ± 0.07 7.15 ± 0.18   0.46 ± 0.07 1.05 ± 0.24
+Wednesday                                1.58 ± 0.05   2.32 ± 0.11    2.53 ± 0.05 4.41 ± 0.20   0.48 ± 0.05 0.79 ± 0.12
+Thursday                                 1.30 ± 0.05   1.80 ± 0.10    1.73 ± 0.06 2.28 ± 0.14   0.21 ± 0.06 0.50 ± 0.18
+Friday                                   1.47 ± 0.04   3.07 ± 0.21    5.66 ± 0.07 7.38 ± 0.11   0.56 ± 0.06 1.10 ± 0.22
+Saturday                                 2.42 ± 0.10   6.49 ± 0.28    2.54 ± 0.05 4.28 ± 0.14              n/a
+aWithout 50% increase of patients. bWith 50% increase of patients.
+
+
+
+
+times, number of patients in the waiting areas, percentage of patients receiving services
+within a target time, doctor’s utilization and doctor’s overtime). Beyond adopting the
+lean process improvement, quantitative analysis using DES helps management
+correctly identify bottleneck processes and resource-critical clinics. The quality of
+service can be reflected through average patients’ waiting time, time in system, and
+percentage of patients who can see their doctors within the target time. Quantitative
+information of congestion in the clinic can be obtained through doctors’ utilization,
+patient-to-doctor ratio, and doctors’ overtime.
+
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013                            301
+
+
+
+    The most challenging aspect of implementing the proposed measures to improve
+the present system may be in convincing people to adopt new practices. This may
+sound simple, but requires careful prior design and preparation of the management
+process, since the hospital is people-centric and involves many stakeholders. The
+study hospital will begin implementing an IT medical records system as well as the
+doctor schedule straddling in some wards, especially within premium OPD services.
+It is common to see large, public hospitals pay more attention towards everyday OPD
+visits since it is more profitable compared with inpatient hospital services. Some
+well-known public hospitals have offered premium services at higher prices for more
+efficient services, such as shorter waiting time and quicker appointment turnaround
+for similar clinical procedures.
+    With regard to poor service, the hospital should be able to devote more efforts to
+improving service levels. When patients spend a long time in a hospital, it is not only
+time wasted for the patients, but also represent high indirect costs for the hospital due
+to inefficient service. These inefficiencies require hospitals to provide more seats and
+space for waiting patients and an increased risk of infection to the patients. Across
+different sectors of industry including healthcare, the concept of reduction or even
+elimination of no-added-value activities and process variation has been seriously
+considered as a means to improve efficiency.
+
+4. CONCLUSION
+This case study illustrates common problems encountered in large public hospitals
+in Thailand and perhaps in other developing countries. It confirms the fact of high
+patient demand in a large public hospital due to low costs of hospital services and
+highly qualified physicians despite low service levels. DES simulation model as a
+tool enables testing of different ideas and various scenarios before implementation.
+Our model is constructed with specific reference to an OPD in a large public hospital
+with high patient-to-doctor ratio. Future research may test the present framework on
+other OPD wards in large public hospitals in Thailand as well as other developing
+countries.
+
+ACKNOWLEDGEMENTS
+We would like to thank our reviewers and the editor for their careful reading, and
+constructive feedback. We would also like to thank the hospital staff members for their
+invaluable support to this research. This research is sponsored by the National Research
+University Grant to Mahidol University, given by the Commission of Higher Education,
+the Royal Thai Government.
+
+CONFLICT OF INTEREST
+The authors indicated no potential conflicts of interest.
+
+REFERENCES
+[1]   Law AM, Simulation Modeling & Analysis, 4th ed., McGraw-Hill, Inc., New York, 2007.
+[2]   Henderson SG, Nelson BL, Handbooks in Operations Research and Management Science:
+      Simulation, Elsevier, Amsterdam, 2006.
+
+302               A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+                                                                Large Public Hospital
+
+
+[3]    Seila AF, Brailsford S, Opportunities and challenges in health care simulation. Advancing the
+       Frontiers of Simulation: A Festschrift in Honor of George Samuel Fishman, International Series in
+       Operations Research & Management Science, Springer Science+Business Media, LLC,
+       2009:195–229.
+[4]    Weng ML, Houshmand AA, Healthcare simulation: a case study at a local clinic, in: Farrington PA,
+       Nembhard H B, Sturrock DT, Evans GW (ed). Proceeding of the 1999 Winter Simulation Conference.
+       1999, 1577–1584.
+[5]    Raouf A, Ben-Daya M, Outpatient clinic’s staffing: a case Study. International Journal of Health Care
+       Quality, 1997, 10:229–232.
+[6]    Zhu ZC, Heng BH, Teow KL, Simulation study of the optimal appointment number for outpatient
+       clinics. International Journal of Simulation Modelling, 2009, 8(3):156–165.
+[7]    Wijewickrama A, Takakuwa S, Simulation analysis of appointment scheduling in an outpatient
+       department of internal medicine, in: Kuhl ME, Steiger NM, Armstrong FB, Joines JA (ed). Proceeding
+       of the 2005 Winter Simulation Conference, 2005, 2264–2273.
+[8]    Su S, Shih C-L, Managing a mixed-registration-type appointment system in outpatient clinic.
+       International Journal of Medical Informatics. 2003, 70:31–40.
+[9]    Ballard SM, Kuhl ME, The use of simulation to determine maximum capacity in the surgical suit
+       operating room, in: Perrone LF, Wieland FP, Liu J, Lawson BG, Nicol DM, Fujimoto RM (ed).
+       Proceeding of the 2006 Winter Simulation Conference, 2006, 433–438.
+[10]   Beasler FF, Jahnsen HE, DaCosta M, The use of simulation and design of experiments for estimating
+       maximum capacity in an emergency room, in: Chick S, Sanchez PJ, Ferrin D, Morrice DJ (ed).
+       Proceeding of the 2003 Winter Simulation Conference, 2003, 1903–1906.
+[11]   Werker G, Sauré A, French J, and Shechter S, The use of discrete-event simulation modelling to
+       improve radiation therapy planning process. Radiotherapy and Oncology, 2009, 92:76–82.
+[12]   Duguay C, Chetouane F, Modeling and improving emergency department systems using discrete event
+       simulation. Simulation, 2007, 83(4):311–320.
+[13]   Brenner S, Zeng Z, Liu Y, Wang J, Li J, Howard PK, Modeling and analysis of the emergency
+       department at university of Kentucky Chandler Hospital using simulations. Journal of Emergency
+       Nursing, 2010, 36(4):303–310.
+[14]   Raghavan VA, Venkatadri V, Kesavakumaran V, Wang S, Khasawneh M, Srihari K, Reengineering the
+       cardiac catheterization lab processes: a lean approach. Journal of Healthcare Engineering, 2010,
+       1:45–65.
+[15]   Oddoye JP, Jones DF, Tamiz M, Schmidt P, Combining simulation and goal programming for
+       healthcare planning in a medical assessment unit. European Journal of Operational Research, 2009,
+       193:250–261.
+[16]   Villamizar JR, Coelli FC, Pereira WCA, Almeida RMVR, Discrete-event computer simulation
+       methods in the optimisation of a physiotherapy clinic. Physiotherapy, 2010, 97(1):71–77.
+[17]   Su Q, Yao X, Su P, Shi J, Zhu Y, Xue L, Hospital registration process reengineering using simulation
+       method. Journal of Healthcare Engineering, 2010, 1:67–82.
+[18]   Kelton WD, Sadowski RP, Swets NB. Simulation with Arena, 5th ed., McGraw-Hill, Inc, New York,
+       2010.
+[19]   Banks J, Carson JS, Nelson BL, Nicol DM. Discrete-Event System Simulation, 5th ed., Prentice-Hall,
+       2009.
+
+APPENDIX
+
+                                     Table A1. Patient arrival weekly distribution
+
+                                               Percentages of Appointed, Walk-in, and Transfer Patients (%)
+
+Shift            Hour          Mon            Tue           Wed           Thu            Fri            Sat         Sun
+
+1               7.01 - 8.00   53, 47, 0     64, 36, 0     60, 40, 0     58, 42, 0      62, 38, 0      72, 28, 0   68, 32,0
+(Morning)       8.01 - 9.00   81, 19, 0     82, 18, 0     87, 13, 0     81, 19, 0      85, 15, 0      83, 17, 0   81, 19, 0
+               9.01 - 10.00    94, 6, 0      92, 8, 0      92, 8, 0      93, 7, 0       92, 8, 0      90, 10, 0   85, 15, 0
+              10.01 - 11.00    95, 0, 5      95, 0, 5      94, 0, 6      95, 0, 5       95, 0, 5       95, 0, 5   100, 0, 0
+2             11.01 - 12.00    94, 0, 6      96, 0, 4      94, 0, 6      95, 0, 5       95, 0, 5       94, 0, 6    0, 0, 0
+(Afternoon)   12.01 - 13.00   100, 0, 0     100, 0, 0     80, 20, 0     100, 0, 0      83, 17, 0      80, 16, 4    0, 0, 0
+              13.01 - 14.00   80, 16, 4     82, 15, 3     80, 15, 5     84, 13, 3      80, 16, 4      73, 20, 7    0, 0, 0
+              14.01 - 15.00    95, 0, 5      96, 0, 4      94, 0, 6      94, 0, 6       95, 0, 5        0, 0, 0    0, 0, 0
+3             15.01 - 16.00   100, 0, 0     100, 0, 0     100, 0, 0     100, 0, 0      100, 0, 0        0, 0, 0    0, 0, 0
+(Evening)     16.01 - 17.00   81, 16, 3     81, 16, 3     80, 15, 5     82, 13, 5      82, 14, 4        0, 0, 0    0, 0, 0
+              17.01 - 18.00   82, 13, 5     81, 15, 4     80, 16, 4     82, 18, 0      85, 11, 4        0, 0, 0    0, 0, 0
+                                                                                                                              Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013
+                                                                                                                               303
+
+304                 A Generic Discrete-Event Simulation Model for Outpatient Clinics in a
+                                                                  Large Public Hospital
+
+
+                Table A2. Resource schedules for utilization calculation
+
+                                     Weekday                             Weekend
+
+Resource type            Shift 1      Shift 2       Shift 3       Shift 1        Shift 2
+
+Doctor/Pharmacy 09.00 – 12.00 13.00 – 15.00 16.00 – 19.00 09.00 – 12.00 13.00 – 15.00
+Resident        09.00 – 12.00     N/A           N/A           N/A           N/A
+Nurse/Clerk/
+Technician      07.00 – 12.00 13.00 – 15.00 16.00 – 19.00 07.00 – 12.00 13.00 – 15.00
+
+
+
+
+      Table A3. Numbers of available doctors at the current orthopedic OPD
+
+                          Number of available doctors                    Average number
+                      (1-Morning, 2-Afternoon, 3-Evening)              of patients served by
+Clinic    Mon         Tue    Wed       Thu      Fri    Sat     Sun      a doctor per hour
+
+A        11, 0, 0    12, 0, 0 14, 0, 0 13, 0, 0 17, 0, 0       N/A            5 – 15
+B        0, 3, 0                              N/A                                8
+C        0, 1, 0                              N/A                                9
+D        0, 0, 6     0, 0, 5 0, 0, 6 0, 0, 3 0, 0, 5 7, 3, 0 5, 0, 0          6 – 17
+E         N/A        0, 2, 0                     N/A                            31
+F         N/A        0, 2, 0                     N/A                             3
+G         N/A                 0, 3, 0                  N/A                      20
+H         N/A                 0, 3, 0                  N/A                       8
+I                     N/A                       0, 2, 0        N/A              38
+J         N/A                          0, 6, 0             N/A                  14
+
+Journal of Healthcare Engineering · Vol. 4 · No. 2 · 2013                                 305
+
+
+
+Table A4. Numbers of available doctors at the orthopedic OPD for the straddled
+                                  schedule
+
+                                  Shift 1 - Morning (M, Tu, W, Th, F, Sa, Su)
+
+Clinic             7.00 – 10.00                   8.00 – 11.00                  9.00 – 12.00
+
+A                4, 4, 5, 5, 6, 0, 0            4, 4, 5, 4, 6, 0, 0         3, 4, 4, 4, 5, 0, 0
+D                0, 0, 0, 0, 0, 3, 2            0, 0, 0, 0, 0, 2, 2         0, 0, 0, 0, 0, 2, 1
+
+
+
+                                  Shift 3 - Evening (M, Tu, W, Th, F, Sa, Su)
+Clinic            15.00 – 17.00                  16.00 – 18.00                  17.00 – 19.00
+
+D                2, 2, 2, 1, 2, 0, 0            2, 2, 2, 1, 2, 0, 0         2, 1, 2, 1, 1, 0, 0
+
+                                             Shift 2 - Afternoon
+                                           (M, Tu, W, Th, F, Sa, Su)
+
+Clinic            15.00 – 17.00                  16.00 – 18.00
+
+B                2, 0, 0, 0, 0, 0, 0            1, 0, 0, 0, 0, 0, 0
+C                       N/A                     1, 0, 0, 0, 0, 0, 0
+D                0, 0, 0, 0, 0, 2, 0            0, 0, 0, 0, 0, 1, 0
+E                0, 1, 0, 0, 0, 0, 0            0, 1, 0, 0, 0, 0, 0
+F                0, 1, 0, 0, 0, 0, 0            0, 1, 0, 0, 0, 0, 0
+G                0, 0, 2, 0, 0, 0, 0            0, 0, 1, 0, 0, 0, 0
+H                0, 0, 2, 0, 0, 0, 0            0, 0, 1, 0, 0, 0, 0
+I                0, 0, 0, 0, 1, 0, 0            0, 0, 0, 0, 1, 0, 0
+J                0, 0, 0, 3, 0, 0, 0            0, 0, 0, 3, 0, 0, 0
+
+
+                                                                                                                         International Journal of
+
+
+                                                                                                                         Rotating
+                                                                                                                         Machinery
+
+
+
+
+                                                                                                                                                                                                                        International Journal of
+                                                 The Scientific
+Engineering                                                                                                                                                                                                             Distributed
+             Journal of
+                                                                                                                                                                         Journal of
+
+Hindawi Publishing Corporation
+                                                 World Journal
+                                                 Hindawi Publishing Corporation                                          Hindawi Publishing Corporation
+                                                                                                                                                                         Sensors
+                                                                                                                                                                         Hindawi Publishing Corporation
+                                                                                                                                                                                                                        Sensor Networks
+                                                                                                                                                                                                                        Hindawi Publishing Corporation
+http://www.hindawi.com             Volume 2014   http://www.hindawi.com                                    Volume 2014   http://www.hindawi.com           Volume 2014    http://www.hindawi.com           Volume 2014   http://www.hindawi.com            Volume 2014
+
+
+
+
+                                                                                                                                                                                                                        Journal of
+
+                                                                                                                                                                                                                        Control Science
+                                                                                                                                                                                                                        and Engineering
+
+
+
+
+Advances in
+Civil Engineering
+Hindawi Publishing Corporation                                                                                                                                                                                          Hindawi Publishing Corporation
+http://www.hindawi.com             Volume 2014                                                                                                                                                                          http://www.hindawi.com           Volume 2014
+
+
+
+
+                                                                                                            Submit your manuscripts at
+                                                                                                             http://www.hindawi.com
+
+                                                                                                                                                                                                                        Journal of
+Journal of                                                                                                                                                                                                              Electrical and Computer
+Robotics
+Hindawi Publishing Corporation
+                                                                                                                                                                                                                        Engineering
+                                                                                                                                                                                                                        Hindawi Publishing Corporation
+http://www.hindawi.com             Volume 2014                                                                                                                                                                          http://www.hindawi.com            Volume 2014
+
+
+
+
+                                                                           VLSI Design
+Advances in
+OptoElectronics
+                                                                                                                                                                                                                        International Journal of
+
+                                                                                                                         International Journal of
+                                                                                                                                                                         Modelling &
+                                                                                                                                                                         Simulation
+                                                                                                                                                                                                                        Aerospace
+Hindawi Publishing Corporation   Volume 2014
+                                                                                                                         Navigation and
+                                                                                                                         Observation
+                                                                                                                         Hindawi Publishing Corporation
+                                                                                                                         http://www.hindawi.com            Volume 2014
+                                                                                                                                                                         in Engineering
+                                                                                                                                                                         Hindawi Publishing Corporation
+                                                                                                                                                                         http://www.hindawi.com           Volume 2014
+                                                                                                                                                                                                                        Engineering
+                                                                                                                                                                                                                        Hindawi Publishing Corporation
+                                                                                                                                                                                                                        http://www.hindawi.com           Volume 2014
+                                                                          Hindawi Publishing Corporation
+http://www.hindawi.com
+                                                                          http://www.hindawi.com           Volume 2014
+
+
+
+
+                                                 International Journal of
+International Journal of                         Antennas and                                                            Active and Passive                                                                             Advances in
+Chemical Engineering                             Propagation                                                             Electronic Components                           Shock and Vibration                            Acoustics and Vibration
+Hindawi Publishing Corporation                   Hindawi Publishing Corporation                                          Hindawi Publishing Corporation                  Hindawi Publishing Corporation                 Hindawi Publishing Corporation
+http://www.hindawi.com             Volume 2014   http://www.hindawi.com                                    Volume 2014   http://www.hindawi.com            Volume 2014   http://www.hindawi.com           Volume 2014   http://www.hindawi.com           Volume 2014
+

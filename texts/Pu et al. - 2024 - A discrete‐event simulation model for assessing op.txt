@@ -1,0 +1,574 @@
+Received: 20 October 2023
+
+DOI: 10.1002/wjs.12116
+
+
+ORIGINAL SCIENTIFIC REPORT
+                             -   Accepted: 10 February 2024
+
+
+
+
+A discrete‐event simulation model for assessing
+operating room efficiency of thoracic, gastrointestinal,
+and orthopedic surgeries
+
+Zhongchan Pu1 | Shuqing Wu2                                        | Yi Han3
+1
+Sun Yat‐sen Memorial Hospital of Sun Yat‐sen University, Guangzhou, China
+2
+Nursing Department, Renji Hospital Affiliated to Shanghai Jiaotong University School of Medicine, Shanghai, China
+3
+Health Economic Research Institute, Sun Yat‐sen University, Guangzhou University City, Guangzhou, China
+
+
+
+Correspondence
+Yi Han, Health Economic Research Institute,          Abstract
+Sun Yat‐sen University, Guangzhou University         Background: In hospital management, pinpointing steps that most enhance
+City, Guangzhou, China.                              operating room (OR) throughput is challenging. While prior literature has
+Email: yihan2k5@gmail.com
+                                                     utilized discrete event simulation (DES) to study specific strategies such as
+Funding information
+                                                     scheduling and resource allocation, our study examines an earlier planning
+Johnson & Johnson Medical Ltd.                       phase, assessing all workflow stages to determine the most impactful steps
+                                                     for subsequent strategy development.
+                                                     Methods: DES models real‐world systems by simulating sequential events.
+                                                     We constructed a DES model for thoracic, gastrointestinal, and orthopedic
+                                                     surgeries summarized from a tertiary Chinese hospital. The model covers
+                                                     preoperative preparations, OR occupation, and OR preparation. Parameters
+                                                     were sourced from patient data and staff experience. Model outcome is OR
+                                                     throughput. Post‐validation, scenario analyses were conducted for each
+                                                     department, including: (1) improving preoperative patient preparation time;
+                                                     (2) increasing PACU beds; (3) improving OR preparation time; (4) use of
+                                                     new equipment to reduce the operative time of a selected surgery type;
+                                                     three levels of improvement (slight, moderate, large) were investigated.
+                                                     Results: The first three improvement scenarios resulted in a 1%–5% in-
+                                                     crease in OR throughput across the three departments. Large reductions in
+                                                     operative time of the selected surgery types led to approximately 12%, 33%,
+                                                     and 38% increases in gastrointestinal, thoracic, and orthopedic surgery
+                                                     throughput, respectively. Moderate reductions resulted in 6%–17% in-
+                                                     creases in throughput and slight reductions of 1%–7%.
+                                                     Conclusions: The model could reliably reflect OR workflows of the three
+                                                     departments. Among the options investigated, model simulations suggest
+                                                     that improving OR preparation time and operative time are the most
+                                                     effective.
+
+                                                     KEYWORDS
+                                                     discrete event simulation, efficiency, hospital management, operating room, operations
+                                                     research
+
+
+
+
+         -
+© 2024 International Society of Surgery/Société Internationale de Chirurgie (ISS/SIC).
+
+
+1102          World J Surg. 2024;48:1102–1110.                                                                        wileyonlinelibrary.com/journal/wjs
+
+                                                                                                                            14322323, 2024, 5, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/wjs.12116 by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+WORLD JOURNAL OF SURGERY
+                                                                                                                 -   1103
+
+
+
+1 | INTRODUCTION                                                approach. We aimed to assist the OR nursing depart-
+                                                                ment in pinpointing which areas to work on by identifying
+The operating room (OR) provides indispensable                  steps that hold significant potential for impactful im-
+healthcare services and plays an important role in              provements on overall throughput. Furthermore, we
+healthcare facilities. Improving OR efficiency and              explicitly model certain tasks handled by the OR nursing
+throughput benefits patients by reducing patient wait           department, which were not considered or broadly
+time and financial burden, resulting in higher patient          categorized into larger tasks in earlier research.
+satisfaction.1,2 In addition, the OR operation accounts for
+a significant portion of a hospital’s costs and income, thus
+OR efficiency is critical to a hospital’s operations and        2 | MATERIAL AND METHODS
+financial health.1,3
+    Like many countries, China also faces the urgent            2.1 | Setting and model perspectives
+need to improve OR efficiency. The national demand
+for healthcare services is expanding rapidly, especially        This study was conducted at Renji Hospital Affiliated to
+due to its aging population.4 In 2020, more than 67             Shanghai Jiaotong University School of Medicine, a
+million surgeries were performed across the country.            tertiary hospital in Shanghai, China. The hospital has a
+China’s healthcare system must become more acces-               total of more than 2000 beds and 75 ORs across four
+sible and efficient to accommodate the rising demand            campuses, with an annual total of approximately
+under limited resources.5                                       70,000 surgery cases. Our study was conducted at the
+    Improving OR efficiency is challenging because the          east campus, which is equipped with 49 ORs. These
+OR is a complex and unpredictable environment that              ORs are fully staffed and operational for 10 h each
+requires the coordination of many factors, such as              workday. The appendix (p1) provides a more detailed
+operational and resource factors.1,6–12 The surgery             description of estimated overall OR capacity and
+workflow depends on the multi‐layered interactions of           utilization.
+nurses, anesthesiologists, surgeons, as well as pa-                  The OR nursing department is responsible for peri-
+tients.1,6–12 Infrastructure and surgical equipment are         operative nursing care as well as logistical activities
+examples of resource factors that may fail or may be            such as transporting patients between service locations
+insufficient.1,6–12 Furthermore, the workflow itself may        and cleaning the surgical equipment and ORs. In this
+be inefficient due to issues such as poor scheduling of         study, we developed a decision analytic tool to assist
+surgical cases or excessive time spent moving between           the OR nursing management team in the analysis of
+places.1,6–12                                                   different options to optimize efficiency.
+    Due to these various factors, OR management has                  At Renji Hospital, each surgical department is allo-
+gradually adopted decision optimization tools used by           cated a certain number of ORs each day in the week,
+the manufacturing industry,1 such as discrete event             as shown in Table 1, with one to three ORs scheduled
+simulation (DES).13 DES is a computer simulation                each day for thoracic surgery, two to five each day for
+technique which models real‐world health systems using          gastrointestinal surgery, and four each day for ortho-
+networks of events (such as hospitalization and                 pedic surgery. These ORs were rarely utilized for non‐
+discharge) and queues (such as a patient queue).14              elective surgeries (urgent, emergency, and add‐on
+Simulations enables healthcare providers to explore             cases due to emergent situations), as the hospital has
+“what‐if” scenarios by simply adjusting inputs, without         separate ORs dedicated for non‐elective surgeries.
+real‐world consequences.15 Providers can then evaluate          Further details are described in the appendix (p2).
+the potential effects of different interventions and identify        All ORs open at 8:00 a.m. each day. Surgeons
+the most beneficial scenario based on specific criteria.16      typically do not use the ORs for the entire day due to
+Furthermore, DES can handle the inherent variability            other tasks. There is no strict rule to determine their
+and uncertainty of real‐world healthcare systems by             daily total work time. When surgeons stop surgery work
+generating stochastic distributions instead of using fixed      for the day, the ORs will be made available to other
+input values.17                                                 surgical departments.
+    We developed a DES model that combines the                       This model focused on simulating the operation of
+workflows of thoracic, gastrointestinal, and orthopedic         thoracic, gastrointestinal, and orthopedic surgeries,
+surgeries to represent a general OR workflow. By vary-          most of which are inpatient surgeries. The model
+ing one step in the workflow at a time while keeping            structure reflects a generalized workflow common
+others constant in different scenarios, we can analyze          across the targeted surgical departments. Different
+how enhancements to individual steps influence                  parameterizations are applied to simulate a specific
+throughput. While prior studies have employed DES to            department. The model’s outcome is OR throughput
+evaluate specific strategies in areas recognized as             (total number of surgeries) during the observation
+needing improvement, such as resource allocation and            period. The effects of different workflow improvement
+surgery scheduling,3,18–23 our research takes a different       options were assessed using scenario analysis.
+
+                                                                                                                             14322323, 2024, 5, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/wjs.12116 by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+1104
+       -                                                                                                         PU ET AL.
+
+
+T A B L E 1 Number of ORs designated to each department on
+each workday.                                                 2.4 | Model verification and validation
+ Workday      Thoracic      Gastrointestinal     Orthopedic   A flowchart of the model is shown in Figure 2. The
+ Mon          3             4                    4            model was verified and validation by consultation with
+ Tue          2             2                    4
+                                                              the head nurse and by comparing simulation results
+                                                              with real‐world results. Further details are provided in
+ Wed          2             5                    4            the appendix (p6).
+ Thu          3             4                    4
+
+ Fri          1             4                    4
+                                                              2.5 | Scenario analysis
+
+                                                              Scenarios involving processing time improvements for
+2.2 | Model structure                                         each stage of the summarized OR workflow were
+                                                              selected based on OR nursing team feedback and
+The model simulates the flow of inpatient surgery pa-         literature review. Each scenario was simulated 1000
+tients on the day of surgery, starting from preoperative      times, and the average OR throughput of these sce-
+preparation, and ending when the OR is ready for the          narios were then compared. The evaluated scenarios
+next patient. The number of ORs open each day is              included: (1) improving preoperative patient preparation
+modeled according to the schedule in Table 1. From            time; (2) increasing PACU beds; (3) improving OR
+the perspective of the OR, there are always patients          preparation time; (4) use of new equipment to reduce
+waiting in the queue due to the high demand for sur-          operative time of one surgery type. The basis for these
+geries in top hospitals. Therefore, the model draws           scenarios and the parameter value changes are sum-
+patients from an unlimited pool. For each patient in the      marized in Table 3. More details regarding scenarios
+simulation, a surgery type is selected randomly. This         involving the use of new equipment are specified in the
+selection is made using the sample () function in R,24        appendix.
+which randomly chooses a surgery type based on the
+available surgeries, with the likelihood of each surgery
+being chosen weighted by its respective proportion in         3 | RESULTS
+the data. As the daily total work time is variable, the
+model implements a time limit for starting new sur-           3.1 | Model verification and validation
+geries. No new surgeries are started after this time
+limit, but surgeries started before the time limit will be    According to the head nurse, the generalized OR
+completed.                                                    workflow, as shown in Figures 1 and 2, was able to
+    The simulated patient moves through four major            reflect the actual workflow. After model verification,
+events and two minor events, which are marked in              each of the three departments was simulated 1000
+Figure 1. More details are specified in the appendix.         times, and the average OR throughput over 1000 iter-
+                                                              ations was compared with the actual number of sur-
+                                                              geries. The total cases of thoracic, gastrointestinal, and
+2.3 | Model inputs                                            orthopedic surgeries in the actual data were 402, 559,
+                                                              and 529, respectively, and the average simulated
+Real‐world patient operative time data of thoracic,           throughputs of the three departments were about 400,
+gastrointestinal, and orthopedic surgeries were               552, and 521, which was a difference of less than 2%,
+collected from 2021/06/01 to 2021/08/31 and catego-           as shown in Table 4.
+rized according to department and surgery type. A
+nurse was assigned to document the time each patient
+entered and exited the OR, along with the specific OR         3.2 | Scenario analysis results
+number and the patient’s hospitalization ID. The time
+data was linked with the specific type of surgery through     The OR throughputs of the three surgical departments
+the hospitalization ID. Simulation of surgery type and        in each scenario are shown in Table 4. Among the three
+operative time are detailed in the appendix. Parameter        scenarios concerning changes in process and re-
+values relating to type and operative time are shown in       sources (i.e., improving the preoperative patient prep-
+Table 2.                                                      aration process, increasing PACU beds, and improving
+    Parameters relating to the processing times of the        OR preparation time), the improvement in OR
+remaining parts in the simulated workflow were ob-            throughput did not vary significantly among de-
+tained through an interview with the head nurse. These        partments. Reducing OR preparation time gave the
+parameters are explained in the appendix, and values          largest benefit, increasing the OR throughput by
+are shown in Table 2.                                         approximately 3%–5% across the three departments,
+
+                                                                                                                        14322323, 2024, 5, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/wjs.12116 by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+WORLD JOURNAL OF SURGERY
+                                                                                                             -   1105
+
+
+
+
+FIGURE 1    Generalized OR workflow diagram.
+
+
+
+followed by improving the preoperative patient prepa-     preparations typically occur alongside skin closure of
+ration process, which increased OR throughput by          the preceding surgery and OR preparation, so this can
+approximately 2%–4%. The least improvement was            typically be completed before the OR is ready, making
+seen in the scenario with increased PACU beds,            OR preparation the primary bottleneck between sur-
+resulting in a less than 2% increase in OR throughput.    geries. Thus, decreasing OR preparation time would
+Direct reduction in operative time of selected surgery    likely yield more significant performance gains.
+types (radical gastrectomy, pneumonectomy/segmen-              Our simulations indicate that OR throughput
+tectomy/lobectomy, and internal fixation surgery) was     improvement depends on time savings per surgery
+the most beneficial to OR throughput, and the extent of   and the patient coverage of these improvements.
+improvement was associated with the magnitude of          While new equipment reduced operative time simi-
+operative time reduction. In thoracic and orthopedic      larly across surgical departments, gastrointestinal
+surgeries, the large improvement scenario increased       surgeries saw the least throughput improvement. This
+OR throughput by more than 30%, while that of             is because the time reduction targeted radical gas-
+gastrointestinal surgeries increased by approximately     trectomy for gastric cancer, which represents less
+12%. The moderate improvement scenario increased          than half of all gastrointestinal surgeries, even though
+the throughput of thoracic and orthopedic surgeries by    it is the second most common type. This is due to the
+approximately 10% and 17%, respectively, while the        diversity of gastrointestinal surgeries, such that even
+throughput of gastrointestinal surgeries increased by     the most common surgery accounts for less than
+approximately 6%.                                         half of the total. In contrast, the predominant surgeries
+                                                          in thoracic and orthopedic departments account for
+                                                          60%–70% of their total, leading to more signi-
+4 | DISCUSSION                                            ficant throughput improvements when their operative
+                                                          times were reduced. Adding PACU beds, affecting
+We developed a DES model for Renji Hospital’s OR          only 10% of patients, had the least impact on
+nursing department to pinpoint optimization opportu-      throughput.
+nities in the OR workflow. Since the department needs          Our research brings a new perspective to OR work-
+to support multiple surgical departments, the model       flows using DES. Previous studies have utilized DES to
+captures common essential elements from the three         determine the best strategy for optimizing specific areas
+departments’ OR processes. We then applied a one‐         needing improvement, such as different combinations of
+factor‐at‐a‐time method, altering one OR workflow step    surgery prioritization during scheduling.3,18–23 Our study
+per scenario to isolate and evaluate the effect of each   takes a step back to focus on an earlier planning stage, to
+component on system throughput.                           find which areas of the OR workflow have the most po-
+    We evaluated several optimization strategies,         tential to enhance throughput. Identifying these key
+ranging from operational (improving preoperative pa-      areas lays the groundwork for developing and refining
+tient and OR preparation times) to resource factors       strategies tailored to these areas, enabling informed
+(increasing PACU beds and using new equipment to          decisions on resource allocation and prioritization.
+reduce operative time). Simulations showed that                Additionally, our model is designed from the pers-
+reducing OR preparation time had a greater impact         pective of the OR nursing department. As a result, it
+than the preoperative patient process. Patient            highlights tasks like pre‐operative patient preparation
+
+                                                                                                                                                               14322323, 2024, 5, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/wjs.12116 by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+1106
+           -                                                                                                                                       PU ET AL.
+
+
+TABLE 2          Input data.
+
+                                                                                                           Distribution parameter
+                                                                                                           values (minutes)
+    Parameter
+    Operative time                         Patient N     Patient %      Distributiona                      Mean          SD       Min   Max   Data source
+    Thoracic surgeries                     402
+      Pneumonectomy/                       303             75.37%       Truncated lognormal                129.02        60.30    40    407   Real data
+        segmentectomy/lobectomy
+      Wedge resection                      23               5.72%       Truncated lognormal                99.91         82.25    50    417   Real data
+      Biopsy                               23               5.72%       Truncated lognormal                89.13         64.11    19    271   Real data
+      Radical esophagectomy for            24               5.97%       Truncated lognormal                328.58        103.35   149   553   Real data
+        esophageal cancer
+
+      Lumpectomy                           29               7.21%       Truncated lognormal                111.10        55.21    30    251   Real data
+    Gastrointestinal surgeries             559
+      Cholecystectomy                      5                0.89%       Truncated lognormal                192.80        133.28   76    412   Real data
+      Radical colectomy for                256             45.80%       Truncated lognormal                198.44        68.91    29    465   Real data
+        carcinoma of the colon
+      Appendectomy                         6                1.07%       Truncated lognormal                158.17        61.13    68    226   Real data
+      Other                                69              12.34%       Truncated lognormal                141.13        91.91    30    495   Real data
+      Hernia repair                        13               2.33%       Truncated lognormal                133.00        74.95    71    343   Real data
+      Radical gastrectomy for gastric      206             36.85%       Truncated lognormal                220.73        76.17    44    447   Real data
+        cancer
+
+      Pancreaticoduodenectomy              4                0.72%       Truncated lognormal                316.50        163.19   154   490   Real data
+    Orthopedic surgeries                   529
+      Internal fixation surgery            335             63.33%       Truncated lognormal                137.45        53.69    3     380   Real data
+      Internal fixation removal            87              16.45%       Truncated lognormal                58.54         31.42    7     188   Real data
+      Hip arthroplasty                     15               2.84%       Truncated lognormal                162.60        31.38    100   228   Real data
+      Arthroscopic repair                  13               2.46%       Truncated lognormal                134.08        41.77    71    205   Real data
+      Arthroscopic meniscus repair         10               1.89%       Truncated lognormal                97.20         22.29    57    134   Real data
+
+      Other                                69              13.04%       Truncated lognormal                129.72        76.53    18    490   Real data
+    Other parameters                                                                                       Mode          /        Min   Max
+      Preoperative patient preparation     /             100.00%        Triangle                           20            /        15    60    Head nurse
+      Additional waiting in OR             /               10.00%       Triangle                           32.5          /        5     60    Head nurse
+
+      OR preparation                       /             100.00%        Triangle                           27.5          /        25    30    Head nurse
+                                                                                                           Constant      /        /     /
+
+      Patient notification lead time       /             100.00%        Constant                           20            /        /     /     Head nurse
+a
+Distribution: In the simulation, values are randomly selected from these distributions rather than using fixed values.
+
+
+
+and OR setup, which fall under the responsibilities of OR                            our model, the primary task becomes data collection to
+nursing. These tasks, often merged or not considered in                              update the input parameters.
+prior studies, are treated distinctly in our model. This                                 Cost considerations could also be integrated into the
+distinction allows the OR nursing department to assess                               model, so that different approaches are compared on
+the impact of optimizing these specific tasks, a                                     their cost‐effectiveness. At present, we can qualitatively
+perspective not offered by previous models.                                          estimate the cost level for some approaches. Previous
+    Given that we have distilled common elements from                                research has explored the implementation of structured
+three distinct surgical departments to create a gener-                               practices to reduce non‐operative time, such as better
+alized OR workflow, this model holds potential for                                   preoperative patient preparation and faster OR prepa-
+adaptation to other hospitals. Once a hospital ascer-                                ration.25,26 The financial investment for adopting these
+tains that their OR workflow aligns with the structure of                            approaches would be minimal. Conversely, adding
+
+                                                                                                                                                 14322323, 2024, 5, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/wjs.12116 by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+WORLD JOURNAL OF SURGERY
+                                                                                                                                     -    1107
+
+
+
+
+F I G U R E 2 Model flowchart.Simulated entity: Represents the patient, the primary entity moving through the modeled OR process.Stage
+(duration): Denotes a continuous status or phase that a patient undergoes, lasting between two specific events.Event (instantaneous):
+Signifies a specific moment or occurrence that triggers a change in the patient’s or system’s status.Condition: Represents a decision point
+where the workflow can branch based on certain criteria or outcomes. [Colour figure can be viewed at wileyonlinelibrary.com]
+
+TABLE 3       Scenarios.
+
+ Scenarios                        Potential improvements                             Parameter value changes
+ Improving the preoperative       Expert opinion: Avoid excessively long preparation Preoperative patient preparation: Set maximum value to
+    patient preparation process      times, keeping most cases under 25 min             25 min
+
+ Increasing PACU beds             Expert opinion: Increase PACU capacity to avoid Whether additional waiting in OR required: Set as a
+                                     additional waiting in the OR                   constant with value of 0
+
+ Improving OR preparation time    Literature: OR turnover time can be reduced by     Preparation time: mode, minimum, maximum reduced
+                                      6–12 min25,26                                     by 10 min, that is, set to 15, 17.5, and 20 min,
+                                                                                        respectively
+ Use of new equipment to reduce operative time
+   Thoracic surgery               Literature: In pneumonectomy/segmentectomy/ Pneumonectomy/segmentectomy/lobectomy operative
+                                      lobectomy, the use of three‐dimensional         time: mean, minimum, maximum reduced by:
+                                      imaging, laser‐assisted resection, and
+     � slight improvement                                                          15 min
+                                      powered staplers has been reported to reduce
+                                      operative time by 16.2–52.8 minutes29–34     35 min
+     � moderate improvement
+
+     � large improvement                                                             50 min
+
+   Gastrointestinal surgery       Literature: In radical gastrectomy, the use of     Radical gastrectomy operative time: mean, minimum,
+                                      three‐dimensional stereoscopic visualization,     maximum reduced by:
+                                      ultrasonic dissection, and stapler anastomosis
+     � slight improvement                                                            10 min
+                                      has been reported to reduce operative time by
+                                                      35–39
+                                      7.5–62 minutes                                 35 min
+     � moderate improvement
+
+     � large improvement                                                             60 min
+
+   Orthopedic surgery             Literature: In internal fixation surgery, the use of Internal fixation operative time: as base case minimum
+                                      surgical robots has been reported to reduce          value was 3 min, this was reduced to 1 min; mean
+                                      operative time by 60 min40                           and maximum reduced by:
+
+     � slight improvement                                                            10 min
+
+     � moderate improvement                                                          35 min
+
+     � large improvement                                                             60 min
+
+                                                                                                                                                 14322323, 2024, 5, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/wjs.12116 by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+1108
+          -                                                                                                                          PU ET AL.
+
+
+TABLE 4        Base case and scenario analysis results.
+
+                                               Thoracic surgeries              Gastrointestinal surgeries   Orthopedic surgeries
+                                                          Difference from               Difference from              Difference from
+                                                          base case                     base case                    base case
+ Scenario                                      Cases      Cases     %          Cases    Cases     %         Cases Cases         %
+ Model validation
+   Base case scenario                          400.49      /         /         552.10    /         /        521.39     /         /
+
+   Real data                                   402.00      1.51     0.38%      559.00    5.42     0.98%     529.00    7.61      1.46%
+ Scenario analysis
+   Improving preoperative patient preparation 410.52      10.03     2.51%      566.54   12.96     2.34%     541.51 20.12        3.86%
+   Increasing PACU beds                        407.07      6.58     1.64%      560.05    6.48     1.17%     528.86    7.47      1.43%
+   Improving OR preparation                    419.54     19.05     4.76%      571.58   18.00     3.25%     544.20 22.81        4.37%
+   Reducing operative time
+       Improved surgery type                   Pneumonectomy/                  Radical gastrectomy for      Internal fixation surgery
+                                                 segmentectomy/lobectomy         gastric cancer
+       Slight improvement                      427.76     27.27     6.81%      560.68    7.10     1.28%     544.17 22.78        4.37%
+
+       Moderate improvement                    468.01     67.52     16.86%     580.41   26.83     4.85%     571.92 50.54        9.69%
+
+
+
+
+PACU beds, which our results show has limited impact                        In addition, the model currently omits cost
+on throughput, is more costly. Therefore, structured                     inputs. Future adaptations can incorporate economic
+practices should be prioritized over increasing PACU                     evaluations for hospital‐based HTA, aiding manage-
+beds.                                                                    ment in diverse scenarios such as equipment procure-
+    These cost‐effectiveness evaluations can be sub-                     ment, ward design, and resource allocation.
+sequently incorporated into hospital‐based health
+technology assessments (HTA) to guide management
+in procurement decisions. HTA is a multidisciplinary                     5 | CONCLUSION
+process that synthesizes evidence regarding the effi-
+cacy, safety, cost‐effectiveness, and other properties of                We developed a DES model based on the OR workflow
+a health technology. This aids decision‐makers in                        of thoracic, gastrointestinal, and orthopedic surgeries at
+optimizing healthcare services within limited budgets.27                 our institution. Model simulations suggest reducing OR
+As hospitals face increasing pressure to efficiently                     preparation time and operative time are more impactful
+use resources, HTA is gaining traction globally,27                       than reductions in preoperative patient preparation or
+including in China.28 DES models, such as the one                        increasing PACU beds. The effect of reducing operative
+described in this study, can be leveraged in hospital‐                   time depends on both the magnitude of service time
+based HTA decision process, especially as they are                       reduction and the proportion of patients affected.
+already prevalent in HTA for cost‐effectiveness                          Furthermore, this model could potentially be populated
+comparisons.27                                                           by input data from other institutions to help identify
+    This study has some limitations. Several model                       specific improvement opportunities suitable for different
+parameters were sourced from interviews with the OR                      settings.
+head nurse, relying on individual experience. We used
+this approach as the OR nursing department had                           A U T H O R C O N T R I B U T I ON S
+informally reviewed the OR workflow, lending some                        Zhongchen Pu: Conceptualization; Data curation;
+objectivity to the head nurse’s estimates. To reflect                    Formal analysis; Investigation; Methodology; Project
+uncertainty, we modeled these estimates as                               administration; Supervision; Validation; Writing – orig-
+random variables with triangular distributions, reporting                inal draft; Writing – review & editing. Shuqing Wu:
+the standard deviation from 1000 iterations in our re-                   Conceptualization; Formal analysis; Investigation;
+sults. Additionally, we compared model results against                   Methodology; Software; Visualization; Writing – original
+real‐world data for accuracy. Although this does not                     draft; Writing – review & editing. Yi Han: Conceptuali-
+eliminate error, we believe it would not substantially                   zation; Data curation; Formal analysis; Investigation;
+alter the conclusion, given the relatively brief duration of             Methodology; Project administration; Supervision;
+these steps in the total operative times.                                Validation; Writing – review & editing.
+
+                                                                                                                                                     14322323, 2024, 5, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/wjs.12116 by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+WORLD JOURNAL OF SURGERY
+                                                                                                                                        -    1109
+
+
+
+CO NFLI CT OF I NT ERE ST ST ATE ME NT                                           Event Simulation Modeling in Healthcare: A Comprehensive
+Shuqing Wu and Yi Han have received research sup-                                Review.” International Journal of Environmental Research and
+port from Johnson & Johnson Medical (Shanghai) Ltd.                              Public Health 18(22): 12262. https://doi.org/10.3390/
+                                                                                 ijerph182212262.
+Zhongchen Pu declares no conflict of interest.                             14.   Brailsford, S., and N. Hilton. 2001. “A Comparison of Discrete
+                                                                                 Event Simulation and System Dynamics for Modelling Health
+DA TA AV AI LA BI L I TY S TAT EM EN T                                           Care Systems.” In Planning for the Future: Health Service
+Data used in this study are available for research only.                         Quality and Emergency Accessibility. Operational Research
+Data requests will be reviewed by the review committee                           Applied to Health Services (ORAHS) (01/01/01), edited by J.
+                                                                                 Riley. Glasgow Caledonian University.
+of Renji Hospital Affiliated to Shanghai Jiaotong Uni-                     15.   Landa, Paolo, Michele Sonnessa, Elena Tànfani, and Angela
+versity School of Medicine.                                                      Testi. 2018. “Multiobjective Bed Management Considering
+                                                                                 Emergency and Elective Patient Flows.” International Trans-
+ETHI CS S TAT EM ENT                                                             actions in Operational Research 25(1): 91–110. https://doi.org/
+                                                                                 10.1111/itor.12360.
+No ethical approval required for this study.
+                                                                           16.   Ramwadhdoebe, Sabrina, Erik Buskens, Ralph J. B. Sakkers,
+                                                                                 and James E. Stahl. 2009. “A Tutorial on Discrete‐Event Simu-
+INFO RM E D C ONS EN T                                                           lation for Health Policy Design and Decision Making: Optimizing
+No informed consent required for this study.                                     Pediatric Ultrasound Screening for Hip Dysplasia as an Illustra-
+                                                                                 tion.” Health Policy 93(2–3): 143–50. https://doi.org/10.1016/j.
+O RCI D                                                                          healthpol.2009.07.007.
+                                                                           17.   Bagust, A., M. Place, and J. W. Posnett. 1999. “Dynamics of
+Shuqing Wu           https://orcid.org/0000-0002-8836-7215                       Bed Use in Accommodating Emergency Admissions: Stochastic
+                                                                                 Simulation Model.” BMJ 319(7203): 155–8. https://doi.org/10.
+RE FE REN CES                                                                    1136/bmj.319.7203.155.
+ 1.   Rothstein, David H., and Mehul V. Raval. 2018. “Operating            18.   Yip, Kenneth, Louisa Leung, and Deacons Yeung. 2018.
+      Room Efficiency.” Seminars in Pediatric Surgery 27(2): 79–85.              “Levelling Bed Occupancy: Reconfiguring Surgery Schedules
+      https://doi.org/10.1053/j.sempedsurg.2018.02.004.                          via Simulation.” International Journal of Health Care Quality
+ 2.   China government online. 2019. “[Guidelines Confirm Main                   Assurance 31(7): 864–76. https://doi.org/10.1108/IJHCQA‐12‐
+      Points of Public Hospital Performance Appraisal].” In China                2017‐0237.
+      Gov. Online. http://www.gov.cn/xinwen/2019‐01/30/content_            19.   Lehtonen, J.‐Matti, Jaakko Kujala, Juhani Kouri, and Mikko Hip-
+      5362424.htm.                                                               peläinen. 2007. “Cardiac Surgery Productivity and Throughput
+ 3.   Luo, Li, Chuang Liu, Li Feng, Shuzhen Zhao, and Renrong                    Improvements.” International Journal of Health Care Quality
+      Gong. 2018. “A Random Forest and Simulation Approach for                   Assurance 20(1): 40–52. https://doi.org/10.1108/09526
+      Scheduling Operation Rooms: Elective Surgery Cancelation in a              860710721213.
+      Chinese Hospital Urology Department.” The International Jour-        20.   Persson, Marie Jeanette, and Jan A. Persson. 2010. “Analysing
+      nal of Health Planning and Management 33(4): 941–66. https://              Management Policies for Operating Room Planning Using
+      doi.org/10.1002/hpm.2552.                                                  Simulation.” Health Care Management Science 13(2): 182–91.
+ 4.   Zhou, Yue, Haishaerjiang Wushouer, Daniel Vuillermin, Bingyu               https://doi.org/10.1007/s10729‐009‐9122‐y.
+      Ni, Xiaodong Guan, and Luwen Shi. 2020. “Medical Insurance           21.   Persson, Marie, Helena Hvitfeldt‐Forsberg, Maria Unbeck,
+      and Healthcare Utilization Among the Middle‐Aged and Elderly               Olof Gustaf Sköldenberg, Andreas Stark, Paula Kelly‐
+      in China: Evidence from the China Health and Retirement                    Pettersson, and Pamela Mazzocato. 2017. “Operational Stra-
+      Longitudinal Study 2011, 2013 and 2015.” BMC Health Services               tegies to Manage Non‐elective Orthopaedic Surgical Flows:
+      Research 20(1): 654. https://doi.org/10.1186/s12913‐020‐                   a Simulation Modelling Study.” BMJ Open 7(4): e013303.
+      05522‐w.                                                                   https://doi.org/10.1136/bmjopen‐2016‐013303.
+ 5.   Liu, Gordon G., Samantha A. Vortherms, and Xuezhi Hong.              22.   Reece, Kayla, Jeff Avansino, Maria Brumm, Lynn Martin,
+      2017. “China’s Health Reform Update.” Annual Review of Public              and Theodore Eugene Day. 2021. “Determining Future Ca-
+      Health 38(1): 431–48. https://doi.org/10.1146/annurev‐                     pacity for an Ambulatory Surgical Center with Discrete Event
+      publhealth‐031816‐044247.                                                  Simulation.” International Journal of Healthcare Manage-
+ 6.   Xie, J., J. Fu, T. Luo, et al. 2014. “Review of Hospital Operating         ment 14(3): 920–5. https://doi.org/10.1080/20479700.2020.
+      Room Efficiency Analysis and Improvement Strategies.” China                1720940.
+      Hosp Manag: 39–40.                                                   23.   Burns, Patrick, Sailesh Konda, and Michelle Alvarado. 2020.
+ 7.   Yuan, G., and C. Liu. 2015. “Analysis of Causes of Operation               “Discrete‐event Simulation and Scheduling for Mohs Micro-
+      Delays and Correctional Methods.” Tianjin Nurs: 173–4.                     graphic Surgery.” Journal of Simulation 0: 1–15. https://doi.org/
+ 8.   Li, L., and J. Liu. 2017. “Review of Important Issues in Surgical          10.1080/17477778.2020.1750315.
+      Nursing.” China Nurs Manag 17: 1009–13.                              24.   RDocumentation sample function ‐ RDocumentation. In: RDo-
+ 9.   Zang, W. 2014. “Factors Affecting Operating Room Efficiency                cumentation. https://www.rdocumentation.org/packages/base/
+      and Managing Strategies.” Modern Nursing: 160–2.                           versions/3.6.2/topics/sample. Accessed 27 Sep 2023.
+10.   Song, F., X. Deng, D. Xu, et al. 2006. “Analysis of Surgical         25.   Soliman, Bishoy A. B., Raymond Stanton, Steven Sowter,
+      Volume and Rational Use of Human Resources.” Journal of                    Warren Matthew Rozen, and Shekib Shahbaz. 2013. “Improving
+      Nursing Management: 6–8.                                                   Operating Theatre Efficiency: an Intervention to Significantly
+11.   Ren, H. 2014. “Analysis of Factors Affecting Operating Room                Reduce Changeover Time.” ANZ Journal of Surgery 83(7–8):
+      Efficiency and Managing Strategies.” China Health Stand                    545–8. https://doi.org/10.1111/ans.12013.
+      Manag: 89–91.                                                        26.   Mizumoto, Ryo, Adam Thomas Cristaudo, and Rasika Henda-
+12.   Shan, C. 2006. “Methods to Improve Operating Room Efficiency               hewa. 2016. “A Surgeon‐Led Model to Improve Operating
+      Used in France.” Chinese Journal of Nursing: 1146–7.                       Theatre Change‐Over Time and Overall Efficiency: A Rando-
+13.   Vázquez‐Serrano, Jesús Isaac, Rodrigo E. Peimbert‐García,                  mised Controlled Trial.” Int J Surg Lond Engl 30: 83–9. https://
+      and Leopoldo Eduardo Cárdenas‐Barrón. 2021. “Discrete‐                     doi.org/10.1016/j.ijsu.2016.04.033.
+
+                                                                                                                                                    14322323, 2024, 5, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/wjs.12116 by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+1110
+          -                                                                                                                             PU ET AL.
+
+
+
+27.    Gagnon, M.‐Pierre. 2014. “Hospital‐based Health Technology                Gastric Cancer: a Meta‐Analysis of Randomized Controlled
+       Assessment: Developments to Date.” PharmacoEconomics                      Trials.” Eur J Surg Oncol J Eur Soc Surg Oncol Br Assoc Surg
+       32(9): 819–24. https://doi.org/10.1007/s40273‐014‐0185‐3.                 Oncol 41(4): 527–33. https://doi.org/10.1016/j.ejso.2015.
+28.    Lin, X., F. Bai, L. Lv, et al. 2020. “China Hospital‐Based Health         01.025.
+       Technology Assessment Pilot Program Achievements and                37.   Du, Jianjun, Jianbo Shuang, Jipeng Li, Qingchuan Zhao, Liu
+       Implementation Strategy.” Zhong Guo Xun Zheng Yi Xue Za Zhi               Hong, Xiongwei Du, Jiazhi Wen, and Jin Hua. 2012. “Totally
+       20: 94–7.                                                                 Laparoscopic Billroth II Gastrectomy with a Novel, Safe, Simple,
+29.    Elkhouly, Ahmed G., Roberto Sorge, Paola Rogliani, Benedetto              and Time‐Saving Anastomosis by Only Stapling Devices.” J
+       Cristino, Ehab Wahby, Amro Serag, Hengrui Liang, Jianxing He,             Gastrointest Surg Off J Soc Surg Aliment Tract 16(4): 738–43.
+       and Eugenio Pompeo. 2020. “Ergonomical Assessment of Three‐               https://doi.org/10.1007/s11605‐011‐1796‐z.
+       Dimensional versus Two‐Dimensional Thoracoscopic Lobec-             38.   Cho, E., K. Miller, S. Pagkratis, H. Osman, and D. r. Jeyarajah.
+       tomy.” Seminars in Thoracic and Cardiovascular Surgery 32(4):             2018. “Superior Intraoperative Performance of Harmonic HD
+       1089–96. https://doi.org/10.1053/j.semtcvs.2020.05.018.                   1000i Shears for Pancreaticoduodenectomies.” International
+30.    A. S, F. O, A. C, Alessandro Stefani, Francesco Oricchio,                 Hepato‐Pancreato‐Biliary Association 20: S168. https://doi.org/
+       Alessandro Cinquepalmi, and Beatrice Aramini. 2020. “Is Laser‐            10.1016/j.hpb.2018.02.623.
+       Assisted Resection Preferable to Lobectomy for Pulmonary            39.   Roy S., Ghosh S., Yoo A. (2015) An Assessment of the
+       Metastasectomy?” Lasers in Medical Science 35(3): 611–20.                 Clinical and Economic Impact of Establishing Ileocolic Anas-
+       https://doi.org/10.1007/s10103‐019‐02856‐8.                               tomoses in Right‐Colon Resection Surgeries Using Mechanical
+31.    Menna, Cecilia, Camilla Poggi, Claudio Andreetti, Anna Maria              Staplers Compared to Hand‐Sewn Technique. Surg Res Pract
+       Ciccone, Alberto Emiliano Baccarini, Giulio Maurizi, Antonio              2015:2015, 1–7. https://doi.org/10.1155/2015/749186
+       D’Andrilli, Camilla Vanni, Roberto Cascone, Alfonso Fiorelli,       40.   Guosheng Securities. 2020. “Tian Zhi Hang (688277.SH):
+       Mario Santini, Federico Venuta, Erino Angelo Rendina, and                 Leading Manufacturer of Orthopedic Navigation Robots
+       Mohsen Ibrahim. 2020. “The Use of Transcollation Technology               in China.”. Guosheng Secur. http://pdf.dfcfw.com/pdf/H3_
+       for Video‐Assisted Thoracic Surgery Lobectomy.” Journal of                AP202007141391585391_1.pdf. Accessed Jan 22, 2022.
+       Cardiothoracic Surgery 15(1): 190. https://doi.org/10.1186/
+       s13019‐020‐01230‐y.
+32.    Gao, Yang, Fang Xiong, Xiaozhe Xia, Pengjuan Gu, Qinghong
+       Wang, Aiping Wu, Huan Zhan, Wendong Chen, and Zhaoxin               AUTHOR BIOGRAPHIES
+       Qian. 2021. “Clinical Outcomes of Powered and Manual Sta-
+       plers in Video‐Assisted Thoracic Surgery Lobectomy for Lung
+       Cancer.” J Comp Eff Res 10(13): 1011–9. https://doi.org/10.          Zhongchan Pu is a theatre nurse at Renji Hospital
+       2217/cer‐2021‐0060.                                                  Affiliated to Shanghai Jiaotong University School of
+33.    Park, Seong Yong, Dae Joon Kim, Chung Mo Nam, Goeun                  Medicine. Email: zhongch_pu_2648@163.com
+       Park, Goeun Byun, HyeJin Park, and Ji Heon Choi. 2019.
+       “Clinical and Economic Benefits Associated with the Use of
+       Powered and Tissue‐specific Endoscopic Staplers Among the
+                                                                            Shuqing Wu, MBA, is a research assistant at Sun
+       Patients Undergoing Thoracoscopic Lobectomy for Lung Can-            Yat‐sen Memorial Hospital of Sun Yat‐sen University.
+       cer.” Journal of Medical Economics 22(12): 1274–80. https://doi.     Her primary interest is in the field of health economics
+       org/10.1080/13696998.2019.1634081.                                   and healthcare management, including hospital op-
+34.    Miller, Daniel L., Sanjoy Roy, Edmund S. Kassis, Sashi Yada-         erations research. Email: sw34350@outlook.com
+       lam, Sushama Ramisetti, and Stephen S. Johnston. 2018.
+       “Impact of Powered and Tissue‐specific Endoscopic Stapling
+       Technology on Clinical and Economic Outcomes of Video‐               Yi Han, PhD, MBA is a research investigator at
+       Assisted Thoracic Surgery Lobectomy Procedures: A Retro-             Health Economic Research Institute, Sun Yat‐sen
+       spective, Observational Study.” Advances in Therapy 35(5):           University, Guangzhou University City, Guangzhou,
+       707–23. https://doi.org/10.1007/s12325‐018‐0679‐z.                   China. He also holds an adjunct faculty position at
+35.    Itatani, Yoshiro, Kazutaka Obama, Tatsuto Nishigori, Riki
+       Ganeko, Shigeru Tsunoda, Hisahiro Hosogi, Shigeo Hisamori,
+                                                                            Thomas Jefferson University in the US. Email:
+       Kyoichi Hashimoto, and Yoshiharu Sakai. 2019. “Three‐                yihan2k5@gmail.com
+       dimensional Stereoscopic Visualization Shortens Operative
+       Time in Laparoscopic Gastrectomy for Gastric Cancer.” Scientific
+       Reports 9(1): 4108. https://doi.org/10.1038/s41598‐019‐             S U P P O R T I N G I N F OR M A T I O N
+       40269‐3.
+36.    Sun, Z. C., W. G. Xu, X. M. Xiao, W. h. Yu, D. m. Xu, H. m.
+                                                                           Additional supporting information can be found online in
+       Xu, H. l. Gao, and R. x. Wang. 2015. “Ultrasonic Dissection         the Supporting Information section at the end of this
+       versus Conventional Electrocautery during Gastrectomy for           article.
+

@@ -1,0 +1,840 @@
+Increasing Utilization in a Hospital Operating
+Department Using Simulation Modeling
+Krisjanis Steins
+Fredrik Persson
+Department of Science and Technology,
+Linköping University,
+SE-581 83 Linköping,
+Sweden
+krisjanis.steins@liu.se
+fredrik.persson@liu.se
+
+Martin Holmer
+Department of Operations and Intensive Care,
+County Hospital Ryhov,
+Jönköping,
+Sweden
+martin.holmer@lj.se
+
+
+
+       This article focuses on the planning and scheduling of operating rooms (ORs) in a regional hospital
+       in Sweden. A simulation study was carried out to find new ideas and new planning and scheduling
+       techniques to improve the overall process of surgery, including pre- and post-operating activities.
+       This study mainly addresses the problem of low utilization of the ORs, and also takes into consider-
+       ation problems with variation in workload, both in ORs and in post-anesthesia care units. The final
+       simulation model includes pre-operative care carried out in the operating department and all ORs, as
+       well as post-operative care units. It was driven by a number of input parameters, such as the volume
+       and specific characteristics of actual cases, opening hours and number of ORs, and the number of
+       beds for pre- and post-operative care. The model also includes logic for prioritizing and allocating
+       cases to available ORs, planning operating schedules and the utilization of medical equipment lim-
+       ited in quantity. Output performance measures from simulation experiments include the utilization of
+       allocated OR times, waiting time for patients, queue dynamics, number of cancellations, and varia-
+       tion of finishing times, as well as occupancy statistics in the post-operative care unit. Four different
+       change alternatives were evaluated using the simulation model. Simulation experiments showed that
+       with the implementation of the proposed changes it is possible to achieve slightly better and more
+       even resource utilization, as well as provide greater flexibility in scheduling operations.
+       Keywords: healthcare, operating department, operating rooms, utilization, discrete-event simula-
+       tion, planning, scheduling
+
+
+
+
+                                                                   1. Introduction
+
+                                                                   Planning and scheduling is part of the everyday work in
+                                                                   any industrial system. Techniques and methods for plan-
+                                                                   ning and scheduling have been developed and refined
+SIMULATION, Vol. 86, Issue 8-9, August-September 2010 463–480      since the beginning of the industrial revolution. In the
+1
+c 2010 The Society for Modeling and Simulation International       latter half of the 20th century, simulation became a
+DOI: 10.1177/0037549709359355                                      well-known and utilized tool to investigate planning and
+Figures 2–5, 7–11 appear in color online: http://sim.sagepub.com   scheduling activities in industry and in other applications
+
+                                                                                  Volume 86, Numbers 8-9 SIMULATION       463
+
+                                                    Steins, Persson, and Holmer
+
+
+
+as well. Healthcare is one application that has been un-            tems [4]. Most of the published simulation studies, how-
+der huge pressure to become more efficient and effective            ever, fail to report adequately on the implementation of the
+and in that perspective, the simulation of planning and             results, which makes it difficult to assess the value of sim-
+scheduling activities in healthcare is gaining much interest        ulation in healthcare management [5]. Brailsford [6] men-
+in both academia and from hospitals.                                tions several possible reasons for the poor implementation
+    This article focuses on the planning and scheduling of          record – the organizational culture in healthcare, high cost
+operating rooms (ORs) in a hospital in Sweden. A sim-               of performing simulation studies, problems with data, few
+ulation study was carried out to find new ideas and new             incentives for academics to wait for and assess potential
+planning and scheduling techniques to improve the over-             implementation before publishing, and the perceived need
+all process of surgery, including pre- and post-operating           for site-specific models.
+activities. There are some circumstances that make this                 A number of simulation studies have also been car-
+work valuable for other researchers and practitioners in            ried out concerning operating departments, including pre-
+the same field. First, ORs incur high costs [1] both when           operative assessment and PACUs. Below is a short review
+utilized, due to the cost of the workforce, and when idle,          of previous work that is most closely related to our re-
+due to the cost of expensive machinery. Second, the aging           search. Edward et al. [7] determined the required capacity
+population implies that there will be an increasing number          necessary in pre-operative assessment clinics in order to
+of elderly patients that will result in an increasing load on       decrease patient access time to surgery. They also used
+the OR resources [2]. Given these two facts, the solution           simulation to determine scheduled consultation lengths in
+to the increasing load of patients can be to simply create          order to decrease waiting time for the patients. Marcon et
+more OR resources, i.e. build more facilities. Another ap-          al. [8] used a simulation model to determine the minimum
+proach is to simply learn to better utilize the facilities that     number of PACU beds, and investigate how factors such as
+are already present by applying planning and scheduling             length-of-stay (LOS) and number of porters influence the
+techniques to the planning of ORs with the goal of increas-         hourly occupancy of the PACU. Marcon and Dexter [9]
+ing utilization and increasing the throughput of the whole          use simulation to find out which sequencing rules, based
+system. There is a third circumstance that makes the plan-          on the predicted length of procedures, lead to the smooth
+ning and scheduling activity challenging, which is the fact         flow of patients through the PACU. VanBerkel and Blake
+that OR times differ greatly for the same procedure in dif-         [10] built a site-specific model of a general surgery sys-
+ferent hospitals [2, 3]. The planning and scheduling en-            tem that included both elective and emergency patients
+vironment is thus very complex. There are many actors               and included both OR time and beds as resources in the
+involved that need to cooperate and merge their efforts in          model. Lowery and Davis [11] describe a model that is
+order to carry out operating activities. Each planned activ-        built and used for OR capacity estimation in terms of the
+ity is also dependant on the other activities that are sched-       number of OR rooms before reorganization of the OR fa-
+uled for the same resources. This gives a problem, both             cilities in the hospital. Tyler et al. [12] use a simplified OR
+complex and dependant, that is hard to analyze without              model in order to determine the optimal utilization of the
+help from analysis tools, such as simulation. It is hard to         OR, keeping the utilization rate as high as possible and at
+see which changes will lead to better performance with-             the same time minimizing risk for cancellations and over-
+out the help of simulation. This study mainly addresses             time. Both Dexter et al. [13] and Dexter and Traub [14]
+the problem of low utilization of the ORs, and also takes           use simulation to investigate different surgical procedure-
+into consideration problems with variation in workload,             scheduling strategies in order to maximize the utilization
+both in ORs and in post-anesthesia care units (PACUs).              of OR resources. Bowers and Mould [15] describe a sim-
+    The purpose of this paper is to verify the bottleneck in        ulation experiment that shows that a substantial increase
+post-operative care and find solutions to lift this constraint      in throughput can be achieved by scheduling elective pa-
+in order to get a more even utilization of the operating de-        tients within the emergency sessions. They also show that
+partment. At the same time, the purpose of the simulation           in their case a much simpler model would yield the same
+project is to show the benefits of using simulation model-          results as a detailed simulation model. Stahl et al. [16] use
+ing in this kind of environment.                                    a simulation model to determine if it is cost effective to
+    Simulation has been applied in healthcare for many              introduce a kind of parallel processing, having two anes-
+decades and in many different areas. Jun and Jacobson               thesiologists instead of one taking care of a patient in the
+[4] give a comprehensive overview based on an exten-                OR. McAleer et al. [17] give a very detailed account of OR
+sive literature survey of applications of discrete-event sim-       suite simulation model development, including descrip-
+ulation in healthcare clinics and identified several areas          tions of employee involvement. The model was used to
+where simulation is used to affect patient flow and re-             find out bottleneck resources and how the system would
+source allocation, such as patient scheduling and routing,          cope with an extremely high load. One of very few cases
+resource scheduling, and the sizing and planning of beds,           where a generic model of an OR has been developed is
+rooms, and staff. Most of the simulation work is done               described by Everett [18]. This model can be used for de-
+on the department or clinic level, and it is very difficult         cision support for capacity planning for elective surgery
+to find simulation applications in complex integrated sys-          services, although no actual use is reported.
+
+464   SIMULATION     Volume 86, Numbers 8-9
+
+             INCREASING UTILIZATION IN A HOSPITAL OPERATING DEPARTMENT USING SIMULATION MODELING
+
+
+Table 1. Example data on three surgical cases
+
+ ID                                                     96503                      96511                     96520
+ Operation code                                         MCA10                      DJD20                     GAA31
+ Room                                                   8                          12                        14
+ Date                                                   2005-01-10                 2005-01-10                2005-01-10
+ Operating team meets the patient                       08:30:00                   07:50:00                  07:52:00
+ Anesthesia start                                       09:03:00                   08:05:00                  08:16:00
+ Ready for operation                                    09:10:00                   08:20:00                  08:50:00
+ Operation start                                        09:15:00                   08:43:00                  09:00:00
+ Operation finished                                     09:55:00                   09:03:00                  09:22:00
+ Arrival to post-operative unit                         10:15:00                   09:30:00                  09:25:00
+ Patient signed over to post-operative unit             10:15:00                   09:35:00                  09:30:00
+
+
+
+
+    From the literature review it seems that simulation re-          operations are carried out. Emergency rooms are available
+sults stand a much stronger chance of being implemented              24 hours a day, seven days a week.
+if a specific model is developed for a particular hospital               Rooms 8–19 are for inpatient surgery and are con-
+OR. This correlates with one of the barriers to implemen-            nected to the post-operative care unit for inpatients (UVA).
+tation in [6] mentioned above. Even though researchers               The UVA has 12 staffed beds between 08:00–21:00 on
+try to uncover general truths regarding OR management,               weekdays, and a smaller number of staffed beds avail-
+it can be concluded that great care needs to be taken when           able during nights. For inpatients, the majority of the pre-
+applying them in practice, since local circumstances can             operative care is carried out in the ward.
+be very different and vary from country to country and                   For outpatients there are three dedicated ORs (5–7)
+hospital to hospital.                                                and patients come in and out the same way through the
+    The paper is outlined as follows. First, after the intro-        DUVA. When patients arrive at the outpatient unit they
+duction and positioning of the research, an overview of              are assigned a bed in the DUVA where they receive pre-
+the Department of Operations and Intensive Care is given.            operative care. When the OR becomes available (accord-
+Then, the overall methodology of the research is presented           ing to the schedule), the patient is moved to that room and
+in Section 3. In Section 4, the pilot study is presented that        after the operation is completed the patient is moved back
+led to the main study, presented in Section 5. Finally, Sec-         to the same bed in the DUVA for post-operative care. The
+tion 6 contains conclusions and an outlook for future re-            DUVA also takes patients from other parts of the hospital,
+search.                                                              not only those that have operations at the OPC.
+                                                                         There are three rooms for eye surgeries (rooms 2–4),
+                                                                     which have a separate entry point. The ophthalmology
+2. Overview: Department of Operations and                            department does 50–60% of the work themselves, which
+Intensive Care                                                       means that they do not use OPC services (apart from the
+                                                                     physical room) for most of their operations. Finally, there
+The Department of Operations and Intensive Care at                   is one room for oral surgery – room 1.
+County Hospital Ryhov consists of several units. The op-                 There is a computerized registration system called
+erations central (OPC) is responsible for organizing hos-            FENIX, which, among other things, is used to measure
+pital’s elective and emergency surgery operations. The de-           patient time during operations, and also time spent for pre-
+partment also includes an intensive care unit (ICU), outpa-          operative and post-operative care. Patient time is defined
+tient surgery unit, pain unit, sterile central, anesthesiology       as the time from the moment when the operation team
+reception, and a secretariat. This study will mainly deal            meets the patient until the patient is signed over to the
+with OPC, ICU, and the outpatient surgery unit. In OPC               next unit. Within this time several other measurements are
+there are on average approximately 12,000 operations car-            made, such as anesthesiology time and operation time. Ta-
+ried out each year.                                                  ble 1 contains example data for three surgical cases.
+   The system under study consists of 18 ORs, numbered                   This table depicts the process surrounding the OR very
+1–17 and 19, pre- and post-operative care units for outpa-           well. The team meets the patient (the first measurement
+tients (DUVA), inpatients (UVA) and children (BARN),                 point), who then arrives in the OR and anesthesia induc-
+as well as an ICU. The ORs are open for booking eight                tion is started (the next measurement point). When the
+hours each day on weekdays except Friday, when most of               patient is anesthetized and the operation nurses have pre-
+the rooms are only available until lunch.                            pared the patient and the room for the operation, the next
+   There are two dedicated emergency rooms, number 11                measurement is made (ready for the operation). The op-
+and number 17, where most of the inpatient emergency                 eration start time is when the surgeon actually starts op-
+
+                                                                                    Volume 86, Numbers 8-9 SIMULATION        465
+
+                                                   Steins, Persson, and Holmer
+
+
+
+
+Figure 1. Operation activity flowchart
+
+
+
+
+erating on the patient, and the next measurement is made               The starting time for the first patient is set depend-
+when the operation is finished. When patient arrives in            ing on which department is responsible for the operation.
+the post-operative unit another measurement is made, and           Starting times for all other patients are set by the operator
+finally, the last measurement is made when the anesthe-            and operation team during the actual operation day. The
+siology/operation staff signs over the patient. The whole          rough planning works well and there are at most 2% can-
+time interval from the moment the team meets the patient           cellations due to planning mistakes or rescheduling in the
+until signing over to PACU is called patient-time in this          rough plan.
+paper.                                                                 OPC provides ORs and the operation team, opera-
+   Figure 1 illustrates the whole activity flow concerning         tor excluded. It can be seen as a service department to
+an operation. The timestamps in Table 1 are mainly related         other functions, operating specialties, or departments. It
+to step c14 in the flowchart, i.e. there is no direct asso-        is mainly the other departments that are responsible for
+ciation between the timestamps registered in the FENIX             filling the operation schedule so that utilization of OPC’s
+system and the activities in Figure 1.                             resources (rooms and staff) is as high as possible. OPC
+   The flow starts with a referral to the hospital and the de-     cannot influence what is being done and how well the
+cision to operate is made in the next step. A rough plan of        schedule is filled, since it is the operating specialties that
+the operations for a given day is available in the computer        act as clients who order the services from OPC. The main
+system several days in advance as it is filled by staff re-        clients of OPC are:
+serving operation time in the available time slots for each
+department. Detailed planning of operations is carried out             2 Ear, Nose and Throat department (ENT)
+the day before the actual operations during an operation
+conference meeting at 15:30.                                           2 Neurosurgery department1
+
+466   SIMULATION       Volume 86, Numbers 8-9
+
+             INCREASING UTILIZATION IN A HOSPITAL OPERATING DEPARTMENT USING SIMULATION MODELING
+
+
+
+   2 Obstetrics and Gynecology department1                     3. Methodology
+
+   2 Ophthalmology department1                                 The purpose of this work is twofold as previously stated.
+                                                               The first and also overall goal of the study is to explore
+   2 Oral surgery department1                                  the usability of simulation as a tool to analyze complex
+                                                               healthcare environments, since the use of simulation in
+   2 Orthopedics department1                                   Swedish healthcare is not widespread and not well docu-
+                                                               mented. Second, the simulation modeling was used to get
+   2 General surgery department.                               answers to specific questions regarding proposed changes
+                                                               in the operating department:
+Operation planning is first done by client departments and        2 investigating an experienced bottleneck at post-
+then adjusted at the planning conference the day before             operative care, which had not been confirmed by
+the actual operations (step a5 in the activity flowchart,           data analysis1
+Figure 1), when the plan is finalized in terms of which
+                                                                  2 evaluating a couple of simple, proposed solutions to
+operations will be carried out in which rooms the follow-
+                                                                    the post-operative bottleneck problem – will chang-
+ing day. There are several factors that affect the planning,
+                                                                    ing the LOS or having an earlier start for some op-
+such as the availability of operating surgeons and special
+                                                                    erations alleviate the problem?
+equipment. In addition, some operations must be carried
+out in a specific room, and some operations require that          2 how does the optimal allocation of OR resources to
+patients stay overnight at the post-operative care unit and         the OPC client departments look like?
+those beds are limited in number.
+    During the actual operation day, the schedule often        Discrete-event simulation was chosen as the method for
+needs to be readjusted, as not all operations take exactly     this analysis. The choice of simulation was primarily
+as long as planned and sometimes emergency operations          based on the fact that OPC can be seen as a queuing sys-
+need to be carried out at the expense of elective ones. This   tem where patients queue in order to utilize the operating
+can result in operations changing rooms or even result in      resources. There exists also a certain degree of stochas-
+cancellations.                                                 tic behavior in the system, since the operating times are
+    During an earlier internal study, a number of problem      unpredictable. Simulation also offers the possibility to vi-
+areas and improvement possibilities in OPC were iden-          sualize new planning scenarios, which in this case is most
+tified. These included the following:                          important. Simulation also allows the dynamics of a sys-
+                                                               tem to be analyzed. In this case, the patient load varies
+                                                               from day to day, creating a dynamic system.
+   2 large variations in the operation schedules, which            During the work, several models were built with an in-
+     means unnecessary variation in workload at OPC1           creased level of complexity. The first model in the pilot
+                                                               study represented only the flow through the post-operative
+   2 patients are poorly prepared for operations (missing      care unit, the second model also included the patient flow
+     information)1                                             through the operating theatres, and the final model in the
+                                                               main study also included the logic for planning the opera-
+   2 the first operation starts very late (85–95 minutes       tions, thus adding much complexity to the model. The pre-
+     after the operation team starts its shift)1               liminary results of this work have been reported in [19].
+                                                                   To get the model and its results accepted in the orga-
+   2 operations are delayed1                                   nization, representatives of all operating specialties were
+                                                               involved in the model building process, which helped in
+   2 long changeover times (the time between the finish        validating the model and also increased the model’s cred-
+     and start of two consecutive operations)1                 ibility. Earlier research shows that this is important if
+                                                               the changes that, according to the simulation, result in
+   2 low utilization of ORs (the average utilization is as     good patient flow and resource utilization are to be im-
+     low as 34% when measured as the time between              plemented in the real world [20, 21]. Another factor that
+     ‘operation start’ and ‘operation finished’ versus the     increases the credibility of the model is that one of the
+     total available time).                                    co-authors possesses an extensive amount of knowledge
+                                                               about the modeled system and the theoretical framework
+It is mainly elective surgery that has the most problems as    that governs it.
+mentioned above, emergency surgeries work well as they
+have dedicated rooms and operation teams. Another prob-        4. Pilot Study
+lem area is the post-operative care unit, which by some
+staff members was reported as overloaded from time to          Since simulation as a method was unfamiliar to the oper-
+time.                                                          ating department, it was decided to start out with a pilot
+
+                                                                              Volume 86, Numbers 8-9 SIMULATION        467
+
+                                                    Steins, Persson, and Holmer
+
+
+
+
+Figure 2. Hourly PACU occupancy, pilot study (average and standard deviation)
+
+
+
+study, building a simple model around the problem with                Figure 3) creates the feeling among the employees that
+the post-operative care unit. The first version of the model          there is a capacity problem at the PACU.
+was a trace-driven simulation based on historical data pa-                The simulation model confirmed the bottleneck at the
+tient records. The goal was to validate the model results             post-operative department. The graph in Figure 4 shows
+against the data, confirm the experienced problem at the              the number of busy beds during a 10-month period.
+post-operative care unit, and also do a first evaluation of               The limit of 12 busy beds was reached 308 times dur-
+simulation as an analysis method, as this was the first time          ing the simulated 10 months. After the bottleneck was
+simulation modeling has been used in this particular de-              confirmed, a couple of simple solutions were tried to see
+partment.                                                             if there was anything that could be done to alleviate the
+   The simulation model was built using the commercial                problem. For instance, shortening the LOS in the post-
+simulation software ARENA [22] and included patient                   operative department to see how much shorter it has to
+flows through pre-operative, perioperative, and immedi-               be to make the problem disappear. So for every 5% de-
+ate post-operative care episodes. Since the model did not             crease in LOS, a simulation run was carried out and the
+include logic for operation planning and scheduling, the              results showed the number of times the capacity limit was
+model was run with actual schedules for the year 2005.                reached. The results of those experiments are displayed
+Outputs from the model included the utilization of post-              in the Figure 5. It was concluded that for capacity prob-
+operative care units, including counting the number of oc-            lems to disappear it was necessary to shorten the LOS by
+casions when the care unit was full. For the PACU, both               around 50%, which was not realistic.
+overall utilization and hourly utilization was recorded. It               When investigating the utilization of post-operative
+was necessary to look into hourly utilization in order to             beds, it was noticed that most of these capacity problems
+determine when during the day the PACU was most oc-                   occur on afternoons around 4–5 pm. So another, quite rea-
+cupied and thus when there was a bottleneck to the whole              sonably sounding, idea was to see what happens if start-
+flow.                                                                 ing times for operations in two rooms were changed so
+   During the validation of this model it was discovered              that they started one hour earlier. It was expected that this
+that there was a discrepancy in what was considered to be             simple change could shift the peak load somewhat and
+the maximum capacity of the PACU. Originally it was set               the post-operative unit would not experience the same ca-
+to 15 beds, but as it turned out later, only 12 beds were             pacity problems any more. The results from the simula-
+fully staffed, and 3 additional beds were used as tempo-              tions showed that not much would change. Bed occupancy
+rary holding beds in case there were more than 12 patients            showed approximately the same pattern as before and the
+coming into PACU. Therefore we used 12 beds as 100%                   limit of 12 beds was reached about the same number of
+capacity during normal the opening hours of 08:00–21:00.              times. Both time and money was saved here since the post-
+   Overall utilization turned out to be quite low – around            operative department did not have to implement a change
+50%, even if looking at the utilization during weekdays               that would not give the expected results.
+between 08:00 and 21:00 only. Looking at the hourly uti-                  It was clear at this point that none of the proposed so-
+lizations (see Figure 2), there are peak loads during after-          lutions above would solve the post-operative bottleneck
+noons, and this phenomena during some weekdays (see                   problem. The solution to it was probably to be found in the
+
+468   SIMULATION     Volume 86, Numbers 8-9
+
+             INCREASING UTILIZATION IN A HOSPITAL OPERATING DEPARTMENT USING SIMULATION MODELING
+
+
+
+
+Figure 3. PACU occupancy variation during weekdays
+
+
+
+
+Figure 4. Number of busy beds in PACU during a 10-month period
+
+
+
+
+Figure 5. Capacity limit and LOS decrease factor (100% = original LOS)
+
+
+
+
+                                                                         Volume 86, Numbers 8-9 SIMULATION   469
+
+                                                   Steins, Persson, and Holmer
+
+
+Table 2. Selected versus total procedure codes
+
+                                                 Elective       Elective         Emergency        Emergency         Total
+                                                 inpatient      outpatient       inpatient        outpatient
+ Total number of analyzed procedure codes        384            283              362              114               1,143
+ Number of selected procedure codes              36             47               24               4                 111
+ Ratio of selected codes (number of)             9%             17%              7%               4%                10%
+ Total patient time                              541,405        404,654          301,142          37,469            1,284,670
+ Patient time for selected codes                 296,509        315,791          121,473          8,439             742,212
+ Ratio of selected codes (time)                  55%            78%              40%              23%               58%
+
+
+
+way procedures are sequenced in the OR on a given day,                 2 LOS (patient-time), generated from probability dis-
+as indicated also by Marcon and Dexter [9]. The model                    tribution.
+was then extended to include the logic for planning and
+sequencing the procedures, thus allowing testing of sev-               2 What is the latest time at which the operation can
+eral ways to solve the post-operative bottleneck problem.                be performed?
+                                                                       2 In which ORs can the procedure be performed (pri-
+5. Main Study                                                            ority)?
+                                                                       2 Need for special equipment or instruments.
+In order to be able to test even more alternatives in a re-
+alistic way, a flexible logic for planning of the operation            2 Are there specific weekdays upon which this proce-
+schedules needed to be included in the model (the pilot                  dure has to be performed?
+study model was running with the actual schedule from
+2005). This new model would also allow the number of                   2 Does the patient need pre-operative care at the de-
+available ORs to be changed and the reallocation of op-                  partment?
+eration time to operating specialties in order to achieve              2 Does the patient need post-operative care at the de-
+better utilization and better fit to the actual demand.                  partment? Will the patient need to stay overnight?
+                                                                       2 LOS in pre- and post-operative care, generated from
+5.1 Data Collection and Input Analysis                                   a probability distribution.
+Data about time durations on surgical procedures and LOS           Due to the large number of infrequent procedures, the
+in the PACU was collected from the registration system             codes were grouped together only leaving out certain, se-
+FENIX using data from the year 2005. The procedure                 lected large volume codes and grouping the rest by spe-
+codes that represented most common procedures were se-             cialty and type of care. This grouping was done after
+lected for the analysis covering 95% of all procedures,            the individual characteristics of the separate codes listed
+thus eliminating procedures that were very short and very          above were specified, so that the group had an accurate
+seldom done. Nevertheless, many procedures in the se-              representation of those characteristics. Table 2 shows the
+lected data were performed less than five times per year.          number of selected codes per type of care and illustrates
+In total, 1,143 surgical procedure types were analyzed,            clearly that a small number of procedures (10%) con-
+divided into seven operating specialties (main clients of          tribute to a large volume of patient-time (58%).
+OPC) and further divided into four types of care (inpatient            A lognormal distribution was found to be the best fit for
+elective, outpatient elective, inpatient emergency, and out-       most of the procedure codes for both patient-time in the
+patient emergency). Each procedure type thus has a main            OR and also the LOS at the PACU. Each of the selected
+procedure code associated with it as well as a type of care        codes, as well as the aggregated groups, were assigned
+code (1–4). The total amount of procedures done in 2005            specific probability distributions for the generation of OR
+was 12,955, and the selected 1,143 procedure codes rep-            patient-time and post-anesthesia time.
+resented 12,147 procedures.                                            Other input parameters not directly related to proce-
+   For each of the 1,143 procedure codes the following             dure codes include the following.
+characteristics were analyzed and were used to drive the
+model logic:                                                           2 For each of the 18 ORs:
+
+      2 Number of procedures to be performed per year.                       – opening hours, lunch breaks, changeover
+                                                                               times (including a special schedule for emer-
+      2 Type of care.                                                          gency rooms)1
+
+470    SIMULATION       Volume 86, Numbers 8-9
+
+              INCREASING UTILIZATION IN A HOSPITAL OPERATING DEPARTMENT USING SIMULATION MODELING
+
+
+
+
+Figure 6. Simplified conceptual model
+
+          – allocation of block time to operating special-          urgency, or deadline for performing the procedure, is de-
+            ties.                                                   termined by the time the case was generated in the model
+                                                                    (arrival time) and a time interval, specific to this case, that
+    2 For each of the PACUs:                                        is generated from a probability distribution specified for
+                                                                    each case. For instance, most planned cases can be per-
+          – opening hours, number of staffed beds, num-             formed at the earliest a couple of weeks from the time the
+            ber of temporary holding beds.                          decision about the operation is made (arrival time) and no
+                                                                    later than three months after it, which is the limit of ‘max-
+Later, the same analysis was carried out for data from the          imum waiting-time guarantee’ in Swedish healthcare.
+year 2007, and the inputs were adjusted accordingly for                The constraints that are taken into account when
+the latest set of experiments described below.                      scheduling planned procedures are:
+
+                                                                       1. is the particular OR allocated to the specialty per-
+5.2 Model Design and Validation                                           forming the operation?
+
+                                                                       2. is there enough time left to perform the operation?
+Figure 6 shows the simplified conceptual model used in
+the main study. Below is a brief description of model                  3. if special equipment is needed, is it available?
+logic.
+    The model starts out by defining a demand of differ-               4. can this procedure be performed during this partic-
+ent surgical procedures, which is derived from actual pa-                 ular weekday?
+tient data and then randomly generated in the simulation
+model. Generated patients, when admitted to surgery, are               5. in case the patient will need to stay in the PACU
+scheduled for operation by the operation planning algo-                   during the night, is there a bed available?
+rithm, which tries to minimize waiting time while at the
+same time trying to put together as efficient a schedule as         Thus, the model assumes that staff will be available to per-
+possible given certain constraints.                                 form this operation on a given weekday. The determina-
+    Planning the operation schedule is the most compli-             tion whether there is enough time left to perform the case
+cated part of this model. We use a kind of a meta-model             is based on the predicted length of the procedure. We use
+inside the simulation model. The next day’s list of planned         historical data to determine the median time for this par-
+operations for each room is generated by simulating the             ticular case type and add 10% in order to calculate the pre-
+next day during the current day in the ‘virtual OR’, using          dicted time in the model. Most operation theatre manage-
+the same constraints that would apply the next day, only            ment information systems use a similar approach, based
+without a stochastic element.                                       on mean or median time when suggesting a predicted time
+    Scheduling is done by selecting the first best OR for           for a particular case in planning an OR schedule.
+the case that is first in queue, using the list of priorities for       One could argue that perhaps a more advanced algo-
+the ORs. If the first case in the queue cannot be performed,        rithm should be used when making the OR schedule, but
+then the next case is chosen from the queue for evaluation.         we wanted to mimic real-life planning as closely as possi-
+The queue is sorted with the most urgent cases first. The           ble. There is also evidence that simple online bin-packing
+
+                                                                                    Volume 86, Numbers 8-9 SIMULATION          471
+
+                                                  Steins, Persson, and Holmer
+
+
+
+
+Figure 7. Visual layout of the simulation model
+
+
+
+algorithms like this perform just as well in terms of the         but there are also minor flows that take other paths through
+resulting utilization [13].                                       the system that are also accounted for in the model.
+   For emergency operation scheduling, the model logic            Whether a patient for a particular case requires pre- and
+is slightly different. Emergency cases are also assigned          post-operative care in OPC is determined by a probability
+a randomized deadline, which is of course much shorter            distribution derived for each case type.
+than for planned cases, and ranges from 0 to several hours,           The PACU operates very much the same as in the pi-
+depending on a case type. Then the case is evaluated              lot model. For the inpatient PACU (UVA) there is enough
+against available emergency rooms and staff. There are            staff to take care of 12 patients, but in total there are 15
+always two emergency rooms available, but they are not            beds, which means that there are three extra beds, so-
+always staffed. For instance, during the night only proce-        called holding beds. If a new patient arrives and there is
+dures that cannot wait until morning are performed by an          no room among the 12 staffed beds, one of the recovering
+emergency team that is on call. During the day both emer-         patients is moved to a holding bed and the model results
+gency rooms are staffed, and in cases where all emergency         show how often this happens, as well as how long a patient
+resources are already busy, and we have a case that cannot        stays in the holding bed.
+wait until they become available, the emergency case is               The model was implemented in ARENA software, and
+performed in one of the elective ORs, delaying the origi-         had a visual presentation that was easy to recognize for
+nally planned cases in that room.                                 all involved parties (see Figure 7). The layout represents
+   After the case is scheduled, patients can then go              all of the ORs, and also the pre- and post-operative units.
+through pre-operative care, the actual operation and there-       This visual aspect of the model is important because it also
+after post-operative care, which is the most common flow,         helps to build credibility and increases the acceptance of
+
+472   SIMULATION      Volume 86, Numbers 8-9
+
+             INCREASING UTILIZATION IN A HOSPITAL OPERATING DEPARTMENT USING SIMULATION MODELING
+
+
+
+the results, when one can actually see what is going on in     difference is that the model is little less flexible, which is
+the department day by day, hour by hour. If needed, the        illustrated by many cells where the FENIX data has a few
+model can be stopped and one can examine the character-        cases but the model has none, e.g. room 11, Orthopedics,
+istics of the particular patient, which can further help in    type 3. While most of the Orthopedics emergency cases
+developing an understanding of the patient flow.               are performed in room 17, a small number of them were
+    Outputs from the model include the following:              also done in room 11, while the model logic was stricter
+    Grouped by speciality and type of care:                    in following the priority list and placing all cases in room
+                                                               17. Compared with the total number of operations in the
+   2 Total number of patients admitted to surgery,             Orthopedics cases, this deviation is quite small, 17 cases
+                                                               in room 11 compared to 675 in total.
+   2 Number of the patients on the waiting list,                   The same applies for General Surgery, type 3, where
+   2 Number of patients not cared for in time                  the model has placed all emergency operations in room
+                                                               11, while in the real world some of these emergency op-
+   2 Average delay for patients not cared for in time          erations have been performed in elective rooms (8–10, 13,
+     (hours)                                                   14), probably due to urgency and unavailability of emer-
+                                                               gency rooms at that particular time. In short we can con-
+   2 Number of case cancellations                              clude that the model has incorporated much more strict
+                                                               rules to OR allocations than are followed in the real plan-
+   2 OR utilization (grouped by speciality and by room)        ning. This is of course a conscious choice of making
+   2 Number of PACU staffed bed shortages (inpatient           the model follow the rules. The new allocation procedure
+     and outpatient PACU)                                      should not need to bend the allocation rules in order to
+                                                               create a feasible plan.
+   2 Number of times all PACU beds are full (inpatient             Some of the output performance measures are difficult
+     and outpatient PACU)                                      to compare with historic data. For instance, the number of
+                                                               times a holding bed has to be used in a PACU (i.e. a new
+    The number of patients on the waiting list was moni-       patient arrives and all 12 ordinary beds are full) should be
+tored at the end of each simulated week, enabled in order      higher in the model, since its logic does not include the
+to assess the patient queue development during the simu-       extra effort that is made in reality to free one bed in ad-
+lated time.                                                    vance, and therefore historic data does not always show
+    The ARENA simulation model was validated using             occupancy that exceeds 12 when in fact it should have.
+several validation techniques. First of all, the conceptual    The number of cancellations is another figure with quite
+model was thoroughly discussed during the meetings with        large discrepancies against actual data from the real sys-
+OPC staff and representatives from the operating special-      tem. In reality, cancellations depend not only on the fact
+ties. This ensured that the right scope and level of detail    that actual time in the OR turns out to be much longer than
+was chosen for the purpose of simulation. The model was        predicted, but also on the patient and other circumstances
+also validated against historical data. A number of perfor-    that are not included in the model. Planning-related can-
+mance measures were compared from the model and the            cellations were estimated to be around 2–3% in reality.
+historical data extracted from the FENIX system. These         The model in fact produces a much higher rate of cancel-
+performance measures included the number of procedures         lations, and this is mainly because the planning logic uses
+performed for each procedure type in the model, the uti-       a strict median (median + 10%) as the planning time. This
+lization of ORs and post-operative care units, the number      was a deliberate decision. We know from other research
+of cancelled cases, etc.                                       that, apart from procedure type, at least two other factors
+    In order to validate the most complicated part of the      influence the procedure time significantly – the surgeon
+model – the scheduling of operations – the number of real      carrying out the operation and type of anesthesia [23].
+performed operations in each OR, separated into operating
+specialty (clinic) and different types of care was compared
+with the model data. Table 3 shows the complete table that     5.3 Experimental Design
+was used for this comparison. For each OR, there are two
+columns, one with data from the model (M) and one from         Experimental design aims at creating a plan for experi-
+the FENIX system (F). The rows in the table represent op-      ments that minimizes the cost of experiments (the number
+erating specialties (from General Surgery down to Oph-         of simulation runs and computer time), while maximizing
+thalmology), further subdivided in the type of care (1 –       the usefulness of the results. In total, four different exper-
+planned inpatient, 2 – planned outpatient, 3 – emergency       iments were executed, testing four different ideas to find
+inpatient, and 4 – emergency outpatient).                      the optimal allocation of OR resources and increase the
+    For the most of the cases, the model follows the real      utilization of the OR.
+allocation pattern quite well, for instance, room 8, Obstet-       In experiment 1 a new allocation of OR resources was
+rics and Gynecology, type 1, is a quite good fit. One major    tested in order to find an allocation that would better fit the
+
+                                                                               Volume 86, Numbers 8-9 SIMULATION          473
+
+                                            Steins, Persson, and Holmer
+
+
+
+
+474   SIMULATION   Volume 86, Numbers 8-9
+
+              INCREASING UTILIZATION IN A HOSPITAL OPERATING DEPARTMENT USING SIMULATION MODELING
+
+
+
+
+Figure 8. Utilization of OR resources
+
+
+
+actual demand and result in an evenly distributed utiliza-         These experimental ideas were discussed and selected
+tion of OR rooms among operating specialties. This meant        at the operating council with all operating specialties
+no other changes than taking some of the OR time away           present. The current situation or the base scenario was
+from specialties with low utilization and giving more to        simulated first and will be referred to as experiment 0.
+those specialties that have higher demand and high uti-
+lizations.
+    Experiment 2 was a simulation of a prospective sce-         5.4 Results
+nario where ophthalmology would move out most of its
+procedures from OPC and use OPC resources only for pa-          The main study involved a considerable development of
+tients that are under general anesthesia. This means that       the model, which then included logic for scheduling op-
+two of the ORs could be closed and two others (9 and 10)        erations and detailed input data regarding surgical proce-
+rebuilt as one large room, thus enabling additional types       dures. This version of the model allowed for the testing
+of procedures to be carried out in that room.                   of larger changes in the operating department and now
+    As described above, inpatient and outpatient flows are      the focus shifted from solving the bottleneck problem in
+currently separated in OPC, and all outpatient operations       the post-operative department to allocating operating de-
+are carried out in three dedicated ORs. Experiment 3 was        partment resources to better fit actual demand and test
+a test of whether allowing a mixture of inpatient and out-      several other reorganization alternatives. The model was
+patient surgery in all rooms would lead to better utilization   run for 20 replications for each of the experiments and a
+of resources. The idea behind this is that outpatient proce-    large number of output statistics were collected. Each run
+dures are in general shorter, and mixing longer and shorter     started with the generation of a queue of patients waiting
+procedures would allow the daily schedule in all rooms to       for operations that corresponded to a two-month volume
+be filled better than in the current situation.                 of patients for each of the operating specialties. The most
+    Experiment 4 proposes a more radical change to the or-      important results of the experiments are presented below.
+ganization of the ORs. Instead of operating in 18 rooms,           The goal of experiment 1 was reallocation of OR re-
+each being open from 07:45 to 16:30 with a lunch break,         sources to achieve a better fit to actual demand. The re-
+the experiment tested the set up of two six hour shifts         sults in terms of utilization of allocated resources can be
+without a lunch break to create a full work day between         seen in Figure 8. The biggest change is for the ophthal-
+07:00 and 19:00. The idea behind this was that it is easier     mology department, which is using only two ORs instead
+to schedule for 12 hours instead of for four (before or after   of three. The orthopedics department got more block time
+lunch break).                                                   allocated, since utilization levels approaching 85% and
+
+                                                                               Volume 86, Numbers 8-9 SIMULATION       475
+
+                                                     Steins, Persson, and Holmer
+
+
+Table 4. Results from the experiments
+
+                                                       Experiment 0    Experiment 1    Experiment 2    Experiment 3    Experiment 4
+ Results
+ Total number of patients admitted to surgery          9,224           9,327           7,930           9,330           9,358
+ ... among those elective patients                     7,339           7,451           6,059           7,459           7,487
+ Patients on the waitinglist (% of total number)       4.1%            2.0%            2.5%            2.1%            1.2%
+ Patients on the waitinglist                           303             152             151             154             89
+ Elective patients not cared for in time               995             1,072           945             1,081           872
+ ... with an average delay (hours)                     66.87           88.38           80.97           111.86          76.54
+ Emergency patients not cared for in time              396             102             366             383             113
+ ... with an average delay (hours)                     6.81            6.63            6.01            5.60            3.58
+ Resource utilization
+ Allocated time (hours per week, elective)             566.00          546.00          485.00          543.75          546.00
+ Utilization (%)                                       71%             75%             77%             76%             76%
+ Number of cancellations (bad planning)                679             664             546             607             488
+ Cancellations (%)                                     9.2%            8.9%            9.0%            8.1%            6.5%
+ Allocatied emergency time (hours per week)            196.3           196.3           196.3           196.3           207.0
+ Utilization emergency resources (%)                   65%             65%             65%             64%             61%
+ Postop
+ Number of staffed bed shortages (inpatient PACU)      129             175             139             147             115
+ All beds full (inpatient PACU)                        0               1               0               1               0
+ Number of staffed bed shortages (outpatient PACU)     1               2               0               0               0
+ All beds full (outpatient PACU)                       0               0               0               0               0
+
+
+
+higher in our case can generate an increase in overtime               PACU. The hourly PACU occupancy pattern is slightly
+usage (or an increase in queues for operations). The result           improved, leveling out the peak load in the afternoon. This
+is higher and more even utilization of resources among the            can be explained by the fact that the model is selecting the
+operating specialties.                                                first patient of the day regardless of the predicted proce-
+    The summary results of all four experiments can be                dure time and not the most difficult or longest case as was
+seen in Table 4. It can be concluded that all four exper-             often the case in reality. Figure 11 displays the hourly oc-
+iments improved the throughput slightly (except experi-               cupancy in experiment 1, which can be compared to Fig-
+ment 2, where a large group of patients was moved from                ure 2 in the pilot study.
+OPC altogether) and decreased the number of patients on
+a waiting list at the end of the simulation.                          6. Conclusions and Discussion
+    Waiting list dynamics for each of the operating spe-
+cialties are shown in Figures 9 (for experiment 0) and                The simulation experiments show that with implementa-
+10 (for experiment 4). The model was run for 33 weeks                 tion of the proposed changes it is possible to achieve bet-
+where OPC was operating at 100% capacity, as is the case              ter resource utilization. Experiments 3 and 4 show that the
+in reality during a normal year. During the remaining 19              proposed changes result in a greater flexibility in schedul-
+weeks OPC’s capacity is lower, due to vacations and hol-              ing operations (e.g. fewer cancellations).
+idays, which means that operating at 100% capacity OPC                    One of the major contributions of this paper is the set
+should be able to decrease the queues in all specialties. It          up for OR utilization planning that is built into the simula-
+can be concluded from Figures 9 and 10 that the OR setup              tion model. This has the characteristics of a meta-model,
+in experiment 4 is capable of decreasing waiting lists at             where the planning activity is in fact a simulation model
+a much higher rate than the current setup, particularly for           inside the model that creates a valid plan for the next day’s
+general surgery and orthopedics. Experiment 4 was also                operations. This is a novel and innovative approach that
+better than the rest of the alternatives in terms of taking           could inspire other researchers in the field to also try this
+care of patients within the time limits that were set for             simple but efficient set up.
+each of the procedures. The overall utilization of OR re-                 If the goal of the simulation project is to evaluate alter-
+sources increases in all four experiments and the number              natives for implementing change (changing the real sys-
+of cancellations is significantly lower in experiment 4.              tem), the model and its results must be convincing to
+    It can also be concluded that none of the tested alter-           all involved parties. The model results have to become
+natives significantly improve the situation at the inpatient          more objective grounds for discussion than just intuition
+
+476   SIMULATION      Volume 86, Numbers 8-9
+
+              INCREASING UTILIZATION IN A HOSPITAL OPERATING DEPARTMENT USING SIMULATION MODELING
+
+
+
+
+Figure 9. Waiting-list dynamics, experiment 0
+
+
+
+and loose thoughts. This means that the model must have        All four experimental ideas tested in the model have a
+high credibility, even in situations when the results show     potential for implementation. At the time of writing this
+‘unpleasant’ things. High credibility is achieved through      paper, actual plans are made to go further with testing
+model validation, client involvement, and the good repu-       re-allocation of OR resources similar to experiment 1.
+tation of the method and analyst, but it is not a guaran-      The goal is to find an allocation scheme that fits the cur-
+tee that the results will be accepted and implemented. In      rent demand, taking into account actual patient queues
+this project we spent quite a lot of time on validation and    in different operating specialties. Implementation of the
+client involvement, thus helping increase the credibility of   ideas tested in experiment 2 was postponed partly due to
+the results.                                                   financial reasons. Experiment 3 is part of a larger inves-
+    During the experimentation phase, the modeling group       tigation about outpatient surgery and it is too early to say
+met a number of challenges, for instance, how do we know       what impact the simulation results will have on the final
+when the optimal result is reached in terms of operation       outcome. What can be said is that simulation results alone
+planning? What is the optimal utilization of ORs? What         did not convince the members of the operating council
+output data should be chosen from the simulation model?        to go ahead with implementation of the proposed change
+Finally, the following criteria were chosen as the most im-    in experiment 3. The results of experiment 4 have been
+portant for a ‘good solution’:                                 presented to hospital management, since such substantial
+                                                               change would not only affect the operating department
+    2 all operations performed (no patient queue build-        but also other departments in the hospital. This is also the
+      up)1                                                     reason why further investigation is required before imple-
+                                                               mentation of this particular alternative. On the issue of im-
+    2 all operations performed within given time limits1       plementation it can also be mentioned that the pilot study
+                                                               indicated that shortening the LOS alone will not solve the
+    2 high (80–85%) utilization of resources (ORs)1            capacity problem at the PACU. This was taken into ac-
+                                                               count by the staff working on the problem in the sense
+    2 few cancellations                                        that several different measures should be taken in order
+                                                               to lessen the load in the afternoons. PACU occupancy is
+    2 post-operative care unit not overloaded.                 therefore no longer a problem at the department.
+
+                                                                              Volume 86, Numbers 8-9 SIMULATION         477
+
+                                                   Steins, Persson, and Holmer
+
+
+
+
+Figure 10. Waiting-list dynamics, experiment 4
+
+
+
+
+Figure 11. Hourly PACU occupancy, experiment 1 (average and standard deviation)
+
+
+
+   One of the goals of the study has been to evaluate sim-          actly like reality, and the modeling team needs to find the
+ulation as a tool for the analysis of operating departments.        balance between a high level of detail and ease of han-
+The experiences using simulation can be summarized as               dling the model. All important simplifications made in the
+follows. It takes a lot of time for the staff involved in the       model were discussed with OPC staff and operating spe-
+modeling process to learn and understand both simulation            cialties. One important simplification that raised a lot of
+and their own processes. The model will never behave ex-            questions was that the staff is not included in the model
+
+478   SIMULATION      Volume 86, Numbers 8-9
+
+             INCREASING UTILIZATION IN A HOSPITAL OPERATING DEPARTMENT USING SIMULATION MODELING
+
+
+
+explicitly. This was done deliberately in order to keep the     7. References
+model as simple as possible. This can be considered as a
+limitation of the model, since all experimental alternatives    [1] Marjamaa, R., A. Vakkuri and O. Kirvelä. 2008. Operating room
+should also be evaluated in terms of staffing possibilities.            management: why, how and by whom? ACTA Anaesthesiologica
+                                                                        Scandinavica, 52(5): 596–600.
+In the process of modeling the operating department, it         [2] Dexter, F., M. Davis, C. B. Egger Halbeis, R. Marjamaa R, J. Marty,
+was decided that the simulation model would first of all                C. McIntosh, Y. Nakata, K. N. Thenuwara, T. Sawa, M. Vigoda
+test different allocations of resources, such as ORs, in-               2006. Mean operating room times differ by 50% among hospitals
+struments, and equipment. The staff is included implicitly,             in different countries for laparoscopic cholecystectomy and lung
+for instance, in requirements that certain procedures can               lobectomy. J Anesth 20(4): 319–22.
+                                                                [3] Strum, D.P., A.R. Sampson, J.H. May and L.G. Vargas. 2000. Sur-
+only be performed on certain weekdays. In addition, cer-                geon and type of anesthesia predict variability in surgical proce-
+tain equipment requires a certain competence, so when the               dure times. Anesthesiology, 92(5): 1454–1466.
+model allows for five simultaneous radiology-supported          [4] Jun, J.B. and S.H. Jacobson. 1999. Application of discrete-event sim-
+procedures it also means that it is possible to staff accord-           ulation in health care clinics: A survey. Journal of the Opera-
+ingly. For more radical changes, like in experiment 4, if               tional Research Society, 50(2): 109.
+                                                                [5] Fone, D., S. Hollinghurst, M. Temple, A. Round, N. Lester, A.
+the simulation model results suggest that the experimental              Weightman, K. Roberts, E. Coyle, G. Bevan, S. Palmer 2003.
+alternative should be implemented then further investiga-               Systematic review of the use and value of computer simulation
+tion will be carried out on possibilities to staff the allo-            modelling in population health and health care delivery. J Public
+cation scheme tested in the model. Modeling work like                   Health Med 25(4): 325–35.
+                                                                [6] Brailsford, S. 2005. Overcoming the barriers to implementation of
+this also requires large amounts of good quality data. For-             operations research simulation models in healthcare. Clinical
+tunately, the data available in the FENIX system did not                and Investigative Medicine Medecine Clinique et Experimentale,
+contain too many errors. Nevertheless, some information                 28(6): 312–315.
+that would improve the quality of the analysis was missing      [7] Edward, G. M., S. F. Das, S. G. Elkhuizen, P. Bakker, J. Hontelez, M.
+                                                                        Hollmann, B. Preckel, L. Lemaire 2008. Simulation to analyse
+at this point. For instance, we did not have accurate data              planning difficulties at the preoperative assessment clinic. Br J
+on current waiting lists for each of the operating special-             Anaesth 100(2): 195–202.
+ties, and thus tested the model with a two-month queue for      [8] Marcon, E., S. Kharraja, N. Smolski B. Luquet, J. Viale 2003. De-
+all specialties.                                                        termining the number of beds in the postanesthesia care unit: a
+    Even though this was the first simulation project at                computer simulation flow approach. Anesth Analg 96(5): 1415–
+                                                                        23.
+OPC, after gaining some experience it was easy to un-           [9] Marcon, E. and F. Dexter. 2006. Impact of surgical sequencing on
+derstand the methodology and the model, which enabled                   post anesthesia care unit staffing. Health Care Management Sci-
+the testing of different solutions with simulation. Another             ence, 9(1): 87–98.
+advantage of simulation was that it was easy to visual-         [10] VanBerkel, P.T. and J.T. Blake. 2007. A comprehensive simulation
+                                                                        for wait time reduction and capacity planning applied in general
+ize and gain acceptance and understanding for what is be-               surgery. Health Care Management Science, 10(4): 373–385.
+ing done or should be done in order to improve the cur-         [11] Lowery, J.C. and J.A. Davis. 1999. Determination of operating room
+rent situation. Simulation has the potential to save money,             requirements using simulation. In Proceedings of the 1999 Win-
+as we did not need to test solutions in reality that would              ter Simulation Conference, pp. 1568–1572.
+not work. As one of the usual ‘side effects’ in simulation,     [12] Tyler, D.C., C.A. Pasquariello and C.H. Chen. 2003. Determin-
+                                                                        ing optimum operating room utilization. Anesthesia & Analgesia,
+in this project the modeling also forced us to go through               96(4): 1114–1121.
+the patient flow step by step and thus ‘discover’ possibil-     [13] Dexter, F., A. Macario, R.D. Traub M. Hopwood, D. Lubarsky
+ities for improvement. Working on this simulation model                 1999. An operating room scheduling strategy to maximize the
+also helped everyone involved to get the same view of the               use of operating room block time: computer simulation of pa-
+                                                                        tient scheduling and survey of patients’ preferences for surgical
+process.                                                                waiting time. Anesth Analg 89(1): 7–20.
+    Currently, simulation modeling is seldom used in            [14] Dexter, F., and R.D. Traub. 2002. How to schedule elective surgical
+Swedish healthcare organizations. We have seen that there               cases into specific operating rooms to maximize the efficiency
+is a great potential in using simulation in studying patient            of use of operating room time. Anesthesia & Analgesia, 94(4):
+flows and managing capacities. Is it going to be easier and             933–942.
+                                                                [15] Bowers, J., and G. Mould. 2004. Managing uncertainty in or-
+more accepted to use simulation in the future? Is simula-               thopaedic trauma theatres. European Journal of Operational Re-
+tion going to be built into future IT-support systems, such             search, 154(3): 599–608.
+as operation planning systems? For it to happen we still        [16] Stahl, J. E., D. Rattner, R. Wiklund J. Lester, M. Beinfeld, G.
+have a lot to do in order to show the real value of using               Gazelle 2004. Reorganizing the system of care surrounding la-
+                                                                        paroscopic surgery: a cost-effectiveness analysis using discrete-
+simulation for analyzing patient flows in healthcare. This              event simulation. Med Decision Making 24(5): 461–71.
+is also one of our goals for future work with this model1       [17] McAleer, W. E., J. A. Turner, D. Lismore, I. Naqvi 1995. Simulation
+we want to see if the solutions that we find with the help              of a hospital’s theatre suite. J Manag Med 9(5): 14–26.
+of simulation can be implemented in reality and what the        [18] Everett, J.E. 2002. A decision support simulation model for the
+outcome is.                                                             management of an elective surgery waiting system. Health Care
+                                                                        Management Science, 5(2): 89–95.
+                                                                [19] Steins, K. and M. Holmer 2007. Evaluating proposed changes in the
+                                                                        operating department using visual patient flow simulation. Acta
+                                                                        Anaesthesiologica Scandinavica, 51(s118): 18.
+
+
+                                                                                  Volume 86, Numbers 8-9 SIMULATION                  479
+
+                                                         Steins, Persson, and Holmer
+
+
+
+[20] McHaney, R., D. White and G.E. Heilman. 2002. Simulation project    ulation model building process and simulation applications in
+       success and failure: survey findings. Simulation & Gaming,        healthcare management.
+       33(1): 49–66.
+[21] Musselman, K.J. 1998. Guidelines for Success. In J. Banks (Ed.),
+       Handbook of Simulation, pp. 721–743, John Wiley & Sons, New       Fredrik Persson is an assistant professor of Quantitative Logis-
+       York.                                                             tics at the Department of Science and Technology at Linköping
+[22] Kelton, W.D., R.P. Sadowski and D.T. Sturrock. 2007. Simulation     University, Campus Norrköping, Sweden. His research interests
+       with Arena, 4th edn, McGraw-Hill Higher Education, Boston.        include the modeling and simulation of manufacturing systems
+[23] Dexter, F., E. U. Dexter, D. Masursky, N.A. Nussmeier 2008. Sys-    and supply chains in industry and in the service sector. Of special
+       tematic Review of General Thoracic Surgery Articles to Iden-      interest are the construction industry and logistics in healthcare.
+       tify Predictors of Operating Room Case Durations. Anesth Analg
+       106(4): 1232–41.
+                                                                         Martin Holmer is an MD, specialist in Anesthesiology and In-
+                                                                         tensive Care. He is currently working as a Senior Physician
+                                                                         and Business Manager at the Department of Operations and
+Krisjanis Steins is a lecturer at the Department of Science and          Intensive Care in County Hospital Ryhov, Jönköping, Sweden.
+Technology at Linköping University, Campus Norrköping, Swe-              He is also chairman of the section for operation theatre man-
+den. He received his MSc in Computer Science from Riga Techni-           agement within the Swedish Society of Anaesthesiology and
+cal University, Riga, Latvia. His research interests include sim-        Intensive Care Medicine (SFAI).
+
+
+
+
+480   SIMULATION       Volume 86, Numbers 8-9
+

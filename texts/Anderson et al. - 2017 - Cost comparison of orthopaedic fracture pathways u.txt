@@ -1,0 +1,770 @@
+    Open Access                                                                                                                                    Research
+
+
+                                        Cost comparison of orthopaedic fracture
+
+
+
+
+                                                                                                                                                                      BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                        pathways using discrete event
+                                        simulation in a Glasgow hospital
+                                        Gillian H Anderson,1 Paul J Jenkins,2 David A McDonald,3 Robert Van Der Meer,1
+                                        Alec Morton,1 Margaret Nugent,2 Lech A Rymaszewski2
+
+
+
+
+                                                                                                                                                                                            Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+To cite: Anderson GH,                   Abstract
+Jenkins PJ, McDonald DA, et al.                                                                          Strengths and limitations of the study
+                                        Objective Healthcare faces the continual challenge of
+Cost comparison of orthopaedic          improving outcome while aiming to reduce cost. The aim
+fracture pathways using                                                                                  ►► We used a simulation-based costing approach to
+                                        of this study was to determine the micro cost differences
+discrete event simulation in a                                                                              compare the costs of a service innovation (the virtual
+                                        of the Glasgow non-operative trauma virtual pathway in
+Glasgow hospital. BMJ Open                                                                                  fracture clinic or VFC) with the default standard of
+2017;7:e014509. doi:10.1136/            comparison to a traditional pathway.
+                                                                                                            care, in order to quantify the cost saving associated
+bmjopen-2016-014509                     Design Discrete event simulation was used to model and
+                                                                                                            with the VFC and support decision makers thinking
+                                        analyse cost and resource utilisation with an activity-based
+►► Prepublication history for                                                                               of introducing this new model in their own hospitals.
+                                        costing approach. Data for a full comparison before the
+this paper is available online.                                                                          ►► The data which populates our model is based on
+                                        process change was unavailable so we used a modelling
+To view these files please visit                                                                            operating data from a hospital which has piloted VFC
+                                        approach, comparing a virtual fracture clinic (VFC) with a
+the journal online (http://​dx.​doi.​                                                                       and operated it since 2011.
+org/​10.​1136/​bmjopen-​2016-​          simulated traditional fracture clinic (TFC).
+                                                                                                         ►► Our model is explicitly designed to reflect variability
+014509).                                Setting The orthopaedic unit VFC pathway pioneered at
+                                                                                                            in costs as not every patient will have the same
+                                        Glasgow Royal Infirmary has attracted significant attention
+                                                                                                            needs and the same costs.
+Received 4 October 2016                 and interest and is the focus of this cost study.
+                                                                                                         ►► Simulated studies involve a great deal of work and
+Revised 7 July 2017                     Outcome measures Our study focused exclusively on
+Accepted 21 June 2017                                                                                       necessarily involve making assumptions, both of
+                                        patients with non-operative trauma attending emergency
+                                                                                                            which could have been avoided had baseline data
+                                        department or the minor injuries unit and the subsequent
+                                                                                                            been collected before the VFC was introduced.
+                                        step in the patient pathway. Retrospective studies of
+                                        patient outcomes as a result of the protocol introductions
+                                        for specific injuries are presented in association with
+                                        activity costs from the models.                                without regard to the outcomes achieved
+                                        Results Patients are satisfied with the new pathway, the       is unsafe and potentially limits effective
+                                        information provided and the outcome of their injuries
+                                                                                                       care.9 When health services are faced with
+                                        (Evidence Level IV). There was a 65% reduction in the
+                                        number of first outpatient face-to-face (f2f) attendances in
+                                                                                                       increased demand, service redesign can be
+                                        orthopaedics. In the VFC pathway, the resources required       presented as the way forward. Instead of
+                                        per day were significantly lower for all staff groups          providing additional capacity, clinicians and
+                                        (p≤0.001). The overall cost per patient of the VFC pathway     managers should seek to identify activity
+                                        was £22.84 (95% CI 21.74 to 23.92) per patient compared        which shows no demonstrable patient
+                                        with £36.81 (95% CI 35.65 to 37.97) for the TFC pathway.       benefit.10 11 These activities may be the result
+                                        Conclusions Our results give a clearer picture of the cost     of traditional practices that have not been
+                                        comparison of the virtual pathway over a wholly traditional    scrutinised in the light of newer evidence.
+                                        f2f clinic system. The use of simulation-based stochastic      However, clinicians and managers may fear
+                                        costings in healthcare economic analysis has been limited
+                                                                                                       future cuts in essential resources if volume
+1
+ Department of Management               to date, but this study provides evidence for adoption
+Science, University of                  of this method as a basis for its application in other
+                                                                                                       decreases.12 The term ‘clinical pathway’, first
+Strathclyde Business School,            healthcare settings.                                           used in 1985, has widespread use in health-
+Glasgow, UK                                                                                            care management.13 Essential to creating
+2
+ Department of Orthopaedic                                                                             value is to understand patient care pathways
+Surgery, Glasgow Royal                                                                                 and to enhance care quality by improving
+Infirmary, Glasgow, UK
+                                        Introduction
+3
+ Quality and Efficiency Support         An ongoing challenge within healthcare is to                   risk adjusted patient outcomes, promoting
+Team, Scottish Government,              improve the quality of care while reducing                     patient safety and increasing satisfaction with
+Glasgow, UK                             cost.1–3 A common response to increasing                       optimum use of resources.14 More recently,
+                                        demand is to attempt to increase capacity                      computerised algorithmic forms have been
+ Correspondence to
+ Gillian H Anderson;                    and activity4 through additional funding.5 6                   called ‘care coordination pathways’ which
+​gillian.​anderson.​101@​strath.​       In the longer term, this is financially unsus-                 support a variety of functions.15 These would
+ ac.​uk                                 tainable.7 8 In addition, cost reduction                       include benchmark treatment steps with an
+
+                                               Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509                                1
+
+Open Access
+
+associated cost and are considered in a different way to        to reduce unnecessary variation.38–40 Protocols include
+clinical pathways.                                              the use of removable Velcro splints for specific injuries
+
+
+
+
+                                                                                                                                              BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+   In healthcare systems, it is relatively simple to measure    and enable direct ED discharge of minor stable fractures
+metrics such as volume16 but more difficult to measure          and facilitate patient self-care without the need to attend
+clinical outcome, patient satisfaction and ultimately,          a clinic for removal.41 Those not discharged have their
+value.9 The identification of activities that represent poor    records and X-rays reviewed 7 days a week, by an Ortho-
+clinical and financial value, and obtaining support for         paedic consultant and senior nurse in a ‘virtual frac-
+redesign, are challenging.17                                    ture clinic’ (VFC). Again standard agreed protocols are
+                                                                used during VFC for some injuries to determine further
+                                                                treatment, reducing further unnecessary variation. The
+
+
+
+
+                                                                                                                                                                    Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+Case setting                                                    resulting management plan is then outlined and agreed
+This paper focuses on orthopaedic outpatient fracture           with the patient by telephone immediately afterwards. An
+clinic pathway redesign which was developed at Glasgow          ‘open-door’ policy is essential to respond to any patient’s
+Royal Infirmary (GRI) with the primary aim of improving         concerns after discharge. Patients therefore only attend
+patient care.18–20 GRI is a large university teaching           when necessary, at the optimal time point and with the
+hospital serving a metropolitan area. It is financed by the     most relevant specialist. The VFC pathway includes the
+National Health Service (NHS) in Scotland. The NHS              attendance of patients for their first face to face visit. The
+provides universal coverage, funded from general taxa-          standardisation of care along evidence-based guidelines,
+tion and free at point of use. In 2014/15, £10.8 billion was    as applied in the Glasgow pathway, is an important way of
+allocated by the Scottish Government for operating costs        increasing value.39 However, is a virtual fracture pathway
+of the NHS.21 This is shared proportionally among the 14        cost effective?
+health boards in Scotland and 2 of the 8 special boards,
+based partially on the Resource Allocation Formula.22
+   Clinicians identified unnecessary duplication in tradi-      Methods
+tional fracture clinics (TFCs), especially where patients       The study was performed at GRI. It is a provider of both
+with minor orthopaedic trauma can be managed effec-             secondary and tertiary orthopaedic care. Under the terms
+tively by emergency medicine clinicians. However, it is         of the Governance Arrangements for NHS Research
+common practice to have a further face-to-face (f2f)            Ethics Committees in the UK, the research project was
+consultation with an orthopaedic clinician23–25 often           classified as a service evaluation and therefore did not
+within 48 hours of the original emergency department            require ethical review.
+(ED) attendance. The patient does not gain any new                 There are different methods to quantify the costs asso-
+information or further treatment during many of these           ciated with a healthcare process. A ‘top-down’ approach
+encounters.26 It can be physically arduous and financially      examining high-level, administrative, financial data has
+penalising for patients to attend during this most painful      already been performed.36 This does not detail how the
+and functionally restricted period of their recovery.           cost savings were realised.
+Recent evidence supports encouraging early mobilisation            Mapping patient pathways assists in the redesign of
+without further routine review by demonstrating good            healthcare systems42 and this was used to understand
+functional outcomes.27–34 In healthcare systems with            the VFC pathway and the TFC pathway (figure 1 and
+fee-per-patient visit,35 these patients may be considered as    figure 2). Discrete event simulation was chosen as the
+a source of income.                                             modelling tool as it is often used for comparison of alter-
+   While we recognise that non-operative orthopaedic            native scenarios. Capturing variability in the parameters
+patient pathways vary and operate according to local            defining the pathways was also important.43 It had also
+conditions, the VFC model pioneered at GRI has attracted        been previously used at the case hospital with a focus on
+significant attention and interest.20 For example, other        improving patient flow. This mapping can then be trans-
+pathways use Trauma Triage Clinics where all patients with      lated to DES models which have the benefit of incor-
+non-operative trauma are virtually reviewed by an ortho-        porating stochastic variability and modelling of patient
+paedic consultant, with instructions transmitted elec-          flows, which has been used extensively in healthcare.44 45
+tronically for nurse and administrative staff to execute,       DES has also been used to examine costs in time-driven
+while others carry out virtual reviews with a larger team.      activity-based costing (TDABC), a ‘bottom-up’ approach
+Previously, the only evidence on costing was derived from       to costing. Kaplan et al9 evaluated the time spent and
+a relatively broad brush top-down costing,36 which gives        costs incurred at each step of a complete patient care
+relatively little insight into the cost savings and outcome     cycle and summed using clinical resources, material
+measures. One advantage of the Glasgow virtual fracture         and allocated costs. A pilot project undertaken using
+pathway (figure 1), promoted by the Scottish Govern-            TDABC concluded that better management of resource
+ment37 is that it uses agreed evidence-based standard           utilisation will ultimately enable providers to deliver the
+protocols and multidisciplinary review of patients. Agreed      same, or better, outcomes with fewer personnel. These
+protocols between the ED and orthopaedic department             detailed costings can provide evidence to inform deci-
+have been established for six common/frequent injuries          sion making46–48 as they investigate the cost of individual
+
+2                                                              Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509
+
+                                                                                                                        Open Access
+
+
+
+
+                                                                                                                                             BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                                                                                                                                                   Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+Figure 1 Virtual fracture pathway process flow model using the symbols shown to define individual steps in the process. This
+defines the flow of information and the review process where patients are reviewed without being present. It also includes a
+predefined process where some patients are seen face to face in a traditional fracture clinic. ED, emergency department; MIU,
+minor injuries unit.
+
+episodes by measuring actual resource utilisation.9 49 By                      Outcomes on the Glasgow pathways
+using a simplified mapping and modelling approach and                          This is reported based on literature published by the
+including personnel costs, we can report on the value of                       case hospital. Audit and publication for specific injury of
+two different patient pathways. DES for this type of costing                   patient outcomes has been ongoing at the study hospital
+approach facilitates comparison between alternative path-                      since the new pathway began operating in 2011. There
+ways providing managers and clinicians with information                        are six protocols used by ED to discharge stable frac-
+to improve the patient experience. DES was also useful                         tures, with four publications thus far published relating
+as it allowed us to assess costs subject to variations in                      to patient outcomes.26 50–52 Patients are assessed using
+demand and available resources. The role of DES is often                       patient-reported outcome measures appropriate to
+used as a basis for experimentation, especially when there                     their injury in addition to patient satisfaction regarding
+is interest in looking at different scenarios for change and                   discharge leaflets and the outcome of their injury. The
+improvement. It is used here retrospectively to show the                       unit has also published more generally on the VFC18–20
+cost and efficiency saving that are possible from imple-                       and reported on the new pathway from a medicolegal
+menting such a virtual pathway. Patient outcomes and                           perspective, assessing whether patients have access to as
+satisfaction are also a crucial consideration.                                 much information as they want.
+
+
+
+
+Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509                                                      3
+
+Open Access
+
+
+
+
+                                                                                                                                                BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                                                                                                                                                      Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+Figure 2 Traditional fracture pathway process flow model using the symbols shown. This defines individual steps in the
+process for patients attending an orthopaedic outpatient appointment. It is based on the British Orthopaedic Association
+Standards for Trauma where all patients attending emergency department with a non-operative orthopaedic injury must attend
+an outpatient clinic.
+
+
+Measuring cost                                                    orthopaedic electronic database (Bluespier,59). A total of
+This work takes a hospital perspective on costs and DES           6291 patients were considered. Within the redesigned
+has been used to develop detailed simulation models               VFC pathway, 30% of the patients initially attending
+allowing application of a stochastic costing approach             ED/MIU with a non-operative fracture injury were
+to staff utilisation within the healthcare setting.53 54          discharged home without follow-up at a fracture clinic
+Stochastic costing uses statistical distributions of model        (figure 1). This did not require any new resources and
+activity duration and routings through complex path-              brought significant benefits to ED.15 A further 35% were
+ways and can measure resource utilisation of each step,           discharged from the VFC. These patients would incur a
+and therefore the overall process. It follows three broad         cost if they accessed the telephone helpline and this was
+steps: (1) identifying relevant patient-specific resources;       modelled. This resulted in only 35% of the initial cohort
+(2) quantifying the resources consumed and (3) deter-             of patients being reviewed at f2f consultation in a TFC.
+mining the value of each resource consumed. Although              Within the TFC model: 100% (n=6291) of the patients
+this method shares aspects with TDABC,9 it focuses on a           were referred onto orthopaedics and reviewed f2f in
+single step in the patient care cycle and has the advan-          a clinic (figure 2). The time taken for each activity was
+tage of yielding accurate cost data that can be subject to        collected by direct observation over a period of 4 months.
+statistical analysis.54 Capital and consumable costs are not      This prolonged time period made the ‘Hawthorne
+modelled.                                                         Effect’,60 that is, behaviour modification in response to
+   An action research methodology,55–57 combined with             being observed, less likely as the staff became accustomed
+DES, was used to investigate the Glasgow VFC pathway              to the researcher's presence. TFC model activity timings
+and compare it with a traditional British Orthopaedic             were based on direct observation of f2f consultations over
+Standards for Trauma pathway. Our study focused exclu-            a 2-week period, with a variable case-mix in 10 clinics of
+sively on patients with non-operative trauma attending            20–32 patients. As no data were available, the routings for
+ED or the minor injuries unit (MIU) and the next step
+                                                                  a TFC were estimated by multiple experts with over 30
+in the patient pathway. Two DES models were developed
+                                                                  years experience in orthopaedic care. The institution’s
+to determine the staff utilisation and actual staff costs of a
+                                                                  finance department provided the mean salary for each
+VFC model compared with a TFC model using computer
+                                                                  staff group, including a standard overhead cost of 23%
+simulation software (Simul8).58 These models were devel-
+                                                                  (table 1). Since the same costs were used in each model
+oped by close observation of the clinical and administra-
+                                                                  and run for 1 year for comparison purposes, discounting
+tive processes involved, and interviews with clinical and
+                                                                  of costs and benefits was not used. There are no costs
+managerial staff. Conceptual pathways of both the VFC
+                                                                  included associated with the discharge of patients from
+(figure 1) and the TFC (figure 2) were the first steps in
+the model building process.                                       ED18 or from the VFC, as only a small proportion of
+                                                                  these patients sought additional help (table 2) and this
+                                                                  was beyond the scope of this work. The model includes
+Data collection—simulation models                                 staff costs incurred if patients contact the helpline. The
+Multiple sources were used to develop the models. Data            patient’s journey is based on probability distributions
+for 1 year of the new process (2014/15) was extracted from        and availability of resources resulting in patients waiting
+the hospital patient management system (TRAKcare) and             in queues. Both models were simulated for a period of
+
+4                                                                Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509
+
+                                                                                                                        Open Access
+
+ Table 1 Input parameters for simulation models
+
+
+
+
+                                                                                                                                             BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                 Parameter                      Resources Mean and (SD)               Data source/comments
+ VFC Steps       VFC arrival rates (33%                         12 patients per day   Historical data analysis- patients discharged at
+                 discharged ED)                                                       ED figure 1 One-third of patients discharged at ED
+                                                                                      so only 12 at VFC
+                 Admin 1                        Admin           1.06 min (0.64)       Direct observation
+                 Nurse Prep                     Nurse           1.61 min (0.7)
+                 VFC consultant review          Consultant      1.75 min (0.95)
+
+
+
+
+                                                                                                                                                                   Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+                                                Nurse
+                 Nurse calls                    Nurse           8 min (4)
+                 Admin 2                        Admin           2.5 min (1.7)
+                 Admin letters and              Admin           2.9 min (1.35)        Around one-third of patients will still follow
+                 appointments                                                         the traditional pathway. All others have been
+                                                                                      discharged.
+                 Discharge advice letters Admin                 2.33 min (0.5)        Direct observation
+                 Helpline call arrival rate Nurse               2.6 per day
+                 Helpline call duration         Nurse           4.5mins (0.15)
+                 VFC decision point                             50%                   Historical data analysis
+                 Discharged
+                 Referred to consultant                         40%
+                 clinic
+                 Referred to N/L clinic                         10%
+                 Staffing: Consultants                          1
+                 Nurses                                         1
+                 Admin                                          2
+                 Typists                                        1
+ TFC Steps       ED/MIU arrival rates                           18 patients per day   Historical data—all patients (figure 2)
+                 X-ray                                          14 min (5)            Historical data
+                 Nurse prep                     Nurse           1.61 (0.7)
+                 Consultant consultation Consultant             12 min                Observation
+                 Second consultation            Consultant      3 min                 Expert opinion/observation
+                 Nurse consultation             Nurse           20 min
+                 Discharge admin                Admin           6 min
+                 Assessment routing:                            1%                    Expert opinion: Much of these routing values are
+                 Admitted                                                             based on the clinical mix of patients and therefore
+                 X-ray                                          3%                    does not warrant sensitivity analysis. As stated
+                                                                                      in the text, one limitation of this work is that the
+                 Treatment                                      72%                   clinical mix for the new virtual pathway is that
+                 Discharge                                      24%                   these routings are likely to be different as the
+                 Treatment routing                                                    simplest injuries have been discharged.
+
+                 X-ray                                          6%
+                 Second consultation                            93%
+                 Discharge routing
+                 Discharged                                     36%
+                 Return appointment                             64%
+                 Staffing: Consultants                          3                     Sensitivity analysis was necessary here in terms
+                 Nurses                                         3                     of the number of staff required to ensure all
+                                                                                      patients were seen within the allocated session
+                 Admin                                          2                     time. These values represent the necessary
+                 Typists                                        4                     staffing required.
+                                                                                                                                Continued
+
+
+Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509                                                      5
+
+Open Access
+
+Table 1 Continued
+
+
+
+
+                                                                                                                                                         BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+               Parameter                    Resources Mean and (SD)                     Data source/comments
+BOTH           Shifts Admin1 (VFC)                          07:30–08:15                 For printing off lists only
+               Admin 1 (TFC)                                07:45–09:00                 Longer shift as higher volume of patients
+               Consultant (14)                              09:00–13:00                 4-hour consultant session
+               Nurse (8)                                    08:00–16:00                 Average Full Time nurse working hours
+               Typists                                      09:00–17:00                 Discharge letters to General Practitioner and
+                                                                                        patient (Mon–Fri)
+
+
+
+
+                                                                                                                                                                               Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+               Admin 2                                      11:00–16:00                 For issuing letters only
+               Hourly rates GRI                             £62.91                      Average for GRI orthopaedic consultants.
+               consultant                                                               Obtained from GGC finance dept. for 2014/15.
+                                                                                        Include 23% employer costs
+               Nurse                                        £20.96                      Based on April 2014 figures. They have 23%
+                                                                                        employer costs added and are then divided by
+                                                                                        42 weeks. GRI staffing levels based on average of
+                                                                                        8 nurses (B7, B6 and B5×6).
+               Admin                                        £12.74                      Average
+               Admin 2                                      £16.22                      Average
+               Efficiency                                   85%                         Sensitivity analysis shows the effects of this on
+                                                                                        cost
+               Clock                                        Hours                       1 year as we had historical data for this time
+                                                                                        period
+               Warm-up period                               168 hours                   Tests completed to ensure model in steady state73
+ED, emergency department; GRI, Glasgow Royal Infirmary; MIU, minor injuries unit; TFC, traditional fracture clinic; VFC, virtual fracture clinic.
+
+
+1 year and output results were collected for 20 trial runs                 structural verification through regular meetings with clin-
+simulated for each model. The number of trial runs was                     ical and managerial staff who authenticated the structure,
+obtained by using the trials calculator.61                                 assumptions and face validity.
+   TFC process steps can be unique for a specific hospital;                   Parameter verification and operational validity of the
+however, our study simplifies this by investigating and                    TFC model was provided by the process experts who deliv-
+simulating only the first step after ED. This model was                    ered some of the data. We also investigated the number
+based on both data collections for timings and expert                      of patients completed as it was essential that there was
+opinion on some of the routings as this service no longer                  no baulking or reneging within the model and that all
+runs at GRI. Our TFC model has similar administrative                      patients were seen within allocated session time. Black
+preparation, but every patient attends for an f2f review as                box validation was challenging as costs are not currently
+was the case historically. Several consultants and nurses                  reported based on activity. The reported cost for an
+were required, but there were no weekend clinics. The                      outpatient appointment at the case hospital in 2011 was
+time for dressings or plaster cast removal was included                    £113 split into £31 allocated and £82 direct. The direct
+based on expert opinion. The model included queuing                        cost includes overheads, allied health professionals costs,
+prior to each activity and the FIFO rule was applied. In                   lab and pharmacy costs and does not distinguish between
+the TFC, patients are not turned away and additional                       trauma and multiple elective pathway patients being seen
+help would be called in to deal with patients still waiting.               in an outpatient clinic. To test the model under extreme
+This meant clinics could overrun, creating additional                      conditions consultant and nurse-estimated timings of
+pressures on staff.
+                                                                           +/−10% and +/−50% was also undertaken. Even making
+                                                                           the extreme assumption that the TFC patients take 50%
+Validation and verification                                                less time for both of the consultant consultations and the
+The aim of model validation is to provide the modeller                     treatment time, the TFC pathway still costs more (£25.31
+and stakeholders with appropriate confidence in                            (95% CI 24.67 to 25.09)) than the VFC pathway. The rela-
+the model such that they will use it as an aid for deci-                   tionship among efficiency, arrival rates and cost is demon-
+sion making.62 Verification and validation occurred                        strated in figure 3. We conclude that the models are a
+throughout the model development and testing62 63 as a                     good representation of reality that allow questions about
+continuous iterative process. The models contained activ-                  the process to be answered and provide outcomes which
+ities proceeded by queues which were based on a first in                   are reliable. For the TFC, there were limited historical
+first out routing. For both models we did micro white box                  data available to compare with.
+
+6                                                                         Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509
+
+                                                                               Table 2   Summary of outcome publications from the case hospital
+                                                                                            Where                     Patients/number of
+                                                                                            protocol                  appointments
+                                                                               Injury       used     Study year       Response rate                PROM                  PROM Score          Satisfaction      Comments                     Reference
+                                                                               Fifth        ED         2009–2010      279 patients/491 appts.      None                  –                   Retrospective. No added clinical value of      Ferguson et
+                                                                               Metatarsal                             Before new pathway                                                     Satisfaction and routine follow-up of these    al51
+                                                                                                                      96% attended ortho clinics                                             outcome not      patients.
+                                                                                                                                                                                             collected prior
+                                                                                                                                                                                             to 2011
+                                                                                                       2011–2012      339 patients/102 appts.      None                  –                   78% satisfied    3% visited another hospital
+                                                                                                                      After new pathway                                                      outcome          or GP
+                                                                                                                      57% discharged ED                                                      79.6% satisfied
+                                                                                                                      19.5% attend f2f                                                       leaflet
+                                                                               Mallet finger ED        2011–2012      47 patients                  Quick Dash            Mean=2.27 (IQR      100% satisfied    Mean follow-up 322 days      Brooksbank
+                                                                                                                      77% response rate            EQ5D VAS              0–4.55)             process           postinjury                   et al50
+                                                                                                                      Two patients referred to VFC EQ5D                  90 (IQR 75–90)      100% satisfied    19% visited another hospital
+
+
+
+
+Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509
+                                                                                                                      rest discharged ED                                 0.88 (IQR 0.84–1)   helpline          or GP
+                                                                               Fifth        ED         2012           167 patients                 Quick Dash            Mean=2.3 (IQR       80.6% satisfied  Retrospective.               Gamble et
+                                                                               Metacarpal              Apr–Oct        59% response rate            EQ5D                  0–6.8)              outcome          Mean follow-up time          al26
+                                                                                                                                                                         0.87 (IQR 0.74–1)   84.9% satisfied  21 months
+                                                                                                                                                                                             process          9% visited another hospital
+                                                                                                                                                                                                              or GP
+                                                                               Radial head ED          2011–2012      202 patients                 Extensively                               96% satisfied- Retrospective                  Jayaram et
+                                                                               and neck                               77% response                 investigated in the                       (suspected       Mason I or II fractures      al52
+                                                                                                                                                   literature.                               fracture)        included
+                                                                                                                                                   Short-term                                87% satisfied    90% discharged with no f2f
+                                                                                                                                                   satisfaction                              (fracture group) review
+                                                                                                                                                   to maximise                               95% satisfied    3.4% discrepancy rate
+                                                                                                                                                   response.                                 with information based on radiologist report
+                                                                                                                                                                                             received.        10% visited another hospital
+                                                                                                                                                                                                              or GP
+
+                                                                               Two paediatric fractures are also discharged at ED, the Torus/Buckle and Clavicle. PROM’s and satisfaction for trauma pathway not routinely carried out at the case
+                                                                               hospital prior to introduction of VFC.
+                                                                               ED, emergency department; f2f, face-to-face PROM, patient-reported outcome measure.
+                                                                                                                                                                                                                                                          Open Access
+
+
+
+
+7
+                                                                                                     Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+                                                                               BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+
+Open Access
+
+
+
+
+                                                                                                                                                   BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                                                                                                                                                         Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+Figure 3 Sensitivity analysis. This shows the sensitivity to cost based on arrival rates and efficiency. It clearly highlights the
+difference in cost between a TFC and a VFC. TFC, traditional fracture clinic; VFC, virtual fracture clinic.
+
+
+Results                                                              Efficiency
+The output of the models was the staff (medical, nursing             There is more efficient use of resource with the VFC
+and administrative) utilisation and costs for each process           pathway. The resources required per day were one consul-
+step. This allowed a cost per patient to be derived. The             tant for 51 min (95% CI 40 to 62), one nurse for 279 min
+reported costs are based on figures for 2013/14, with no             (95% CI 275 to 283) and one typist for 88 min (95% CI
+corrections for inflation. The performance indicators                68 to 108). Two administration staff were used (table 1)
+are reported based on the model output and the 95% CI                detailed as admin 1 for 18 min (95% CI 16 to 20) and
+calculated. The cost for each resource is then summed                admin 2 for 28 min (95% CI: 28 to 29) (table 3).
+and divided by the number of patients processed through                 In the TFC model, which required all patients to be
+the model to give a per-patient cost for both the VFC                seen f2f, more staff were required (table 1). Assump-
+and the TFC. The calculated costs for 20 simulated runs              tions were tested by running the model and addressing
+for both the TFC and VFC were compared. A t-test was                 the build-up of queues. This model required 540 min of
+performed to determine if there was a statistically signifi-         consultant time (95% CI 533 to 554), 778 min of nurse
+cant difference between the two pathways.                            time (95% CI 749 to 792), typists for 346 min (95% CI 307
+                                                                     to 365) and two administration staff. Admin 1 staff were
+Effectiveness                                                        used for 17 min (95% CI 15 to 18) and admin 2 for 43 min
+A summary of outcome publications from the case hospital             (95% CI 36 to 48) (table 3).
+on the new pathway is provided in table 2. This includes
+four upper extremity injuries where patients with simple             Cost
+stable fractures are discharged directly from ED. They               The cost of a patient attending a TFC was £36.81 (95%
+all conclude that simple upper extremity fractures can               CI 35.65 to 37.97). The cost of the VFC was £14.23 (95%
+be managed with good patient satisfaction and accept-                CI 13.23 to 15.18) per patient. In the VFC pathway fewer
+able functional results without further f2f review. More             patients with injuries are referred (70% of TFC model),
+recently, published analysis of low risk upper extremity             and half of these proceed to a subsequent f2f encounter.
+fractures64 also found equal outcomes such that these                The overall cost per patient of the VFC model was £22.84
+patients should have an optional rather than a scheduled             (95% CI 21.74 to 23.92) per patient compared with
+second visit.                                                        £36.81 (95% C: 35.65 to 37.97), a saving of 38% (table 4).
+   The medicolegal aspects of the VFC at the case hospital           Comparison of these costs using t-tests generated p values
+are addressed65. It states that ‘professional negligence             that were highly statistically significant (p<0.001).
+claims can be avoided by the use of robust, up-to-date
+protocols that are based on national standards’. Since
+2011 when the VFC has been in operation at Glasgow,                  Discussion
+over 30 000 patients have been managed with ‘no                      A new fracture pathway for non-operative fractures insti-
+complaints or medicolegal actions arising from diagnosis             tuted at GRI demonstrated clear benefits to the patient.
+or management in the VFC’ 65. This has been achieved                 In addition to this, the novel pathway avoids unnec-
+with robust protocols, patient access to information and             essary follow-up appointments and current evidence
+an open door policy, providing an important safety net               demonstrates clinical safety and efficacy.26 50–52 A robust
+giving patients reassurance that they can access expert              ‘bottom-up’ cost analysis of the VFC demonstrated a cost
+assistance if required. Advice leaflets for specific injuries        saving of 38%. There was reduced utilisation of medical
+can be found on the redesign website,20 which are also               and nursing resources: a nurse normally works up to
+provided to patients in paper form at ED.                            5 hours per day in VFC duties, whereas in a traditional
+
+8                                                                   Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509
+
+                                                                               Table 3     Utilisation and annual cost results for the virtual and traditional fracture clinics
+                                                                                              Utilisation per staff                        Time worked per day on                               Utilisation per staff                Time worked per day on
+                                                                               VFC            member                                       VFC                                    TFC           member                               TFC
+                                                                                                                                shift                                                                                        Shift
+                                                                               Simulation Lower                    Upper        time       Lower      Avg.        Upper           Simulation Lower                 Upper     time    Lower       Avg.       Upper
+                                                                               object     95% Avg. %               95%          (min)      95%        (min)       95%             Object     95%   Avg %           95%       (min)   95%         (min)      95%
+                                                                               Admin 1        36        40         44           45         16         18          20              Admin 1       21      23         24        75      16          17         18
+                                                                               Admin 2        9         9          10           300        28         28          29              Admin 2       12      14         16        300     36          42         48
+                                                                               Typists (1)    14        18         23           480        68         88          108             Typists (4)   16      18         19        480×4   307         346        365
+                                                                               Nurse (1)  57            58         59           480        275        279         283             Nurse (3)     52      54         55        480×3   998         1037       1056
+                                                                               Consultant 17            21         26           240        40         51          62              Consultant    74      75         77        240×3   533         540        554
+                                                                               ortho (1)                                                                                          ortho (3)
+
+
+
+
+Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509
+                                                                               VFC:                Performance Lower                                                                 TFC:            Performance
+                                                                               Resource            Measure     95% CI                   Average          Upper 95% CI                Resource        Measure     Lower 95% CI Average                  Upper 95% CI
+                                                                               Consultant                                                                                            Consultant
+                                                                               ortho               Total cost       15 199.31           19 375.79        23 552.26                   ortho           Total cost         145 107.76   147 754.65        150 401.54
+                                                                               Nurse               Total cost       34 960.53           35 482.45        36 004.38                   Nurse           Total cost         42 756.66    43 785.48         44 814.29
+                                                                               Typists             Total cost       4764.26             6181.82          7599.38                     Typists         Total cost         21 665.30    23 945.39         26 225.47
+                                                                               Admin 2             Total cost       1521.80             1572.91          1624.01                     Admin 2         Total cost         13 230.47    15 155.64         17 080.82
+                                                                               Admin 1             Total cost       1257.40             1393.10          1528.80                     Admin 1         Total cost         862.75       932.78            1002.80
+                                                                                                   TOTAL COST 57 703.31                 64 006.07        70 308.83                                   TOTAL COST         223 622.94   231 573.93        239 524.92
+                                                                               GRI VFC
+                                                                               referrals           Patients         4362.21             4496.67          4631.13                     ED and MIU      Patients           6273.09      6291.00           6308.91
+                                                                               VFC                 Per patient      13.23               14.23            15.18                       TFC             Per patient        35.65        36.81             37.97
+                                                                               GRI, Glasgow Royal Infirmary; TFC, traditional fracture clinic; VFC, virtual fracture clinic.
+                                                                                                                                                                                                                                                                      Open Access
+
+
+
+
+9
+                                                                                                     Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+                                                                               BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+
+Open Access
+
+                                                                      about the completeness of this data although we have
+Table 4 Summary of costs from model
+                                                                      been transparent about how these data were collected.
+
+
+
+
+                                                                                                                                                    BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+Per patient costs £            −95%           Average        95%      In contrast, the VFC was based on direct observation
+VFC                            13.23          14.23          15.18    and historical data analysis and validated against actual
+TFC (all patients seen         35.65          36.81          37.97    performance.
+f2f)                                                                     The TFC simulation used the same f2f costing as for
+Virtual pathway (35%           21.74          22.84          23.92    35% of patients in the VFC. A limitation of the study was
+seen f2f in TFC)                                                      that the virtually discharged patients in the new system
+Saving per patient             13.91          13.97          14.05    were assumed to use the same clinic resources as those
+                                                                      reviewed f2f, whereas the latter may be more complex
+
+
+
+
+                                                                                                                                                                          Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+f2f, face-to-face; TFC, traditional fracture clinic; VFC, virtual     and costly. We also did not include patients returning for
+fracture clinic.
+                                                                      further visits or other cost savings, especially replacing
+                                                                      plaster casting with removable splints,70 or the reduction
+clinic, several nurses are required to cope with caring               in the use of hospital transport, or societal costs. However,
+for patient’s f2f. To meet demand only one consultant is              including these factors could only make the VFC seem
+required in a VFC for up to 1 hour per day, compared with             more attractive and so would not change our conclusion
+three consultants each working for 3 hours to sustain an              that the VFC is more cost effective. Since this work was
+equivalent TFC model. The pressures on the outpatient                 a process change across a number of different injuries,
+service were greatly eased as the redesign reduced the                there was unfortunately no opportunity to do any rando-
+volume of f2f attendances by 65%. The peaks in demand                 misation. The process change was made based on existing
+were smoothed by improving flow and facilitating better               clinical evidence and with the agreement of experts for
+patient management. Staff were used for a shorter time in             each specialty.
+the VFC compared with a TFC, but the actual costs of our                 One of the biggest opportunities for healthcare
+VFC process compared with TFC per patient had previ-                  improvement is to eliminate unnecessary clinical
+ously not been established.                                           processes, freeing up time and thereby achieving
+   There have been both long-term and short-term effects              higher quality of care at lower cost. Healthcare profes-
+on the service as a result of the somewhat theoretical                sionals can reduce clinical variation; however, one
+savings (not reported on end of year financial reports).              major barrier to change is that the financial benefits
+Shorter term, they reduced pressure on the outpatient                 of successful grass-root redesign are frequently unrec-
+service due to the reduction in patient appointments,                 ognised71 and a decrease in volume may result in a
+providing additional capacity long-term. In addition,                 reduction in funding.
+over the intervening period these savings were gradually                 Further research could look at the cost effectiveness
+reinvested into subspecialist service development, which              of other fracture pathways to explore the impact of
+otherwise would have resulted in significant expenditure              discharge rates without standard protocols in place at ED
+for the hospital. In fact, in the context of GRI, 30 hours            and within orthopaedics. It would also be of benefit to
+of consultant-led specialist services were provided without           understand the impact of the open door policy and the
+new capital or recurring investment.                                  longer term effects of the standardisation on patient care
+   The strength of this study was that it provided a simple           and costs.
+bottom-up micro costing method approach which anal-
+ysed the next step after ED/MIU attendance. This allowed
+the VFC pathway to be observed and timed, providing staff
+costs based on actual activity. The DES approach allowed              Conclusion
+us to model the stochastic nature of process flow, incor-             The VFC pathway has been in operation at the case
+porating steps that are not normally studied in detail.               hospital for over 5 years and has spread rapidly across the
+The use of DES to examine the stochastic nature of the                UK and beyond as the evidence of quality improvement
+process and model reality in a transparent and simple way             has been recognised by other hospitals.20
+was another strength. DES is time-based and takes into                   The financial impact of a virtual process, with patients
+account resources, constraints and how the process and                being reviewed f2f only if necessary, has been high-
+activities interact with each other as time passes. DES is            lighted. This opportunity to make savings and increase
+often used in stochastic situations where the visual compo-           activity should be of interest to Managers and Clinicians
+nent is very important when planning change.66 67 It is               especially due to the benefits for patients. The reported
+has been widely used in healthcare66 and more recently in             outcome shows that the new pathway is at least as effect
+health economic evaluation, to gain insight into complex              as a traditional clinic for a reduced cost. Although repro-
+processes.68 69                                                       ducing any best practice project on a larger scale is chal-
+   In terms of the limitations, the TFC simulation was                lenging and requires multiple factors to succeed,72 this
+built retrospectively using expert opinion and current                approach to standardisation and multidisciplinary team
+observation of a TFC, based on the case hospital, perhaps             virtual review is likely to be useful in many other areas of
+resulting in a less robust model. One could also argue                medicine.
+
+10                                                                   Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509
+
+                                                                                                                                              Open Access
+
+Acknowledgements We gratefully acknowledge the four reviewers for their                18. Vardy J, Rymaszewski L, Begbie K, et al. Fracture pathway
+outstandingly thorough and fair reviews. The authors alone are responsible for the         redesign improves emergency department efficiency. Emer Med J
+
+
+
+
+                                                                                                                                                                         BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+conclusions reached in this paper and for any mistakes.                                    2013;30:876.2–876.
+                                                                                       19. Jenkins P, Gilmour A, Murray O, et al. The Glasgow Fracture
+Contributors GHA collected and analysed data, built the models and cowrote the             pathway: a virtual clinic. BJJ News 2014;2:22–4.
+manuscript. PJJ, LAR and MN collected data and cowrote the manuscript. DAM             20. Fracture Clinic Redesign. h​ttp:​//www.​fractureclinicredesign.​​org​/​re​
+planned the study and cowrote the manuscript. RvdM and AM planned the study                sources/(accessed Sep 15 2014)
+and participated in the analysis. LAR and RvdM cowrote the manuscript and act as       21. National Services Scotland. Scottish Health Service costs:
+coguarantors for the study.                                                                publication summary, 2015.
+                                                                                       22. Audit Scotland. NHS in Scotland, 2015.
+Funding This study was funded by the Scottish Government Quality and Efficiency        23. British Orthopaedic Association Standards for Trauma. BOAST 7:
+Support Team.                                                                              fracture clinic services. https://www.​boa.​ac.​uk/​publications/​boa-​
+                                                                                           standards-​trauma-​boasts/ (accessed Oct 9 2015).
+Competing interests LAR, PJJ and GHA are in receipt of an unrestricted grant           24. Australian Society of Orthopaedic Surgeons. Orthopaedic
+
+
+
+
+                                                                                                                                                                                               Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+from the Scottish Government, Quality and EfficiencySupport Team as part of the            Specialities-Trauma. http://www.​asos.​org.​au/​trauma.​html.
+Whole system patient flow programme. DAM works for the Scottish Government             25. Orthopaedic Trauma Association- U.S.A. http://​ota.​org/​media/​
+which funded the research.                                                                 251711/​HPOrthopaedic-​trauma-​organization-​Oct-​2015.​pdf
+                                                                                           (accessed 9 Oct 2015).
+Provenance and peer review Not commissioned; externally peer reviewed.                 26. Gamble D, Jenkins PJ, Edge MJ, et al. Satisfaction and functional
+Open Access This is an Open Access article distributed in accordance with the              outcome with ‘self-care’ for the management of fifth metacarpal
+Creative Commons Attribution Non Commercial (CC BY-NC 4.0) license, which                  fractures. Hand 2015;10:607–12.
+                                                                                       27. Bansal R, Craigen MA. Fifth metacarpal neck fractures: is follow-up
+permits others to distribute, remix, adapt, build upon this work non-commercially,
+                                                                                           required? J Hand Surg Eur Vol 2007;32:69–73.
+and license their derivative works on different terms, provided the original work is   28. Cakir H, Van Vliet-Koppert ST, Van Lieshout EM, et al. Demographics
+properly cited and the use is non-commercial. See: http://​creativecommons.​org/​          and outcome of metatarsal fractures. Arch Orthop Trauma Surg
+licenses/​by-​nc/4​ .​0/                                                                   2011;131:241–5.
+© Article author(s) (or their employer(s) unless otherwise stated in the text of the   29. Calder JD, Solan M, Gidwani S, et al. Management of paediatric
+                                                                                           clavicle fractures--is follow-up necessary? an audit of 346 cases.
+article) 2017. All rights reserved. No commercial use is permitted unless otherwise        Ann R Coll Surg Engl 2002;84:331–3.
+expressly granted.                                                                     30. Duckworth AD, Watson BS, Will EM, et al. Radial head and neck
+                                                                                           fractures: functional results and predictors of outcome. J Trauma
+                                                                                           2011;71:643–8.
+                                                                                       31. Egol K, Walsh M, Rosenblatt K, et al. Avulsion fractures of the
+                                                                                           fifth metatarsal base: a prospective outcome study. Foot Ankle Int
+References                                                                                 2007;28:581–3.
+ 1. Bradford E. Scottish independence: nhs in Scotland ‘faces £400m                    32. Martin AG. Weber B ankle fracture: an unnecessary fracture clinic
+    funding gap’, 2014. http://www.​bbc.​co.​uk/​news/​uk-​scotland-​                      burden. Injury 2004;35:805–8.
+    29213416(accessed 20 Sep 2015).                                                    33. Symons S, Rowsell M, Bhowal B, et al. Hospital versus home
+ 2. Moore A. HSJ100 roundtable: how do you fill a £30bn funding gap?                       management of children with buckle fractures of the distal
+    Health Serv J 2015.                                                                    radius. A prospective, randomised trial. J Bone Joint Surg Br
+ 3. Whittington JW, Nolan K, Lewis N, et al. Pursuing the Triple Aim: The                  2001;83:556–60.
+    first 7 years. Milbank Q 2015;93:263–300.                                          34. Hamilton TW, Hutchings L, Alsousou J, et al. The treatment of stable
+ 4. Hurst J, Williams S. Can NHS hospitals do more with less? Nuffield                     paediatric forearm fractures using a cast that may be removed at
+    Trust 2012.                                                                            home: comparison with traditional management in a randomised
+ 5. Triggle N. Lucrative NHS overtime for consultants questioned, 2011.                    controlled trial. Bone Joint J 2013;95-B:1714–20.
+    http://www.​bbc.​co.​uk/​news/​health-​12115669. (accessed 20 Sep                  35. Department of Health. Payment by results: background. 2010
+    2015).                                                                                 http://weba​rchi​ve.na​tion​ala​rchi​ves​.go​v.uk​/+/w​ww.d​h.go​v.uk/en/​
+ 6. Allen P, Wright J, Keen J, et al. Investigating the governance of                      Managingyourorganisation​/​NHSFinanc​ialReforms/​DH_​077259
+    NHS Foundation Trusts. NIHR Service Delivery and Organisation                          (accessed Aug 15 2015).
+    Programme, 2010.                                                                   36. Jenkins PJ, Morton AD, Anderson GH, et al. Fracture Clinic redesign
+ 7. Barbour J, Morton A, Schang L. The scottish NHS: meeting the                           was associated with a reduced cost of outpatient orthopaedic
+    financial challenge ahead. PIIP Policy paper http://​strathprints.​strath.​            provision. Bone and Joint 2016;5:33-36.
+    ac.​uk/​53563/ (accessed June 2015).                                               37. NHS Scotland: quality Improvement hub. http://www.​qihub.​scot.​
+ 8. Public Accounts Committee. Thirty fifth report: financial Sustainability               nhs.​uk/​quality-​and-​efficiency/​whole-​system-​patient-​flow/​fracture-​
+    of NHS bodies, 2015. http://www.​publications.​parliament.​uk/​pa/​                    pathway-​redesign/​how-​you-​can-​do-​it.​aspx (accessed 15 Aug 2016).
+    cm201415/​cmselect/​cmpubacc/​736/​73602.​htm(accessed Dec 2015).                  38. Rao TS, Radhakrishnan R, Andrade C. Standard operating
+ 9. Kaplan RS, Witkowski M, Abbott M, et al. Using time-driven                             procedures for clinical practice. Indian J Psychiatry 2011;53:1–3.
+    activity-based costing to identify value improvement opportunities in              39. Koenig KM, Bozic KJ. Orthopaedic Healthcare Worldwide: the role
+    healthcare. J Healthc Manag 2014;59:399–413.                                           of standardization in improving outcomes. Clin Orthop Relat Res
+10. Berwick DM, Hackbarth AD. Eliminating waste in US health care.                         2015;473:3360–3.
+    JAMA 2012;307:1513–6.                                                              40. Reese S. Will you be pressured to perform ‘cookbook’ medicine?
+11. Maughan D, Ansell J. Protecting resources, promoting value: a                          http://www.​medscape.​com/​viewarticle/​808258 (accessed Oct 2015).
+    doctor’s guide to cutting waste in clinical care. Academy of Medical               41. Farias M, Jenkins K, Lock J, et al. Standardized Clinical Assessment
+    Royal Colleges, Centre for Sustainable Healthcare, 2014.                               And Management Plans (SCAMPs) provide a better alternative to
+12. Tilburt JC, Wynia MK, Sheeler RD, et al. Views of US physicians                        clinical practice guidelines. Health Aff 2013;32:911–20.
+    about controlling health care costs. JAMA 2013;310:380–8.                          42. Mould G, Bowers J, Ghattas M. The evolution of the pathway and its
+13. De Bleser L, Depreitere R, de Waele K, et al. Defining pathways,                       role in improving patient care. Qual Saf Health Care 2010;19:e14–16.
+    Nurs. Manag. J 2006;14:553–63.                                                     43. Brailsford S. Theoretical comparison of discrete event simulation and
+14. Vanhaecht K, De Witte K, Sermeus. The impact of clinical pathways                      system dynamics. In: Brailsford S, Churilov L, Dangerfield B, Discrete
+    on the organization of careprocesses. PhD dissertation KULeuven                        event simulation and system dynamics for management decision
+    [dissertion]. Leuven: Katholieke Universiteit Leuven, 2007:154.                        making: Wiley &Sons, West Sussex, 2014:P105–24.
+15. Zeigler BP, Carter E, Redding SA, et al. Care coordination:                        44. Fone D, Hollinghurst S, Temple M, et al. Systematic review of the use
+    formalization of Pathways for Standardization and Certification.                       and value of computer simulation modelling in population health and
+    summarized in Innovations Exchange Team. In: Zeigler BP, Redding                       health care delivery. J Public Health Med 2003;25:325–35.
+    SA, Formalization of the Pathways Model Facilitates Standards and                  45. Hulshof PJH, Kortbeek N, Boucherie RJ, et al. Taxonomic
+    Certification, 2014.                                                                   classification of planning decisions in health care: a structured review
+16. Porter ME. What is value in health care? N Engl J Med                                  of the state of the art in OR/MS. Health Syst 2012;1:129–75.
+    2010;363:2477–81.                                                                  46. Mear L, Fulop N, Lamont T. Why the nhs must evaluate complex
+17. Brennan N, Cafarella N, Kocot SL, et al. Improving Quality and value                   service changes. Health Serv J 2015;125:16–17.
+    in the US Healthcare System, 2009. http://www.​brookings.​edu/​                    47. Cantero L. Getting the measurements right: qipp in 2013. Health
+    research/​reports/​2009(accessed Mar 2015).                                            Service J http://www.​hsj.​co.​uk/​home/​innovation-​and-​efficiency/​
+
+
+Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509                                                                                11
+
+ Open Access
+
+      getting-​the-​measurements-​right-​qipp-​in-​2013/​5056500.​article#.​         61. Hoad K, Robinson S, Davies R. Automated selection of the number
+      VhPWO_​nF9ps (accessed 13 Jul 2013).                                               of replications for a discrete-event simulation. J Oper Res Soc
+
+
+
+
+                                                                                                                                                                   BMJ Open: first published as 10.1136/bmjopen-2016-014509 on 7 September 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+48.   Drummond MF. Methods for the economic evaluation of healthcare                     2010;61:1632–44.
+      programs. Oxford University Press, 2005.                                       62. Robinson S. Simulation: the practice of model development and use.
+49.   Kolata G. What are a hospitals costs? Utah System is trying to                     Palgrave MacMillan, 2014.
+      learn. 2015 http://www.​nytimes.​com/​2015/​09/​08/​health/​what-​are-​a-​     63. Law AM. How to build valid and credible simulation models.
+      hospitals-​costs-​utah-​system-​is-​trying-​to-​learn.​html?_​r=0 (accessed        presented at: 2009 Winter Simulation Conference (WSC). Austin, TX:
+      15 Jul 2015).                                                                      Simulation Conference IEEE, 2009.
+50.   Brooksbank K, Jenkins PJ, Anthony IC, et al. Functional outcome                64. Finger A, Teunis T, Hageman MG, et al. Do patients prefer optional
+      and satisfaction with a ‘self-care’ protocol for the management of                 follow-up for simple upper extremity fractures: a pilot study. Injury
+      mallet finger injuries: a case-series. J Trauma Manag Outcomes                     2016;47:2276–82.
+      2014;8:21.                                                                     65. Jenkins PJ, Stephenson DA, Rymaszewski LA. Legal aspect of virtual
+51.   Ferguson KB, McGlynn J, Jenkins P, et al. Fifth metatarsal fractures -             fracture clinics. Journal of Trauma and Orthopaedics 2016;4:36–40.
+      Is routine follow-up necessary? Injury 2015;46:31–42.                          66. Brailsford SC, Harper PR, Patel B, et al. Analysis of the academic
+
+
+
+
+                                                                                                                                                                                         Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+52.   Jayaram PR, Bhattacharyya R, Jenkins PJ, et al. A new virtual patient              literature on simulation and modelling in healthcare. JSimul
+      pathway for the management of radial head and neck fractures. J                    2009;3:130–40.
+      Shoulder Elbow Surg 2014;23:297–301.                                           67. Marshall DA, Burgos-Liz L, IJzerman MJ, et al. Applying dynamic
+53.   Johnston K, Buxton MJ, Jones DR, et al. Assessing the costs of                     simulation modelling methods in healthcare delivery research—
+      healthcare technologies in clinical trials. Health Technol Assess                  Part 2: Report of the ISPOR Dynamic Simulation. Value in Health
+      1999;3:1–76.                                                                       2015;18:147–60.
+54.   Smith KA, Rudmik L. Cost collection and analysis for                           68. Karnon J, Stahl J, Brennan A, et al. Modelling using discrete event
+      health economic evaluation. Otolaryngol Head Neck Surg                             simulation: a report of the ISPOR-SMDM Modelling Good Research
+      2013;149:192–9.                                                                    Practices TaskForce-4. MedDecisMaking 2012;32:701–11.
+55.   Lewin K. Action Research and Minority Problems. J Soc Issues                   69. Bayer S. Simulation modelling and resource allocation in complex
+      1946;2:34–46.                                                                      services. BMJ Qual Saf 2014;23:353–5.
+56.   Greenwood DJ, Levin M. Introduction to action research. Thousand               70. Davidson JS, Brown DJ, Barnes SN, et al. Simple treatment for torus
+      Oaks, CASage, 1988.                                                                fractures of the distal radius. J Bone Joint Surg Br 2001;83:1173–5.
+57.   East L, Robinson J. Change in process: bringing about change in                71. Kaplan RS, Porter ME. The big Idea: how to solve the cost crisis in
+      health care through action research. J Clin Nurs 1994;3:57–61.                     Health Care. HBR 2011.
+58.   Simul8. http://www.​simul8.​com/​products/ (accessed Oct 2014).                72. Marshall M, Øvretveit J. Can we save money by improving quality?
+59.   Bluespier software. http://www.​bluespier.​com/(accessed June 2015)                BMJ Qual Saf 2011;20:293–6.
+60.   Mayo E. The human problems of an industrial civilization. New York,            73. Hoad K, Robinson S, Davies R. Automating warm-up length
+      MacMillan 1993;3:53–73.                                                            estimation. J Oper Res Soc 2010;61:1389–403.
+
+
+
+
+12                                                                                  Anderson GH, et al. BMJ Open 2017;7:e014509. doi:10.1136/bmjopen-2016-014509
+

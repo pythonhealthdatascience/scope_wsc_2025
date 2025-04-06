@@ -1,0 +1,624 @@
+                             European Journal of Operational Research 154 (2004) 599–608
+                                                                                                  www.elsevier.com/locate/dsw
+
+                                                     Decision Aiding
+
+        Managing uncertainty in orthopaedic trauma theatres
+                                         John Bowers *, Gillian Mould
+   Faculty of Management, Department of Management and Organization, University of Stirling, Stirling, Scotland FK9 4LA, UK
+                                      Received 25 September 2001; accepted 7 October 2002
+
+
+
+Abstract
+
+   The management of acute healthcare involves coping with a large uncertainty in demand. This uncertainty is a
+prevailing feature of orthopaedic care and many scarce resources are devoted to providing the contingent theatre time
+for orthopaedic trauma patients. However, given the variability and uncertainty in the demand much of the theatre time
+is not used. Simulation was used to explore the balance between maximising the utilisation of the theatre sessions,
+avoiding too many overruns and ensuring a reasonable quality of care in a typical hospital in the United Kingdom. The
+simulation was developed to examine a policy of including planned, elective patients within the trauma session: it
+appears that if patients are willing to accept a possibility of their treatment being cancelled, substantially greater
+throughputs can be achieved. A number of approximations were examined as an alternative to the full simulation: the
+simpler model oﬀers reasonable accuracy and easier implementation.
+Ó 2003 Elsevier B.V. All rights reserved.
+
+Keywords: Health services; Simulation; Risk management
+
+
+
+
+1. Introduction                                                      Strategic approaches to managing the uncertainty
+                                                                     in orthopaedic demand have been explored in-
+   There are two elements to the demand for                          cluding the option of concentrating health services
+health services: the planned, elective patients who                  such that one larger hospital serves a greater
+typically spend time on a waiting list before being                  population [3]. Other proposals focus on the
+allocated an appointment for their treatment and                     management of the non-elective treatment within a
+the non-elective patients who have to be treated                     hospital. Some aspects of the interaction of the
+urgently. The management of the non-elective                         treatment of the planned and the emergency pa-
+patients is particularly diﬃcult: their arrival is in-               tients, such as the management of Accident and
+herently stochastic and the treatment requirements                   Emergency Departments, have been explored in
+of individual patients can vary considerably.                        previous studies [11]. The requirement for operat-
+                                                                     ing theatre time is especially diﬃcult to satisfy in
+                                                                     an eﬃcient manner. Operating theatres must be
+   *                                                                 available for the non-elective patients but theatre
+     Corresponding author. Tel.: +44-0-1786-467377; fax: +44-
+0-1786-467329.
+                                                                     time has been identiﬁed [16] as a major constraint
+    E-mail addresses: j.a.bowers@stir.ac.uk (J. Bowers), g.i.        in many hospitals limiting the number of elective
+mould@stir.ac.uk (G. Mould).                                         patients that may be treated. The problem is
+
+0377-2217/$ - see front matter Ó 2003 Elsevier B.V. All rights reserved.
+doi:10.1016/S0377-2217(02)00816-0
+
+600                J. Bowers, G. Mould / European Journal of Operational Research 154 (2004) 599–608
+
+
+especially severe in the orthopaedic specialty that           and intensive care facilities [1,10,17]. Relatively
+has to treat a large proportion of non-elective               few simulations of operating theatre activities are
+patients. Following the recommendations of the                documented; possibly this is due to the reported
+National Conﬁdential Enquiry into Perioperative               diﬃculties of gaining access to staﬀ [14]. The cur-
+Deaths [4], one approach which is now generally               rent study involved a series of simulation experi-
+adopted in acute hospitals in the United Kingdom              ments to assess proposals for improving the
+is the use of the trauma session [20]. Typically [12]         utilisation of orthopaedic trauma theatre sessions
+only 15% of non-elective patients require an op-              in a typical United Kingdom district general hos-
+eration within 6 hours of admission: the remainder            pital. This hospital serves a population of 400,000
+can be treated within 24 hours, or an even longer             and admits 3000 non-elective orthopaedic patients
+period for some injuries. Many patients are suﬃ-              per year. While the detailed results are particular
+ciently stable that their treatment can be delayed            to this hospital, the experiences provide some in-
+for a few hours until a scheduled, trauma session             sight into the general questions about managing
+in which a number of patients may be treated.                 uncertainty in non-elective theatre sessions. Al-
+Indeed it can be beneﬁcial for theatre treatment              though speciﬁc simulations have proved valuable
+to be delayed until the shock of an accident has              in the design of many health care systems, the cost
+dissipated. The trauma session was encouraged as              of such studies can be prohibitive and in some
+a means of improving the quality of care of pa-               circumstances a simpler methodology is desirable
+tients by ensuring that all were treated within a             [13]. In an attempt to disseminate the guidelines
+reasonable time but it also eases the problems                suggested by the simulations of the current study,
+of managing the stochastic demand. Often the                  an alternative analytic approach was developed. If
+orthopaedic trauma care is based on a dedicated               it can be demonstrated that the approximations of
+theatre session each weekday. Given the highly                the alternative models do not reduce the accuracy
+uncertain demand this session is often under-uti-             of the results signiﬁcantly, the comparative ease of
+lised though sometimes the trauma demand is high              implementation can make the analytic approach a
+and the session will overrun. While staﬀ accept the           more attractive option.
+need for working beyond the scheduled times oc-
+casionally, their ﬂexibility has limits: the design
+                                                              2. The demand for theatre time
+of the trauma session has to achieve a balance
+between maximising the utilisation of a scarce
+                                                                 Data describing the procedure times of non-
+resource and avoiding too many overruns.
+                                                              elective orthopaedic patients were obtained from
+    In an attempt to improve the utilisation of
+                                                              the hospitalÕs theatre system. The times include an
+theatre time it is the practice in some hospitals to
+                                                              allowance for the necessary cleaning and prepa-
+treat a few selected elective patients in trauma
+                                                              ration between patients. The characteristics of the
+sessions [18]. These elective patients are oﬀered a
+                                                              patientsÕ demand for theatre time are summarised
+shorter waiting time in exchange for a accepting a
+                                                              by the distribution of procedure times of Fig. 1;
+certain risk of cancellation. While some hospitals
+regard this as a useful practice, it is not widely
+                                                                                     20%
+acknowledged in the acute sector. Indeed, the
+                                                                relative frequency
+
+
+
+
+current government policy oﬀering rights of re-                                      15%
+dress to patients whose operations are cancelled on
+                                                                                     10%
+the day of surgery would seek to penalise hospitals
+for adopting this practice [7].                                                      5%
+    Simulation is well established [5,9] as a tech-
+                                                                                     0%
+nique for analysing health care systems. In par-                                           0   20   40   60   80   100 120 140 160 180 200
+ticular, simulation has been employed in many
+                                                                                                     procedure time (mins) per patient
+studies supporting capacity planning in an uncer-
+tain environment, such as the provision of beds                                 Fig. 1. Theatre procedure time for non-elective patients.
+
+                                                           J. Bowers, G. Mould / European Journal of Operational Research 154 (2004) 599–608                                                                    601
+
+                      12                                                                                                                          12%
+
+
+
+
+                                                                                                                             relative frequency
+                      10                                                                                                                          10%
+hours of procedures
+
+
+
+
+                      8                                                                                                                           8%
+                                                                                                                                                  6%
+                      6
+                                                                                                                                                  4%
+                      4
+                                                                                                                                                  2%
+                      2
+                                                                                                                                                  0%
+                      0                                                                                                                                  0   1   2   3   4   5   6   7   8   9 10 11 12 13 14 15 16
+                                                   1-Jul
+                                           1-Jun
+
+
+
+
+                                                                                                    1-Jan
+
+                                                                                                            1-Feb
+                                                                            1-Oct
+
+
+
+
+                                                                                                                    1-Mar
+                                   1-May
+
+
+
+
+                                                                                    1-Nov
+
+                                                                                            1-Dec
+                                                                    1-Sep
+                                                            1-Aug
+                           1-Apr
+
+
+
+
+                                                                                                                                                                     trauma theatre time required (hours)
+
+
+                           Fig. 2. An example of a year in a trauma theatre.                                                                            Fig. 3. Trauma theatre time required per day.
+
+
+
+the mean procedure time is 64.6 minutes and the                                                                             a growth in waiting lists. Given the trauma de-
+standard deviation is 37.8 minutes. The distribu-                                                                           mand, as summarised in Fig. 3, management need
+tion is bimodal and there is no simple analytic                                                                             to determine the appropriate length of the trauma
+function that provides an adequate ﬁt. In addition                                                                          theatre session. If the scheduled trauma session is
+to the uncertainty about the procedure times the                                                                            too short patients would not be turned away but
+arrivals are also stochastic: a Poisson model was                                                                           staﬀ would frequently have to continue working
+adopted with mean interarrival times varying with                                                                           long beyond their scheduled ﬁnish time. While if
+the hour, day and season. A simulation was con-                                                                             the trauma session is too long staﬀ and scarce re-
+structed in Microsoft Excel to explore the total                                                                            sources would be idle for much of the time. Inev-
+daily trauma theatre demand. The patientsÕ inter-                                                                           itably a service such as a trauma theatre cannot
+arrival times were generated assuming the Poisson                                                                           expect to have a very high utilisation but some
+model and their requirements were sampled from a                                                                            balance is necessary between the possibility, and
+seasonally classiﬁed set of observations from the                                                                           length, of overrun and the eﬃcient use of re-
+theatre data employing a bootstrap, resampling                                                                              sources.
+methodology [6]. This approach ensured that the                                                                                A simple Monte Carlo simulation was under-
+seasonal characteristics of the demand were pre-                                                                            taken using the patient demand model, incor-
+served: both the mean admissions rate and the na-                                                                           porating the seasonal Poisson arrivals and the
+ture of the patientsÕ diagnoses vary over the year.                                                                         resampled seasonally classiﬁed patients. The sim-
+While the mean annual number of non-elective or-                                                                            ulation was used to generate 100 years of demand
+thopaedic admissions was 3000, many of the pa-                                                                              data for a hospital with an annual mean admission
+tients did not require theatre treatment and others                                                                         rate of 3000 non-elective orthopaedic patients.
+were treated in emergency sessions. A typical an-                                                                           Assuming a typical distinction between emergency
+nual demand for trauma theatre time is illustrated                                                                          and trauma patients this mean admission rate
+in Fig. 2. The model was used to generate 100 years                                                                         implied a mean annual trauma demand of 735,
+of activity in the trauma theatre; the daily demand                                                                         with the other patients either requiring no theatre
+was recorded and used to produce the relative fre-                                                                          treatment or being treated as emergencies. The
+quency distribution of Fig. 3. On 7% of days no                                                                             eﬀect of adopting a range of scheduled trauma
+patients require any trauma theatre treatment.                                                                              hours was explored and the implications sum-
+                                                                                                                            marised as three measures: the mean daily overrun
+                                                                                                                            (in Fig. 4), the mean number of overruns per day
+3. Determining the appropriate length of the trauma                                                                         (Fig. 5) and the utilisation (Fig. 6) of the theatre
+session                                                                                                                     sessions. All of the results presented as graphs in-
+                                                                                                                            clude 95% conﬁdence intervals about the estimates
+   Theatre time is a scarce resource and scheduling                                                                         of the means but the intervals are typically very
+too much trauma theatre time may divert re-                                                                                 small. Identifying the most appropriate allocation
+sources away from elective patients contributing to                                                                         of trauma time depends on the relative weights
+
+602                                                   J. Bowers, G. Mould / European Journal of Operational Research 154 (2004) 599–608
+
+
+                                                                                                  working in a trauma session. Any signiﬁcant re-
+ mean overrun (hours/day)
+
+
+
+
+                            1.0
+
+                            0.8                                                                   duction in the degree of overrun of the trauma
+                            0.6
+                                                                                                  sessions could only be achieved by accepting a
+                                                                                                  major decline in the utilisation of the theatre.
+                            0.4
+
+                            0.2
+
+                            0.0                                                                   4. Elective patients in trauma sessions
+                                  0       1    2       3    4     5    6     7       8   9   10
+                                                    scheduled trauma hours per day                   In practice the scheduled sessions are usually
+                                                Fig. 4. Theatre overrun.                          planned as part of a 7 hours theatre day: a re-
+                                                                                                  quirement for a trauma session of 5 hours implies
+                                                                                                  that the remaining 2 hours could be used for other
+                                                                                                  patients. Even a short additional list of 2 hours per
+                            0.5                                                                   day could enable the treatment of a large number
+ mean overruns per day
+
+
+
+
+                            0.4                                                                   of elective patients over the year reducing ortho-
+                            0.3                                                                   paedic waiting lists substantially. Typically it
+                                                                                                  might be possible to incorporate elective patients
+                            0.2
+                                                                                                  in 255 of the planned trauma sessions per year,
+                            0.1
+                                                                                                  suggesting an extra 510 hours of elective theatre
+                            0.0                                                                   time. However, there will be occasions when
+                                  0       1    2      3     4     5    6     7       8   9   10
+                                                                                                  trauma demand is high and there will be a need for
+                                                    scheduled trauma hours per day                more than 5 hours for trauma procedures: the ef-
+                                              Fig. 5. Number of overruns.                         fective additional availability of elective theatre
+                                                                                                  time will be reduced and elective patients will be
+                                                                                                  sent home, their treatment deferred. There are
+                                                                                                  similarities to the dynamic stochastic knapsack
+                            80%
+                            70%
+                                                                                                  problem [15] though in this case the uncertainty is
+                            60%                                                                   associated with the capacity of knapsack, or the
+ utilisation
+
+
+
+
+                            50%                                                                   available theatre time, rather than the arrival and
+                            40%
+                            30%
+                                                                                                  nature of the objects to be selected and packed. A
+                            20%                                                                   more sophisticated discrete event simulation was
+                            10%                                                                   constructed using Simul8 [19] to explore the eﬀects
+                             0%
+                                                                                                  of including scheduled elective procedures in the
+                                      0   1     2      3     4    5     6     7      8   9   10
+                                                                                                  trauma session and the trade-oﬀ between maxi-
+                                                    scheduled trauma hours per day
+                                                                                                  mising the utilisation of the theatre sessions and
+                                               Fig. 6. Theatre utilisation.                       minimising the probability of disappointing pa-
+                                                                                                  tients. An overview of the logic of simulation is
+                                                                                                  provided in Fig. 7.
+attributed to three measures; as in many simula-                                                     The simulation involved two main activities:
+tion studies the output is not a simple optimum                                                   selecting elective patients for the scheduled session
+but guidance to help management make a better                                                     and treating the patients in theatre. Processes and
+decision [2]. The simulation experiments suggested                                                customs can vary but a standard set of assump-
+that a theatre schedule that allows for 5 hours of                                                tions reﬂecting typical practice were incorporated
+trauma procedures per day would achieve a mean                                                    in the simulation:
+utilisation of 55% and typically result in an over-
+run once per week, with a mean total overrun of                                                   1. Elective theatre lists are compiled weekly, con-
+1.6 hours per week. This may be acceptable to the                                                    sidering all the potential elective patients that
+staﬀ who accept a degree of uncertainty when                                                         might be treated in the ﬁve sessions.
+
+                   J. Bowers, G. Mould / European Journal of Operational Research 154 (2004) 599–608              603
+
+
+
+
+                                        Fig. 7. Overview of the simulation logic.
+
+
+
+2. The elective lists are compiled by ﬁrst identify-               of procedure times. The theoretical theatre util-
+   ing the session with the most unallocated time                  isations that are possible assuming perfect in-
+   remaining. The potential patients are ordered                   formation are not achievable in practice so the
+   by a priority rule (e.g. longest ﬁrst or random)                model incorporated a planning contingency as-
+   and the ﬁrst is scheduled in the chosen session:                sociated with each procedure. The value of this
+   the patientÕs appointment is noted and the re-                  contingency was determined by iterative experi-
+   maining availability adjusted. If the procedure                 ments: a ﬁgure of 3.4% was found to be suﬃ-
+   duration is greater than the available theatre                  cient to explain the inevitable discrepancy
+   time the patient is rejected for scheduling within              between the theoretically achievable utilisations
+   a trauma session; the patient will have to be                   of theatre sessions, assuming prior knowledge
+   treated in a conventional elective session.                     of the actual procedure times, and the actual
+3. Some patients fail to attend their allotted treat-              mean utilisations.
+   ment session while others may have the treat-                5. Treatment in the theatre is organised such that
+   ment postponed if the pre-theatre assessment                    trauma patients have priority. If necessary the
+   indicates that surgery would not be safe given                  theatre session will overrun the scheduled time
+   their condition. Despite eﬀorts to minimise the                 and continue until the trauma patientsÕ treat-
+   number of such patients a proportion are classi-                ments are complete.
+   ﬁed as ‘‘did not attend’’; in the present example            6. The elective patients are treated in an order
+   this proportion is relatively low at 3.0%.                      speciﬁed by a priority rule (e.g. longest ﬁrst or
+4. The procedure times employed are actual times,                  random).
+   including the time for preparation between pa-               7. The theatre session will not overrun in order to
+   tients. In practice the theatre lists have to be                complete the treatment of an elective patient. If
+   compiled using staﬀÕs experience and estimates                  there is insuﬃcient time for an elective patientÕs
+
+604                 J. Bowers, G. Mould / European Journal of Operational Research 154 (2004) 599–608
+
+
+   procedure the treatment will not begin and the                                                                                       20%
+
+   patient will be deferred.
+8. If a patientÕs treatment is deferred, the patient                                                                                    15%
+
+
+
+
+                                                                                                                   relative frequency
+   will receive an appointment in a conventional
+   elective session with minimal chance of any fur-                                                                                     10%
+
+   ther postponement of the treatment.
+                                                                                                                                        5%
+
+
+
+5. Varying the length of the elective session                                                                                           0%
+                                                                                                                                              10   30     50   70   90   110 130 150 170 190 210 230 250
+                                                                                                                                                                    procedure time (minutes)
+   The complete session was assumed to be 7
+hours and a range of allocations for the elective list                                                                                                  Fig. 8. Elective procedure times.
+was considered from 0 to 4 hours. In the initial
+simulation experiments the patients were selected                                                                 elective list increases the mean utilisation of the
+from the elective waiting list using a ‘‘longest ﬁrst’’                                                           complete 7 hours session rises considerably, as in
+priority rule which approximates to typical prac-                                                                 the ‘‘controlled selection’’ results of Fig. 9. Though
+tice. The number of elective patients requiring                                                                   the mean utilisation levels of pure elective sessions,
+theatre treatment was 2600 p.a.; the elective pro-                                                                which can often reach 86%, may not be achievable,
+cedure time requirement of an individual patient is                                                               much elective treatment could be undertaken
+described by the distribution of Fig. 8, the mean                                                                 within the trauma sessions. Including a very short
+being 70.8 minutes. As the length of the scheduled                                                                elective list with a limit of 30 minutes has some
+
+                                                              100%
+
+                                                              90%
+                          mean utilisation
+
+
+
+
+                                                              80%
+                                                                                                                                                   controlled selection simulation
+                                                              70%
+                                                                                                                                                   random selection simulation
+                                                              60%
+                                                                                                                                                   integration approximation
+                                                              50%
+
+                                                              40%
+                                                                        0      1              2               3                               4
+                                                                                   scheduled elective hours
+
+                                                                                          Fig. 9. Theatre utilisation.
+
+
+                                                              30%
+                      probability of patient being deferred
+
+
+
+
+                                                              25%
+
+                                                              20%
+                                                                                                                                                   controlled selection simulation
+                                                              15%
+                                                                                                                                                   random selection simulation
+                                                              10%
+                                                                                                                                                   integration approximation
+                                                              5%
+
+                                                              0%
+                                                                    0         1              2               3                                4
+                                                                                  scheduled elective hours
+
+                                                                            Fig. 10. Probability of treatment being deferred.
+
+                          J. Bowers, G. Mould / European Journal of Operational Research 154 (2004) 599–608             605
+
+
+value but it can be diﬃcult to ﬁnd many patients                     maining elective patients being treated in the
+requiring such short procedures. The longer the                      conventional elective sessions making it more dif-
+scheduled elective list, the easier it is to pack the                ﬁcult to schedule these sessions eﬃciently.
+allotted time more eﬃciently; this relationship is a                    Figs. 9 and 10 include the results of varying the
+manifestation of the universal characteristic of                     length of the scheduled elective list using the ran-
+packing problems [8] that wastage is reduced as the                  dom selection rule. The eﬀect on the mean utili-
+bin size increases. The simulation suggests that a                   sation, and the additional elective hours, is small:
+signiﬁcant volume of elective work could be un-                      the principle of mixing elective patients in trauma
+dertaken: a planned sub-session of 2 hours could                     sessions does not appear to be dependent on the
+permit an extra 390 hours of procedures, or 13% of                   local practice and the method of selecting patients.
+the total elective theatre procedure time require-                   However, the probability of being deferred is af-
+ment. However, even with a short list of just 30                     fected by the method of selection. Assuming a two
+minutes there is a signiﬁcant probability of the                     hour elective list, the probability of being deferred
+procedure being deferred since the trauma re-                        can be reduced from 15% to 12% by adopting a
+quirement can readily exceed 6.5 hours (see Fig. 3).                 random selection scheme rather than the con-
+As the length of the elective sub-session increases                  trolled selection; if a four hour list is employed, the
+so the probability of being deferred increases, as in                probability of deferral can be reduced from 27% to
+Fig. 10, and a 2 hours elective list implies a                       20% by adopting diﬀerent selection criteria. This is
+probability of the patient being deferred of 15%.                    a consequence of the very diﬀerent characteristics
+                                                                     of the elective patients treated under the two se-
+                                                                     lection regimes: the random selection results in the
+6. Exploring the patient selection criteria                          treatment of more patients but with shorter pro-
+                                                                     cedures. If the trauma demand is high and en-
+   The results of the experiments reﬂect local                       croaches upon the elective list this can have a
+conditions and practice as summarised in the                         dramatic eﬀect with a high proportion of the
+simulationÕs assumptions. In particular diﬀerent                     scheduled activity having to be cancelled if the list
+doctors and hospitals may well adopt alternative                     consists of one or two patients with long proce-
+selection criteria when selecting patients. The                      dures, as in the case of the controlled selection.
+sensitivity of the results to the assumptions about                  However, a theatre list based on a random selec-
+the selection criteria was explored by comparing                     tion typically contains more, shorter procedures
+the consequences of adopting two selection                           and the consequences of a high trauma demand
+schemes: controlled (employing a longest ﬁrst                        are less dramatic with a lower proportion of the
+priority rule) and random. A random selection of                     scheduled procedures having to be deferred.
+patients introduces a bias towards those requiring
+shorter procedures, as illustrated by the mean
+procedure times of Table 1. Selecting a large pro-                   7. An alternative to simulation
+portion of shorter procedures could distort the
+distribution of the procedure times of the re-                          While simulation is well established [5,9] as a
+                                                                     methodology for analysing the organisation of
+                                                                     health care, suitably skilled staﬀ may not be
+Table 1                                                              readily available and a simpler approach is some-
+Mean procedure time (minutes) of selected elective patients          times desirable [13]. An alternative approach to
+                                Scheduled        Scheduled           modelling the eﬀect of mixing trauma and elective
+                                elective         elective            patients was explored by adopting approximations
+                                hours ¼ 2        hours ¼ 4           enabling the use of a simple numerical spreadsheet
+  All elective patients         70.8              70.8               to analyse options for the design of trauma ses-
+  Controlled selection          79.1             106.6               sions. The approximate model depends on two
+  Random selection              41.3              51.7
+                                                                     critical assumptions:
+
+606                        J. Bowers, G. Mould / European Journal of Operational Research 154 (2004) 599–608
+
+
+i(i) The probability distribution of the non-elec-                    than 4  255 ¼ 1020 hours which might be esti-
+     tive theatre time requirement can be estimated                   mated if the excessive trauma demands were ig-
+     by the empirical frequency distribution.                         nored.
+(ii) The utilisation of a short elective theatre list                    In practice it will not be possible to achieve
+     will be the same as that of a longer 3.5 hours                   100% utilisation of the additional elective hours;
+     theatre list.                                                    the utilisation depends on both local practice, e.g.
+                                                                      the attitude of the staﬀ, and the inherent diﬃculty
+  The assumptions were validated in a compari-                        of scheduling activities with a signiﬁcant degree of
+son of results with the more accurate simulation                      uncertainty about their duration. A detailed study
+model, as reported later.                                             of elective orthopaedic procedures at a typical
+  The alternative model considered:                                   hospital with 3.5 hours orthopaedic elective the-
+                                                                      atre sessions indicated a mean utilisation (Ue ) of
+L         length of the complete theatre session                      86%. Discussions at other hospitals suggests that
+          (7 hours in the present example)                            this ﬁgure is reasonable though theatre utilisations
+X0        theatre time allocated for elective patients                vary considerably and are dependent on many
+X         actual theatre time available for elective                  factors including the specialty, the surgeon and the
+          patients, once trauma patients have been                    anaesthetist. Scheduling a short 2 hours list could
+          treated                                                     be more problematic than a 3.5 hours list and
+T         theatre time requirement for trauma pro-                    lower utilisations may be experienced. Lacking any
+          cedures                                                     more empirical data, the utilisation of the elective
+                                                                      time was assumed independent of its length. This
+  Then                                                                assumption could be the source of discrepancies
+   8                                                                  when comparing the utilisations with those ob-
+   < X0              for T 6 L  X0 ;
+                                                                      tained by simulation.
+X ¼ LT              for L  X0 6 T 6 L;                    ð1Þ
+   :                                                                     The total utilisation (U ) of the trauma session
+     0               for L 6 T ;
+                                                                      was estimated as
+                Z LX0                                                       T þU X
+                                                                                   e
+                                                                                      for T 6 L;
+)     E½X  ¼             X0 f ðT Þ dT                                U¼         L
+                 T ¼0                                                         1       for T P L;
+                    Z L
+                þ              ðL  T Þf ðT Þ dT                      i.e. if the session overruns due to a very high
+                     T ¼LX0                                          trauma demand the utilisation is recorded as
+           ¼ X0 P ðT 6 L  X0 Þ                                       100%. (The excess time T  L could then be noted
+               Z L                                                    as an overrun and the expected overrun estimated
+             þ          ðL  T Þf ðT Þ dT :                 ð2Þ       to support an investigation of the appropriate
+                     T ¼LX0
+                                                                      value of L.)
+The relative frequency distribution of Fig. 3 was                                  Z L                        Z 1
+                                                                                         T þ Ue X
+employed as an approximation to f ðT Þ. Assuming                      ) E½U  ¼                   f ðT Þ dT þ       f ðT Þ dT :
+255 trauma sessions per year, L ¼ 7 hours, the                                      T ¼0    L                  T ¼L
+
+expected extra elective hours p.a. were estimated                     Given the value of X for the diﬀerent ranges of T
+for diﬀerent values of X0 . For example, if 2 hours                   as noted in (1):
+of elective treatment are scheduled the approxi-
+                                                                                Z LX0
+mate model suggests that the expected number of                                         T þ U e X0
+                                                                      E½U  ¼                       f ðT Þ dT
+actual elective hours available is 451 p.a. rather                               T ¼0        L
+than the 2  255 ¼ 510 hours suggested by ignor-                                  Z L
+                                                                                            T þ Ue ðL  T Þ
+ing the possibility of the trauma requirement ex-                               þ                             f ðT Þ dT
+                                                                                    T ¼LX0         L
+ceeding 5 hours per day. Scheduling 4 hours of                                    Z 1
+elective treatment per day in the trauma sessions                               þ       f ðT Þ dT :                        ð3Þ
+would provide 730 expected elective hours, rather                                   T ¼L
+
+                   J. Bowers, G. Mould / European Journal of Operational Research 154 (2004) 599–608                 607
+
+
+Employing the empirical relative frequency distri-            trauma activity as an approximation of f ðT Þ
+bution of Fig. 3 as an approximation to f ðT Þ again          without introducing any major error. For exam-
+and assuming L ¼ 7 hours and Ue ¼ 86% for all X ,             ple, the calculation of the extra elective hours per
+the total expected theatre utilisations were esti-            year given a scheduled 2 hours list per session was
+mated for various X0 and recorded in Fig. 9 as                undertaken using a single yearÕs trauma demand.
+‘‘integration approximation’’. The results are very           The calculation was repeated using 100 years of
+similar to those obtained in the simulation exper-            generated trauma demand and the extra elective
+iments also noted in Fig. 9. Inevitably the results           hours noted at each iteration. The mean extra
+are dependent on local practice: the estimates of             elective hours obtained from using individual
+the overall theatre utilisation are sensitive to the          yearsÕ data was 390 p.a., with a standard deviation
+value of the mean elective utilisation. Assuming              of 6.3 hours p.a., compared with the expected ex-
+X0 ¼ 4, Ue ¼ 80% implies an estimate of the                   tra elective hours of 388 p.a. derived when using
+overall theatre utilisation of 72%, compared to               the distribution of Fig. 3.
+82% when Ue ¼ 86% and 84% if Ue ¼ 90%.
+    A simple estimate of the probability of an
+elective patient being postponed was also obtained            8. Conclusions
+by making the further simplifying assumption that
+the mean number of elective patients scheduled for               Simulation provides a method for examining
+treatment as part of the trauma session N0 is                 the design of orthopaedic trauma theatre sessions
+proportional to the time allocated for elective pa-           and the trade-oﬀ between utilisation and over-
+tients X0 , and that the mean number of patients              running. The utilisation of trauma sessions can be
+completing their treatment E½N  is similarly pro-            increased by scheduling orthopaedic elective pa-
+portional to the mean time actually available E½X .          tients within the sessions. Patients being treated in
+Hence the proportion of patients having their                 this manner will have to accept a probability of
+treatment deferred is:                                        being postponed but given the possibility of earlier
+                                                              treatment this should be an attractive option for
+                         E½N      E½X                       many. In the example of a typical District General
+Pðpatient deferredÞ ¼ 1       1
+                          N0        X0                        hospital in the United Kingdom, if a probability of
+                         
+                                                              postponement of 15% is acceptable a 2 hours
+                     1  PðT 6 L  X0 Þ
+                                                              elective list can be scheduled as part of the week-
+                         Z L                                 day 7 hours trauma session. The elective capacity
+                                 ðL  T Þ
+                       þ                  f ðT Þ dT :         generated by adopting this policy could satisfy
+                         T ¼LX0    X0                        13% of the annual demand for orthopaedic elective
+                                                    ð4Þ       theatre treatment in the typical hospital. While the
+Again using the relative frequency distribution of            precise results depend on assumptions about the
+Fig. 3 as an approximation to f ðT Þ, the proba-              patient selection criteria, the sensitivity is not great
+bility of an elective patient being treated was esti-         and principle of mixing elective and trauma pa-
+mated for a range of values of X0 . Fig. 10 depicts           tients appears to be robust. Simulation is needed
+the increasing probability of postponement as the             when exploring the detailed eﬀects of local practice
+scheduled elective time in the trauma session is              but an alternative, simpler model oﬀers very sim-
+increased: the results using the ‘‘integration ap-            ilar results despite various approximations. The
+proximation’’ are very similar to those of the                simpler model is more readily implemented and
+simulation experiments assuming a ‘‘random se-                appropriate for many practical planning purposes.
+lection’’ of patients suggesting that the approxi-
+mations are reasonable.                                       References
+   In practice the distribution of Fig. 3 may not be
+readily available, in which case the method can be             [1] A. Bagust, M. Place, J.W. Posnett, Dynamics of bed use
+simpliﬁed further by adopting a single yearÕs                      in accommodating emergency admissions: Stochastic
+
+608                     J. Bowers, G. Mould / European Journal of Operational Research 154 (2004) 599–608
+
+     simulation model, British Medical Journal 319 (1999) 155–     [11] D.C. Lane, C. Monefeldt, J.V. Rosenhead, Looking in the
+     158.                                                               wrong place for healthcare improvements: A system
+ [2] V. Belton, M.D. Elder, Integrated NCDA: A simulation               dynamics study of an accident and emergency department,
+     case study, in: T.J. Stewart, R.C. van der Honert (Eds.),          Journal of the Operational Research Society 51 (5) (2000)
+     Trends in Multiple Criteria Decision Making, Springer-             518–531.
+     Verlag, Berlin, 1998, pp. 347–359.                            [12] B.J.A. Lankester, M.P. Paterson, G. Capon, J. Belcher,
+ [3] J. Bowers, G. Mould, Concentration and the variability of          Delays in orthopaedic trauma treatment: Setting standards
+     orthopaedic demand, Journal of the Operational Research            for the time interval between admission and operation,
+     Society 53 (2) (2002) 203–210.                                     Annals of the Royal College of Surgeons of England 82 (5)
+ [4] N. Buck, H.B. Devlin, J.N. Lunn, The report of a                   (2000) 322–326.
+     conﬁdential enquiry into perioperative deaths, The Nuﬃeld     [13] B. Lehany, S.A. Clarke, R. Paul, A case of an intervention
+     Provincial Hospital Trust, London, 1988.                           in an outpatients department, Journal of the Operational
+ [5] H.T.O. Davies, R.M. Davies, Simulating health                      Research Society 50 (9) (1999) 877–891.
+     systems: Modelling problems and software solutions,           [14] W.E. McAleer, J.A. Turner, D. Lismore, I.A. Naqvi,
+     European Journal of Operational Research 87 (1) (1995)             Simulation of a hospitalÕs theatre suite, Journal of Man-
+     35–44.                                                             agement in Medicine 9 (5) (1995) 14–26.
+ [6] A.C. Davison, D.V. Hinkley, Bootstrap methods and             [15] J.D. Papstravou, S. Rajagopalan, A.J. Kleywegt, The
+     applications, Cambridge University Press, Cambridge,               dynamic and stochastic knapsack problem with deadlines,
+     1997.                                                              Management Science 42 (12) (1996) 1706–1718.
+ [7] Department of Health, The NHS Plan, A plan for                [16] H. Philips, Held back by woeful lack of resources, Health
+     investment, A plan for reform, Department of Health,               Service Journal 18 (May) (2000).
+     London, 2000.                                                 [17] J.C. Ridge, S.K. Jones, M.S. Nielsen, A.K. Shahani,
+ [8] K.A. Dowsland, W.B. Dowsland, Packing problems,                    Capacity planning for intensive care units, European
+     European Journal of Operational Research 56 (1) (1992)             Journal of Operational Research 105 (2) (1988) 346–355.
+     2–14.                                                         [18] M.W. Scriven, J.K. Pye, A. Masoud, M.K.H. Crumplin,
+ [9] J.B. Jun, S.H. Jacobson, J.R. Swisher, Application of              The use and impact of a daily general surgical emergency
+     discrete-event simulation in health care clinics: A survey,        operating list in a district general hospital: A prospective
+     Journal of the Operational Research Society 50 (2) (1999)          study, Annals of the Royal College of Surgeons of England
+     109–123.                                                           77 (Suppl.) (1995) 117–120.
+[10] S.C. Kim, I. Horowitz, K.K. Young, T.A. Buckley,              [19] Simul8, Visual Thinking, Glasgow.
+     Analysis of capacity management of the intensive care         [20] J. Templeton, S. Bickley, The organisation of trauma
+     unit in a hospital, European Journal of Operational                services in the UK, Journal of the Royal Society of
+     Research 115 (1) (1999) 36–46.                                     Medicine 91 (1) (1998) 23–25.
+

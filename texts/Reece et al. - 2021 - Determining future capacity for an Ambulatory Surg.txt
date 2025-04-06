@@ -1,0 +1,415 @@
+      International Journal of Healthcare Management
+
+
+
+
+      ISSN: (Print) (Online) Journal homepage: www.tandfonline.com/journals/yjhm20
+
+
+
+
+Determining future capacity for an Ambulatory Surgical
+Center with discrete event simulation
+
+Kayla Reece, Jeﬀ Avansino, Maria Brumm, Lynn Martin & Theodore Eugene
+Day
+
+To cite this article: Kayla Reece, Jeﬀ Avansino, Maria Brumm, Lynn Martin & Theodore Eugene
+Day (2021) Determining future capacity for an Ambulatory Surgical Center with discrete
+event simulation, International Journal of Healthcare Management, 14:3, 920-925, DOI:
+10.1080/20479700.2020.1720940
+
+To link to this article: https://doi.org/10.1080/20479700.2020.1720940
+
+
+
+
+       Published online: 03 Feb 2020.
+
+
+
+       Submit your article to this journal
+
+
+
+       Article views: 244
+
+
+
+       View related articles
+
+
+
+       View Crossmark data
+
+
+
+       Citing articles: 5 View citing articles
+
+
+
+
+                       Full Terms & Conditions of access and use can be found at
+             https://www.tandfonline.com/action/journalInformation?journalCode=yjhm20
+
+INTERNATIONAL JOURNAL OF HEALTHCARE MANAGEMENT
+2021, VOL. 14, NO. 3, 920–925
+https://doi.org/10.1080/20479700.2020.1720940
+
+
+
+
+Determining future capacity for an Ambulatory Surgical Center with discrete
+event simulation
+Kayla Reecea, Jeﬀ Avansinob, Maria Brummc, Lynn Martina and Theodore Eugene Dayd
+a
+    Ambulatory Surgery Center, Seattle Children’s Hospital, Seattle, WA, USA; bSurgical Services, Seattle Children’s Hospital, Seattle, WA, USA;
+c
+    Clinical Analytics, Seattle Children’s Hospital, Seattle, WA, USA; dEnterprise Analytics, Seattle Children’s Hospital, Seattle, WA, USA
+
+
+      ABSTRACT                                                                                                            ARTICLE HISTORY
+      Background: Ambulatory Surgical Centers (ASC) are providing an increasing number of                                 Received 27 March 2019
+      patients with care for outpatient surgery. They represent a step forward in eﬃciency and                            Accepted 12 January 2020
+      service compared with performing all outpatient surgeries in a hospital setting, allowing that
+                                                                                                                          KEYWORDS
+      capacity to be reserved for patients requiring hospital stays. When new ASCs are brought                            Ambulatory surgery center;
+      online, throughput capacity is either unknown, or estimated from construction schematics.                           discrete event simulation;
+      Methods: A discrete event simulation was created to simulate the operations of the Seattle                          healthcare management;
+      Children’s Bellevue ASC, and identify throughput capacity as the number of operating rooms                          capacity; pediatric surgery
+      was increased from three to four, while the Post-anesthesia care unit (PACU) remained
+      constant at 14 beds. The model was queried to determine the number of patients who could
+      receive care while minimizing the duration of crowding (occupancy 13 or greater) in the
+      PACU, limiting mean total crowding time to one hour per week.
+      Results: The simulation was validated against current practice, and determined that up to 50
+      patients per day can be scheduled through four operating rooms, and the resulting mean
+      crowded time in the PACU would be limited to approximately 59 min.
+      Discussion: DES allows hospitals to support strategic decision making through providing
+      predictions of system performance under a variety of loading scenarios. This allows hospital
+      management planners to inform operations with robust analysis and have conﬁdence in the
+      likely outcomes of policy.
+
+
+
+
+Introduction
+                                                                              [4]. Due to continued medical advances and techno-
+Health Care costs as of 2016 account for 17.8% of gross                       logical innovations, similar increases in ASC utilization
+domestic product (GDP) in the United States [1]. As                           were realized over the last decade, as more surgeries
+the rate of increase of a hospital’s expenses is outpacing                    can be safely conducted in an ambulatory setting.
+the growth of revenues, hospitals are scrambling to                              A free-standing academic children’s hospital system
+move care to lower-cost care centers. Increasing                              (Seattle Children’s Hospital) constructed and opened
+volumes and acuity have also forced institutions to                           their ambulatory surgery center in 2010. More than
+optimize capacity in a resource-constrained                                   4000 surgical procedures are completed annually
+environment.                                                                  exclusively in children. Using innovative facility design
+   Ambulatory surgery centers (ASCs) are modern                               [5] and models of care [6], this team has created a high
+health care facilities focused on providing surgical                          quality, eﬃcient, safe, and cost-eﬀective clinical perio-
+care with patients arriving from and returning to                             perative practice. The perioperative process consists
+home after their procedures. This practice emerged in                         of three unique phases: preoperative, intraoperative,
+the 1970s in the United States, principally in adults,                        and postoperative [7]. Detailed descriptions of all
+but has rapidly increased in volume and spread into                           three phases of care at the Bellevue ASC have pre-
+the pediatric population. The rapid growth of ASCs                            viously been described [6].
+has transformed the outpatient experience for millions                           A variety of diﬀerent methods have been used to
+of Americans each year by providing them with a more                          enhance operational eﬃciency, scheduling, and
+convenient and typically more cost-eﬀective alternative                       staﬃng in healthcare settings, such as mixed integer
+to hospital-based procedures [2]. The National Survey                         programming [8], neural networks [9, 10], systems
+of Ambulatory Surgery reported that 3.2 million chil-                         modeling [11], and queueing theory [12]. More
+dren under the age of 15 received care for outpatient                         recently, techniques in predictive analytics have helped
+surgery in 2006 [3]. Between 1996 and 2006 the num-                           us to best understand how to optimize our systems.
+ber of surgical visits to ASCs increased by almost 300%                       Discrete event simulation (DES) is a computer
+
+CONTACT Theodore Eugene Day            theodore.day@seattlechildrens.org   Enterprise Analytics, Seattle Children’s Hospital, 4800 Sand Point Way NE,
+Seattle, WA 98105, USA
+This article has been republished with minor changes. These changes do not impact the academic content of the article.
+© 2020 Informa UK Limited, trading as Taylor & Francis Group
+
+                                                            INTERNATIONAL JOURNAL OF HEALTHCARE MANAGEMENT            921
+
+
+modeling technique which enables the simulation of          services required. Finally, the conceptual model was
+processes. DES allows for the creation of a graphical       coded using MedModel 2018 Professional (ProModel
+model of a care process or clinic, which can then be        Corp., Allentown, PA) according to established best
+used to test hypotheses about the behavior of that sys-     practices [21, 22] (Figure 1).
+tem under various alternative scenarios. In healthcare         Because the purpose of the simulation was to model
+systems, DES is often used to model the ﬂow of patients     the physical capacity of the ambulatory surgical center,
+through clinics and hospitals in order to identify candi-   rather than human resources, nursing, and physician
+date interventions for quality, safety, and performance     scheduling were excluded from the model. However,
+improvements [13]. Recent examples of DES and clini-        because physical capacity is heavily inﬂuenced by
+cal capacity include Bal et al., modeling emergency         PACU bed turnaround time, bed cleaning between
+departments [14], and Kritchanchai and Hoeur                patients (including delay while waiting for available
+describing simulation modeling in outpatient settings       resources) was incorporated into the model. Cleaning
+[15]. DES has been used in the past as well to optimize     times were generated from observational data curve-
+surgical scheduling [16–18] and reduce postponements        ﬁtted to a random number generator.
+of elective procedures [19]                                    The model was informed with three months of de-
+   We identiﬁed two tactics to create OR capacity in        identiﬁed surgical data, from the time period immedi-
+our system and lower the cost of care. The ﬁrst was         ately prior to modeling. This was randomly parsed into
+to optimize the use of our ambulatory surgery center        a training set, from which the model was built, and a
+by mandating that ambulatory cases be done in this          test set, against which the model was validated. Data
+setting as opposed to our tertiary care facility. Second,   ﬁelds captured from historical patient visits included
+we are opening an additional operating room in our          arrivals per day and time in PACU, stratiﬁed by surgi-
+ambulatory facility. Prior to optimizing the system,        cal service. Surgical services present in the data
+we wanted to understand the maximum capacity of             includes: 1 – Dermatology, 2 – General Surgery, 3 –
+our ambulatory facility using current model of practice     Ophthalmology, 4 – Oral Surgery, 5 – Orthopedics, 6
+and processes. The objective of this study was to use       – Otolaryngology, 7 – Plastic, 8 – Urology, and 9 –
+DES to determine the maximum number of OR cases             Unknown. The ‘Unknown’ represents all those sur-
+that could be done in our ambulatory surgery center.        geries without a service recorded in the medical record.
+                                                            PACU length of stay was curve-ﬁt for each of these ser-
+                                                            vices and then called as a random variable when each
+Discrete event simulation                                   simulated patient entered the PACU. The simulation
+DES as a tool for strategic planning is under-reported      then recorded the entire number of minutes that the
+in the healthcare literature, but examples exist [20].      PACU census was greater than or equal to 13 patients
+DES, which essentially allows for the graphical and         for the duration of the simulation run. The number of
+mathematical modeling of healthcare processes as a          patient arrivals was modeled based on real-world arri-
+complex queuing system, represents an ideal tool for        vals in the current system, after being ﬁt to a Poisson
+examining the central question posed in this investi-       random variable.
+gation: how many patients per day can the ambulatory
+surgical center serve without the post-anesthesia care
+                                                            Simulation runs and reporting metrics
+unit (PACU) becoming overcrowded?
+                                                            The mean number of daily patient arrivals was increased
+                                                            in intervals of 3–6 patients for a total of 12 scenarios, ris-
+Methods                                                     ing from the current practice of approximately 18, up to
+DES development                                             60 patients per day. Each 10-week simulation run was
+                                                            repeated with random variation 10 times to capture
+Flow mapping                                                the natural variation in systemic performance. Thus,
+The system ﬂow was mapped through interviews                each patient volume threshold is represented by 100
+between system stakeholders, and direct observation of      weeks of statistically independent data.
+the real-world clinical system. The model was simpliﬁed
+to a room-and-resource-occupancy level description of
+events. That is, rather than attempt to model speciﬁc       Results
+care processes associated with the induction and surgery
+                                                            Validation
+each patient required, the DES model allowed each
+patient to proceed through the locations required to        The simulation was presented for face validity to a
+complete a surgical visit. Resource consumption was         team of physicians and nurses working within the sys-
+modeled by ﬁtting historical procedure times to distri-     tem. All ﬂow, design, and work was determined to
+butions, at the surgical-service level. Thus, room occu-    reﬂect real-world operations. For internal validity, the
+pation was consistent with historical values for surgical   simulation was subjected to a thorough code review.
+
+922      K. REECE ET AL.
+
+
+
+
+Figure 1. Patient ﬂow through the system.
+
+
+And ﬁnally, for external validation, the simulation was      multiple simulation runs. Thus we anticipate that
+determined to accurately replicate the real-world sys-       68% of weeks would have crowding time between the
+tem with respect to all observable metrics. Patient arri-    error bars at each patient/week threshold.
+vals ﬁt an appropriate Poisson distributed random
+variable with λ = 17.8. The primary outcome metric
+of interest (crowding time) was diﬃcult to validate          Total number of surgeries possible
+against historical real-world performance, as neither        Based on nursing and physician opinion on the safety
+the simulation nor the real-world system experienced         and eﬃciency of operation while crowded, it was deter-
+crowding at current patient loads. Both systems              mined that a weekly threshold of 60 min of crowding
+showed zero minutes-per-week of PACU volumes                 time was the limit that could be tolerated. Beyond
+equal to or in excess of 13 patients, based on the cur-      this, crowding would represent an unacceptable burden
+rent real-world throughput. Thus, for the metric of          on available nursing resources. Thus, the total number
+interest, the simulation was trivially valid; that is, we    of patients which can be seen in the system is calculated
+neither observed nor expected any crowded time in            to be 50 per day.
+the PACU.
+
+                                                             Discussion
+Minutes/week of crowded time
+                                                             The challenge of maximizing throughput given
+The number of minutes per week of crowded-time in            capacity constraints is a classic problem in operations
+the PACU (deﬁned as 13 or more of 14 PACU                    research. Several approaches are appropriate for pro-
+rooms ﬁlled) followed a typical Malthusian curve. As         blems of this sort, especially when they can be sim-
+the number of surgeries performed increased, crowded         pliﬁed into a network of complex queues. Mixed-
+time rose exponentially, until bounded above by the          integer programming for scheduling optimization is a
+total time available (there being only 10,080 min in a       traditional method, but can struggle to support
+week). Figure 2 shows the rise in minutes/week of            environments such as this one where PACU recovery
+crowded time. The error bars represent one standard          times are stochastic rather than deterministic. The
+deviation around the mean as calculated from the             use of DES in such cases allows us to accurately
+
+
+
+
+Figure 2. Patients per week vs Mean crowded time (min/wk).
+
+                                                            INTERNATIONAL JOURNAL OF HEALTHCARE MANAGEMENT        923
+
+
+model and simulate the system, taking uncertainty and       Value of testing in computer simulation
+stochasticity into account. As a result of this analysis,
+                                                            Speed
+we determined that a maximum of 50 cases could be
+                                                            There are a number of clear beneﬁts to analyzing stra-
+performed in a fully optimized ambulatory center
+                                                            tegic questions using DES. The ﬁrst is the speed with
+with four ORs and 14 PACU spaces using current oper-
+                                                            which the systems can be modeled and decision gui-
+ational processes.
+                                                            dance provided. The model presented here was com-
+    It’s important to recognize that systems of this type
+                                                            pleted, from conception to recommendation, in a
+cannot necessarily be safely assumed to scale linearly;
+                                                            four-week period. It required less than 100 total per-
+that is, expanding from three operating rooms to four
+                                                            son-hours of work. The resulting recommendation
+does not necessarily mean that throughput will
+                                                            with reasonably in line with the administration’s and
+increase by 33%. Because patients may belong to any
+                                                            medical staﬀ’s desires for the unit, but it had been
+one of nine surgical services, each with diﬀering surgi-
+                                                            unknown if those desires were realistic. They were
+cal and recovery distributions, the system may respond
+                                                            reluctant to begin scheduling for 50 patients per day
+in any number of unpredictable ways. Thus, facilities
+                                                            at full capacity without knowing for certain that the
+duplicating this work should consider their own cycle
+                                                            system’s infrastructure could handle that volume of
+times and constraints when conducting simulations; a
+                                                            cases. Ramping slowly up to that many patients, on
+surgical service with high volumes and short recovery
+                                                            the other hand, would likely sacriﬁce a great deal of
+times will impact the system diﬀerently from a service
+                                                            opportunity in the name of prudential scheduling.
+with lower volume but longer recovery times. The
+                                                            Many patients might be delayed in treatment due to
+eﬀect of diﬀerent scheduling decisions may well be to
+                                                            necessary institutional caution. The ability to model
+shift a bottleneck from the PACU to the ORs or even
+                                                            the system greatly reduced the time needed to analyze
+the induction rooms.
+                                                            the circumstances and begin scheduling at full capacity.
+    The modeling described here was predicated on the
+largest volume of patients occupying the fourth, soon-
+to-be-opened OR, generally likely to be Otolaryngology      Cost
+patients. This decision reﬂected both their higher          The cost of the analysis was similarly quite low com-
+demand for ambulatory surgeries, and shorter surgical       pared with the potential costs of under-scheduling as
+durations, resulting in higher demand on the con-           the system was brought up to full production. While
+strained shared-capacity resource of the PACU.              the exact ﬁgures can never be known for certain, the
+Other facilities with similar demand patterns will likely   analysis of the system cost less than $10,000 in com-
+have analogous performance issues, but should be            pensated time, a ﬁgure that is dwarfed in revenue
+aware that the signiﬁcant jump in capacity realized in      from even a few additional surgeries performed as a
+our circumstance is related to heavy planned schedul-       result of beginning scheduling at full capacity rather
+ing of short-duration surgeries.                            than with a slow real-world calibration designed to
+    DES modeling of clinical delivery systems also pro-     identify optimal throughput experimentally.
+vides the unique capability to analyze and interpret
+‘what if’ scenarios regarding potential perturbations       Safety
+to current management practice [23]. The model can          The sensitivity of crowded time to patient volume
+be tested with various potential patient ﬂow and clini-     becomes signiﬁcant as throughput exceeds 40 patients
+cal policy practices in order to determine the likely       per day. The value of modeling systems such as this one
+eﬀect of various decisions. In this way, we can isolate     in silico with respect to safety should be apparent: it
+the eﬀect of particular policy decisions, by experiment-    could be catastrophic to experiment with the real-
+ing on a chosen strategy while holding all other factors    world system. The system dynamics support the idea
+constant. We are therefore able to identify those candi-    that it is risky to increase patient volumes without
+date interventions which are likeliest to support eﬀec-     proper planning; when patients occupy the entire
+tive and eﬃcient care delivery. Our patient ﬂow goal        PACU, the ORs become obstructed and a queue
+is to cohort cases based on patient ﬂow characteristics     forms. Not only are surgeries delayed, but if PACU
+(acuity, length of case, length of stay). Ultimately we     beds are occupied for unexpectedly long periods of
+want to do cases in the area of care that will maximize     time, then patients may be ready to leave the operating
+throughput for that case type at the lowest cost. For       room with no recovery bed available: a critical oper-
+instance, our main campus is best structured to handle      ational failure. Thus, it is inadvisable to conduct real-
+complex long-duration cases with longer PACU                world trial runs without adequate data from modeling.
+lengths of stay. Given our current case mix, cases
+done at our ambulatory center may be better per-
+                                                            Implications
+formed at our tertiary campus and vice versa.
+Additional ‘what if’ scenario testing will help us to       Optimizing capacity in ambulatory surgical centers is a
+best study this and provide objective data to our teams.    growing and critical strategy for providing
+
+924      K. REECE ET AL.
+
+
+comprehensive quality of care at the appropriate point     healthcare leaders to make informed decisions that
+of contact for patients. This provides better and more     optimizes an institution’s success.
+cost-eﬃcient service for patients as well as freeing OR       Future work has already begun with respect to mod-
+block time at tertiary and quaternary care hospitals       eling and analyzing system-wide surgical resources.
+for those complex, time-consuming, and inpatient sur-      The Surgical Care Distribution project will use DES
+geries which cannot be performed in outpaitent set-        to model the current hospital surgical facilities, the Bel-
+tings. Thus, optimal OR block utilization in low-          levue ASC, and a new, to-be-constructed surgical suite
+acuity centers robustly supports the provision of care     in a new facility currently in the building phase. Prior
+across health systems, not only in their own patient       work in the use of DES for facility design and process
+cohort. The result is a better distribution of resources   modeling will help inform how new facilities are mod-
+for overall public health.                                 eled in our setting [10] This will allow us to identify and
+                                                           separate patients by cohort – the right child in the right
+                                                           OR at the right time. Deploying DES proactively to
+Limitations
+                                                           optimize a large-scale system eﬀort will allow us to
+As with any approach, DES analysis in general – and        bring the new system online rapidly, at capacity, and
+this result in particular – is subject to assumptions      with prior knowledge of likely systemic eﬀects.
+and limitations. The model is agnostic to scenarios
+not modeled; we cannot say that the solution rec-
+ommended is the best possible solution, only that it       Disclosure statement
+represents the likely outcome of a particular desirable    Author TED has received consulting fees from ProModel
+management scenario. The model is based on real-           Corp. No other potential conﬂict of interest was reported
+world data which is subject to drift as populations        by the author(s).
+and medical practices change.
+                                                           Notes on contributor
+Conclusion and future recommendations                      Kayla Reece is a nurse director with the Seattle Children’s
+The ASC at Bellevue can support a capacity of 250          Ambulatory Surgical Center; Jeﬀ Avansino, MD, is VP for
+                                                           Medical Aﬀairs; Maria Brumm is a Lead Data Scientist;
+patients/week under the assumptions set forth in this      Lynn Martin, MD, is an Anaesthesiologist and Principal
+project. This assumes a signiﬁcant preference for          Investigator; T. Eugene Day, DSc, is a Data Science Manager.
+short-duration surgeries, and current distribution of
+room turnover times. Similarly outﬁtted ASCs can be
+reasonably assumed to have similar capacities, but         References
+local analysis should be conducted to verify that facil-    [1] Papanicolas I, Woskie LR, Jha AK. Health care spend-
+ity-speciﬁc idiosyncracies are not signiﬁcant enough            ing in the United States and other high-income
+to limit capacity.                                              countries. JAMA. 2018;319(10):1024–1039.
+   Strategic operational planning for healthcare deliv-     [2] Fulton B, Kim S. (2015). Medicare cost savings tied to
+ery in a complex environment is challenging using tra-          ambulatory surgery centers. UC Berkeley. Ambulatory
+                                                                Surgery Center Association. [cited 2018 Aug 17]
+ditional management science and operations research             https://www.ascassociation.org/advancingsurgicalcare/
+tools. Fluctuations in demand, service time, and                reducinghealthcarecosts/costsavings/medicarecostsavi
+resource consumption render deterministic tools useful          ngstiedtoascs.
+for only the most basic projections at a highly aggre-      [3] Rabbitts JA, Groenewald CB, Moriarty JP, et al.
+gated scale. For granular analysis, DES provides agile          Epidemiology of ambulatory anesthesia for children
+                                                                in the United States: 2006 and 1996. Anesth Analg.
+modeling capability in a simulation, which accurately
+                                                                2010;111(4):1011–1015.
+reﬂects real-world variability, uncertainty, and ran-       [4] Cullen K, Hall M, Golosinskiy A. (2011). Ambulatory
+domness. This supports robust decision analysis and             Surgery in the United States, 2006. National Health
+provides planners, care providers, and schedulers               Statistics Reports; no.11.Revised. Hyattsville, MD:
+with critical insight into systemic eﬀects of various           National Center for Health Statistics; 2009.Publication
+management strategies.                                          (PHS) 2009–1250.
+                                                            [5] Pelly N, Zeallear B, Reed M, et al. Utilizing integrated
+   Our goal of optimizing the surgical system begins            facility design to improve the quality of a pediatric
+with the optimization of our ambulatory surgical cen-           ambulatory surgery center. Pediatr Anesth.
+ter. By enhancing utilization and increasing capacity           2013;23:634–638.
+of our ASC, we have the ability to create space in          [6] Low DK, Reed MA, Geiduschek JM, et al. Striving for
+other operative centers in the system. DES provides a           zero-error patient surgical journey through of aviation-
+                                                                style challenge and response ﬂow checklists: a quality
+healthcare organization the tools to understand their
+                                                                improvement project. Pediatr Anesth. 2013;23:571–
+ultimate OR capacity while accounting for other sys-            578.
+temic constrains such as PACU beds. It also allows          [7] Chorney JM, Kain ZN. Family-centered pediatric peri-
+the ﬂexibility of testing scenarios to empower                  operative care. Anesthesiology. 2010;112(3):751–755.
+
+                                                               INTERNATIONAL JOURNAL OF HEALTHCARE MANAGEMENT           925
+
+
+ [8] Benazzouz T, Echchatbi A, Bellabdaoui A. Planning         [16] Wang S, Roshanaei V, Aleman D, et al. A discrete event
+     problems of nurses: case of a Moroccan Healthcare              simulation evaluation of distributed operating room
+     Unit. Int J Healthc Manag. 2017;10(4):243–251.                 scheduling. IIE Trans Healthc Syst Eng. 2016;6
+ [9] Bahadori M, Hosseini SM, Teymourzadeh E, et al. A              (4):236–245. doi:10.1080/19488300.2016.1226994.
+     supplier selection model for hospitals using a combi-     [17] Saadouli H, Jerbi B, Dammak A, et al. A stochastic
+     nation of artiﬁcial neural network and fuzzy VIKOR.            optimization and simulation approach for scheduling
+     Int J Healthc Manag. 2017;10:1–9.                              operating rooms and recovery beds in an orthopedic
+[10] Yucesan M, Gul M, Celik E. A multi-method patient              surgery department. Comput Ind Eng. 2015;80:72–79.
+     arrival forecasting outline for hospital emergency        [18] Yip K, Leung L, Yeung D. Levelling bed occupancy:
+     departments. Int J Healthc Manag. 2018;11:1–13.                reconﬁguring surgery schedules via simulation. Int J
+[11] Idigo FU, Agwu KK, Onwujekwe OE, et al.                        Health Care Qual Assur. 2018;31(7):864–876.
+     Improving patient ﬂows: A case study of a tertiary hos-   [19] Day TE, Sarawgi S, Perri A, et al. Reducing postpone-
+     pital radiology department. Int J Healthc Manag.               ments of elective pediatric cardiac procedures: analysis
+     2019;12:1–9.                                                   and implementation of a discrete event simulation
+[12] Peter PO, Sivasamy R. Queueing theory techniques and           model. Ann Thorac Surg. 2015;99(4):1386–1391.
+     its real applications to health care systems–outpatient   [20] Ferraro NM, Reamer CB, Reynolds TA, et al. Capacity
+     visits. Int J Healthc Manag. 2019;12:1–9.                      planning for maternal-fetal medicine using discrete
+[13] Jacobsen SH, Hall SN, Swisher JR. ‘Discrete-event              event simulation. Am J Perinat. 2015;32(8):761–770.
+     simulation of health care systems’, in Patient ﬂow        [21] Karnon J, Stahl J, Brennan A, et al. Modeling using dis-
+     volume 206 of International Series in Operations               crete event simulation: a report of the ISPOR-SMDM
+     Research & Management Science, pp. 273–309.                    Modeling Good Research Practices Task Force-4.
+[14] Bal A, Ceylan C, Taçoğlu C. Using value stream map-            Med Decis Making. 2012;32:701–711.
+     ping and discrete event simulation to improve             [22] Eddy DM, Hollingworth W, Caro JJ, et al. Model trans-
+     eﬃciency of emergency departments. Int J Healthc               parency and validation: a report of the ISPOR-SMDM
+     Manag. 2017;10(3):196–206. doi:10.1080/20479700.               Modeling Good Research Practices Task Force–7. Med
+     2017.1304323.                                                  Decis Making. 2012;32:733–743.
+[15] Kritchanchai D, Hoeur S. Simulation modeling for          [23] Rutberg M, Wenczel SL, Devaney J, et al. Incorporating
+     facility allocation of outpatient department. Int J            discrete event simulation into quality improvement
+     Healthc Manag. 2018;11(3):193–201. doi:10.1080/204             eﬀorts in health care systems. Am J Med Qual.
+     79700.2017.1359920.                                            2015;30(1):31–35.
+

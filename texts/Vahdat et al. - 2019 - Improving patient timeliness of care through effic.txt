@@ -1,0 +1,1470 @@
+HEALTH SYSTEMS
+2019, VOL. 8, NO. 3, 162–183
+https://doi.org/10.1080/20476965.2018.1561160
+
+
+ORIGINAL ARTICLE
+
+Improving patient timeliness of care through eﬃcient outpatient clinic layout
+design using data-driven simulation and optimisation
+Vahab Vahdat             , Amir Namin, Rana Azghandi and Jacqueline Griﬃn
+Department of Mechanical and Industrial Engineering, Northeastern University, Boston, MA, USA
+
+
+    ABSTRACT                                                                                                         ARTICLE HISTORY
+    With greater demand for outpatient services, the importance of patient-centric clinic layout                     Received 4 September 2018
+    design that improves timeliness of patient care has become more elucidated. In this paper, a                     Accepted 15 December 2018
+    novel simulation-optimisation (SO) framework is proposed focusing on the physical and                            KEYWORDS
+    process ﬂows of patients in the design of a paediatric orthopaedic outpatient clinic. A                          Outpatient clinic layout
+    discrete-event simulation model is used to estimate the frequency of movements between                           design; patient quality of
+    clinic units. The resulting information is utilised as input to a mixed integer programming                      care; discrete-event
+    (MIP) model, optimising the clinic layout design. In order to solve the MIP model, Particle                      simulation; mixed-integer
+    Swarm Optimisation (PSO), a metaheuristic approach enhanced with several heuristics is                           programming; composition/
+    utilised. Finally, the optimisation model outputs are evaluated with the simulation model.                       decomposition heuristics;
+    The results demonstrate that improvements to the quality of the patient experience can be                        simulation-optimisation
+    achieved through incorporating SO methods into the clinic layout design process.
+
+
+
+1. Introduction                                                            and physicians have active roles during the layout
+                                                                           design process (Prahalad & Ramaswamy, 2004)
+According to the United States National Ambulatory
+                                                                           which has been shown to enhance the engagement
+Medical Care Survey (NAMCS), the number of hos-
+                                                                           of employees (Hatch & Schultz, 2010). “Design
+pital outpatient visits exceeded 125 million in 2011,
+                                                                           thinking” stimulates out-of-the-box thinking for
+demonstrating a 24% increase compared to 2010
+                                                                           the designer by emphasising and encouraging
+(National Center for Health Statistics, 2016). With
+                                                                           patients and staﬀ to be involved in all major
+the trend of increasing demand for ambulatory care
+                                                                           steps of the design process (Goldschmidt, 1994).
+services, the need for development of new healthcare
+                                                                           However, from empirical data analysis, design
+facilities and redesign of current healthcare clinics
+                                                                           thinking has not been shown to have a direct
+has heightened. Correspondingly, the United States
+                                                                           relation with performance (Wattanasupachoke,
+(US) capital expenditures for constructing and equip-
+                                                                           2012). “Evidence-Based Design” (EBD) has been
+ping outpatient care centres and physician oﬃces
+                                                                           widely utilised to improve healthcare outcomes
+reached $14.5 billion dollars in 2016, accounting for
+                                                                           by using best practices from research (Zengul &
+15% of total US capital healthcare expenditures
+                                                                           O’Connor, 2013). Through EBD, healthcare orga-
+(United States Census Bureau, 2018). Meanwhile,
+                                                                           nisations focus on the role of the physical envir-
+the ongoing trend of consolidation of diﬀerent out-
+                                                                           onment, such as light and noise, to improve the
+patient clinics, in order to improve the quality and
+                                                                           outcomes for both patients and staﬀ (Berry &
+coordination of care (Brown Jr, Werling, Walker,
+                                                                           Bendapudi, 2003; Nelson, West, & Goodman,
+Burgdorfer, & Shields, 2012), also has resulted in
+                                                                           2005). Despite this, EBD rarely considers the rela-
+the expansion of the size of outpatient clinics.
+                                                                           tionship between the design of facilities and phy-
+   Construction of new or renovation of existing
+                                                                           sical ﬂows of patients or providers and its ultimate
+outpatient clinics is an expensive and long-term
+                                                                           eﬀects on the patient experience and quality of
+endeavour. Therefore, it is critical that the layout
+                                                                           care (Reiling et al., 2004).
+designs are developed strategically to account for
+                                                                              Health centre facilities are commonly planned by
+the eﬀect of the design on the patient experience
+                                                                           architecture ﬁrms and hospital administration with
+and the quality of care delivered in the clinic. In
+                                                                           more focus on design aspects, safety codes, and build-
+the past few years, in order to provide more
+                                                                           ing standards, and less focus on patient timeliness of
+patient-centric designs, multiple methods for plan-
+                                                                           care and eﬃciency (Arnolds & Nickel, 2015). Without
+ning physical spaces have been introduced and
+                                                                           proper examination of the work and patient ﬂows,
+widely utilised. For instance, “co-creation” designs
+                                                                           current strategies for the design of clinics can
+refer to the process during which patients, staﬀ,
+
+CONTACT Jacqueline Griﬃn         ja.griﬃn@northeastern.edu     Department of Mechanical and Industrial Engineering, Northeastern University, 334
+Snell Engineering Center, 360 Huntington Ave., Boston, MA 02115, USA
+© Operational Research Society 2019.
+
+                                                                                              HEALTH SYSTEMS        163
+
+
+overlook some of the critical components to health-               variable-sized units, (ii) ﬁxed-position spaces,
+care quality as deﬁned by the Institute of Medicine,              and (iii) minimum distances between units.
+which include timeliness, eﬃciency, and patient-                ● Integrates a simulation environment to (i) accu-
+centred care (Institute of Medicine, 2001).                       rately estimate patient ﬂows and (ii) assess the
+    In addressing these needs, this work presents new             performance of the generated layout solutions to
+mathematical methods for supporting the layout                    determine the best layout that best beneﬁts
+design of healthcare clinics with a focus on improving            patients.
+quality and patient satisfaction by minimising patient
+walking distances during their visits. As most out-           A review of related research focusing on layout
+patient clinics are currently designed in a physician-        design problems and solution algorithms in health-
+centric manner (Ferenc, 2016), accounting for the             care systems is presented in Section 2. In Section 3, a
+patient experience in this process can ultimately             summary of the paediatric orthopaedic clinic under-
+lead to the delivery of more timely and eﬃcient               lying this research and a comprehensive review of the
+care. Further, a focus on walking distances is parti-         constructed DES model, input data acquisition, and
+cularly critical for patients with mobility restrictions      model validation are presented. Combining the simu-
+and senior patients, who accounted for nearly 20% of          lation with a layout optimisation model, a SO solu-
+outpatient visits in 2011 (Rui & Okeyode, 2015).              tion procedure is proposed to identify a layout which
+    Beyond the consideration of the adverse events and        minimises walking distances for patients in Section 4.
+patient dissatisfaction that may occur with poor layout       The results pertaining to layout of the studied pae-
+designs (Joseph & Rashid, 2007), the problem of design-       diatric orthopaedic clinic are presented in Section 5,
+ing an eﬀective clinic layout is complex. In addition to      demonstrating the applicability of the proposed fra-
+architectural requirements, an outpatient clinic layout       mework in a real case study of an outpatient clinic.
+must be designed in accordance with healthcare-focused        Finally, a discussion of the results and future research
+safety recommendations such as the location of elevator       directions are included in Section 6.
+spaces or staircases, the location of diagnostic rooms (e.
+g., x-rays) relative to waiting areas, and the standardisa-
+                                                              2. Literature review
+tion of clinic units (Reiling et al., 2004), such as exam
+rooms, which must follow a predetermined length and           Layout planning involves the arrangement of units in
+width standards. At the same time, there are units such as    the best possible way within a facility space to minimise
+waiting areas which have ﬂexibility in their dimensions       distances and associated handling costs between units.
+as long as ratio restrictions between length and width are    Research on layout problems originally focused on
+met. Hence, eﬀective clinic layout solution approaches        organising manufacturing units to improve perfor-
+must be designed to account for the unique character-         mance of workers by reducing walking distances.
+istics of each clinic while addressing these architectural    However, in the last two decades, research on layout
+constraints. For example, while patients may only see one     problems has been extended to include the design of
+provider during their visit in some clinics, patients may     spaces in service sectors such as airport terminals
+need to visit a sequence of providers or have multiple        (Edwards, 2004; Manataki & Zografos, 2009), train
+diagnostic services in other clinics. Thus, the design of     and railway stations (Li, 2000), shipyards and ports
+the layout must consider and accommodate for the fea-         (Bruzzone & Signorile, 1998), retail stores (Levy,
+tures of patient ﬂows within the clinic.                      Weitz, & Grewal, 2012), online web services (Wu, Lee,
+    This work focuses on the design of a paediatric           Fu, & Wang, 2013), and healthcare facilities (Arnolds &
+orthopaedic outpatient clinic and expands upon the            Gartner, 2018; Chraibi, Osman, & Kharraja, 2018).
+current literature of outpatient clinic layout design,           In general, layout design in healthcare has been
+proposing a data-driven simulation-optimisation (SO)          characterised by the scale of the design problem,
+approach via utilisation of mathematical modelling to         either “macro-level design” or “micro-level design”
+solve the problem. By integrating Particle Swarm              (Arnolds & Nickel, 2015). In macro-level design, pri-
+Optimisation (PSO), a metaheuristic (MH) algorithm,           mary functional departments such as wards, outpati-
+and a discrete-event simulation (DES) model, this             ent clinics, and emergency departments are assigned
+framework provides a set of promising solutions for           to locations inside the hospital building, accounting
+a large-scale complex outpatient clinic layout design         for exclusions on the permissible assignment loca-
+problem. Correspondingly, this paper presents a novel         tions for diﬀerent departments. On the other hand,
+generic SO framework which:                                   in micro-level hospital layout planning, units inside a
+                                                              single functional department need to be located. The
+  ● Incorporates   complexities of outpatient clinic          layout design of an outpatient clinic is an example of
+     layout design in accordance with healthcare-             a micro-level planning problem, in which units such
+     focused architectural recommendations includ-            as exam rooms, waiting areas, physician work areas,
+     ing (i) the presence of both standard-sized and          nurse stations, and patient/staﬀ hallways should be
+
+164      V. VAHDAT ET AL.
+
+
+located. This paper focuses on the micro-level layout      (Wang, Hu, & Ku, 2005). The discrete representation
+design of a paediatric orthopaedic outpatient clinic       can also facilitate modelling dynamic layout problems
+and proposes a data-driven SO approach to solve the        where the layout changes over time (Samarghandi,
+problem.                                                   Taabayan, & Behroozi, 2013). However, this
+   In the following section, a review of facility layout   approach is incapable of representing models with
+optimisation modelling and solution methodologies          other assumptions such as unit orientations (verti-
+is presented. First, two common facility layout math-      cally or horizontally), pick up and drop oﬀ points,
+ematical model approaches, discrete and continuous         and consideration of required distances among units
+modelling, are explored in Section 2.1. Then, existing     (Drira et al., 2007).
+solution methods including exact algorithms for                In the continuous representation of FLP, the planar
+small-sized problems, along with heuristic and MH          site is not divided into discrete locations. Instead, all
+approaches for large-scale problems, are reviewed in       units, with unequal sizes and shapes, can be located at
+Section 2.2. The literature review concludes with a        any place in the planar site as long as units do not
+discussion of the beneﬁts of hybrid simulation opti-       overlap (Das, 1993). Montreuil (1991) proposed one of
+misation approaches to solve large-scale facility lay-     the ﬁrst Mixed Integer Programming (MIP) formula-
+out problems (FLP).                                        tions for the continuous representation of the FLP,
+                                                           using binary variables to avoid overlapping. Further,
+                                                           Meller et al. (1998) introduced another MIP formula-
+2.1. Facility layout problems
+                                                           tion of the FLP that was enhanced by Sherali and
+FLP is a class of Operations Research (OR) problems        Smith (2001). In the latter formulation, two sets of
+that address determining the placement and the rela-       binary variables are used to locate the relative positions
+tive positions of facilities in a layout area with the     of two units, horizontally or vertically. Further
+objective of minimising the travelling or handling         enhancements to the MIP formulation by Meller,
+costs (Drira, Pierreval, & Hajri-Gabouj, 2007).            Chen, and Sherali (2007) led to the sequence-pair
+Several formulations exist to deﬁne layout problems        formulation with additional valid inequalities that
+based on the limitations and restrictions that exist in    optimally solved instances up to 11 units, the largest
+the studied industry. The formulation that most clo-       such results to date. Often heuristic solution methods
+sely addresses the outpatient clinic layout problem        have been used to solve MIP models of the FLP, as
+was ﬁrst introduced by Meller, Narayanan, and              discussed in the following section.
+Vance (1998). In this formulation, layout problem is
+deﬁned as a process of ﬁnding a non-overlapping
+                                                           2.2. Solution methodologies for facility layout
+planar orthogonal arrangement of n rectangular facil-
+                                                           problems
+ities within a given rectangular plane to minimise the
+overall travel distance.                                   While layout problems are known to be complex and
+    Drira et al. (2007) classiﬁed layout problems into     NP-hard (Gary & Johnson, 1979), the last two dec-
+two main formulation categories: discrete and con-         ades have shown the use of both exact and approx-
+tinuous formulations. Discrete formulations of the         imation methods to ﬁnd the best solution. Branch-
+FLP are mostly explored by Quadratic Assignment            and-bound algorithms (Kohara, Yamamoto, &
+Problem (QAP) modelling. QAP models for layout             Suzuki, 2008) and dynamic programming (Dunker,
+problems were ﬁrst introduced by Koopmans and              Radons, & Westkmper, 2005) are examples of exact
+Beckmann (1957) and are shown to be NP-complete            algorithms that are used in layout problems. Xie and
+(Sahni & Gonzalez, 1976). In a discrete formulation,       Sahinidis (2008) developed a branch-and-bound algo-
+each unit can only be assigned to a set of certain and     rithm that systematically prunes the inferior region in
+pre-deﬁned discrete locations in the facility. In the      the sequence-pair space. They proved that facility
+early layout models with discrete formulations, all        layout sequence-pair modelling can be accomplished
+units are assumed to have the same size and shape          by solving minimum-cost network ﬂow problems for
+(Fruggiero, Lambiase, & Negri, 2006). QAP models in        a restricted version of the layout problems where the
+the design of healthcare facilities were ﬁrst used in      planar space has no limitations. Castillo and
+1972. A German university hospital, Klinikum               Westerlund (2005) developed a solution method for
+Regensburg, was interested in positioning 30 depart-       unequal block areas in a facility which satisﬁes the
+ments within the hospital in a macro-level design          area requirements using cutting planes.
+problem (Krarup & Pruzan, 1978). Similarly,                   Since most real applications of layout designs
+Elshafei (1977) used a QAP model in hospital plan-         involve large-scale problem instances, heuristic algo-
+ning to model a hospital with 19 equally sized clinics     rithms have been developed to ﬁnd near optimal
+to be located within the hospital.                         solutions. Heuristic solutions can be divided into
+    The QAP formulation has been extended to cover         two main categories. Construction algorithms make
+unequal area units that can occupy diﬀerent blocks         up one class of heuristic approaches in which
+
+                                                                                             HEALTH SYSTEMS        165
+
+
+placement of facilities are made sequentially, thus        with PSO, a suitable MH algorithm for continuous
+progressively building until a complete layout is          space problems. To accelerate the PSO performance,
+achieved (Hassan, Hogg, & Smith, 1986). As opposed         a composition/decomposition heuristic is proposed
+to construction algorithms, improvement algorithms         and used. In addition, a DES model of the outpatient
+start with an initial feasible solution and examine        clinic is constructed to deﬁne the ﬂows among units
+other similar solutions by exchanging positions of         and evaluate the performance of layouts provided by
+facilities (Armour & Buﬀa, 1963). Heuristics that          PSO. The combination of simulation and optimisa-
+combine construction and improvement algorithms            tion, as presented in this work, provides beneﬁts from
+have also been introduced and studied in recent years      both methods as MH algorithms are capable of ﬁnd-
+(Tasadduq, Imam, & Ahmad, 2015).                           ing promising solutions to large-scale combinatorial
+   By early 2000, as computational capabilities            optimisation problems, while simulation is capable of
+increased substantially, MH algorithms were widely         modelling and evaluating complex systems.
+employed to solve layout optimisation problems.
+These algorithms are not guaranteed to give the
+                                                           3. Orthopaedic clinic overview
+optimal solution; however, the algorithms are
+shown to ﬁnd relatively good results (Holst, 2015).        This work has been performed in collaboration with
+Tabu Search (Liang & Chao, 2008; Samarghandi &             an outpatient orthopaedic department located in the
+Eshghi, 2010; Scholz, Jaehn, & Junker, 2010),              north-east region of the United States. The orthopae-
+Simulated Annealing (SA) (Chwif, Barretto, &               dic outpatient department, which is part of a major
+Moscato, 1998; de Alvarenga, Negreiros-Gomes, &            paediatric hospital, receives more than 40,000 patient
+Mestria, 2000; Moslemipour & Lee, 2012; Tasadduq           visits per year across 3 diﬀerent locations. The
+et al., 2015; Tuzkaya, Gülsün, Tuzkaya, Onut, &            department leadership sought to explore the redesign
+Bildik, 2013), Genetic Algorithms (GAs) (Al-               of one of the clinics, with interest in identifying a
+Hakim, 2000; Azadivar & Wang, 2000; El-Baz,                creative design that would beneﬁt patient quality of
+2004; Enea, Galante, & Panascia, 2005; Sadrzadeh,          care. Since the clinic serves paediatric orthopaedic
+2012), PSO (Asl & Wong, 2017), and Fireﬂy                  patients, the design needs to account for patients
+Algorithms (FA) (Ingole & Singh, 2017) are exam-           with mobility restrictions and to provide a layout
+ples of metaheuristics being used to solve FLP.            that minimises patients’ walking distances. Analysis
+   Metaheuristics are able to solve large-scale combi-     of the potential for the redesign of the current clinic
+natorial optimisation problems, yet most of these          is intended to give insights to the department leader-
+methods assume that inputs and the underlying objec-       ship team for design of a new outpatient centre,
+tive function of the problem are deterministic (Juan,      planned for construction in the future.
+Faulin, Grasman, Rabe, & Figueira, 2015). This over-           Orthopaedic clinics are among complex outpatient
+simpliﬁed assumption does not account for the sto-         clinics with regard to patient ﬂow paths, since
+chastic nature of complex systems. As Kulturel-Konak       patients often require services from ancillary depart-
+(2007) stated, there is a growing need for designing       ments such as cast and radiology. A variety of patient
+ﬂexible and robust layouts that consider uncertainty in    paths that can occur in the studied orthopaedic out-
+service industries. Two of the most common methods         patient clinic are depicted in Figure 1. For example, a
+for modelling uncertainties are fuzzy theory and com-      patient path can involve arriving to the clinic, check-
+puter simulation. Lin, Liu, Wang, and Liu (2015) used      ing-in, having a cast taken oﬀ, getting an x-ray, meet-
+systematic layout planning and fuzzy constraint theory     ing with a medical provider, getting a cast put on,
+to design and optimise the facility layout of an operat-   checking-out, and ﬁnally leaving the clinic. Each
+ing theatre in Shanghai East Hospital. Arnolds, Nickel,    patient may experience a diﬀerent subset of these
+Shashaani, and Wernz (2012) proposed a robust opti-        activities during a visit and the order may also vary.
+misation via simulation framework, by hybridising              Since a patient visit may include several services
+mathematical optimisation and DES, to address hospi-       being provided in diﬀerent locations, and the patient
+tal layout planning. However, the authors did not          path is not analogous for all patients, it is critical that
+elaborate on the details and eﬃciency of the proposed      the design of the clinic layout accounts for the variety
+algorithm. Another example of hybridisation was pre-       and uncertainty associated with each of the possible
+sented by Azadivar and Wang (2000) in which simula-        patient paths. The current layout of the clinic is a
+tion and a GA were combined to solve an FLP in a           rectangular space of 6528 cm in length and 2529 cm
+manufacturing setting for a relatively small problem.      in width, containing 24 exam rooms and 8 physician
+The authors used GA to optimise the layout design of       work areas as shown in Figure 2. The current layout
+a manufacturing system while the simulation served as      follows a pod-based layout, where each sets of three
+a system performance evaluation tool.                      exam rooms are paired with one physician work area.
+   In this research, the outpatient clinic layout pro-     The pod-based layout is designed to maximise acces-
+blem is formulated by a MIP model and is solved            sibility of rooms for providers. Generally, each pod is
+
+166      V. VAHDAT ET AL.
+
+
+
+
+Figure 1. Variety of complex patient paths in an orthopaedic outpatient clinic. Blue arrows indicate patient movements inside
+the clinic and dashed blue arrows represent providers (i.e., physicians, nurses, and mid-level providers) movements.
+
+
+
+assigned to one provider, minimising the distance               area (e.g., waiting area and check-in). Fixed-position
+between exam rooms and the physician work area.                 units are not allowed to be relocated through redesign
+   The current layout parameters, including the size            of the clinic, based on the safety codes and architecture
+and the number of units, are provided in Table 1.               limitations. For the studied clinic, the only units that
+These parameters are used to analyse the clinic rede-           have a ﬁxed-position and size are the elevator and the
+signing process by comparing the performance of the             staircase.
+current with the proposed layouts. Each of the units in
+the layout can be characterised as either (i) standard
+sized, (ii) variable sized, or (iii) ﬁxed-position.             3.1. Discrete-event simulation model
+Standard-sized units have a predeﬁned length and
+width derived from provided standards (e.g., exam               A data-driven DES model is developed using the
+rooms, physician work areas). Variable-sized units              Anylogic 7.2 simulation modelling software to under-
+have ﬂexible lengths and widths which are constrained           stand the impact of the layout design on patient
+to be within an allowable range to satisfy total required       timeliness of care while considering uncertainties
+
+                                                                                                        HEALTH SYSTEMS           167
+
+
+
+
+                                Check-in
+                                Check-out
+
+
+             Waiting area                                                 Cast
+   Elev.                                                                                       Radiology
+
+
+Figure 2. The current layout of the existing orthopaedic outpatient clinic. Each of the four units with similar colour deﬁnes a pod
+with three exam rooms and one physician work area.
+
+
+
+Table 1. Parameters of the current layout of orthopaedic outpatient centre including Unit type, length, and width (in
+centimetres).
+                                                                                        Standard-          Variable-       Fixed-
+ Units                                      Unit count   Width(lix )     Length(liy )     sized             sized         position
+ Exam room                                      24           376            366             ✓
+ Waiting area                                    1          1857            676                               ✓
+ Cast room                                       1           925            475                               ✓
+ X-ray room                                      1           472            671                               ✓
+ Check-in                                        1           384            564                               ✓
+ Check-out                                       1           192            282                               ✓
+ Physician work area                             8           188            183            ✓
+ Elevator space and staircase                    1           470            439            ✓                                 ✓
+ Facility dimensions                             –       6,528 (Lx )     2,529 (Ly )       ✓
+
+
+
+
+and stochastic patient paths in the clinic as outlined                 that are derived from this data set and used as inputs
+above (Borshchev & Filippov, 2004).                                    to the DES model.
+   DES models are capable of representing the                             The patient arrival pattern is modelled as a non-
+dynamic behaviours of a real-world system while                        stationary Poisson process that varies based on hour
+also accounting for high levels of uncertainty. In                     of the day. Additionally, patient–provider interac-
+turn, DES models applied in the healthcare sector                      tions including the number and pattern of encounters
+are often used to evaluate resource and staﬀ utilisa-                  with orthopaedic providers over the course of the
+tion and forecast patient-related metrics (e.g., average               patient visit is extracted from the database. A patient
+length of stay and wait time [WT]) under a variety of                  may be seen only by one provider (Type 1 and 2) or a
+operational and physical constraints (Jun, Jacobson,                   team of providers (Type 3). Based on the historical
+& Swisher, 1999). All simulation models are built                      data analysis, 47% of the patients had one encounter
+with stochastic input parameters that are embedded                     with the physician and 9% of patients only met with a
+into the model using probability distribution func-                    mid-level provider (MLP). Alternatively, 44% of
+tions. The inputs of the constructed DES model are                     patients had their ﬁrst encounter with an MLP and
+gathered from both analysis of existing data sets                      a second encounter jointly with the MLP and physi-
+retrieved from clinic databases and observations of                    cian. Other model inputs derived from clinic data sets
+the clinic operations.                                                 are presented in Table 2.
+                                                                          In addition to the information captured from the
+3.1.1. Data analysis and observation                                   clinic databases, clinic operations were observed to
+A comprehensive data analysis was performed on a                       capture information about the patient ﬂow. The clinic
+data set containing information about more than                        was observed in March and April of 2016, accounting
+120,000 patient appointments between August 2013                       for 600 patient visits. The collected data provided
+and August 2015. The average number of physicians                      considerable insight into the patient experience and
+per day, the average number of patients visited by                     resource utilisation. The data were transformed into
+each physician, the no-show rate, and the hourly                       data-driven probability distribution functions to be
+patient arrival pattern are examples of information                    used as input into the simulation model. Accordingly,
+
+168        V. VAHDAT ET AL.
+
+
+Table 2. Resource, staﬃng, and scheduling parameters in the                  area (WTWA), referring to the time that a patient waits
+studied orthopaedic outpatient clinic, retrieved from clinic                 for the next available exam room, (ii) patient wait time
+databases.                                                                   in the exam room (WTR) denoting the aggregate time
+ Simulation model inputs from clinic data set   Daily patient and staﬀ
+ analysis                                               levels               that the patient is in the exam room waiting for a
+ Average number of patients per physician                 25                 provider, and (iii) patient length of stay in the exam
+    per day                                                                  room (LOSR) accounting for the total time a patient
+ Average number of patients per day                      200
+ No-show rate                                            10%                 spends in the exam room with or without the providers.
+ Number of physicians                                     8                  Analysis of these performance metrics provide a reliable
+ Number of mid-level providers (MLP)                      8
+ Cast services staﬀ                                       2
+                                                                             framework to verify a comprehensive patient experi-
+ Clinical assistant staﬀ (i.e., nurse)                    3                  ence through patient length of stay (LOS) or the period
+ Check-in and check-out staﬀ                           3 and 2               of time between the arrival and departure of patient
+                                                                             from outpatient clinic.
+a triangular distribution was ﬁtted for each process as                         A two-sample t-test was used to statistically com-
+shown in Table 3. Some of these clinical processes                           pare the mean values of interest. As shown in Table 4,
+may or may not be required for each patient during                           there is no signiﬁcant evidence to conclude that the
+their time in the clinic. The completion of these                            underlying means are statistically diﬀerent at a 95%
+probabilistic processes is modelled with uniform                             conﬁdence interval level for average WTWA, WTR,
+probability distributions (see Table 3). For example,                        and LOSR. As a result, it has been concluded that the
+the probability of visiting cast services after a provi-                     simulation model is an accurate representation of the
+der visit is based on a random number generated                              clinic and can be used to analyse the impact of
+from a uniform distribution ð,uniformð0; 85; 0:95ÞÞ                          diﬀerent layouts on patients’ experiences.
+taking into consideration which patients have been in
+cast services prior to the orthopaedic appointment.                          3.1.3. Results pertaining to eﬃciency of the current
+                                                                             layout
+3.1.2. Model veriﬁcation and validation                                      While many system features contribute to the patient
+The simulation model was veriﬁed by testing extreme                          experience, the focus of our analysis is the timeliness
+conditions to ensure that the model performed as                             of care driven by patient walking distances which are
+intended. In order to verify the constructed simulation                      impacted by the layout. Precise measurement of
+model, an animation of a simulated clinic day with                           patient walking distances was not possible, as it
+respect to the current layout was presented to clinic                        would have signiﬁcantly interfered with the patients’
+managers and staﬀ. The management team conﬁrmed                              visit; therefore, walking distances for each simulated
+the dynamics of the simulation model including the                           patient is instead captured with the DES model. The
+number of patients in the waiting area during each                           simulation model is run for a 3-month period result-
+hour of a day, the utilisation of resources, and the                         ing in more than 10,000 simulated patients. The
+patterns of patient ﬂow.                                                     walking distances resulting from the current layout
+   After verifying the model’s accuracy, outputs of the                      are shown in Table 5. On average, each patient walks
+simulation model were validated against the collected                        261.44 m during a visit, but the maximum walking
+data to ensure that the simulation model was an accu-                        distance is more than 610 m.
+rate representation of the studied clinic. To evaluate the                      The impact of walking distances on LOS is highly
+performance and validate the model, the following key                        dependent on patient walking speed. Previous studies
+metrics were examined: (i) patient wait time in waiting                      have shown that a comfortable walking speed for adults
+
+
+Table 3. Probability distributions for occurrence and duration of clinical processes. A uniform distribution, deﬁned by minimum
+and maximum is ﬁtted to likelihood of occurring a process. A non-symmetric triangular distribution, deﬁned by the minimum,
+mode, and maximum is ﬁtted for the duration of all patient processes.
+                                                                            Probability distribution of             Process duration
+ Probabilistic process                                                   likelihood of process occurring               (in minutes)
+ Check-in                                                                             100%                        ,Triangularð1; 2; 8Þ
+ X-ray before orthopaedic appointment                                          ,Uniformð0:58; 0:65Þ               ,Triangularð5; 10; 20Þ
+ First cast service before orthopaedic appointment                             ,Uniformð0:20; 0:40Þ               ,Triangularð3; 15; 20Þ
+ X-ray after cast service                                                      ,Uniformð0:85; 0:95Þ               ,Triangularð5; 10; 20Þ
+ Vitals and patient preparation                                                       100%                        ,Triangularð1; 1; 5:5Þ
+ Encounter with provider-Type 1                                                        47%                        ,Triangularð9; 12; 33Þ
+ Encounter with provider-Type 2                                                         9%                        ,Triangularð3; 9; 27Þ
+ Encounter with provider-Type 3                                                        44%                        ,Triangularð2; 7:5; 25Þ
+ X-ray during orthopaedic appointment                                          ,Uniformð0:07; 0:17Þ               ,Triangularð5; 10; 20Þ
+ Patient leaves the room                                                              100%                        ,Triangularð1; 1; 3Þ
+ Second cast service after orthopaedic appointment                             ,Uniformð0:85; 0:95Þ               ,Triangularð0; 15; 30Þ
+ Check-out                                                                     ,Uniformð0:36; 0:48Þ               ,Triangularð2; 5; 10Þ
+
+                                                                                                             HEALTH SYSTEMS              169
+
+
+Table 4. Simulation model validation. 95% conﬁdence intervals (CI) show no statistically signiﬁcant diﬀerences between
+observed and simulated outputs.
+                                           Simulated                                                             Actual
+ Metric                     Mean                            95% CI                                Mean                            95% CI
+ WTWA                       11.31                        [10.86, 11.76]                           12.90                        [7.04, 18.76]
+ WTR                        16.02                        [15.63, 16.41]                           16.93                       [15.00, 18.86]
+ LOSR                       36.21                        [35.80, 36.62]                           37.23                       [32.00, 42.46]
+
+
+
+Table 5. Patient walking distance analysis (in metres) based on simulation of the current layout.
+                                       Patient walking distance performance metrics (in metres)
+                  Mean      Median      Standard Deviation       Range       Minimum        First quartile   Third quartile      Maximum
+ Current layout   261.44    262.75            94.36              523.69       87.28             183.51           322.04           610.98
+
+
+
+
+is between 1.26 and 1.46 meters per second (m/s)                      4. Proposed solution framework
+(Bohannon, 1997). However, in-hospital walking speeds
+                                                                      Optimisation and simulation methods have been tradi-
+for older adults can be as low as 0.43 m/s (Graham,
+                                                                      tionally used as independent approaches for solving
+Fisher, Bergés, Kuo, & Ostir, 2010). As there are no
+                                                                      complex problems. However, the rise in computational
+published studies of the walking speed of patients in an
+                                                                      power promoted the possibility of combining these
+orthopaedic clinic, especially patients with crutches or
+                                                                      methods to simultaneously explore the details of a sys-
+other walking aids, the patient walking speed is approxi-
+                                                                      tem by simulation and identify optimal solutions using
+mated to follow a uniform distribution spanning
+                                                                      optimisation methods (Amaran, Sahinidis, Sharda, &
+between 0.50 and 1.10 m/s ð,uniformð0:5; 1:10ÞÞ.
+                                                                      Bury, 2016; Figueira & Almada-Lobo, 2014). SO meth-
+Correspondingly, on average, 5.4 min of patient LOS is
+                                                                      ods can be classiﬁed into four categories based on the
+associated with walking inside the clinic. In the worst
+                                                                      interactions between the simulation and optimisation
+case scenario, a patient may need to walk for as long as
+                                                                      modules (Figueira & Almada-Lobo, 2014). In
+13 min before leaving the clinic. Although walking only
+                                                                      Sequential Simulation-Optimisation (SSO), one of the
+takes up a small portion of the total visit length, it con-
+                                                                      categories of SO research, the simulation and optimisa-
+tributes greatly to the patient experiences.
+                                                                      tion modules are run sequentially. For example, either a
+    The simulation model provides insights regarding
+                                                                      simulation or optimisation module is run in the ﬁrst
+the impact of clinic layouts on patient walking dis-
+                                                                      stage independently. In the next stage, results of the ﬁrst
+tances and quality of care, yet it is not possible to
+                                                                      stage are used by the other module.
+extract insights or guidelines for redesigning the lay-
+                                                                         In this research, a multi-phase SSO approach is
+out to improve the average walking distance. In the
+                                                                      proposed to solve the facility layout design pro-
+following section, a hybrid SO framework is proposed
+                                                                      blem for the outpatient clinic. A summary of this
+to utilise both simulation and layout optimisation
+                                                                      approach is presented in Figure 3. In Phase I, the
+models concurrently to recommend a design that
+                                                                      constructed DES model is used to obtain the fre-
+can improve the quality of the patient experience.
+                                                                      quency of patient movements between units ðf ij Þ
+
+
+
+
+Figure 3. The proposed simulation-optimisation platform to solve the outpatient clinic layout design problem.
+
+170       V. VAHDAT ET AL.
+
+
+inside the orthopaedic clinic. The obtained fre-                calculated as a weighted sum of the travel distance
+quency is one of the key inputs to Phase II, a                  between each pair of units i and j where the weights
+MIP layout optimisation model. An enhanced                      pertain to the frequency of travel among units
+PSO is applied to solve the proposed mathematical               denoted by fi;j . These frequencies are calculated
+model and to identify candidate layouts. Finally,               based on the output from the simulation in Phase I.
+in Phase III, outputs of the optimisation algorithm                 The decisions within the FLP include the place-
+are evaluated via the simulation model. The best                ment of each unit i, as deﬁned by the coordinates of
+                                                                                                    y
+layout is deﬁned as the one with the minimum                    the centroid of the unit, ðcxi ; ci Þ, along the x-axis and
+average patient walking distance in response to                 y-axis. Using centroid information of each unit, the
+diﬀerent patient paths. The details of these three              Manhattan (,1 -norm) distance          between unit i and j
+                                                                                                 
+phases and the interactions among the phases are                                                  x             y    y 
+                                                                can be calculated as dij ¼ ðci  cxj Þ þ ðci  cj Þ.
+provided in Section 4.1, 4.2, and 4.3.
+                                                                    For standard-sized units, an additional decision of
+                                                                placing the unit horizontally ðri ¼ 1Þ or vertically
+4.1. Phase I: parameter estimation using the                    ðri ¼ 0Þ must be made. For variable-sized units, two
+discrete-event simulation model                                 additional decision variables must be deﬁned. These
+                                                                are the length and the width of each variable-sized
+One of the key considerations in designing an eﬃ-                                          y
+                                                                unit i, denoted as ðlix ; li Þ. A detailed list of parameters,
+cient outpatient layout is understanding the fre-               sets, decision variables, the objective function, and
+quency of ﬂows between each pair of units. This                 constraints of the mixed-integer linear mathematical
+information is diﬃcult to collect through clinical              model are included in Appendix A.
+observations due to the wide variety of patient paths
+that can occur. To estimate the frequency of physical
+                                                                4.2.1. Particle Swarm Optimisation (PSO)
+ﬂows between units, the DES model, as presented in
+                                                                FLP are often hard and intractable to be solved by
+Section 3.1, is simulated under 500 independent and
+                                                                exact methods. To address the complexities, heur-
+identically distributed replications. Each replication is
+                                                                istic and MH approaches are often employed,
+run to simulate 3 months or 10,000 patients, or
+                                                                which achieve near-optimal solutions, when exact
+whichever is achieved ﬁrst. The results are then
+                                                                algorithms are computationally expensive (Jourdan,
+aggregated to provide a unique frequency of ﬂows
+                                                                Basseur, & Talbi, 2009; Pacheco, Alvarez, Casado,
+between each pair of units.
+                                                                & Alegre, 2008). PSO is an evolutionary computa-
+                                                                tional MH technique developed by Eberhart and
+4.2. Phase II: mathematical modelling of the                    Kennedy (1995) that is capable of solving mathe-
+outpatient clinic                                               matical models in a continuous solution space. The
+                                                                concept of PSO originates from the social beha-
+Driven by the clinic leadership’s interest in designing a       viour of ﬂying birds and their methods of informa-
+clinic which focuses on the patient experience, and             tion exchange (Dehghanimohammadabadi &
+correspondingly improves the quality of care by                 Keyser, 2017).
+increasing eﬃciencies in the visit, the outpatient clinic           In a PSO algorithm, a candidate layout, hereafter
+FLP is formulated as an MIP model. This model mini-             referred to as a candidate solution, is represented as
+mises the average patients’ walking distances in the            a particle. The algorithm is initiated with a popula-
+clinic by deﬁning the positions of non-overlapping              tion of particles where each particle has a ﬁtness
+units in a continuous planar space. The corresponding           value and velocity. The particle’s ﬁtness value is
+FLP, builds upon the model developed by Sherali,                deﬁned as the value of the optimisation objective
+Fraticelli, and Meller (2003), and enhances the optimal         function based on the candidate solution. The velo-
+facility layout model to account for the placement of           city indicates the direction that the particle should
+variable-sized and ﬁxed-position units and the rotation         ﬂy in the next iteration. Using the ﬁtness value and
+of standard-sized units, as presented below.                    velocity, particles ﬂy through the problem solution
+   The model assumes that there are n number of                 space following the current optimum particles (Shi,
+units that need to be located within a facility. In this        2001). The algorithm searches for the “best local
+formulation, the superscript s 2 fx; yg denotes the             solution”, generally called exploitation in the MH
+dimension along the x-axis or the y-axis, in a two-             context, and the “best global solution”, denoted as
+dimensional coordinate system. Let the overall facility         exploration (Kang, Lu, & He, 2013). This process
+be a rectangle of size (Lx  Ly ). Accordingly, for each        repeats until the best conditions in the solution
+                y
+unit i, (lix ; li ) denotes the length and width of the unit.   space are discovered. The PSO pseudo-code per-
+The objective of the mathematical model is to mini-             taining to the problem of optimising the layout of
+mise the average travelling distance which is                   an outpatient clinic is presented in Figure 4.
+
+                                                                                                                      HEALTH SYSTEMS   171
+
+
+                        (1) Particles initialization
+                             (a) Initiate 500 empty particles. In this study, each particle is a layout con-
+                                  sisting a list of centroid locations for each unit i, or (cxi , cyi ), that is located
+                                  inside the outpatient clinic.
+                            (b) For each particle
+                                   (i) Initialize the particle’s placement Op (t = 0) by assigning a uniform
+                                       random position ∼ U (0, Ls ) to the centroid of each unit(cxi , cyi ))
+                                  (ii) Evaluate the particle’s ﬁtness (fp (t = 0)) by calculating the layout
+                                       problem’s objective function. Additionally, a large penalty propor-
+                                       tional to amount of overlaps between units are added to the particle’s
+                                       ﬁtness value to evaluate particles’ goodness and improvements.
+                                 (iii) Set the initial position and ﬁtness value as the particle’s best personal
+                                       reached position (Opbest (t = 0)) and the best ﬁtness value(fpbest (t = 0))
+                             (c) Set the global best particle
+                                   (i) Among all particles, ﬁnd the particle with the best ﬁtness value and
+                                       select it as the global best particle
+                                  (ii) Set the global best position (Ogbest (t = 0)) and the ﬁtness (fgbest (t = 0))
+                                       according to the global best particle values
+                        (2) Main PSO algorithm: Repeat until stopping criteria is met.
+                                  For each particle p at iteration t
+                                  
+                                  (a) Calculate and update the velocity of the particle       for time t + 1: 
+                                       Vp (t + 1) = wVp (t) + c1 r1 Opbest (t) − Op (t) + c2 r2 Ogbest (t) − Op (t)
+                                       w denotes inertia weight coeﬃcient that is between 0.4 to 0.9; c1 and
+                                       c2 are acceleration coeﬃcients that deﬁne the ratio of exploration
+                                       versus exploitation and should be between 0 and 2; and r1 , r2 are
+                                       uniform random variables between 0 and 1.
+                                  (b) Apply the velocity and ﬂy to ﬁnd the new position of the particle
+                                       Op (t + 1)
+                                  (c) Evaluate the particles ﬁtness fp (t + 1) and update individual and
+                                       global best solutions 
+                                   (i) If fp (t + 1) < fpbest (t) , then:
+                                       Opbest (t) ⇐ Op (t + 1)
+                                       fpbest (t) ⇐ fp (t + 1)
+                                                                 
+                                  (ii) If fp (t + 1) < fgbest (t) , then:
+                                       Ogbest (t + 1) ⇐ Op (t + 1)
+                                       fgbest (t) ⇐ fp (t + 1)
+                                  
+                        (3) Return the best solution
+
+
+Figure 4. Revised Particle Swarm Optimisation (PSO) pseudo-code for layout optimisation problem.
+
+
+
+4.2.2. Enhancement methods for metaheuristic                              investigated. In the ﬁrst approach, rather than start-
+procedure                                                                 ing from an empty set, an initial feasible solution is
+Through exploitation of local and exploration of global                   given to the PSO algorithm. By providing an initial
+solutions, MH algorithms perform as an extensive                          solution, the required time to ﬁnd a feasible solution
+search engines on large set of feasible solutions.                        by PSO is minimised.
+However, there is still no guarantee that MH can ﬁnd                         In the second approach, a neighbourhood search is
+a suitable solution in a reasonable time frame for NP-                    embedded into the PSO algorithm to examine adja-
+hard problems such as FLP. Enhancement on the search                      cent solutions which are deﬁned by minimally mov-
+procedure must be made speciﬁcally towards the pro-                       ing and rotating the location of overlapping units in
+blem of interest so that MH can ﬁnd near optimal                          the layout. Neighbourhood search increases the pos-
+solution with lower computational time and memory.                        sibility of ﬁnding a feasible solution only by consider-
+   As part of the improvement in the MH algorithms,                       ing local movements.
+the solution quality can be enhanced by optimising                           In the last approach, a composition/decomposition
+the MH parameters, such as c1 and c2 in Figure 4. At                      heuristic is introduced and applied. In this heuristic,
+the same time, in the eﬀort of ﬁnding good solutions,                     the problem size is ﬁrst reduced by grouping units
+many researchers have successfully integrated multi-                      together to form pods and the reduced problem is
+ple heuristics within the MH algorithms. The integra-                     solved. Once the positions of pods in the layout are
+tion of multiple heuristics accelerates the process of                    obtained, pods are decomposed to their constitutive
+ﬁnding acceptable solutions to large-scale optimisa-                      units to form the ﬁnal layout design. In the following
+tion problems.                                                            sections, the second and third approaches, neigh-
+   In order to accelerate the PSO algorithm for sol-                      bourhood search and composition/decomposition
+ving the layout problem from the studied outpatient                       heuristics are further discussed. Results of using
+clinic, the integration of three heuristic approaches is                  each of the accelerated PSO techniques, either
+
+172       V. VAHDAT ET AL.
+
+
+individually or in combination, are compared with                 few solutions accelerates the run-time of the PSO by
+the standard PSO approach.                                        ﬁnding feasible solutions, but limits the adverse
+                                                                  impacts on run-time that would result from regular
+                                                                  use of the procedure.
+4.2.3. Neighborhood search
+The MIP model for the layout optimisation problem
+considers a continuous planar space. Thus, any con-               4.2.4. Heuristic algorithm: two-stage composition/
+tinuous value can be assigned to a unit’s centroid                decomposition for layout problem
+coordinates as long as the unit lengths do not exceed             Another method often integrated into MH algo-
+the facility boundary. This model may result in solu-             rithms involves adding problem-centric heuristics or
+tions with units that are minimally overlapping, mak-             modifying the problem representation space. Due to
+ing the solution infeasible. An example of an                     the large number of units needing to be located in the
+infeasible layout is shown in Figure 5(a) where (i)               continuous layout space, ﬁnding feasible solutions for
+the waiting area overlaps with four exam rooms and                PSO is time-expensive and does not necessarily result
+(ii) one exam room (shaded square unit) overlaps                  in high-quality solutions. In order to improve the
+with another unit. A feasible layout solution can be              solution procedure, a two-stage composition/decom-
+found by neighbourhood search where the waiting                   position approach is used. In the ﬁrst stage, each
+area is rotated and the exam room is moved slightly,              group of three exam rooms are paired with one
+as shown in Figure 5(b).                                          physician work area unit, composing a pod. As a
+    However, checking every neighbour solution for                result, instead of optimising the position of every
+all units in each iteration is not computationally                single unit in the layout, the position of pods in
+eﬃcient. Therefore, a limited neighbourhood search                relation to other main units (i.e., waiting area, cast,
+is performed on the best global solution every 200                X-ray, check-in, check-out, and elevator) are opti-
+iterations to a subset of overlapping units. The neigh-           mised. In the second stage, the pods are decomposed
+bourhood search examines neighbour solutions cre-                 into the original units and the problem of ﬁnding the
+ated by -moving all overlapping units in eight                   best layout for each pod is solved in a limited discrete
+possible directions and rotating the standard-sized               space. A detailed explanation of the proposed heur-
+units. The value of  is set to 5 cm for this problem.            istic can be found in Appendix B.
+    While the feasibility of the solution may change
+with the neighbourhood search procedure, the objec-               4.2.5. Evaluation of heuristics’ eﬃciencies
+tive function value will not be impacted substantially.           To verify the eﬃciency and eﬀectiveness of the pro-
+This is due to the fact that (i) distances between units          posed decomposition heuristic and the implemented
+do not change signiﬁcantly with limited movements                 neighbourhood search, results are compared to the
+of the units and (ii) all units are rectangular and the           original PSO approach with and without the deﬁni-
+distance between units are measured between cen-                  tion of an initial feasible solution. The solution algo-
+troids, thus rotation of the units will not impact the            rithm is implemented in MATLAB 2017b and all
+objective function.                                               experiments are run with an Intel Core i7@ 2.5
+    The neighbourhood search procedure is computa-                GHz CPU machine with 16 GB RAM and a
+tionally expensive. Therefore, applying it to only a              Microsoft Windows 7 operating system. The stopping
+
+
+
+
+                              Waiting area                                            Waiting area
+ Check-in                                                         Check-in
+
+
+  Elev.                                            Check-          Elev.                                           Check-
+                                                    out                                                             out
+
+                              (a)                                                              (b)
+
+Figure 5. Neighbourhood search heuristic example. The layout in (a) is not a feasible layout. A neighbourhood search algorithm
+explores local solutions created by moving units in one of the eight possible directions and rotating units to create a feasible
+solution as shown in (b). Note that the red arrows in (a) show the selected movement directions.
+
+                                                                                                   HEALTH SYSTEMS           173
+
+
+Table 6. Comparison of proposed heuristics eﬀectiveness for solving the outpatient clinic layout problem.
+                              PSO algorithm
+                   With                                                             Time to            Objective function value
+                  initial               With              With two-stage          ﬁrst feasible        of the best solution and
+                 feasible          neighbourhood          decomposition             solution            improvement over the
+                 solution              search                heuristic             (seconds)            original PSO approach
+ Case 1             –                    –                      –                    742.74               1.324e + 18(0.0%)
+ Case 2             ✓                    –                      –                       –                 1.234e + 18(6.5%)
+ Case 3             –                    ✓                      –                  336.1596               1.318e + 18(0.15%)
+ Case 4             –                    –                      ✓                   56.2767                8.953e + 17(32%)
+ Case 5             ✓                    ✓                      –                       –                  1.173e + 18(11%)
+ Case 6             ✓                    –                      ✓                       –                  8.066e + 17(38%)
+ Case 7             –                    ✓                      ✓                   29.2574                7.527e + 17(42%)
+ Case 8             ✓                    ✓                      ✓                       –                  7.037e + 17(46%)
+
+
+
+
+criteria used to terminate the PSO procedure, as                optimisation model. Instead, the DES model is
+shown in PSO pseudo-code in Figure 4, are the                   utilised in Phase III to evaluate the actual walking
+limit of a maximum number of iterations (10,000                 distances.
+times), or achieving less than a 1% solution improve-              For the simulation model, no warm-up period
+ment in 1000 runs.                                              is utilised and each candidate layout is run for a
+   A variety of PSO algorithms are tested, each                 3-month period. This results in more than 10,000
+deﬁned by inclusion of a diﬀerent set of heuristics.            simulated patients which account for the stochas-
+As shown in Table 6, the heuristic approaches not               tic nature of patient ﬂows. All other parameters of
+only improve the value of the objective function, but           the simulation model remained unchanged for
+also accelerate the algorithm in ﬁnding the ﬁrst fea-           each candidate layout.
+sible solution. The objective function values are sig-
+niﬁcantly improved when the two-stage composition/
+decomposition heuristic is applied to the PSO algo-             5. Results
+rithm. This heuristic also reduces the time to ﬁnd the          Using the PSO approach and all of the introduced
+ﬁrst feasible solution when an initial feasible solution        heuristics (case 8 in Table 6), three candidate layouts
+is not provided. Overall, the best candidate layouts            were selected. These three layouts, in addition to the
+for the outpatient clinic are found when all three              current layout, are presented in Figure 6. The layouts
+heuristics are applied to PSO. Therefore, in order to           are veriﬁed and minimally edited by an architect, to
+obtain the best candidate layout designs, the PSO               form layouts in alignment with architectural best
+algorithm with an initial feasible solution, neighbour-         practices.
+hood search, and composition/decomposition heuris-                 As mentioned earlier, two diﬀerent performance
+tic (Case 8 in Table 6) is selected and executed 50             metrics are evaluated through simulation and optimi-
+times. Out of 50 candidate layouts, the best 3 layouts          sation. In the optimisation model, pair-wise walking
+with the minimum objective function values which                distances between units are minimised. While in the
+are distinctly diﬀerent are selected as ﬁnal layout             simulation phase, layouts are evaluated with respect
+candidates.                                                     to the aggregate patient walking distances, which
+                                                                account for both the layout and the full patient ﬂow
+                                                                paths during a visit. Correspondingly, the candidate
+4.3. Phase III: discrete-event simulation for
+                                                                layouts in Figure 6 have relatively insigniﬁcant diﬀer-
+evaluation
+                                                                ences in terms of the pair-wise walking distances (i.e.,
+To evaluate the candidate layouts identiﬁed with                less than 8% diﬀerence in the objective function
+the PSO algorithm, the DES model is again uti-                  value). However, the aggregate patient walking dis-
+lised. Even when diﬀerent layouts have similar                  tances vary between the four layouts, as shown in the
+objective function values, the performances of the              box plots in Figure 7.
+layouts diﬀer, if the eﬀectiveness of layouts is                   According to the results, the second layout per-
+compared in terms of the aggregate patient walk-                forms better in terms of the average aggregate patient
+ing distances rather than frequency of ﬂows. The                walking distances compared to other layouts.
+optimisation model only minimises the frequency-                Moreover, the median and variance of patient walk-
+weighted pair-wise cost of ﬂows between units,                  ing distances between the units are lower for the
+however a patient may move between multiple                     second layout. The major diﬀerences between the
+units to receive services during a visit. Therefore,            second candidate layout and the other layouts are:
+it is important to compare the candidate layouts
+corresponding to the full patient ﬂows, which                       (1) The waiting area is located in the centre of the
+cannot be achieved through the use of the                               layout. This conﬁguration results in the
+
+174       V. VAHDAT ET AL.
+
+
+
+
+                                                                                         Cast
+                           Waiting area
+
+
+
+
+                                                       Check-in
+       Check-out
+
+
+         Elev.
+                                                                                                   Radiology
+
+                                                         Candidate layout 1
+
+
+
+
+                  Cast
+                                                          Waiting area
+
+       Check-out
+
+       Check-in
+
+         Elev.           Radiology
+
+                                                        Candidate layout 2
+                                                                             Check-out
+
+
+
+
+                                  Check-in
+                                                                                                Cast
+
+       Radiology                                Waiting area
+
+         Elev.
+
+                                                        Candidate layout 3
+                                   Check-in
+                                    Check-out
+
+
+
+
+                   Waiting area                                             Cast
+         Elev.
+                                                                                                Radiology
+
+                                                           Current layout
+
+Figure 6. Final candidate layouts for the studied outpatient clinic from optimisation model. Note that each of the four units with
+similar colour deﬁnes a pod and the smaller room in the pod is the physician work area.
+
+                                                                                                   HEALTH SYSTEMS     175
+
+
+
+
+Figure 7. Box plot of simulated patient walking distances for the three candidate and the current layouts.
+
+
+
+
+Figure 8. Histograms of aggregate patient walking distances for the candidate layouts (in metres). Candidate Layout 2
+outperforms other layouts, with a lower mean, median, and maximum walking distance for patients during the visit.
+
+
+
+
+       distance between exam rooms and the waiting                      radiology, and cast room would prohibit
+       area being similar for all patients.                             patients from walking long distances for such
+   (2) The location of the ancillary services (main                     services. Also, patients can check-in or check-
+       units) are towards the entrance, near the ele-                   out easily on their way in and out of the clinic.
+       vator. In the case that a patient needs radiol-
+       ogy or cast services before the visit, the small          The histograms of patient walking distances for each of
+       distances between the elevator, check-in,                 the candidate layouts are also shown in Figure 8. The
+
+176       V. VAHDAT ET AL.
+
+
+histogram provides a more in-depth analysis of the                 rooms, and ancillary services. Therefore, the major
+distribution of walking distances among patients. The              reduction in LOS is a result of lower patient walking
+histogram of candidate Layout 2 is highly right-skewed             distances, demonstrating the impact of layout design
+and the majority of the patients walk less than 200 m              in patient timeliness of care and satisfaction.
+during their visits. Candidate Layout 3 outperforms
+candidate Layout 1 and the current layout in terms of
+the minimum and maximum walking distances a                        6. Conclusion
+patient may experience during a visit. However, in
+                                                                   Key to improving quality of care in healthcare clinics
+candidate Layout 1, the majority of patients walk less
+                                                                   is the need to account for the impact of design and
+than 350 m, lower than the other two layouts.
+                                                                   operational decisions on the patient experience,
+Candidate Layout 2 outperforms other layouts, with a
+                                                                   including the timeliness of care and eﬃciency of the
+lower mean, median, and maximum aggregate walking
+                                                                   system. One of the main elements eﬀecting timeliness
+distances for patients during a visit.
+                                                                   and eﬃciency of clinics is the physical design of the
+   Finally, layouts are compared with respect to
+                                                                   space and the way in which this design supports the
+patients’ LOS or the period of time between arrival
+                                                                   physical work ﬂows and patient ﬂows within the
+and departure of patients from the outpatient clinic.
+                                                                   clinic. Despite this, traditionally, ambulatory care
+The average LOS is considered to be a good proxy for
+                                                                   centres have been designed primarily with a physi-
+eﬃciency and quality of care in health centres, since it
+                                                                   cian-centric perspective.
+includes both service and WTs for patients
+                                                                       To address this, the presented work examines devel-
+(McDermott & Stock, 2007). Further, LOS has been
+                                                                   oping new methods for designing outpatient clinics
+shown to have a strong impact on patient satisfaction
+                                                                   with a focus on improving the quality of the patient
+(Quintana et al., 2006; Tokunaga & Imanaka, 2002). In
+                                                                   experience and improving eﬃciencies. Speciﬁcally, in
+turn, reducing LOS has been a main focus of reforms
+                                                                   order to account for the patient ﬂow behaviours dur-
+intended to promote eﬃciency (García-Lacalle &
+                                                                   ing a visit, a simulation model of the clinic dynamics is
+Bachiller, 2011; Perelman & Closon, 2007). The
+                                                                   created and integrated with facility optimisation meth-
+mean, 95% conﬁdence interval, median, and mode of
+                                                                   ods. As shown in the results, assessing a facility design
+LOS, as calculated in the simulation, are computed for
+                                                                   only with respect to optimising the objective function
+each layout and presented in Table 7. The average LOS
+                                                                   would not fully capture the eﬀects of the design on
+for patients are statistically signiﬁcantly diﬀerent based
+                                                                   quality of patients’ experience. Therefore, integration
+on the Analysis of Variance (ANOVA) and Fisher
+                                                                   of simulation with the optimisation methods is critical
+individual comparison tests with regard to the current
+                                                                   for achieving the best layout.
+layout (P  value < 0:05). The average LOS decreases
+                                                                       In addition to the novelty of incorporating the simu-
+from 73.27 min in the current layout to 68.88 min in
+                                                                   lation model for developing a patient-centric clinic
+candidate Layout 2. The most signiﬁcant impacts are
+                                                                   design, the research includes the development of a
+found for patients that need several services from
+                                                                   heuristic approach paired with a PSO algorithm. As
+diﬀerent units during their visit. Regarding the max-
+                                                                   the demand for outpatient services and clinics con-
+imum patient LOS, candidate Layout 2 improves LOS
+                                                                   tinues to grow in size, exact optimisation methods are
+by 71 min (21%), compared to the current layout.
+                                                                   no longer computationally eﬃcient. Instead MH meth-
+Similar analyses are performed for patient WT or the
+                                                                   ods are critical. In this work, a composition/decomposi-
+aggregate of the times that the patient is waiting for a
+                                                                   tion heuristic and a neighbourhood search heuristic are
+service in any location. Results of an ANOVA test
+                                                                   introduced to accelerate the PSO solution time and to
+show that the WT mean is not signiﬁcantly diﬀerent
+                                                                   identify better solutions. Through analysis of the result-
+between the layouts (P  value ¼ 0:77). The underly-
+                                                                   ing layouts with the DES, the ﬁndings verify that the
+ing reason is that while the layout design can improve
+                                                                   candidate layouts outperform the current layout in
+the patient walking distances within the clinic, it is not
+                                                                   terms of both the average and variation among patient
+necessarily impacting the patient WT. The latter is
+                                                                   walking distances in the system. These results support
+more dependent on the number, assignment, and
+                                                                   the value of integrating the presented SO method in the
+availability of resource such as physicians, exam
+
+
+Table 7. Patient length of stay (LOS) analysis (in minutes) based on simulation of the candidate and the current layouts.
+                                                              Patient length of stay (in min)
+                                                                         Standard
+                         Mean (95%CI)        Median        Mode          deviation          Range    Minimum        Maximum
+ Candidate Layout 1      71.06 (  1.21)      62.32        48.00           36.47            265.79    14.88          280.67
+ Candidate Layout 2      68.88 (  1.19)      59.32        42.00           34.83            241.82    14.49          256.31
+ Candidate Layout 3      70.66 (  1.22)      61.41        46.00           36.49            250.35    15.76          266.11
+ Current Layout          73.27 (  1.26)      64.52        48.00           37.57            312.96    14.60          327.56
+
+                                                                                                    HEALTH SYSTEMS          177
+
+
+design process of health clinics to improve quality of         Amaran, S., Sahinidis, N. V., Sharda, B., & Bury, S. J. (2016).
+care and patient satisfaction.                                   Simulation optimization: A review of algorithms and appli-
+    While the primary emphasis of this research is design-       cations. Annals of Operations Research, 240(1), 351–380.
+                                                               Armour, G. C., & Buﬀa, E. S. (1963). A heuristic algorithm
+ing the layout of an outpatient clinic based on patient          and simulation approach to relative location of facilities
+ﬂows, work ﬂows of other care providers such as physi-           [Journal Article]. Management Science, 9(2), 294–309.
+cians, nurses, and mid-level providers can be incorpo-         Arnolds, I., & Gartner, D. (2018). Improving hospital lay-
+rated in future models by extending the presented                out planning through clinical pathway mining. Annals of
+approach. Further, even with a patient-focused design            Operations Research, 263(1–2), 453–477.
+                                                               Arnolds, I., & Nickel, S. (2015) Layout planning problems in
+process, there may be unintended consequences for the
+                                                                 health care. In: Eiselt H., Marianov V. (eds) Applications of
+providers in the system. In future work, the evaluation          Location Analysis. International Series in Operations
+process can be further extended to assess features that          Research &Management Science, (232). Springer, Cham
+directly impact these critical members of the healthcare       Arnolds, I., Nickel, S., Shashaani, S., & Wernz, C. (2012). Using
+system. This additional focus on providers would be              simulation in hospital layout planning. Proceedings of the
+expected to be more signiﬁcant when patients are seen            winter simulation conference (p. 395).Berlin, Germany.
+                                                               Asl, A. D., & Wong, K. Y. (2017). Solving unequal-area
+by care teams which may consist of many healthcare               static and dynamic facility layout problems using mod-
+members (e.g., residents, medical assistants, counsellors,       iﬁed particle swarm optimization. Journal of Intelligent
+etc.) who see the patients sequentially and/or concur-           Manufacturing, 28(6), 1317–1336.
+rently. In such a circumstance, minimising patient walk-       Azadivar, F., & Wang, J. (2000). Facility layout optimiza-
+ing distances could lead to increased walking by                 tion using simulation and genetic algorithms [Journal
+                                                                 Article]. International Journal of Production Research, 38
+members of the care team. To build a layout that inte-
+                                                                 (17), 4369–4383.
+grates the decisions regarding patient walking distances       Berry, L. L., & Bendapudi, N. (2003). Clueing in customers.
+and the healthcare members, the PSO approach would               Harvard Business Review, 81(2), 100–106.
+beneﬁt from being updated to account for multiple              Bohannon, R. W. (1997). Comfortable and maximum
+objectives, through a weighted objective function, and           walking speed of adults aged 2079 years: Reference
+additional heuristic approaches could be examined to             values and determinants. Age and Ageing, 26(1), 15–19.
+                                                               Borshchev, A., & Filippov, A. (2004). Anylogicmulti-para-
+appropriately balance trade-oﬀs in performance for the           digm simulation for business, engineering and research.
+diﬀerent members. Fortunately, with the integration of           The 6th iie annual simulation solutions conference (Vol.
+simulation, the various perspectives would be able to be         150, p. 45).Orlando, Florida.
+assessed. Additionally, since layout design is a one-time      Brown, T. C., Jr, Werling, K. A., Walker, B. C., Burgdorfer,
+strategic decision, eﬀorts to integrate the role of tactical     R. J., & Shields, J. J. (2012). Current trends in hospital
+                                                                 mergers and acquisitions: Healthcare reform will result
+(e.g., patient scheduling) and operational (e.g., physician
+                                                                 in more consolidation and integration among hospitals,
+room assignment) decision-making in the facility layout          reversing a recent trend in which hospitals tended to
+process is recommended for future research. Similar to           stay away from such transactions [Journal Article].
+the approach in this study, capturing the complexities of        Healthcare Financial Management, 66(3), 114–120.
+these decision processes in simulation and integrating         Bruzzone, A., & Signorile, R. (1998). Simulation and
+with optimisation methods as part of the design process          genetic algorithms for ship planning and shipyard layout
+                                                                 [Journal Article]. Simulation, 71(2), 74–83.
+is suggested. This would support the mission of account-       Castillo, I., & Westerlund, T. (2005). An -accurate model for
+ing for the role of the physical clinic features and opera-      optimal unequal-area block layout design [Journal Article].
+tional characteristics on quality metrics during the design      Computers & Operations Research, 32(3), 429–447.
+process for new healthcare facilities.                         Chraibi, A., Osman, I. H., & Kharraja, S. (2018). Adaptive
+                                                                 layout for operating theatre in hospitals: Diﬀerent math-
+                                                                 ematical models for optimal layouts. In Annals of opera-
+                                                                 tions research (pp. 1–35).Springer.
+Disclosure statement                                           Chwif, L., Barretto, M. R. P., & Moscato, L. A. (1998). A
+No potential conﬂict of interest was reported by the             solution to the facility layout problem using simulated
+authors.                                                         annealing [Journal Article]. Computers in Industry, 36
+                                                                 (1–2), 125–132.
+                                                               Das, S. (1993). A facility layout method for ﬂexible manu-
+                                                                 facturing systems [Journal Article]. The International
+ORCID                                                            Journal of Production Research, 31(2), 279–297.
+                                                               de Alvarenga, A. G., Negreiros-Gomes, F. J., & Mestria, M.
+Vahab Vahdat      http://orcid.org/0000-0001-7831-7567           (2000). Metaheuristic methods for a class of the facility
+                                                                 layout problem. Journal of Intelligent Manufacturing, 11
+                                                                 (4), 421–430.
+References                                                     Dehghanimohammadabadi, M., & Keyser, T. K. (2017).
+                                                                 Intelligent simulation: Integration of Simio and Matlab
+Al-Hakim, L. (2000). On solving facility layout problems         to deploy decision support systems to simulation envir-
+  using genetic algorithms [Journal Article]. International      onment [Journal Article]. Simulation Modelling Practice
+  Journal of Production Research, 38(11), 2573–2582.             and Theory, 71, 45–60.
+
+178       V. VAHDAT ET AL.
+
+
+Drira, A., Pierreval, H., & Hajri-Gabouj, S. (2007). Facility     Jourdan, L., Basseur, M., & Talbi, E.-G. (2009). Hybridizing
+   layout problems: A survey [Journal Article]. Annual               exact methods and metaheuris-tics: A taxonomy
+   Reviews in Control, 31(2), 255–267.                               [Journal Article]. European Journal of Operational
+Dunker, T., Radons, G., & Westkmper, E. (2005). Combining            Research, 199(3), 620–629.
+   evolutionary computation and dynamic programming for           Juan, A. A., Faulin, J., Grasman, S. E., Rabe, M., &
+   solving a dynamic facility layout problem [Journal Article].      Figueira, G. (2015). A review of simheuristics:
+   European Journal of Operational Research, 165(1), 55–69.          Extending metaheuristics to deal with stochastic com-
+Eberhart, R., & Kennedy, J. (1995). A new optimizer using            binatorial optimization problems. Operations Research
+   particle swarm theory. Micro machine and human                    Perspectives, 2, 62–72.
+   science, 1995. mhs’95., proceedings of the sixth interna-      Jun, J., Jacobson, S. H., & Swisher, J. (1999). Application of
+   tional symposium on (pp. 39–43). Nagoya, Japan.                   discrete-event simulation in health care clinics: A survey
+Edwards, B. (2004). The modern airport terminal: New                 [Journal Article]. Journal of the Operational Research
+   approaches to airport architecture. Taylor & Francis.             Society, 50(2), 109–123.
+El-Baz, M. A. (2004). A genetic algorithm for facility layout     Kang, Y., Lu, H., & He, J. (2013). A PSO-based genetic algo-
+   problems of diﬀerent manufacturing environments                   rithm for scheduling of tasks in a heterogeneous distributed
+   [Journal Article]. Computers & Industrial Engineering,            system [Journal Article]. JSW, 8(6), 1443–1450.
+   47(2–3), 233–246.                                              Kohara, D., Yamamoto, H., & Suzuki, A. (2008). Eﬃcient
+Elshafei, A. N. (1977). Hospital layout as a quadratic               algorithms based on branch and bound methods for
+   assignment problem [Journal Article]. Journal of the              multi ﬂoor facility layout problems [Conference
+   Operational Research Society, 28(1), 167–179.                     Proceedings]. Proceedings of the 9th Asia paciﬁc indus-
+Enea, M., Galante, G., & Panascia, E. (2005). The facility           trial engineering & management systems conference, Bali,
+   layout problem approached using a fuzzy model and a               Indonesia (p. 387–395).
+   genetic search. Journal of Intelligent Manufacturing, 16       Koopmans, T. C., & Beckmann, M. (1957). Assignment
+   (3), 303–316.                                                     problems and the location of economic activities
+Ferenc, J. (2016). Assessing the current and future state of         [Journal Article]. Econometrica: Journal of the
+   health care design [Web Page]. Retrieved August 21, 2018,         Econometric Society, 25, 53–76.
+   from https://www.hfmmagazine.com/articles/2312-asses           Krarup, J., & Pruzan, P. M. (1978). Computer-aided layout
+   sing-the-current-future-state-of-health-care-design               design. In: Balinski M.L., Lemarechal C. (eds)
+Figueira, G., & Almada-Lobo, B. (2014). Hybrid simula-               Mathematical programming in use. Mathematical
+   tion-optimization methods: A taxonomy and discussion.             Programming Studies, (9), Springer, Berlin,Heidelberg.
+   Simulation Modelling Practice and Theory, 46, 118–134.         Kulturel-Konak, S. (2007). Approaches to uncertainties in
+Fruggiero, F., Lambiase, A., & Negri, F. (2006). Design and          facility layout problems: Perspectives at the beginning of
+   optimization of a facility layout problem in virtual envir-       the 21st century. Journal of Intelligent Manufacturing, 18
+   onment. Proceeding of icad (pp. 13–16).Florence, Italy.           (2), 273–284.
+García-Lacalle, J., & Bachiller, P. (2011). Dissecting hospital   Lacksonen, T. A. (1994). Static and dynamic layout pro-
+   quality. Antecedents of clinical and perceived quality in         blems with varying areas [Journal Article]. Journal of the
+   hospitals. The International Journal of Health Planning           Operational Research Society, 45(1), 59–69.
+   and Management, 26(3), 264–281.                                Levy, M, Weitz, B. A, & Grewal, D. (2012). Retailing
+Gary, M. R., & Johnson, D. S. (1979). Computers and                  management. In (6). New York: McGraw-Hill/Irwin.
+   intractability: A guide to the theory of NP-completeness          London, England.
+   [Generic]. New York, NY: WH Freeman and Company.               Li, J. P. (2000). Train station passenger ﬂow study.
+Goldschmidt, G. (1994). On visual design thinking: The vis           Proceedings of the 32nd conference on winter simulation
+   kids of architecture. Design Studies, 15(2), 158–174.             (Vol. 2, p. 1173–1176). IEEE, Orlando, Florida.
+Graham, J. E., Fisher, S. R., Bergés, I.-M., Kuo, Y.-F., &        Liang, L. Y., & Chao, W. C. (2008). The strategies of tabu
+   Ostir, G. V. (2010). Walking speed threshold for classi-          search technique for facility layout optimization [Journal
+   fying walking independence in hospitalized older adults.          Article]. Automation in Construction, 17(6), 657–669.
+   Physical Therapy, 90(11), 1591–1597.                           Lin, Q.-L., Liu, H.-C., Wang, D.-J., & Liu, L. (2015).
+Hassan, M. M., Hogg, G. L., & Smith, D. R. (1986). Shape:            Integrating systematic layout planning with fuzzy con-
+   A construction algorithm for area placement evaluation            straint theory to design and optimize the facility layout
+   [Journal Article]. International Journal of Production            for operating theatre in hospitals. Journal of Intelligent
+   Research, 24(5), 1283–1295.                                       Manufacturing, 26(1), 87–95.
+Hatch, M. J., & Schultz, M. (2010). Toward a theory of            Manataki, I. E., & Zografos, K. G. (2009). A generic system
+   brand co-creation with implications for brand govern-             dynamics based tool for airport terminal performance
+   ance. Journal of Brand Management, 17(8), 590–604.                analysis [Journal Article]. Transportation Research Part
+Holst, M. K. (2015). Optimal hospital layout design (Thesis.         C: Emerging Technologies, 17(4), 428–443.
+   Ph. D. Thesis), Aalborg Univer- sitetsforlag.                  McDermott, C., & Stock, G. N. (2007). Hospital operations and
+Ingole, S., & Singh, D. (2017). Unequal-area, ﬁxed-shape             length of stay performance. International Journal of
+   facility layout problems using the ﬁreﬂy algorithm.               Operations & Production Management, 27(9), 1020–1042.
+   Engineering Optimization, 49(7), 1097–1115.                    Meller, R. D., Chen, W., & Sherali, H. D. (2007). Applying
+Institute of Medicine. (2001). Crossing the quality chasm: A         the sequence-pair representation to optimal facility lay-
+   new health system for the 21st century. Washington, DC:           out designs [Journal Article]. Operations Research
+   The National Academies Press. Retrieved from ttp://               Letters, 35(5), 651–659.
+   www.nap.edu/catalog/10027/crossing-the-quality-                Meller, R. D., Narayanan, V., & Vance, P. H. (1998).
+   chasm-a-new-health-system-for-the                                 Optimal facility layout design1. Operations Research
+Joseph, A., & Rashid, M. (2007). The architecture of safety:         Letters, 23(3–5), 117–127.
+   Hospital design. Current Opinion in Critical Care, 13(6),      Montreuil, B. (1991). A modelling framework for inte-
+   714–719.                                                          grating layout design and ﬂow network design [Book
+
+                                                                                                      HEALTH SYSTEMS         179
+
+
+  Section]. In Material handling’90 (pp. 95–115).                 Scholz, D., Jaehn, F., & Junker, A. (2010). Extensions to
+  Springer, Berlin, Heidelberg.                                     stats for practical applications of the facility layout pro-
+Moslemipour, G., & Lee, T. (2012). Intelligent design of a          blem [Journal Article]. European Journal of Operational
+  dynamic machine layout in uncertain environment of                Research, 204(3), 463–472.
+  ﬂexible manufacturing systems. Journal of Intelligent           Sherali, H. D., Fraticelli, B. M., & Meller, R. D. (2003).
+  Manufacturing, 23(5), 1849–1860.                                  Enhanced model formulations for optimal facility
+National Center for Health Statistics (US). Health, United          layout [Journal Article]. Operations Research, 51(4),
+  States, 2016: With chartbook on long-term trends in               629–644.
+  health. Hyattsville(MD): National Center for Health             Sherali, H. D., & Smith, J. C. (2001). Improving discrete model
+  Statistics (US); 2017 May. Available from: https://www.           representations via symmetry considerations [Journal
+  ncbi.nlm.nih.gov/books/NBK453378/                                 Article]. Management Science, 47(10), 1396–1407.
+Nelson, C., West, T., & Goodman, C. (2005). The hospital          Shi, Y. (2001). Particle swarm optimization: Developments,
+  built environment: What role might funders of health              applications and resources. Evolutionary computation,
+  services research play. Rockville, MD: Agency for                 2001. proceedings of the 2001 congress on (Vol.1, pp. 81–
+  Healthcare Research and Quality.                                  86).Seoul, Korea
+Pacheco, J. A., Alvarez, A., Casado, S., & Alegre, J. F.          Tasadduq, I., Imam, M., & Ahmad, A. (2015). A hybrid
+  (2008). Heuristic solutions for locating health                   algorithm for optimising facility layout [Journal Article].
+  resources [Journal Article]. IEEE Intelligent Systems,            The South African Journal of Industrial Engineering, 26
+  23(1), 57–63.                                                     (1), 120–134.
+Perelman, J., & Closon, M.-C. (2007). Hospital response to        Tokunaga, J., & Imanaka, Y. (2002). Inﬂuence of length of
+  prospective ﬁnancing of in-patient days: The Belgian case.        stay on patient satisfaction with hospital care in japan.
+  Health Policy (Amsterdam, Netherlands), 84(2–3), 200–209.         International Journal for Quality in Health Care, 14(6),
+Prahalad, C. K., & Ramaswamy, V. (2004). Co-creating unique         493–502.
+  value with customers. Strategy & Leadership, 32(3), 4–9.        Tuzkaya, G., Gülsün, B., Tuzkaya, U. R., Onut, S., & Bildik, E.
+Quintana, J. M., González, N., Bilbao, A., Aizpuru, F.,             (2013). A comparative analysis of meta-heuristic approaches
+  Escobar, A., Esteban, C., … Thomp-Son, A. (2006).                 for facility layout design problem: A case study for an ele-
+  Predictors of patient satisfaction with hospital health           vator manufacturer. Journal of Intelligent Manufacturing, 24
+  care. BMC Health Services Research, 6(1), 102.                    (2), 357–372.
+Reiling, J. G., Knutzen, B. L., Wallen, T. K., McCullough, S.,    United States Census Bureau. (2018). 2016 annual capital
+  Miller, R., & Chernos, S. (2004). Enhancing the traditional       expenditures survey [Web Page]. Retrieved October 06,
+  hospital design process: A focus on patient safety. The Joint     2018, from https://census.gov/library/publications/2018/
+  Commission Journal on Quality and Safety, 30(3), 115–124.         econ/2016-aces-summary.htmly
+Rui, P., & Okeyode, T. (2015). National ambulatory med-           Wang, M.-J., Hu, M. H., & Ku, M.-Y. (2005). A solution
+  ical care survey (NAMCS): 2015 state and national sum-            to the unequal area facilities layout problem by
+  mary tables [web Page]. Retrieved October 08, 2018,               genetic algorithm. Computers in Industry, 56(2),
+  from http://www.cdc.gov/nchs/ahcd/ahcd.products.htm               207–220.
+Sadrzadeh, A. (2012). A genetic algorithm with the heur-          Wattanasupachoke, T. (2012). Design thinking, innovative-
+  istic procedure to solve the multi-line layout problem            ness and performance: An empirical examination.
+  [Journal Article]. Computers & Industrial Engineering,            International Journal of Management & Innovation, 4, 1.
+  62(4), 1055–1064.                                               Wu, W.-Y., Lee, C.-L., Fu, C.-S., & Wang, H.-C. (2013).
+Sahni, S., & Gonzalez, T. (1976). P-complete approxima-             How can online store layout design and atmosphere
+  tion problems [Journal Article]. Journal of the ACM               inﬂuence consumer shopping intention on a website?
+  (JACM), 23(3), 555–565.                                           [Journal Article]. International Journal of Retail &
+Samarghandi, H., & Eshghi, K. (2010). An eﬃcient tabu               Distribution Management, 42(1), 4–24.
+  algorithm for the single row facility layout problem            Xie, W., & Sahinidis, N. V. (2008). A branch-and-bound
+  [Journal Article]. European Journal of Operational                algorithm for the continuous facility layout problem
+  Research, 205(1), 98–105.                                         [Journal Article]. Computers & Chemical Engineering,
+Samarghandi, H., Taabayan, P., & Behroozi, M. (2013).               32(4–5), 1016–1028.
+  Metaheuristics for fuzzy dynamic facility layout problem        Zengul, F. D., & O’Connor, S. J. (2013). A review of
+  with unequal area constraints and closeness ratings. The          evidence based design in healthcare from resource-
+  International Journal of Advanced Manufacturing                   based perspective. Journal of Management Policy and
+  Technology, 67(9–12), 2701–2715.                                  Practice, 14(2), 19–36.
+
+180            V. VAHDAT ET AL.
+
+
+Appendices
+
+Appendix A. Mathematical model for outpatient layout optimisation
+
+ Sets:
+ N                                         Set of units to be located in the clinic layout.
+ Nv                                        Set of variable-sized units with variable length and width. Nv  N
+ Nf                                        Set of standard-sized units with ﬁxed locations. Nf  N
+ Ns                                        Set of standard-sized units with invariable length and width. Ns  N; Nf [ Nv [ Ns ¼ N; Nf \ Nv \ Ns ¼ ;
+ S                                         Set of directions denoting distance along x-axis and y-axis in a Cartesian coordinate system. s ¼ fx; yg
+ Parameters, constants, and coeﬃcients:
+ Ls                                        The facility length in direction s
+                                              It is equivalent to maximum length of each units in direction s. s 2 S
+ lsi                                       Unit length in direction s for standard-sized units. For each unit i, ðlix ; liy Þ
+                                              denotes the length (along x-axis) and width (along y-axis), respectively. i 2 NnNv ; s 2 S
+ ubsi                                      Upper bound of variable-sized unit i length in direction s. i 2 Nv ; s 2 S
+ lbsi                                      Lower bound of variable-sized unit i length in direction s. i 2 Nv ; s 2 S
+ ai                                        Required area of variable-sized unit i. i 2 Nv
+ αi                                        Maximum permissible ratio between the longest and shortest side of variable-sized unit i. i 2 Nv
+ Δ                                         Number of discrete points as tangential supports for area approximation
+ f ij                                      Frequency of ﬂows of providers and patients from unit i to unit j. i; j 2 N; f ij  0
+ δsij                                      Required distance between the unit i and unit j in direction s. i; j 2 N; s 2 S
+
+
+
+
+   In this Appendix, the Mixed Integer Linear Programming (MIP) model to optimise the outpatient clinic layout design problem is
+explained. The MIP model is based on a continuous representation of facility layout problems where each unit can be located in any
+place in the planar site as long as units are not overlapping and units remain inside the borders of the planar site. The parameters
+related to the introduced MIP model include the features of the units to be located (see Table 1), minimum distances required
+between units in x and y directions (δsij ), and frequency of ﬂows between pairs of units (f ij ), estimated with the discrete-event
+simulation model.
+                                                                                                                                       y
+   The main decision within the facility layout problem is the placement of each unit i, as deﬁned by the centroid coordinates ðcxi ; ci Þ,
+along the x-axis and y-axis. But there are additional decisions for each category of units. For standard-sized units, an additional
+decision of placing the unit horizontally ðri ¼ 1Þ or vertically ðri ¼ 0Þ must be made. For variable-sized units, two additional
+                                                                                               y
+decision variables of interest are the length and the width of each unit i, denoted as ðlix ; li Þ.
+   csi and lis can be used for obtaining the borders of each unit i and verifying overlap of the units. For instance the lower
+                                                                 y   y
+right corner of the unit i can be calculated as ðcxi þ lix =2; ci  li =2Þ. Correspondingly, the distances between the centroids,
+for all pairs of units ði; jÞ are deﬁned as dij . A binary decision variable Zijs denotes the relative location of units i and j with
+respect to the x-axis and the y-axis to prevent the overlap between the units. The variable is equal to 1 if unit i must precede
+unit j in the direction s.
+
+
+          Decision variables:
+          Continuous decision variables:
+          cis                                Coordinate of unit i centroid location in direction s. i 2 NnNf ; s 2 S
+          lis                                Length of variable-sized unit i in direction s. i 2 Nv ; s 2 S
+          dijs                               Rectilinear distance between centroids of units i and j in direction s. i 2 N; s 2 S
+                                               dij is expressed as the sum of the rectilinear distances in x and y-directions. dij ¼ dijx þ dijy
+          Binary decision variables:
+          Zijs                               Binary variable indicating if unit i precedes unit j in direction s or not. i; j 2 N; s 2 S
+          ri                                 Binary variable indicating if unit i is located horizontally or not. i 2 NnðNv [ Nf Þ
+
+
+  The objective is to minimise the average distance travelled by patients within the clinic, as a function of the location of
+the units. Thus, the objective function is calculated as the sum of the product of the frequency of the patient ﬂows and the
+rectilinear (Manhattan) distance between the centroids for all pairs of units i and j.
+
+                                                                        X
+                                                                        N X
+                                                                          N      
+                                                               min          f ij dijs                                                              (A1)
+                                                                    s
+                                                                         i    j
+
+                                                 dijs  csi  csj            "s 2 S; "i 2 N; j 2 N                                                 (A2)
+
+                                                dijs  csi  csj             "s 2 S; "i 2 N; j 2 N                                                 (A3)
+
+                                                                                                                                     HEALTH SYSTEMS     181
+
+                                                                                                
+                              ai lix             λ  x          2y                λ  x         
+                                     þ 2 lbxi þ     ubi  lbxi    li  2ai lbxi þ     ubi  lbxi                                                       (A4)
+                               2                Δ1                               Δ1
+                                                        "λ 2 f0; 1; ::; Δg; 2  Δ  50; "i 2 Nv
+                                                                                                                                                       (A5)
+                                                        lbsi  lis  ubsi          "s 2 S; "i 2 Nv
+                                                        lis             ls
+                                                             csi  Ls  i                    "s 2 S; "i 2 Nv                                          (A6)
+                                                        2                2
+                                                    y                                                    y
+                             lxi            l                      lx            l
+                                 ð1  ri Þ þ i ðri Þ  cxi  Lx  ð i ð1  ri Þ þ i ðri ÞÞ "i 2 nnðNv [ Nf Þ                                           (A7)
+                             2               2                     2              2
+                                           y                                                    y
+                              lxi        l               y         lx        l
+                                  ðri Þ þ i ð1  ri Þ  ci  Ly  ð i ðri Þ þ i ð1  ri ÞÞ "i 2 nnðNv [ Nf Þ                                           (A8)
+                              2           2                        2          2
+                                                                                                                          y
+                                                    y           y       lx
+                                                                                          y
+                                                                                          l         lx                l
+                                 cxi  cxj þ ci  cj  ð 2i ð1  ri Þ þ 2i ðri Þ þ 2j ð1  rj Þ þ 2j ðrj ÞÞþ
+                                                            y
+                                                                             lx   l
+                                                                                      y                                                                (A9)
+                                      lx                l
+                                     ð 2i ðri Þ þ 2i ð1  ri Þ þ 2j ðrj Þ þ 2j ð1  rj ÞÞ                            "i 2 nnðNv [ Nf Þ
+                                                                                                                          y
+                                                    y           y       lx
+                                                                                          y
+                                                                                          l         lx                l
+                                 cxi  cxj þ ci  cj  ð 2i ð1  ri Þ þ 2i ðri Þ þ 2j ð1  rj Þ þ 2j ðrj ÞÞþ
+                                                                                      y
+                                      lx                l
+                                                            y
+                                                                             lx   l                                                                   (A10)
+                                     ð 2i ðri Þ þ 2i ð1  ri Þ þ 2j ðrj Þ þ 2j ð1  rj ÞÞ                            "i 2 nnðNv [ Nf Þ
+
+                                                                    s
+                                          ls        lj
+                                     csi þ i  csj  þ dsij þ Ls ð1  Zijs Þ                        "s 2 S; "i; j 2 N; iÞj                            (A11)
+                                           2        2
+                                               X
+                                               S
+                                                 ðZijs þ Zjis Þ ¼ 1                                          "i; j 2 Ni  j                           (A12)
+                                                s
+
+                                      csi  csj < ð1  Zjis Þ  M                               "s 2 S; "i; j 2 Nf ; iÞj                              (A13)
+
+                                      csi  csj  Zjis  M                                     "s 2 S; "i; j 2 Nf ; iÞj                              (A14)
+
+                                 lis þ ljs < Ls þ M  ð1  ðZjis þ Zijs ÞÞ                      "s 2 S; "i; j 2 NnNv ; i < j                          (A15)
+
+                                 lis þ ljs  Ls  M  ðZjis þ Zijs Þ                            "s 2 S; "i; j 2 NnNv ; i < j                          (A16)
+
+                                       Zijs 2 f0; 1g                                            "s 2 S; "i; j 2 N; iÞj                                (A17)
+
+                                           ri 2 f0; 1g                                              "i 2 nnðNv [ Nf Þ                                 (A18)
+                                           lis fixed                                            "s 2 S; "i 2 NnNv                                     (A19)
+                                               csi fixed                                            "s 2 S; "i 2 Nf                                   (A20)
+                                ðZijs ; Zjis Þ fixed                                      "s 2 S; "i; j 2 ðnnNv Þ \ Nf ; i < j                        (A21)
+  Constraints (A2) and (A3) impose  the linearisation
+                                                       of the absolute value of the rectilinear distance between the centroids of units i
+                                   s     s
+and j in both directions, or dij ¼ ci  cj . The linearisation is valid since the ﬂows between units are non-negative or f ij  0 .
+                              s
+
+Constraint (A4) incorporates the linear segmentation of the hyperbolic curve, developed by Sherali et al. (2003) and used by Meller et
+al. (2007), for the lengths of variable-sized units. Instead of using a nonlinear (nonconvex and hyperbolic) area constraint,
+            y
+ai ¼ lix  li , the discretised polyhedral outer-approximation of the area constraint is used, as shown in constraint (A4). Unlike
+Lacksonen (1994), constraint (A4) provides a purely linear approximation of the area constraint without involving binary variables.
+                                          y
+The Δ tangential supports to the curve li ¼ alxi limit the width and length of each unit in each direction. As shown in previous studies,
+                                              i
+the number of tangential supports can be limited to 50, ðΔ < ¼ 50Þ, while obtaining an accurate approximation (Sherali et al., 2003).
+   For the variable-sized units, the upper and lower bounds on the lengths are calculated based on the permissible aspect ratio and
+                                                                                                pﬃﬃﬃﬃﬃﬃﬃ s
+required area of the units. Speciﬁcally,the upper bound
+                                                           can be calculated as ðubsi ¼ min      ai αi ; L Þ and the lower bound can be
+deﬁned with the following equation lbsi ¼ 2ub
+                                           ai
+                                              s . Constraint (A5) conﬁrms that the lengths of the variable-sized units remain
+                                                                i
+
+between the permissible lower and upper bounds in both directions.
+   Constraint (A6) ensures that all the variable-sized units remain inside the rectangular bounds deﬁning the outpatient clinic facility
+ðLs Þ. Despite the initial deﬁnition of length and width for standard-sized units, these units can be placed in two diﬀerent
+conﬁgurations, as deﬁned or rotated 90 . The concept of rotation of the departments inside the facility is incorporated in constraints
+(A7)–(A10). With the use of a binary decision variable ri , the rotation should keep the standard-sized units inside the rectangular
+bound of the outpatient facility represented in constraints (A7)–(A8) and decrease the absolute distance between units shown in
+constraints (A9)–(A10). Since all the units are rectangular, considering two rotational options (horizontal and vertical) covers all the
+possible conﬁgurations for each unit.
+   Constraints (A11) and (A12) ensure that separation restrictions are satisﬁed and prevent the overlap of units, using the relative
+locations, Zijs . δsij is added to ensure a speciﬁed distance, if required, between any two units i and j in direction s. More speciﬁcally,
+constraint (A12) assures that either unit i proceeds unit j in one of the directions s, or unit j proceeds unit i.
+
+182           V. VAHDAT ET AL.
+
+
+   Additional logical constraints that tighten the feasible polyhedron for ﬁxed-location units and standard-sized units are added to
+the formulation. Constraints (13)–(14) verify the sequence of two ﬁxed location units. If the centroid location of unit i proceeds the
+centroid location of unit j, unit j cannot proceed unit i or Zjis ¼ 0. Constraints (15)–(16) regulates that if the summation of any two
+standard-sized units’ lengths are greater than the length of the facility ðLs Þ in either direction, they cannot precede each other in that
+direction.
+   Constraints (17) and (18) are binary constraints for two decision variables of the model. Constraints (19) and (20) are trivial
+constraints for standard-sized and ﬁxed-location units. Constraint (21) ensures that for standard-sized units that have ﬁxed
+locations, the precedence of units (Zijs and Zjis ) do not change over the optimisation process.
+
+
+Appendix B. Two-stage composition/decomposition heuristic
+As shown in Figure B1, in the ﬁrst stage, each group of three exam rooms are paired with one physician work area unit, constructing a
+pod. As a result, instead of optimising the position of every single unit in the layout, the positions of pods in relation to other main
+units (i.e., waiting area, cast, X-ray, check-in, check-out, and elevator) are optimised. With this change, the problem size is reduced
+signiﬁcantly leading to the problem being solved more eﬃciently.
+   The intuition of creating pods is derived from the fact that in many outpatient clinics, a set of exam rooms are associated with a
+physician work area, or oﬃce, for the purpose of minimising the walking distances for providers. In fact, layouts are designed in a
+way such that each physician has access to a number of dedicated rooms. Depending on the clinic type, a physician may be assigned
+to one or more exam rooms. In the studied clinic, each physician has access to a maximum of three exam rooms. Since the only ﬂow
+that couples the exam rooms to each other is the ﬂow of the provider between exam rooms, when the rooms are aggregated to create
+pods, the ﬂow frequency can be summed without misrepresenting the system. An example of a ﬁrst-stage layout solution, in which
+pod locations are deﬁned, is shown in Figure B1(a).
+
+ First stage solution: Finding pod locations for outpatient clinic layout optimization problem
+
+
+                                                                                                                   1*   2           1*   2
+      1*        2                                                 1*         2
+
+                                                                                                                   4    3           4    3
+       4        3                                                 4          3             Cast
+                        Waiting area
+
+
+
+
+  Check-in               1*        2    1*         2                                  1*          2                                 1*   2
+
+
+      Elev.               4        3       4       3        Check-out                 4           3                                 4    3
+                                                                                                       Radiology
+
+
+                                                                       (a)
+
+ Second stage solution: Decomposing pods to locate units of outpatient clinic layout optimization problem
+
+                                                              3                  2                                 4    3       2        2
+       2       1*
+
+                                                              4                  1*                                1*                    3
+       4                                                                                   Cast
+                        Waiting area
+                                                                                                                                         4
+       3
+                                                                                                  1*                        2
+                                                                                                                                         1*
+
+                         1*                            1*                                         2                         3
+  Check-in
+
+
+      Elev.         4     3        2   2       4       3                     4        3                Radiology            4            1*
+                                                            Check-out
+
+
+                                                                       (b)
+Figure B1. Example of the two-stage composition/decomposition heuristic for the outpatient clinic layout problem. Note that
+the units with (*) represent physician work areas.
+
+  After the location of the pods and the main units are determined in the ﬁrst stage, next the pods are decomposed and the
+problem of ﬁnding the best layout for each pod is solved in the second stage, as shown in Figure B1(b). The pods are
+decomposed in such a way that the ﬁnal layout remains feasible, with no overlapping units, and the total cost of ﬂows
+between the units is minimised.
+
+                                                                                                        HEALTH SYSTEMS            183
+
+
+   To build diﬀerent layouts for the units inside the pod, without signiﬁcantly altering the solution from that found in the
+ﬁrst stage, a locally expanded space that extends beyond the initial location of the pods is deﬁned. More speciﬁcally, the
+expanded space is deﬁned to be the area that would result from adding an additional exam room on any side of the pod (see
+Figure B2). The MH solution procedure examines diﬀerent layouts of the three exam rooms and one work area that can
+occur in this expanded space. These solutions are only deemed to be permissible if units do not overlap with main units (i.
+e., cast, waiting area, radiology, check-in and check-out) or units from other pods and are not located outside of the facility
+boundary. Examples of solutions for the layout of these units in the feasible space such that no units overlap with the check-
+in space are presented in Figure B2. Since the search space, deﬁned by the diﬀerent pod layouts, is discrete and independent
+for each pod, the solution to this stage can be obtained eﬃciently.
+
+
+
+ Check-in
+
+      5       6       7      8                        7
+
+
+      16      1       2      9                        2               16      1       2      9                 1      2
+
+
+      15      3       4      10                       4                                                               4
+
+
+      14     13      12      11                       12                                                              12
+
+
+
+                                                     7       8
+
+
+      16      1       2                              2       9                1                       16                      9
+
+
+              3                                                               3       4               15                     10
+
+
+                                                                                     12
+
+Figure B2. Pod decomposition examples. In the top-left corner, the initial pod prior to decomposition is shown. In the
+decomposition phase, units can be located in any of the 12 adjacent locations in the expanded space (see squares 5–16 at
+top-left corner) as long as no units overlap with the main units. In this example, the check-in location prohibits the pod units to
+be located in positions 5 and 6.
+

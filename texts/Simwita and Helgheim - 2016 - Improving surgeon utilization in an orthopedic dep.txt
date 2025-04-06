@@ -1,0 +1,682 @@
+                                                                              Journal of Healthcare Leadership                                                                                                                                                                               Dovepress
+                                                                                                                                                                                                                                                  open access to scientific and medical research
+
+
+                                                                                  Open Access Full Text Article                                                                                                                                      ORIGINAL RESEARCH
+
+                                                                              Improving surgeon utilization in an orthopedic
+                                                                              department using simulation modeling
+
+                                                                                                                           This article was published in the following Dove Press journal:
+Journal of Healthcare Leadership downloaded from https://www.dovepress.com/
+
+
+
+
+                                                                                                                           Journal of Healthcare Leadership
+                                                                                                                           5 October 2016
+                                                                                                                           Number of times this article has been viewed
+
+
+
+                                                                              Yusta W Simwita                              Purpose: Worldwide more than two billion people lack appropriate access to surgical services
+                                                                              Berit I Helgheim                             due to mismatch between existing human resource and patient demands. Improving utilization
+                                                                                                                           of existing workforce capacity can reduce the existing gap between surgical demand and avail-
+                                                                              Department of Logistics, Molde
+                                                                              University College, Molde, Norway            able workforce capacity. In this paper, the authors use discrete event simulation to explore the
+                            For personal use only.
+
+
+
+
+                                                                                                                           care process at an orthopedic department. Our main focus is improving utilization of surgeons
+                                                                                                                           while minimizing patient wait time.
+                                                                                                                           Methods: The authors collaborated with orthopedic department personnel to map the current
+                                                                                                                           operations of orthopedic care process in order to identify factors that influence poor surgeons uti-
+                                                                                                                           lization and high patient waiting time. The authors used an observational approach to collect data.
+                                                                                                                           The developed model was validated by comparing the simulation output with the actual patient
+                                                                                                                           data that were collected from the studied orthopedic care process. The authors developed a proposal
+                                                                                                                           scenario to show how to improve surgeon utilization.
+                                                                                                                           Results: The simulation results showed that if ancillary services could be performed before
+                                                                                                                           the start of clinic examination services, the orthopedic care process could be highly improved.
+                                                                                                                           That is, improved surgeon utilization and reduced patient waiting time. Simulation results
+                                                                                                                           demonstrate that with improved surgeon utilizations, up to 55% increase of future demand can
+                                                                                                                           be accommodated without patients reaching current waiting time at this clinic, thus, improving
+                                                                                                                           patient access to health care services.
+                                                                                                                           Conclusion: This study shows how simulation modeling can be used to improve health care
+                                                                                                                           processes. This study was limited to a single care process; however the findings can be applied
+                                                                                                                           to improve other orthopedic care process with similar operational characteristics.
+                                                                                                                           Keywords: waiting time, patient, health care process
+
+
+                                                                                                                           Introduction
+                                                                                                                           Despite significant technological and medical advances, critical shortage in health work-
+                                                                                                                           force poses key constraints in health care service delivery.1–3 This problem is more critical
+                                                                                                                           in the field of surgery as more than two billion people worldwide lack access to surgery
+                                                                                                                           services.4,5 Funk et al5 noted that rising constraints on the availability of human resources,
+                                                                                                                           inadequate surgical facilities, and poor infrastructures are the main problems associated
+                                                                                                                           with inadequate surgical treatment service. Thus, to meet increasing surgical demand
+                                                                              Correspondence: Yusta W Simwita
+                                                                              Department of Logistics, Molde
+                                                                                                                           and needs, healthcare providers must learn to better utilize existing workforce capacity.
+                                                                              University College, Britvegen 2, 6410        This can be achieved by applying operational management tools such as simulation to
+                                                                              Molde, Norway
+                                                                              Tel +47 71 195 785
+                                                                                                                           explore patient care processes in order to improve utilization of existing resources and
+                                                                              Email simwita2009@gmail.com                  patient care delivery processes.6–9
+
+
+
+                                                                              submit your manuscript | www.dovepress.com   Journal of Healthcare Leadership 2016:8 41–50                                                                                                                                                   41
+                                                                              Dovepress                                                           © 2016 Simwita and Helgheim. This work is published and licensed by Dove Medical Press Limited. The full terms of this license are available at https://www.dovepress.com/terms.
+                                                                              http://dx.doi.org/10.2147/JHL.S112856
+                                                                                                                                                  php and incorporate the Creative Commons Attribution – Non Commercial (unported, v3.0) License (http://creativecommons.org/licenses/by-nc/3.0/). By accessing the work
+                                                                                                                           you hereby accept the Terms. Non-commercial uses of the work are permitted without any further permission from Dove Medical Press Limited, provided the work is properly attributed. For
+                                                                                                                           permission for commercial use of this work, please see paragraphs 4.2 and 5 of our Terms (https://www.dovepress.com/terms.php).
+
+                                   Simwita and Helgheim                                                                                                      Dovepress
+
+
+                                       In spite of the growing number of academic research on         efficiency with an increased volume of nonelective patients
+                                   the patient care process, time-related studies focus mainly on     in an orthopedic department. They found that the concentra-
+                                   wait time or the duration of individual medical p­ rocedures       tion of nonelective activity could offer potential savings in
+                                   in the care process, thus lacking a total, holistic view of        terms of the theater time allocated for trauma cases. Meer
+                                   the patient care process.10,11 In order to facilitate increased    et al16 conducted a study in an orthopedic department using a
+                                   access to care services through better utilization of existing     series of projects. The goal was to give their clients a better
+                                   workforce capacity, a holistic view of the process should be       understanding of the reason for increased patient wait times.
+                                   taken into consideration. This paper aims to fill part of this         Baril et al17 studied the relationships and interactions
+                                   gap by using a discrete event simulation model to explore          among patient flows, resource capacities, and appointment
+                                   the patient treatment process and investigate how to improve       scheduling rules in order to improve an orthopedic outpatient
+                                   surgeon utilization without adding extra resources. This           clinic. They found that in order to improve the outpatient
+                                   objective will be achieved by first, using simulation model        orthopedic clinic’s performance, resources and appoint-
+                                   to explore and identify factors that influence poor surgeon        ment scheduling rules must be applied to the various patient
+                                   utilization and high patient waiting time. Second, suggesting      flows. Bowers and Mould18 used a simulation to explore the
+                                   and testing a proposal scenario that can be used to improve        balance between maximizing orthopedic theater utilization,
+                                   surgeon utilization and reduce patient waiting time. And           minimizing the number of overruns, and ensuring high qual-
+                                   lastly, investigating to what extent the improved process can      ity during theater sessions. They suggested that including
+                                   accommodate future increasing demand.                              deferred, elective patients in trauma theater sessions has the
+                                       The remainder of this paper is organized as follows: The       potential to generate excess theater capacity using existing
+                                   second section presents the literature review, and the third       resources. Steins et al9 deployed discrete event simulation
+                                   section presents the description of orthopedic department          to explore how various management policies affect various
+                                   and its workforce capacity problem. The fourth section             performance metrics, such as patient waiting time, cancel-
+                                   presents data collection and the methodology used for              lations, and the utilization of orthopedic theater time. They
+                                   simulation model development. The fifth section presents           noted that the performance of an operating room department
+                                   the proposal scenario suggested to improve utilization of          can be significantly improved by utilizing policies that focus
+                                   surgeons and decrease patient wait time. The modeling              on reserving operating room capacity.
+                                   results are presented in section six. The seventh section pres-        Despite the wide application of simulations on health care
+                                   ents a discussion of the simulation results, followed by the       processes, the literature points out that application of simula-
+                                   managerial implication and conclusion in the last Section.         tion in healthcare is still at an embryonic stage.19,20 And this
+                                                                                                      is evidenced by the above reviewed literature as most of them
+                                   Literature review                                                  have focused on using simulation to either reduce patient wait-
+                                   Health care resources have become increasingly scarce              ing time or improve resource utilization. This study extends
+                                   and expensive, thus placing greater emphasis on better             this line of research by considering not only patient wait time
+                                   utilization of resources to improve health services. One of        and resource utilizations but also exploring the extent to which
+                                   the major operational issues in health care delivery sys-          this department can accommodate future increasing demand as
+                                   tems involves maximizing resource utilization goals while          a result of process improvement. In this paper, the authors use
+                                   minimizing patient wait times. Simulations have proven             discrete event simulation to explore on how to improve surgeon
+                                   their capability and viability as a technique for improving        utilization while minimizing patient wait time from when the
+                                   resource utilization and reducing patient wait time.7,12,13 This   patient arrives to the point of discharge. Here, surgeon utiliza-
+                                   has led to a number of simulation studies being carried out        tion is defined as the proportion of time in which orthopedic
+                                   on orthopedic care processes.                                      surgeons are busy with patient examination and treatment.
+                                       Bowers and Mould14 conducted a study in orthopedic
+                                   trauma theaters to explore the balance between maximiz-            Description of orthopedic
+                                   ing the utilization of operating room sessions and ensuring        department
+                                   improved throughput. They found that a willingness on the          This study was approved by Research and Ethics commit-
+                                   part of elective patients to postpone their treatments could       tee (REC) of Catholic University of Health and Allied
+                                   result in achieving greater throughputs. Bowers and Mould15        Sciences and Bugando Medical Centre (CUHAS/BMC).
+                                   adopted simulations to explore the potential for increased         Patient written consent was not necessary because this
+
+
+
+                                   42        submit your manuscript | www.dovepress.com                                            Journal of Healthcare Leadership 2016:8
+                                             Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Dovepress                                                                      Improving surgeon utilization in an orthopedic department
+
+
+                                   was a p­ rocess improvement study and no single medical or         d­ evelopment. To gain more insight into the orthopedic care
+                                   personal information from the patient was taken. Data col-          process, the authors held unstructured discussions with nurses
+                                   lection was anonymous. The authors conducted this study             and patients attending the orthopedic clinic. The entire patient
+                                   at Bugando referral hospital, one of the four teaching and          orthopedic care process is described below.
+                                   consultant hospitals in Tanzania. It serves mainly the Lake             Upon arrival at the hospital patient starts first at the reg-
+                                   and Western zones of the United Republic of Tanzania. The          istration department where individual patient information
+                                   Bugando hospital is located along the shores of Lake Victoria      is collected as well as any associated treatment charges if
+                                   in Mwanza City. This 900-bed hospital has ~1,000 employees.        needed. It is common for patients to arrive at the registration
+                                   The Bugando hospital is a referral hospital for tertiary spe-      department from six in the morning, even though registra-
+                                   cialist care serving eight regions: Kigoma, Mwanza, Kagera,        tions start from seven and clinic services start from eight in
+                                   Tabora, Shinyanga, Simiyu, Geita, and Mara. This hospital          the morning. Patients are allowed to drop off their informa-
+                                   serves a population of ~13 million people.                         tion cards at the registration counter, which are used by the
+                                       The orthopedic department of this hospital was experienc-      registration personnel to collect patient information for reg-
+                                   ing workforce capacity challenges. Specifically, its existing      istration purposes. The registration counter sometimes opens
+                                   surgeon capacity was facing an increase of demand for              before seven to allow early arrival patients to drop off their
+                                   orthopedic care services and high patient wait times. Hospital     information cards. Being the sole registration department
+                                   management noticed that process improvement was neces-             for the entire hospital, this approach helps the registration
+                                   sary for this department. Improving utilization of existing        personnel to successfully accommodate the high volume of
+                                   surgeon capacity, without adding extra resources, was one          patients attending this department. When the registration
+                                   of the improvement initiative proposed to enhance this care        process is complete, patients are directed to their respective
+                                   process. The management of this hospital was concerned with        clinics: orthopedic clinic in this case.
+                                   finding a better way of utilizing the current limited number            After their arrival at the orthopedic clinic, patients are
+                                   of surgeons in order to reduce patient wait times and increase     required to wait for the examination activities to start, includ-
+                                   patient access to care. The main interest was on identifying       ing the arrival of the orthopedic surgeons. Although there
+                                   factors causing the poor utilization of surgeons and the strat-    is no clear reason as to why some patients tend to arrive
+                                   egy or actions that can be used to improve surgeon utilization,    early in the morning before the start of clinical services, it
+                                   reduce patient wait times, and increase patient access to care.    is probably due to the high volume of patients attending this
+                                                                                                      hospital per day. Thus, some patients would prefer to arrive
+                                   Orthopedic department resources                                    early in the morning so that they can receive treatment before
+                                   Bugando hospital has four specialized orthopedic surgeons          the queues for health care providers pile up. Occasionally,
+                                   and five operational theaters for both elective and emergency      nurses at this clinic arrive early, though not necessarily
+                                   patients. Orthopedic surgeons are allocated only two rooms,        an hour earlier, and upon their arrival help patients with
+                                   operating on Monday, Wednesday, and Friday, with two sur-          administrative issues before the surgeons arrive. This might
+                                   geons per day. The total capacity for the allocated 3 days in      be due to the high number of patients attending this clinic.
+                                   the operating theater is six rooms per week. On the clinic side,   Sometimes, the surgeons arrive 15–45 minutes after the
+                                   orthopedic surgeons attend to patients on Tuesday and Wednes-      clinic has opened due to other duties at the hospital. When
+                                   day, with two surgeons per day. The orthopedic clinic has three    the surgeons arrive at the clinic, the nurses escort patients
+                                   nurses who guide and take patients to surgeons for examina-        to the examination rooms.
+                                   tions. Bugando hospital also has a central laboratory and an            During first examinations surgeons usually orders ancil-
+                                   X-ray section, which serve the entire hospital community.          lary tests such as X-ray and lab test. Patient with ordered
+                                                                                                      ancillary test are then required to undertake their respective
+                                   Describing process operations                                      ordered test which can be either X-ray or lab test. After
+                                   In order to understand and map the entire orthopedic care          obtaining their ancillary tests results, patients bring their
+                                   process, the authors held interviews with orthopedic sur-          results to the clinic and hand them to the nurse, who takes
+                                   geons, heads of departments related to orthopedic care (lab,       the results to the surgeons for further diagnosis. At the end
+                                   X-ray, registrations, and the orthopedic ward), and hospital       of the second examination, patients are either transferred for
+                                   management. To increase model validity and credibility,            surgery activity or discharged. Figure 1 presents a concep-
+                                   the authors involved key surgeons at the orthopedic clinic         tual model of the current orthopedic care process that was
+                                   and the head of operating room during conceptual model             translated into the computer simulation model.
+
+                                   Journal of Healthcare Leadership 2016:8                                                       submit your manuscript | www.dovepress.com
+                                                                                                                                                                              43
+                                                                                                                                                              Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Simwita and Helgheim                                                                                                                                    Dovepress
+
+
+                                                                                     Patient                                        Nurse                                    Surgeon
+                                                                                                                 Wait                                      Wait            examination
+                                                                                  registration                                      escort
+                                                            Wait
+                                                                                 at registration
+                                                                                  department
+                                                 Patient
+                                              arrives at the                                                                                                           Surgery
+                                                 hospital                                                                                                              decision
+                                                                                                                                                     No
+                                                                                 5                                                                                    No
+                                                              Patients joins examination                                                                                              Yes
+                                                           queue for second time after tests
+                                                                                                                     2             First visit              Discharged
+                                                            results for further examination
+                                                                                                                  Patient                                                        Patient
+                                                             4                                                    waiting                        1                               surgery
+                                                                                                                  results                            Yes                         process
+                                                         Patient
+                                                     collects results                                                                   Radiology or
+                                                                                                                                     laboratory patient
+                                                                                                                                        examination
+                                                                                                    3
+                                                                                              Radiology or                              Patient                            Recovery
+                                                                                            laboratory results                      leaves OR after                        process
+                                                                                                  ready                            recovery process
+
+                                   Figure 1 Current process in the orthopedic department: the five numbered steps show the ancillary service follow-up process.
+                                   Abbreviation: OR, operating room.
+
+
+
+                                   Methodology and data collection                                                       Table 1 Descriptive statistics of the observed data for 178
+                                                                                                                         patients (minutes)
+                                   Our study is based on the observational and interview data
+                                   from the orthopedic care process from June 2012 to August                             Activity time                        Mean          Median         Standard
+                                                                                                                                                              (minutes)     (minutes)      deviation
+                                   2012. The authors followed patients from when they arrived                                                                                              (minutes)
+                                   at the registration department to the point of discharge. For                         Registration waiting time            35.134        33             21.35
+                                   data collection process the authors used stopwatches and                              Registration time                    14.87         15             3.888
+                                   structured data sheets where each column represented either                           Nurse escort                         4.7           4              2.21
+                                                                                                                         First examination waiting            144           48.5           41.7
+                                   waiting or assessment time of a particular observed patient
+                                                                                                                         time
+                                   activity. The authors recorded patient assessment time and                            First examination                    17.17         16              8.236
+                                   waiting time for registration, examination at the clinic by the                       Second examination                   53.41         50              22.99
+                                   surgeon, X-rays, lab tests, the surgery process, and recovery.                        waiting time
+                                                                                                                         Second examination                   13.98         13              5.31
+                                   Based on collected patients data, a daily average of 35 patients                      X-ray waiting time                   43            45              28.5
+                                   attend the clinic per day, of whom 80% are discharged while                           X-ray                                16.38         17              1.65
+                                   20% undergo the whole process up to surgery. During the data                          Laboratory test waiting              41            42              12.7
+                                                                                                                         time
+                                   collection period, 178 patients underwent the entire process
+                                                                                                                         Laboratory test                      25.39         25.5            2.98
+                                   from arrival to surgery to discharge.                                                 Surgery time                         72.848        60              4.25
+                                       The authors performed a comprehensive analysis of                                 Recovery time                        12.61         13              2.969
+                                   the collected data in order to identify and fit an appropri-
+                                   ate distribution. Starting with statistical overview, Table 1                         (­Version 13.0) to develop ­simulation model. The authors
+                                   summarizes the statistical information on the durations of                            used the Arena input analyzer to generate the parameters
+                                   activity time of the observed 178 patients. Linear correlation                        of the selected distribution (Table 2), which was used in the
+                                   techniques and scatter plot were further applied to assess                            simulation model.
+                                   data independence. Histograms and box plot techniques were
+                                   used to hypothesize concerning the families of distribution.                          Model development and assumptions
+                                   Subsequently, the authors used a chi-square test to determine                         It is difficult to imitate complex health care delivery systems
+                                   the representativeness of the identified distribution.21 Thus,                        that involve human decisions and behavior in a simulation
+                                   chi-square tests for goodness of fit guided the selection of                          model.22 Thus, the authors made a number of assumptions
+                                   the appropriate distribution. This study adopted discrete                             that guided simulation model development. First, this paper
+                                   event simulation as the main methodology and used Arena                               considers operations systems from 6 am to 4 pm because the
+
+                                   44          submit your manuscript | www.dovepress.com                                                                   Journal of Healthcare Leadership 2016:8
+                                               Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Dovepress                                                                                    Improving surgeon utilization in an orthopedic department
+
+                                   Table 2 Simulation model input based on observed orthopedic                      of more than 2 hours and high number of patients waiting
+                                   care process operations (minutes)                                                in the queue. The authors further used the model to identify
+                                   Process                     Distribution                    Resources            the factors creating this high wait time.
+                                   Patient arrival             0.5 + EXPO (2.62)
+                                   Registration
+                                   Nurse escort
+                                                               5.5 + GAMM (1.97, 4.73)         Clerks
+                                                                                                                    Model verification and validation
+                                                               1.5 + WEIB (3.59, 1.49)         Nurse
+                                   First examination
+                                                                                                                    Model verification is a key step used to ensure that the con-
+                                                               3.5 + WEIB (15.4, 1.74)         Surgeons
+                                   Second examination          3.5 + ERLA (2.66, 4)            Surgeons             ceptual model is well translated into the simulation computer
+                                   X-ray                       13.5 + WEIB (3.79, 2.15)        X-ray technician     program and the model is running free of errors.21 To meet
+                                   Laboratory                  NORM (25.4, 2.98)               Lab technician       this requirement the authors verified simulation model using
+                                   Surgery                     10 + GAMM (46.9, 1.34)          Surgeons
+                                                                                                                    Arena debugging techniques and animation and the model was
+                                   Recovery                    4.5 + 14 * BETA (2.42, 1.65)    Operating room
+                                                                                               personnel            running correctly. The authors took several steps to validate
+                                   Note: Numbers in parenthesis represent distribution parameters as generated by   the developed model. First, the authors maintained high face
+                                   Arena input analyzer.                                                            validity of the model by involving the head of the operating
+                                   Abbreviations: EXPO, Exponential; GAMM, Gamma; WEIB, Weibull; ERLA,
+                                   Erlang; NORM, Normal.                                                            room and key orthopedic specialist surgeons in the conceptual
+                                                                                                                    model development. Further, the authors used three perfor-
+                                   observed patients began to arrive at the hospital from 6 am.                     mance measures to validate the developed model: patient wait
+                                   Second, the central purpose of this paper is to explore the                      time at the clinic, patient throughput per day at the surgical
+                                   entire orthopedic care process; thus, it focused on patients                     room and surgeons utilization at the clinic. Observed surgeon
+                                   who undertook the whole process from arrival to discharge                        utilization is calculated as the total hours that a surgeon has
+                                   after surgery. Third, in line with the second assumption, the                    worked divided by the total scheduled hours.23
+                                   authors assumed that surgeon decisions on whether surgery                             In addition, throughput is measured as average number
+                                   is required are made only at the end of the second examina-                      of patients that complete surgery per day in a surgical room.
+                                   tion (ie, after bringing surgeons the ordered X-ray and lab                      The average patient wait time for a surgeon at the clinic from
+                                   test results). Fourth, the authors assumed that resources are                    simulation output is 2.8 hours, at 95% confidence interval.
+                                   available to patients for the two clinical and three allocated                   This is not very different from the observed patient wait time
+                                   surgical days. Fifth, the second examination queue has prior-                    for a surgeon at the clinic, 2.4 hours. Furthermore, the average
+                                   ity over the first examination queue. The model limitations                      surgeon utilization is 94.5% based on the collected patient
+                                   were based on the following grounds: transfer times (trans-                      data. This is very similar to the simulation output surgeons
+                                   port times) within the orthopedic department were not taken                      utilization, which is 91.5%, at 95% confidence interval.
+                                   into account because the main focus of this study was the                        The average throughput based on the simulation output, at
+                                   orthopedic department, particularly the interaction between                      95% confidence interval, is 5 patients. This is close to the
+                                   specialist orthopedic surgeons and patients.                                     observed average patient throughput at surgical room, which
+                                        The simulation model was then developed within the                          is 7.3 patients. Lastly, the authors increased model validity by
+                                   aforementioned assumptions and ran for 100 independent                           running the simulation using the collected patient arrivals
+                                   replications and the system was reinitialized between replica-                   instead of sampling from the selected exponential distribu-
+                                   tion. In this model each replication stands for a single day                     tion, and the similar results were achieved.
+                                   of orthopedic care delivery at this clinic. The normal opera-                         The major difference between simulation output and
+                                   tions of the studied clinic is from 8 am to 4 pm, however, the                   observed data was found on waiting time for second
+                                   authors simulate the model for 9 hours because during data                       examination at the clinic. The average waiting time from
+                                   collection process, the clinic was most of the time closing                      the simulation model is 0.14 hours while based on the real
+                                   at 5 pm. Patients in this care process are examined based on                     data the average waiting time is 0.8 hours. This is probably
+                                   first in first out service discipline. Likewise, in the simula-                  because in the simulation model second visit patients were
+                                   tion model patients were also served using the same first in                     given priority over the first examination patients. Thus, in the
+                                   first out queuing discipline. Patient arrivals were generated                    model it was assumed that patients bringing their ancillary
+                                   based on the observed schedule of the two allocated clinic                       results for second examination, were always given first prior-
+                                   days. Also in the surgical room, the model simulates based                       ity in the queue over the first examination patients. Normally
+                                   on the schedule of the observed three allocated surgical                         patients with ancillary test coming for second examination
+                                   days. During analysis, it was observed that the surgeon at                       are always preceded by other patients in the queue. Despite
+                                   the clinic is the key bottleneck due to high patient wait time                   this discrepancy the model is considered valid because other
+
+                                   Journal of Healthcare Leadership 2016:8                                                                     submit your manuscript | www.dovepress.com
+                                                                                                                                                                                            45
+                                                                                                                                                                            Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Simwita and Helgheim                                                                                                                          Dovepress
+
+
+                                                                                                                        1                                              3
+                                                                                                                                                2
+
+                                                                                                                 Radiology or                                   Radiology
+                                                Patient                                  Patient       Wait                               Patient
+                                                                                                                  laboratory                                  or laboratory
+                                               arrives at              Wait           registration                                        waiting
+                                                                                                                    patient                                   results ready
+                                                   the                               at registration                                      results
+                                                hospital                              department                 examination
+
+                                                                                                                                         5
+                                                                                                                                                                 4
+
+                                                                                                       Nurse                        Patient joins
+                                                                                           Wait                                 examination queue
+                                                     Clinical                                          escort
+                                                                                                                                after obtaining tests             Patient
+                                                  examination of                                                                       results                collects results
+                                                     patient
+
+
+                                                                                           Surgery
+                                                                       Yes                 process
+                                                                                                           Patient recovery
+                                                   Surgery
+                                                                                                               process
+                                                   decision
+                                                                                                                                        Patient leaves
+                                                                                  Discharged                                           OR after surgery
+                                                                 No
+
+                                   Figure 2 Revised conceptual model.
+                                   Abbreviation: OR, operating room.
+
+
+
+
+                                   performance measures such as first examination, throughput                      wanted to explore if the new system can accommodate more
+                                   and surgeons utilization are close to the actual collected data.                than 50% increase in demand without the patient waiting
+                                                                                                                   more than 2 hours. The main focus is to investigate how the
+                                   Proposal scenario                                                               new model of operations can cope with future increasing
+                                   The main focus of the simulation model was to explore the                       demand if ancillary tests are ordered at the beginning of
+                                   key reasons for high patient waiting time and poor surgeon                      the process. It should be noted that surgeons can still order
+                                   utilization. After simulation analysis of process variables, the                certain tests if further diagnosis is needed.
+                                   authors identified that the key reason for high patient wait
+                                   time and the poor utilization of surgeons was follow-ups in                     Modeling results
+                                   the form of ancillary services (X-ray and lab tests) ordered                    Output analysis of the proposed scenario was performed
+                                   by surgeons. Due to these ancillary tests, patients join the                    using the Arena output analyzer at a 95% confidence inter-
+                                   examination queue twice, thus experiencing high total wait                      val. Table 3 presents the average of performance measures
+                                   times. The authors examined one strategy relating to the                        before and after the proposed changes. As expected simu-
+                                   standardization and transfer of ancillary-service-ordering                      lation model results indicate that patient waiting time can
+                                   activities to upstream staff. If implemented, this could signifi-               be reduced by 59.2% after delegating ancillary services to
+                                   cantly enhance surgeons to handle more patients than before.                    upstream staff. The simulation model shows that transferring
+                                   Figure 2 shows a revised conceptual model.                                      ancillary services improves surgeon utilizations at the clinic
+                                                                                                                   (surgeons 1 and 2) by 17%, thus allowing the accommodation
+                                   Care procedure for proposal scenario                                            of more patients at the clinic. Given the fact that more than
+                                   The major change in the proposed scenario is that ancillary                     80% of orthopedic patients have nonsurgical cases,16 this
+                                   services will be ordered at the beginning of the process by                     alternative is still viable for these care providers. The model
+                                   upstream staff, immediately after the registration process.                     didn’t show high improvement in throughput in the operat-
+                                   Upstream staff can either be a nurse or any mid-level trained                   ing room before and after the changes because arrival rate
+                                   staff. It should be noted that these resources are not accounted                has not changed. The authors used a paired t-test validation
+                                   for in the current model. This change implies that surgeons’                    procedure to explore whether there was a significant change
+                                   examination processes will be initiated once the ancillary                      in performance measures before and after dedicating ancil-
+                                   tests results are obtained, after which the patient is discharged               lary services to lower-level staff. All changes were found to
+                                   or undergoes surgery. With this change, the authors further                     be significant as presented in Table 3.
+
+
+                                   46         submit your manuscript | www.dovepress.com                                                            Journal of Healthcare Leadership 2016:8
+                                              Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Dovepress                                                                                              Improving surgeon utilization in an orthopedic department
+
+                                   Table 3 Comparison of performance measures before and after transferring ancillary services
+                                                                                              Mean               Median               95% Confidence interval                         t               Sign
+                                                                                                                                      for mean
+                                                                                                                                      Lower                 Upper
+                                                                                                                                      bound                 bound
+                                   Throughput at operating room
+                                   Base scenario                                              5                  5                    3                     12                        6.6             000
+                                   Proposal scenario                                          6                  7                    2                     12
+                                   First exam wait time
+                                   Base scenario (hours)                                      2.8                2.9                  1.43                  3.1                       36.7            000
+                                   Proposal scenario (hours)                                  1.14               1.18                 0.38                  1.93
+                                   First exam number of patients waiting
+                                   Base scenario                                              14.6               13.9                 5.7                   21.3                      20.6            000
+                                   Proposal scenario                                          5.3                5.2                  2                     9
+                                   Second exam wait time
+                                   Base scenario (hours)                                      0.13               0.16                 0.1                   0.18                      –               –
+                                   Surgeon 1 utilization
+                                   Base scenario                                              95.1               96                   72.7                  97.6
+                                   Proposal scenario                                          64.9               65.1                 56.9                  78.7                      29.4            000
+                                   Surgeon 2 utilization
+                                   Base scenario                                              94.3               95.2                 70                    97.2                      29.8            000
+                                   Proposal scenario                                          64.4               63.5                 51.3                  75.7
+                                   Surgeon 3 utilization
+                                   Base scenario                                              49.2               46.8                 36.9                  38                        2.67            000
+                                   Proposal scenario                                          62.4               62.6                 29.3                  116
+                                   Surgeon 4 utilization
+                                   Base scenario                                              38                 39.6                 35.4                  49.4                      5.8             000
+                                   Proposal scenario                                          57.2               57.5                 26.7                  167
+                                   Note: Surgeons 1 and 2 represent two surgeons at the orthopedic clinic, whereas surgeons 3 and 4 represent two surgeons at the surgical room.
+
+
+                                   Table 4 System behavior for 55% demand increase after change                         Discussion
+                                   (95% confidence interval)
+                                                                                                                        This study focused on exploring the entire orthopedic care
+                                                                      Waiting time    Surgeon 1       Surgeon 2         process. The authors explore the efficiency of the process,
+                                                                      (hours)         utilization     utilization
+                                                                                                                        focusing on the inadequate utilization of surgeons and high
+                                   Base model                         2.8             64.4            64.9
+                                   55% demand increase                1.89            88.4            89.3
+                                                                                                                        patient wait times. The focus is identifying process inhibitors
+                                   Note: The authors assume the patient is not supposed to wait for more than           that lead to poor utilization of surgeons and showing how
+                                   2 hours.                                                                             surgeon utilization can be improved and also investigating the
+                                                                         Average waiting time
+                                                                                                                        effect of improved utilization on future increasing demand.
+                                                           2                                                            ­Discrete event simulation was used to explore the base sce-
+                                   Waiting time (hours)
+
+
+
+
+                                                                                                                         nario that represents the observed orthopedic care process and
+                                                          1.5
+                                                                                                                         to develop a proposal scenario that can be used to improve
+                                                           1                                                             surgeons utilization as well as reducing patient waiting time.
+                                                                                                                             The simulation results from the base scenario reveal long
+                                                          0.5
+                                                                                                                         patient wait times and poor surgeon utilization. Poor surgeon
+                                                           0                                                             utilization has several negative effects, such as long patient
+                                                                10%      20%          30%              55%               wait times, as well as morbidity and mortality. The authors
+                                                                       Demand increase rate                              suggested a proposal scenario that demonstrates a change
+                                   Figure 3 Percentage of demand that can be accommodated.                               that may lead to the improvement of the orthopedic care
+                                                                                                                         process, without any increase in resources. The objective of
+                                      The authors further explored future demand that can be                             the proposed scenario was, to improve surgeon utilization
+                                   accommodated as a result of a released surgeon capacity.                              and shorten the time patients had to wait at the orthopedic
+                                   The simulation model demonstrates that 55% increase in                                clinic. As expected, the results of the simulation analysis
+                                   demand can be accommodated without patient waiting more                               show significant decrease in patient wait time. The results
+                                   than 2 hours. The results are shown in Table 4 and Figure 3.                          presented in Table 3 indicate that if ancillary services could
+
+                                   Journal of Healthcare Leadership 2016:8                                                                               submit your manuscript | www.dovepress.com
+                                                                                                                                                                                                          47
+                                                                                                                                                                                      Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Simwita and Helgheim                                                                                                     Dovepress
+
+
+                                   be performed before the start of clinic examination services       and improve resource utilization.27,28 Thus, to ensure that
+                                   for all patients in need of ancillary services, orthopedic care    the proposed improvements are achieved, hospitals should
+                                   process could be highly improved.                                  focus on training the upstream staff before implementation
+                                        The authors further explored the effect of delegating         of the proposed model. In addition, the process of developing
+                                   ancillary services on surgeon utilization. The main objective      standardized protocols should involve surgeons, X-ray, lab
+                                   of delegating ancillary services to upstream staff is to free up   as well as upstream staff. This will enhance the development
+                                   surgeon capacity by reducing the number of patients meeting        of a comprehensive standardized protocol that will help to
+                                   the surgeons twice on the same day. The freed capacity will        reduce the effect of ordering unnecessary tests and hence
+                                   thus be used by surgeons to accommodate increasing patient         utilize effectively the improved surgeons’ capacity.28
+                                   demands and needs. As expected, the simulation results in              It is a common practice for surgeons to order some
+                                   Table 3 showed a significant reduction of surgeons’ utilization    additional tests in a situation where they need more investi-
+                                   at the clinic after dedicating ancillary services to downstream    gation for patients. In the proposed model, if surgeons still
+                                   staff. This implies that the capacity that had been used for       need to order some tests for patients, this will partly reverse
+                                   patients’ second visits, bringing with them the results of the     the proposed model. But it will not look exactly like the
+                                   ordered ancillary tests, can be utilized to accommodate other      current model, because not all patients will need to go for
+                                   patients in the queue or those on the waiting list.                additional tests. The authors believe that if upstream staff are
+                                        From healthcare processes perspective the necessity of        well trained and able to manage their work, few patients will
+                                   improving patient access to care through the use of discrete       be redirected for additional tests. Since the volume of these
+                                   event simulation is presented in this study. A simulation          tests will not be as high as the volume of tests in the baseline
+                                   model demonstrates that if these changes are implemented,          model, the inefficiencies observed in the base model, such as
+                                   up to 55% additional patient demand can be accommodated            high waiting time, may not be observed in the same pattern.
+                                   without a patient waiting more than 2 hours. Thus, freeing         Hence, improved surgeon capacity will to a large extent still
+                                   up surgeon capacity is necessary to enhance the flexibility        be used to treat more patients than in the baseline model.
+                                   of responding to the increasing patients demands. ­According           The above raised issues need to be carefully consid-
+                                   to Chadha et al,24 the benefit of having excess capacity in        ered during the implementation of the proposed model.
+                                   inpatient clinics would include the provision of efficient         For example, unnecessary ordering of tests if not carefully
+                                   and timely patient services. The simulation results showed         handled could potentially increase figures of surgeon uti-
+                                   that dedicating ancillary services to upstream staff reduces       lization in real life because more tests will still need to be
+                                   patient wait time; thus, patients can see the surgeons earlier     ordered by the surgeons. This will increase the inefficiency
+                                   in the process than before.                                        utilization of the surgeons. As stated above, these problems
+                                        It is worth noting that implementing the proposed             can be eliminated through training and collaborative working
+                                   improvement initiatives will undoubtedly present a sig-            between surgeons and upstream staff. If all necessary precau-
+                                   nificant challenge. A shift to using upstream staff to order       tions and educational steps are taken into consideration, the
+                                   ancillary tests poses a risk of unnecessary or wrong tests         proposed model can lead to improved patient access to care
+                                   being ordered by these staff. Previous studies demonstrated        and improved surgeon utilization.
+                                   that unnecessary ordering of tests is a global concern and
+                                   contributes to overall hospital cost as well as inappropriate      Managerial implications
+                                   use of resources in labs and X-ray sections.25–27 This effect      The simulation result from this study provide significant
+                                   could then outweigh the improved surgeons’ utilization at the      insights to healthcare providers aiming to improve patient
+                                   clinic in this study because part of the freed capacity will be    care processes. First the reduced patient waiting time and
+                                   used to order more new tests. This will lead to poor utiliza-      improved surgeon utilization indicates that improving patient
+                                   tion of improved surgeon capacity as well as increased cost        care process does not necessarily need additional workforce
+                                   to the hospital as a whole due to inappropriate utilization of     capacity. Instead healthcare providers should focus on better
+                                   lab and X-ray resources.                                           utilization of existing workforce capacity to enhance flexible
+                                        Nevertheless, previous studies investigating how to           capacity that can be used to accommodate ever increasing
+                                   reduce the associated cost of unnecessary tests ordering           patient demands and needs.
+                                   have shown that staff training and involvement in the devel-           Second, the implication of increased demand that can be
+                                   opment of tests guidelines reduce the aforementioned cost          accommodated as a result of released capacity suggest that
+
+
+
+                                   48        submit your manuscript | www.dovepress.com                                           Journal of Healthcare Leadership 2016:8
+                                             Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Dovepress                                                                          Improving surgeon utilization in an orthopedic department
+
+
+                                   patients access to care can be improved through better utili-       issues facing healthcare organizations today.14,29 Thus, pro-
+                                   zation of existing surgeons. The released surgeons capacity         cess redesign proposed in this study can be applied with
+                                   can be used to reduce not only patients waiting time but also       other orthopedic care processes globally to address the issue
+                                   to improve patient access to orthopedic care services. This         of high patient waiting time as well as improving surgeons
+                                   improvement further indicate that, healthcare providers should      utilization.
+                                   focus on finding better ways of utilizing the existing surgeons
+                                   capacity in order to accommodate more patients within the           Acknowledgments
+                                   existing workforce capacity.                                        The authors would like to thank the management of the
+                                       Finally globally hospitals are facing increasing trend of       Bugando Hospital for allowing us to collect data for this
+                                   human resource constraints,1 thus it is important for health-       study. The authors would also like to thank all health care pro-
+                                   care providers to adopt operational management tools such           viders for their great help during the data collection period.
+                                   as simulation in order to improve the utilization of existing       The authors would further like to express their gratitude to
+                                   surgeons. With increasing human resource constraints par-           Associate Professor Ketil Danielsen of Molde University
+                                   ticularly in developing countries the importance of increasing      College for comments on the simulation aspect.
+                                   patient access to care through better utilization of resources
+                                   is imperative.                                                      Disclosure
+                                                                                                       The authors report no conflicts of interest in this work.
+                                   Conclusion
+                                   This study used discrete event simulation model to show how         References
+                                                                                                        1. WHO. Working together for health. GENEVA. 2006.
+                                   the care process can be explored to identify critical factors
+                                                                                                        2. Anand PS, Bärnighausen T. Human resources and health outcomes: Cross-
+                                   that inhibit better resource utilization, leading to high patient       country econometric study. Lancet. 2004;364:1603–1609.
+                                   wait times. The authors have further suggested ways in which         3. Edward A, Kumar B, Niayesh H, Naeem AJ, Burnham G, Peters DH. The
+                                                                                                           association of health workforce capacity and quality of pediatric care in
+                                   surgeons, as critical resources, can be utilized efficiently to         Afghanistan. Int J Qual Health Care. 2012;24(6):578–586.
+                                   improve care services and reduce patient waiting time. The           4. Debas T. Haile, Richard Gosselin, Colin McCord, AT. Surgery. In:
+                                                                                                           Jamison TL, Breman JG, Measham AR, et al, (editors). Disease Control
+                                   simulation results show that if the proposed changes will be
+                                                                                                           Priorities in Developing Countries. 2nd ed. New York: Oxford University
+                                   implemented, it will be possible to achieve reduced patient             Press; 2006:1245–1261;1293–1307.
+                                   wait time and improved surgeon utilization, thus increasing          5. Funk LM, Weiser TG, Berry WR, et al. Global operating theatre distribu-
+                                                                                                           tion and pulse oximetry supply: An estimation from reported data. Lancet.
+                                   patient access to care.                                                 2010;376(9746):1055–1061.
+                                       Our study faces some limitations: first, patients’ wait          6. Min D, Yih Y. Scheduling elective surgery under uncertainty and down-
+                                                                                                           stream capacity constraints. Eur J Oper Res. 2010;206(3):642–652.
+                                   time includes the early arrival of patients, before the start
+                                                                                                        7. Abo-Hamad W, Arisha A. Simulation-based framework to improve
+                                   of examination services, as well as surgeons lateness. If               patient experience in an emergency department. Eur J Oper Res. 2013;
+                                   surgeons could arrive at the start of clinic sessions patient           224(1):154–166.
+                                                                                                        8. Kumbhakar SC. Efficiency and productivity of world health systems:
+                                   waiting time could decrease. Likewise, if patients could                where does your country stand? Appl Econ. 2010;42(13):1641–1659.
+                                   arrive a few minutes before the start of the clinical session,       9. Steins K, Persson F, Holmer M. Increasing Utilization in a Hospital Operat-
+                                   this could further decrease their wait time.                            ing Department Using Simulation Modeling. Simulation. 2010;86(8–9):
+                                                                                                           463–480.
+                                       Also, our study was limited to a group of patients who          10. Kujala J, Lillrank P, Kronström V, Peltokorpi A. Time-based management
+                                   underwent the entire process from arrival to discharge after            of patient processes. J Health Organ Manag. 2006;20(6):512–524.
+                                                                                                       11. Davenport T, Short J. The New Industrial Engineering : Information
+                                   surgery. However, the authors believe that the improvement              Technology And Business Process Redesign. Sloan Manage Rev.
+                                   initiatives can still impact patients ending their journey at           1990;31(4):11–27.
+                                   the clinic. To realize these improvements, all patients must        12. Bretthauer KM, Cǒté MJ. A Model for Planning Resource Requirements
+                                                                                                           in Health Care Organizations. Decis Sci. 1998;29(1):243–270.
+                                   be treated based on the proposed model. This limitation calls       13. Barjis J. Editorial: Healthcare simulation potentials and challenges. Simula-
+                                   for future research evaluating both the patients ending their           tion. 2010;86(8–9):459–462.
+                                                                                                       14. Bowers J, Mould G. Managing uncertainty in orthopaedic trauma theatres.
+                                   journey at the clinic and those taking the entire process to            Eur J Oper Res. 2004;154(3):599–608.
+                                   surgery.                                                            15. Bowers J, Mould G. Concentration and the variability of orthopaedic
+                                       Despite the fact that our study was conducted in a                  demand. J Oper Res Soc. 2002;53(2):203–210.
+                                                                                                       16. Meer RB van der, Rymaszewski LA, Findlay H, Curran J. Using OR to
+                                   single orthopedic care process, however our findings can                support the development of an integrated musculo-skeletal service. J Oper
+                                   be generalized to other orthopedic care processes with the              Res Soc. 2005;56(2):162–172.
+                                                                                                       17. Baril C, Gascon V, Cartier S. Design and analysis of an outpatient
+                                   same operational characteristics. From patient care process             orthopaedic clinic performance with discrete event simulation and
+                                   perspective, high patient waiting time problems are ­typical            design of experiments. Comput Ind Eng. 2014;78:285–298.
+
+
+                                   Journal of Healthcare Leadership 2016:8                                                              submit your manuscript | www.dovepress.com
+                                                                                                                                                                                     49
+                                                                                                                                                                     Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+
+                                   Simwita and Helgheim                                                                                                                                             Dovepress
+
+                                   18. Bowers J, Mould G. The deferrable elective patient: a means of                            24. Chadha R, Singh A, Kalra J. Lean and queuing integration for the
+                                       reducing waiting-lists in orthopaedics. J Manag Med. 2002;16(2–3):                            transformation of health care processes A lean health care model. Clin
+                                       150–158.                                                                                      Gov An Int J. 2012;17(3):191–199.
+                                   19. Baldwin LP, Eldabi T, Paul RJ. Simulation in healthcare management:                       25. van Walraven C, Naylor CD. Do we know what inappropriate laboratory
+                                       A soft approach (MAPIU). Simul Model Pract Theory. 2004;12(7–8                                utilization is? a systematic review of laboratory clinical audits. JAMA.
+                                       SPEC. ISS.):541–557.                                                                          1998;280(6):550–558.
+                                   20. Barjis J. Healthcare simulation and its potential areas and future trends.                26. Williams SV, Eisenberg JM, Pascale LA, Kitz DS. Physicians’ percep-
+                                       SCS M&S Mag. 2011;1:1–6.                                                                      tions about unnecessary diagnostic testing. Inquiry. 1982;19(4):363–370.
+                                   21. Law AM, Kelton WD. Simulation Modeling and Analysis. Vol. 2;                              27. Lewis S, Foreman J. Low-cost diagnostic technologies and clinical
+                                       2000.                                                                                         outcomes. The impact of inappropriate utilization. Int J Technol Assess
+                                   22. Venkatadri V, Raghavan VA, Kesavakumaran V, Lam SS, Srihari K.                                Health Care. 1997;13(4):501–511.
+                                       Simulation based alternatives for overall process improvement at the                      28. Kwok J, Jones B. Unnecessary repeat requesting of tests: an audit
+                                       cardiac catheterization lab. Simul Model Pract Theory. 2011;19(7):                            in a government hospital immunology laboratory. J Clin Pathol.
+                                       1544–1557.                                                                                    2005;58(5):457–462.
+                                   23. Shi J, Peng Y, Erdem E. Simulation analysis on patient visit efficiency                   29. Rohleder TR, Lewkonia P, Bischak DP, Duffy P, Hendijani R. Using
+                                       of a typical VA primary care clinic with complex characteristics. Simul                       simulation modeling to improve patient flow at an outpatient orthopedic
+                                       Model Pract Theory. 2014;47:165–181.                                                          clinic. Health Care Manag Sci. 2011;14(2):135–145.
+
+
+
+
+                                        Journal of Healthcare Leadership                                                                                                               Dovepress
+                                        Publish your work in this journal
+                                        The Journal of Healthcare Leadership is an international, peer-reviewed, open            I­nterdisciplinary decision-making; Philosophical and ethical issues; Hazard
+                                        access journal focusing on leadership for the health profession. The journal is           ­management; Research and opinion for health leadership; Leadership assess-
+                                        committed to the rapid publication of research focusing on but not limited to:             ment. The manuscript management system is completely online and includes
+                                        Healthcare policy and law; Theoretical and practical aspects healthcare deliv-             a very quick and fair peer-review system. Visit http://www.dovepress.com/
+                                        ery; Interactions between healthcare and society and evidence-based practices;             testimonials.php to read real quotes from published authors.
+                                        Submit your manuscript here: http://www.dovepress.com/journal-of-healthcare-leadership-journal
+
+
+
+
+                                   50           submit your manuscript | www.dovepress.com                                                                           Journal of Healthcare Leadership 2016:8
+                                                Dovepress
+
+
+
+Powered by TCPDF (www.tcpdf.org)
+

@@ -1,0 +1,363 @@
+       Proceedings of the 2014 IEEE 18th International Conference on Computer Supported Cooperative Work in Design
+
+
+
+ An Agent-based Collaborative Model for Orthopedic
+              Outpatient Scheduling
+                           Ta-Ping Lu                                                                            Ya-Chen Chu
+     Dept. of Industrial Engineering and Management,                                       Graduate Institute of Industrial Engineering and
+        National Taipei University of Technology                                                            Management,
+                       Taipei, Taiwan                                                      National Taipei University of Technology, Taipei,
+                   robertlu@ntut.edu.tw                                                                        Taiwan
+                                                                                                      t101378033@ntut.edu.tw
+                         Pei-Fang Tsai
+     Dept. of Industrial Engineering and Management,
+        National Taipei University of Technology
+                       Taipei, Taiwan
+                     ptsai@ntut.edu.tw
+
+    Abstract—In many Asian countries, healthcare system                              The competition among healthcare providers in Taiwan has
+has a mixed-type registration which accepts both walk-in                          become intense because there are a lot of clinics and hospitals.
+patients and scheduled patients. That makes outpatient                            Also, people in Taiwan can select healthcare providers freely
+scheduling a difficult task and results in long outpatient                        under National Health Insurance (NHI). In order to create
+waiting time. Nowadays, hospitals in Taiwan emphasize on                          competitive advantages, it is critical for healthcare providers
+providing high quality service for patients. Survey of                            to increase the service quality level [1].Many research
+outpatient satisfaction showed that at Taoyuan Armed                              indicated patient waiting time is a key performance index
+Forces General Hospital the long waiting time is by far the                       which affects patient satisfaction for medical industry [2,
+most dissatisfied service quality. Current data shows those                       3].Survey of outpatient satisfaction showed that the long
+outpatients need to wait for an average of up to two hours                        waiting time is by far the most dissatisfied service factor of
+before being served. In attempt to reduce outpatient                              the Taoyuan Armed Forces General Hospital.
+waiting time, we proposed a genuine agent-based adoptive                             In this study, we worked collaboratively with Taoyuan
+scheduling model for service sectors within which fixed                           Armed Forces General Hospital, which is one of the regional
+scheduling rules will not work because humans are                                 medical centers in Taiwan and provides a wide variety of
+autonomous and their behavior will change according to                            services that includes 667 patient beds and more than about 20
+the real-time situation and the scheduling rules applied.                         departments that serve about 5,000,000 visits of patient per
+The proposed model uses software agents to dynamically                            year. The orthopedics department at Taoyuan Armed Forces
+adjust the scheduling rules to adapt to the real-time                             General Hospital has three teams, including hand and foot
+situation in the clinic. Simulation models were built based                       team, sport team, and trauma team. This research focuses on
+on two months of data collected manually from the                                 hand and foot team that has two doctors and 10,000 patient
+hospital to test the proposed model. Results showed that                          visits per year. The two doctors have three different
+agent-based collaborative control system can reduce                               consultation sessions which are quite different in terms of
+waiting time by29%~36% for walk-in patients and                                   behavior of the doctor, the number of patients per day, the
+61%~63%for scheduled patients respectively.                                       number of special patients, and the arrival time of walk-in
+                                                                                  patients before consultation, and total service time for an
+   Keywords—Agent-basedcollaborativemodel;Outpatient                           outpatient. This research focuses on improving clinic service
+waiting time; Simulation                                                          by reducing outpatients waiting time in the Hand and Foot
+                                                                                  Team of the orthopedic surgery department. The clinic service
+                    I.    INTRODUCTION
+                                                                                  processes are shown as Fig.1.
+   The long waiting time of outpatient is caused by the                              Conventional scheduling models have preset scheduling
+unpredictable patient behavior as well as by the outpatient                       rules that are fixed. These conventional scheduling models are
+registration and scheduling system which accepts both walk-in                     appropriate for applications such as factories where, for
+patients and scheduled patients. The long waiting time                            examples, machine hours required for a job and capacity of a
+happened not only in Taiwan (population 23,261,747), but                          machine will not be affected by scheduling rules. However,
+also in many countries of Asia such as China (population                          patients, doctors, and medical staffs are not like products and
+1,347,350,000), India (population 1,210,193,422) Japan                            machines. Patients, doctors, and medical staffs are
+(population 127,950,000), Thailand (population 67,041,000),                       autonomous and their behavior in the clinic will be affected by
+etc. Those countries account for a total of 39.14% of the world                   different outpatient scheduling rules. Therefore, conventional
+population.                                                                       scheduling models cannot be adapted to the clinic
+
+                                                                            621
+ 978-1-4799-3776-9/14/$31.00 ©2014 IEEE
+
+        Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:02:32 UTC from IEEE Xplore. Restrictions apply.
+
+environment. This study proposed an agent-based adoptive                           coordinate their activities to cooperate in the joint resolution
+scheduling model which uses software agents to dynamically                         of a problem. Aburukba et al.[5] suggested that in agent-based
+adjust the scheduling rules to adapt to the real-time situation in                 systems, scheduling usually involves complex and on-
+the clinic. This study used the orthopedic department of                           deterministic interactions between different participating tasks
+Taoyuan Armed Forces General Hospital as a test bed. This                          and resources. C. W. Reynolds[6] revolutionized computer
+study built three simulation models of the orthopedics clinic                      simulation of agents. He introduced individual perception,
+and applied agent-based collaborative control system in                            intelligence and behavior to his Boids agents, and therefore
+attempt to reduce outpatient waiting time and to improve                           allowing emergent pattern based on a large group of
+hospital efficiency and patient satisfaction.                                      constituent units to be simulated. Decker and Jinjiang[7]
+                                                                                   proposed a system to increase hospital efficiency using global
+                                                                                   planning and scheduling techniques. The nature of healthcare
+    Pre-registration               Walk-in patients                                system generally involves the coordination of the effort of
+                                                                                   several individuals (e.g., physicians, nurses, social workers)
+                                                                                   with different skills and needs that located in different places.
+  Scheduled patients              Registration counte
+                                           r
+                                                                                   Usually there is no attention of having a centralized
+                                                                                   coordinator, so the computerized systems can be difficult.
+                                                                                   Under these conditions, the agent-based model is a good
+                   Waiting room
+                                                                                   option to be used in healthcare applications. Lanzola et al.
+                                                                                   [8]presented a methodology that facilitates the development of
+                  Consulting room
+                                                                                   interoperable intelligent software agents for medical
+                                                                                   applications and propose a generic computational model for
+                                                                                   implementing them. N. R. Jennings[9] suggested that agent-
+                                                                                   based computing should not be viewed merely as a good
+                           Need         Yes        X-ray Room                      solution technology. Rather, it should be seen in its broader
+                        X-ray check
+                                                                                   context as a general-purpose model of computation that
+                               No                                                  naturally encompasses the major trends in software. In
+                                                                                   particular, there is an inexorable move towards distributed and
+                   Need medicine Yes                  Pharmacy
+                                                                                   concurrent systems as the norm.
+
+
+                               No                                                  B. Outpatient Waiting Time
+                       Patients leave
+                                                                                      Long waiting time usually happens in many service
+                                                                                   organizations and especially in outpatient departments[10].
+Fig.1   Orthopedics clinic process                                                 Furthermore, countries have been demonstrating that waiting
+                                                                                   time at outpatient clinics is the major problem [11].
+                   II.      LITERATURE REVIEW                                      Wijewickrama[10] indicated the main reason why patients in
+                                                                                   many outpatient departments complain is because the long
+A. Agent-based Model                                                               waiting time for treatment followed by short consultations
+   Agent-based model is a class of computational models for                           Reducing long waiting time is a direct way to improve
+simulating the action sand interactions of autonomous agents                       patient satisfaction and service quality. There are past
+with a view to assessing their effects on the system. J. Nealon                    researches attempting to improve long waiting time, shown in
+and A. Moreno[4]suggested that an agent is a software entity                       Table I. These proposed approaches were able to reduce
+that applies Artificial Intelligence techniques to choose the                      patients waiting time, but did not consider the changing
+best set of actions to perform in order to reach a goal specified                  human behaviors according to scheduling rules and hence
+by the user. The agents can react timely and flexibly to the                       were not able to adjust scheduling dynamically according to
+dynamic and unexpected changes in their environment and can                        real time clinic situation.
+communicate with users or other agents. Thus, they can
+exchange information, engage in complex negotiations, and
+
+
+                                                        TABLE I.    REDUCING WAITING TIME APPROACHES
+
+Research                         Approaches                                      Results
+                                                          Resulting waiting times (average: 8.0 minutes vs 12.5, 12.3, and
+                    Using established simulation models,
+                                                          20.5 minutes) for scheduled patients compared with other
+Syi Su, Chung-Liang the effects of various scheduling
+                                                          registration strategies. Resulting waiting times (average: 14.7
+Shih[12]            policies on patients’ throughput time
+                                                          minutes vs 34.9, 35.8, and 25.8 minutes) for walk-in patients
+                    and waiting times were revealed.
+                                                          compared with other registration strategies.
+
+                                                                             622
+
+
+         Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:02:32 UTC from IEEE Xplore. Restrictions apply.
+
+                          A special purpose data generator was As a result of this, the total number of patients waiting for
+                          designed to validate the model and to consultation for a day was reduced from a hundred and fifteen
+AthulaWijewickrama,
+                          conduct experiments in bottleneck to fifty five, a 52 percent reduction compared to the existing
+SoemonTakakuwa[13]
+                          situations at consultation rooms in the system.
+                          existing system.
+                          Building model to help identify The model predicted that nearly 80% of patients would finish
+Thomas R. Rohleder,
+                          improvement alternatives including their visits in 60 minutes or less. The actual result after
+Peter Lewkonia, Diane
+                          optimized staffing levels, better implementing the improvements was a substantial reduction in
+P. Bischak, Paul Duffy,
+                          patients scheduling, and an emphasis time in the clinic of about 22minutes per patient on average.
+Rosa Hendijani[14]
+                          on staff arriving promptly.
+                                                                   All patients registered in advance are scheduled by the proposed
+                                                                   GA have an average waiting time of 10 minutes or less. 50% of
+Chen-Fu Chien , Fang- Develop an evolutionary approach
+                                                                   the patients registered in advance are scheduled by the
+Pin Tseng, Chien-Hung based on genetic algorithm for solving
+                                                                   hospital’s empirical method. The other 50% are in-patients
+Chen[15]                  the problem.
+                                                                   following the exponential distribution that the average waiting
+                                                                   time is 20 minutes or less.
+                          Illustrated factors that will affect A significant decrease in mean waiting time (32.7 +/- 23.6
+L. J. Groome and E. J. J. waiting time such as arrival time, minutes vs 29.3 +/- 21.2 minutes, t = 3.42, P < .001); and a
+Mayeaux[16]               failure to attend, consultation time and significant improvement in the waiting time distribution
+                          registration time, etc.                  (Kruskal-Wallis test of homogeneity, P = .003).
+                                                                   The appointment intervals are 11, 12, 13, 14 and 15 minutes.
+                          Probability plots method is proposed
+                                                                   And the simulation results of total average waiting time are
+Guangfu Tai, Peter for optimal patient interval setting to
+                                                                   shown respectively as following: 13.66, 13.72, 14.13, 13.36 and
+Williams[17]              minimize waiting time of both patient
+                                                                   13.03 minutes, which are the sum of average waiting and idle
+                          and the doctor.
+                                                                   time for patient and doctor.
+
+                                                                                  Arena version 13.9 was used to build the simulation model.
+                                                                                  Walk-in patients’ arrival time, patients’ service time, and test
+              III.   RESEARCH METHODOLOGY                                         time arrival time data were fitted into distributions by Arena.
+A. Simulation Models                                                                 Kolmogorov-Smirnov test will be used for the goodness-of-
+                                                                                  fittest of the distribution. The Kolmogorov-Smirnov test is
+   The purpose of this research is to improve patient waiting
+                                                                                  under null hypothesis that the sample comes from the
+time and promote clinical service quality by using an agent-
+                                                                                  hypothesized distribution F(x),in distribution,
+based collaborative control system.
+   There are two types of patients in the orthopedics clinic.                                                     of
+Walk-in patients need to come to the hospital to register and                                                     o sup B( F (t ))
+                                                                                                           n Dn n
+                                                                                                                           t                             (1)
+wait for consultation in the waiting room. The number of
+walk-in patient is limited to 30, which causes many walk-in
+                                                                                  where B(x) is the Brownian Bridge[18]. If F is continuous
+patients to come early and register before consultation session
+                                                                                  then under the null hypothesis n Dn converges to the
+is opened for service. Other walk-in patient may arrive at any
+time during the consultation session with numbers varies                          Kolmogorov distribution, which does not depend on F. The
+greatly from session to session. That means walk-in patients                      goodness-of-fittest or the Kolmogorov-Smirnov test is
+may introduce great uncertainty to outpatient scheduling.                         constructed by using the critical values of the Kolmogorov
+Scheduled patients can register using either an automatic                         distribution. The null hypothesis is rejected at level D under
+registration machine, examination room reservation, voice                         Eq. (2)
+system telephone or through an Internet reservation system
+one day before the clinic session. Some of the clinic                                                      n Dn ! KĮ ,                                   (2)
+patients have a high tendency to be late, to be a no-show
+patient or to cancel the registration at last minute. All the                                            pr (K d KĮ) 1  D                               (3)
+above patient behaviors make scheduling for outpatient a
+complicate and difficult task.                                                    where KĮ is found from Eq. (3).
+   This research used log data from administration system of                        There are two doctors who have three different consultation
+the hospital together with data we collected manually in the                      sessions in the Hand and Foot Team Clinic of orthopaedic
+field. The data includes patients’ registration number,                           surgery department. These sessions have different
+registration time, registration type, service start time, service                 characteristics such as behavior of the doctor, the number of
+stop time, average number of patients in one day, no-show                         patients per day, the number of special patients, walk-in
+rate, late rate, service time, X-ray test time, waiting time (WT),                patients’ arrival time before consultations and total service
+and the throughput time (TPT) for the two types of patients.
+                                                                            623
+
+
+        Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:02:32 UTC from IEEE Xplore. Restrictions apply.
+
+time for an outpatient. Therefore, this research builds three                     consultation session, II: Dr. A’s afternoon consultation session,
+different simulation models for the following three                               and III: Dr. B’s morning consultation session. One of the
+consultation sessions respectively.I: Dr. A’s morning                             simulation models are shown on the Fig. 2.
+
+
+
+
+    Fig.2.    Simulation models
+
+
+
+                                                                                   waiting for X-ray check and X-ray status to the scheduling
+B. The Agent-based Collaborative Control System                                    agent. The waiting room agent will provide the number of
+                                                                                   both types of patients in the waiting room outside of the
+   The agent-based control system model is shown in Fig.3. It                      doctor’s consultation room to the scheduling agent. The late
+consists of nine agents. The walk-in patients agent,scheduled                      patient agent will provide the number of both types of
+patients agent, doctor agent, and nurses agent will keep                           patients who are late to the scheduling agent.The clinic
+monitoring the current number and status of the walk-in                            service agent will provide the current status of doctor and
+patient, scheduled patient, doctors, and nurses and provide                        nurses to the scheduling agent. With the information received
+these information to x- ray check agent, waiting room agent,                       from other agents in the model, the scheduling agent will be
+late patients agent, and clinic service agent. The X-ray check                     able to make scheduling decisions in real-time.
+agent will provide the number of both types of patients
+
+
+
+
+                          Fig. 3.    The agent-based control framework.
+
+
+
+
+   The current decision rules for the scheduling agent are:                           y       If walk-in patients are three more or above than
+                                                                                              scheduled patients in the control model waiting for
+
+                                                                            624
+
+
+        Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:02:32 UTC from IEEE Xplore. Restrictions apply.
+
+         consultation, the sequences will be three walk-in                        110.3 minutes to 74.2 minutes and the average improvement
+         patients followed by one scheduled patient.                              of scheduled patient waiting time is 63%, from 56.2 minutes
+                                                                                  to 20.6 minutes. For session II Dr. A’s afternoon session, the
+   y     If scheduled patient are three more or above than                        average improvement of walk-in patient waiting time is 29%,
+         walk-in patients in the control modelwaiting for                         from 130.2 minutes to 93 minutes and the average
+         consultation, the sequences will be three scheduled                      improvement of scheduled patient waiting time is 63%, from
+         patients followed by one walk-in patient.
+                                                                                  61.9 minutes to 23.2 minutes. For session III Dr. B’s morning
+   y     Under all other situations, the sequence will be one                     session, the average improvement of walk-in patient waiting
+         scheduled patient followed by one walk-in patient.                       time is 36%, from 71.3 minutes to 45.9 minutes and the
+                                                                                  average improvement of scheduled patient waiting time is
+   The scheduled patients are scheduled to arrive one hour                        61%, from 39.4 minutes to 15.2 minutes.
+later than the walk-in patients                                                      The significant reduction in waiting time is a result of
+                                                                                  applying the agent-based adoptive scheduling model which
+                                                                                  uses software agents to dynamically adjust the scheduling
+                                                                                  rules to adapt to the real-time situation in the clinic. For
+               IV.     SIMULATION RESULTS                                         example, walk-in patients usually come inearlybecausethe
+                                                                                  number of walk-in patient for each consultation session is
+  The simulation results were shown in Table II. The agent-                       limited. The agent-based adoptive scheduling model was able
+based collaborative control system results in significant                         to schedule more walk-in patient to be served at the early
+reduction in waiting time for both scheduled and walk-in                          stage of the session and hence reduce the average waiting
+patients. For session I Dr. A’s morning session, the average                      time.                                                        .
+improvement of walk-in patient waiting time is 33%, from
+
+
+                                                      TABLE II.        WITH AGENT-BASED COMPARE
+
+      Model                          Patient type                          Before(minutes)                  After(minutes)                  Improvement
+     Session I                   Walk-in waiting time                           110.3                            74.2                           33%
+ Dr. A’s morning                Scheduledwaiting time                            56.2                            20.6                           63%
+     Session II                  Walk-in waiting time                           130.2                             93                            29%
+ Dr. A’s afternoon              Scheduled waiting time                           61.9                            23.2                           63%
+     SessionIII                  Walk-in waiting time                            71.3                            45.9                           36%
+ Dr. B’s morning                Scheduled waiting time                           39.4                            15.2                           61%
+
+
+                      V.     CONCLUSIONS                                          scheduling for service sectors.Further research may apply the
+                                                                                  proposed model to other departments in the hospital.
+   According to the annual survey done by the Taoyuan
+Armed Forces General Hospital, the service quality that
+needs to be improved first is the long outpatient waiting                                                 ACKNOWLEDGMENT
+time. This study proposed a genuine agent-based adoptive                            This project is partially sponsored by the Research
+scheduling model for service sectors within which fixed                           FoundationofTaoyuan Armed Forces General Hospital.
+scheduling rules will not work because humans are
+autonomous and their behavior will change according to the
+real-time situation and the scheduling rules applied. The                                                        REFERENCES
+proposed model uses software agents to dynamically adjust                         [1]        J. Reynolds, et al., "Design and analysis of a health
+the scheduling rules to adapt to the real-time situation in the                              care clinic for homeless people using simulations,"
+clinic. This research focuses on the Hand and Foot Team                                      International Journal of Health Care Quality
+Clinic of the orthopedic surgery department. Three                                           Assurance, vol. 23, pp. 607-620, 2010.
+simulation models were built for 3 different consultation                         [2]        G. M. Eilers, "Improving patient satisfaction with
+sessions. The simulation results showed that the proposed                                    waiting time," Journal of American College Health,
+agent-based collaborative control system can significantly                                   vol. 53, pp. 41-48, 2004.
+reduce outpatient waiting time for both scheduled patients                        [3]        T. R. Rohleder, et al., "Using simulation modeling to
+and walk-in patients.The improvements range from29% to                                       improve patient flow at an outpatient orthopedic
+36%for walk-in patients and 61% to 63% for scheduled                                         clinic," Health Care Management Science, vol. 14,
+patients.Themodel can be a research foundation for related                                   pp. 135-145, 2011.
+study in the field of agent-based models and adaptive                             [4]        J. Nealon and A. Moreno, "Agent-based applications
+                                                                                             in health care," in Applications of software agent
+
+                                                                            625
+
+
+        Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:02:32 UTC from IEEE Xplore. Restrictions apply.
+
+       technology in the health care domain, ed: Springer,                                  clinics," International Journal of Medical
+       2003, pp. 3-18.                                                                      Informatics, vol. 70, pp. 31-40, 2003.
+[5]    R. Aburukba, et al., "Agent-Based Approach for                            [13]       A. Wijewickrama and S. Takakuwa, "Simulation
+       Dynamic Scheduling in Content-Based Networks," in                                    analysis of appointment scheduling in an outpatient
+       e-Business Engineering, 2006. ICEBE '06. IEEE                                        department of internal medicine," presented at the
+       International Conference on, 2006, pp. 425-432.                                      Proceedings of the 37th conference on Winter
+[6]    C. W. Reynolds, "Flocks, herds and schools: A                                        simulation, Orlando, Florida, 2005.
+       distributed behavioral model," SIGGRAPH Comput.                           [14]       T. Rohleder, et al., "Using simulation modeling to
+       Graph., vol. 21, pp. 25-34, 1987.                                                    improve patient flow at an outpatient orthopedic
+[7]    K. Decker and L. Jinjiang, "Coordinated hospital                                     clinic," Health Care Management Science, vol. 14,
+       patient scheduling," in Multi Agent Systems, 1998.                                   pp. 135-145, 2011.
+       Proceedings. International Conference on, 1998, pp.                       [15]       C.-F. Chien, et al., "An evolutionary approach to
+       104-111.                                                                             rehabilitation patient scheduling: A case study,"
+[8]    G. Lanzola, et al., "A framework for building                                        European Journal of Operational Research, vol. 189,
+       cooperative software agents in medical applications,"                                pp. 1234-1253, 2008.
+       Artificial Intelligence in Medicine, vol. 16, pp. 223-                    [16]       L. J. Groome and E. J. J. Mayeaux, "Decreasing
+       249, 1999.                                                                           Extremes in Patient Waiting Time," Quality
+[9]    N. R. Jennings, "On agent-based software                                             Management in Healthcare, vol. 19, pp. 117-128
+       engineering," Artificial intelligence, vol. 117, pp.                                 10.1097/QMH.0b013e3181dafeac, 2010.
+       277-296, 2000.                                                            [17]       G. Tai and P. Williams, "Optimization of scheduling
+[10]   A. K. A. Wijewickrama, "Simulation analysis for                                      patient appointments in clinics using a novel
+       reducing queues in mixed-patients' outpatient                                        modelling technique of patient arrival," Computer
+       department," International journal of simulation                                     Methods and Programs in Biomedicine.
+       modelling, vol. 5, pp. 52-68, 2006.                                       [18]       Wikipedia. (2012/1/28). Kolmogorov-Smirnov_test.
+[11]   G. C. Kaandorp and G. Koole, "Optimal outpatient                                     Available: http://en.wikipedia.org/wiki/Kolmogorov-
+       appointment scheduling," Health Care Manage Sci,                                     Smirnov_test
+       vol. 10, pp. 217-229, 2007.
+[12]   S. Su and C.-L. Shih, "Managing a mixed-
+       registration-type appointment system in outpatient
+
+
+
+
+                                                                           626
+
+
+       Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 16:02:32 UTC from IEEE Xplore. Restrictions apply.
+

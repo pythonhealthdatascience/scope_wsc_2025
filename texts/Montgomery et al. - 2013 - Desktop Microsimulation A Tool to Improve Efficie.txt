@@ -1,0 +1,568 @@
+50       Journal for Healthcare Quality
+
+
+                                      Desktop Microsimulation: A Tool to Improve
+                                      Efficiency in the Medical Office Practice
+                                      James B. Montgomery, Beth A. Linville, Anthony D. Slonim
+
+
+ Abstract: Because the economic crisis in the United States con-                           creasing level of complexity: static spreadsheet
+ tinues to have an impact on healthcare organizations, industry                            models, process simulation, and discrete-event
+ leaders must optimize their decision making. Discrete-event com-                          simulation (Kennedy, 2009). Static spreadsheet
+ puter simulation is a quality tool with a demonstrated track record                       models can be used to analyze resource opti-
+ of improving the precision of analysis for process redesign. How-                         mization; however, when complex, simultane-
+ ever, the use of simulation to consolidate practices and design ef-                       ous processes are under consideration, static
+ ficiencies into an unfinished medical office building was a unique                        models may inadequately reflect the system un-
+ task. A discrete-event computer simulation package was used to                            der study. Process simulation provides analysis
+ model the operations and forecast future results for four ortho-                          of the sequential steps of a flow diagram for
+ pedic surgery practices. The scenarios were created to allow an                           maximizing efficiencies. Discrete-event simula-
+ evaluation of the impact of process change on the output variables                        tion is the most powerful of the three and allows
+ of exam room utilization, patient queue size, and staff utilization.                      the analysis of changes at discrete time points
+ The model helped with decisions regarding space allocation and                            as triggered by specific process events (Harrell,
+ efficient exam room use by demonstrating the impact of process                            Ghosh, & Bowden, 2004).
+ changes in patient queues at check-in/out, x-ray, and cast room
+ locations when compared to the status quo model. The analysis
+ impacted decisions on facility layout, patient flow, and staff func-                      Background
+ tions in this newly consolidated practice. Simulation was found                           The consolidation of four independent ortho-
+ to be a useful tool for process redesign and decision making even                         pedic practices and their accompanying ancil-
+ prior to building occupancy.                                                              lary services into a single medical office build-
+                                                                                           ing was the impetus for this study because it
+                                                                                           provided an opportunity to gain efficiencies,
+              Keywords                The economic crisis in the United States has         reduce waste, and improve patient flow. This
+         discrete-event               increased the pressure to gain efficiency in op-     approach, which required the analysis of mul-
+             simulation               erations in a number of industries. Healthcare       tiple random variate inputs and outputs, has
+              efficiency              organizations are not immune to these chal-          not been the subject of simulation studies for a
+             Medmodel                 lenges, and forecasted trends suggest that this      practice that is under construction.
+        microsimulation               may persist (Breen, Friedman, Hartman, Kerns,           Therefore, a study was performed using
+             outpatient               & Schoch, 2009; Evans, 2008; Yokl, 2009). To         discrete-event simulation to assist with deter-
+                                      improve efficiencies in operations, healthcare       mining three major goals: (1) to determine that
+                                      providers have a range of available options          the available space was adequate for clinic op-
+                                      including the centralization of services, the        erations; (2) to determine that the staff and
+                                      reassignment or reduction of staff, and the          equipment were appropriately allocated for vol-
+                                      employment of process redesign activities            ume and growth; and (3) to determine the re-
+                                      to improve workflow efficiency (Goldberg &           design of office processes to enhance patient
+                                      Petasnick, 2010; Levin & Dickey, 2008).              flow through the clinic.
+                                         The ability to optimally select between these
+                                      competing alternatives requires data analysis.
+                                      Simulation modeling is an effective analytic tool    Approach to Simulation
+                                      to guide these important management deci-            Step One—Understand the Current Process
+                                      sions on increasing organizational efficiencies.     After determining a clear set of goals, the
+                                      Efficiency for the purpose of this research is de-   team mapped the current processes for each of
+                                      fined as the ability to do things right (Drucker,    the decentralized orthopedic practices within
+                                      2007) and more specifically as the ability to use    the footprint of the new consolidated clinic.
+                                      fewer resources (i.e., money, employee hours,        Due to high variability in patient arrivals and
+                                      space, and machine hours) to produce a de-           physician schedules, it was important to model
+     Journal for Healthcare Quality
+                                      sired volume and quality of resources (Pande,        the newly consolidated medical practice over a
+         Vol. 35, No. 1, pp. 50–59    Neuman, & Cavanagh, 2000). There are three           5-day period (Monday through Friday) dur-
+ 
+ C 2011 National Association for
+              Healthcare Quality      basic approaches to simulation, each with an in-     ing regular business hours (8 a.m. to 5 p.m.).
+
+
+          Journal for Healthcare Quality
+
+                                                                                                                             19451474, 2013, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/j.1945-1474.2011.00166.x by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+                                                                                  Vol. 35 No. 1 January/February 2013   51
+
+
+
+ Figure 1. Model Layout
+
+
+
+
+Figure 1 depicts a screen shot of the model         the examination, they were routed back to the
+captured on Thursday at 2:06 p.m. The pa-           waiting area prior to moving to an examination
+tient flow process in the simulation involved       room. If a provider ordered an x-ray during the
+routing patients through a series of locations      examination, the patient was routed to the ra-
+where services were administered by resources       diology center and then to the waiting room
+(Table 1).                                          prior to returning to the examination room.
+   Patients arrived on the floor via elevator and   If a provider ordered casting or occupational
+proceeded to an information desk. Next the          therapy, the patient was sent from the exam-
+patient proceeded to one of five check-in/out       ination room to that service prior to return-
+stations. After check in, patients proceeded to     ing to the check-in/out stations. Otherwise,
+one of the following locations based on a set       at the conclusion of the examination, patients
+of user-defined attributes: the cast room, the      were routed from the exam room to the check-
+radiology area, or the waiting room.                in/out stations. Patient queues were modeled
+   From the waiting room, patients were routed      at the following locations: the information desk,
+to an examination room where they were              the check-in/out stations, the x-ray center, the
+triaged by a nurse and examined by a provider.      casting center, and the occupational therapy
+If patients required an x-ray or casting prior to   center.
+
+                                                                                                                                     19451474, 2013, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/j.1945-1474.2011.00166.x by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+52   Journal for Healthcare Quality
+
+
+
+                         Table 1. Patient Flow Matrix
+                                                                                              Alternate:
+                                                                                             Routings to
+                                               Activity                                          Next
+                        Location              Performed          Condition of Activity        Location:     Condition of Routing
+                        Information desk   General               100% of patients          To: check-in     100% of patients
+                                             information
+                        Check-in/check-    General               All base case patients;   To: x-ray        50% of patients
+                          out                registration           15% of scenario                            identified as
+                                                                    patients                                   needing x-ray prior
+                                                                                                               to exam
+                                           Collect co-pays       56% of patients           Or to: cast      30% of patients will
+                                                                                             room              have cast removal
+                                                                                                               prior to exam
+                                           Register for x-rays   100% of patients          Or to: waiting   All arriving patients
+                                                                    requiring x-ray          room              not going to x-ray
+                                                                                                               or cast room
+                                           Workers               25% of patients           Or to: exit      All departing patients
+                                              comp/FMLA
+                                              paperwork
+                                           Check-out             100% of patients
+                                           Schedule              85% of patients
+                                              follow-up appt
+                        Waiting room       No activity           100%                      To: exam         100% of patients
+                                                                                             room
+                        X-ray (Standard)   X-ray                 75% of patients           To: waiting      100% of patients
+                                                                   routed to x-ray           room
+                        X-ray portable     Portable x-ray        25% of patients           To: waiting      100% of patients
+                                                                   routed to x-ray           room
+                        Cast room          Cast removed          50% of patients           To: waiting      If cast removed
+                                                                   routed to cast Rm         room
+                                           Cast applied          50% of patients           Or to: x-ray     If cast removed and
+                                                                   routed to cast Rm                            x-ray required
+                                                                                           Or to: OT        If cast applied and
+                                                                                                                requiring OT
+                                                                                           Or to: check-    If cast applied and
+                                                                                             in/out             departing
+                        Exam room          Triaged by nurse      100% of patients          To: x-ray        50% of patients
+                                                                                                                requiring x-ray
+                                           Examined by           All patients except       Or to: cast      100% of patients
+                                             MLP                    those of certain         room               requiring cast
+                                                                    physicians                                  application
+                                           Examined by           100% of patients          Or to: OT        32% of hand surgeons’
+                                              doctor                                                            patients
+                                           Suture removal        100% of hand              Or to: check-    For all patients
+                                                                    surgeons’ patients       in/out             departing directly
+                                                                                                                from exam room
+                        OT room            Exam by OT            100% of patients          Check-in/out     100% of patients
+                                                                    routed to OT                                departing OT
+
+
+
+
+                       Step Two—Translate the Process into Simu-               Corp., Orem, UT) allowed for the application
+                       lation Input Components                                 of a comprehensive set of input variables nec-
+                       A simulation study requires that a series of mod-       essary to model our medical office building.
+                       ules are used to frame the design and outline           Table 2 provides the definitions for each of
+                       the who, what, when, where, and how of the ex-          the modules and their relevance to the study
+                       periment. The software MedModel (ProModel               (Fitzsimmons & Fitzsimmons, 2004).
+
+                                                                                                                               19451474, 2013, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/j.1945-1474.2011.00166.x by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+                                                                                    Vol. 35 No. 1 January/February 2013   53
+
+
+
+Table 2. Components of a Discrete-Event Simulation Study
+                          Requirements for Simulation Experiments in Healthcare Operations
+Entities                 Definition: The items processed through the system and that use resources.
+                         Represented in this model as:
+                           • Patients
+                           • Additional activities of front office staff :
+                               Paperwork
+                               Surgical scheduling
+Resources                Definition: A person or item used by an entity to perform an activity.
+                         Represented in this model as:
+                           • Providers: 9 surgeons, 1 podiatrist, 5 mid-level providers
+                           • 7 Nurses assigned direct patient care tasks
+                           • 4 Nurses assigned to indirect patient care tasks
+                           • 10 Front office staff members
+                           • 3 Diagnostic x-ray technicians
+                           • 3 Cast technicians
+                           • 3 Occupational therapists
+Layout and locations     Definitions:
+                         Layout: An architectural rendering, built to scale, imported into the software
+                            as the background for the animated study (Figure 1). This allows
+                            researchers to assign varying speeds of travel for entities and resources.
+                         Locations: Fixed points within the model where entities and resources may
+                            complete activities at varying time intervals.
+                         Locations represented in this model as:
+                           • patient entrance and exit points
+                           • 1 information desk with 1 information desk queue
+                           • 5 check-in/check-out desks with 1 check-in/check-out desk queue
+                           • 1 waiting area
+                           • 19 exam rooms
+                           • 3 x-ray rooms with 1 x-ray room queue
+                           • 4 cast rooms with 1 cast room queue
+                           • 2 occupational therapy (OT) rooms with 1 OT room queue
+Path networks            Definition: The predefined course upon which entities and resources travel
+                            between locations.
+                         Represented in this model as: The patient and staff flow through 14 hallways
+                            between 41 connected locations.
+Arrivals                 Definition: The initiation of entities into the system.
+                         Represented in this model as: Unique arrival cycles per physician per day of
+                            week per hour were created that mimicked the volumes and variation
+                            found in real patient arrivals. The model simulated a typical work week
+                            with patients arriving Monday through Friday from 7:30 a.m. to 5:00 p.m.
+Shifts                   Definition: Each entity may be assigned to a separate work shift
+                            characterized by days of week, start time, break time, and end times.
+                         Represented in this model as: Used to account for the high variation in
+                            surgeons’ clinic schedules. For example, Doctor A might work all day on
+                            Mondays and half a day on Thursdays. Therefore, Dr. A would only enter
+                            the model on Mondays and Thursdays.
+Processing and routing   Definition: The identification of the actions performed by an entity at each
+                            location and the instructions given each entity on where to go once all
+                            activities as a given location are complete.
+                         Represented in this model as:
+                           • Processing logic statements that identify randomly produced wait times
+                            based on theoretical distributions for physician–patient interaction times.
+                           • Routing statements which specify locations where a patient must travel
+                            based on predetermined entity attributes (Table 2).
+
+                                                                                                                                        19451474, 2013, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/j.1945-1474.2011.00166.x by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+54   Journal for Healthcare Quality
+
+
+
+
+                       Step Three—Set up Scenarios and Evaluative               scenarios, evaluative criteria, test methods, and
+                       Criteria                                                 goals.
+                       The team designed scenarios that altered input
+                       variables to accommodate the measurement of
+                       specific outcomes relevant to achievement of             Step Four—Collect the Data
+                       three project goals. Four scenarios were devel-          The estimated volume of patient arrivals was
+                       oped (Base Case plus three), and eight evalua-           derived from the physician management sys-
+                       tive criteria were established. Both descriptive         tem database. The mean patient arrivals per
+                       statistics and paired t-tests at a .05 significance      day were determined for each provider based
+                       level were used to measure outcomes and de-              upon 6 months of data. Provider and staff shift
+                       termine that scenarios best realized the goals.          schedules were obtained from the organiza-
+                       Tables 3 and 4 outline the project’s specific            tion’s practice managers. Clinicians, staff, and
+
+
+
+                         Table 3. Identification of Scenarios
+                                                                        Scenario Identification
+                        Name                                                   Description
+                        Base case     The status quo scenario built to include a decentralized registration process and 10 full-time
+                                        equivalent front office staff combined from the four clinics prior to consolidation
+                        Scenario 2    Modified the Base Case by introducing a centralized registration process into the system but
+                                        maintaining the front office staffing at 10 full-time equivalents
+                        Scenario 3    Modified Scenario 2 by keeping centralized registration but reducing the front office staff to
+                                        7 full-time equivalents
+                        Scenario 4    Modified the Base Case by reducing the casting suite from a four-room configuration to a
+                                        two-room configuration
+
+                         Table 4. Identification of Evaluative Criteria
+                                                            Identification of Evaluative Criteria
+                        Focus                                     Measurement                                  Test              Goal
+                        Exam room utilization       Utilization rate mean—The time the exam         Meets leaders’ criteria of    1
+                                                        rooms were occupied divided the               “fully-utilized” = 85%?
+                                                        time the exam rooms were available
+                                                        over the five-day model run
+                                                    Utilization rate max—The highest exam           How close does rate get       1
+                                                        room utilization rate (rooms                  to 85% on peak
+                                                        occupied/rooms available) over the            census days?
+                                                        model run
+                        Front desk queue            Time in queue—The mean time patients            Significant as determined    1, 2
+                                                        spend in the queue over the span of            by paired T-test?
+                                                        the model
+                                                    Queue size—The mean size of the queue           Significant as determined    1, 2
+                                                        measured over the course of the                by paired T-test?
+                                                        model
+                        X-ray queue                 Time in queue—The mean time each                Meets leaders’ criteria of   2, 3
+                                                        patient spends in the queue waiting           <10 Min?
+                                                        for an x-ray during the week
+                                                    Queue size—The mean size of the queue           Meets leaders’ criteria of   2, 3
+                                                        measured over the course of the               <3 patients?
+                                                        simulation
+                        Front office productivity   Idle time—The mean time front office            Meets leaders’ target of      2
+                                                        staff are not in use                           20–30%?
+                        Cast room queue             Queue size—The mean size of the cast            Significant as determined     3
+                                                        queue measured over the course of              by paired T-test?
+                                                        the simulation
+
+                                                                                                                                 19451474, 2013, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/j.1945-1474.2011.00166.x by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+                                                                                      Vol. 35 No. 1 January/February 2013   55
+
+
+
+
+management were interviewed to identify their          Thus, the model was built to encompass a 5-
+job activities, the activity frequency, and activity   day period. Because input data reflect true-life
+duration. Radiology utilization data were col-         variation, the randomness of the variables re-
+lected on each provider from automated sys-            sults in one simulation replication represent-
+tems so that the probability of ordering a di-         ing only one of several possible outcomes (Pro-
+agnostic x-ray and an empirical distribution of        Model, 2008). Therefore, 50 iterations of the
+x-ray procedure types were determined for each         model were run simulating 1 year of opera-
+provider. Additionally, the average activity time      tions, thereby assuring that the results were re-
+data for each radiologic procedure type were           producible and were within management’s ac-
+collected from the radiology staff.                    ceptable confidence levels.
+
+
+Step Five—Build the Model Accounting for               Step Six—Verify and Validate
+Variation and Decision Points                          Verification was confirmed by running the sim-
+The software allowed incorporation of multi-           ulation in animation mode and insuring that
+faceted variation found in an orthopedic prac-         the model worked the way the team intended.
+tice into the model. Model-generated theoret-          Patient movements were observed and counters
+ical distributions were fitted to empirical data       depicting real-time “queue” values were mon-
+through goodness of fit tests by means of Med-         itored. Special attention was given to ensure
+Model’s embedded software Stat:Fit (Greer              that operating hours, staff activities, treatment
+Mountain Software Corp, South Kent, CT).               times, and building architecture simulated real
+These theoretical distributions were used to as-       life.
+sign activity times or probabilities of reoccur-          Two methods were used to validate the
+ring events using MedModel’s random number             model: one prospectively and one retrospec-
+generator.                                             tively. Face validity was achieved by allowing the
+   Theoretical distribution formulas represent-        orthopedic practice manager and physicians to
+ing activity times were then input into the            view the model in animation mode and vali-
+processing logic of the model. Patient time            date the type, quantity, and time involved in
+at check-in/out was a function of the check-           performing each task. The interviews validated
+in activities that varied for each patient. A          that the model was a reflection of the processes
+provider’s decision to order an x-ray was a func-      modeled. Although it is difficult to validate a
+tion of his/her historical ordering patterns.          model of a new medical office building, or any
+Each physician’s x-ray order rate was calculated,      system, prior to occupancy, the team requested
+and a unique probability for x-ray ordering was        that the interviewees apply current processes in
+then imported into the model for each physi-           the futuristic model setting, and sensitivity anal-
+cian. X-ray procedure time was a function of           yses were performed to adjust the model over a
+the type of procedure and whether digital or           range of inputs.
+analogue processing was used. An x-ray proce-             After the building was occupied and the
+dure distribution profile was determined for           new system set in motion, the model was com-
+each provider, so that during the simulation,          pared to the actual system. Empirical data were
+if Physician A ordered an x-ray, the duration          collected on the turnaround time from pa-
+of the procedure would be randomly selected            tients’ exam room entrance time to departure
+from a theoretical distribution based on Physi-        time. The mean empirical turnaround time was
+cian A’s empirical profile. A provider’s decision      compared to the mean computer-generated
+to order a cast was determined using the histor-       turnaround time. A z-score test showed no sig-
+ical probability of applying or removing casts         nificant differences between the means of the
+per patient visit. A patient’s time in the cast        two samples at a .05 significance level, thus val-
+room was a function of category, frequency, and        idating the model (p = .63).
+duration of casting procedures. Time in exam
+room was dependent on the amount of time
+required for each patient interaction: with the        Results
+nurse, with the mid-level provider and with the        After running the model and collecting statis-
+physician.                                             tics, output data were analyzed for answers
+   The number of patient arrivals also varied          to the three original research questions. The
+throughout the day and throughout the week.            software was capable of returning statistical
+
+                                                                                                                                 19451474, 2013, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/j.1945-1474.2011.00166.x by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+56   Journal for Healthcare Quality
+
+
+
+
+                       output data on measurements of interest to in-      idle rate to 46% for the same 10 full-time eqi-
+                       clude time series graphs depicting queue sizes.     valents (FTEs). However, combining the same
+                       Table 5 represents the results matrix used to       centralized process with a reduction in front of-
+                       analyze output data.                                fice FTEs in Scenario Three reduced the idle
+                                                                           rate to 24%. The most efficient front office
+                                                                           staffing configuration was achieved during Sce-
+                       Was the Available Space Adequate for                nario Three.
+                       Clinic Operations?                                     Front office staffing allocation was also evalu-
+                       The examination room utilization analysis was       ated using the same mean time-in-queue and
+                       important in determining whether or not to          mean size-of-queue measurements described
+                       allocate more space to providers. The model         two paragraphs earlier. After reviewing the find-
+                       demonstrated that, with the exception of two        ings, the staff assumptions were modified by re-
+                       clinic sessions when utilization peaked at 83%,     ducing staff from 10 to 7, which increased mean
+                       excess capacity existed throughout the week         time-in-queue for Scenarios Two and Three
+                       under all scenarios. The mean utilization rates     (0.5 to 1.0 min, respectively) and the size-of-
+                       for the Base Case, Scenario Two, and Scenario       queue findings for Scenarios Two and Three
+                       Three were 47%, 50%, and 50%, respectively,         (0.8 patient to 1.0 patient, respectively). In
+                       demonstrating that regardless of the scenario,      this case, the staffing efficiencies gained were
+                       average utilization never met leadership’s “fully   considered worth the negligible increased wait
+                       utilized” definition of 85%.                        times.
+                          Of additional importance was whether the            The same mean time-in-queue and mean size-
+                       clinic design included enough check-in/out          of-queue measurements were applied to the x-
+                       booths. A study of check-in/out queuing con-        ray queue to confirm that the practice x-ray
+                       firmed under which scenarios facility capac-        center was adequately equipped. Only two per-
+                       ity was adequate by estimating at which points      manent x-ray units were designed into the or-
+                       queue wait time and queue size expanded be-         thopedic footprint, and it was important that
+                       yond acceptable levels. Mean time-in-queue          all patients’ diagnostic x-ray needs were ac-
+                       and size-of queue findings were compared            commodated there. The mean time-in-queue
+                       among scenarios. Mean time-in-queue for Sce-        for Scenarios Base, Two, and Three were 3.8,
+                       narios Base, Two, and Three were 6.6, 0.5, and      6.1, and 6.1 min, respectively. Meanwhile the
+                       1.0 min, respectively. Adding the preregistra-      mean size-of-queue measurements for Scenar-
+                       tion process and reducing staff resulted in a       ios Base, Two, and Three were 1.3 patients, 1.9
+                       significant decrease in the time-in-queue: (Base    patients, and 1.9 patients, respectively. The re-
+                       vs. Scenario Two: p < .0001); (Base vs. Scenario    sults confirmed two fixed x-ray machines and
+                       Three: p < .0001). Similarly, the mean size-of-     one portable x-ray machine had the capacity
+                       queue findings were 4.0 patients, 0.8 patient,      to meet the demand for services while produc-
+                       and 1.0 patient for Scenarios Base, Two, and        ing queuing times and sizes well below the ac-
+                       Three, respectively, demonstrating significant      ceptable rates (10 min mean wait time; three
+                       reductions when compared to the base: (Base         patients mean in queue).
+                       vs. Scenario Two: p < .0001); (Base vs. Scenario
+                       Three: p < .0001). Thus, the model demon-
+                       strated that enough check-in/out booths were
+                       designed provided that either Scenario Two or       Could Office Processes be Redesigned to En-
+                       Three was implemented.                              hance the Patient Flow through the Clinic?
+                                                                           Scenario Four was added to allow for obser-
+                                                                           vation of how a redesign of the occupational
+                       Was the Staff and Equipment Appropriately Al-       therapy center and cast room might have an
+                       located for Volume and Growth?                      impact on patient queues. In the original facil-
+                       To ensure efficient front office staffing, idle     ity plan, the cast room’s capacity was limited to
+                       time rate was compared between the Base             two patients, whereas the capacity of the occu-
+                       and Scenarios Two and Three. The Base Case          pational therapy location was four patients. An
+                       yielded a mean idle rate of 35% for the 10-staff    exchange of locations between the two services
+                       configuration during the 5-day period. With         produced a significant reduction in the size-of
+                       the introduction of a centralized preregistra-      the cast room queue: (Base vs. Scenario Four:
+                       tion process, the second scenario increased the     p < .0001).
+
+                   Table 5. Results Matrix
+                                   Evaluative Criteria                         Exam Room Utilization                                Check-in/Check-out Queue                                                x-Ray Queue                                 Staff Idle Time                         Cast Room Queue
+                                                                                                                                      Mean                         Mean                          Mean                        Mean                          Mean Idle
+                                                                             Utilization                 Utilization                 Time in                     Queue Size                     Time in                    Queue Size                       Rate of                                 Mean
+                                                                             Rate Mean                   Rate Max                   Queue Per                    Per Model                     Queue Per                   Per Model                       Total Front                           Queue Size Per
+                  Scenario                                                   Utilization                 Utilization                 Patient                     Repetition                     Patient                    Repetition                      Office Staff                         Model Repetition
+                  1. Base Case No centralized                                      47%                         81%                     6.6 min                   4.0 patients                     3.8 min                  1.3 patients                           35%                       0.7 patients (4 rooms)
+                      preregistration FO
+                      staffing: 10
+                  2. Scenario 2 Centralized                                        50%                         83%                     0.5 min                   0.8 patients                     6.1 min                  1.9 patients                           46%                                      N/A*
+                      preregistration FO
+                      staffing: 10
+                  3. Scenario 3 Centralized                                        50%                         83%                     1.0 min                   1.0 patients                     6.1 min                  1.9 patients                           24%                                       N/A
+                      preregistration FO
+                      staffing: 7
+                  4. Scenario 4 Reduces cast                                      N/A∗                        N/A                         N/A                          N/A                           N/A                         N/A                              N/A                       2.6 patients (2 rooms)
+                      room from 4-to 2-room
+                      configuration
+                  ∗
+                      N/A indicates only output data relevant to the cast room decision was recorded and included here.
+                                                                                                                                                                                                                                                                                                                                                          Vol. 35 No. 1 January/February 2013
+                                                                                                                                                                                                                                                                                                                                                         57
+
+
+
+
+19451474, 2013, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/j.1945-1474.2011.00166.x by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+                                                                                                                               19451474, 2013, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/j.1945-1474.2011.00166.x by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+58   Journal for Healthcare Quality
+
+
+
+
+                          The x-ray queuing results were also impor-       istration scenario, thereby affirming the ne-
+                       tant from a process redesign standpoint. If pa-     cessity for centralization. Third, it was rec-
+                       tients were rerouted to an imaging department       ommended the three radiology units located
+                       outside the orthopedic clinic because of a lack     within the practice serve as the principal source
+                       of capacity in equipment or personnel, inef-        of diagnostic radiology rather than the al-
+                       ficiencies, such as longer cycle time, reduced      ternative of sending patients to the hospital-
+                       revenue, and increased paperwork, would be          controlled imaging department, thereby re-
+                       introduced into the system. Providing all ba-       ducing patient turnaround time, decreasing
+                       sic orthopedic patient ancillary needs (occupa-     patient copayments, and increasing practice re-
+                       tional therapy, x-ray, and casting) within the      imbursements. Fourth, the study determined
+                       space allocated to the orthopedic clinic was an     the optimal number of front office staff and
+                       important goal for clinical care and perceived      surgical schedulers (a reduction of three) nec-
+                       patient satisfaction.                               essary to process patients under a centralized
+                                                                           preregistration scenario. Finally, the model
+                       Discussion                                          adjusted and affirmed optimal patient flow
+                       Discrete-event simulation is a useful tool for      through the use of both animated visual repre-
+                       analyzing and improving healthcare in a vari-       sentations and statistical output functions. Such
+                       ety of ambulatory settings including emergency      review allowed leadership to switch cast room
+                       rooms, specialty practices, and ancillary sup-      and occupational therapy locations and signifi-
+                       port services. Several emergency room studies       cantly reduce patient wait times.
+                       (Hoot et al., 2009; Hung, Whitehouse, O’Neill,         Computer simulation has many distinct ad-
+                       & Kissoon, 2007; Khare, Powell, Reinhardt, &        vantages over static decision-making tools. Man-
+                       Lucenti, 2009) have demonstrated that simula-       agement can review the impact of decisions in
+                       tion methods can identify opportunities for im-     the modeling environment, such as adding or
+                       proving patient flow and reducing wait times.       reducing staff or constructing walls, prior to a
+                       Computer simulation models were also used           costly outlay of resources or before staff posi-
+                       prior to facility construction for a multispe-      tions are terminated. Variations in provider and
+                       cialty group practice (Vos, Groothuis, & van        staff scheduling are accounted for by the soft-
+                       Merode, 2007). In the discipline of oncology,       ware and allow an estimation of true resource
+                       simulation was used to demonstrate efficiencies     and location availability. Simulation manage-
+                       in resource utilization and patient flow (San-      ment provided an element of realism because
+                       tibanez, Chow, French, Puterman, & Tyidesley,       the team incorporated each provider’s practice
+                       2009) and to analyze multiple responses of sev-     behavior, to include the probability of order-
+                       eral patient routings among services involving      ing procedure-specific radiology studies, from
+                       numerous varying patient attributes and arrival     historic data trends. Finally, simulation allows
+                       patterns (Matta & Patterson, 2007). No stud-        a leader to visualize a system that does not yet
+                       ies were identified that demonstrated the value     exist and make decisions without disrupting op-
+                       of discrete-event simulation in planning for the    erations.
+                       most efficient use of space, staffing, equipment,      Despite the strengths of computer simulation
+                       and patient flow in an unfinished medical office    in this setting, there are a number of limita-
+                       building in which multiple independent clinics      tions. First, the output data and conclusions
+                       were merging.                                       drawn from the output of computer model-
+                          Desktop microsimulation was used to achieve      ing are only as good as the data inputs. In de-
+                       all three initial research goals and more specif-   veloping the appropriate arrival numbers for
+                       ically to inform five major recommendations,        the new practice, historical numbers were used
+                       which were ultimately implemented, to en-           based on a 6-month data collection period.
+                       hance operations at an unoccupied specialty         This approach is limited by the accuracy of ar-
+                       medical office building. First, the team rec-       rival data and may not account fully for future
+                       ommended colocating all four practices on           changes in service demand. To offset this limi-
+                       the same wing of the new office building            tation, closer one-on-one discussions were held
+                       thus preserving 3,000 square feet of clinical       between the team and physicians, and a sensi-
+                       space for more efficient uses ($85K per an-         tivity analysis that increased arrivals by 10–30%
+                       num cost avoidance). Second, the study con-         throughout the week was added to the model
+                       firmed the number of check-in/out stations          thereby providing additional validation of input
+                       was adequate only under a centralized prereg-       estimates. Second, discrete-event simulation is
+
+                                                                                                                                                   19451474, 2013, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/j.1945-1474.2011.00166.x by University Of Exeter, Wiley Online Library on [25/02/2025]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+                                                                                                        Vol. 35 No. 1 January/February 2013   59
+
+
+
+
+time intensive. Although modeling activities                        Journal of the American Medical Informatics Association, 16,
+can produce a superior analytic product, there                      338–345.
+                                                                  Hung, G. R., Whitehouse, S. R., O’Neill, C., & Kissoon, N.
+is considerable effort that goes into gathering                     (2007). Computer modeling of patient flow in a pedi-
+data, identifying model inputs and outputs, and                     atric emergency department using discrete event simu-
+programming the simulation models. Finally,                         lation. Pediatric Emergency Care, 23, 5–10.
+                                                                  Kennedy, M. H. (2009). Simulation modeling for the health
+simulation modeling provides a series of rec-                       care manager. Health Care Manager, 28, 246–252.
+ommendations based upon the analysis that can                     Khare, R. K., Powell, E. S., Reinhardt, G., & Lucenti, M.
+inform the actual implementation. It is impor-                      (2009). Adding more beds to the emergency depart-
+                                                                    ment or reducing admitted patient boarding times:
+tant to assure that reality after “go live” approx-                 Which has a more significant influence on emergency
+imates the findings of the model and where                          department congestion? Annals of Emergency Medicine, 53,
+there is variation, that the model is updated to                    575–585.
+                                                                  Levin, S. A., & Dickey, K. (2008). The impact of the cap-
+replicate reality so that it can be a living tool for               ital markets crisis and economic showdown on hospi-
+process improvement work in the setting under                       tals and health systems. White Paper–-The Chartis Group,
+study.                                                              Shattuck Hammond Partners, Fall. Retrieved September 1,
+                                                                    2010, from http://www.chartisgroup.com/files/pdfs/
+                                                                    thechartisgroup-capitalmarketswhitepaper.pdf.
+                                                                  Matta, M. E., & Patterson, S. S. (2007). Evaluating multiple
+Conclusion                                                          performance measures across several dimensions at a
+In an environment of economic pressure, it is                       multi-facility outpatient center. Health Care Management
+imperative that decision makers have sufficient                     Science, 10, 173–194.
+                                                                  Pande, P. S., Neuman, R. P., & Cavanagh, R. R. (2000). The
+analytical tools to inform decisions. Discrete-                     six sigma way: How GE, Motorola, and other top companies
+event simulation uses computer-generated out-                       are honing their performance. New York: McGraw-Hill.
+put data and animation to provide a platform                      ProModel Corporation. (2008). MedModel user guide (Ver.
+                                                                    7.5). US: ProModel.
+for decision making and is recognized as a valu-                  Santibanez, P., Chow, V. S., French, J., Puterman, M. L.,
+able decision support tool for healthcare lead-                     & Tyidesley, S. (2009). Reducing patient wait times and
+ers seeking operational efficiencies. Through                       improving resource utilization at British Columbia Can-
+                                                                    cer Agency’s ambulatory care unit through simulation.
+the scenario-building feature, this team was                        Health Care Management Science, 12, 392–407.
+able to analyze data from multiple scenarios,                     Vos, L., Groothuis, S., & van Merode, G. G. (2007). Evalu-
+observe the impact on patient queuing, iden-                        ating hospital design from an operations management
+                                                                    perspective. Health Care Management Science, 10, 357–364.
+tify exam room utilization and staff idle time,                   Yokl, R. T. (2009). Game changed by 2009 recession. Health-
+and thereby provide recommendations on the                          care Purchasing News, June, 33, 70.
+layout, flow, and functions of the staff in this
+newly consolidated practice.
+                                                                  Authors’ Biographies
+                                                                  James B. Montgomery, MHA, FACHE, is a Senior Perfor-
+References                                                        mance Improvement Consultant in the Informatics, An-
+Breen, T., Friedman, R., Hartman, J., Kerns, C., & Schoch,        alytics and Improvement Division at the Carilion Clinic
+   J. (2009). Playbook for the economic downturn: Protect-        (Roanoke, Virginia). He earned a Masters in Healthcare
+   ing margins and positioning for growth. Washington, DC:
+                                                                  Administration from Baylor University and is credentialed
+   Health Care Advisory Board—The Advisory Board Com-
+   pany.                                                          as a Fellow, American College of Healthcare Executives.
+Drucker, P. F. (2007). The effective executive: the definitive    Beth A. Linville, MA, is the Senior Director of Operations
+   guide to getting things done right. (Classic Drucker Collec-
+                                                                  for the Department of Surgery at the Carilion Clinic. She
+   tion, Ed.). Oxford, UK: Elsevier Ltd.
+Evans, M. (2008). Auction rate endgame. Modern Healthcare,        earned her Masters of Science from Michigan State Uni-
+   38, 42.                                                        versity, and has 25 years experience both as a healthcare
+Fitzsimmons, J. A., & Fitzsimmons, M. J. (Eds.). (2004). Ser-     provider and healthcare executive.
+   vice management: Operations, strategy, and information tech-
+   nology (4th ed.). New York: McGraw-Hill.                       Anthony D. Slonim, MD, DrPH, is now the Chief Medical
+Goldberg, A. J., & Petasnick, W. D. (2010). Managing in           Officer at the Saint Barnabas Healthcare System in New
+   a downturn: How do you manage in a global recession.           Jersey. While helping to facilitate quality and operational
+   Journal of Healthcare Management, 55, 149–153.                 improvements at the “sharp end” of patient care, he also
+Harrell, C., Ghosh, B. K., & Bowden, R. O. (2004). Simula-        has research interests that are broadly based in healthcare
+   tion using promodel (2nd ed.). New York: McGraw-Hill.          quality and patient safety.
+Hoot, N. R., LeBlanc, L. J., Jones, I., Levin, S. R., Zhou,
+   C., Gadd, C. S., et al. (2009). Forecasting emergency de-      For more information on this article, contact, James B.
+   partment crowding: A prospective, real-time evaluation.        Montgomery at jbmontgomery@carilionclinic.org.
+

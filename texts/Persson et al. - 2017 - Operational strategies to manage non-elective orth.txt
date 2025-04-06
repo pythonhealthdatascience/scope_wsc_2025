@@ -1,0 +1,563 @@
+ Open Access                                                                                                                         Research
+
+
+                                  Operational strategies to manage
+                                  non-elective orthopaedic surgical ﬂows:
+
+
+
+
+                                                                                                                                                         BMJ Open: first published as 10.1136/bmjopen-2016-013303 on 7 April 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                  a simulation modelling study
+                                  Marie Persson,1 Helena Hvitfeldt-Forsberg,2 Maria Unbeck,3,4
+
+
+
+
+                                                                                                                                                                            Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+                                  Olof Gustaf Sköldenberg,3,4 Andreas Stark,3,4 Paula Kelly-Pettersson,3,4
+                                  Pamela Mazzocato2
+
+
+To cite: Persson M, Hvitfeldt-    ABSTRACT
+Forsberg H, Unbeck M, et al.                                                                   Strengths and limitations of this study
+                                  Objectives: To explore the value of simulation
+Operational strategies to
+                                  modelling in evaluating the effects of strategies to plan    ▪ The simulation experiment was conducted with
+manage non-elective
+                                  and schedule operating room (OR) resources aimed at            real world data from a Swedish university
+orthopaedic surgical flows: a
+simulation modelling study.       reducing time to surgery for non-elective orthopaedic          hospital.
+BMJ Open 2017;7:e013303.          inpatients at a Swedish hospital.                            ▪ This is one of the few studies applying simula-
+doi:10.1136/bmjopen-2016-         Methods: We applied discrete-event simulation                  tion modelling to non-elective patient flows.
+013303                            modelling. The model was populated with real world           ▪ The simulation study has been carried out in col-
+                                  data from a university hospital with a strong focus on         laboration with hospital staff, and the model was
+▸ Prepublication history and      reducing waiting time to surgery for patients with hip         continuously validated.
+additional material is            fracture. The system modelled concerned two patient          ▪ The outcome variables were limited to waiting
+available. To view please visit   groups that share the same OR resources: hip-fracture          time and percentage of patients undergoing
+the journal (http://dx.doi.org/   and other non-elective orthopaedic patients in need of         surgery within 24 hours.
+10.1136/bmjopen-2016-             surgical treatment. We simulated three scenarios based       ▪ Unexpected incidents such as patient health
+013303).                          on the literature and interaction with staff and               status and employee sick leave were not included
+                                  managers: (1) baseline; (2) reduced turnover time              in the simulation model.
+Received 11 July 2016
+                                  between surgeries by 20 min and (3) one extra OR
+Revised 17 January 2017
+Accepted 13 February 2017
+                                  during the day, Monday to Friday. The outcome
+                                  variables were waiting time to surgery and the              and if carried out inappropriately it can gen-
+                                  percentage of patients who waited longer than               erate unnecessary costs and delays in patient
+                                  24 hours for surgery.                                       treatment.1 The negative consequences of
+                                  Results: The mean waiting time in hours was                 poorly managed OR resources become
+                                  significantly reduced from 16.2 hours in scenario 1         evident for patients with hip fracture. Delay
+                                  (baseline) to 13.3 hours in scenario 2 and 13.6 hours       to surgery is associated with postoperative
+                                  in scenario 3 for hip-fracture surgery and from             complications, prolonged recovery and
+                                  26.0 hours in baseline to 18.9 hours in scenario 2 and      length of stay, as well as increased
+                                  18.5 hours in scenario 3 for other non-elective             mortality.2–5 Despite the positive effects of
+                                  patients. The percentage of patients who were treated
+                                                                                              improvement efforts to reduce waiting time
+                                  within 24 hours significantly increased from 86.4%
+                                                                                              to surgery, the management of OR resources
+                                  (baseline) to 96.1% (scenario 2) and 95.1% (scenario
+                                  3) for hip-fracture patients and from 60.2% (baseline)      still represents a challenge for the timely
+                                  to 79.8% (scenario 2) and 79.8% (scenario 3) for            delivery of surgical services for this vulner-
+                                  patients with other non-elective patients.                  able patient group.6 7 Waiting time to
+                                  Conclusions: Healthcare managers who strive to              surgery is consequently still one of the most
+                                  improve the timelines of non-elective orthopaedic           important performance variables for man-
+                                  surgeries may benefit from using simulation modelling       aging non-elective patient ﬂows in order to
+                                  to analyse different strategies to support their            prevent unnecessary patient suffering.
+                                  decisions. In this specific case, the simulation results       One of the challenges in the management
+                                  showed that the reduction of surgery turnover times         of OR resources relates to the management
+                                  could yield the same results as an extra OR.                of multiple patient groups that compete for
+For numbered affiliations see
+                                                                                              the same resources. A major issue is the
+end of article.                                                                               trade-off between elective and non-elective
+                                                                                              cases.8 9 In orthopaedics, non-elective surgi-
+Correspondence to
+                                  INTRODUCTION                                                cal cases have historically been added to the
+Dr Pamela Mazzocato;              The planning and scheduling of activities in                elective schedules which resulted in several
+pamela.mazzocato@ki.se            the operating room (OR) is a complex task                   problems including disruptions to elective
+
+                                          Persson M, et al. BMJ Open 2017;7:e013303. doi:10.1136/bmjopen-2016-013303                                 1
+
+Open Access
+
+cases and after-hour surgery.10 11 To overcome these pro-        OR resources aimed at reducing the time to surgery for
+blems, hospitals have introduced dedicated day-time              non-elective orthopaedic inpatients. We speciﬁcally ana-
+orthopaedic ORs for non-elective orthopaedic patients.           lysed the effects for patients with hip fracture and other
+
+
+
+
+                                                                                                                                           BMJ Open: first published as 10.1136/bmjopen-2016-013303 on 7 April 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+The use of dedicated orthopaedic ORs is associated with          non-elective orthopaedic inpatients who often share the
+shorter after-hour surgeries for trauma cases and less dis-      same OR resources.
+ruptions to elective schedules,8 12 as well as improved
+patient care, for example, decreased rates of periopera-
+tive mortality, postoperative complications and length of        METHOD
+stay.13 The management of non-elective orthopaedic               The applied simulation method was discrete event simu-
+patient ﬂows is however still a challenge as it is often         lation (DES). DES is often applied to healthcare for
+
+
+
+
+                                                                                                                                                              Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+based on ‘ad hoc’ strategies,14 and limited research is          patient-ﬂow management, resource allocation and
+applied to non-elective patient ﬂows.1                           scheduling23 and is the predominant method used in
+   Non-elective patient ﬂows are different from elective         surgical care.24 DES represents the components of a
+ﬂows because patients can arrive at any time of the day          system and their interactions and looks at speciﬁc events
+or night, 7 days a week and this creates speciﬁc planning        in a given process (eg, surgical procedure) and their
+requirements. In this respect, there are two main                chronological sequence.25 The state of the system
+approaches to manage healthcare demand: the unit and             observed and simulated is updated as each event takes
+the process perspective.15 The unit perspective aims to          place making DES a suitable tool to evaluate and
+maximise resource efﬁciency within a single unit or              improve system performance.26 The effects of OR plan-
+department whereas the process perspective focuses               ning and scheduling strategies were measured by waiting
+more on maximising the service level for speciﬁc patient         time to surgery and the percentage of patients undergo-
+groups. These two strategies are not in conﬂict with one         ing surgery within 24 hours, a common improvement
+another; in fact, it is claimed that a focus on creating         target for patients with hip fracture.7 The study has been
+efﬁcient processes indirectly yields a more efﬁcient use         granted ethical approval by the Regional Ethics
+of resources.16 The challenge for healthcare organisa-           Committee in Stockholm (ref no. 2009/1657-31).
+tions lies in developing operational strategies that are
+aligned with the perspective they chose to prioritise. In        Setting
+an OR, the adoption of a unit perspective would mean             This study was carried out at a Swedish university hos-
+focusing on how to increase the usage of OR resources            pital with a catchment area of ∼450 000 inhabitants. The
+such as surgeons’ time and OR-teams; a process perspec-          52-bed orthopaedic department has an annual admit-
+tive would instead emphasise the timeliness of care deliv-       tance of ∼3700 patients, mainly for non-elective care.
+ery for speciﬁc patient groups.                                  Patients with hip fractures constitute the major
+   Simulation modelling is one approach that can help            non-elective group with an annual surgical rate of ∼600
+to develop effective operational strategies to plan              fractures. In Sweden, the National Board of Health and
+non-elective surgeries. Stemming from Operations                 Welfare recommends that patients with hip fracture
+Research, simulation modelling allows for the develop-           receive surgical treatment within 24 hours from admis-
+ment and testing of changes before they are implemen-            sion.27 When this study was conducted, the County
+ted in reality.17 18 Simulation modelling can also               Council requirement was that 80% of patients with a hip
+function as a system analysis tool19 to identify processes       fracture should have surgery within 24 hours from
+in need of improvement in order to reach the goals of            admission. At the hospital, efforts have been made in
+the organisation. Simulation modelling applied to                recent years to reach this goal. Despite the improvement
+OR departments and surgery often focuses on optimis-             observed, variability in the process still exists.7 28 Staff
+ing capacity of ﬂows, scheduling and resource utilisa-           and managers at the hospital expressed that further
+tion.20–22 However, most research still focuses on elective      improvement could be achieved by improving the
+patients despite the challenge non-elective patients rep-        process at the OR, which subsequently became the focus
+resent when it comes to planning care.1                          of the simulation model.
+                                                                    There were 12 ORs at the current OR department and
+                                                                 5 (6 on Mondays) were dedicated for orthopaedic sur-
+RATIONALE AND AIM OF THE STUDY                                   geries and the remainder were dedicated for general
+In summary, there is a concrete need to develop oper-            surgical and urological cases. Two ORs were dedicated
+ational strategies to plan and schedule OR resources             during day shift to serve non-elective orthopaedic sur-
+and activities in order to improve the timeliness of care        geries and one OR during night shift. At weekends there
+delivery. Simulation modelling can be a valuable                 was one OR dedicated during the day and night shift. In
+approach to evaluate the effects of strategies that, while       2014, a total of 10 574 surgeries were performed at the
+they may have been tested for elective patient ﬂows,             operating department; of these 4512 were orthopaedic
+have not been explored for non-elective ones. Thus, in           surgeries, 2230 non-elective and 2282 elective surgeries.
+this study we explored the value of simulation modelling         Normally, according to a regional guideline, multi-
+to evaluate the effects of strategies to plan and schedule       trauma cases were treated at another hospital in the
+
+2                                                             Persson M, et al. BMJ Open 2017;7:e013303. doi:10.1136/bmjopen-2016-013303
+
+                                                                                                                     Open Access
+
+County Council and therefore very few underwent                              groups shared the same OR resources. Given the low
+surgery at this hospital. Non-elective orthopaedic                           number of multitrauma cases, a hip-surgery patient in
+patients arrive 24 hours a day, 7 days a week. The                           general was considered to have a higher priority and
+
+
+
+
+                                                                                                                                          BMJ Open: first published as 10.1136/bmjopen-2016-013303 on 7 April 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+patients arrive at ED and then pass several units pre-                       therefore the hip-surgery queue was given higher prior-
+operatively; different kind of assessments and proce-                        ity than the other orthopaedic surgery queue. Both
+dures are carried out in order to prepare patients for                       queues were modelled on the ﬁrst-come-ﬁrst-served
+surgery. An anaesthesiologist makes the ﬁnal decision                        processing rule. The number of ORs was dynamically
+and decides when the patient is ready for surgery.                           modelled according to the authentic number of ORs
+                                                                             open for a speciﬁc day in the week. In the same way, we
+Simulation model                                                             modelled the opening hours of the ORs according to
+
+
+
+
+                                                                                                                                                             Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+The system modelled used real patient data from 2013                         how long the speciﬁc OR was open for a speciﬁc weekday
+and concerned hip-fracture patients and other                                in reality.
+non-elective patients arriving for orthopaedic surgery. In                      First, the patients arrive according to an arrival
+the model, we only considered patients who required                          process α(x) and are placed in one of the two queues
+surgery and hence were assumed to have already been                          according to the described rules above (ﬁgure 1). The
+assessed for surgical needs. However, in reality the time                    process α(x) was assumed to be Poisson, that is, having
+which elapses before surgery actually is scheduled, varies                   exponential arrival intervals with a calculated arrival
+greatly, depending on patient condition, as some                             mean derived for each hour during the day and night.29
+patients require other investigations and/or treatments                      If one of the ORs was available, that is, not occupied
+prior to surgery, for example, stabilisation for several                     with another surgical procedure or was closed, the simu-
+days. This variation was not added to the model, as it                       lation model searched the queues for a patient ready to
+was not considered to be a hospital-related delay to                         undergo surgery according to a prioritisation scheme
+surgery. Nonetheless, we did add a short time to each of                     (described in the experiment). If a patient’s estimated
+the modelled patients waiting to undergo surgery as they                     surgical procedure time exceeded the remaining OR
+were not very likely to be scheduled for surgery immedi-                     opening hours, the patient was forced to wait (remain in
+ately after being assessed by an orthopaedic surgeon.                        the queue) until the next day, and instead the next
+This time was computed as the mean for the 20 patients                       patient in line was processed. In the model, a distinction
+with the shortest waiting time, for example, the patients                    was made between the simulated planned surgical pro-
+who computed the fastest elapsed time from the time of                       cedure time and the simulated actual surgical procedure
+admission to the hospital to the time the patient                            time in order to capture the difference in what is known
+entered the OR.                                                              to the staff before the surgery starts and what really
+  Furthermore, we divided the patients into two                              happens in terms of surgery duration. The simulation of
+separate groups (queues), one queue for hip-fracture                         the planned surgical procedure time was based on the
+surgery and one for the remaining orthopaedic                                mean procedure time for a particular procedure,
+non-elective surgical cases (ﬁgure 1). These two patient                     whereas the simulation of the actual surgical procedure
+
+
+Figure 1 Flow chart of the
+simulation model.
+
+
+
+
+Persson M, et al. BMJ Open 2017;7:e013303. doi:10.1136/bmjopen-2016-013303                                                           3
+
+Open Access
+
+time was drawn from a log-normal distribution with spe-               improvements discussed at the involved departments,
+ciﬁed mean and variance30 and was unknown before the                  that is, the operating department, the orthopaedic
+simulated surgery started. This means that the opening                department and the anaesthesia and intensive care
+
+
+
+
+                                                                                                                                                BMJ Open: first published as 10.1136/bmjopen-2016-013303 on 7 April 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+hours of an OR may be exceeded and more time will be                  department. Each scenario was simulated 10 times using
+required in order to complete the surgical procedure                  different random seeds.
+already underway. After the surgery was completed, the                   Non-elective orthopaedic data from 2013 extracted
+patient was sent out of the system.                                   from the hospital OR system was used as input to the
+   The data obtained from the hospital were prepro-                   simulation model. After visual inspection, incomplete
+cessed by use of Python script language, and the simula-              case records were omitted from the data set. In table 1,
+tion model was developed in Java.                                     the various parameters used for the simulation are
+
+
+
+
+                                                                                                                                                                   Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+                                                                      listed. The prioritisation parameter at the bottom of the
+Simulation experiment with scenarios                                  table describes the logical ﬂow of how the priority
+The simulation experiment was set up to evaluate the                  between hip-fracture patients and other non-elective
+effects of three scenarios on the mean waiting time and               orthopaedic patients was simulated.
+the percentage of patients waiting longer than 24 hours                  The turnover time including post-procedure and pre-
+for surgery. These two variables were measured for hip-               procedure of two subsequent surgical cases was esti-
+fracture patients and other non-elective orthopaedic                  mated at the included hospital to be 60–90 min
+patients. The experiment was conducted by simulating                  depending on the surgical cases. A reduction of 20 min
+three scenarios that were developed based on the litera-              turnover time altogether was deemed reasonable and
+ture and through interactions with staff and managers at              well-motivated by the staff.
+the hospital. The ﬁrst scenario represented the planning                 To ensure that the simulation model was a representa-
+and scheduling of the non-elective orthopaedic cases                  tion of, or as close to, the real orthopaedic surgical
+using current practice (baseline scenario), the second                system as possible, the model was validated continuously
+scenario represented current practice but the turnover                throughout the study, that is, the baseline scenario was
+between surgeries was reduced by 20 min and the third                 validated. Several meetings with orthopaedic surgeons,
+scenario represented current practice with the exception              anaesthesiologists, OR nurses, OR coordinators and
+of one extra OR in day time (Monday to Friday).                       registered nurse anaesthetists were carried out along
+Scenarios 2 and 3 represent potential areas for                       with intermittent observations at the operating
+
+
+    Table 1 Description of parameters used in the simulation model
+                                                                                   Distribution
+    Parameter                      Value in baseline scenario                      type             Data source
+    OR opening                     8:00                                                             Personal communication with staff
+    OR closing (day time)          16:00                                                            Personal communication with staff
+    OR closing (Friday)            14:00                                                            Personal communication with staff
+    OR closing (night shift)       21:00                                                            Personal communication with staff
+    Number of ORs open per         2 OR day time and 1 OR evening shift.                            Expert opinion
+    week                           Weekends: 1 OR daytime and 1 OR evening
+                                   shift
+    Patient arrival                                                                Poisson          OR scheduling system
+    Time from Emergency            5 hours for hip-fracture patients and                            Patient records
+    Department to OR               3.5 hours for other non-elective patients
+    Simulated actual surgical      All patient time included. Included surgical    Lognormal        OR scheduling system
+    procedure time                 preparation as cleaning and anaesthesia, ie,
+                                   preprocedure and postprocedure
+    Simulated planned              Mean (all patient time included)                                 OR scheduling system
+    surgical procedure time
+    Turnover time                  The turnover time including postprocedure                        Expert opinion
+                                   and preprocedure of two subsequent surgical
+                                   cases was estimated to be 60–90 min
+    Prioritisation (hip-fracture   (a) If hip <24 h and other <36 h then hip                        Expert opinion
+    patients vs other              priority
+    non-elective patients)         (b) If hip <24 h and other >36 h then other
+                                   priority
+                                   (c) If hip >24 h and other >36 h then hip
+                                   priority
+                                   (d) If other >36 h and postponed then other
+                                   priority
+
+
+
+4                                                                  Persson M, et al. BMJ Open 2017;7:e013303. doi:10.1136/bmjopen-2016-013303
+
+                                                                                                                     Open Access
+
+department. When comparing the baseline scenario                             RESULTS
+with real world data, the simulated data showed slightly                     The reduction of the turnover time by 20 min (scenario
+better results in terms of waiting time to surgery. This                     2) and the introduction of an extra OR during day
+
+
+
+
+                                                                                                                                           BMJ Open: first published as 10.1136/bmjopen-2016-013303 on 7 April 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+difference can be explained by design decisions in the                       time (scenario 3) contributed to a signiﬁcant, as indi-
+simulation model that were taken due to limited data                         cated by the lack of overlapping between the CIs, reduc-
+availability. For instance, we lacked data that could                        tion in waiting time to surgery for both patient groups,
+explain the variation in time from arrival at the                            compared to scenario 1 (baseline). For hip-fracture
+Emergency Department to the time the patients are                            patients, the mean waiting time decreased from
+cleared for surgery. This variation could be due to the                      16.2 hours in scenario 1 to 13.3 hours in scenario 2 and
+need for preoperative investigations for patients, which                     13.6 hours in scenario 3. The corresponding change in
+
+
+
+
+                                                                                                                                                              Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+could delay the surgery. Since this delay was not deemed                     the mean waiting time for the other non-elective
+relevant for this study, we decided to build the simula-                     patients was a reduction from 26.3 to 18.9 hours and
+tion model based on the mean of the 20 fastest patients;                     from 26.3 to 18.5 hours, in scenarios 2 and 3, respect-
+the mean time between arrival at the Emergency                               ively (table 2).
+Department and the start of surgery for these patients                          The level of improvement achieved in scenario 2 and,
+was 5 hours.                                                                 compared with baseline, were similar for both scenarios.
+                                                                             Scenarios 2 and 3 showed better results for all simula-
+Statistical analysis                                                         tion runs compared with baseline except for one run in
+The arrival of patients was modelled by using Poisson                        scenario 3 (ﬁgure 2). Figure 3 shows the same results,
+process, and the uncertainty of surgical duration was                        viewed as box plot.
+modelled by log-normal distribution. A parametric                               Signiﬁcant results were also observed for the percent-
+approach using 95% CIs for waiting time in hours and                         age of patients who waited longer than 24 hours for sur-
+percentage of cases treated within 24 hours was used to                      gical treatment, that is, similar levels of improvement
+compare the three scenarios. Box-plot was used to                            were identiﬁed for scenarios 2 and 3 compared with
+graphically represent the data.                                              baseline (table 2).
+
+
+ Table 2 Performance of the three simulated scenarios
+                                         Scenario 1 (baseline)                 Scenario 2                   Scenario 3
+ Mean waiting time in hours with 95% CI
+   Hip-fracture patients          16.2 hours                                   13.3 hours                   13.6 hours
+                                  (95% CI 15.4 to 17.1)                        (95% CI 13.1 to 13.5)        (95% CI 13.4 to 13.9)
+   Other non-elective patients    26.3 hours                                   18.9 hours                   18.5 hours
+                                  (95% CI 24.3 to 27.6)                        (95% CI 18.1 to 19.7)        (95% CI 18.1 to 19.0)
+ Percentage of patients treated within 24 hours with 95% CI
+   Hip-fracture patients          86.4%                                        96.1%                        95.1%
+                                  (95% CI, 83.5% to 89.3%)                     (95% CI 95.5 to 96.7)        (95% CI, 94.0% to 96.1%)
+   Other non-elective patients    60.2%                                        79.8%                        79.8%
+                                  (95% CI, 56.9% to 63.7%)                     (95% CI 77.6% to 82.1%)      (95% CI, 78.5% to 81.1%)
+
+
+
+
+Figure 2 Mean waiting time in hours for hip-fracture patients monitored for each scenario.
+
+Persson M, et al. BMJ Open 2017;7:e013303. doi:10.1136/bmjopen-2016-013303                                                             5
+
+ Open Access
+
+
+
+
+                                                                                                                                              BMJ Open: first published as 10.1136/bmjopen-2016-013303 on 7 April 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                                                                                                                                                 Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+Figure 3 Box plots of the waiting time for hip-fracture patients for each of the three scenarios.
+
+  The percentage of hip-fracture patients who under-                   This study does not directly provide answers to how
+went surgery within 24 hours was simulated at 86.4% in              turnover time can be reduced, but the literature suggests
+the baseline scenario. In scenarios 2 and 3, however,               parallel processing as a viable method.31 32 Friedman
+simulated results showed that 96.1% and 95.1%, respect-             and colleagues found that turnover time could be
+ively, of the hip-fracture patients underwent surgery               reduced through parallel processing in ORs designed
+within 24 hours. Furthermore, in the other non-elective             for outpatient inguinal hernia repair. Parallel processing
+patient group a signiﬁcant increase in percentage of                was achieved without additional resources by having the
+patients who underwent surgery within 24 hours was                  operating team of surgeon, nurses and scrub technicians
+simulated in scenarios 2 (79.8%) and 3 (79.8%) com-                 working on two patients simultaneously. The mainten-
+pared with baseline (60.2%) (table 2).                              ance of a constant team throughout the entire day also
+                                                                    contributed to the observed improvement.32 Another
+                                                                    approach to parallel processing is to start the preproce-
+DISCUSSION
+                                                                    dure of the upcoming surgical case before the postpro-
+In this paper, we investigated how simulation modelling
+                                                                    cedure of the current surgical case is completed. This
+can be used to analyse different operational strategies to
+                                                                    approach however requires extra resources in terms of
+reduce waiting time to surgery for patients with hip frac-
+                                                                    surgical teams. Holmgren and Persson present an opti-
+ture and other non-elective orthopaedic patients. In this
+                                                                    misation model that sequences surgical cases in such a
+speciﬁc hospital, we found that a reduction in turnover
+                                                                    way that parallel processes are scheduled for many ORs
+time by 20 min in an OR can yield the same level of
+                                                                    subject to a limited number of surgical teams.31 Future
+improvement as adding an extra OR during daytime.
+                                                                    studies can investigate how parallel processing, as well as
+  This study contributes to the literature on how to
+                                                                    other strategies, can be used to improve the efﬁciency of
+improve the planning and scheduling of non-elective
+                                                                    non-elective surgical ﬂows.
+patients ﬂow using simulation, a ﬁeld in which empirical
+                                                                       As in our study, the speciﬁc operational strategies
+research is limited.1 The main contribution, in terms of
+                                                                    adopted should be tailored to the speciﬁc context of
+simulation results, lies in showing how, in a hospital
+                                                                    application and developed in collaboration with man-
+setting where non-elective orthopaedic surgeries are per-
+                                                                    agers and professionals. While the results obtained in
+formed in dedicated ORs, the reduction of the turnover
+                                                                    this study may be inﬂuenced by the setting of applica-
+time may have the same effect as adding an extra OR.
+                                                                    tion, this study clearly shows the value of using simula-
+The latter strategy may yield higher costs as it would
+                                                                    tion modelling when analysing management strategies
+require investing in additional human resources, phys-
+                                                                    that involve stochastic processes, such as patient arrival,
+ical space and associated equipment. The experimental
+                                                                    case-mix and procedure duration. In the case organisa-
+results can be explained by the pattern in patient arrival
+                                                                    tion, the results of the simulation analysis were the start-
+rate. An increase in OR resources during the daytime
+                                                                    ing point for two new research and development
+has limited effect on waiting time since non-elective
+                                                                    projects that aim to investigate how parallel processing
+patients typically arrive 24 hours a day, 7 days a week,
+                                                                    can be implemented to increase patient throughput in
+although the arrival rate is likely to be less frequent
+                                                                    the OR and how a 6-hour workday in the OR can be
+during the night. The beneﬁts of reduced turnover
+                                                                    implemented.
+time31 32 for elective patients have been described
+earlier; this study clearly shows that such strategy is valu-
+able to improve process efﬁciency while ensuring efﬁ-               Strengths and weaknesses of the study
+cient resource usage at the OR also in the context of               The main strengths of this study are that it was based on
+non-elective patients ﬂows.                                         real world data from a hospital and the development of
+
+6                                                                Persson M, et al. BMJ Open 2017;7:e013303. doi:10.1136/bmjopen-2016-013303
+
+                                                                                                                                            Open Access
+
+the model was grounded on the real needs of hospital                                OGS, AS, and PKP read and critically revised the manuscript. All authors
+staff and managers who had worked for several years to                              approved the final manuscript and are accountable for all parts of the work.
+reduce waiting time to surgery for patients with hip frac-                          Funding The authors thank the Regional agreement on medical training and
+
+
+
+
+                                                                                                                                                                       BMJ Open: first published as 10.1136/bmjopen-2016-013303 on 7 April 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+ture.7 The model itself was developed and validated in                              clinical research (ALF) between Stockholm County Council and Karolinska
+                                                                                    Institutet for financial support.
+collaboration with hospital staff and managers, a process
+that is of key importance.33 34                                                     Competing interests None declared.
+   The main limitations of the study are twofold. Firstly,                          Ethics approval Regional Ethics Committee in Stockholm (ref no. 2009/
+the simulation model does not take into consideration                               1657-31).
+unexpected incidents such as sudden change in patient                               Provenance and peer review Not commissioned; externally peer reviewed.
+health status (ie, not being well enough to undergo a
+
+
+
+
+                                                                                                                                                                                          Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+                                                                                    Data sharing statement The Excel file with the input and output data from
+surgical procedure) and the sick leave of employees.                                the simulation model (ie, key activities carried out in the care process and the
+While one may expect these variables to inﬂuence the                                time when they were carried out) is available on request by emailing
+waiting time to surgery, we sought to overcome this limi-                           marie.persson@bth.se or pamela.mazzocato@ki.se
+tation by considering the relative performance, that is,                            Open Access This is an Open Access article distributed in accordance with
+the difference in results between scenarios. In other                               the Creative Commons Attribution Non Commercial (CC BY-NC 4.0) license,
+words, we would expect a sudden change in patient                                   which permits others to distribute, remix, adapt, build upon this work non-
+health status and staff sick leave to have a similar effect                         commercially, and license their derivative works on different terms, provided
+                                                                                    the original work is properly cited and the use is non-commercial. See: http://
+on all scenarios and hence not crucial to this study.                               creativecommons.org/licenses/by-nc/4.0/
+Second, the outcome variables included were limited to
+waiting time and percentage of patients undergoing
+surgery within 24 hours. A more comprehensive evalu-                                REFERENCES
+ation of performance, including measures of cost, usage                              1.   Cardoen B, Demeulemeester E, Belien J. Operating room planning
+                                                                                          and scheduling: a literature review. Eur J Oper Res
+rates of the OR and percentage of cancelled surgeries,                                    2010;201:921–32.
+can be a way forward to develop better strategies for the                            2.   Trpeski S, Kaftandziev I, Kjaev A. The effects of time-to-surgery on
+management of non-elective patient ﬂows.                                                  mortality in elderly patients following hip fractures. Contribution to
+                                                                                          Macedonian Academy of Sciences and Arts, Section of Biological
+                                                                                          and Medical Sciences 2013;34:116–21.
+                                                                                     3.   Daugaard CL, Jorgensen HL, Riis T, et al. Is mortality after hip
+                                                                                          fracture associated with surgical delay or admission during
+CONCLUSIONS                                                                               weekends and public holidays? A retrospective study of 38,020
+This study shows that simulation modelling can be used                                    patients. Acta Ortho 2012;83:609–13
+                                                                                     4.   Moja L, Piatti A, Pecoraro V, et al. Timing matters in hip fracture
+to understand system performance in the context of                                        surgery: patients operated within 48 hours have better outcomes.
+non-elective care. In the hospital studied, a reduction of                                A meta-analysis and meta-regression of over 190,000 patients.
+20 min in OR turnover time yielded almost the same                                        PLoS One 2012;7:e46175
+                                                                                     5.   Simunovic N, Devereaux PJ, Sprague S, et al. Effect of early
+effect in patient waiting time as the addition of one                                     surgery after hip fracture on mortality and complications: systematic
+extra OR during the daytime. Future research can in-                                      review and meta-analysis. CMAJ 2010;182:1609–16.
+                                                                                     6.   Hommel A, Ulander K, Bjorkelund KB, et al. Influence of optimised
+vestigate how this reduction in turnover time can be                                      treatment of people with hip fracture on time to operation, length of
+accomplished for non-elective patient ﬂows for instance                                   hospital stay, reoperations and mortality within 1 year. Injury
+through OR and staff scheduling. The economic effects                                     2008;39:1164–4.
+                                                                                     7.   Mazzocato P, Unbeck M, Elg M, et al. Unpacking the key
+of these strategies can also be explored in future                                        components of a programme to improve the timeliness of hip-fracture
+research.                                                                                 care: a mixed-methods case study. Scand J Trauma Resusc Emerg
+                                                                                          Med 2015;23:93.
+  We suggest that simulation modelling can become an                                 8.   Heng M, Wright JG. Dedicated operating room for emergency
+integral part of healthcare development to investigate                                    surgery improves access and efficiency. Can J Surg
+improvement strategies with healthcare managers and                                       2013;56:167–74
+                                                                                     9.   Zonderland ME, Boucherie RJ, Litvak N, et al. Planning and
+professionals.                                                                            scheduling of semi-urgent surgeries. Health Care Manag Sci
+                                                                                          2010;13:256–67
+                                                                                    10.   Wixted JJ, Reed M, Eskander MS, et al. The effect of an orthopedic
+Author affiliations                                                                       trauma room on after-hours surgery at a level one trauma center.
+1
+ Department of Computer Science and Engineering, Blekinge Institute of                    J Orthop Trauma 2008;22:234–6
+Technology, Karlskrona, Sweden                                                      11.   Elder GM, Harvey EJ, Vaidya R, et al. The effectiveness of
+2                                                                                         orthopaedic trauma theatres in decreasing morbidity and mortality:
+ Department of Learning, Informatics, Management and Ethics, Medical
+Management Centre (MMC), Karolinska Institutet, Stockholm, Sweden                         a study of 701 displaced subcapital hip fractures in two trauma
+3                                                                                         centres. Injury 2005;36:1060–6. doi: 10.1016/j.injury.2005.05.001.
+ Department of Orthopaedics, Danderyd Hospital, Stockholm, Sweden
+4                                                                                   12.   Bhattacharyya T, Vrahas MS, Morrison SM, et al. The value of the
+ Department of Clinical Sciences, Division of Orthopaedics, Danderyd                      dedicated orthopaedic trauma operating room. J Trauma Acute Care
+Hospital, Karolinska Institutet, Stockholm, Sweden                                        Surg 2006;60:1336–41
+                                                                                    13.   Roberts TT, Vanushkina M, Khasnavis S, et al. Dedicated
+Acknowledgements The authors thank Åsa af Jochnick and Sara Saltin for                    orthopaedic operating rooms: beneficial to patients and providers
+                                                                                          alike. J Orthop Trauma 2015;29:e18–23
+their help with collection of quantitative data, as well as staff and managers at   14.   Cox MR, Cook L, Dobson J, et al. Acute Surgical Unit: a new model
+the Danderyd Hospital for their contribution to the development of the model.             of care. ANZ J Surg 2010;80:419–24
+                                                                                    15.   Vissers J, Beech R, Health operations management: patient flow
+Contributors MP, HH-F, MU, OGS, AS, PK-P and PM designed the study. MP,
+                                                                                          logistics in health care. Routledge health management series.
+MU, PK-P, OGS and PM collected the data. All authors contributed to the                   London: Routledge, 2005.
+development of the model, and MP conducted the implementation of the                16.   Modig N, Åhlström PR. This is lean: resolving the efficiency paradox.
+model and result analysis. MP, HH-F, MU and PM drafted the manuscript.                    Stockholm: Rheologica publishing Bulls Graphics AB, 2012.
+
+
+Persson M, et al. BMJ Open 2017;7:e013303. doi:10.1136/bmjopen-2016-013303                                                                                         7
+
+ Open Access
+17.   Slovensky DJ, Morin B. Learning through simulation: the next             25.   Banks J. Handbook of simulation: principles, methodology, advances,
+      dimension in quality improvement. Qual Manag Health Care                       applications, and practice. New York: Wiley Publications, 1998:659.
+      1997;5:72.                                                               26.   Mustafee N, Katsaliaki K, Taylor SJ. Profiling literature in healthcare
+18.   Colin R. Real World Research: a resource for social scientists                 simulation. Simulation 2010;86(8-9):543–58.
+
+
+
+
+                                                                                                                                                               BMJ Open: first published as 10.1136/bmjopen-2016-013303 on 7 April 2017. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+      and practitioner-researchers. Victoria: Blackwell Publishing, 2002.      27.   Socialstyrelsen. Guidelines for care and treatment of hip fractures
+19.   Reid PP, Compton WD, Grossman JH, et al. Building a                            [In Swedish: Socialstyrelsens riktlinjer för vård och behandling av
+      better delivery system: a new engineering/health care                          höftfrakturer]. Stockholm: Socialstyrelsen, 2003.
+      partnership. Washington (DC): National Academies Press,                  28.   Eriksson M, Kelly-Petterson P, Stark A, et al. “Straight to bed” for
+      2005:35.                                                                       hip-fracture patients. Injury 2012;43:2126–31.
+20.   Dexter F, Wachtel RE, Epstein RH, et al. Analysis of operating room      29.   Law AM, Kelton WD. Simulation modeling and analysis. 5th edn.
+      allocations to optimize scheduling of specialty rotations for                  New York: McGraw Hill Education, 2014:389–93.
+      anesthesia trainees. Anesth Analg 2010;111:520–4.                        30.   Strum DP, May JH, Vargas LG. Modeling the Uncertainty of surgical
+21.   Van Essen JT, Hurink JL, Hartholt W, et al. Decision support system            procedure times comparison of log-normal and normal models.
+      for the operating room rescheduling problem. Health Care Manag                 J Am Soc Anesthesiol 2000;92:1160–7.
+
+
+
+
+                                                                                                                                                                                  Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+      Sci 2012;15:355–72                                                       31.   Holmgren J, Persson M. An optimization model for sequence
+22.   Van Houdenhoven M, van Oostrum JM, Hans EW, et al. Improving                   dependent parallel operating room planning. Second international
+      operating room efficiency by applying bin-packing and portfolio                conference on Health Care Systems Engineering; Lyon, France,
+      techniques to surgical case scheduling. Anesth Analg                           2015. Springer Proceedings in Mathematics & Statistics.
+      2007;105:707–14.                                                         32.   Friedman DM, Sokal SM, Chang Y, et al. Increasing operating room
+23.   Günal M, Pidd M. Discrete event simulation for performance                     efficiency through parallel processing. Ann Surg 2006;243:10–4.
+      modelling in health care: a review of the literature. J. Simulat         33.   Aharonson-Daniel L, Paul RJ, Hedley AJ. Management of queues in
+      2010;4:42–51.                                                                  out-patient departments: the use of computer simulation. J Manag
+24.   Sobolev BG, Sanchez V, Vasilakis C. Systematic review of the use               Med 1996;10:50–8.
+      of computer simulation modeling of patient flow in surgical care.        34.   Cochran JK, Bharti A. Stochastic bed balancing of an obstetrics
+      J Med Syst 2011;35:1–16.                                                       hospital. Health Care Manag Sci 2006;9:31–45.
+
+
+
+
+8                                                                           Persson M, et al. BMJ Open 2017;7:e013303. doi:10.1136/bmjopen-2016-013303
+

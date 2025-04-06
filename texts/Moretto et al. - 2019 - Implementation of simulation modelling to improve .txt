@@ -1,0 +1,684 @@
+Moretto et al. Implementation Science     (2019) 14:78
+https://doi.org/10.1186/s13012-019-0923-1
+
+
+
+
+ RESEARCH                                                                                                                                         Open Access
+
+Implementation of simulation modelling to
+improve service planning in specialist
+orthopaedic and neurosurgical outpatient
+services
+Nicole Moretto1,2* , Tracy A. Comans1,2, Angela T. Chang2, Shaun P. O’Leary2,3, Sonya Osborne4,5,
+Hannah E. Carter5, David Smith6, Tania Cavanagh7, Dean Blond8 and Maree Raymer2
+
+
+  Abstract
+  Background: Advanced physiotherapist-led services have been embedded in specialist orthopaedic and
+  neurosurgical outpatient departments across Queensland, Australia, to ameliorate capacity constraints. Simulation
+  modelling has been used to inform the optimal scale and professional mix of services required to match patient
+  demand. The context and the value of simulation modelling in service planning remain unclear. We aimed to
+  examine the adoption, context and costs of using simulation modelling recommendations to inform service
+  planning.
+  Methods: Using an implementation science approach, we undertook a prospective, qualitative evaluation to assess
+  the use of discrete event simulation modelling recommendations for service re-design and to explore stakeholder
+  perspectives about the role of simulation modelling in service planning. Five orthopaedic and neurosurgical
+  services in Queensland, Australia, were selected to maximise variation in implementation effectiveness. We used the
+  consolidated framework for implementation research (CFIR) to guide the facilitation and analysis of the stakeholder
+  focus group discussions. We conducted a prospective costing analysis in each service to estimate the costs
+  associated with using simulation modelling to inform service planning.
+  Results: Four of the five services demonstrated adoption by inclusion of modelling recommendations into
+  proposals for service re-design. Four CFIR constructs distinguished and two CFIR constructs did not distinguish
+  between high versus mixed implementation effectiveness. We identified additional constructs that did not map
+  onto CFIR. The mean cost of implementation was AU$34,553 per site (standard deviation = AU$737).
+  Conclusions: To our knowledge, this is the first time the context of implementing simulation modelling
+  recommendations in a health care setting, using a validated framework, has been examined. Our findings may
+  provide valuable insights to increase the uptake of healthcare modelling recommendations in service planning.
+  Keywords: Implementation, Discrete event simulation, Orthopaedics, Neurosurgery, Physiotherapy, Hospital, Costs,
+  Economic evaluation
+
+
+
+
+* Correspondence: N.Moretto@uq.edu.au
+1
+ Centre for Health Services Research, Faculty of Medicine, The University of
+Queensland, Princess Alexandra Hospital campus, Woolloongabba,
+Queensland 4102, Australia
+2
+ Metro North Hospital and Health Service, Royal Brisbane and Women’s
+Hospital, Butterfield Street, Herston, Queensland 4029, Australia
+Full list of author information is available at the end of the article
+
+                                         © The Author(s). 2019 Open Access This article is distributed under the terms of the Creative Commons Attribution 4.0
+                                         International License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and
+                                         reproduction in any medium, provided you give appropriate credit to the original author(s) and the source, provide a link to
+                                         the Creative Commons license, and indicate if changes were made. The Creative Commons Public Domain Dedication waiver
+                                         (http://creativecommons.org/publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated.
+
+Moretto et al. Implementation Science     (2019) 14:78                                                               Page 2 of 11
+
+
+
+
+                                                                     design [10, 11]. The ability of discrete event simulation
+ Contributions to the literature
+                                                                     to simulate patient journeys through the care system
+  Simulation modelling is a valid decision-support tool that en-    [12] and to incorporate capacity and resource con-
+     ables decision-makers to plan efficient services to meet the    straints makes it an effective tool to manage and forecast
+                                                                     resources (e.g. manage and predict bed capacity) and im-
+     rising demand for healthcare services.
+                                                                     prove service flow (e.g. reduce queues or waiting times)
+  Due to the limited research on the use and implementation
+                                                                     in complex healthcare systems [6, 11, 13, 14]. Discrete
+     of modelling results in healthcare, little is known about the   event simulation models are built to support operational
+     factors that influence the adoption of modelling results to     decision-making, resource allocation and optimisation
+     inform service planning.                                        and planning decisions [15] that has application in ser-
+  Our findings provide useful insights into how and why             vice planning for challenging health problems such as
+     decision makers adopt modelling results and its value in        musculoskeletal conditions [5, 16]. Discrete event simula-
+     healthcare. These findings can be used to inform                tion has been used successfully to identify the most effi-
+                                                                     cient and cost-effective scale and professional mix of
+     implementation strategies to increase the use of modelling
+                                                                     services required to achieve waiting time targets in ortho-
+     in service planning.
+                                                                     paedic and neurosurgical outpatient services [5, 16].
+                                                                       Although simulation modelling has been shown to
+Introduction                                                         be a valid, decision support tool for informing service
+Musculoskeletal conditions place an enormous burden                  planning [10, 13], little is known about the use and
+on health services in Australia and worldwide [1].                   implementation of its results in healthcare [17–20].
+With their prevalence in Australia set to rise [2], spe-             Most simulation modelling publications simply report
+cialist orthopaedic and neurosurgical outpatient ser-                modelling results [21] with only a few reporting its
+vices face the challenge of reducing the demand-                     implementation strategy [22–25]. Furthermore, the
+capacity gap to ensure patients are seen within clinic-              value of simulation modelling in a healthcare context
+ally recommended timeframes. As the majority of pa-                  remains unclear due to limited economic evaluations
+tients referred to these services do not require                     of modelling implementation [6, 19, 23, 24, 26]. More
+surgical intervention [3], physiotherapist-led models of             research is needed to explore and better understand
+care have been introduced as a way of increasing the                 the factors that influence the use, implementation and
+availability of non-surgical care options for patients.              the value of implementing simulation modelling in
+Advanced physiotherapist-led models have been em-                    service planning.
+bedded in the majority of public orthopaedic and                       Engaging key stakeholders in the simulation modelling
+neurosurgical outpatient services across Queensland,                 process is considered critical to the success of the imple-
+Australia, as they have been shown to provide high-                  mentation [27]. This study sought to evaluate the effect-
+quality patient care and be cost-effective compared to               iveness of engaging stakeholders early and involving
+medical specialist-led models of care in managing                    them in the simulation modelling process with support
+orthopaedic demand [4, 5]. However, some of these                    from implementation leaders. In collaboration with
+services do not have the optimal combination of med-                 stakeholders, we sought to facilitate the exploration of
+ical specialist and physiotherapist-led services to ad-              feasible ‘what if’ scenarios to identify potential outcomes
+dress current and projected future demand.                           of different healthcare strategies that could be used as a
+   Many countries faced with budget restrictions rou-                basis for making changes to service delivery [14].
+tinely use economic evaluation to ensure the efficient                 To address the deficits in the healthcare literature con-
+and effective use of healthcare resources [6, 7]. Eco-               cerning simulation modelling implementation, we
+nomic evaluations often incorporate healthcare model-                undertook an implementation study that had two pur-
+ling techniques to assess cost-effectiveness (value for              poses. In part I, using an implementation science ap-
+money) of healthcare interventions to inform reimburse-              proach, we aimed to (i) assess the use of the simulation
+ment decisions [7, 8]. Modelling results are used to                 modelling recommendations in business cases and (ii)
+evaluate the affordability of healthcare interventions and           explore stakeholder perspectives about the role of simu-
+their economic impact on healthcare budgets [9]. Simu-               lation modelling in service planning, including identify-
+lation modelling, such as discrete event simulation, has             ing the contextual factors that influenced the use of
+been used to support medical (e.g. cost-effectiveness                simulation modelling recommendations, for service re-
+analysis of healthcare interventions) and health policy              design of musculoskeletal outpatient services. In part II,
+decisions (e.g. prevention and screening programs,                   we aimed to examine the costs of developing and imple-
+spread of infectious diseases) and has been applied ex-              menting a simulation modelling approach to inform ser-
+tensively in the area of healthcare operations and system            vice planning.
+
+Moretto et al. Implementation Science   (2019) 14:78                                                          Page 3 of 11
+
+
+
+
+Method                                                        services, involves preparation of a business case by the
+Part I of this study involved a prospective qualitative       relevant stakeholders which is submitted for consider-
+evaluation. This evaluation assessed the use of the simu-     ation by the health district’s executive. The business
+lation modelling recommendations and explored stake-          cases outline evidence of the problem, benefits of the
+holder perspectives regarding the use of simulation           proposal, solutions, recommendations and costs.
+modelling for musculoskeletal service re-design in spe-
+cialist orthopaedic and neurosurgical outpatients in          Simulation modelling intervention
+three Queensland health districts. Part II of the study in-   We built five clones of a previously constructed discrete
+volved a prospective, cost analysis to investigate the        event simulation model that simulate orthopaedic and
+costs of developing a simulation model and using the          neurosurgical outpatient services. We adapted each
+model’s results for musculoskeletal service re-design.        model to reflect the local variations of each service.
+  The Gold Coast Hospital and Health Service Human            Comprehensive details of the modelling software and
+Research Ethics Committee provided multi-site approval        pathways used and refined in two previous projects have
+for this study (reference number HREC/16/QGC/205).            been published [5, 16]. We populated each model with
+The Queensland University of Technology provided              extensive local service-specific data. We designed the
+administrative ethics approval (reference number              models to determine the optimal scale and combination
+1600000794).                                                  of medical specialist and physiotherapist-led services re-
+                                                              quired to efficiently manage demand over 5 years, with
+Setting                                                       the target of almost all patients being seen within clinic-
+Five outpatient services (three orthopaedic and two           ally recommended timeframes for their urgency cat-
+neurosurgical) participated in the study. The services are    egory. We developed the models as decision support
+located across three public health districts in Queens-       tools to help inform service planning. We performed
+land, Australia, and serve 23% of Queensland’s popula-        scenario analysis to allow decision makers to test the
+tion (approximately 1.1 million people). In the               likely impact of making a variety of different service
+Queensland public health system, non-emergency pa-            changes, before deciding whether to implement any
+tients that require specialist outpatient care are referred   changes to the scale and professional mix of services.
+by their general practitioner to the specialist outpatient       The simulation model results indicated that if growth
+department of their nearest public hospital. All referrals    in demand continues as forecast and service capacity re-
+received by the specialist outpatient department are          mains unchanged over 5 years, waiting lists for ortho-
+assessed, triaged and categorised based on their level of     paedic and neurosurgical outpatient services would grow
+clinical urgency. Patient referrals are categorised as ur-    across the three sites. This would result in the majority
+gent (category 1), semi-urgent (category 2) and non-          of semi-urgent and non-urgent patients breaching target
+urgent (category 3) with recommended timeframes for           wait times. The modelling identified that under the
+an initial outpatient consultation within 30, 90, and 365     current conditions, expanding the overall scale and max-
+days, respectively. Once categorised, all patients are        imising the use of physiotherapist-led services would be
+added to the relevant specialist outpatient waitlist to       recommended for all five services to efficiently achieve a
+wait for an initial outpatient consultation.                  target of 80–99.9% of patients being seen within the
+   In late 2015, the five participating services had a com-   clinically recommended wait time targets at the end of
+bined outpatient orthopaedic and neurosurgical waiting        the 5 years.
+list of approximately 9100 and 2400 people, respectively.
+Patient wait times for initial outpatient consultations       Implementation strategy
+varied across the five services with approximately 38% of     The research team developed and led the multi-stage
+patients waiting longer than clinically recommended by        simulation modelling implementation strategy across the
+late 2016 (Additional file 1) [28, 29]. Median wait times     five services at the three health districts.
+across the five services at baseline had reached 30 days
+(range 2–454), 327 days (range 22–674) and 462 days           Stage 1: Stakeholder engagement, model development and
+(range 1–2311), for urgency categories 1, 2, and 3, re-       initial modelling results
+spectively [30–32]. These participating services were         An implementation leader was appointed at each health
+chosen based on an identified gap between referral de-        district. The leaders were associate investigators on the
+mand and capacity in their outpatient services and a          project and were the directors of physiotherapy at each
+likely sub-optimal professional mix of services to man-       site. The implementation leader at each health service
+age demand.                                                   identified key stakeholders, with whom we worked
+   Planning for new services, or modifications to existing    closely to obtain local data and to confirm the model
+specialist orthopaedic and neurosurgical outpatient           structure, parameters and relevant outputs. We
+
+Moretto et al. Implementation Science   (2019) 14:78                                                           Page 4 of 11
+
+
+
+
+presented the initial modelling results (i.e. base case and   focus groups were held onsite at each of the three health
+optimisation), including the model parameters and             districts and ranged from 40 to 50 min. The focus
+assumptions, to the key stakeholders at each site. Stake-     groups were audio recorded, transcribed verbatim and
+holders confirmed the modelling results were represen-        de-identified.
+tative of their outpatient services. We modified the
+model as required.                                            Qualitative data collection and conceptual framework
+                                                              We used the consolidated framework for implementa-
+Stage 2: Exploration of feasible scenarios                    tion research (CFIR) [33] to inform the research design
+We worked with key stakeholders to explore a range of         and to guide question development, qualitative coding
+feasible scenarios, which involved testing a variety of       and analysis. The CFIR is a practical structure for under-
+possible changes to both the scale and professional mix       standing complex, interrelating, multi-level and transient
+of services. We used the model to predict the likely im-      states of elements that could influence implementation
+pact of making the different changes to service configu-      in the real world [33]. The framework was developed
+rations within their health district.                         from a synthesis of published implementation theories
+                                                              and includes 39 constructs across five domains: inter-
+Stage 3: Changes to service delivery                          vention characteristics, outer setting, inner setting, char-
+Stakeholders were able to use the modelling results as a      acteristics of individuals and process [33].
+basis for either developing a business case for service         The research team selected a subset of CFIR con-
+changes to be submitted to the health district’s executive    structs considered likely to influence the use of simula-
+or for implementing strategies to influence the mismatch      tion modelling recommendations to inform decision
+between demand and service capacity in ways which             making. The team selected the constructs a priori based
+mitigated the need for additional investment.                 on a review of the published literature and on their
+                                                              knowledge of public outpatient settings. The constructs
+Part I—Qualitative evaluation methods                         used to inform the focus group questions were readiness
+Qualitative stakeholder focus groups and participants         for implementation (inner setting), implementation cli-
+We undertook an evaluation of the simulation model-           mate (inner setting), knowledge and beliefs about the
+ling implementation at the three health districts. Our        intervention (characteristics of individuals), external pol-
+implementation evaluation was conducted and re-               icy and incentives (outer setting) and evidence strength
+ported in accordance with the Standards for                   and quality (intervention characteristics).
+Reporting Implementation Studies (StaRI) checklist
+(Additional file 2). We conducted two rounds of focus
+groups using a semi-structured question guide, with           Qualitative data analysis
+probing questions relevant to each health district. We        A qualitative researcher (facilitator, JG) and an imple-
+conducted the initial round of focus groups prior to          mentation scientist (SO) analysed the transcriptions
+developing the simulation model (September to Octo-           manually and using NVivo 10 software [34], respectively.
+ber 2016). We conducted the second round of focus             The researchers used the constant comparative method
+groups approximately 10 months later after presenting         as described by Sopcak and colleagues [35], drawing
+the final modelling results (July to August 2017) to          upon the early work of Glaser and Strauss [36]. The ana-
+align with the outcome announcements of business              lysts independently coded the transcripts line by line,
+case decisions for the 2017/18 financial year. The im-        first inductively (open coding) and then deductively
+plementation leaders identified and invited key stake-        (using CFIR constructs); grouped the codes into categor-
+holders from each health district to participate in the       ies (axial coding); compared and refined codes; and dis-
+focus groups. Relevant stakeholders included lead cli-        cussed the emerging higher-level themes (selective
+nicians from participating services (i.e. medical spe-        coding). Coding inconsistencies were addressed through
+cialists, surgical specialists, physiotherapists), staff      team discussion.
+responsible for relevant services and departments (e.g.
+service directors, department directors) and members          Rating the CFIR constructs
+of the executive management team responsible for              Two researchers (NM, AC) independently assigned rat-
+broad service areas and portfolios within the health          ings reflecting the valence for each construct for each
+districts (e.g. clinical directors, executive directors).     site based on the qualitative results. The ratings indi-
+  All stakeholders provided written informed consent to       cated a positive (+), negative (−) and mixed (X) influence
+participate. An independent facilitator conducted the         of each construct on the use of the simulation modelling
+focus groups. A research assistant was a note taker. No       recommendations. Rating inconsistencies were ad-
+research team members were present. The face-to-face          dressed through discussion.
+
+Moretto et al. Implementation Science            (2019) 14:78                                                                                Page 5 of 11
+
+
+
+
+Quantitative measure of implementation success                                      recommendations from the simulation model were ap-
+Defining the measure of implementation success enables                              plied in practice. This analysis was based on a business
+the effectiveness of implementation strategies to be com-                           case that adopted the simulation modelling recommen-
+pared across studies [37]. This study focussed on the use                           dations, and was approved by the health district’s execu-
+of simulation modelling recommendations to inform ser-                              tive for the 2017/2018 financial year. Further details of
+vice planning in specialist outpatient services. We mea-                            this case study are provided in Additional file 4.
+sured the implementation effectiveness using adoption,
+defined as the intention, initial decision or action to try                         Results
+or employ an innovation [37]. Adoption was demon-                                   Part I—Qualitative evaluation
+strated by the inclusion of simulation modelling recom-                             Twenty-nine stakeholders participated in the initial focus
+mendations for service changes into a business case for                             groups (site A, 10; site B, 8; site C, 11). One participant
+consideration by the health district’s executive.                                   withdrew from the study following the initial focus
+                                                                                    group. Twenty-four stakeholders participated in the final
+Analysis of CFIR constructs                                                         focus groups (site A, 10; site B, 7; site C, 7). One partici-
+We created a matrix that listed each of the sites (col-                             pant at site C was unable to attend the final focus group
+umns) and the corresponding ratings for each of the                                 and was interviewed separately.
+constructs (rows). As described by Damschroder and
+Lowry [38], we compared the ratings of the CFIR con-                                Implementation effectiveness
+structs and identified patterns in the ratings that distin-                         Four of the five services (80%) demonstrated adoption as
+guished the two high implementation effectiveness sites                             evidenced by the inclusion of recommendations based
+with the one mixed implementation effectiveness site.                               on modelling findings into business cases for service
+We categorised the constructs as strongly, weakly or not                            changes (Table 1). For all five services, modelling identi-
+distinguishing constructs between high and mixed im-                                fied that an increase in the scale of services delivered
+plementation sites.                                                                 and the proportion of physiotherapist-led activity would
+                                                                                    be required to efficiently meet waiting time targets. We
+Part II—Cost of implementation                                                      categorised site A and site B as high implementation
+We estimated the costs associated with developing and                               success sites, as their participating services incorporated
+adapting the simulation model at each site. Project staff                           modelling results into business cases for service changes.
+and relevant stakeholders completed a self-report activ-                            We categorised site C as a mixed implementation suc-
+ity log (Additional file 3) estimating the number of hours                          cess site. This was because one of its participating ser-
+spent on activities at the end of each of the three stages                          vices incorporated modelling results into a business case
+of the simulation modelling implementation strategy                                 for service changes while its other participating service
+(described above). Staff time was valued using 2016–                                did not incorporate modelling results into a business
+2017 financial year salary data including employer on-                              case as the submission was deferred.
+costs. Contractor time and costs were taken directly                                   At the time of writing this paper, the outcomes of the
+from the invoices received for activities related to the                            business cases were known and health districts had
+project. We excluded costs associated with the qualita-                             enacted several service changes based on modelling rec-
+tive evaluation, overheads, computers and modelling                                 ommendations. At site A, the executive approved both
+software licences.                                                                  business cases for permanent funding. At site B, the ser-
+   A separate economic evaluation was conducted as a                                vice managers immediately implemented efficiency strat-
+case study using data from one of the participating out-                            egies, allowing them to maintain a watching brief on the
+patient services. The economic evaluation accounted for                             business case to determine if additional changes to ser-
+the costs and outcomes under a scenario where the                                   vice delivery are required. At site C, the executive
+
+Table 1 Details of implementation effectiveness for the five services across the three sites
+Site                                       Site A                                   Site B                             Site C
+                                           High implementation success site         High implementation success site   Mixed implementation success site
+Service                                    A-1                  A-2                 B-1                                C-1             C-2
+Implementation effectiveness               High                 High                High                               High            Low
+Adoption (i.e. business case submitted) Yes                     Yes                 Yes                                Yes             No
+Business case outcome                      Approveda            Approveda           Implemented corrective strategies; Approvedb       Not applicable
+                                                                                    maintained watching brief
+a
+Permanent funding
+b
+Temporary (financial year 2017–18) and recurrent (financial year 2018–19) funding
+
+Moretto et al. Implementation Science           (2019) 14:78                                                                                       Page 6 of 11
+
+
+
+
+approved the business case for temporary additional
+funding at one service, which was made recurrent in the                               We’ve got to change or make some changes, whatever
+following financial year. The second service at site C fo-                            that looks like [site B, high implementation success
+cussed on optimising service efficiency before consider-                              site].
+ing investment in additional resources.
+                                                                                   At the two high implementation sites, leadership engage-
+Evaluation using CFIR                                                              ment was demonstrated by the inclusion of all relevant
+Ratings of the CFIR constructs are provided in Table 2.                            stakeholders in the modelling process from the begin-
+Of the six CFIR constructs examined, four constructs                               ning, as they believed that early and continued staff
+distinguished between the high and mixed implementa-                               involvement would increase the likelihood of the model-
+tion effectiveness sites. Findings from the qualitative                            ling being accepted. At the mixed implementation site,
+analysis are presented below.                                                      the executive and medical staff had limited engagement
+                                                                                   in the modelling project, which may have negatively in-
+Distinguishing constructs Two of the four constructs                               fluenced the acceptance of the modelling recommenda-
+that distinguished between high and mixed implementa-                              tions despite the compelling modelling findings. This is
+tion effectiveness fell within the inner setting domain:                           illustrated in the exemplar comment:
+implementation climate (tension for change) and readi-
+ness for implementation (leadership engagement). The                                  [The executive] didn’t actually try and understand
+other two distinguishing constructs related to the outer                              [the modelling project] [site C, mixed implementation
+setting domain (external policy and incentives) and char-                             success site].
+acteristics of individual domains (knowledge and beliefs
+about the intervention).                                                           The influence of the outer setting was also identified as
+  Tension for change (perceived need for current                                   a significant success factor. The health services sit within
+situation to change) at all sites was primarily driven                             a larger public health organisation, and consequently,
+by the current status of the waiting lists and con-                                external policy and incentives, such as budget cycles and
+cerns about demand and population growth. Stake-                                   external priorities, influenced stakeholders’ beliefs that
+holders at the mixed implementation site reported                                  simulation modelling would be of value if the modelling
+being weary of change and wary of any changes pro-                                 results were timely. Modelling was considered timely at
+posed by those outside of the organisation. This is                                the high implementation sites ‘as we do our master plan-
+in contrast to stakeholders at the high implementa-                                ning’ [site B, high implementation success site]. The tim-
+tion sites who reported a strong tension for change,                               ing of the modelling at the mixed implementation site
+stating that they were likely to implement service                                 may have affected its effectiveness, as evidenced by the
+changes based on modelling results as change was                                   comment that modelling was a ‘great thing at the wrong
+considered inevitable.                                                             time’ [site C, mixed implementation success site]. The
+
+Table 2 Ratings assigned to CFIR constructs by site
+Site                                                               High implementation                                 Mixed implementation
+                                                                   A                         B                         C
+Intervention characteristics domain
+  Evidence strength and quality                                    +                         +                         +
+Outer setting domain
+  External policy and incentives                                   +                         +                         –                                     **
+Inner setting domain
+  Implementation climate
+       Tension for change                                          +                         +                         –                                     **
+  Readiness for implementation
+       Leadership engagement                                       +                         +                         –                                     **
+       Available resources                                         –                         –                         –
+Characteristics of individuals domain
+  Knowledge and beliefs about the intervention                     +                         +                         M                                     *
+The valence of each construct is represented by ratings showing a positive (+), negative (−) and mixed (M) influence on the use of simulation modelling
+recommendations. Constructs were characterised as strongly (**) and weakly (*) distinguishing between high and mixed implementation sites
+
+Moretto et al. Implementation Science   (2019) 14:78                                                                             Page 7 of 11
+
+
+
+
+external policy environment (lack of forward planning)         Autonomy/locus of control There was a sense across
+and priorities (managing and addressing demand, wait-          all sites that stakeholders were not fully able to influence
+ing lists and growth forecasts) were similar across the        decisions and had minimal control over the decision to
+sites. Budget and waiting lists were considered the pri-       make service changes. Several stakeholders referred to
+mary factors driving all decisions related to service          decisions being made ‘somewhere in that space’ between
+changes.                                                       clinicians and the executive [site C, mixed implementa-
+   Knowledge and beliefs in the intervention was a distin-     tion success site].
+guishing factor at the two high implementation sites,
+where stakeholders had improved knowledge about                Economic benefit of undertaking modelling Stake-
+modelling and its applications at the end of the project       holders at the high implementation sites were interested
+and placed a higher value on modelling compared to             in whether the modelling was a cost-effective tool for
+non-engaged stakeholders at the mixed implementation           service planning, stating ‘it’s worth [the investment] to
+site. Stakeholders at high implementation sites believed       get the data right to use this model’ [site A, high imple-
+modelling encouraged more robust, strategic and longer-        mentation success site].
+term planning. Stakeholders reported that modelling fa-
+cilitated better communication, focussed their attention
+on key issues and provided confidence in their service         Part II—Cost of implementation
+planning. Modelling was considered to be of most value         A detailed breakdown of staff time and costs associated
+when it provided evidence for solutions to issues consid-      with each stage of the simulation modelling implementa-
+ered a high priority for the health district, rather than      tion strategy is provided for each of the five participating
+just putting resources ‘where the [squeaky] wheel … is’        services in Additional file 5. Activity logs indicated that
+[site B, high implementation success site].                    an average of 336 h of staff time was spent on the simu-
+                                                               lation modelling study at each service. Allied health pro-
+Non-distinguishing constructs The two constructs that          fessionals, including mostly project team members,
+did not distinguish implementation effectiveness were          implementation leaders and stakeholders representing
+evidence strength and quality and available resources.         the physiotherapist-led services, accounted for 55% of
+Stakeholders across all sites reported a high level of trust   this time.
+and confidence in the modelling inputs, assumptions               Mean costs associated with staff time and travel for
+and results which they stated was due to the model be-         each stage of the simulation modelling implementation
+ing populated with local, context-specific data that was       strategy across the five services are summarised in
+validated by the stakeholders, ‘Validation is the key’ [site   Table 3. The average cost per site was AU$34,553
+A, mixed implementation success site]. Resource avail-         (standard deviation = AU$737) across the three stages,
+ability was a concern for all sites, as stakeholders re-       with approximately 77% of total costs incurred during
+ported that funding to change services, based on               stage 1. The variance in costs between services was rela-
+modelling recommendations, was unlikely to be made             tively minor.
+available. Stakeholders questioned the value of commen-
+cing the modelling project if no funding was available         Discussion
+for implementation.                                            This study has shown that the development of a simula-
+                                                               tion model and implementation of its results were highly
+  The higher-level decisions are always driven by dollars      effective (80% uptake) in changing the scale and mix of
+  so there might be a willingness but not a capacity [site     services to be delivered. This success rate is significantly
+  A, high implementation success site].                        higher than estimates in the literature, reported at
+                                                               Table 3 Costs of simulation modelling implementation strategy
+                                                               across the five participating orthopaedic and neurosurgical
+Non-CFIR (emergent) constructs
+                                                               services
+Three additional constructs not able to be mapped to
+                                                               Stage             Costs (AU$)
+CFIR emerged from the qualitative analysis.
+                                                                                 Mean            SD             Minimum              Maximum
+
+Evidence for advanced physiotherapist-led services             Stage 1           26,561          1002           25,325               27,644
+Stakeholders across all sites were positive about the          Stage 2           4895            400            4334                 5247
+value of advanced physiotherapist-led care in specialist       Stage 3           3097            1414           983                  5088
+outpatient services, believing that patients have received     Total             34,553          737            33,744               35,700
+‘good outcomes’ from their physiotherapist-led services        SD standard deviation. All costs are in Australian dollars. Costs were valued
+[site A, high implementation success site].                    using 2016/2017 financial year salary data
+
+Moretto et al. Implementation Science   (2019) 14:78                                                                Page 8 of 11
+
+
+
+
+between 5.3 and 30% in health care [17–21, 39] and up             reflected in the literature which shows that populating
+to 57% in outpatient services [39].                               models with reliable and valid data is critical [53]; how-
+   Our findings highlight the importance of the perceived         ever, there is no guarantee for the uptake of modelling
+need for change amongst stakeholders and a leadership             outputs even for the best models [15]. Contrary to stake-
+team willing to engage all key stakeholders (leadership           holders’ beliefs, a lack of available resources did not im-
+engagement) throughout the implementation process.                pede service changes based on the modelling in our
+Leadership engagement was found to enhance stake-                 study. A lack of dedicated resources is not a commonly
+holders’ knowledge and beliefs about the intervention.            reported barrier for implementing modelling results in
+The impact of the external organisational environment             the literature. The role of stakeholders’ autonomy and
+of the outer setting was identified, particularly in relation     control over decision making in implementing modelling
+to highlighting the importance of timing the modelling            results remains unclear. The authors recommend that
+to support key decisions.                                         future revisions of the CFIR framework should consider
+   These findings are consistent with previous studies show-      inclusion of the degree to which stakeholders have au-
+ing that tension for change and leadership engagement are         tonomy and control to influence decisions.
+important factors for the successful implementation of              This qualitative evaluation has several limitations.
+simulation modelling results [17, 22, 25, 27, 40–42]. Previ-      Firstly, this study was a pragmatic qualitative study
+ous research highlights the importance of making sure the         based on a sub-set of CFIR constructs. Future studies
+system being modelled is in need of a change or a decision        should consider a mixed methods approach examining
+[17, 26]. The strong tension for change at the high imple-        all CFIR constructs to gain a more comprehensive un-
+mentation sites is reflected in the high proportion of pa-        derstanding of a wider range of factors that influence the
+tients breaching wait time targets at site A (i.e. at baseline,   uptake of healthcare modelling results. Secondly, the
+74% and 78% patients were waiting longer than clinically          current study did not examine the role of the cost of
+recommended in the orthopaedic and neurosurgical ser-             undertaking the modelling as the modelling costs were
+vice, respectively) (Additional file 1). At site B, tension       funded by project grant funds. Thirdly, the participating
+for change was reflected in its projected population              stakeholders' views may not have been representative of
+growth, which is the largest of any health district in            the views of their whole services or health districts. Fi-
+Queensland [43].                                                  nally, we conducted the focus groups at the health dis-
+   Researchers have emphasised the need to ensure de-             trict level, rather than at the service level, to reduce staff
+cision makers are involved throughput the project,                burden. At sites with more than one participating ser-
+cautioning that modelling is likely to fail without               vice, we found it challenging at times to determine
+interest and engagement from key decision makers                  whether the stakeholders’ comments referred to one or
+[44]. Previous studies have demonstrated the link be-             both of its participating services. It should be noted that
+tween leadership engagement and stakeholder know-                 the 10-month follow-up period in this study to conduct
+ledge. Involving stakeholders in the modelling process            the second round of focus groups was planned to align
+has been shown to enhance stakeholders’ belief in the             with the annual budget cycles and the business case out-
+value of modelling in supporting decision making and              comes. This short timeframe may be insufficient to cap-
+promote a greater understanding of the model and                  ture the simulation model results being put into practice
+the problem itself [13, 22, 24, 45–47]. The in-depth              as there is often a lag time between modelling and the
+understanding of the problem gained during the mod-               implementation of its results [18].
+elling process has been shown to increase the likeli-               The costs of the simulation modelling implementation
+hood of successful implementation [20, 21, 48].                   strategy were found to be consistent across the partici-
+Simulation modelling has been shown to support                    pating services (Additional file 5). It was not surprising
+healthcare decision making through promoting com-                 that the initial stage of the implementation strategy in-
+munication and fostering collaboration amongst stake-             curred the large majority of costs as it involved develop-
+holders [40, 46, 49–52]. Previous studies suggest that            ing the model, including data collection and validation.
+the timing and responsiveness of the modelling re-                The use of prospectively collected data to cost the im-
+sults to support decisions are important consider-                plementation activities, via detailed self-report activity
+ations in overcoming implementation issues [17, 26].              logs, was a strength of this study. These costs are com-
+   Our findings show that evidence strength and quality           monly ignored in evaluations of implementation strat-
+and available resources were not deciding factors in the          egies in health care [54, 55]. They nonetheless represent
+success of the implementation. Stakeholders’ trust in the         real costs which are important for decision makers look-
+data, the model and its outputs (evidence strength and            ing to develop a simulation model locally and use its re-
+quality) was important but insufficient to ensure the             sults to inform planning of a new service or changes to
+modelling results were successfully implemented. This is          an existing service [56].
+
+Moretto et al. Implementation Science          (2019) 14:78                                                                                    Page 9 of 11
+
+
+
+
+   There were limitations of the costing analysis. Firstly,                    would like to thank computer software developer, Dylan Knowles, for
+as this analysis relates to modelling activities within a                      undertaking the simulation modelling in this study. This included cloning,
+                                                                               adapting the model, refining the model structure and outcomes, populating
+relatively homogenous group of outpatient services, with                       the model and performing the modelling results and scenario analyses.
+consistencies in data availability and service structures,                     Thank you to Dr. Lachlan Stanfield for providing input into the modelling
+the costs associated with the simulation modelling im-                         population projections and for providing input into the grant application
+                                                                               process, including attending the grant interview with MR and ATC.
+plementation may not be able to be generalised to other
+outpatient services. Further, as the modelling involved                        Authors’ contributions
+cloning and adapting a previously validated model, it is                       MR, TC, ATC and SOL conceived the project and secured grant funds. MR
+likely that developing and refining a new simulation                           managed grant funds and project staffing and supervised the overall
+                                                                               conduct of the study. NM was the project manager and managed the day-
+model would incur additional costs.                                            to-day conduct of the study. TC led and supervised the simulation model-
+                                                                               ling. SOL reviewed patient referrals for the five referral audits used as model
+                                                                               parameters. NM and ATC gathered, collated and analysed the model param-
+Conclusions                                                                    eters. NM graphed the modelling results. MR and NM liaised with stake-
+While there is a wealth of data available within the hos-                      holders throughout the project. MR, NM and TC presented the initial
+pital and health systems to help inform decisions, it is                       modelling results to stakeholders. MR and NM presented the final modelling
+                                                                               results and scenario analyses to stakeholders. As implementation leaders, DS,
+often not in a format that is ready to use for decision                        TC and DB identified and invited key stakeholders to participate in the study,
+making. Advances in computing have meant that data-                            facilitated the business cases and liaised with stakeholders throughout the
+driven techniques are able to transform existing hospital                      project. MR, TC, ATC, SOL, SO and NM led the design of the qualitative study.
+                                                                               SO conducted the qualitative analyses. NM and ATC rated the domains and
+data into evidence to help inform service planning and                         constructs. NM summarised the qualitative results. HC conducted the cost-
+decisions on resource allocation. Simulation modelling,                        consequence analyses in consultation with MR, TC, ATC and NM. NM and
+tailored to local healthcare contexts, may be a step to-                       ATC collected staff time, and ATC valued the cost data. NM drafted the
+                                                                               manuscript, and HC drafted the economic evaluation. All authors suggested
+wards enabling decision makers to plan the most effi-                          edits and revisions to the manuscript. All authors read and approved the
+cient scale and configuration of services to manage                            final manuscript.
+service demand and to keep waitlists under control over
+the medium term. Simulation modelling is a complex                             Funding
+                                                                               This study was funded by the Australian Centre for Health Services
+undertaking, and stakeholders may have little or no ex-                        Innovation (AusHSI) Implementation Grant IG000-728.
+perience with simulation modelling. Using an implemen-
+tation science approach to examine how and why key                             Availability of data and materials
+decision makers adopt modelling, our findings can be                           The datasets generated and analysed during the current study are not
+                                                                               publicly available due to them containing information that could
+used to inform implementation strategies and may make                          compromise research participant privacy/consent.
+this complex tool more accessible to decision makers for
+health service planning.                                                       Ethics approval and consent to participate
+                                                                               Multi-site ethical approval for this study was obtained from the Gold Coast
+                                                                               Hospital and Health Service Human Research Ethics Committee (HREC/16/
+Additional files                                                               QGC/205); local research governance procedures were completed at each
+                                                                               site. The Queensland University of Technology provided administrate ethics
+ Additional file 1: Proportion of patients waiting longer than clinically      approval (reference number 1600000794). Participants received a letter of
+ recommended on specialist orthopaedic and neurosurgical outpatient            invitation, information sheet and withdrawal of participation form.
+ waiting lists. (DOCX 101 kb)                                                  Participants signed a participant consent form to participate in the study.
+
+ Additional file 2: Standards for Reporting Implementation Studies: the
+ StaRI checklist for completion. (DOCX 212 kb)                                 Consent for publication
+                                                                               Not applicable.
+ Additional file 3: Staff time collection template. (DOCX 58 kb)
+ Additional file 4: Economic evaluation of enacting the modelled               Competing interests
+ changes to service delivery within one outpatient service: case study. (ZIP   The authors declare that they have no competing interests.
+ 152 kb)
+ Additional file 5: Time and costs of implementation activities, by            Author details
+                                                                               1
+ position type, implementation strategy stage and project site.                 Centre for Health Services Research, Faculty of Medicine, The University of
+ (DOCX 28 kb)                                                                  Queensland, Princess Alexandra Hospital campus, Woolloongabba,
+                                                                               Queensland 4102, Australia. 2Metro North Hospital and Health Service, Royal
+                                                                               Brisbane and Women’s Hospital, Butterfield Street, Herston, Queensland 4029,
+Abbreviation                                                                   Australia. 3School of Health and Rehabilitation Sciences, Faculty of Health
+CFIR: Consolidated framework for implementation research                       and Behavioural Sciences, The University of Queensland, St Lucia,
+                                                                               Queensland 4067, Australia. 4School of Nursing and Midwifery, Faculty of
+Acknowledgements                                                               Health, Engineering and Sciences, University of Southern Queensland,
+We are very grateful to all the stakeholders and relevant staff of the         Ipswich, Queensland 4305, Australia. 5Australian Centre for Health Services
+orthopaedic and neurosurgical outpatient services that participated in our     Innovation, School of Public Health and Social Work, Institute of Health and
+study at the West Moreton Hospital and Health Service, Cairns and              Biomedical Innovation, Queensland University of Technology, Kelvin Grove,
+Hinterland Hospital and Health Service and Gold Coast Hospital and Health      Queensland 4059, Australia. 6West Moreton Health, Ipswich, Queensland
+Service.                                                                       4305, Australia. 7Cairns and Hinterland Hospital and Health Service, Cairns,
+We would like to sincerely thank Dr. Judy Gregory for independently            Queensland 4870, Australia. 8Gold Coast Health, Southport, Queensland 4215,
+facilitating the focus groups and conducting the qualitative analysis. We      Australia.
+
+Moretto et al. Implementation Science            (2019) 14:78                                                                                           Page 10 of 11
+
+
+
+
+Received: 28 March 2019 Accepted: 9 July 2019                                       23. Brailsford SC, Bolt TB, Bucci G, Chaussalet TM, Connell NA, Harper PR, et al.
+                                                                                        Overcoming the barriers: a qualitative study of simulation adoption in the
+                                                                                        NHS. J Oper Res Soc. 2013;64(2):157–68.
+                                                                                    24. Monks T, Pearson M, Pitt M, Stein K, James MA. Evaluating the impact of a
+References                                                                              simulation study in emergency stroke care. Oper Res Health Care. 2015;6:40–9.
+1. Vos T, Flaxman AD, Naghavi M, Lozano R, Michaud C, Ezzati M, et al. Years        25. Brailsford S. Overcoming the barriers to implementation of operations
+    lived with disability (YLDs) for 1160 sequelae of 289 diseases and injuries         research simulation models in healthcare. Clin Invest Med. 2005;28(6):312–5.
+    1990-2010: a systematic analysis for the Global Burden of Disease Study         26. Jun JB, Jacobson SH, Swisher JR. Application of discrete-event simulation in
+    2010. Lancet. 2012;380(9859):2163–96.                                               health care clinics: a survey. J Oper Res Soc. 1999;50(2):109–23.
+2. Arthritis and Osteoporosis Victoria. A problem worth solving. Elsternwick:       27. Harper PR, Pitt MA. On the challenges of healthcare modelling and a
+    Arthritis and Osteoporosis Victoria; 2013.                                          proposed project life cycle for successful implementation. J Oper Res Soc.
+3. Rymaszewski LA, Sharma S, McGill PE, Murdoch A, Freeman S, Loh T. A team             2004;55(6):657–61.
+    approach to musculo-skeletal disorders. Ann R Coll Surg Engl. 2005;87(3):       28. Queensland Health. Queensland reporting hospitals: quarterly information
+    174–80.                                                                             for specialist outpatient at 1 October 2016. 2016 [Available from: http://
+4. Comans T, Raymer M, O'Leary S, Smith D, Scuffham P. Cost-effectiveness of            www.performance.health.qld.gov.au/hospitalperformance/op-main.
+    a physiotherapist-led service for orthopaedic outpatients. J Health Serv Res        aspx?hospital=99999 [verified 1 December 2016].
+    Policy. 2014;19(4):216–23.                                                      29. Queensland Health. Queensland reporting hospitals: quarterly information
+5. Standfield L, Comans T, Raymer M, O'Leary S, Moretto N, Scuffham P. The              for specialist outpatient at 1 January 2017. 2017 [Available from: http://
+    efficiency of increasing the capacity of physiotherapy screening clinics or         www.performance.health.qld.gov.au/hospitalperformance/op-main.
+    traditional medical services to address unmet demand in orthopaedic                 aspx?hospital=99999 [verified 1 March 2017].
+    outpatients: a practical application of discrete event simulation with          30. Moretto N, Comans T, Chang A, O’Leary S, Knowles D, Standfield L, et al.
+    dynamic queuing. Appl Health Econ Health Policy. 2016;14(4):479–91.                 Simulation modelling to support service planning in specialist Neurosurgical
+6. Pitt M, Monks T, Crowe S, Vasilakis C. Systems modelling and simulation in           and Orthopaedic outpatient services at Gold Coast Health. Gold Coast
+    health service design, delivery and decision making. BMJ Qual Saf. 2016;            Health: Gold Coast; 2018.
+    25(1):38–45.                                                                    31. Moretto N, Comans T, Chang A, O’Leary S, Knowles D, Standfield L,
+7. Drummond M, Jonsson B, Rutten F. The role of economic evaluation in the              et al. Simulation modelling to support service planning in specialist
+    pricing and reimbursement of medicines. Health Policy. 1997;40(3):199–215.          orthopaedic and neurosurgical outpatient services at Cairns and
+8. Cohen DJ, Reynolds MR. Interpreting the results of cost-effectiveness                Hinterland Hospital and Health Service. Cairns and Hinterland Hospital
+    studies. J Am Coll Cardiol. 2008;52(25):2119–26.                                    and Health Service: Cairns; 2018.
+9. Budget Impact Analysis [online] York: York Health Economics Consortium;          32. Moretto N, Comans T, Chang A, O’Leary S, Knowles D, Standfield L, et al.
+    2016 [Available from: https://www.yhec.co.uk/glossary/budget-impact-                Simulation modelling to support service planning in specialist orthopaedic
+    analysis/.                                                                          outpatient services at West Moreton Hospital and Health Service. West
+10. Mielczarek B. Review of modelling approaches for healthcare simulation.             Moreton Hospital and Health Service: Ipswich; 2018.
+    Oper Res Decis. 2016;26(1):55–72.                                               33. Damschroder LJ, Aron DC, Keith RE, Kirsh SR, Alexander JA, Lowery JC.
+11. Salleh S, Thokala P, Brennan A, Hughes R, Booth A. Simulation modelling in          Fostering implementation of health services research findings into practice:
+    healthcare: an umbrella review of systematic literature reviews.                    a consolidated framework for advancing implementation science.
+    PharmacoEconomics. 2017;35(9):937–49.                                               Implement Sci. 2009;4:50.
+12. Bayer S, Brailsford SC, Bolt T. Examining the role of simulation models in      34. QSR International Pty Ltd. NVivo qualitative data analysis software. Version
+    health planning. Albuquerque: Proceedings of the 27th International                 10 ed, 2012.
+    Conference of the System Dynamics Society; 26–30 July; 2009.                    35. Sopcak N, Aguilar C, O'Brien MA, Nykiforuk C, Aubrey-Bassler K, Cullen R,
+13. Hamrock E, Paige K, Parks J, Scheulen J, Levin S. Discrete event simulation         et al. Implementation of the BETTER 2 program: a qualitative study
+    for healthcare organizations: a tool for decision making. J Healthc Manag.          exploring barriers and facilitators of a novel way to improve chronic disease
+    2013;58(2):110–24 discussion 24-5.                                                  prevention and screening in primary care. Implement Sci. 2016;11(1):158.
+14. Marshall DA, Burgos-Liz L, IJzerman MJ, Osgood ND, Padula WV, Higashi MK,       36. Glaser BG, Strauss AL. Discovery of Grounded Theory. New York: Routledge; 1999.
+    et al. Applying dynamic simulation modeling methods in health care              37. Proctor E, Silmere H, Raghavan R, Hovmand P, Aarons G, Bunger A, et al.
+    delivery research-the SIMULATE checklist: report of the ISPOR simulation            Outcomes for implementation research: conceptual distinctions,
+    modeling emerging good practices task force. Value Health. 2015;18(1):5–16.         measurement challenges, and research agenda. Admin Pol Ment Health.
+15. Günal MM, Pidd M. Discrete event simulation for performance modelling in            2011;38(2):65–76.
+    health care: a review of the literature. J Simul. 2010;4(1):42–51.              38. Damschroder LJ, Lowery JC. Evaluation of a large-scale weight management
+16. Comans TA, Chang AT, Standfield L, Knowles D, O’Leary S, Raymer M. The              program using the consolidated framework for implementation research
+    development and practical application of a simulation model to inform               (CFIR). Implement Sci. 2013;8:51.
+    musculoskeletal service delivery in an Australian public health service. Oper   39. Thorwarth M, Arisha A. Application of discrete-event simulation in health
+    ResHealth Care. 2017;15:13–8.                                                       care: a review. (2009). Reports. 3. https://arrow.dit.ie/buschmanrep/3.
+17. Wilson JC. Implementation of computer simulation projects in health care.       40. Forsberg HH, Aronsson H, Keller C, Lindblad S. Managing health care
+    J Oper Res Soc. 1981;32(9):825–32.                                                  decisions and improvement through simulation modeling. Qual Manag
+18. Fone D, Hollinghurst S, Temple M, Round A, Lester N, Weightman A, et al.            Health Care. 2011;20(1):15–29.
+    Systematic review of the use and value of computer simulation modelling         41. Steins K, Persson F. Identifying factors for successful implementation of
+    in population health and health care delivery. J Public Health Med. 2003;           simulation modeling in healthcare. Int JPrivacy Health Inform Manage. 2015;
+    25(4):325–35.                                                                       3(1):1–19.
+19. Brailsford SC, Harper PR, Patel B, Pitt M. An analysis of the academic          42. Jahangirian M, Taylor SJE, Eatock J, Stergioulas LK, Taylor PM. Causal study
+    literature on simulation and modelling in health care. J Simul.                     of low stakeholder engagement in healthcare simulation projects. J Oper
+    2009;3(3):130–40.                                                                   Res Soc. 2015;66(3):369–79.
+20. Katsaliaki K, Mustafee N. Applications of simulation within the healthcare      43. Queensland Government Statistician’s Office, Queensland Treasury. Queensland
+    context. In: Mustafee N, editor. Operational research for emergency                 Government population projections, 2018 edition: Queensland SA4s.
+    planning in healthcare: volume 2. London: Palgrave Macmillan UK;                44. Eldabi T. Implementation issues of modeling healthcare problems:
+    2016. p. 252–95.                                                                    misconceptions and lessons. In: Rossetti MD, Hill RR, Johansson B, Dunkin A,
+21. Katsaliaki K, Mustafee N. Applications of simulation within the healthcare          Ingalls RG (eds) Proceedings of the 2009 Winter Simulation Conference.
+    context. J Oper Res Soc. 2011;62(8):1431–51.                                        Piscataway: Institute of Electrical and Electronics Engineers; 2009, pp 1831–1839.
+22. Lane DC, Monefeldt C, Husemann E. Client involvement in simulation              45. Aharonson-Daniel L, Paul RJ, Hedley AJ. Management of queues in out-
+    model building: hints and insights from a case study in a London hospital.          patient departments: the use of computer simulation. J Manag Med. 1996;
+    Health Care Manag Sci. 2003;6(2):105–16.                                            10(6):50–8 3.
+
+Moretto et al. Implementation Science            (2019) 14:78                      Page 11 of 11
+
+
+
+
+46. Alkaabi R, Halim AAE, Mahmoud S. Improving resource allocation efficiency
+    in health care delivery systems. In: 2006 Canadian Conference on Electrical
+    and Computer Engineering; 2006 May; 2006.
+47. Cochran JK, Bharti A. Stochastic bed balancing of an obstetrics hospital.
+    Health Care Manag Sci. 2006;9(1):31–45.
+48. Monks T. Operational research as implementation science: definitions,
+    challenges and research priorities. Implement Sci. 2016;11(1):81.
+49. Dodgson M, Gann DM, Salter A. The impact of modelling and simulation
+    technology on engineering problem solving. Tech Anal Strat Manag. 2007;
+    19(4):471–89.
+50. Elkhuizen SG, Das SF, Bakker PJM, Hontelez JAM. Using computer simulation
+    to reduce access time for outpatient departments. Qual Saf Health Care.
+    2007;16(5):382.
+51. Heinrichs M, Beekman R, Limburg M. Simulation to estimate the capacity of
+    a stroke unit. Stud Health Technol Inform. 2000;77:47–50.
+52. Rytilä JS, Spens KM. Using simulation to increase efficiency in blood supply
+    chains. Manag Res News. 2006;29(12):801–19.
+53. Hvitfeldt-Forsberg H, Mazzocato P, Glaser D, Keller C, Unbeck M. Staffs' and
+    managers' perceptions of how and when discrete event simulation
+    modelling can be used as a decision support in quality improvement: a
+    focus group discussion study at two hospital settings in Sweden. BMJ Open.
+    2017;7(5):e013869.
+54. Hoomans T, Evers SM, Ament AJ, Hubben MW, van der Weijden T,
+    Grimshaw JM, et al. The methodological quality of economic evaluations of
+    guideline implementation into clinical practice: a systematic review of
+    empiric studies. Value Health. 2007;10(4):305–16.
+55. Vale L, Thomas R, MacLennan G, Grimshaw J. Systematic review of
+    economic evaluations and cost analyses of guideline implementation
+    strategies. Eur J Health Econ. 2007;8(2):111–21.
+56. Hoomans T, Severens JL. Economic evaluation of implementation strategies
+    in health care. Implement Sci. 2014;9:168.
+
+
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in
+published maps and institutional affiliations.
+

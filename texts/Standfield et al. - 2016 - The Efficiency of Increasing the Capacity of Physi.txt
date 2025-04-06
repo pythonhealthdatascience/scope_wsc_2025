@@ -1,0 +1,752 @@
+Appl Health Econ Health Policy (2016) 14:479–491
+DOI 10.1007/s40258-016-0246-1
+
+    ORIGINAL RESEARCH ARTICLE
+
+
+
+The Efficiency of Increasing the Capacity of Physiotherapy
+Screening Clinics or Traditional Medical Services to Address
+Unmet Demand in Orthopaedic Outpatients: A Practical
+Application of Discrete Event Simulation with Dynamic Queuing
+L. Standfield1 • T. Comans1,2 • M. Raymer3 • S. O’Leary3,4 • N. Moretto1 •
+P. Scuffham1
+
+
+Published online: 26 April 2016
+Ó Springer International Publishing Switzerland 2016
+
+
+Abstract                                                            However, OPSC was the most cost-effective option.
+Background Hospital outpatient orthopaedic services tra-            Increasing the capacity of current OPSC services is an
+ditionally rely on medical specialists to assess all new            efficient way to improve patient throughput and waiting
+patients to determine appropriate care. This has resulted in        times without exceeding current surgical resources. An
+significant delays in service provision. In response, Ortho-        OPSC capacity increase of *100 patients per month
+paedic Physiotherapy Screening Clinics and Multidisci-              appears cost effective (A$8546 per quality-adjusted life-
+plinary Services (OPSC) have been introduced to assess and          year) and results in a high level of OPSC utilisation (98 %).
+co-ordinate care for semi- and non-urgent patients.                 Conclusion Increasing OPSC capacity to manage semi-
+Objectives To compare the efficiency of delivering                  and non-urgent patients would be cost effective, improve
+increased semi- and non-urgent orthopaedic outpatient               throughput, and reduce waiting times without exceeding
+services through: (1) additional OPSC services; (2) addi-           current surgical resources. Unlike Markov cohort mod-
+tional traditional orthopaedic medical services with added          elling, microsimulation, or DES without DQ, employing
+surgical resources (TOMS ? Surg); or (3) additional                 DES-DQ in situations where capacity constraints predom-
+TOMS without added surgical resources (TOMS - Surg).                inate provides valuable additional information beyond cost
+Methods A cost-utility analysis using discrete event                effectiveness to guide resource allocation decisions.
+simulation (DES) with dynamic queuing (DQ) was used to
+predict the cost effectiveness, throughput, queuing times,
+and resource utilisation, associated with introducing addi-
+                                                                     Key Points for Decision Makers
+tional OPSC or TOMS ± Surg versus usual care.
+Results The introduction of additional OPSC or TOMS
+                                                                     Economic modelling predicts that increasing OPSC
+(±surgery) would be considered cost effective in Australia.
+                                                                     capacity is an efficient use of resources compared to
+                                                                     usual care in the example hospital.
+& L. Standfield
+  lachlan.standfield@griffithuni.edu.au                              Increasing OPSC capacity by *100 patients per
+                                                                     month results in a high level of OPSC utilisation
+1
+     Menzies Health Institute Queensland and Centre for Applied      without exceeding current surgical resources in the
+     Health Economics, School of Medicine, Griffith University,      example hospital.
+     Meadowbrook, QLD 4131, Australia
+2
+     Metro North Hospital and Health Service, Herston, Brisbane,     DES-DQ has the ability to capture the effect of
+     QLD 4029, Australia                                             capacity constraints on the provision of health
+3
+     Physiotherapy Department, Royal Brisbane and Women’s            services. Therefore, this modelling method is ideal
+     Hospital, Metro North Hospital and Health Service, Herston,     for providing information on waiting times,
+     Brisbane, QLD 4029, Australia                                   throughput, resource utilisation and cost
+4
+     Physiotherapy Department, School of Health and                  effectiveness under capacity constraints to help
+     Rehabilitation Sciences, University of Queensland, St Lucia,    guide resource allocation decisions.
+     Brisbane, QLD 4072, Australia
+
+480                                                                                                           L. Standfield et al.
+
+
+1 Introduction                                                    proposed that increasing the capacity of OPSC to manage
+                                                                  semi- and non-urgent orthopaedic patients would be an
+Hospital outpatient orthopaedic services have traditionally       efficient way to address unmet demand in public ortho-
+relied on medical specialists to assess and screen all new        paedic outpatients. The aim of this research is to explore
+patients referred to the service before directing them to the     the potential impact of altering the mix of OPSC and
+most appropriate (conservative or surgical) care. This            TOMS compared with usual care (UC) through economic
+model of service delivery has resulted in significant delays      modelling using discrete event simulation (DES) with
+in service provision [1–3]. In response, advanced practice        dynamic queueing (DQ).
+physiotherapy-led models have been developed such as the             Unlike Markov cohort modelling, microsimulation, or
+Orthopaedic Physiotherapy Screening Clinic and Mul-               DES without DQ, employing DES with DQ (DES-DQ) is
+tidisciplinary Services (OPSC) in Queensland, which               ideal for modelling health services delivery where demand
+employ experienced musculoskeletal physiotherapists to            for services often exceeds supply and capacity constraints
+assess and co-ordinate multidisciplinary care for semi- and       predominate [8]. DES-DQ allows the prediction of queuing
+non-urgent patients. In Australia, referrals to orthopaedic       times as a function of the demand for resources (i.e.
+outpatient services are categorised as: Category 1 (urgent;       orthopaedic patients requiring initial assessment, review or
+target time frame 30 days, usually not appropriate for            surgery) and resource availability (e.g. orthopaedic spe-
+OPSC service), Category 2 (semi-urgent; target time frame         cialist to assess, review and perform surgery on patients
+90 days), and Category 3 (non-urgent; target time frame           and physiotherapists to assess, review and treat patients).
+365 days). Typically, patients categorised as semi- and           Furthermore, DES with DQ has the flexibility to investigate
+non-urgent (Category 2 or 3) are considered for referral to       real-world complex systems where waiting times are
+OPSC. Services such as OPSC have been shown to reduce             growing or declining during the analysis period rather than
+waiting times and staff costs while maintaining quality of        relying on assumptions of steady-state queuing times.
+service in Canada, the UK and Australia [1, 4–7].                    Using real-world data from a large public teaching
+   In traditional orthopaedic medical services (TOMS), in         hospital in Australia this research provides a practical
+the hospital of interest, patients are initially assessed by an   example of how economic modelling using DES with DQ
+orthopaedic specialist, they may then be: directed back to        can support rational resource allocation decisions to help
+their general practitioner for continuing management;             ameliorate capacity constraints faced in orthopaedic ser-
+referred to conservative management which could include           vices. Furthermore, we anticipate the general modelling
+physiotherapy or other medical management (e.g. corti-            methods and analysis approach presented in this study may
+costeroid injections); placed on a surgical waiting list; or      be applicable to other healthcare settings where capacity
+continue to be monitored for the need for surgery and             constraints predominate.
+called back for review at a later date.
+   In OPSC, patients are initially screened by a physio-
+therapist who has postgraduate qualifications in muscu-           2 Objectives
+loskeletal physiotherapy. Following this assessment,
+patients may be referred for co-ordinated multidisciplinary       The objective of this research was to compare the efficiency
+non-surgical management. This can include physiotherapy,          of delivering increased semi- and non-urgent orthopaedic
+occupational therapy, dietetics and psychology as well as         outpatient services through providing: (1) additional OPSC;
+other allied health intervention when indicated (e.g. podi-       (2) additional TOMS with additional surgical resources
+atry). In addition to services tailored to individual patients,   (TOMS ? Surg); or (3) additional TOMS without addi-
+group-based programmes are used to support ongoing self-          tional surgical resources (TOMS - Surg) in a large public
+management, knowledge and skill development. Alterna-             teaching hospital in Australia (Logan Hospital, Metro South
+tively, following screening the patient may be referred           Health) compared with UC.
+back to an orthopaedic specialist. This may occur if issues
+are identified that indicate the need for urgent medical
+attention or suggest a strong need for surgical review.           3 Methods
+   Although the OPSC is operational in 14 hospital facili-
+ties in Queensland it is estimated that only a modest pro-        3.1 Research Question and Context
+portion (around 38 % in the hospital of interest; hospital
+data collection and expert review of OPSC suitable pa-            In the hospital of interest, UC currently consists of service
+tients) of the total orthopaedic patient population suit-         provision through TOMS in combination with a smaller
+able for such an intervention has access to the service. It is    advanced practice physiotherapy-led OPSC. Currently,
+
+Efficiency in Orthopaedic Outpatient Services: Using DES with DQ                                                             481
+
+
+TOMS and OPSC conduct around 62 and 27 new patient                 treated by the service at the hospital of interest. Other
+assessments in the eligible patient population per month,          conditions treated by this service included foot/ankle
+respectively. This UC was then compared with a range of            (6.1 %), cervical spine (4.7 %), hip (2.5 %), elbow
+service provision alternatives, including: (1) increasing the      (2.0 %), thoracic spine (1.2 %), and wrist/hand (0.6 %).
+capacity of OPSC services (without additional surgical                 The surgical success rates applied in the economic
+capacity) by an additional 25–125 patients per month               model were taken from the literature and weighted by the
+(OPSC); (2) increasing the capacity of TOMS (with addi-            proportion of surgical procedures performed for the knee,
+tional surgery capacity; TOMS ? Surg) by 25–125 patients           shoulder or lumbar spine recorded in the retrospective
+per month; and (3) increasing the capacity of TOMS                 chart audit [9–14]. All costs are presented in Australian
+(without additional surgery capacity; TOMS - Surg) by              Dollars ($A1.00 & US$0.76) and were applied at 2014
+25–125 patients per month. The choice of new levels of             values. Costs and benefits were discounted at 5 % per
+capacity tested in the economic analysis was made in con-          annum as specified in pharmacoeconomic guidelines from
+junction with experts in the delivery of these services to         the Pharmaceutical Benefits Advisory Committee in Aus-
+ensure that they spanned feasible changes in future                tralia [15].
+resourcing and capacity. For each alternative service option,          The derivation of the preference-based health-related
+the cost effectiveness, throughput, waiting times and per-         quality of life (utility values) applied in the economic
+centage utilisation of resources were compared with UC.            model have been described previously [9]. In brief, utility
+                                                                   values were calculated from data collected in the retro-
+3.2 Perspective                                                    spective chart audit, with measurements taken at baseline
+                                                                   and post-management using the Assessment of Quality of
+The cost-effectiveness analysis was conducted using a              Life four dimensions (AQoL-4D), a generic health-related
+healthcare payer perspective including direct healthcare           quality of life instrument [16]. These measurements were
+costs.                                                             taken over approximately a 24-week period, which was
+                                                                   considered an appropriate duration to assess the patients’
+3.3 Modelling Software                                             response to the interventions administered. Follow-up
+                                                                   utility estimates were calculated for responders (i.e. those
+The economic model was developed using the Simul8Ó                 who met a clinically important difference on a low back,
+2014 software package.                                             knee, or shoulder questionnaire) and non-responders,
+                                                                   allowing these values to be applied appropriately to the
+3.4 Input Data                                                     economic model’s health states.
+                                                                       The model was pre-populated with simulated patients to
+Detailed data describing the current number of patients            match the prevalent population waiting for services as
+waiting for orthopaedic assessment and surgery, and the            recorded in the large public teaching hospital data collec-
+rate of new patient presentations, and orthopaedic medical         tion (e.g. patients waiting for TOMS review or orthopaedic
+specialist and OPSC throughput from July 2013–November             surgery). Where these data were not available, expert
+2014 was obtained from the large public teaching hospital          opinion was used to estimate the size of these populations
+of interest (Table 1). The number of patients who were             (i.e. patient requiring ongoing review with TOMS or
+currently undergoing orthopaedic review was not available,         OPSC). The impact of altering this assumption was tested in
+so it was estimated through expert opinion (MR, SO and             sensitivity analyses. The rate of newly presenting or inci-
+TC). Other data were taken from a retrospective chart audit        dent patients requiring orthopaedic care was taken directly
+of 980 patients attending an OPSC with a primary diag-             from the large public teaching hospital data collection.
+nosis involving the knee (34.4 %), shoulder (37.6 %) or                Full details of the input parameters applied in the eco-
+lumbar (28.1 %) spine as described by Comans et al.                nomic model, by parameter type [e.g. costs, preference-
+(Table 1) [9]. The chart audit captured data from seven            based health-related quality of life (utility), and probabili-
+public hospitals throughout Queensland, including the              ties] are presented in Table 1.
+hospital of interest (i.e. Logan hospital). These retrospec-
+tive data were obtained from patients who were considered          3.5 Model Structure
+to be typical and generalisable to the OPSC service at the
+hospital of interest. Patients with low back, knee or              A conceptualised version of the structure of the DES-DQ
+shoulder conditions considered to be unlikely to require           economic model is presented in Fig. 1. Both UC and each
+surgery were the three most frequently treated conditions          new service provision alternative were assessed using the
+seen by the OPSC service. From 2012–2016 these three               same model structure with modifications to throughput data
+conditions represented around 82.9 % of all conditions             used to represent changes in health service capacity.
+
+482                                                                                                                     L. Standfield et al.
+
+
+Table 1 Base case input parameters
+Parameter description                                                                    Input parameter   Source
+                                                                                         value
+
+Costs
+ Conservative care                                                                       $189.41           Comans [9]
+ Additional medical care                                                                 $125.39           Comans [9]
+ OPSC assessment                                                                         $63.22            Comans [9]
+ OPSC intervention                                                                       $491.12           Comans [9]
+ Medical care post-surgery                                                               $444.57           Comans [9]
+ Surgical intervention                                                                   $12,863.92        Comans [9]
+ Usual care clinic review                                                                $68.38            Comans [9]
+Probabilities
+ Proportion of new category 2/3 patient currently directed to OPSC management            0.23              HDC
+ Maximum proportion of category 2/3 patients suitable for OPSC management                0.60              Expert review of patient
+                                                                                                            waiting lists
+ Conservative treatment success                                                          0.50              Comans [9]
+ Discharge to a general practitioner                                                     0.30              Comans [9]
+ Referral from regular care to conservative treatment                                    0.50              Comans [9]
+ Expedited review in those sent from OPSC to medical care                                0.50              Comans [9]
+ Referral for conservative care after OPSC initial screening                             0.83              Comans [9]
+ OPSC care only (no additional medications required)                                     0.91              Comans [9]
+ Referrals for conservative care after orthopaedic assessment                            0.50              Comans [9]
+ OPSC response                                                                           0.52              Comans [9]
+ Review in responders                                                                    0.28              Comans [9]
+ Discharged to general practitioner after initial assessment                             0.10              Comans [9]
+ Referral to surgical waitlist                                                           0.11              Comans [9]
+ Surgery success                                                                         0.69              Weighted average surgical
+                                                                                                            success rates (Beswick [10];
+                                                                                                            Coghlan [11]; Jones [12];
+                                                                                                            Phillips [13]; Rahme [14])
+ Drop out (3 month probabilities)
+   Time \1.25 years from model entry                                                     0.063             Comans [9]
+   Time C1.25 years from model entry                                                     0.01              Comans [9]
+ Mortality                                                                               Life tables       ABS
+Utilities
+ Annual utility entry                                                                    0.510             Comans [9]
+ Annual utility treatment non-responders                                                 0.483             Comans [9]
+ Annual utility treatment responders                                                     0.685             Comans [9]
+ Annual disutility waiting                                                               -0.001            Comans [9]
+Rates
+ Discount rate effects (per annum)                                                       0.05              PBAC [15]
+ Discount rate costs (per annum)                                                         0.05              PBAC [15]
+Patients on waiting lists
+ Number of category 2/3 patients currently on waiting list for initial TOMS              4893              HDC
+  assessment
+ Number of category 2/3 patients currently on waiting list for TOMS review               4893              Expert opinion
+ Number of category 2/3 patients currently on waiting list for initial OPSC assessment   86                HDC
+ Number of category 2/3 patients currently on waiting list for OPSC review               86                Expert opinion
+ Number of category 2/3 patients on surgical waiting list                                238               HDC
+
+Efficiency in Orthopaedic Outpatient Services: Using DES with DQ                                                                                483
+
+
+Table 1 continued
+Parameter description                                                                      Input parameter          Source
+                                                                                           value
+
+Temporal
+    Age of patients entering model                                                         57.00                    Comans [9]
+    Time horizon (years)                                                                   5.25                     Comans [9]
+    Current average inter-arrival time between patients (Cat 2/3 patients)a                0.17 days                HDC
+    Current average throughput time per patient: new orthopaedic assessment (Cat 2/3)a     0.49 days                HDC
+    Current average throughput time per patient: repeat orthopaedic assessment (Cat        0.15 days                HDC
+     2/3)a
+    Current average throughput time per patient: new OPSC assessment (Cat 2/3)a            1.11 days                HDC
+    Current average throughput time per patient: repeat OPSC assessment (Cat 2/3)a         0.76 days                HDC
+                                                                               a
+    Current average throughput time per patient: surgical procedure (Cat 2/3)              0.76 days                HDC
+NB. All costs presented in Australian dollars at 2014 prices. Input parameter values are fixed unless otherwise noted
+ABS Australian Bureau of Statistics, Cat category, HDC Logan Hospital data collection, OPSC Orthopaedic Physiotherapy Screening Clinic and
+Multidisciplinary Service, PBAC guidelines for preparing submissions to the Pharmaceutical Benefits Advisory Committee, TOMS traditional
+service provision through orthopaedic medical specialist
+a
+    Exponential distribution applied
+
+
+                                                        New paent
+                                 TOMS                    presents                  OPSC
+                                 pathway                                           pathway
+
+
+
+                       Q                                                                            Q
+                                           Discharge to GP
+
+
+                                                                     Expedited
+              Inial orthopaedic                                                                Inial OPSC
+                                               Review               orthopaedic                                           Paents at risk of
+                  assessment                                                                    assessment
+                                                                    consultaon                                           dropping out or all
+                                                                                                                          cause mortality
+
+
+                   Conservave                                                                  OPSC & MDS
+                   management                                                                    team care
+                                                 Q
+
+
+
+             RES              NR                                                           NR                 RES
+                                              Surgery
+
+
+
+                                       RES               NR
+
+
+
+
+Fig. 1 Conceptualised structure of the DES-DQ model. DES-DQ                   orthopaedic physiotherapy screening clinic, Q queue, RES responder,
+discrete event simulation with dynamic queueing, GP general                   TOMS traditional service provision through orthopaedic medical
+practitioner, MDS multidisciplinary service, NR non-responder, OPSC           specialists
+
+3.6 Time Horizon                                                              analysis by Comans et al., and to the duration over which
+                                                                              the introduction of the new intervention was to be assessed
+The time horizon applied in the economic model was set to                     (i.e. 5.25 years) [9]. The time horizon of the original model
+the same duration as that used in the original economic                       was guided by clinical experts who identified the duration
+
+484                                                                                                           L. Standfield et al.
+
+
+in which the main differences in costs and effects between        quality-adjusted life-year (QALY) or less. TOMS ? Surg
+treatment arms were likely to be realised. Further, a longer      generated higher ICERs than OPSC at around A$21,400–
+time frame has the potential to introduce more uncertainty        A$21,900 per additional QALY. TOMS - Surg generated
+in the results as the type of care may change over time.          similar ICERs to TOMS ? Surg when capacity was
+Orthopaedic treatment is primarily expected to affect             increased up to 50 additional patients per month. When
+patient quality of life and not life span, therefore, this time   capacity was increased to 75 or 125 additional patients per
+horizon was considered appropriate.                               month the ICER for TOMS - Surg decreased to around
+                                                                  A$18,200 and A$13,200 per additional QALY, respectively.
+3.7 Queuing Methods                                                  Figure 2a presents the total number of initial assess-
+                                                                  ments performed through OPSC or TOMS for each service
+The DES-DQ model employed queues with exponential                 provision alternative over the model period. It is estimated
+inter-arrival times, which assumes that each inter-arrival        that around 5600 patients will be managed with UC over
+time is independent of the next. Each queue used a simple         the modelled time horizon. As the maximum capacity of
+single server structure to reflect the total throughput of the    each service provision alternative is increased from 25–100
+health service being modelled (e.g. TOMS, OPSC). The              additional patients per month, the total number of patients
+queues used in the DES-DQ model employed a first-in,              receiving an initial assessment increased in a similar linear
+first-out (FIFO) scheduling discipline. The DES queues            fashion in all analyses. When the service capacity was
+allowed baulking or reneging due to patient refusal to wait       increased to an additional 125 patients per month the
+for treatment (i.e. drop out) or patient mortality.               number of patients receiving an initial OPSC assessment in
+                                                                  the OPSC service alternative declines in comparison to the
+3.8 Stochastic Uncertainty                                        TOMS alternatives, because at this point OPSC capacity
+                                                                  begins to exceed the number of patients suitable for OPSC
+Average cost, effect, incremental cost-effectiveness ratio        management.
+(ICER), waiting time and throughput values were calcu-               Figure 2b presents the total number of patients receiving
+lated as the mean of 10 model runs each using unique              surgery over the model period for each service provision
+random number streams with approximately 23,000 simu-             alternative. It is estimated that around 2000 patients will
+lated patients per run.                                           receive surgery under UC over the modelled time horizon.
+                                                                  The total number of patients predicted to receive surgery
+3.9 Model Validation                                              increases in a similar fashion as the maximum capacity of
+                                                                  TOMS ? Surg and TOMS - Surg is increased from
+The DES-DQ economic model described herein was based              25–50 additional patients per month. When the capacity of
+on a previously published Markov cohort model (MM) which          each service provision alternative is increased to an addi-
+compared OPSC and TOMS alone [9]. The DES model and               tional 50–125 patients per month the number of patients
+the MM generated almost identical outcomes when the DES           receiving surgery plateaus in the TOMS - Surg alterna-
+model was calibrated to the MM outcomes, thereby cross-           tive, whereas the number of patients receiving surgery in
+validating the results using two separate modelling methods       the TOMS ? Surg alternative continues to rise. In all
+[17, 18]. The DES model was then modified to suit the single      analyses, the increase in the number of patients receiving
+hospital of interest and to compare the efficiency of different   surgery is lower in the OPSC option than the TOMS ?
+combinations of TOMS and OPSC with UC.                            Surg option. Similarly, when the capacity of each service
+                                                                  provision alternative is increased from 25–100 patients the
+3.10 Sensitivity Analyses                                         increase in the number of patients receiving surgery is
+                                                                  lower in the OPSC option than the TOMS - Surg option.
+A series of univariate and multivariate sensitivity analyses      This indicates that fewer patients are referred to surgery in
+were conducted by varying the input parameters across             the OPSC treatment pathway. When the capacity of OPSC
+plausible ranges to test the model’s sensitivity to parameter     is further increased to 125 patients per month the number
+uncertainty.                                                      of patients receiving surgery in the OPSC and TOMS -
+                                                                  Surg options are equal indicating that current surgical
+                                                                  capacity has been reached.
+4 Results                                                            Figure 3a shows the average time patients are predicted
+                                                                  to wait before receiving an initial assessment by TOMS or
+Table 2 shows the ICERs generated for each service pro-           OPSC over the model period for each service provision
+vision option when compared to UC. OPSC generates the             alternative. Patient waiting times reduce in the same way
+lowest ICERs at around A$7900–A$9350 per additional               for TOMS - Surg and TOMS ? Surg over the various
+
+Table 2 Cost effectiveness of alternative service provision options
+Increase in   OPSC                                                              TOMS - Surg                                                           TOMS ? Surg
+maximum                                                         a                                                                 a
+throughput    Cost                    Effect QALYs          ICER cost per       Cost                     Effect QALYs        ICER cost per            Cost                     Effect QALYs       ICERa cost per
+(patients     Mean (95 % CI)          Mean (95 % CI)        QALY                Mean (95 % CI)           Mean (95 % CI)      QALY                     Mean (95 % CI)           Mean (95 % CI)     QALY
+per                                                         Mean (95 % CI)                                                   Mean (95 % CI)                                                       Mean (95 % CI)
+month)
+
+0 (UC)        $1117 ($1078–$1156)     1.63 (1.63–1.64)      –                   $1117 ($1078–$1156)      1.63 (1.63–1.64)    –                        $1117 ($1078–$1156)      1.63 (1.63–1.64)   –
+25            $1228 ($1185–$1271)     1.65 (1.64–1.65)      $9348 ($7873–       $1280 ($1242–$1319)      1.64 (1.63–1.65)    $22,656 ($20,093–        $1291 ($1252–$1329)      1.64 (1.63–1.65)   $21,462 ($18,753–
+                                                              $10,968)                                                         $25,645)                                                             $24,444)
+50            $1321 ($1275–$1367)     1.66 (1.65–1.66)      $8951 ($7874–       $1420 ($1376–$1464)      1.65 (1.64–1.66)    $22,501 ($17,853–        $1460 ($1422–$1499)      1.65 (1.64–1.66)   $21,664 ($18,989–
+                                                                                                                                                                                                                            Efficiency in Orthopaedic Outpatient Services: Using DES with DQ
+
+
+
+
+                                                              $10,106)                                                         $28,220)                                                             $24,661)
+75            $1413 ($1374–$1452)     1.67 (1.66–1.68)      $8799 ($7736–       $1444 ($1388–$1500)      1.65 (1.64–1.66)    $18,209 ($14,062–        $1633 ($1585–$1681)      1.66 (1.65–1.66)   $21,941 ($19,493–
+                                                              $9934)                                                           $23,129)                                                             $24,666)
+100           $1488 ($1453–$1523)     1.68 (1.67–1.69)      $8546 ($7481–       $1458 ($1399–$1517)      1.66 (1.65–1.66)    $15,246 ($11,938–        $1804 ($1754–$1854)      1.66 (1.66–1.67)   $21,910 ($20,057–
+                                                              $9667)                                                           $19,062)                                                             $23,941)
+125           $1518 ($1473–$1563)     1.68 (1.68–1.69)      $7925 ($6861–       $1469 ($1412–$1527)      1.66 (1.65–1.67)    $13,192 ($10,491–        $1953 ($1892–$2014)      1.67 (1.65–1.67)   $21,436 ($19,646–
+                                                              $9059)                                                           $16,267)                                                             $23,398)
+
+Nb. Rounding has been applied. All costs presented in Australian dollars. Mean cost, effect and ICER values calculated as the mean of 10 model runs each using unique random number streams with approximately
+23,000 simulated patients per run
+CI credible interval, ICER incremental cost-effectiveness ratio, OPSC Orthopaedic Physiotherapy Screening Clinic and Multidisciplinary Service, QALYs quality-adjusted life-years saved, TOMS – Surg traditional
+service provision through orthopaedic medical specialists without additional surgical resources, TOMS ? Surg traditional service provision through orthopaedic medical specialists with additional surgical resources, UC
+usual care
+a
+    Incremental values are calculated in comparison to UC
+                                                                                                                                                                                                                            485
+
+486                                                                                                                                                L. Standfield et al.
+
+Fig. 2 a Patient initial            a
+assessment throughput over
+                                                                           14000
+model period. b Patient surgical
+
+
+
+
+                                    Paents receiving inial assessment*
+throughput over model period.
+                                                                           12000
+Nb. Rounding has been applied.                                                         95% CI
+Average throughput values were
+                                                                           10000
+calculated as the mean of 10
+model runs each using unique                                               8000
+
+
+
+
+                                                    (N)
+random number streams with
+approximately 23,000 simulated                                             6000
+patients per run. Asterisk
+indicates initial assessment by                                            4000
+TOMS or OPSC. CI credible
+interval, OPSC Orthopaedic                                                 2000
+Physiotherapy Screening Clinic
+and Multidisciplinary Service,                                                0
+TOMS – Surg traditional
+                                                                                   0              25          50             75            100               125
+service provision through
+orthopaedic medical specialists                                                                               Increase in capacity
+without additional surgical                                                                                  (paents per month)
+resources, TOMS ? Surg
+traditional service provision                                                                   OPSC         TOMS - Surg             TOMS + Surg
+through orthopaedic medical
+specialists with additional         b                                      4000
+surgical resources
+                                                                           3500        95% CI
+                                    Paents receiving surgery
+
+
+
+
+                                                                           3000
+
+                                                                           2500
+                                               (N)
+
+
+
+
+                                                                           2000
+
+                                                                           1500
+
+                                                                           1000
+
+                                                                            500
+
+                                                                              0
+                                                                                   0             25           50             75            100               125
+                                                                                                             Increase in capacity
+                                                                                                            (paents per month)
+
+                                                                                                  OPSC         TOMS - Surg            TOMS + Surg
+
+
+
+increases in service capacity tested. Increasing the service                                    the service capacity of TOMS - Surg by 25 additional
+capacity of OPSC decreases initial assessment waiting                                           patients per month has little effect on surgical waiting
+times by a larger amount than TOMS. However, waiting                                            times. However, when TOMS - Surg capacity is increased
+times start to converge for OPSC and TOMS when service                                          beyond this point surgical waiting times are predicted to
+capacity is increased to 125 additional patients per month.                                     increase markedly over the model period.
+    Figure 3b shows the average time patients are predicted                                        Table 3 presents the levels of resource utilisation (de-
+to wait before receiving surgery over the model period for                                      fined as the average percentage service capacity used over
+each service provision alternative. Increasing the service                                      the modelled time horizon) for surgery and initial assess-
+capacity of TOMS ? Surg decreases surgical waiting                                              ment by OPSC or TOMS predicted by the economic model
+times by the largest amount. Increasing the service capacity                                    for each service provision alternative. In the analyses
+of OPSC from 25–100 additional patients per month has                                           where TOMS capacity (±surgery) is increased by 25–100
+little effect on surgical waiting times; however, waiting                                       additional patients per month, 100 % resource utilisation
+times start to increase more rapidly when the capacity of                                       for TOMS is predicted. When TOMS capacity is further
+OPSC is increased to 125 patients per month. Increasing                                         increased by 125 patients per month, TOMS resource
+
+Efficiency in Orthopaedic Outpatient Services: Using DES with DQ                                                                                                  487
+
+Fig. 3 a Average time to initial         a                                    1200
+assessment over model period.
+b Average surgical waiting
+times over model period. Nb.
+Mean waiting time values were                                                                                                                          95% CI
+                                                                              1000
+calculated as the mean of 10
+
+
+
+
+                                         Waing me unl inial assessment*
+model runs each using unique
+random number streams with
+approximately 23,000 simulated                                                800
+patients per run. Asterisk
+indicates initial assessment by
+
+
+
+
+                                                      (days)
+TOMS or OPSC. CI credible
+interval, OPSC orthopaedic                                                    600
+physiotherapy screening clinic
+and multidisciplinary service,
+TOMS – Surg traditional
+service provision through                                                     400
+orthopaedic medical specialists
+without additional surgical
+resources, TOMS ? Surg
+traditional service provision                                                 200
+through orthopaedic medical
+specialists with additional
+surgical resources
+                                                                                0
+                                                                                     0            25              50              75           100          125
+                                                                                                               Increase in capacity
+                                                                                                              (paents per month)
+
+                                                                                                       OPSC          TOMS - Surg            TOMS + Surg
+
+                                         b                                    400
+
+                                                                              350        95% CI
+                                               Waing me unl surgery
+
+
+
+
+                                                                              300
+
+                                                                              250
+                                                       (days)
+
+
+
+
+                                                                              200
+
+                                                                              150
+
+                                                                              100
+
+                                                                               50
+
+                                                                                0
+                                                                                     0            25             50              75           100           125
+                                                                                                                  Increase in capacity
+                                                                                                                 (paents per month)
+
+                                                                                                  OPSC           TOMS - Surg             TOMS + Surg
+
+
+
+utilisation decreases to 94 %. Resource utilisation for                                      of OPSC is increased by 0–125 additional patients per
+OPSC is predicted to be 100 % when OPSC patient                                              month. Surgical resource utilisation increases to 100 % as
+capacity is increased from 25–75 patients per month. When                                    TOMS - Surg is increased by 75 additional patients per
+OPSC capacity is increased by an additional 100–125                                          month or greater. Average surgical resource utilisation
+patients per month, resource utilisation declines indicating                                 declines as TOMS ? Surg capacity is increased.
+OPSC capacity over the modelled time horizon is begin-                                          Table 4 presents a series of univariate and multivariate
+ning to exceed the number of patients suitable to be man-                                    sensitivity analyses showing how the incremental cost,
+aged through this pathway. Surgical resource utilisation                                     incremental effects, ICER and net monetary benefit (NMB)
+increases from around 76–99 % as the maximum capacity                                        results are affected by alterations in the base-case
+
+                                                                                                                                                                                                              488
+
+
+
+
+Table 3 Average resource utilisation over model period
+Increase in         Resource utilisation (%)
+maximum
+throughput          OPSC                                                          TOMS - Surg                                                    TOMS ? Surg
+(patients per       OPSC (95 % CI)       TOMS (95 % CI)       Surgery (95 %       OPSC (95 % CI)       TOMS (95 % CI)       Surgery (95 %        OPSC (95 % CI)       TOMS (95 % CI)       Surgery (95 %
+month)                                                        CI)                                                           CI)                                                            CI)
+
+0 (UC)              100.00               100.00               76.16               100.00               100.00               76.16                100.00               100.00               76.16
+                     (100.00–100.00)      (100.00–100.00)       (71.80–80.51)      (100.00–100.00)       (100.00–100.00)     (71.80–80.51)         (100.00–100.00)     (100.00–100.00)       (71.80–80.51)
+25                  100.00               100.00               82.82               100.00               100.00               88.39                100.00               100.00               54.66
+                     (100.00–100.00)      (100.00–100.00)       (78.10–87.55)      (100.00–100.00)       (100.00–100.00)     (83.50–93.29)         (100.00–100.00)     (100.00–100.00)       (51.45–57.88)
+50                  100.00               100.00               88.26               100.00               100.00               98.84                100.00               100.00               45.01
+                     (100.00–100.00)      (100.00–100.00)       (84.30–92.22)      (100.00–100.00)       (100.00–100.00)     (96.29–100.00)        (100.00–100.00)     (100.00–100.00)       (42.50–47.53)
+75                  100.00               100.00               93.84               100.00               100.00               100.00               100.00               100.00               39.35
+                     (100.00–100.00)      (100.00–100.00)       (89.79–97.90)      (100.00–100.00)       (100.00–100.00)     (100.00–100.00)       (100.00–100.00)     (100.00–100.00)       (37.50–41.19)
+100                 98.18                100.00               97.64               100.00               100.00               100.00               100.00               100.00               35.71
+                     (97.21–99.15)        (100.00–100.00)       (94.22–100.00)     (100.00–100.00)       (100.00–100.00)     (100.00–100.00)       (100.00–100.00)     (100.00–100.00)       (33.89–37.53)
+125                 85.31                100.00               98.80               100.00               93.79                100.00               100.00               93.79                32.46
+                     (84.09–86.53)        (100.00–100.00)       (95.80–100.00)     (100.00–100.00)       (92.81–94.77)       (100.00–100.00)       (100.00–100.00)     (92.81–94.77)         (30.87–34.05)
+
+Nb. Rounding has been applied. Mean resource utilisation values calculated as the mean of 10 model runs each using unique random number streams with approximately 23,000 simulated patients per run
+CI credible interval, OPSC Orthopaedic Physiotherapy Screening Clinic and Multidisciplinary Service, TOMS traditional service provision through orthopaedic medical specialists, TOMS – Surg traditional
+service provision through orthopaedic medical specialists without additional surgical resources, TOMS ? Surg traditional service provision through orthopaedic medical specialists with additional surgical
+resources, UC usual care
+                                                                                                                                                                                                              L. Standfield et al.
+
+Efficiency in Orthopaedic Outpatient Services: Using DES with DQ                                                                      489
+
+
+Table 4 Sensitivity analyses
+Change in input parameter                                                        Incremental   Incremental      ICERa (cost   Incremental
+                                                                                 cost ($)      effect (QALYs)   per QALY)     NMBb
+
+Reference case (OPSC ? 100 patients per month)                                   $371          0.043             $8546        $1797
+    Cost OPSC ?20 %                                                              $388          0.043             $8960        $1779
+    Cost OPSC -20 %                                                              $353          0.043             $8132        $1815
+    Cost surgery ?20 %                                                           $423          0.043             $9753        $1745
+    Cost surgery -20 %                                                           $318          0.043             $7339        $1850
+    Probability of OPSC success ?1SEM                                            $366          0.045             $8192        $1870
+    Probability of OPSC success -1SEM                                            $374          0.042             $8951        $1715
+    Probability of surgical success increased to 80.0 %                          $371          0.048             $7679        $2042
+    Probability of surgical success decreased to 50 %                            $371          0.042             $8885        $1715
+    Disutility of waiting increased to 0.01 (10 fold increase)                   $371          0.048             $7731        $2026
+    Disutility of waiting reduced to 0.0001 (10 fold decrease)                   $371          0.043             $8637        $1774
+    Number of prevalent patients waiting for review ?50 %                        $332          0.038             $8734        $1568
+    Number of prevalent patients waiting for review -50 %                        $409          0.049             $8381        $2031
+    Increase new musculoskeletal presentations by 10 % over 5-years (expert      $360          0.042             $8608        $1730
+     estimate of potential increase in musculoskeletal presentations combining
+     population growth and increase in musculoskeletal conditions in area over
+     5-years)
+    Cost of surgery ?20 % ? probability of OPSC success -                        $427          0.040            $10,637       $1580
+     1SEM ? probability of surgical success decreased to 50 %
+Cost of surgery -20 % ? probability of OPSC success                              $315          0.046             $6898        $1967
+ ? 1SEM ? probability of surgical success increased to 80 %
+Nb. Rounding has been applied. All costs presented in Australian dollars
+ICER incremental cost-effectiveness ratio, NMB net monetary benefit, OPSC orthopaedic physiotherapy screening clinic and multidisciplinary
+service, QALYs quality-adjusted life-years saved, SEM standard error of the mean
+a
+    Incremental values are calculated in comparison to usual care
+b
+    NMB = effect (QALYs) 9 willingness-to-pay-per-QALY (shadow price = $50,000 per QALY) - cost
+
+
+parameter values using the OPSC ? 100 patient capacity                     recommended for orthopaedic consultation in Australia
+analysis as an example. The ICER and incremental NMB                       (i.e. 90 days for urgency category 2 and 365 days for
+results appear reasonably stable across each of the sensi-                 urgency category 3 patients). Unchanged over the 5-year
+tivity analyses conducted.                                                 modelled time horizon, waiting times may grow to around
+                                                                           2.7 years. In Australia, revealed preferences show that the
+                                                                           willingness-to-pay (WTP) per QALY is around A$50,000–
+5 Discussion                                                               A$64,000 [19, 20]. In the current analyses, the ICER val-
+                                                                           ues for both TOMS and OPSC fall well below these WTP
+This research evaluated the efficiency of different methods                thresholds in all scenarios tested and would, therefore, be
+of delivering orthopaedic outpatient services in an example                considered cost effective. However, the analysis suggests
+hospital where demand exceeds capacity and waiting times                   that increasing the capacity of OPSC is a more cost-ef-
+are beyond clinical recommendations. The study compared                    fective option when compared to TOMS, generating more
+the cost effectiveness, patient throughput and waiting times               QALYs per health-care dollar spent. Furthermore, if the
+of various combinations of specialist orthopaedic outpa-                   perspective of this analysis was expanded to a societal
+tient services and advanced practice physiotherapy-led                     level, then these ICERs would likely further improve as the
+services using a DES model with DQ.                                        broadened analysis would capture the reduction in patient
+   Modelling of current demand over 5 years demonstrates                   productivity over the protracted patient waiting times.
+that current levels of orthopaedic service provision in the                    Unlike Markov-cohort modelling, microsimulation, or
+example hospital are inadequate. The model indicates                       DES without DQ, employing DES with DQ in situations
+that if services remain unchanged from current practice,                   where capacity constraints predominate provides valuable
+queues for orthopaedic services will continue to increase                  additional information beyond cost effectiveness to guide
+creating unacceptable delays beyond those timeframes                       resource allocation decisions. For instance, in the analyses
+
+490                                                                                                                 L. Standfield et al.
+
+
+where TOMS - Surg capacity is increased by 75–125                Acknowledgments The authors gratefully acknowledge Orthopae-
+patients per month the ICER for these service provision          dic Physiotherapy Screening Clinic and Multidisciplinary Services
+                                                                 Program Manager, David Smith, research staff, Elise Gane, Peter
+options improves (Table 2). However, this improvement            Window, Zoe Michaleff, and Erin Pitt, for their contribution to this
+comes at the cost of rapidly increasing surgical waiting         study and the Physiotherapy and Orthopaedic Department Directors
+times which are unlikely to be desirable (Fig. 3b). In con-      and staff from the participating hospitals.
+trast, as OPSC capacity is increased (also without altering
+                                                                 Authors contributions L. Standfield and T. Comans: economic
+surgical capacity) the demand for surgery rises but does not     model development, guided and conducted the analyses, developed
+generate increased and protracted surgical waiting times         the manuscript. M. Raymer, S. O’Leary: collection, provision and
+(Fig. 3b). This contrast is further demonstrated by com-         interpretation of key clinical data, expert advice on service delivery
+paring the average resource utilisation data generated by the    methods and manuscript development. N. Moretto: collection, pro-
+                                                                 vision and interpretation of key clinical data and manuscript devel-
+model. As TOMS - Surg capacity is increased by 75–125            opment. P. Scuffham: expert economic advice and review, manuscript
+patients per month, demand for surgery equals, or exceeds,       development and oversight.
+supply leading to 100 % resource utilisation rates (Table 3).
+However, when OPSC capacity is increased from 75–100
+patients, surgical resource demand increases but does not        Compliance with Ethical Standards
+exceed supply, increasing surgical resource utilisation to       L. Standfield, T. Comans, M. Raymer, S. O’Leary, N. Moretto, and P.
+around 94–98 % of current capacity (Table 3).                    Scuffham had no conflicts of interest to disclose.
+   The model also indicates that at a 100 patient per month      Financial support for this study was provided by the Australian Centre
+increase in OPSC capacity, OPSC resource utilisation             for Health Services Innovation (AusHSI) and by an Australian Post-
+                                                                 graduate Award Scholarship grant from the Australian government.
+would be high (98 %) indicating little unused OPSC               The funding agreements ensured the authors’ independence in
+resources over the modelled period (Table 3). However,           designing the study, interpreting the data, writing, and publishing the
+given the current demand, if OPSC capacity was increased         report.
+beyond this level to 125 additional patients per month,
+OPSC resource utilisation would decrease to 85 % over the
+modelled period (Table 3). This indicates that supply of         References
+OPSC would exceed demand and potentially lead to
+                                                                  1. Oldmeadow LB, Bedi HS, Burch HT, Smith JS, Leahy ES,
+underutilised OPSC resources in this scenario.                       Goldwasser M. Experienced physiotherapists as gatekeepers to
+   There are limitations of this study. This economic anal-          hospital orthopaedic outpatient care. Med J Aust. 2007;186(12):
+ysis is based on non-randomised evidence and, therefore, it          625–8 (Epub 2007/06/20. eng).
+                                                                  2. Schoch PA, Adair L. Successfully reforming orthopaedic outpa-
+is possible that the data used in it may be affected by con-
+                                                                     tients. Aust Health Rev Publ Aust Hosp Assoc. 2012;36(2):233–7
+founding factors. Nevertheless, any confounders should               (Epub 2012/05/26. eng).
+affect each analysis in a similar manner. In addition, like       3. Blackburn MS, Cowan SM, Cary B, Nall C. Physiotherapy-led
+many such analyses, data were not available which would              triage clinic for low back pain. Aust Health Rev Publ Aust Hosp
+                                                                     Assoc. 2009;33(4):663–70 (Epub 2010/02/20. eng).
+allow the comparison of the model’s output with the his-
+                                                                  4. Daker-White G, Carr AJ, Harvey I, Woolhead G, Bannister G,
+torical performance of the hospital of interest (i.e. external       Nelson I, et al. A randomised controlled trial. Shifting boundaries
+validation was not possible given the available data) [18].          of doctors and physiotherapists in orthopaedic outpatient
+   In summary, in the hospital of interest, the model indi-          departments. J Epidemiol Community Health. 1999;53(10):
+                                                                     643–50 (Epub 2000/01/05. eng).
+cates that increasing the capacity of the current advanced
+                                                                  5. Hattam P. The effectiveness of orthopaedic triage by extended
+practice physiotherapy-led service to manage semi- and               scope physiotherapists. Clin Gov Int J. 2004;9:244–52.
+non-urgent patients would be cost effective, improve              6. Desmeules F, Toliopoulos P, Roy JS, Woodhouse LJ, Lacelle M,
+patient throughput and reduce patient waiting times with-            Leroux M, et al. Validation of an advanced practice physiother-
+                                                                     apy model of care in an orthopaedic outpatient clinic. BMC
+out exceeding current surgical resources. An increase of
+                                                                     Musculoskelt Disord. 2013;14:162 (Epub 2013/05/10. eng).
+OPSC capacity of around 100 patients per month is pre-            7. Smith DRM. Orthopaedic physiotherapy screening clinics—an
+dicted to result in a high level of OPSC resource utilisation.       approach to managing overburdened orthopaedic services (Ab-
+However, it is important to note that only approximately             stract). Physiotherapy. 2007;93(S1):S746.
+                                                                  8. Standfield L, Comans T, Scuffham P. Markov modeling and
+60 % of the semi- and non-urgent orthopaedic patient
+                                                                     discrete event simulation in health care: a systematic comparison.
+population were deemed suitable for OPSC intervention,               Int J Technol Assess Health Care. 2014;30(2):165–72 (Epub
+the remaining patients require intervention with TOMS.               2014/04/30. eng).
+The model shows that even when all patients suitable for          9. Comans T, Raymer M, O’Leary S, Smith D, Scuffham P. Cost-
+                                                                     effectiveness of a physiotherapist-led service for orthopaedic
+OPSC are managed by OPSC, TOMS remains at 100 %
+                                                                     outpatients. J Health Serv Res Policy. 2014 (Epub 12 May 2014).
+utilisation, indicating that demand for TOMS remains high        10. Beswick AD, Wylde V, Gooberman-Hill R, Blom A, Dieppe P.
+and exceeds supply. This situation could be ameliorated by           What proportion of patients report long-term pain after total hip
+parallel increases in the capacity of TOMS.                          or knee replacement for osteoarthritis? A systematic review of
+
+Efficiency in Orthopaedic Outpatient Services: Using DES with DQ                                                                             491
+
+    prospective studies in unselected patients. BMJ Open. 2012;2(1):    16. Hawthorne G, Richardson J, Osborne R. The Assessment of
+    e000435 (Epub 2012/02/24. eng).                                         Quality of Life (AQoL) instrument: a psychometric measure of
+11. Coghlan JA, Buchbinder R, Green S, Johnston RV, Bell SN.                health-related quality of life. Qual Life Res Int J Qual Life Aspects
+    Surgery for rotator cuff disease. Cochrane Database Syst Rev.           Treat Care Rehabil. 1999;8(3):209–24 (Epub 1999/09/03. eng).
+    2008;1:CD005619 (Epub 2008/02/07. eng).                             17. Standfield LB, Comans TA, Scuffham PA. An empirical compar-
+12. Phillips FM, Slosar PJ, Youssef JA, Andersson G, Papatheofanis          ison of Markov cohort modeling and discrete event simulation in a
+    F. Lumbar spine fusion for chronic low back pain due to                 capacity-constrained health care setting. Eur J Health Econ
+    degenerative disc disease: a systematic review. Spine.                  HEPAC Health Econ Prevent Care. 2015 (Epub 2015/12/31. Eng).
+    2013;38(7):E409–22 (Epub 2013/01/22. eng).                          18. Eddy DM, Hollingworth W, Caro JJ, Tsevat J, McDonald KM,
+13. Jones CA, Voaklander DC, Suarez-Alma ME. Determinants of                Wong JB. Model transparency and validation: a report of the
+    function after total knee arthroplasty. Phys Therapy. 2003;83(8):       ISPOR-SMDM Modeling Good Research Practices Task Force-7.
+    696–706 (Epub 2003/07/29. eng).                                         Med Decis Making. 2012;32(5):733–43 (Epub 2012/09/20. eng).
+14. Rahme H, Solem-Bertoft E, Westerberg CE, Lundberg E, Sor-           19. Henry DA, Hill SR, Harris A. Drug prices and value for money:
+    ensen S, Hilding S. The subacromial impingement syndrome. A             the Australian Pharmaceutical Benefits Scheme. JAMA.
+    study of results of treatment with special emphasis on predictive       2005;294(20):2630–2 (Epub 2005/11/24. eng).
+    factors and pain-generating mechanisms. Scand J Rehabil Med.        20. Shiroiwa T, Sung YK, Fukuda T, Lang HC, Bae SC, Tsutani K.
+    1998;30(4):253–62 (Epub 1998/11/24. eng).                               International survey on willingness-to-pay (WTP) for one addi-
+15. PBAC. Guidelines for preparing submissions to the Pharmaceu-            tional QALY gained: what is the threshold of cost effectiveness?
+    tical Benefits Advisory Committee (Version 4.4). Department of          Health Econ. 2010;19(4):422–37 (Epub 2009/04/22. eng).
+    Health. Canberra: Australian Government; 2013.
+

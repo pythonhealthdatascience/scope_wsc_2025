@@ -1,0 +1,529 @@
+      International Journal of Healthcare Management
+
+
+
+
+      ISSN: (Print) (Online) Journal homepage: www.tandfonline.com/journals/yjhm20
+
+
+
+
+Evaluating the impact of human resource management
+on the patient ﬂow at an outpatient orthopedic clinic
+
+Hadhemi Saadouli & Abdelmoneem Ltaif
+
+To cite this article: Hadhemi Saadouli & Abdelmoneem Ltaif (2021) Evaluating
+the impact of human resource management on the patient ﬂow at an outpatient
+orthopedic clinic, International Journal of Healthcare Management, 14:4, 1492-1500, DOI:
+10.1080/20479700.2020.1788335
+
+To link to this article: https://doi.org/10.1080/20479700.2020.1788335
+
+
+
+
+       Published online: 10 Jul 2020.
+
+
+
+       Submit your article to this journal
+
+
+
+       Article views: 156
+
+
+
+       View related articles
+
+
+
+       View Crossmark data
+
+
+
+       Citing articles: 2 View citing articles
+
+
+
+
+                       Full Terms & Conditions of access and use can be found at
+             https://www.tandfonline.com/action/journalInformation?journalCode=yjhm20
+
+INTERNATIONAL JOURNAL OF HEALTHCARE MANAGEMENT
+2021, VOL. 14, NO. 4, 1492–1500
+https://doi.org/10.1080/20479700.2020.1788335
+
+
+
+
+Evaluating the impact of human resource management on the patient ﬂow at
+an outpatient orthopedic clinic
+                                a,b
+Hadhemi Saadouli                      and Abdelmoneem Ltaifb
+a
+College of Business and Economics, Qassim University, Buraydah, Saudi Arabia; bLaboratory MODILS, Faculty of Economics and
+Management Sciences, University of Sfax, Sfax, Tunisia
+
+
+    ABSTRACT                                                                                                           ARTICLE HISTORY
+    This paper treats the problem of patient ﬂow in an outpatient orthopedic clinic. A detailed                        Received 7 May 2019
+    description of the system and the main pathways followed by patients during their care                             Accepted 17 April 2020
+    process are provided. In fact, analyzing the patient ﬂow has served to improve healthcare
+                                                                                                                       KEYWORDS
+    delivery in this clinic by identifying the sources of delay which are mainly related to                            Patient ﬂow; pathway;
+    ineﬃcient human resources management. Therefore, a list of improvement scenarios is                                waiting time; length of stay;
+    proposed and evaluated using discrete event simulation model. The proposed changes have                            discrete event simulation;
+    resulted in a great improvement in terms of minimizing the patient waiting time (WT) and                           multiple linear regression
+    total length of stay (LOS). Furthermore, we proposed a multiple linear regression model that
+    helped us to analyze the relationship between the performance-related factors (WT and LOS)
+    and the inﬂuencing variables related to patient ﬂows. Indeed, these models enable managers
+    to plan reorganization of this outpatient clinical and adopt the suitable strategies for each
+    type of pathway.
+
+
+
+
+Introduction
+                                                                          outpatient care. Tunisia has also focused on improving
+Hospitals today strive to meet the growing demand                         the management process to become more eﬃcient by
+subject to limited resources. In other words, there are                   training staﬀ on better communication skills. But,
+diﬀerent and limited resources (human and material)                       nonetheless these eﬀorts, another reality that could
+in hospitals that need a good planning and utilization                    not be hidden is that the Tunisian public hospitals
+[1] in order to set a balance between the supply and                      are actually becoming inadequate in providing the
+the demand for services. The outpatient clinics are                       proper treatments that are needed. Hospitals have
+among the services that suﬀer from congestion and,                        become under staﬀed due to lack of funds, which has
+therefore, require good resources and patients manage-                    caused highly trained doctors and nurses to leave the
+ment. In fact, these hospital divisions face an increasing                publicly run facilities. This has caused overcrowded
+pressure to improve the quality of their services [2]. In                 and long waits in the public sector.
+this paper, we selected a case study from a Tunisian                         Our case study is an outpatient orthopedic clinic in
+hospital. In fact, the Tunisian healthcare system is                      one of the most recognized public hospitals in Tunisia
+divided into two sectors: the public sector that acquires                 (Habib Bourguiba hospital). Indeed, outpatient clinics
+the 40% of the health infrastructure and the private one                  in Tunisian public hospitals, in particular, Habib Bour-
+that receives the rest. The majority of the Tunisian                      guiba hospital, are using a block scheduling appoint-
+people prefer to seek medical care in government/pub-                     ment system that consists of bringing all the patients
+lic hospitals over private ones on seeing the free treat-                 in the morning and keeping them waiting until their
+ment they oﬀer. This circumstance has put pressure on                     turn comes. As an example in our case study, the out-
+these facilities and has prompted the government to                       patient orthopedic clinic, all patients are required to
+ameliorate this sector. Indeed, the health expenditure                    come at the beginning of the session. This brings
+in Tunisia contributes to only 5% of the gross domestic                   about a tremendous waste of their time, creates conges-
+product (GDP). This is considered as very poor contri-                    tion, and puts further pressure on the medical staﬀ.
+bution compared to the USA (17%) and the large Euro-                      Therefore, according to several staﬀ members, patients
+pean countries (about 10%) [3]. In fact, there have been                  are not satisﬁed with their long waiting time (WT).
+many continuous eﬀorts from the Tunisian govern-                          Moreover, the lack of hospitals and healthcare facilities
+ment to maintain and to improve the healthcare system                     outside of the major cities requires the ill to make an
+such as developing the social security fund as well as                    extensive journey for treatment. All these causes and
+improving the accessibility of hospital in-patient and                    others motivated us to study the patient ﬂow problem
+
+CONTACT Hadhemi Saadouli         hadhemi.saadouli@hotmail.fr   College of Business and Economics, Qassim University, Almulyda. North of Prince Nayef
+Airport (Qassim), 51452, Buraydah, Qassim, Saudi Arabia
+© 2020 Informa UK Limited, trading as Taylor & Francis Group
+
+                                                              INTERNATIONAL JOURNAL OF HEALTHCARE MANAGEMENT        1493
+
+
+in this clinic in order to establish a relationship              Actually, the patient ﬂows are considered to be very
+between their length of stay (LOS) and the number             complex because of the diﬀerent pathways patients
+of human resources. Accordingly, the patient WT               may take and the inherent uncertainty and variability
+and LOS are maintained under control.                         of healthcare processes [11]. In fact, the patient path-
+   The main contributions of this paper can be sum-           way is the list of stages the patient passes through
+marized as follows:                                           from its arrival to care facility under leaving. It does
+                                                              not necessarily contain all the stages of the care process.
+.   Detecting the mains pathways followed by patients         In addition, the pathway can be diﬀerent from patient
+    during their care process.                                to another according to the health status of each one.
+.   Using the simulation modeling to detect the sources          Indeed, managing patient pathway could help in
+    of patient delay in each pathway.                         determining the best conﬁguration and number of
+.   Using the linear regression model to establish a          resources. It also allows managers ﬁxing the source of
+    relationship between the human resources number           dysfunction and source of long WT. In this context,
+    and patient LOS.                                          in a British Columbia center, Santos et al. [12] focused
+.   Propose a list of improvement scenarios that help         on the problem of modeling, the pathway of patients
+    the manager to adopt suitable decisions to minimize       with acute spinal cord injury. By studying three typical
+    patient WT and LOS in each pathway.                       scenarios, they found that modeling the system high-
+                                                              lights the indirect impact of several medical and
+                                                              administrative interventions. The practical results
+                                                              reduced the LOS, the WT and decreased the use of
+Literature review
+                                                              rehabilitation beds.
+Patient ﬂow is still one of the most important issues of         The WT is one of the problems related to the patient
+the hospitals [4,5]. It can be deﬁned as the movement         ﬂow treated in the literature. In fact, the service bottle-
+of patients through stages of care. It covers everything      necks arising from the ill-managed patient ﬂow could
+(such as medical care, support, etc.) from the point of       result in excessively long WT for patients for various
+admission to the point of discharge. According to Shea-       hospital departments such as the radiology depart-
+han [6], patient ﬂow evaluates the length of time             ments [13]. In Canada precisely Calgary, Alberta, Roh-
+required for patients to be admitted, ﬁll out their           leder et al. [14] treated the problem of patient’s WT in
+paperwork, submit their vitals, and see a doctor. It          an orthopedic outpatient department. They proposed
+reﬂects how quick and eﬃcient hospitals are in provid-        scenarios for improvements that are based on adding
+ing healthcare services.                                      new resources and reviewing appointments. The results
+    In fact, improvements in healthcare quality ensure        showed a substantial reduction in time. In fact, about
+the improvement of health status and enable the attain-       200 h of patient time is saved every month on average
+ment of desirable health outcomes [7]. This improve-          with an average monthly volume of 1000 appoint-
+ment may be associated with a continuous quality              ments. In the same context, Ahmed and Alkhamis
+improvement process that starts with identifying pro-         [15] proposed an aid decision tool for an emergency
+blems and ends with providing corrective action. The          service in a governmental hospital in Kuwait. The
+study of the patients’ ﬂow may help to ﬁnd diﬀerent           main contribution of the research is the increase of
+factors that aﬀect the eﬀectiveness of hospital or its        the patient’s ﬂow by 28% and the reduction of the aver-
+departments [8]. The continuous increase in the num-          age patient’s WT by 40%. To shorten the imaging cen-
+ber of patients arriving to services is one of the factors    ter WT in Chile, Ramis et al. [16] used a Flexsim GP
+that make the patient ﬂow management problematic.             simulator. The researchers identiﬁed all the ﬂows,
+Actually, this task reveals some problems that are            resources, schedules and exams. After comparing
+related to the space and resources (human and                 seven conﬁgurations, they arrive to reduce the total
+material) management [9]. According to Bhattacharjee          patient WT by 35% without changing the staﬀ, but
+and Ray [10], the complexities in patient ﬂows are            the assignment of common functions. Therefore, the
+mainly due to the existence of various care pathways          productivity of the center can be increased by 54%,
+(that may depend on many factors such as the severity         assuming inﬁnite demand. According to the literature
+of illness, the decisions taken by physicians, the pro-       review and to the best of our knowledge, models that
+gression of patient’s health status). The very large num-     have been used for the handling of the patient ﬂow pro-
+ber of stages in the service and the various priority rules   blem are empirical.
+for patients to be seen by a physician or to be investi-         Indeed empirical models are very suitable for this
+gated at a radiology department. Therefore, modeling          kind of problems. They are based on observations of
+of patient ﬂows plays a key role in improving health-         the system characteristics and experimentations on
+care delivery. In fact, it helps to ﬁnd the most inﬂuen-      the system in order to analyze the relationship between
+tial factors aﬀecting the performance of the system and       the performance-related factors and the inﬂuencing
+exploring the interrelationships between parameters.          variables and parameters related to patient ﬂows [10].
+
+1494       H. SAADOULI AND A. LTAIF
+
+
+In addition, there are a very few studies, in the litera-     Sfax, Tunisia. It is considered as one of the most con-
+ture, which apply statistical techniques for modeling         gested department. In order to understand the func-
+patient ﬂows and determining WT measures [17–21].             tioning of the actual system and collect necessary
+Indeed, this paper can be considered as one of these          data to model the patient pathways, we conducted an
+few papers. In fact, in addition to the simulation mod-       on-ﬁlled survey from one month for an average of
+eling which is used to model the patient’s pathway, we        100 patients per day. This survey allowed us to collect
+used the statistical modeling (precisely the linear           statistics on patient’s arrivals and service times that
+regression model) to analyze the relationship between         helped us to determine the patient arrival rates during
+the average LOS and the diﬀerent proposed scenarios.          diﬀerent days of the week and the distribution of ser-
+   One of the patient ﬂow-related problems is the             vice times at each stage of the service.
+human and material resources management. In fact,                 Indeed, from a structural point of view, the outpati-
+in hospital,                                                  ent orthopedic surgery department has seven func-
+                                                              tional sub-assemblies: admission, consultation of
+   employees have all kinds of qualiﬁcations, and many
+   can (or must) be assigned to various tasks. For instance   surgery (resident), consultation of medicine (assistant),
+   a nurse can register patients, do night surveillance or    plaster room, radiology, and treatment room. Usually,
+   assist a surgery. The available human resources have       this public healthcare department receives a daily vari-
+   to be scheduled to meet various requirements such as       able demand ranging from 150 to 200 patients per day
+   to insure service enforce the rules, assign unpopular      that should be treated. But, given that some appoint-
+   shifts in a fair manner and last but not least get the
+                                                              ments are made outside this outpatient clinic, the num-
+   best service at the least cost. [22]
+                                                              ber of patients cannot be known in advance, which
+Thus, a poor human resource management or a lack of           causes a variable workload for the orthopedists. This
+human resources can aﬀect the overall care process and        clinic is open from 6:30 am, but registration generally
+causes many problems such as long patient’s WTs and           starts at 7 am. A total of one radiologist, ﬁve orthope-
+overtimes for personals and medical stuﬀ. In addition,        dists (divided into two residents and three assistants),
+there are some factors that aﬀect the health pro-             four receiving agents (for registration and payment
+fessionals performance such as work engagement and            tasks) and three nurses (assigned to the following
+work alienation. Consequently, they aﬀect the whole           tasks: bandage, plaster removal, and making appoint-
+performance of the hospital performance [23]. In              ments) are working 5 days a week from Monday to Fri-
+fact, the hospital’s performance, eﬀectiveness, and           day. In fact, the current outpatient department brings
+image could be also be greatly inﬂuenced by the health        all the patients in the morning and keeps them waiting
+professionals’ tendencies in exerting organizational          until their turn comes.
+citizenship behavior [24].                                        At the admission, patients are divided into two
+    One alternative for improving the performance of a        groups: patients who undergo a surgery will be
+healthcare delivery process is through making changes         assigned to the two residents and the rest will equally
+in the process of care. Such changes may include elim-        be divided between the three assistants. Depending
+inating unnecessary activities, eliminating duplicate         on the case, after the registration and payment process
+activities, performing some of the activities in parallel,    there is two main patient pathways: the ﬁrst which con-
+and identifying alternative process ﬂows [10].                tains the medical consultation (with an assistant) is the
+    In fact, the major contribution of this work is to        shortest one while the second is the longest pathway
+show how to explore the linear regression model to            during which the patient should meet a resident (the
+handle with the patient ﬂow problem by detecting the          surgical consultation). In fact, the tasks through
+variables inﬂuencing the patient average LOS. In fact,        which patients pass in each pathway are respectively:
+this time contains the WT and the time of service at
+each stage of the care process. The use of the time ser-      (1) Patient directly meets the orthopedist (assistant)
+vice is justiﬁed by the fact this later is not constant. In       then ﬁxes an appointment (if necessary) or
+reality, this time is deﬁned by probability distributions.    (2) Patient meets the orthopedist (resident), goes to
+Thus, by determining the inﬂuential variables that                the radiology after removing the plaster, then
+aﬀect the patient LOS, we help managers to adopt the              meets his orthopedist for the second time, and
+suitable decisions to improve clinical performance                ﬁnally ﬁxes an appointment (if necessary).
+and improve the patient satisfaction.
+                                                                Two types of pathways can be disengaged from this
+                                                              and schematized as follows (Figure 1):
+Methodology
+Process description and data collection                       Discrete event simulation modeling
+In this paper, we used as case study the outpatient           The DES is used to model the patients’ ﬂow into the
+orthopedic clinic of Habib Bourguiba hospital of              outpatient orthopedic clinic in order to detect the
+
+                                                              INTERNATIONAL JOURNAL OF HEALTHCARE MANAGEMENT                       1495
+
+
+
+
+Figure 1. Patients ﬂow in the outpatient orthopedic clinic.
+
+
+sources of the process dysfunction. In fact, the main         capability enables us to integrate the diﬀerent statistical
+advantage of simulation over other modeling tech-             distributions of the system parameters (presented in
+niques is its ability to perform the ‘what-if’ scenarios      Table 1).
+by changing the model rules and assumptions. This                After building the DES model, we proceeded with
+model not only provides information to managers               the validation step which consists of proving that this
+but also engages them in the development process so           model eﬀectively reﬂects the observed real system.
+as to enable them to use the model independently as           For this reason, the model was run for 100 replications
+a decision support tool [25]. The simulation modeling         of 24 h and then the generated results are compared to
+helped to identify improvement alternatives including         the real collected data. A comparison was conducted
+better patient scheduling and optimized staﬃng level          between the observed LOS (real) and simulated one
+[26]. The DES model is used to better understand the          at each stage of the care process. This included comput-
+actual process and detect the sources of dysfunction.         ing 95% conﬁdence intervals for patient LOS at each
+Such capability makes it better than mathematical             stage for both simulation output and historical data.
+models and more practical and less expensive than             The result of the comparison is shown in the following
+physical experimentation [27]. In addition, the DES           ﬁgure (Figure 2).
+model help us to implement the proposed scenarios                The diﬀerences between the observed and the simu-
+and then evaluate the system performance to deter-            lated LOS are less than 4 min. These results conﬁrm the
+mine if the implemented change resulted in real               validity of the simulation model. Therefore, the pro-
+improvement. In fact, we modeled the system using             posed model is useful to generate the proposed scen-
+Arena 14 software. Patients were generally seen in            arios, to test and to evaluate them according to the
+First Come First serve manner in the real system and          key performance measures (LOS).
+therefore were always processed this way in the DES              In fact, the collected data show a great disparity in
+model.                                                        the elapsed time to go through the diﬀerent stages of
+   Collected data about the patient arrivals and patient      the care process. This disparity can essentially be
+service times are used as input to the Input Analyzer         explained by:
+tool of evaluating statistical ﬁt. The latter is an Arena
+tool, which is speciﬁcally designed to adjust the theor-
+etical distributions with the observed data by estimat-       Table 1. List of statistical distributions used in the DES model.
+ing their parameters. Therefore, we establish the             Task                                     Statistical distribution (minutes)
+appropriate probability distributions to use in the           Patient’s arrival                        EXPO (5)
+DES model.                                                    Registration                             TRIA (1, 2, 3)
+                                                              Payment                                  TRIA (1, 2, 3)
+   In addition to the best reproduction of the studied        Meeting the orthopedist (consultation)   TRIA (5, 10, 15)
+system, the advantage of the DES is its capability of         Fixing appointment                       TRIA (0.5, 1, 1.5)
+                                                              Plaster removal                          TRIA (5, 10, 15)
+integrating probability distributions and statistical par-    Radiology                                TRIA (5, 7, 10)
+ameters that describe the real system behaviors. This         Doing care                               TRIA (5, 7, 10)
+
+1496         H. SAADOULI AND A. LTAIF
+
+
+
+
+Figure 2. Comparison results between real and simulated average LOS.
+
+
+Table 2. Summary statistics.
+Variable                         Observations   Obs. with missing data   Obs. without missing data   Minimum   Maximum   Mean     Std. deviation
+Average TUS (Short trajectory)       400                  0                        400               25,000    103,000   62,056   10,824
+Average TUS (Long trajectory)        400                  0                        400               42,000    102,000   70,315   10,189
+
+
+
+.   A long average time until ﬁnishing the registration                      variables. Therefore, in our case, managers could pre-
+    and payment tasks compared to the real-time needed                       dict the deviation of the WT if one of the proposed
+    for the procedures which do not exceed 2 min in each                     changes (scenarios) is chosen. Thus, they will be able
+    of them. For example, the average time spent in wait-                    to adopt the suitable strategies for each of the two path-
+    ing until the payment process is equal to 120 min.                       ways (short and long) followed by patients inside the
+    This can be justiﬁed by a bad resources management                       outpatient clinic.
+    or insuﬃcient number of registration agents.                                Modeling the average patient’s LOS into a linear
+.   Average time spent in waiting and meeting the                            model aims to highlight the potential eﬀect of each of
+    assistant is 43 min, whereas the consultation time                       the three proposed scenarios. The average length of
+    is less than 10 min on average: insuﬃcient number                        stay LOSk of patients following pathway k can be writ-
+    of assistants.                                                           ten as follows:
+.   Average time spent in waiting and meeting the resident
+                                                                                                 LOSk = b0 + bi Xi + 1i
+    is 140 min, whereas the consultation time is less than
+    10 min on average: insuﬃcient number residents.                          where Xi represents the scenario of index i, i=1, 2 or 3; k
+                                                                             = 1or 2, with 1 represents the short pathway and 2 rep-
+   The simulation model conﬁrms our expectations                             resents the longest one; εi is a correction.
+about the source of the long LOS. The model indicates                           Data analysis was made using XLSTAT tool of
+that patients spent the majority of time at registration                     Microsoft Excel. Before applying this analysis, we
+payment and consultation (medical surgical). In                              should prepare our database. For this reason, we simu-
+addition the model showed that the late arrival of sur-                      late each of the three proposed scenarios with 100
+geon is another problem that causes signiﬁcant delays                        replications for each type of pathway (short and
+for patients.                                                                long). As a result, we obtained 600 values of average
+   In this work, we detect a list of area in which we                        LOS (3 scenarios * 2 pathways * 100 replications). In
+could potentially produce a signiﬁcant improvement                           additions, we had 200 values of average observed
+without disrupting the outpatient clinic practice. Actu-                     LOS of the real system (with the short and long path-
+ally, since that the sources of dysfunction are ﬁxed and                     way). The summary statistics is given in Table 2.
+after discussions with the administration, three scen-                          In order to study the potential eﬀect of the three pro-
+arios can be proposed: (1) increase the number of regis-                     posed scenarios on the average LOS, two regression
+tration (or payment) agents; (2) increase the number of                      models are separately made for each type of pathway.
+assistants; or (3) increase the number of residents.                         The results of goodness of ﬁt tests are summarized in
+                                                                             Table 3.
+                                                                                As mentioned in the table above, both models are sig-
+Linear regression
+                                                                             niﬁcant. In fact, the explanatory variables (R 2) explain
+The linear model is a forecasting technique that helps                       71% and 69% of the LOS variability of respectively the
+to make a simple modeling of the relationship between                        short and the long patient pathways. Thus we can use
+the dependent variable and one or more explanatory                           these models to predict the eﬀect of the increasing
+
+                                                                           INTERNATIONAL JOURNAL OF HEALTHCARE MANAGEMENT         1497
+
+
+Table 3. Goodness of ﬁt statistics.                                           The linear model is given as follows:
+ Goodness of ﬁt statistics (TUBS      Goodness of ﬁt statistics (average
+        (Short path))                       TUBS (Long path))                  LOS1 = 77.72 − 20.22X1 − 22.65X2 − 19.78X3
+Observations           400,000        Observations            400,000
+Sum of weights         400,000        Sum of weights          400,000      As indicated in this model, the average LOS in the short
+DF                     396,000        DF                      396,000      pathway is 77.72 min. This value can be reduced,
+R2                         0.710      R2                          0.690
+Adjusted R 2               0.708      Adjusted R 2                0.688
+                                                                           respectively, by 20.22, 22.5, or 19.78 min when, scen-
+MSE                    34,239         MSE                     32,394       ario1, scenario2, or scenario 3, respectively, are
+RMSE                   5851           RMSE                    5692         adopted. Therefore, adding one new registration (or
+MAPE                   7481           MAPE                    6442
+DW                     2228           DW                      1872         payment) agent improves the average LOS by 20.22
+Cp                     4000           Cp                      4000         min, while adding respectively a new assistant or a
+AIC                    1417,329       AIC                     1395,165
+SBC                    1433,295       SBC                     1411,131     new resident can reduce the average LOS by 22.5 and
+PC                         0.296      PC                          0.316    19.78 min, respectively.
+                                                                              Figure 3 shows the standardized coeﬃcients or
+number of the registration agents, the assistants or the                   beta coeﬃcients of the ﬁrst regression model. These
+residents on the average LOS generated by each path-                       coeﬃcients show the eﬀect of the three scenarios on
+way. Therefore, managers will be able to compare the                       the average LOS of the short pathway. In fact, scen-
+three proposed scenarios and adopt the suitable strat-                     ario 2, which consists of adding a new assistant,
+egies, for each pathway, in order to improve the overall                   shows the best result which has a greater eﬀect on
+outpatient’s clinic performance and patient satisfaction.                  the average LOS, compared to the two other scenarios
+                                                                           (Figure 4).
+Results and discussion
+                                                                           Long patients pathway
+After analysis, the models parameters are determined
+and therefore the eﬀect of each scenario on the average                    Similarly to the short pathway, the linear model for the
+LOS is now determined.                                                     long patient pathway could be formulated based on the
+   Statistical analysis of data taken before and after the                 parameters generated by XLSTAT and presented in
+implementation indicates that the average WT is sig-                       Table 5. These parameters give the main LOS in the
+niﬁcantly improved and the average LOS in the outpa-                       patient’s pathway and respectively the estimated indi-
+tient clinic is reduced.                                                   vidual eﬀect of each scenario.
+                                                                              Thus, the model could be formulated as follow:
+Short patients pathway                                                         LOS2 = 84.43 − 16.92X1 − 17.10X2 − 22.48X3
+For the short patient pathway, the linear model could                      The estimated average LOS in the long patient pathway
+be formulated based on Table 4 that gives the main                         is 84.43 min. According to the linear regression model,
+LOS in the short patient pathway and respectively the                      this value can be, respectively, reduced by 16.92, 17.10,
+estimated individual eﬀect of each scenario.                               or 22.74 min, if scenario 1, scenario 2, or scenario 3,
+
+Table 4. Model parameters (average LOS (short path)).
+Source                   Value         Standard error               t           Pr > |t|     Lower bound (95%)        Upper bound (95%)
+Intercept               77,720              0.585               132,822         <0.0001      76,570                   78,870
+Basic scenario          0.000               0.000
+Scenario-S1             −20,225             0.828               −24,441         <0.0001      −21,852                  −18,599
+Scenario-S2             −22,650             0.828               −27,371         <0.0001      −24,277                  −21,023
+Scenario-S3             −19,780             0.828               −23,903         <0.0001      −21,407                  −18,153
+
+
+
+
+Figure 3. Average LOS (short path)/ Standardized coeﬃcients (95% conf.interval).
+
+1498         H. SAADOULI AND A. LTAIF
+
+
+
+
+Figure 4. Average estimated LOS for the short patient paths.
+
+
+Table 5. Model parameters (average LOS (Long path)).
+Source                 Value            Standard error      t          Pr > |t|      Lower bound (95%)     Upper bound (95%)
+Intercept            84,440                 0.569        148,361       <0.0001       83,321                85,559
+Basic scenario       0,000                  0.000
+Scenario-S1          −16,920                0.805        −21,021       <0.0001       −18,502               −15,338
+Scenario-S2          −17,100                0.805        −21,245       <0.0001       −18,682               −15,518
+Scenario-S3          −22,480                0.805        −27,929       <0.0001       −24,062               −20,898
+
+
+
+
+Figure 5. Average LOS (Long paths) / Standardized coeﬃcients (95% conf. interval).
+
+respectively, are adopted. For example, one additional             variable is also justiﬁed by its standardized coeﬃcient
+resident can reduce the average LOS by 22.48 min,                  which is equal to 0.957 (see Figure 5).
+which represents the best possible improvement of                     Figure 6 shows the potential improvement of the
+the average LOS. This strong eﬀect of adding a new                 average LOS achieved by the three proposed
+resident (as an independent variable) on the dependent             scenarios.
+
+
+
+
+Figure 6. Average estimated LOS for the long patient’s path.
+
+                                                                  INTERNATIONAL JOURNAL OF HEALTHCARE MANAGEMENT           1499
+
+
+Conclusion and future research                                         Markov Chain modelling. Eur J Oper Res. 2017;260
+                                                                       (1):1152–1163.
+In this paper, we aim to control patient LOS in the out-           [2] Klassen KJ, Yoogalingam R. Improving performance in
+patient orthopedic clinic of Habib Bourguiba Hospital                  outpatient appointment services with a simulation
+by identifying factors inﬂuencing WT. This control                     optimization approach. Prod Oper Manag.
+could help us in maintaining the suitable strategies                   2009;18:447–458.
+                                                                   [3] Barbagallo S, Corradi L, de Goyet JDV, et al.
+for improving the outpatient clinic performance and                    Optimization and planning of operating theatre activi-
+decreasing the patient dissatisfaction.                                ties: an original deﬁnition of pathways and process
+   By using the DES model, we detected two main                        modeling. BMC Med Inform Decis Mak. 2015;1:38–54.
+pathways followed by patients during their care pro-               [4] Zafar AM, Suri R, Nguyen TK, et al. Understanding
+cess. These pathways diﬀer in terms of the number                      preprocedure patient ﬂow in IR. J Vasc Interv Radiol.
+                                                                       2016;27:1189–1194.
+of stages through which the patient passes until leav-
+                                                                   [5] Nikakhtar A, Abbasian-Hosseini SA, Gazul H, et al. Social
+ing the process. Consequently, they diﬀer in terms of                  network based sensitivity analysis for patient ﬂow using
+average LOS. In addition, simulation analysis results                  computer simulation. CAIE. 2015;88:264–272.
+allowed us to detect the sources of the long WT                    [6] Sheahan K. Patient ﬂow deﬁnition. https://bizﬂuent.
+which are mainly related to resources management.                      com/facts-6898675-patient-ﬂow-deﬁnition.html.2018.
+Based on these results, a list of improvement scen-                [7] Songul C. Eﬃciency in health services based on pro-
+                                                                       fessionals consensus quality indicators. Int J Healthc
+arios are proposed and evaluated using the simulation                  Manag. 2020; doi:10.1080/20479700.2020.172443.
+model. The proposed changes have resulted in a great               [8] Abuhay TM, Krikunov AV, Bolgova EV, et al.
+improvement in terms of minimizing the patient WT                      Simulation of patient ﬂow and load of department in
+and show that there is a strong relationship between                   a specialized medical center. Procedia Comput Sci.
+varying the number of human resources and the                          2016;101:143–151.
+                                                                   [9] Andersen AR, Nielsen BF, Reinhardt LB, et al. Staﬀ
+improvement of patient LOS. To clearly study this
+                                                                       optimization for time-dependent acute patient ﬂow.
+relationship we used the linear regression model                       Eur J Oper Res. 2019;272:94–105.
+which showed its eﬀectiveness and good results for                [10] Bhattacharjee P, Ray PK. Patient ﬂow modelling and
+this kind of problem. This relationship enables hospi-                 performance analysis of healthcare delivery processes
+tal managers to evidently understand how the num-                      in hospitals: a review and reﬂections. CAIE.
+ber of human resources could aﬀect the selected                        2014;78:299–312.
+                                                                  [11] Harper PR. A framework for operational modeling of
+performance criteria (LOS and WT). Thus, they are                      hospital resources. Health Care Manag Sci. 2002;5
+able to deﬁne the actions of improvement that can                      (3):165–173.
+be made and to predict the strategic decisions to                 [12] Santos A, Gurling J. Modeling the patient journey from
+adapt in the long term.                                                injury to community reintegration for persons with
+   In this work, we separately treat each type of patient              acute traumatic spinal cord injury in a Canadian cen-
+                                                                       ter. PLoS One. 2013;8(8):e72552.
+pathway and propose a suitable improvement scenario
+                                                                  [13] Felicitas UI, Kenneth KA, Obinna EO, et al. Improving
+for each one. Actually, given that both pathways are                   patient ﬂows: a case study of a tertiary hospital radi-
+strongly related and many resources are shared,                        ology department. Int J Healthc Manag. 2019; doi:10.
+authors plan to extend this work by using methods of                   1080/20479700.2019.1620476.
+compromise that take into account the diﬀerent path-              [14] Rohleder RT, Lewkonia P, Bischak DP, et al. Using
+ways in a single solution. Furthermore, the authors                    simulation modeling to improve patient ﬂow at an out-
+                                                                       patient orthopedic clinic. Health Care Manag Sci.
+believe that the actual outpatient appointment system                  2010;14(2):135–145.
+should be revised in order to avoid the random arrival            [15] Ahmed M, Alkhamis T. Simulation optimization for a
+of the patient. Consequently, a huge waste of time                     health care unit emergency department in Kuwait. Eur
+could be avoided so the patient WT and the total                       J Oper Res. 2009;198(3):936–942.
+LOS could be signiﬁcantly be minimized.                           [16] Ramis FJ, Neriz L, Sepulveda JA. A simulator to
+                                                                       improve wait times in a medical imaging center.
+                                                                       Proceedings of Winter Simulation Conference. 2008.
+                                                                       p. 1572–1577.
+Disclosure statement                                              [17] Adeyemi S, Chaussalet T, Demir E. Non proportional
+No potential conﬂict of interest was reported by the author(s).        random eﬀects modelling of a neonatal unit oper-
+                                                                       ational patient pathways. Stat Methods Appl. 2011;20
+                                                                       (4):507–518.
+                                                                  [18] Adeyemi S, Chaussalet TJ, Xie H, et al. Random eﬀects
+ORCID                                                                  models for operational patient pathways. J Appl Stat.
+Hadhemi Saadouli       http://orcid.org/0000-0001-5916-1771            2010;37(4):691–701.
+                                                                  [19] Adeyemi S, Chaussalet TJ. A random eﬀects sensitivity
+                                                                       analysis for patient pathways model. 21st IEEE
+                                                                       International Symposium on Computer-Based
+References                                                             Medical Systems. 2008. doi:10.1109/CBMS.2008.49.
+ [1] Reenberg A, Bo Friis N, Blander RL. Optimization of          [20] Adeyemi S, Chaussalet TJ, et al. Models for extracting
+     hospital ward resources with patient relocation using             information on patient pathways. In: McClean S.,
+
+1500      H. SAADOULI AND A. LTAIF
+
+
+     editor. Intelligent patient management Vol. 189.             amongst health professionals: the mediating role of
+     Springer; 2009. p. 171–182.                                  work engagement. Int J Healthc Manag. 2019; doi:10.
+[21] Garret JS, Hao Wong CB, Qin H, et al. The eﬀect of           1080/20479700.2019.1698850.
+     vertical split-ﬂow patient management on emergency      [25] Kovalchuk SV, Funkner AA, Metsker OG, et al.
+     department throughput and eﬃciency. Am J Emerg               Simulation of patient ﬂow in multiple healthcare
+     Med. 2018;36(9):1581–1584.                                   units using process and data mining techniques for
+[22] Blöchliger I. Modeling staﬀ scheduling problem: a            model identiﬁcation. J Biomed Inform. 2018;82:128–
+     tutorial. Eur J Oper Res. 2004;158:533–542.                  142.
+[23] Nazan K. Evaluating the relationship between work       [26] Haghnegahdar L, Sarkar S. An optimization model for
+     engagement, work alienation and work performance             operating room staﬃng and scheduling. Procededings
+     of healthcare professionals. Int J Healthc Manag.            of the Industrial and Systems Engineering
+     2018;11(3):251–259.        doi:10.1080/20479700.2018.        Conference. 2018.
+     1453969.                                                [27] Bataineh O, Al-Aoma R, Abu-Shakra A. Simulation-
+[24] Lee-Peng N, Yuen-Onn C, Lok-Sin K, et al. Job satis-         based optimisation for performance enhancement of
+     faction and organizational citizenship behaviour             public departments. JJMIE. 2010;4:346–351.
+

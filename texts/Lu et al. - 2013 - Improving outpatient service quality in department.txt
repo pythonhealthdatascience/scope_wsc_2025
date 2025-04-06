@@ -1,0 +1,443 @@
+        Proceedings of the 2013 IEEE 17th International Conference on Computer Supported Cooperative Work in Design
+
+
+
+ Improving Outpatient Service Quality in Department
+   of Orthopedic Surgery by Using Collaborative
+                    Approaches
+                               Ta-Ping Lu                                                                  Cholada Kittipittayakorn
+     Dept. of Industrial Engineering and Management,                                            Graduate Institute of Industrial and Business
+        National Taipei University of Technology                                                Management, National Taipei University of
+                       Taipei, Taiwan                                                                  Technology, Taipei, Taiwan
+                   robertlu@ntut.edu.tw                                                                  t100749014@ntut.edu.tw
+
+                      Jui-Tien Shih M.D.                                                                        Geng-Feng Lian
+              Dept. of Orthopedic Surgery,                                                    Graduate Institute of Industrial Engineering and
+         Taoyuan Armed Forces General Hospital,                                                Management, National Taipei University of
+                     Taoyuan, Taiwan                                                                   Technology, Taipei, Taiwan
+               jui_tien_shih@hotmail.com                                                                 t99378038@ntut.edu.tw
+
+
+    Abstract—Nowadays, patient satisfaction is an important                         can select healthcare providers freely under National Health
+service quality index for many hospitals. In many Asian                             Insurance (NHI). In order to create competitive advantages, it
+countries, healthcare system has a mixed-type registration which                    is critical for healthcare providers to increase the service
+accepts for both walk-in patients and scheduled patients. It is                     quality level [2].
+different from western countries which accept only scheduled
+patients. A long waiting time (WT) of outpatient clinics is caused                      Much research indicated patient waiting time is a key
+by this complex registration system. A survey questionnaire of                      performance index which affects patient satisfaction for
+patient satisfaction showed that the long waiting time is the most                  medical industry [3, 4]. A long waiting time for an outpatient
+dissatisfied service quality for healthcare providers. This study                   clinic is occurred not only in Taiwan (population 23,261,747),
+focused on improving clinical services by using collaborative                       but also in many countries of Asia such as China (population
+approaches to reduce outpatient waiting time for the healthcare                     1,347,350,000), India (population 1,210,193,422) Japan
+providers. The collaborative approaches are scheduling                              (population 127,950,000), Thailand (population 67,041,000),
+approach with results presented in this paper and agent-based                       etc. Those countries account for a total of 39.14% of the world
+collaborative control system which is currently in progress. We                     population. In Taiwan, the registration type of healthcare
+collected and observed data for two months from real world                          system is a mixed-type registration which accepts for both
+situation and used data from hospital database for building and                     walk-in and scheduled patients. This makes patients feel
+validating simulation models. Seven scheduling scenarios are                        suffering about a long waiting time [4] because it is difficult
+performed: scenarios I adjusted proportion between walk-in
+                                                                                    for healthcare providers to manage scheduling. Therefore, the
+patients and scheduled patients, scenario II-VI adjusted patient
+sequencing, and scenario VII adjusted late rate and applied a late
+                                                                                    long waiting time is a problem that needs to be solved for
+policy for late patients. The scenario I (adjusting the proportion:                 increasing patient satisfaction level and service quality
+10% for walk-in patients and 90% for scheduled patients) has                            In this study, we worked collaboratively with Taoyuan
+the highest percentage of waiting time improvement (average:                        Armed Forces General Hospital (TYAFGH). Two approaches
+37.13 % for walk-in patients and 50.82 % for scheduled patients)                    were used: scheduling approach and agent-based collaborative
+compared with the other scenarios. The overall results show that                    control system. TYAFGH is one of the regional medical
+adjusting proportion of patient scenario and patient sequencing
+                                                                                    centers in Taiwan and provides a wide variety of services that
+scenario can improve patient waiting time in the mixed-type
+                                                                                    includes more than 20 clinical departments and supplies 689
+registration and are possible to apply to any outpatient clinics.
+                                                                                    patient beds. We focused on orthopedic department which has
+   Keywords—Scheduling        approach;           Agent-based        model;         nine doctors and the patient volume is over 5500 for a year. In
+Simulation; Outpatient waiting time                                                 this department, there are three different teams: hands and foot,
+                                                                                    trauma and sports team. This research focuses on improving
+                          I.     INTRODUCTION                                       service satisfaction by reducing patient waiting time in the
+    In recent years, service sector has become one of the                           sports team. The longest average walk in patient and scheduled
+largest economic sectors. The quality of the service is a                           patient waiting time in a consultation section of the sport team
+growing concern. Healthcare industry is one of the largest                          were 124.36 and 91.8 minutes respectively. A survey
+industries in the service sector [1]. The competition among                         questionnaire of service satisfaction was distributed by
+healthcare providers in Taiwan has become intense because                           TYAFGH. It showed that waiting time is the most dissatisfied
+there are a lot of clinics and hospitals. Also, people in Taiwan
+
+
+
+
+978-1-4673-6085-2/13/$31.00 ©2013 IEEE                                        515
+         Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:52:20 UTC from IEEE Xplore. Restrictions apply.
+
+index among 26 indices for the hospital service in 2011.                          C. Agent-Based Model
+Hence, the waiting time is an urgent problem to be improved.                          Nowadays, an agent-based model becomes increasingly
+                    II.    LITERATURE REVIEW                                      relevant for developing distributed and dynamic open systems.
+                                                                                  In this system, scheduling usually involves complex and non-
+A. Outpatient Waiting Time                                                        deterministic interactions between different participants.
+    Outpatient waiting time means the time spent by an                            Aburukba et al. [19] proposed a distributed multi-agent
+outpatient in a queue waiting to be served. Reducing long                         approach to model intelligent dynamic scheduling solution in
+waiting time is a direct way to improve patient satisfaction and                  advertisement. They believed that agent-based model is
+service quality. Groome and Mayeaux [5] illustrated factors                       appropriate due to its characteristics to support both dynamic
+that will affect waiting time such as arrival time, failure to                    behavior and distributed structure. Foster et al. [20]ʳ reported
+attend, consultation time and registration time, etc.                             that the applications of agents and multi-agent systems in the
+Wijewickrama and Takakuwa, 2006) [6] explored the long                            healthcare and clinical management environments are
+waiting time problem in outpatient clinics with a mixed-type                      becoming a reality. Reynoldsʳ [21] revolutionized computer
+registration and tested four scheduling rules to compare with                     simulation of agents. He introduced individual perception,
+the original case by simulation. The research discovered the                      intelligence and behavior to his Boids agents, and therefore
+rule that “First priority gives for shorter processing patients in                allowing emergent pattern based on a large group of
+consultation a physician” can obtain the best performance with                    constituent units to be simulated. Lanzola et al. [22] presented
+waiting time. Su and Shih [7] used simulation approach to test                    a methodology that facilitates the development of
+four assumed models, such as changing patient sequencing,                         interoperable intelligent software agents for medical
+and assigning an interval time for scheduled patients, etc.                       applications and propose a generic computational model for
+Reynolds et al. [2] quizzed eight cases with different numbers                    implementing them. Decker and Jinjiang [23] proposed a
+of doctors and nurses that affect waiting time. Hung et al. [8]                   system to increase hospital efficiency using global planning
+practiced a simulation model of patient flow in emergency                         and scheduling techniques. Generally, the nature of healthcare
+department (ED) and tested the number of staffs caused the                        system generally involves the coordination of the effort of
+effect of waiting time. Vissers [9] determined suitable                           several individuals (e.g., physicians, nurses, social workers)
+parameters of an healthcare schedule system that can affect                       with different skills and needs and located in different places,
+waiting time by running simulation. Edwards et al. [10]                           and usually there is no attention of a centralized coordinator,
+performed computer simulation to investigate waiting time                         so the computerized systems can be difficult. Under these
+caused by serial process, quasi-parallel process and did                          conditions, the agent-based model is a good option to be used
+sensitivity analysis to find out the best number of doctors and                   in healthcare applications. Nealon and Moreno [24]ʳ claimed
+patients that can affect waiting time.                                            that agents offer a natural way of tackling inherently
+                                                                                  distributed problems with heterogeneous sources, by
+B. Simulation                                                                     cooperating and coordinating their activities, and also acting
+    Recently, simulation has been applied in many fields                          pro-actively performing tasks that may be beneficial for the
+especially in the medical field. Rohleder et al. [4] used                         user. Besides, Fox et al. [25] identified other benefits of agents
+simulation model to identify improvement alternatives that                        applied to healthcare: (a) agent technology offers advanced
+include staffing levels, patient scheduling and an emphasis on                    platforms for building expert systems to assist individual
+staff arriving promptly via these alternatives to improve patient                 clinicians in their work and (b) distributed agent systems have
+waiting time at an orthopedic outpatient clinic. Chen et al. [11]                 the potential to improve the operation of healthcare
+applied computer simulation to reduce outpatient waiting time.                    organizations, where failures of communication and
+Reilly et al. [12] developed a delay-scheduling model for                         coordination are important sources of error.
+patients in a walk-in clinic and performed computer simulation
+to find out better parameters. Edward et al. [13] applied                                            III.    RESEARCH METHODOLOGY
+simulation approach for the preoperative assessment clinic and                    A. Description of Outpatient Department of Orthopedic
+Joustra et al. [14] applied it for an endoscopy department.                           Surgery
+Both studies tried to decrease waiting time. Song et al. [15]
+                                                                                      The department of orthopedic surgery operates from 8:30
+improved the efficiency of the physical examination screening
+                                                                                  am. to 10:00 pm. during weekdays. The sports team of
+service of a large hospital system by a simulation approach.
+                                                                                  department of orthopedic surgery has two doctors and totally
+Shabtai [16] considered the decision-making of medical issues
+                                                                                  five consultation sections per week. Fig. 1 shows the
+by using computer simulation. Dexter et al. [17] used computer
+                                                                                  generalized patient flow diagram.
+simulation to model operating room (OR) scheduling.
+Gallagher et al. [18] performed the simulation in OR. It confers
+the greatest skills transfer to the in vivo surgical situation.
+
+
+
+
+                                                                            516
+        Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:52:20 UTC from IEEE Xplore. Restrictions apply.
+
+                                                                                  the current service processes of orthopedic clinic and show the
+                                                                                  results after applying proposed scenarios. As a work in
+                                                                                  progress, we are applying agent-base collaborative control
+                                                                                  system into the simulation models and we will compare the
+                                                                                  results between scheduling approach results and agent-base
+                                                                                  models results.
+                                                                                  D. Validate a Simulation Model
+                                                                                      The research used four indices namely the number of
+                                                                                  patients, throughput time, waiting time, and doctors’
+                                                                                  utilization to validate the five simulation models. For
+                                                                                  simulation results, we used the average results of outputs. To
+                                                                                  converge on the output, this research ran 300 times of each
+                                                                                  simulation model.
+                                                                                                    IV.     DEFINITIONS OF SCENARIOS
+                                                                                     In this research, we created seven scenarios to improve
+                                                                                  long patient waiting time for the hospital. The hospital limited
+                                                                                  the number of walk-in patients and scheduled patients per
+                                                                                  consultation section up to 30 and 40 respectively. This research
+                                                                                  applied seven scenarios for each consultation section. Seven
+                 Fig. 1.     Hospital service processes                           scenarios are described as follows:
+
+    The current process: a walk-in patient has to go to the                       A. Scenario I : Adjusting the Proportion of Walk-in Patients
+registration counter for registering and getting a registration                       and Scheduled Patients
+number, then goes to the clinic and waits for consultation, but a                     For this scenario, we assigned the different proportion
+scheduled patient can directly go to the clinic and wait for                      between walk-in patients and scheduled patients to reduce
+consultation. Both types of the patients can be seen according                    patient waiting time. The current proportion between walk-in
+to the registered numbers. For current scheduling policy, odd                     patients and scheduled patients is scheduled patients occupy
+numbers are assigned to walk-in patients and even numbers are                     approximately 60% and walk-in patients occupy approximately
+assigned to scheduled patients. TYAFGH has a special policy                       40%. This study adjusted proportion of walk-in patients and
+that patients who are over 85 years old or have a special                         scheduled patients from 10%:90% to 20%:80%, 30%:70%,
+condition have first priority to see a doctor. We defined these                   50%:50%, 60%:40% and 80%:20% respectively.
+patients as “special patients” in our research. Late patients’
+appointments will be postponed until the next three patients                      B. Scenario II: Adjusting Sequence of Walk-in Patients and
+have been seen. After a patient consults with a doctor, it is then                    Scheduled Patients
+decided whether the patient needs to have a medical                                   The current patient scheduling policy is as follows: the odd
+examination or not. If so, the patient goes to examine and will                   numbers are assigned to walk-in patients and even numbers are
+come back to see the doctor again. Doctor will prescribe                          assigned to scheduled patients. By using this policy, the first
+medicine if required, and then the patient receives the medicine                  patient will be a walk-in patient, the second patient will be a
+and leaves the hospital. If not, the patient receives a                           scheduled patient, the third patient will be a walk-in patient, the
+prescription, picks up drug, and leaves the hospital                              forth patient will be a scheduled patient, and the fifth patient
+                                                                                  will be a walk-in patient and so on. We defined this sequence
+B. Collect and Analyze Data                                                       as “W1S1.” In this scenario, we adjusted the sequence of walk-
+    The patient data were collected from the sports team of the                   in patients and scheduled patients. We first adjusted the
+orthopedic outpatient clinic for two months. Then we analyzed                     sequence from W1S1 to W2S1, W3S1 and etc.
+data that we collected from the hospital and data from hospital
+database. The both data contain registration time, patient                        C. Scenario III: Assigning Front Numbers to Walk-in Patients
+queues, clinic start time, first or subsequent consultation of                        and Later Numbers to Scheduled Patients
+patients, consultation period, and clinic end time and etc.                         This scenario was designed under hypothesis that we
+Patient behaviors, such as arrival time, consultation time, late                  assumed this scenario would have reduced a lot of waiting
+rate, no-show rate, examine time and examination rate, would                      time if the walk-in patients could be seen first. A doctor will
+be explored.                                                                      see all walk-in patients first; after that, scheduled patients will
+                                                                                  be seen.
+C. Build a Simulation Model
+    For building a simulation model, department of industrial                     D. Scenario IV: Assigning Front Numbers to Scheduled
+engineering and management of a university worked                                     Patients and Later Numbers to Walk-in Patients
+collaboratively with department of orthopedic surgery of                              This scenario was designed for comparing with scenario
+TYAFGH to design a simulation model. In this study, we built                      III. By using the scenario, a doctor will see all scheduled
+five simulation models by using simulation software package                       patients first; after that, walk-in patients will be seen.
+“Arena version 13.9”. The simulation models would represent
+
+
+
+
+                                                                            517
+        Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:52:20 UTC from IEEE Xplore. Restrictions apply.
+
+E. Scencenario V: Assigning Some Front Numbers to Walk-in                           “W5W2S1”. The sequence of this scenario will be: the queue
+    Patients and Later Numbers to Walk-in and Scheduled                             numbers 1 to 5 are assigned to walk-in patients, the queue
+    Patients                                                                        numbers 6 and 7 are assigned to walk-in patients, the queue
+    First, we assigned some front numbers to walk-in patients                       number 8 is assigned to a scheduled patients, the queue
+and later numbers to walk-in and scheduled patients. This can                       numbers 9 and 10 are assigned to walk-in patients, the queue
+be briefly described by an instance as follows. We assigned                         number 11 is assigned to a scheduled patient and so on.
+the first five numbers to walk-in patients, so the first, the                       G. Scenario VII: Adjusting the Late Rate and Applying a Late
+second, the third, the fourth, and the fifth patients will be                           Policy for Late Patients
+walk-in patients; after that, the sixth patient will be a walk-in
+                                                                                        We designed this scenario and adjusted the late rate and
+patient, the seventh patient will be a scheduled patient, the
+                                                                                    applied a late policy to late patients for testing the effects of
+eighth patient will be a walk-in patient, the ninth patient will
+                                                                                    long waiting time. In the beginning, we adjusted the late rate
+be a scheduled patient and so on. We defined this term as
+                                                                                    for doing a sensitivity analysis. Then, in addition to that, but
+“W5W1S1” for this scenario.
+                                                                                    we also applied the late policy for the late patients. This way,
+F. Scenario VI: Assigning Some Front Numbers to Walk-in                             we can prove that whether the late patients are the impact
+    Patients and Assigning Later Numbers to Walk-in and                             factor of long waiting time or not.
+    Scheduled Patients with Different Patient Sequencing
+                                                                                                           V.       SIMULATION RESULTS
+    We assigned some front numbers to walk-in patients and
+later numbers were assigned with different patient sequencing                       A. Analyze Results
+to walk-in and scheduled patients. For example, we assigned                             This research applied seven scenarios for each consultation
+the first five numbers to walk-in patients, and later numbers                       section. The different scenarios give different results, and the
+were assigned as the sequence “W2S1”. We defined it as                              results are shown in table I-VII.
+                                                     TABLE I. THE WAITING TIME IMPROVEMENT FOR SCENARIO I
+
+ Consultation Patient                                Waiting Time Improvement (%)
+    Section     Type   W10%:S90% W20%:S80% W30%:S70% W43.5%:S56.5% W50%:S50% W60%:S40% W70%:S30% W80%:S20%
+Dr. A        walk-in      49.95     34.47     15.50         0            -5.14     -8.68  -7.08      0.47
+(morning)    scheduled    63.97     37.36     11.04         0             2.33     11.19  27.17     48.56
+Dr. A        walk-in      42.07     23.46      9.19         0            -8.51    -11.09  -9.18     -0.90
+(afternoon)  scheduled    54.59     29.03      8.27         0             0.15      8.24  20.88     36.85
+Dr. A        walk-in      26.82     21.17      9.92         0            -2.69     -0.91   9.62     25.94
+(evening)    scheduled    51.72     28.41      9.87         0             4.16     14.90  29.06     45.57
+Dr. B        walk-in      25.62     16.73      6.78         0            -1.06      6.48  16.96     33.31
+(morning)    scheduled    47.02     22.39      4.38         0             5.43    17.91   32.64     49.91
+Dr. B        walk-in      27.93     17.60      7.08         0            -3.75     -2.26   3.91     14.54
+(afternoon)  scheduled    34.70     16.70      5.40         0             3.71     13.76  25.86     42.02
+       TABLE II. THE WAITING TIME IMPROVEMENT FOR SCENARIO II
+                                                                                        TABLE III.        THE WAITING TIME IMPROVEMENT FOR SCENARIO V
+                                  The Waiting Time Improvement (%)                                                  The Waiting Time Improvement (%) When
+Consultation                                                                                                          The Front Numbers Are Reserved For
+  Section    Patient Type                                                           Consultation      Patient
+                                  W2S1           W3S1        W4S1     W5S1                                                      Walk-In Patients
+                                                                                      Section          Type
+                                                                                                                    Front 5       Front 10     Front 15     Front 20
+Dr. A          walk-in            19.45          26.11       29.62    31.22                                         numbers       numbers      numbers      numbers
+(morning)      scheduled          32.85          44.22       47.56    46.98         Dr. A            walk-in         14.73         27.14         35.94       40.37
+Dr. A          walk-in            19.06          24.82       28.83    27.98         (morning)        scheduled       6.84          27.04         47.70       69.95
+(afternoon)    scheduled          53.08          58.08       61.71    60.23         Dr. A            walk-in         17.57         26.27         33.76       37.95
+Dr. A          walk-in            23.74          31.41       35.81    38.61         (afternoon)      scheduled       15.28         33.26         55.11       74.49
+(evening)      scheduled          37.20          44.72       48.09    48.48         Dr. A            walk-in         20.30         34.53         44.67       49.12
+Dr. B          walk-in            25.69          32.06       36.07    37.96         (evening)        scheduled       12.98         32.14         54.19       70.55
+(morning)      scheduled          23.63          27.30       26.59    28.11         Dr. B            walk-in         21.69         34.03         46.28       51.40
+Dr. B          walk-in            15.18          19.35       22.23    24.85         (morning)        scheduled       11.84         30.04         52.06       69.79
+(afternoon)    scheduled          45.12          48.66       50.06    52.55         Dr. B            walk-in         14.97         23.25         28.23       31.49
+                                                                                    (afternoon)      scheduled       3.53          19.45         38.22       58.05
+                                      TABLE IV.               THE WAITING TIME IMPROVEMENT FOR SCENARIO III AND IV
+                                          The Waiting Time Improvement (%) When Arrival Time of Scheduled Patients Starts After Clinic Start Time
+Consultation
+                   Patient Type           30 mins         30 mins       60 mins         60 mins          90 mins         90 mins           120 mins        120 mins
+  Section
+                                           (S III)         (S IV)        (S III)         (S IV)           (S III)         (S IV)            (S III)         (S IV)
+Dr. A            walk-in                   37.96           9.66          39.78           20.30            41.52           33.52              41.63          51.46
+(morning)        scheduled                -36.52           62.19         2.83            67.57            36.78           71.18              67.52          75.90
+Dr. A            walk-in                   36.87           -7.92         37.16           6.95             38.35           25.80              39.16          45.30
+(afternoon)      scheduled                 -6.98           54.67         20.47           61.00            50.01           65.28              73.33          68.28
+Dr. A            walk-in                  45.23            15.90         48.03           40.44            49.50           65.97              49.99          81.77
+
+
+
+
+                                                                              518
+          Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:52:20 UTC from IEEE Xplore. Restrictions apply.
+
+(evening)         scheduled               -11.04         56.12            30.78             61.20            61.86           65.58                79.97                66.23
+Dr. B             walk-in                  43.99         15.58            49.10             46.92            51.91           71.91                52.97                85.14
+(morning)         scheduled                -6.12         61.46            28.30             66.39            61.55           68.64                80.34                69.17
+Dr. B             walk-in                  29.76         22.23            31.10             50.69            32.29           75.36                32.94                86.95
+(afternoon)       scheduled                -0.52         53.24            34.32             56.11            66.42           57.80                83.64                58.33
+                                                                                                                                                                       S: Scenario
+
+
+                                                 TABLE V.        THE WAITING TIME IMPROVEMENT FOR SCENARIO VI
+
+ Consultation Patient Type                                                      The Waiting Time Improvement (%)
+    Section                            W5W2S1       W5W3S1       W5W4S1        W10W2S1          W10W3S1      W10W4S1         W15W2S1            W15W3S1            W15W4S1
+Dr. A        walk-in                    26.63        30.77        33.41         31.47            34.59         35.51            35.13              36.85              37.53
+(morning)    scheduled                  21.50        37.29        45.29         29.79            42.93         47.49            32.79              45.00              50.03
+Dr. A        walk-in                    27.96        31.12        32.54         32.06            33.64         34.91            35.73              36.09              36.75
+(afternoon)  scheduled                  40.65        51.66        57.39         46.92            56.10         59.35            52.89              57.94              63.43
+Dr. A        walk-in                    34.44        38.80        41.35         39.50            42.53         43.42            44.19              44.73              46.10
+(evening)    scheduled                  51.55        63.41        69.76         58.30            68.09         71.15            64.56              69.76              71.76
+Dr. B        walk-in                    37.44        42.41        44.45         41.63            45.79         46.75            45.77              47.51              49.56
+(morning)    scheduled                  56.61        66.42        70.72         59.31            69.40         71.52            65.99              70.56              75.28
+Dr. B        walk-in                    24.94        28.01        28.75         28.26            29.39         30.41            30.14              31.08              31.28
+(afternoon)  scheduled                  59.51        69.46        71.32         66.14            70.43         76.26            69.41              75.48              75.16
+                                                TABLE VI.        THE WAITING TIME IMPROVEMENT FOR SCENARIO VII
+                                Dr. A- Morning           Dr. A- Afternoon                Dr. A- Evening               Dr. B- Morning                   Dr. B- Afternoon
+ Consultation Section
+                              W-WT          S-WT        W-WT           S-WT           W-WT           S-WT            W-WT           S-WT              W-WT              S-WT
+     Late policy 3            124.36        76.75       122.57         91.8             77.75        61.8            65.15          67.8              81.36             71.45
+     Late policy 5            122.88        77.59       118.28         93.74            77.34        61.23           63.22          68.02             80.33             71.19
+     Late policy 10            124.5        75.8        125.17         90.48            80.54        59.25           64.63          68.71             81.61             73.72
+     Late policy 15           123.92        75.1        124.78         90.46            80.68        59.52           64.4           69.04             81.64              73.5
+                                                                                                                         W: walk-in patient; S: scheduled patient; WT: waiting time
+                                                                                      show that the late patients are not a strong interference factor
+                          VI.     CONCLUSIONS                                         and the late policy for late patients has no significant effect on
+A. Conclusions & Discussions                                                          improving outpatient waiting time. Overall, walk-in patients’
+                                                                                      behaviors in an outpatient clinic of a mixed-type registration
+    Nowadays, service quality is getting important in
+                                                                                      system are difficult to predict. In this research, we adjusted the
+healthcare industry. It always concerns with patient
+                                                                                      proportion of walk-in and scheduled patients, adjusted the
+satisfaction. In previous research, it showed that waiting time
+                                                                                      sequence of walk-in and scheduled patients, and applied the
+is a key performance index of patient satisfaction. This
+                                                                                      late policy for late patients to reduce patient waiting time.
+research proposed seven scenarios to promote patient
+                                                                                      Before we chose the scenarios to apply to the department of
+satisfaction by reducing patient waiting time in an outpatient
+                                                                                      orthopedic surgery, we had a brain storm discussion between
+clinic. The research built five simulation models that represent
+                                                                                      department of industrial engineering and management and
+the complexities of the healthcare service processes. Based on
+                                                                                      department of orthopedic surgery. From the results, scenario I
+the results of throughput time and waiting time after we
+                                                                                      (adjusting the proportion of patients: 10% for walk-in patients
+applied the scenarios into the simulation models, we could
+                                                                                      and 90% for scheduled patients) and scenario V (assigning
+conclude the following: walk–in patients are an interference
+                                                                                      front 15 numbers to walk-in patients and later numbers to
+factor in a mixed-type registration. In scenario I, we adjusted
+                                                                                      walk-in and scheduled patients) are highly suggested. Both of
+the proportion of walk-in patients and scheduled patients to
+                                                                                      them could improve the patient waiting time (scenario I:
+smoothen the service process. From the results of scenario I,
+                                                                                      average improvement of walk-in patient waiting time is
+it shows that when the proportion of walk-in patients is getting
+                                                                                      37.13% from 92.24 minutes to 59.25 minutes and average
+lower, the waiting time is also decreasing. For scenario II- VI,
+                                                                                      improvement of scheduled patient waiting time is 50.82%
+we adjusted the patient sequencing in different ways. In our
+                                                                                      from 73.92 minutes to 36.35 minutes; scenario V: average
+study, we found out that adjusting patient sequencing is an
+                                                                                      improvement of walk-in patient waiting time is 36.91% from
+effective approach to improve patient waiting time. From the
+                                                                                      92.24 minutes to 59.45 minutes and average improvement of
+results, it can be seen that the waiting time improvement of
+                                                                                      scheduled patient waiting time is 49.59% from 73.92 minutes
+scenario III, scenario IV and scenario VI are better than
+                                                                                      to 37.26 minutes) in department of orthopedic surgery.
+scenario II and V. In scenario III and IV, a doctor will either
+see all the walk-in patients and then see all the scheduled                           B. Future Directions
+patients or see all the scheduled patients, and then see all the                         In our research, we applied seven scenarios to different
+walk-in patients. We assigned the different arrival time for                          consultation sections. At present, we are working on applying
+scheduled patients in scenario III and for walk-in patients in                        agent-based collaborative control system into the simulation
+scenario IV, and the waiting time improvement is different. In                        models. It will be interesting to compare the results of agent-
+scenario VI, we could claim that when the front numbers are                           based collaborative control system with that of the scheduling
+assigned to walk-in patients increasingly, the waiting time                           approaches presented in this research.
+improvement will also increase. The results of scenario VII
+
+
+
+
+                                                                                519
+          Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:52:20 UTC from IEEE Xplore. Restrictions apply.
+
+                          ACKNOWLEDGMENT                                               [13] G. M. Edward, et al., "Simulation to analyse planning difficulties at the
+                                                                                            preoperative assessment clinic," British Journal of Anaesthesia, vol.
+   This project is partially sponsored by the Research                                      100, pp. 195-202, February 1, 2008 2008.
+Foundation of Taoyuan Armed Force General Hospital.                                    [14] P. E. Joustra, et al., "Reducing access times for an endoscopy
+                                                                                            department by an iterative combination of computer simulation and
+                              REFERENCES                                                    Linear Programming," Health Care Management Science, vol. 13, pp.
+                                                                                            17-26, 2010/03/01 2010.
+[1]  A. Wijewickrama and S. Takakuwa, "Outpatient appointment scheduling
+     in a multi facility system," in Simulation Conference, 2008. WSC 2008.            [15] W. Song, et al., "Improving the Efficiency of Physical Examination
+     Winter, 2008, pp. 1563-1571.                                                           Services," Journal of Medical Systems, vol. 34, pp. 579-590, 2010/08/01
+                                                                                            2010.
+[2] J. Reynolds, et al., "Design and analysis of a health care clinic for
+     homeless people using simulations," International Journal of Health               [16] S. EL, et al., "Social and utilitarian considerations for allocating organs
+     Care Quality Assurance, vol. 23, pp. 607-620, 2010.                                    within a national organ sharing system: a computerized simulation
+                                                                                            model for policy decision-making," Israel Medical Association Journal,
+[3] G. M. Eilers, "Improving Patient Satisfaction With Waiting Time,"
+                                                                                            vol. 5, pp. 618-621, 2003.
+     Journal of American College Health, vol. 53, pp. 41-48, 2004/07/01
+     2004.                                                                             [17] F. Dexter, et al., "An Operating Room Scheduling Strategy to Maximize
+                                                                                            the Use of Operating Room Block Time: Computer Simulation of
+[4] T. Rohleder, et al., "Using simulation modeling to improve patient flow
+                                                                                            Patient Scheduling and Survey of Patients’ Preferences for Surgical
+     at an outpatient orthopedic clinic," Health Care Management Science,
+                                                                                            Waiting Time," Anesthesia & Analgesia, vol. 89, p. 7, July 1, 1999
+     vol. 14, pp. 135-145, 2011/06/01 2011.
+                                                                                            1999.
+[5] L. J. Groome and E. J. J. Mayeaux, "Decreasing Extremes in Patient
+                                                                                       [18] A. G. Gallagher, et al., "Virtual Reality Simulation for the Operating
+     Waiting Time," Quality Management in Healthcare, vol. 19, pp. 117-
+                                                                                            Room: Proficiency-Based Training as a Paradigm Shift in Surgical Skills
+     128 10.1097/QMH.0b013e3181dafeac, 2010.
+                                                                                            Training," Annals of Surgery, vol. 241, pp. 364-372, 2005.
+[6] A. K. A. Wijewickrama and S. Takakuwa, "Simulation Analysis of an
+                                                                                       [19] R. Aburukba, et al., "Agent-Based Approach for Dynamic Scheduling in
+     Outpatient Department of Internal Medicine in a University Hospital," in
+                                                                                            Content-Based Networks," in e-Business Engineering, 2006. ICEBE '06.
+     Simulation Conference, 2006. WSC 06. Proceedings of the Winter, 2006,
+                                                                                            IEEE International Conference on, 2006, pp. 425-432.
+     pp. 425-432.
+                                                                                       [20] D. Foster, et al., "A survey of agent-based intelligent decision support
+[7] S. Su and C.-L. Shih, "Managing a mixed-registration-type appointment
+                                                                                            systems to support clinical management and research," ed, 2005.
+     system in outpatient clinics," International Journal of Medical
+     Informatics, vol. 70, pp. 31-40, 2003.                                            [21] C. W. Reynolds, "Flocks, herds and schools: A distributed behavioral
+                                                                                            model," SIGGRAPH Comput. Graph., vol. 21, pp. 25-34, 1987.
+[8] G. R. Hung, et al., "Computer Modeling of Patient Flow in a Pediatric
+     Emergency Department Using Discrete Event Simulation," Pediatric                  [22] G. Lanzola, et al., "A framework for building cooperative software
+     Emergency Care, vol. 23, pp. 5-10 10.1097/PEC.0b013e31802c611e,                        agents in medical applications," Artificial Intelligence in Medicine, vol.
+     2007.                                                                                  16, pp. 223-249, 1999.
+[9] J. Vissers, "Selecting a Suitable Appointment System in an Outpatient              [23] K. Decker and L. Jinjiang, "Coordinated hospital patient scheduling," in
+     Setting," Medical Care, vol. 17, pp. 1207-1220, 1979.                                  Multi Agent Systems, 1998. Proceedings. International Conference on,
+                                                                                            1998, pp. 104-111.
+[10] R. T. Edwards, et al., "Operations research survey and computer
+     simulation of waiting times in two medical outpatient clinic structures,"         [24] J. Nealon and A. Moreno, "Agent-Based Applications in Health Care,"
+     Health Care Analysis, vol. 2, pp. 164-169, 1994/06/01 1994.                            in Applications of Software Agent Technology in the Health Care
+                                                                                            Domain, A. Moreno and J. Nealon, Eds., ed: Birkhäuser Basel, 2003, pp.
+[11] B. L. Chen, et al., "Impact of adjustment measures on reducing
+                                                                                            3-18.
+     outpatient waiting time in a community hospital: application of a
+     computer simulation," Chin Med J (Engl), vol. 123, pp. 574-580, 2010.             [25] J. Fox, et al., "Understanding intelligent agents: analysis and synthesis,"
+                                                                                            AI Commun., vol. 16, pp. 139-152, 2003.
+[12] T. Reilly, et al., "A delay-scheduling model for patients using a walk-in
+     clinic," Journal of Medical Systems, vol. 2, pp. 303-313, 1978/12/01
+     1978.
+
+
+
+
+                                                                                 520
+          Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:52:20 UTC from IEEE Xplore. Restrictions apply.
+

@@ -1,0 +1,494 @@
+    Open access                                                                                                                   Original research
+
+
+                                      Development and application of
+
+
+
+
+                                                                                                                                                                     BMJ Open: first published as 10.1136/bmjopen-2023-076221 on 22 December 2023. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                      simulation modelling for orthopaedic
+                                      elective resource planning in England
+                                      Alison Harper ‍ ‍,1,2 Thomas Monks ‍ ‍,1,2 Rebecca Wilson ‍ ‍,3,4
+                                      Maria Theresa Redaniel ‍ ‍,3,4 Emily Eyles ‍ ‍,3,4 Tim Jones ‍ ‍,3,4
+
+
+
+
+                                                                                                                                                                                            Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+                                      Chris Penfold ‍ ‍,5,6 Andrew Elliott,7 Tim Keen ‍ ‍,7 Martin Pitt ‍ ‍,1,2
+                                      Ashley Blom ‍ ‍,8 Michael R Whitehouse ‍ ‍,7 Andrew Judge ‍ ‍5,6
+
+
+
+To cite: Harper A, Monks T,           ABSTRACT
+Wilson R, et al. Development          Objectives This study aimed to develop a simulation              STRENGTHS AND LIMITATIONS OF THIS STUDY
+and application of simulation         model to support orthopaedic elective capacity planning.         ⇒ The simulation model provides rapid quantitative es-
+modelling for orthopaedic                                                                                timates to support post-­COVID-­19 elective services
+                                      Methods An open-­source, generalisable discrete-­
+elective resource planning                                                                               recovery towards medium-­term elective targets.
+                                      event simulation was developed, including a web-­
+in England. BMJ Open
+                                      based application. The model used anonymised patient             ⇒ Parameter combinations include changes to both
+2023;13:e076221. doi:10.1136/
+bmjopen-2023-076221                   records between 2016 and 2019 of elective orthopaedic              resourcing and productivity.
+                                      procedures from a National Health Service (NHS) Trust in         ⇒ The interactive web app enables meaningful and
+► Prepublication history and                                                                             relevant parameter changes by healthcare manag-
+                                      England. In this paper, it is used to investigate scenarios
+additional supplemental material                                                                         ers, planners and clinicians.
+                                      including resourcing (beds and theatres) and productivity
+for this paper are available                                                                           ⇒ Patient attributes such as complexity are not includ-
+                                      (lengths of stay, delayed discharges and theatre activity)
+online. To view these files,
+                                      to support planning for meeting new NHS targets aimed              ed in the model but are reflected in variables such
+please visit the journal online
+(http://dx.doi.org/10.1136/​          at reducing elective orthopaedic surgical backlogs in a            as length of stay and delayed discharge rates.
+bmjopen-2023-076221).                 proposed ring-­fenced orthopaedic surgical facility. The         ⇒ Theatre schedules are simplified, incorporating the
+                                      simulation is interactive and intended for use by health           five key orthopaedic elective surgical procedures.
+Received 31 May 2023                  service planners and clinicians.
+Accepted 01 December 2023             Results A higher number of beds (65–70) than the
+                                      proposed number (40 beds) will be required if lengths          NHS resources and the competing demands
+                                      of stay and delayed discharge rates remain unchanged.          of rising emergency admissions that affect
+                                      Reducing lengths of stay in line with national benchmarks      mixed sites. This has been particularly prob-
+                                      reduces bed utilisation to an estimated 60%, allowing          lematic during the winter months when
+                                      for additional theatre activity such as weekend working.       emergency demand for hospital care is high.3
+                                      Further, reducing the proportion of patients with a delayed       Hip and knee replacement are strongly
+© Author(s) (or their
+                                      discharge by 75% reduces bed utilisation to below 40%,
+employer(s)) 2023. Re-­use                                                                                effective from both a societal and a
+                                                                                                     cost-­
+permitted under CC BY.                even with weekend working. A range of other scenarios
+                                      can also be investigated directly by NHS planners using
+                                                                                                     health system perspective compared with
+Published by BMJ.
+1                                     the interactive web app.                                       non-­surgical treatment.4 Procedures that
+ University of Exeter Medical
+School, NIHR Applied Research         Conclusions The simulation model is intended to support        are not delayed are more cost-­         effective
+Collaboration South West              capacity planning of orthopaedic elective services by          than delayed intervention, while patients
+Peninsula, Exeter, UK                 identifying a balance of capacity across theatres and beds     delayed for surgery for more than 180 days
+2
+ University of Exeter Faculty         and predicting the impact of productivity measures on          have been shown to be at higher risk of
+of Health and Life Sciences,          capacity requirements. It is applicable beyond the study       poor outcomes.4–6 Additionally, reviews have
+Exeter, UK                            site and can be adapted for other specialties.
+3
+ NIHR Applied Research
+                                                                                                     found that low surgical volume is associated
+Collaboration West, Bristol, UK                                                                      with longer procedure times and lengths of
+4
+ Population Health Sciences,                                                                         stay and poorer patient outcomes including
+University of Bristol, Bristol, UK    INTRODUCTION                                                   risk of revision.7–9 Given substantial evidence
+5
+ NIHR Bristol Biomedical              Elective joint replacement comprises one                       that surgeons undertaking low volumes of
+Research Centre, Bristol, UK
+6
+ University of Bristol, Bristol, UK
+                                      of the highest volumes of elective proce-                      specific surgical activities may increase costs
+7
+ North Bristol NHS Trust              dures worldwide.1 In the UK, orthopae-                         and result in less favourable outcomes for
+Southmead Hospital, Bristol, UK       dics has been the specialty under the most                     patients, Getting it Right First Time (GIRFT)10
+8
+ The University of Sheffield,         pressure in terms of performance against                       published a set of recommendations, such as
+Sheffield, UK                         National Health Service (NHS) elective oper-                   ring-­fencing beds and improving criteria-­led
+ Correspondence to                    ational standards.2 Prior to the COVID-­ 19                    discharge, aimed at reducing the significant
+ Dr Alison Harper;                    pandemic, increased waiting times for elec-                    variation found in practice. While successful,11
+​a.​l.​harper@​exeter.​ac.​uk         tive orthopaedic surgery reflected limited                     performance against core national standards
+
+                                              Harper A, et al. BMJ Open 2023;13:e076221. doi:10.1136/bmjopen-2023-076221                                         1
+
+Open access
+
+has continued to deteriorate, attributable to increasing         for use and documentation, allowing NHS staff to exper-
+demand and lack of available capacity.2 12                       iment with model parameters and generate immediate
+
+
+
+
+                                                                                                                                               BMJ Open: first published as 10.1136/bmjopen-2023-076221 on 22 December 2023. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+   The effect of the COVID-­    19 pandemic on elective          results without the need to download and instal software.
+orthopaedic services has been to compound ongoing                The model can also be adapted to other specialties.
+challenges, with larger waiting lists and a steep decline          The model is documented using Strengthening the
+in performance. Following the pandemic, a deterioration          Reporting of Empirical Simulation Studies (STRESS)
+has been found in the health of patients who have had            reporting guidelines,20 available in online supplemental
+elective joint replacement postponed.13 In response to this      material 1.
+situation, the government has committed 2-­year revenue
+allocations to support integrated care boards (ICBs) to          Data and setting
+
+
+
+
+                                                                                                                                                                      Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+expand capacity. ICBs and primary and secondary care             NBT serves a population of approximately 1 million
+providers are required to develop plans to meet national         people, with an age profile in line with England. Routinely
+objectives and local priorities, in particular, to eliminate     collected data from the NHS Trust was used to identify
+elective waits of over 65 weeks by March 2024.14 While           patients receiving elective joint replacement between
+central capital funding will be key to achieving this, maxi-     January 2016 and December 2019.
+mising use of resources and reducing lengths of stay and            The Trust’s electronic health records (EHRs) were used
+delayed discharges are required to make effective use of         to identify elective joint replacements using a combina-
+available capacity, and are associated with improvements         tion of OPCS4 procedure and surgical site codes (online
+in patient care.12                                               supplemental material 2). Five core elective orthopaedic
+   ICBs are, therefore, currently working to secure capital      surgical procedure types were identified and verified. A
+funds by delivering business cases that evidence optimal         small number of short day-­case ‘hip resurfacing’ surgeries
+capacity and productivity configurations considering             (n=52) were removed from the dataset as they rarely use
+activity, workforce, capital requirements and potential          bed capacity. The five remaining surgical types were
+revenue. Simulation modelling can be used as a planning          classified into two classes: (1) Primary (87%): (primary
+tool to provide supporting evidence by modelling various         hip replacement (p-­THR n=3057; 51%), primary knee
+configurations of bed numbers, theatre capacity and ward         replacement (p-­TKR; n=2302; 38%), unicompartmental
+stays to estimate resultant surgical throughput. In this         knee replacement (p-­UKR; n=679; 11%)); (2) Revision
+paper, we describe the development and implementation            (13%): (revision hip replacement (r-­THR; n=482; 55%),
+of an interactive, free and open-­source simulation model        revision knee replacement (r-­TKR; n=392; 45%)). Most
+to support planning of ring-­fenced elective orthopaedic         patients did not remain in hospital once they were medi-
+capacity. The model is codesigned with North Bristol             cally fit for discharge, however a proportion of patients
+NHS Trust (NBT), and is designed to be reusable, gener-          in the EHR had a recorded medically fit for discharge
+alisable and to provide rapid information for clinicians,        date which preceded their actual discharge date (n=529;
+business and service managers across a range of scenarios        7.6%).
+relevant to new orthopaedic capacity planning.                      The DES requires parameters describing patient
+                                                                 lengths of stay, hence statistical probability distributions
+                                                                 were fitted to each category of surgical procedure using
+METHODS                                                          the EHR data. The length of stay parameters (procedure,
+We developed a discrete-­event simulation (DES) model            mean days (u), SD days (SD)) are: p-­THR, u=4.4, SD=2.9;
+(programmed in Python V.3.8) of surgical activity and              TKR, u=4.7, SD=2.8; p-­
+                                                                 p-­                          UKR, u=2.9, SD=2.1; r-­   THR,
+ward stay in a proposed ring-­fenced orthopaedic facility.       u=6.9, SD=7.0; r-­TKR, u=7.2, SD=7.6; delayed discharge,
+DES allows processes and pathways to be modelled at              u=16.5; SD=15.1), which are converted to lognormal
+the individual patient level, and to explore the potential       parameters within the model. Lognormal distributions
+impact of changes to the system without the costs and            were used for sampling lengths of stay in all cases. The
+risks associated with real-­world changes. It has been used      mean lengths of stay are high against national bench-
+for patient flow management, resource allocation and             marks, and a key focus of future activity is to reduce
+scheduling, for example, in sexual health,15 stroke path-        lengths of stay.11 21
+ways16 and orthopaedics.17 18 The DES was developed to
+have the flexibility to answer a range of ‘what-­if’ questions   Orthopaedic surgical pathway
+of interest to NBT, and is generalisable to other NHS            The DES model is a simplified, high-­     level representa-
+Trusts for orthopaedic elective planning.                        tion of the system of interest, which simulates individual
+   The DES model is free and open source, and is available       patient flow through the system over time. Our model
+as a web app: https://hospital-efficiency-project.streamlit.​    assumes an infinite waiting list. Baseline surgical theatre
+app/. To preserve code, we have permanently archived             scheduling rules define how patients enter the simulation
+it using Zenodo (HEP | Zenodo).19 All code has an MIT            model according to their surgical class (primary or revi-
+license allowing free reuse and adaptation by researchers,       sion). Baseline rules are as follows:
+industry and the NHS. Our app provides a user-­friendly,         ► Three theatre sessions per day, 5 days per week with
+interactive interface for the DES, including instructions            no weekend activity.
+
+2                                                                 Harper A, et al. BMJ Open 2023;13:e076221. doi:10.1136/bmjopen-2023-076221
+
+                                                                                                                       Open access
+
+
+
+
+                                                                                                                                            BMJ Open: first published as 10.1136/bmjopen-2023-076221 on 22 December 2023. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                                                                                                                                                   Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+Figure 1 Conceptual organisation of ring-­fenced orthopaedic activity and ward stay. P-­TKR, primary knee replacement;
+P-­THR, primary hip replacement; P-­UKR, unicompartmental knee replacement; R-­TKR, revision knee replacement; R-­THR,
+revision hip replacement.
+
+
+►    Morning and afternoon sessions schedule either: one                     and discharge planning are likely to reduce discharge
+     revision or two primary surgeries.                                      delays.12 21
+► Evening session schedules one primary surgery.                               The model outputs:
+   Baseline resources for the model are 40 beds and 4                        ► Total surgical throughput: The primary goal of central
+theatres. The DES samples a length of stay for each simu-                       capital funding allocations is to efficiently maximise
+lated patient from a lognormal distribution with parame-                        surgical throughput,14 so the configuration which
+ters calculated from the previously fitted distributions by                     best achieves this—within other constraints relevant
+procedure type. Using stochastic routing, a length of stay                      to service planners such as workforce availability22—is
+is sampled for delayed patients. The simulation can be run                      a key output.
+using baseline parameters, and additional scenarios can                      ► Bed utilisation per day of week: For each experi-
+be run by changing these parameters to determine the                            mental scenario, mean bed utilisation (occupancy)
+effects on model outputs, primarily surgical throughput.                        is outputted daily over model runtime. While there
+Figure 1 shows the organisation of surgical activity and                        is no ideal average bed utilisation figure (which is
+ward stay.                                                                      dependent on many factors), it is commonly accepted
+                                                                                that mean occupancies greater than 85%–90% can
+Model objectives
+                                                                                expect regular bed crises.23 The results of exces-
+With the overall objective of maximising surgical
+                                                                                sive bed utilisation in the model can be seen as ‘lost
+throughput, the effects of changing model inputs can
+                                                                                slots’, where no bed is available for a patient sched-
+be investigated alone or in combination as experimental
+                                                                                uled for surgery. An additional consideration is that
+scenarios. These include:
+                                                                                GIRFT recommend the extension of therapy services
+► The number of theatres.
+► The number of ring-­fenced beds.
+                                                                                to support patient mobility goals towards discharge
+► Patient lengths of stay, including delayed discharges.
+                                                                                on any day with elective operating.21 Therefore,
+► Proportion of patients with a delayed discharge.
+                                                                                theatre scheduling decisions (eg, 5–7 days service) are
+► Effects of running evening or weekend theatre                                 dependent on the availability of weekend staff.
+    sessions.                                                                ► Lost theatre slots for system reasons: While beds are
+► Changes to surgical scheduling, for example, sched-                           protected from outlying emergency admissions in a
+    uling revision surgery (with longer, more variable                          ring-­fenced scenario, the balance of beds to theatre
+    lengths of stay) earlier in the week.                                       activity is a critical question. In the model, where
+  These questions are all in line with GIRFT priorities,                        patients are scheduled to arrive for surgery but no
+which include accepting day surgery as default (where a                         bed is available, the theatre slot is lost. In reality,
+bed is available as back-­up), improving theatre utilisation                    other system behaviours will account for some of
+and best practice care, and focused enhanced recovery.                          these lost slots. For example, the slot may be lost for
+Higher surgical volumes, dedicated theatre teams and                            patient reasons such as illness (ie, the patient does not
+enhanced postoperative recovery are expected to improve                         attend for surgery or is deemed not fit for surgery at
+patient outcomes. In turn, it is expected that lengths                          the point of admission); bed management activities
+of stay will reduce, and standardised clinical pathways                         may free up beds; or patients may be transferred to
+
+Harper A, et al. BMJ Open 2023;13:e076221. doi:10.1136/bmjopen-2023-076221                                                             3
+
+Open access
+
+Table 1 Summary of scenarios varying procedure lengths-­of-­stay (los), bed numbers, proportion of patients with a delayed
+
+
+
+
+                                                                                                                                              BMJ Open: first published as 10.1136/bmjopen-2023-076221 on 22 December 2023. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+discharge (prop) and daily theatre schedule
+Scenario        los: 2 parameters         prop: 2 parameters       Beds: 9 parameters               Schedule: 2 parameters
+Scenario 1      Baseline                  Baseline                 30–70 (in intervals of 5)        Baseline
+                                                                                                    Baseline+weekend
+Scenario 2      0.25×baseline             0.25×baseline            30–70 (in intervals of 5)        Baseline
+                                                                                                    Baseline+weekend
+Scenario 3      Baseline                  0.25×baseline            30–70 (in intervals of 5)        Baseline
+                                                                                                    Baseline+weekend
+
+
+
+
+                                                                                                                                                                     Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+Scenario 4      0.25×baseline             Baseline                 30–70 (in intervals of 5)        Baseline
+                                                                                                    Baseline+weekend
+
+
+    the acute hospital. In the model, lost slots (per day       and for each theatre schedule. The middle row is mean
+    of week) are an indication of a mismatch between            daily bed utilisation. The bottom row displays ‘lost slots’,
+    demand (theatre scheduling) and capacity (bed utili-        estimating the extent of the mismatch between patients
+    sation). In NBT, an average of 4.75 slots are lost per      scheduled and beds available.
+    week for patient reasons, and a further 2.5 for system         The results show that the system is more sensitive to
+    reasons.                                                    changes in procedure lengths of stay than to changes in
+                                                                the proportion of patients delayed, despite the long mean
+Patient and public involvement                                  lengths of stay for delayed patients. At current procedure
+Patients and the public were consulted in a workshop for        lengths of stay (high_los), bed utilisation is high with both
+suggestions and comments to inform the development of           current and reduced delayed discharges (scenarios 1 and
+the grant that supported this work, and a further work-         3). With reduced lengths of stay, the effects of reducing
+shop informed scenarios used in model development.              delayed discharges on required bed numbers are more
+                                                                significant, substantially reducing bed utilisation.
+Role of the funding source
+                                                                   In the case of no weekend activity, a higher number of
+The funders had no role in any of the following: the study
+                                                                beds (65–70) than the proposed value (40 beds) will be
+design; the collection, analysis and interpretation of data;
+                                                                required if lengths of stay remain unchanged. At this level
+the writing of the report; the decision to submit the paper
+                                                                of bed utilisation, reducing delayed discharges has little
+for publication.
+                                                                impact on required bed numbers. However, reducing
+                                                                lengths of stay in line with national benchmarks has
+RESULTS                                                         enough impact on bed utilisation to allow for additional
+A set of 72 indicative experimental parameter config-           theatre activity.
+urations were investigated (summarised in table 1) and             Where lengths of stay can be reduced, weekend
+described here:                                                 operating theatre activity (remaining at four theatres)
+   Bed numbers between 30 and 70 beds (in increments            increases surgical throughput, and beds remain underuti-
+of 5 beds; a total of 9 bed parameters) were investigated       lised in all cases above 40 beds. Reducing the proportion
+with each of 2 theatre schedules. The baseline theatre          of patients with delayed discharge further reduces bed
+schedule is as described in the Methods section, with a         requirements to approximately 30 beds. Where lengths
+5-­day working. The baseline+weekend schedule uses the          of stay remain at baseline values, weekend theatre activity
+same daily theatre allocations and theatre numbers, with        cannot be considered, as bed utilisation and resultant lost
+a 7-­day working. For each of these parameter changes,          slots are unacceptably high, even up to 70 beds. Users
+four scenarios were run for lengths of stay (baseline, 25%      can investigate scenarios between these extreme values
+baseline) and for proportion delayed (baseline, 25%             to gain realistic expectations of required bed and theatre
+baseline). This totals 72 combinations.                         numbers. Within the web application, results for bed
+   The baseline procedure lengths of stay and propor-           utilisation include variability in output using boxplots.
+tion of patients with a delayed discharge are historical        Sensitivity analysis and testing of parameters has been
+values described in the Methods section. As a goal of           undertaken and is available to view in GitHub, Zenodo19
+capacity planning is to reduce lengths of stay and delayed      and our online notebook (see the Data availability state-
+discharge, these are considered maximum values (high_           ment section).
+los, prop_high), with minimum values set at 25% of
+baseline (low_los, prop_low). In all cases, the length-­of-­
+stay parameters for those patients with a discharge delay       DISCUSSION
+remain at the baseline value.                                   Our generalisable, open-­access application allows those
+   The results are plotted in figure 2. The top row displays    involved in planning the development and utilisation of
+the mean total daily surgical throughput for each scenario,     ring-­fenced elective orthopaedic units to rapidly model
+
+4                                                                Harper A, et al. BMJ Open 2023;13:e076221. doi:10.1136/bmjopen-2023-076221
+
+                                                                                                                      Open access
+
+
+
+
+                                                                                                                                           BMJ Open: first published as 10.1136/bmjopen-2023-076221 on 22 December 2023. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                                                                                                                                                  Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+Figure 2 Results of simulations across 30–70 beds, for each of 2 theatre schedules with 4 combinations of lengths of stay
+(baseline:high_los; baseline×0.25: low_los) and proportion delayed (baseline:prop_high; baseline×0.25: prop_los) for mean daily
+total surgical throughput, bed utilisation and lost slots.
+
+
+different scenarios to predict delivery of elective surgical                 lengths of stay.24 Our open approach to modelling is a
+care. The model is adaptable to use local data for other                     further strength, as a range of scenario combinations
+units to model likely scenarios when planning activity.                      can be investigated by users to support planning using
+With minimal adaptation, it can also be applied to the                       the web app. Additionally, the model is available for
+delivery of other types of elective surgery.                                 reuse either through reparameterisation or adaptation.
+   Our experimental scenarios found that reducing                            There are limitations to the use of simulation modelling.
+lengths of stay in line with national benchmarks can                         Assumptions and simplifications are required to convert
+increase surgical throughput and allow for additional                               world problem into a computer representation.
+                                                                             a real-­
+theatre activity given the bed and theatre numbers initially                 We assume that all historical (prepandemic) lengths-­of-­
+proposed. We investigated weekend working, but the                           stay distributions fit current lengths of stay for baseline
+model also allows estimates to be obtained for increased                     modelling. We do not account for patient frailty or other
+theatre numbers, increased theatre utilisation (more                         patient attributes beyond length of stay and the propor-
+procedures per day), and changes to theatre activity (eg,                    tion of delayed discharges, and patients who have been
+scheduling more complex surgery early in the week).                          delayed may be more complex. Additionally, our theatre
+However, if lengths of stay remain unchanged, proposed                       scheduling rules include only the five main elective ortho-
+bed numbers in this instance will be inadequate. As proce-                   paedic procedures. While other procedures may use
+dure lengths of stay reduce, the effects of reducing the                     theatre activity, they are not accounted for in bed plan-
+number of patients with a delayed discharge also become                      ning, although simpler procedures will more likely be
+more significant. Reducing the length of the delay will                      performed as day cases, and more complex procedures
+similarly reduce bed utilisation and increase throughput,                    (such as spinal surgery) will be performed in a main
+and the results of this can also be investigated using the                   hospital setting with high-­dependency facilities.
+simulation model.                                                               Previous modelling and simulation work has focused
+   A strength of simulation modelling is the use of under-                   on resource sharing for elective and non-­elective joint
+lying stochastic distributions using real-­  world data, as                  replacement17 and detailed studies of individual ortho-
+planning by average occupancy will not provide adequate                      paedic services.18 25 Although the need for reusable
+reserve capacity to manage the variation seen in patient                     models for orthopaedic wait list planning is recognised,26
+
+Harper A, et al. BMJ Open 2023;13:e076221. doi:10.1136/bmjopen-2023-076221                                                           5
+
+ Open access
+
+this is the first free and open-­source, generalisable DES                              NHS Trust (NBT) as part of their care and support. Sharing of anonymised data with
+model to support resourcing and efficiency of elective                                  the University of Bristol was underpinned by a data sharing agreement and solely
+
+
+
+
+                                                                                                                                                                                    BMJ Open: first published as 10.1136/bmjopen-2023-076221 on 22 December 2023. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+                                                                                        covers the purposes of this study. Data requests can be made through the NBT.
+services that is available for use in this area.27 Our model                            Code, input parameters and output data used for results in this paper are available
+provides quantitative outputs estimating the effects on                                 on GitHub: https://github.com/AliHarp/HEP and archived using Zenodo https://​
+surgical throughput (per procedure); daily bed utili-                                   zenodo.org/records/7951080. Code, results and testing can be viewed at https://​
+sation of changes to bed and theatre capacity, theatre                                  aliharp.github.io/HEP/HEP_notebooks/01_intro.html. All are licensed using MIT
+                                                                                        permissive license MIT License | Choose a License. Not applicable.
+scheduling, patient lengths-­of-­stay and discharge delays;
+                                                                                        Supplemental material This content has been supplied by the author(s). It has
+and lost theatre slots, representing system pressure on
+                                                                                        not been vetted by BMJ Publishing Group Limited (BMJ) and may not have been
+beds. The model is designed for use by health services                                  peer-­reviewed. Any opinions or recommendations discussed are solely those
+planners and clinicians, and is available as a free web-­app                            of the author(s) and are not endorsed by BMJ. BMJ disclaims all liability and
+
+
+
+
+                                                                                                                                                                                                           Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+to address usability and accessibility of results.28 It is being                        responsibility arising from any reliance placed on the content. Where the content
+                                                                                        includes any translated material, BMJ does not warrant the accuracy and reliability
+used to evidence service configurations for the business
+                                                                                        of the translations (including but not limited to local regulations, clinical guidelines,
+case in NBT and is more widely applicable.                                              terminology, drug names and drug dosages), and is not responsible for any error
+                                                                                        and/or omissions arising from translation and adaptation or otherwise.
+                                                                                        Open access This is an open access article distributed in accordance with the
+CONCLUSIONS                                                                             Creative Commons Attribution 4.0 Unported (CC BY 4.0) license, which permits
+Postpandemic, pressure to restore elective surgeries                                    others to copy, redistribute, remix, transform and build upon this work for any
+against new interim national targets necessitates efficient                             purpose, provided the original work is properly cited, a link to the licence is given,
+                                                                                        and indication of whether changes were made. See: https://creativecommons.org/​
+and effective use of allocated public funds. This planning                              licenses/by/4.0/.
+is happening rapidly and on a large scale across England.
+Simulation modelling offers an effective method for plan-                               ORCID iDs
+                                                                                        Alison Harper http://orcid.org/0000-0001-5274-5037
+ning elective services, identifying a balance of capacity
+                                                                                        Thomas Monks http://orcid.org/0000-0003-2631-4481
+across theatres and beds, and predicting the impact of                                  Rebecca Wilson http://orcid.org/0000-0003-4709-7260
+productivity measures on capacity requirements. The                                     Maria Theresa Redaniel http://orcid.org/0000-0002-0668-0874
+model developed in this study is being used to provide                                  Emily Eyles http://orcid.org/0000-0002-2695-7172
+                                                                                        Tim Jones http://orcid.org/0000-0002-1199-8668
+quantitative support for accessing central capital funds,
+                                                                                        Chris Penfold http://orcid.org/0000-0001-8654-353X
+enabling discussion and evidence for the most efficient                                 Tim Keen http://orcid.org/0009-0005-6230-2455
+use of new resourcing. The model has been developed to                                  Martin Pitt http://orcid.org/0000-0003-4026-8346
+offer a transferable solution for supporting both ortho-                                Ashley Blom http://orcid.org/0000-0002-9940-1095
+                                                                                        Michael R Whitehouse http://orcid.org/0000-0003-2436-9024
+paedic elective recovery, and with minor adaptations,
+                                                                                        Andrew Judge http://orcid.org/0000-0003-3015-0432
+recovery of other elective services.
+
+Twitter Emily Eyles @eyles_ec
+Contributors AH drafted the original manuscript. AH, TM and MP developed the            REFERENCES
+model. AH, TM, RW, MTR, EE, TJ, CP, AE, TK, MP, AB, MRW and AJ contributed               1 Meara JG, Leather AJM, Hagander L, et al. Global surgery 2030:
+to the conception and planning of this project, the acquisition of data, critically        evidence and solutions for achieving health, welfare, and economic
+reviewed and revised the manuscript, and approved the final version. MTR and AJ            development. Lancet 2015;386:569–624.
+supervised the project. MTR is the guarantor for the project. All authors agreed to      2 The Kings Fund. Waiting times for elective (non-­urgent) treatment:
+be accountable for all aspects of the work.                                                referral to treatment (RTT). The King’s Fund; 2021. Available: ​
+                                                                                           kingsfund.org.uk
+Funding This study was funded by the Health Data Research (HDR) UK South                 3 Alderson D. Winter pressures that last all year. Bulletin 2018;100:53.
+West Better Care Partnership (#6.12). AH, TM and MP are supported by the National        4 Lan RH, Yu J, Samuel LT, et al. How are we measuring cost-­
+Institute for Health Research Applied Research Collaboration South West Peninsula.         effectiveness in total joint arthroplasty studies? Systematic review of
+RW, EE, TJ and MTR's time was supported by the National Institute for Health               the literature. J Arthroplasty 2020;35:3364–74.
+                                                                                         5 Kapstad H, Rustøen T, Hanestad BR, et al. Changes in pain,
+Research Applied Research Collaboration West (NIHR ARC West). AJ, MRW, AB and
+                                                                                           stiffness and physical function in patients with osteoarthritis waiting
+CP were supported by the NIHR Biomedical Research Centre at University Hospitals           for hip or knee joint replacement surgery. Osteoarthritis Cartilage
+Bristol and Weston NHS Foundation Trust and the University of Bristol.                     2007;15:837–43.
+Disclaimer The views expressed in this publication are those of the author(s)            6 Scott CEH, MacDonald DJ, Howie CR. ‘Worse than death’ and
+                                                                                           waiting for a joint arthroplasty. Bone Joint J 2019;101-­B:941–50.
+and not necessarily those of the National Institute for Health Research or the
+                                                                                         7 Lau RL, Perruccio AV, Gandhi R, et al. The role of surgeon volume on
+Department of Health and Social Care.                                                      patient outcome in total knee arthroplasty: a systematic review of the
+Competing interests None declared.                                                         literature. BMC Musculoskelet Disord 2012;13:250.
+                                                                                         8 Pamilo KJ, Peltola M, Mäkelä K, et al. Is hospital volume associated
+Patient and public involvement Patients and/or the public were involved in the             with length of stay, re‑admissions and reoperations for total
+design, or conduct, or reporting, or dissemination plans of this research. Refer to        hip replacement? A population‑based register analysis of 78
+the Methods section for further details.                                                   hospitals and 54,505 replacements. Arch Orthop Trauma Surg
+                                                                                           2013;133:1747–55.
+Patient consent for publication Not applicable.                                          9 Sayers A, Steele F, Whitehouse MR, et al. Association between
+Ethics approval We were provided with pseudonymised North Bristol Trust                    surgical volume and failure of primary total hip replacement in
+                                                                                           England and Wales: findings from a prospective national joint
+hospital admissions data under the NIHR ARC West Partnership Agreement. The
+                                                                                           replacement register. BMJ Open 2020;10:e033045.
+project received ethical approval from the University of Bristol Faculty of Health      10 GIRFT. A national review of adult elective orthopaedic services in
+Sciences ethical review board on 3 November 2020 (ref# 109024).                            England getting it right first time; 2015. Available: gettingitrightfi​
+Provenance and peer review Not commissioned; externally peer reviewed.                     rsttime.co.uk
+                                                                                        11 GIRFT. Getting it right in orthopaedics: a follow-­up on the GIRFT
+Data availability statement Data may be obtained from a third party and are                national specialty report on orthopaedics; 2020. Available: gettingitrig​
+not publicly available. The data used in the study are collected by the North Bristol      htfirsttime.co.uk
+
+
+6                                                                                        Harper A, et al. BMJ Open 2023;13:e076221. doi:10.1136/bmjopen-2023-076221
+
+                                                                                                                                  Open access
+
+12 Wall J, Ray S, Briggs TW. Delivery of elective care in the future.        20 Monks T, Currie CSM, Onggo BS, et al. Strengthening the reporting
+   Future Healthc J 2022;9:144–9.                                               of empirical simulation studies: introducing the STRESS guidelines.
+
+
+
+
+                                                                                                                                                          BMJ Open: first published as 10.1136/bmjopen-2023-076221 on 22 December 2023. Downloaded from http://bmjopen.bmj.com/ on February 24, 2025 by guest .
+13 Pietrzak JRT, Maharaj Z, Erasmus M, et al. Pain and function                 J Simul 2019;13:55–67.
+   deteriorate in patients awaiting total joint arthroplasty that has        21 GIRFT. Orthopaedic elective surgery guide to delivering
+   been postponed due to the COVID-­19 pandemic. World J Orthop                 perioperative ambulatory care for patients with hip and knee pain
+   2021;12:152–68.                                                              requiring joint replacement surgery; 2023. Available: gettingitrightfi​
+14 NHS. Delivery plan for tackling the COVID-­19 backlog of elective            rsttime.co.uk
+   care; 2022. Available: https://www.england.nhs.uk/coronavirus/wp-​        22 Mahase E. Health leaders question absence of workforce strategy in
+   content/uploads/sites/52/2022/02/C1466-delivery-plan-for-tackling-​          NHS elective care recovery plan. BMJ 2022;376:343.
+   the-covid-19-backlog-of-elective-care.pdf                                 23 Bain CA. Myths of ideal hospital occupancy. Med J Aust
+15 Mohiuddin S, Gardiner R, Crofts M, et al. Modelling patient flows            2010;193:311.
+   and resource use within a sexual health clinic through discrete event     24 Monks T, Worthington D, Allen M, et al. A modelling tool for capacity
+   simulation to inform service redesign. BMJ Open 2020;10:e037084.             planning in acute and community stroke services. BMC Health Serv
+16 Allen M, Pearn K, Monks T, et al. Can clinical audits be enhanced            Res 2016;16:530.
+
+
+
+
+                                                                                                                                                                                 Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies.
+   by pathway simulation and machine learning? An example from the           25 Baril C, Gascon V, Cartier S. Design and analysis of an outpatient
+   acute stroke pathway. BMJ Open 2019;9:e028296.                               orthopaedic clinic performance with discrete event simulation and
+17 Persson M, Hvitfeldt-­Forsberg H, Unbeck M, et al. Operational               design of experiments. Comput Ind Eng 2014;78:285–98.
+   strategies to manage non-­elective orthopaedic surgical flows: a          26 Boyle L, Mackay M. A reusable discrete event simulation model
+   simulation modelling study. BMJ Open 2017;7:e013303.                         for improving orthopedic waiting lists. 2022 Winter Simulation
+18 Anderson GH, Jenkins PJ, McDonald DA, et al. Cost comparison of              Conference (WSC); Singapore. IEEE, December 2022:973–84
+   orthopaedic fracture pathways using discrete event simulation in a        27 Monks T, Harper A. Computer model and code sharing practices in
+   Glasgow hospital. BMJ Open 2017;7:e014509.                                   healthcare discrete-­event simulation: a systematic scoping review.
+19 Harper A. HEP: BMJ open release, code and materials for BMJ                  J Simul 2023:1–16.
+   open submission of hospital efficiency project orthopaedic planning       28 Monks T, Harper A. Improving the usability of open health service
+   DES. Zenodo; 2023. Available: https://zenodo.org/records/7951080             delivery simulation models using Python and web apps. NIHR Open
+   [Accessed 19 May 2023].                                                      Res 2023;3:48.
+
+
+
+
+Harper A, et al. BMJ Open 2023;13:e076221. doi:10.1136/bmjopen-2023-076221                                                                            7
+

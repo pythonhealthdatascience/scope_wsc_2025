@@ -1,0 +1,641 @@
+A reusable discrete event simulation model for improving orthopedic
+waiting lists
+Boyle, L., & Mackay, M. (2023). A reusable discrete event simulation model for improving orthopedic waiting
+lists. In 2022 Winter Simulation Conference (WSC): Proceedings (pp. 973-984). (Winter Simulation Conference
+(WSC): Proceedings). Institute of Electrical and Electronics Engineers Inc..
+https://doi.org/10.1109/WSC57314.2022.10015512
+
+Published in:
+2022 Winter Simulation Conference (WSC): Proceedings
+
+
+
+Document Version:
+Peer reviewed version
+
+
+
+Queen's University Belfast - Research Portal:
+Link to publication record in Queen's University Belfast Research Portal
+
+
+Publisher rights
+Copyright 2023, IEEE.
+This work is made available online in accordance with the publisher’s policies. Please refer to any applicable terms of use of the publisher.
+
+
+
+General rights
+Copyright for the publications made accessible via the Queen's University Belfast Research Portal is retained by the author(s) and / or other
+copyright owners and it is a condition of accessing these publications that users recognise and abide by the legal requirements associated
+with these rights.
+
+
+Take down policy
+The Research Portal is Queen's institutional repository that provides access to Queen's research output. Every effort has been made to
+ensure that content in the Research Portal does not infringe any person's rights, or applicable UK laws. If you discover content in the
+Research Portal that you believe breaches copyright or violates any law, please contact openaccess@qub.ac.uk.
+
+
+Open Access
+This research has been made openly available by Queen's academics and its Open Research team. We would love to hear how access to
+this research benefits you. – Share your feedback with us: http://go.qub.ac.uk/oa-feedback
+
+
+
+
+Download date:24. Feb. 2025
+
+Proceedings of the 2022 Winter Simulation Conference
+B. Feng, G. Pedrielli, Y. Peng, S. Shashaani, E. Song, C.G. Corlu, L.H. Lee, P. Lendermann, eds.
+
+
+
+A REUSABLE DISCRETE EVENT SIMULATION MODEL FOR IMPROVING ORTHOPEDIC
+                            WAITING LISTS
+
+
+                   Laura Boyle                                                Mark Mackay
+
+    Mathematical Sciences Research Centre                         Public Health and Tropical Medicine
+         Queen’s University Belfast                                      James Cook University
+           University Rd, Belfast                                          1 James Cook Dr
+         N. Ireland, BT7 1NN, UK                                   Douglas QLD 4811, AUSTRALIA
+
+
+
+ABSTRACT
+Waiting lists for orthopedic treatment in Australia are lengthy and frequently breach time-based performance
+targets, due to high demand and limited resources. This paper presents a discrete event simulation model
+of an orthopedic treatment pathway in Australia from the point of referral to surgical intervention for knee
+pain patients. The simulation model was used to investigate strategies for reducing the backlog of patients
+and average waiting time for initial orthopedic review, showing that a reduction of 34% in average waiting
+time can be achieved by adding three additional appointments per week. The model demonstrates that
+introduction of community-based rehabilitation early in the patient journey can significantly reduce waiting
+lists and improve patient recovery, without the need for surgical intervention. This simulation model has
+been designed to be reusable for other types of orthopedic conditions, and for use in other health services.
+
+1   INTRODUCTION
+Public hospital orthopedic services are difficult to provide in a timely manner due to high demand and
+constraints on hospital resources. Consequently, patients can remain on waiting lists for extended periods
+of time. This problem has been exacerbated by frequent cancellation of elective surgeries due to re-
+prioritization of services during the COVID-19 pandemic. In Australia, the percentage of patients who
+waited longer than a year on an elective surgery waiting list increased from 2.8% in 2019-20 to 7.6% in
+2020-21 (Australian Institute of Health and Welfare 2022). Between 2019-20 and 2020-21, the greatest
+increase was observed for ‘Total knee replacement’, with an increase from 11% to 32% in the proportion
+of patients who waited longer than a year and an increase from 223 to 308 in number days waited at the
+50th percentile. This problem is ongoing - January 2022 saw further cancellation of elective procedures
+in Australia during a surge of COVID-19 cases. Delays in receiving treatment can be associated with
+adverse outcomes for patients, for example prolonged pain, lower mobility, and weight fluctuation due to
+an inability to exercise.
+     In this study, we investigate the process of orthopedic treatment in an Australian health service, from the
+point of referral to surgical intervention. In a number of cases, surgical intervention can be avoided through
+participation in community-based rehabilitation programmes. In the context of current exacerbated waiting
+times for knee replacement surgery, we parameterize the model with data relating to patients presenting
+with knee problems. The model is generalizable and can be easily re-parameterized with data concerning
+different orthopedic conditions within the service.
+     The aims of this research were to (i) develop a discrete event simulation model which is representative
+of the current orthopedic service delivery, (ii) examine the projected pressure on the service over a five-year
+period if no interventions are made, (iii) investigate the increase in capacity required to reduce waiting times
+
+                                             Boyle and Mackay
+
+and clear a backlog of waiting patients, and (iv) experiment with increasing access to community-based
+rehabilitation to improve outcomes and potentially negate the need for surgery.
+    This paper presents the following contributions:
+
+    •   the literature on discrete event simulation of orthopedic services is reviewed and the potential for
+        reusing an existing model is discussed;
+    •   a new high-level discrete event simulation model of an Australian orthopedic service is presented
+        and used to investigate ways of reducing waiting times;
+    •   the model can be reused for other orthopedic services (e.g., hip replacements) and in other health
+        services.
+
+    Section 2 includes a review of the literature on discrete event simulation models of orthopedic services.
+The possibility of using an existing model is explored and the barriers to adapting that model for reuse are
+discussed. Section 3 presents the conceptual simulation model design, model logic, data, and parameters.
+Section 4 shows the baseline model results and the results from scenario experimentation. Section 5 includes
+a discussion of the study and outlines future work.
+
+2   LITERATURE REVIEW
+2.1 Discrete Event Simulation Models of Orthopedic Services
+At the outset of of this research project, the authors examined the existing literature, with the aim
+of determining whether a suitable model already existed that could be reused and adapted for our study.
+Orthopedic healthcare is a complex system with multiple components (typically referral, various appointments
+with medical and allied health staff, physiotherapy, and surgery). A review of the existing literature on
+discrete event simulation (DES) applied to improve patient flow through orthopedic services identified a
+variety of different model structures and objectives.
+     The majority of studies focused on a single component of orthopedic services. Individual hospital
+clinics were the most frequently modelled component of orthopedic services, with many papers producing
+detailed models of specific hospital clinics. Rohleder et al. (2011) created a DES model of an orthopedic
+clinic in the USA, demonstrating that improvements to patient throughput time could be made by optimizing
+staff levels and improving appointment scheduling (without the need for additional resources). Baril et al.
+(2014) focused on optimizing the performance of an orthopedic clinic using a detailed DES model with
+design of experiments. The authors focused on appointment scheduling to improve clinic performance
+from the perspective of both patients and staff. Ltaif et al. (2022) combined DES with goal-programming
+optimization to find a queuing configuration which would maximize patient satisfaction within a Tunisian
+hospital orthopedic clinic.
+     Some studies have focused on creating a detailed simulation that is applicable to more than one
+orthopedic clinic. Weerawat et al. (2014) presented a ‘generic’ DES model, applied to five wards in the
+same hospital orthopedic clinic in Thailand by modifying input parameters. In this study the model was
+designed to quantify the impact of proposed initiatives on key performance indicators, such as patient
+waiting times. The model is highly detailed and would require adaptation for use in a different hospital or
+healthcare system. Suhaimi et al. (2018) identified that many existing simulation models share common
+features but are rarely reused. The authors remark that this is due to model logic and parameterization which
+is tied to a specific hospital or healthcare system, and would require substantial time and effort to transport
+to a new setting. A new ‘flexible’ DES model for orthopedic clinics was presented and demonstrated with
+application to two clinics in the USA. The model is designed to analyse length of stay-based performance
+measures under various staff scheduling configurations.
+     In contrast, some of the published literature has focused on creating high-level models of orthopedic
+services, which are modelled in a lower level of detail or as part of a wider system. Demir et al. (2017)
+created a DES decision support tool to forecast patient demand within a UK hospital trust over a five year
+
+                                             Boyle and Mackay
+
+period. The forecasted demand on outpatient orthopedic resources was captured in the simulation, where
+orthopedics services were not modelled in any detail. Bowers et al. (2015) presented a DES model of
+a musculoskeletal physiotherapy service with 9 clinic locations in the UK. The model objective was to
+understand the impact of patient decision-making (choice of clinic) and various management options on
+the flow of patients through the system.
+    The aims of this research paper (outlined in Section 1) involve modeling multiple interacting components
+of an orthopedic service pathway. To the best of our knowledge, there is only one model on orthopedic
+services which is sufficiently similar for comparison, which is discussed in the next section.
+
+2.2 Reuse of Orthopedic Discrete Event Simulation Models
+The literature on discrete event simulation applied to model health services is vast. One contributing factor
+to the large volume of literature is a lack of model reuse - the majority of published simulation studies have
+developed a new bespoke model for a specific unit (e.g., emergency department) and facility (e.g., hospital)
+which cannot be easily transported to a different setting (Günal and Pidd 2010). Interest in simulation model
+reuse dates back at least twenty years. Robinson et al. (2004) proposed that this lies along a spectrum, for
+example reuse of code, reuse of conceptual models, or reuse of complete models. The authors suggested
+that reuse should intuitively save time and cost in model development.
+     ‘Generic’ or ‘generalizable’ models have been suggested as a means for improving model reuse. Fletcher
+and Worthington (2009) proposed that “ ‘generic’ hospital models suggest a potential for understanding
+general problems faced by hospitals and the potential general solutions to improve service delivery”.
+Complementary to these are ‘generalizable’ models, defined by Boyle et al. (2022) as ‘those that can
+represent multiple units and, through customization using real data, be used to investigate site-specific
+problems’. In this study we initially aimed to reuse an existing simulation model by adapting it to suit
+our problem setting. Some of the models discussed in Section 2.1 are labeled as generic and aim towards
+model reusability (Weerawat et al. 2014; Suhaimi et al. 2018), however these models are designed for
+detailed modeling of orthopedic clinics within hospitals and are therefore unsuited for our aim of modeling
+multiple components on an orthopedic service pathway.
+     The only model identified by the authors which concerned a sufficiently similar problem-setting to
+merit consideration for reuse was that developed by Comans et al. (2017). It modelled multiple components
+of a musculoskeletal (orthopedic) service in Australia, from patient referral to surgical intervention. The
+authors used a mixed-methods simulation, where discrete event simulation was used to capture the flow
+of patients through the conceptual flow diagram shown in Figure 1 and agent based simulation was used
+to model patient characteristics. The patient flow diagram shown in Figure 1 is similar to the conceptual
+model we present in Section 3 and therefore we planned to reuse it with some adaptations.
+
+
+
+
+    Figure 1: Conceptual model of musculoskeletal (orthopedic) services from Comans et al. (2017).
+
+                                               Boyle and Mackay
+
+    The key differences between the Figure 1 model and our study are summarized in Table 1. This is
+included to demonstrate that the model could theoretically be adapted with relatively minor changes. It is
+not intended to provide an exhaustive list of differences between the two models.
+        Table 1: Proposed adaptations to reuse the Comans et al. (2017) model in a different setting.
+    Comans et al. (2017)                    Current study               Proposed adaptation
+    1. All orthopedic conditions            Only knee conditions        Reflect with a lower arrival rate and
+       plus neurology included.             included.                   reduced resource availability.
+    2. One type of specialist .             Two types of specialist.    Include another activity with queue.
+    3. Agent-based simulation used          Attributes not              Remove attributes from model code.
+       to model patient attributes.         considered.
+    3. Patients see specialist or physio    Patients can have physio    Adjust the model routing logic to
+       (not both simultaneously).           and other appointments      enable other pathways.
+                                            concurrently.
+    4. Patients see specialist or physio.   Patients can have physio.   Adjust the model routing logic.
+    5. Surgery not modelled.                Surgery is modelled.        Include another activity with queue.
+
+     We contacted the authors of Comans et al. (2017), who shared their AnyLogic model with us for
+reuse. At this stage it became clear that we would not be able to easily adapt their model within the project
+time-frame. The main barriers to reusing the model were as follows: (i) it was not constructed to visually
+align with the flow diagram in Figure 1, (ii) it was developed using multiple interlinked model structures,
+(iii) there were a large number of errors associated with transporting the model to a different computer
+operating system, (iv) the model was complex and difficult to decipher without detailed documentation, and
+(v) there were features of the model that were incompatible with the AnyLogic personal learning edition. It
+was therefore necessary to develop a new simulation model in AnyLogic to achieve the project objectives
+within an appropriate time-scale. The aforementioned barriers were taken into consideration throughout
+the model building process to minimize the difficulties involved with subsequent model reuse.
+
+3     SIMULATION MODEL DESIGN
+3.1 Conceptual Model
+Figure 2 shows the conceptual model, from onset of knee pain to orthopedic surgery. The conceptual model
+was developed iteratively through analysis of data and discussions with various stakeholders, including
+orthopedic physiotherapists, physicians, and surgeons.
+    Patients develop knee pain and enter the system through a referral to orthopedic services (either through
+presentation to a General Practitioner (GP), emergency departments, or specialist clinics). The arrival of
+patients (referred for orthopedic services) is the only place where new entities are generated in the model.
+The majority of referred patients are added to a waiting list for an orthopedic review appointment. A small
+number of urgent cases are referred directly to the waiting list for an orthopedic surgeon.
+    Patients queue for an orthopedic review appointment. Each year approximately 100 patients leave the
+waiting list (e.g., due to accessing private a healthcare service) and this process was replicated in the model.
+The orthopedic review takes one day and determines the next treatment actions for the patient. Patients can
+
+      1. withdraw from treatment (and therefore the system),
+      2. be discharged from the system (with or without attending community-based rehabilitation),
+      3. be added to the waiting list for a follow up orthopedic review appointment (with or without attending
+         community-based rehabilitation), or
+      4. be referred to the waiting list for orthopedic surgical review (with or without community-based
+         rehabilitation).
+
+                                                 Boyle and Mackay
+
+In pathways 2-4, patients can be simultaneously queuing for appointments and attending the community-
+based rehabilitation programme. This was modelled in the simulation by ‘splitting’ entities to allow
+progression simultaneously through both activities. Patients queue for the community-based rehabilitation
+programme, which lasts for six or twelve weeks.
+
+
+                            Patient           Referral to
+                         presents with       orthopaedic
+                           knee pain           services
+
+
+
+
+                       Urgent
+                                             Non-urgent
+
+
+                                              Queue for
+                                             orthopaedic
+                                                review
+
+
+
+                          Queue for
+                            repeat           Orthopaedic
+                         orthopaedic            review
+                            review
+
+
+                                                              Rehabilitation     Queue for
+                      Review appointment                                        community-
+                                                                treatment
+                                                                                  based
+                                           Surgical pathway                    rehabilitation
+
+                                              Queue for
+                                                                                                Recovers or
+                                             orthopaedic                                         withdraws
+                                               surgeon
+                                                review                         Community-
+                                                                                  based
+                                                                               rehabilitation
+
+                                             Orthopaedic
+                                              surgeon
+                                                review
+
+
+
+
+                                           Surgery required
+
+                                              Queue for
+                                             orthopaedic
+                                               surgery
+                                                                       Recovers or
+                                                                        withdraws
+
+                                             Orthopaedic
+                                               surgery
+
+
+
+                                                                                                   Return to
+                                                                                                  community
+
+
+
+
+                           Figure 2: Conceptual model of orthopedic services.
+
+   Patients queue while waiting for an orthopedic surgical review appointment to become available, after
+which they can be referred for surgical joint replacement or can withdraw from the system. Patients who
+
+                                              Boyle and Mackay
+
+will undergo surgical joint replacement are added to a waiting list for a theater slot. The time they spend
+in theater and subsequent recovery was modelled using a probability distribution. The model assumes that
+treatment is completed and patients return to the community after surgical joint replacement.
+
+3.2 Model Logic and Parameters
+The model was written using AnyLogic software. This was chosen so that the model could be accessed and
+reused by anyone via the freely available personal learning edition, and because the visual interface would
+facilitate communication of the model findings with stakeholders in the healthcare system. The model
+logic was developed through iterative consultations with healthcare staff and stakeholders, facilitated by the
+conceptual model presented in Figure 2 above. A combination of expert opinion and hospital data was used
+to develop the model logic and to populate the model parameters. This information is summarized in Tables
+2 and 3. Data from the system spanning January 2017 - December 2019 was used to calculate the model
+parameters. It was decided to omit the data from January 2020 onwards for this purpose due to the impact
+of COVID-19 on healthcare operations, including a reduction in the number of patients presenting for
+medical treatment and the cancellation of many elective appointments and operations (Australian Institute
+of Health and Welfare 2022). A future iteration of the model could include the impact of COVID-19 on
+the system during this time.
+     The entities of the model are patients who present as referrals to to orthopedic services. The model
+incorporates the assumption that patients do not have any attributes (e.g., age or priority grouping) that affect
+their progression through the system. This is an appropriate assumption because it was not relevant to the
+modeling objectives and it helps to reduce model complexity. Table 2 displays the logic for routing patients
+through the simulation model. All of the logic for routing patients is achieved by using a percentage profile,
+ascertained where possible from hospital data and otherwise from expert opinion. For example, expert
+opinion determined that 98% of patients are routed from referral to orthopedic review, with a minority 2%
+routed directly to orthopedic surgeon review.
+            Table 2: Model logic for routing entities through the various orthopedic pathways.
+   From node                To node                                       Baseline value     Data source
+   Referral                 Orthopedic review                             98 %               Expert opinion
+                            Orthopedic surgeon review                     2%
+   Orthopedic review        Withdraw from system                          36%                Hospital data
+                            Discharged (with rehabilitation)              1%
+                            Discharged (no rehabilitation)                29%
+                            Follow up review (with rehabilitation)        3%
+                            Follow up review (no rehabilitation)          1%
+                            Orthopedic surgeon (with rehabilitation)      21%
+                            Orthopedic surgeon (no rehabilitation)        9%
+   Rehabilitation queue     6-week programme                              83 %               Expert opinion
+                            12-week programme                             17 %
+   Orthopedic surgeon       Withdraw from system                          11 %               Expert opinion
+                            Surgical joint replacement                    89%
+
+    Patients are assumed to arrive according to a Poisson process with an intensity of 10 referrals per week.
+This value was derived from the orthopedic referral data records (pre-pandemic). As shown in Table 2,
+there are 5 activities in the model. Referral to orthopedic services takes approximately one week. The
+orthopedic review and surgical consultations are modelled using a duration of one day. Community-based
+rehabilitation is either six or twelve weeks (determined using the probability profile in Table 2). Orthopedic
+
+                                            Boyle and Mackay
+
+surgery requires a length of stay in hospital between 1 and 14 days and is defined in the model as empirical
+distribution calculated using hospital data.
+     The authors adopted the assumption that all queues in the model have a first-in-first-out discipline.
+The queues for orthopedic review, community-based rehabilitation, surgical consultation, and orthopedic
+surgery were initialized with 1200, 0, 11, and 15 patients respectively (determined through expert opinion).
+Each year approximately 100 patients leave the waiting list for orthopedic review (e.g., due to accessing
+private a healthcare service) and this process was replicated in the model. The availability of places on the
+community-based rehabilitation programmes was modelled using a resource, where 20 spaces are available
+to be seized by patients for a duration of either six or twelve weeks (depending on the programme they
+have been routed to). Appointments for orthopedic review, surgical review, and theater were modelled
+using a ‘booking process’, where the time between bookable appointments was represented using recent
+hospital data.
+  Table 3: Parameters and distributions used in the orthopedic DES. The model time-scale is in weeks.
+ Parameter                           Distribution    Baseline value           Data source
+ Arrival process
+ Patient arrivals                    Poisson         λ = 10                   Hospital data
+ Activities
+ Referral                            Deterministic   1 week                   Expert opinion
+ Orthopedic review                                   1 day
+ Community-based rehabilitation                      6 or 12 weeks
+ Surgical consultation                               1 day
+ Orthopedic surgery                  Distribution    Empirical                Hospital data
+ Queues
+ Orthopedic review                   FIFO            Initial length = 1200    Expert opinion
+ Community-based rehabilitation      FIFO            Started from empty
+ Surgical consultation               FIFO            Initial length = 11
+ Orthopedic surgery                  FIFO            Initial length = 15
+ Resources
+ Physiotherapists                    20 physiotherapist resources               Expert opinion
+ Assumptions                         1. First-in-first-out discipline for all queues.
+                                     2. 100 patients per year removed from orthopedic review queue.
+                                     3. Availability of orthopedic review appointments, surgical review
+                                     appointments, and theater slots modelled using a ‘booking process’.
+ Simplifications                     1. No patient attributes are modelled (e.g., priority grouping/age).
+
+3.3 Model Verification and Validation
+The model outputs of interest were the mean waiting time and mean number of waiting patients in each of
+the ‘orthopedic review’, ‘community-based rehabilitation’, ‘surgical consultation’, and ‘orthopedic surgery’
+queues. It was also of interest to examine the mean length of the queue for orthopedic consultation after
+5 years of simulated time.
+     Model verification was performed to ensure that the conceptual model was accurately translated into
+AnyLogic software (Banks et al. 2000). This was achieved by (i) updating and maintaining documentation
+throughout the model building process, (ii) exploring the model output under various changes to the input
+parameter distributions to make sure that it behaved as expected, (iii) making use of the AnyLogic visual
+interface to visually check the model logic (in collaboration with hospital staff and stakeholders).
+
+                                           Boyle and Mackay
+
+    Validation was carried out by comparing the baseline model outputs against data from the real system.
+The baseline model was run 50 times using different random number streams in AnyLogic and the model
+outputs are presented in the following section.
+
+3.4 Model Reusability
+This model was designed to be re-usable for simulating other orthopedic services in Australia and inter-
+nationally. The following steps were taken to achieve re-usability:
+
+    1. the conceptual model was designed to be as simple as possible;
+    2. all aspects of the STRESS-DES guidelines (Monks et al. 2019) for strengthening the reporting of
+       simulation studies were used;
+    3. an open-source version of AnyLogic was used so that the model can be shared;
+    4. the AnyLogic model was designed to visually resemble the conceptual model in a simple flow
+       diagram format;
+    5. all of the AnyLogic model components and variables were meaningfully labelled.
+
+Some modifications to the conceptual model may be necessary for re-use. Given the simplicity of the
+model, this could easily be achieved by changing any activities and routing arrows as necessary. The model
+could also be used for any other orthopedic service pathways (e.g., patients presenting with hip pain).
+
+4   RESULTS
+Table 4 shows the baseline model outputs. The results demonstrate that mean waiting times from the
+simulation were a close match to those from the real system - in most cases the 95% confidence interval
+(CI) includes the mean waiting time from the data. The exception to this was the mean waiting time for
+orthopedic surgery, which was underestimated because the competing demand in theater for other types of
+operations was not modelled. The mean queue lengths were validated through discussions with the hospital
+staff, who confirmed them to be a reasonable match to the real system. The involvement of stakeholders
+in model validation is typically used in health care projects when data from the system is not available
+(Eldabi 2009).
+                     Table 4: Results obtained from the baseline simulation model.
+            Queue                                Mean - data    Mean (95% CIs) - simulation
+            Orthopedic Review
+            Waiting time (weeks)                 100            107.9 (104.6,111.2)
+            Queue length                                        1389.5 (1346.3,1432.7)
+            Community-based rehabilitation
+            Waiting time (weeks)                 5              4.135 (1.1,7.1)
+            Queue length                                        6.1 (1.4,10.8)
+            Surgical consultation
+            Waiting time (weeks)                 20             17.8 (14.9,20.7)
+            Queue length                                        56.5 (44.3,68.6)
+            Orthopedic surgery
+            Waiting time (weeks)                 4              1.2 (0.9,1.5)
+            Queue length                                        2.2 (1.9,2.5)
+
+    The validated simulation model was used to explore two types of scenario which would reduce the
+backlog of patients waiting for an orthopedic review appointment:
+
+                                             Boyle and Mackay
+
+   1. Scenario Type A: the availability of orthopedic review appointments was increased to examine
+      the expected reduction in queue length. This was achieved by routing a proportion of patients to
+      additional appointment slots.
+   2. Scenario Type B: at the point of referral, a proportion of patients were routed directly to community-
+      based rehabilitation services. The experiment assumes that these patients recover and return to the
+      community based on an early rehabilitation and education-based intervention.
+
+A range of parameter values were explored for each scenario type and the results of which are presented in
+Table 5. In Type A scenarios, routing a proportion of 0.05, 0.10, and 0.15 patients to additional appointments
+is equivalent to providing approximately 1, 2, and 3 additional appointments per week of simulated time
+respectively.
+    The results for Scenario Type A in Table 5 show that providing three additional appointments per week
+(routing 15% of demand to additional appointments) reduces the mean waiting time in this queue by 34%
+from 108 weeks to 72 weeks. Figure 3 shows that the queue length for orthopedic review after 5 years is
+also significantly reduced, from an average of 1603 patients in the baseline scenario to an average of 936
+patients. Although this is a promising method of reducing the queue length and waiting time for orthopedic
+review, the results show that the increased flow of patients through orthopedic review significantly increase
+the queue length and average waiting times for community-based rehabilitation places and surgical review
+appointments. In order to successfully clear the backlog of patients waiting for an orthopedic review
+appointment, the availability of community-based rehabilitation slots and surgical review appointments
+would need to be increased.
+    The results for Scenario Type B in Table 5 show that routing 15% of patient demand directly to
+community-based rehabilitation successfully reduces the mean waiting time for orthopedic review by 21%
+from 108 weeks to 87 weeks. Without increasing the number of community-based rehabilitation slots, this
+leads to a sizeable increase in the average waiting time for this service by 41% from 30 to 50 weeks. In
+order for this strategy to be successful, the provision of community-based rehabilitation would need to be
+increased in line with demand. Future work will consider (i) investigating the number of community-based
+rehabilitation resources required to meet the higher level of demand without increasing the average waiting
+time, and (ii) a mixture of the Type A and B scenario modeling.
+    Table 5: Baseline model results compared to output from Scenario Type A and Scenario Type B.
+                  Orthopedic               Community-based        Surgical             Orthopedic
+                  review                   rehabilitation         review               surgery
+      Baseline    107.9 (104.6,111.2)      4.135 (1.1,7.1)        17.8 (14.9,20.7)     1.2    (0.9,1.5)
+      Type A
+      0.05        98.1    (95.2,101.1)     10.2    (7.7,12.8)     22.3   (19.2,25.4)   1.56   (1.1,2.1)
+      0.10        88.9    (86.1,91.7)      20.1    (17.8,22.4)    36.2   (31.2,41.1)   1.2    (1.0,1.4)
+      0.15        71.5    (66.1,76.8)      36.3    (31.2,41.3)    47.6   (42.4,52.7)   1.6    (1.2,2.1)
+      Type B
+      0.05        98.9    (96.2,101,6)     29.6    (25.3,33.8)    20.0   (17.7,22.4)   1.3    (1.1,1.5)
+      0.10        93.5    (89.1,98.0)      47.6    (42.9,52.3)    18.2   (13.6,22.9)   1.4    (1.0,1.7)
+      0.15        85.6    (80.6,91.1)      50.4    (53.3,65.2)    20.1   (15.7,24.6)   1.3    (1.0,1.6)
+
+                                                                    Boyle and Mackay
+
+
+
+
+             Average queue length after 5 years
+
+
+                                                  1500
+
+
+
+
+                                                  1250
+
+
+
+
+                                                  1000
+
+
+
+
+                                                         Baseline     +0.05              +0.10   +0.15
+                                                                              Scenario
+
+    Figure 3: Mean and 95% CIs of the orthopedic review queue length after 5 years of simulated time.
+
+
+5    CONCLUSION AND FUTURE WORK
+5.1 Discussion
+This paper presents a discrete event simulation model of a public hospital orthopedic service in Australia,
+which includes multiple interacting components of the treatment pathway from the point of referral to
+surgical intervention. The baseline simulation model was verified and validated as an accurate representation
+of the current orthopedic service delivery for patients presenting with knee pain, and the projected pressure
+on the system over a five-year time horizon was presented.
+     Two types of scenario experiments were proposed to investigate the increase in capacity required to
+reduce waiting times for orthopedic review and to clear the current backlog of waiting patients. Results
+from the scenario experiments showed that a slight increase in the weekly number of orthopedic review
+appointments over a five year period significantly reduces the queue length and mean waiting time for this
+service, but leads to an increased waiting time and queue length for other services further downstream. The
+results further demonstrated that increasing the provision of community-based rehabilitation services early
+in the patient journey reduces the queue length and mean waiting time for orthopedic review, whilst also
+increasing the proportion of patients who recover through rehabilitation and therefore do not require surgery.
+The use of discrete event simulation to model this problem is advantageous here because interventions to
+fix queuing problems in one area of the system can have unintended consequences further downstream. In
+this study, such unintended consequences further along the patient pathway were able to be detected and
+measured.
+     In this research, reusing an existing simulation model of Australian orthopedic services was attempted
+and the major barriers to reusing this model were discussed. In this case, model reuse was not feasible
+
+                                                    Boyle and Mackay
+
+and a new model was developed. Throughout the model building process we aimed to make the model
+reusable both within the health system under study for other orthopedic services (e.g., the model can be
+customized with new data for patients presenting with hip pain), and within other public health systems,
+such as in other Australian states or internationally. In order to reduce the friction associated with model
+reuse we we undertook a number of steps intended to remove or minimise barriers to re-use (see Section
+3.4). It is intended that future studies on simulation modelling for orthopedic waiting lists could re-use this
+model. Future work could evaluate the re-usability of this model and discuss any associated challenges.
+
+5.2 Future research
+Future scenario modeling will look at (i) implementing multiple interventions simultaneously, (ii) examining
+the number of resources required to prevent bottlenecks forming further downstream, (iii) incorporating
+costs into the model to advise on the financial implications of each strategy, and (iv) investigating the impact
+of COVID-19 on service delivery, which saw a reduced number of referrals during lockdown followed by
+a surge in demand. The simulation model will be made available on GitHub along with documentation
+and reproducible output for future reuse in other studies.
+
+5.3 Conclusion
+In this study, a new discrete event simulation was developed to model an orthopedic treatment pathway in
+Australia. The modeling demonstrated how various strategies could be used to reduce the initial waiting
+list and highlighted that further interventions would need to be made downstream in the system. It further
+showed that the introduction of community-based rehabilitation could reduce pressure on the system while
+improving outcomes for patients. The results from scenario experimentation were used to advise the health
+service on the expected improvement in queue length and waiting times through various interventions, and
+this modeling was used to support a business case for increased resources. This model is reusable and will
+be made publicly available with documentation and reproducible output.
+
+ACKNOWLEDGMENTS
+The first author would like to acknowledge the support of the Australian Research Council Centre of
+Excellence for Mathematical and Statistical Frontiers (ACEMS), ARC Grant: CE140100049.
+
+REFERENCES
+Australian Institute of Health and Welfare 2022. “Elective Surgery Activity”. https://www.aihw.gov.au/reports-data/myhospitals/
+     intersection/activity/eswt, accessed 17.04.2022.
+Banks, J., J. S. Carson, B. L. Nelson, and D. M. Nicol. 2000. Discrete-Event System Simulation. 3rd ed. Upper Saddle River,
+     New Jersey: Prentice-Hall, Inc.
+Baril, C., V. Gascon, and S. Cartier. 2014. “Design and analysis of an outpatient orthopaedic clinic performance with discrete
+     event simulation and design of experiments”. Computers & Industrial Engineering 78:285–298.
+Bowers, J., G. Mould, and C. Marshall. 2015. “Location of services and the impact on healthcare quality: insights from a
+     simulation of a musculoskeletal physiotherapy service”. Journal of the Operational Research Society 66(7):1212–1221.
+Boyle, L., A. Marshall, and M. Mackay. 2022. “A framework for developing generalisable discrete event simulation models
+     of hospital emergency departments”. European Journal of Operational Research.
+Comans, T., A. Chang, L. Standfield, D. Knowles, S. O’Leary, and M. Raymer. 2017. “The development and practical application
+     of a simulation model to inform musculoskeletal service delivery in an Australian public health service”. Operations
+     Research for Health Care 15:13–18.
+Demir, E., M. Gunal, and D. Southern. 2017. “Demand and capacity modelling for acute services using discrete event simulation”.
+     Health Systems 6(1):33–40.
+Eldabi, T. 2009. “Implementation issues of modeling healthcare problems: misconceptions and lessons”. In Proceedings of the
+     2019 Winter Simulation Conference, edited by B. J. A. D. M. D. Rossetti, R. R. Hill and R. G. Ingalls, 1831–1839. IEEE.
+Fletcher, A., and D. Worthington. 2009. “What is a ‘generic’hospital model?—a comparison of ‘generic’and ‘specific’hospital
+     models of emergency patient flows”. Health Care Management Science 12(4):374–391.
+
+                                                    Boyle and Mackay
+
+Günal, M., and M. Pidd. 2010. “Discrete event simulation for performance modelling in health care: a review of the literature”.
+     Journal of Simulation 4(1):42–51.
+Ltaif, A., A. Ammar, and L. Khrifch. 2022. “A goal programming approach based on simulation and optimization to serve
+     patients in an external orthopedic department”. Journal of Simulation:1–11.
+Monks, T., C. Currie, B. Onggo, S. Robinson, M. Kunc, and S. Taylor. 2019. “Strengthening the reporting of empirical
+     simulation studies: Introducing the STRESS guidelines”. Journal of Simulation 13(1):55–67.
+Robinson, S., R. Nance, R. Paul, M. Pidd, and S. Taylor. 2004. “Simulation model reuse: definitions, benefits and obstacles”.
+     Simulation Modelling Practice and Theory 12(7-8):479–494.
+Rohleder, T. R., P. Lewkonia, D. P. Bischak, P. Duffy, and R. Hendijani. 2011. “Using simulation modeling to improve patient
+     flow at an outpatient orthopedic clinic”. Health Care Management Science 14(2):135–145.
+Suhaimi, N., V. Vahdat, and J. C. Griffin. 2018. “Building a Flexible Simulation Model for Modeling Multiple Outpatient
+     Orthopedic Clinics”. In Proceedings of the 2018 Winter Simulation Conference, edited by M. Rabe, A. A. Juan, N. Mustafee,
+     A. Skoogh, S. Jain, and B. Johansson, 2612–2623: IEEE.
+Weerawat, W., J. Pichitlamken, and P. Subsombat. 2014. “A Generic Discrete-Event Simulation Model for Outpatient Clinics
+     in a Large Public Hospital”. Journal of Healthcare Engineering 4(2):285–305.
+
+AUTHOR BIOGRAPHIES
+LAURA BOYLE is a lecturer of Data Analytics in the Mathematical Sciences Research Centre at Queen’s University Belfast,
+N. Ireland. Her research interests are in discrete event simulation modeling with applications in healthcare. Her e-mail address
+is laura.boyle@qub.ac.uk.
+
+MARK MACKAY is a director of Complete the Picture Consulting and an Adjunct Professor in Public Health and Tropical
+Medicine at James Cook University, Queensland, Australia. His research interests relate to improving decision-making, particu-
+larly in health service management, through the use of data and modeling. His email address is mark@completethepicture.com.au.
+

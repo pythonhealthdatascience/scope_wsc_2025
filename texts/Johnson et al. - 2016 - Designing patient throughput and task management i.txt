@@ -1,0 +1,406 @@
+    2016 IEEE Systems and Information Engineering Design Conference (SIEDS '16)
+
+
+
+
+             Designing Patient Throughput and Task
+             Management Innovations in Orthopaedics
+                       Glen Johnson, Jeremy Kiernan, Ashley Swan, Elliott Botwick, Walker Spier,
+                        K. Preston White, Jr., Jose Valdez, Hyojung Kang, and Jennifer M. Lobo
+          University of Virginia, gdj3ds, jjk3wf, aes5as, edb5dj, wjs3da, kpw8h, jav4d, hk7z, jem4yb@virginia.edu
+
+Abstract - The Orthopaedic and Sports Medicine Clinics                         healthcare setting. This issue has implications for both staff,
+of the University of Virginia Health System are                                who would like to see as many patients as possible without
+collocated in the Fontaine Research Park. The two                              getting backlogged, and patients, who would like to be seen
+departments operate in separate clinics, but share a                           in the shortest amount of time possible without sacrificing
+Radiology Department. Collectively, the clinics serve                          quality of care. Thus, patient flow improvement projects
+about 42,000 outpatient visits annually. With patient                          must consider multiple stakeholder groups. Operational
+visits projected to increase substantially in the coming                       decisions should therefore seek to balance optimizing patient
+years, the clinics seek process improvements that will                         volume and patient satisfaction, while reducing provider
+accommodate growth and sustain strong patient                                  overtime and patient waiting times.
+satisfaction well into the future. This paper describes a                           This paper discusses how simulation modeling was used
+simulation study of patient flows in the clinics under                         to evaluate strategies to improve patient flow at the
+various future demand scenarios, including alternative                         Orthopaedic and Sports Medicine Clinics of the University
+patient volumes and no-show rates. The study explored                          of Virginia (UVA) Health System. The project involved a
+the impact of best practices for in-clinic task                                (1) review of relevant literature, (2) on-site clinical
+management, patient and staff scheduling, and patient                          observations, (3) analysis of historical data, (4) and system
+communications. Key performance measures included                              modeling via a discrete-event simulation (DES). This
+patient waiting times, total time in clinic, facility                          combination of methods allowed for a thorough
+utilization, and on-time clinic closings. The model was                        understanding of the current patient flow situation and
+developed based on patient schedule and tracking data.                         provided evidence for changes to their current resource
+The results of the simulation model and clinic                                 management and scheduling processes.
+observations provided evidence to support multiple
+process improvements within the clinics. Introducing an                                   BACKGROUND AND LITERATURE REVIEW
+additional front desk attendant in each clinic during                          We conducted an extensive literature review to better
+busy times to assist with incoming phone calls and                             understand the issue of patient flow and how to resolve
+patient check-ins will allow for patients to be seen sooner                    potential problems. The literature review involved
+and for more efficient appointment scheduling. Altering                        investigating best practices for relevant aspects of the
+appointment time slots from 15 minutes to 10 minutes                           project. The sections below demonstrate multiple topics
+and distributing scheduled appointments more evenly                            related to this project and clinics of interest, along with the
+throughout the day will allow providers to see more                            evidence-based practices used in similar patient flow
+patients and reduce the need for overbooking, effectively                      improvement undertakings.
+decreasing patient waiting time. Based on the results of
+our analysis, implementing these changes to the clinics                        I. Patient Flow Modeling
+may allow for future growth while preserving patient
+                                                                               Patient flow modeling is often employed for process
+satisfaction.
+                                                                               improvement in healthcare. One such study successfully
+                                                                               utilized simulation to identify a list of common bottlenecks
+Index Terms – Discrete-event simulation, healthcare
+                                                                               in orthopaedic practices: congested waiting rooms, patient
+systems, outpatient clinic, patient flow, scheduling
+                                                                               no-shows and late arrivals, walk-ins, initial visit patients,
+                          INTRODUCTION                                         and patients who need imaging [2]. These are all
+                                                                               components that influence patient flow at the UVA clinics,
+Because of growing patient populations, many clinics in the                    so we sought to yield similar results. The same study
+United States experience issues regarding treatment                            describes the power of DES in the healthcare industry. It is
+efficiency and long waiting times. In addition, a lower                        an ideal method for evaluating and improving systems that
+proportion of U.S. patients are satisfied with their healthcare                exhibit a high level of complexity and uncertainty.
+than many other developed nations [1]. This indicates a                        Furthermore, the study exhibits the extent to which
+general need for systematic changes to streamline healthcare                   animation and data recording capabilities of simulation
+processes and improve patient flow. Patient flow is the                        software allow healthcare professionals to visualize the
+efficiency and volume at which patients move through a                         impact of potential changes prior to implementation.
+
+
+
+
+      Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:58:32 UTC from IEEE Xplore. Restrictions apply.
+    978-1-5090-0970-1/16/$31.00 ©2016 IEEE                                124
+
+    2016 IEEE Systems and Information Engineering Design Conference (SIEDS '16)
+
+
+
+
+     Another study conducted in 2014 proposed a simplified                     complex process. DES is powerful for its ability to
+modeling approach, in which patients were able to take one                     accurately model and validate the current scenario and then
+of three possible trajectories through the clinic. The                         see how various systemic changes affect patient flow. In
+trajectories were determined probabilistically and then used                   particular, it is useful for observing the impact of
+to create an accurate simulation with reasonable                               manipulating system resources, such as introducing
+assumptions. The authors found that the optimal scheduling                     additional staff or imaging machines, or testing various
+for the clinic depended on the percentage of patients in each                  scheduling techniques, such as changing the allotted time per
+defined trajectory [3].                                                        patient and distributing scheduled appointments more evenly
+                                                                               rather than staggering appointments with overbooking [2].
+II. Optimal Scheduling for Outpatient Clinics
+                                                                               I. Clinic Observations
+It is common for clinics to overbook, or schedule multiple
+patients in the same time slot, to mitigate the potential                      An essential part of simulation modeling is a having a
+financial loss resulting from a patient unexpectedly                           thorough understanding of the system to be modeled. To
+cancelling or failing to show up for an appointment;                           reach this understanding of the clinics, multiple rounds of
+however, it may also lead to congestion and occasionally                       clinical observations were conducted on varying days and
+provider overtime [4]. Kaandoorp and Koole conducted a                         times. Discussion with clinical staff provided indications of
+simulation study in 2007 that reinforced the trade-off                         where the current system may be falling short. In-clinic
+associated with optimal scheduling: maximizing patient                         observation also allowed for a comprehensive understanding
+throughput versus meeting the interests of both patients and                   of the various paths a patient may take throughout their visit
+providers [5].                                                                 to the clinic.
+     It is known that the professionals who manage patient                          Figure I represents possible patient paths through the
+scheduling receive appointment requests over time and must                     two clinics. The flow diagram provides a basis for the DES
+accommodate patients within an ever-growing schedule.                          model. The two major processes that occur for patients are
+This makes the effective prediction of demand and                              examination and imaging. The primary resources that these
+appropriate scheduling more complicated [6]. Demand and                        processes utilize include facilities and staff. When resources
+service times typically vary by the specialty of the provider.                 are tied up due to multiple patients existing in the system,
+Patient visit attributes such as visit type (e.g., initial versus              queues form, which are represented by the various waiting
+follow-up) may also impact service times [7, 8].                               rooms at the facility. There are four typical patient scenarios
+                                                                               for both orthopaedic and sports medicine patients:
+III. General Best Practices
+                                                                                    • Trajectory 1: Patient does not require imaging and
+Since patient flow is such a prominent issue in outpatient                               proceeds directly to examination. Leaves clinic.
+clinics around the country, there are a variety of ways to                          • Trajectory         2:    Patient    requires    imaging
+make improvements beyond scheduling changes. A study on                                  immediately then proceeds to examination. Leaves
+the use of SMS text message reminders, as opposed to                                     clinic.
+calling or mailing patients, was found to significantly reduce                      • Trajectory 3: Patient proceeds immediately to
+the rate of no-shows and late arrivals [9]. The Orthopaedic                              examination, is determined to require imaging, and
+and Sports Medicine Clinics at UVA currently only send                                   returns to examination. Leaves clinic.
+letters and make phone calls to patients, so this study is                          • Trajectory 4: Patient proceeds immediately to
+strongly suggestive that an SMS reminder system could                                    examination, is determined to require imaging, and
+result in more consistent patient arrivals. Another study                                leaves clinic without further examination.
+examined the turnaround time in imaging departments,
+which is a common bottleneck in clinical care. The issue is                         The frequency at which these different trajectories occur
+often made worse due to overtreatment, which can result in                     in the model is decided probabilistically, based on historical
+many requests for imaging services that may be unnecessary                     data kept by the clinics’ patient tracking system. This
+[10].                                                                          approach is similar to the one utilized by Baril, Gascon, and
+     An important aspect of this type of project is to maintain                Cartier in 2014 [3]. They found that the optimal scheduling
+frequent communication between the team and clinics. This                      rule for the clinic was based on the percentage of patients
+allows clinical staff to be up-to-date on proposed changes                     following each trajectory. The number of patients who
+and leads to more effective implementation [11].                               require same-day imaging is uncertain and subsequently can
+                                                                               cause delays. This is a large factor in the UVA clinics
+                         METHODOLOGY
+                                                                               because of their shared Radiology Department, which is a
+DES is one of the most effective methods to analyze patient                    suspected bottleneck resulting from resource limitations.
+flow and assess what-if scenarios for producing evidence-                      II. Results of Clinic Observations
+based changes. Given the nature of outpatient clinics,
+patients are typically moved through multiple independent                      While in isolation it is not an effective tool for analysis, in-
+clinical processes during their short stay. This makes                         clinic observation was valuable for gaining a qualitative
+identifying and remediating bottlenecks in the system a                        understanding of the system. In order for simulation
+
+
+
+
+      Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:58:32 UTC from IEEE Xplore. Restrictions apply.
+    978-1-5090-0970-1/16/$31.00 ©2016 IEEE                                125
+
+    2016 IEEE Systems and Information Engineering Design Conference (SIEDS '16)
+
+
+
+
+                                                                   FIGURE I
+                                            SIMPLIFIED FLOW DIAGRAM OF POSSIBLE PATIENT TRAJECTORIES
+
+modeling to be useful, alternative schemes must be                             this scheduling system on patient waiting times and facility
+developed in advance. These alternatives can then be tested                    utilization.
+and compared with the current scenario via certain                                  Through in-clinic observations and discussion with
+performance measures. In-clinic observations revealed                          clinical staff, we determined that timely arrival of patients is
+several points of interest that warranted further investigation                predominantly an issue of communication. This may be
+within the simulation model. These points of interest                          alleviated by introducing a more effective reminder system,
+included:                                                                      such as the aforementioned text message-based reminders
+     • Variable service and waiting times                                      utilized by Downer et al. [9].
+     • Busy front-desk staff
+                                                                                                                  DATA
+     • Providers not adhering to schedule templates
+     • Patients not arriving at scheduled appointment                          The Orthopaedic and Sports Medicine Clinics use multiple
+         times                                                                 technologies to handle appointment scheduling and patient
+                                                                               tracking. Patient appointments are made using a software
+      All of these factors likely influence and complicate the                 system, A2K3. This system also aggregates appointments by
+patient flow problem. Variability in service and waiting                       provider for providers to use as a daily schedule. This daily
+times is dependent on many other factors, such as the                          schedule is typically inconsistent with the aforementioned
+particular provider (e.g., physician, physician assistant), the                provider templates. Upon arrival at the clinics for their
+visit type (e.g., initial or follow-up), need for same-day                     appointments, patients are registered into patient-tracking
+imaging, and if the patient is scheduled for an overbooked                     software, Tracks.
+slot.                                                                               The data utilized for analysis included two datasets
+      In-clinic observations revealed that the front-desk                      retrieved from these systems. A2K3 provided a one-year
+receptionists were often too busy handling phone calls and                     historical record from 2015 containing the following
+scheduling new appointments to admit the next patient in a                     attributes of interest for individual patient visits:
+timely manner. This has an impact on the processing time of                    appointment date, appointment time, provider, visit type, and
+patients and is significant for patient satisfaction.                          patient type. From Tracks, we obtained two months of
+      The lack of consistency regarding the schedule                           tracking data with the following factors of interest: clinic
+templates suggests that providers may not be satisfied with                    arrival times, time spent in various clinical rooms, and
+their established schedules. The current system utilizes 15-                   whether or not X-rays were taken. In this paper, we focused
+minute time slots and allows providers to customize a quota                    our analysis on Mondays from October to November in 2015
+of patients to see during each slot. Initial visit patients                    because both observation and data analysis showed that
+typically take longer, thus it is common for providers to                      Monday is typically the busiest day of the week. Therefore,
+dedicate two of 15-minute slots for initial visits, and only                   subsequent statistics and figures are generated from data
+one 15-minute slot for follow-up visits. It is also common                     gathered on Mondays.
+for providers to overbook slots in order to reduce potential                        Figure II shows overlaid histograms of each visit type.
+downtime and see a higher volume of patients. The                              As can be seen in the figure, follow-up visits represent a
+simulation model allows us to analyze the impact of altering
+
+
+
+
+      Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:58:32 UTC from IEEE Xplore. Restrictions apply.
+    978-1-5090-0970-1/16/$31.00 ©2016 IEEE                                126
+
+    2016 IEEE Systems and Information Engineering Design Conference (SIEDS '16)
+
+
+
+
+greater proportion of all visits than do initial visits and on
+average take less time (72.73 minutes compared to 86.88
+minutes). With this in mind, visit type was considered as an
+important factor in analysis of service times.
+     Table I below shows 25th, 50th, and 75th quartile values
+for various de-identified physicians (PHYS) and physician
+assistants (PA). From this table it can be confirmed that
+follow-up visits generally take less time than initial visits.
+Service times for each provider are calculated based on
+patient type: initial visit vs. follow-up visit. These times are
+represented by random variates that were fitted with the list
+of actual process times. Additionally, the proportion of
+patients who must receive imaging has a large effect on
+overall patient flow. This proportion was calculated for each
+provider, since different specialties will send patients to                                                 FIGURE II
+radiology with a different frequency.                                                          HISTOGRAM OF TOTAL TIME BY VISIT TYPE
+
+                DISCRETE EVENT SIMULATION                                                 in the model.
+                                                                                     •    If initial visit or follow-up visit is not specified on
+I. Modeling Decisions
+                                                                                          schedule template, the patient type alternates
+Despite fairly robust datasets and analysis, it was necessary                             starting with initial visit.
+to make some assumptions to perform the DES. All
+modeling assumptions were validated by comparing the                                A crucial aspect of creating evidence for improvement
+simulation results to the actual system and consulting with                    is having clearly defined performance measures. These are
+clinical staff. Key assumptions used in the simulation model                   the metrics by which the simulation model will be evaluated,
+include:                                                                       and show the effect of any changes introduced in the model.
+     • Small sample sizes for providers who do not see                         To optimize the tradeoff between efficiency for clinical staff
+          many patients were adequate to characterize the                      and quality service for their patients, a diverse set of
+          behavior of these providers.                                         performance measures should be used. The following
+     • Initial visits and follow-up visits were the primary                    indices of performance were selected based on a simulation
+          types of patients for determining process times.                     study by Bhattacharjee and Ray [12] and the specific goals
+     • Distributions of process times varied only by                           of the clinics:
+          provider and type of patient.                                             • Utilization of exam rooms
+     • The amount of time in exam room was an adequate                              • Utilization of X-ray rooms
+          surrogate for process time, rather than time spent                        • Number of patients (throughout)
+          with provider.                                                            • Total time in clinic (cycle time)
+     • Offset times showed that about 84% of patients                               • Time in queues (waiting rooms)
+          arrive within 5 minutes of the scheduled
+          appointment time, so no offset times were required                         The primary interest of the Orthopaedic and Sports
+                                                                     TABLE I
+                                                    PROVIDER SERVICE TIME AND X-RAY PROPORTION
+
+                                            Initial Visit Service Time (minutes)                    Follow-Up Visit Service Time (minutes)
+Provider                 X-Ray %            25th Quartile      Median            75th Quartile      25th Quartile      Median            75th Quartile
+SM-PHYS 1                25.80              31.75              49.38             61.22              19.90              32.30             48.85
+SM-PHYS 2                35.90              29.98              51.69             69.98              18.88              31.07             43.35
+ORTHO-PHYS 1             43.82              41.73              58.33             72.64              23.00              37.77             55.14
+ORTHO-PHYS 2             53.06              45.28              51.19             81.63              23.12              33.65             43.40
+ORTHO-PHYS 3             67.80              43.88              52.82             73.37              32.30              42.11             52.75
+SM-PA 1                  48.91              11.52              17.23             24.53              16.10              22.02             27.48
+SM-PA 2                  49.18              17.75              23.21             34.27              17.95              25.38             29.93
+ORTHO-PA 1               44.71              44.31              56.67             62.40              18.13              24.54             35.33
+ORTHO-PA 2               20.59              43.68              47.22             59.58              21.20              32.24             51.50
+ORTHO-PA 3               65.00              36.21              40.02             51.60              19.76              33.43             52.66
+ORTHO-PA 4               52.63              39.86              47.26             55.76              33.45              43.60             53.95
+
+
+
+
+      Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:58:32 UTC from IEEE Xplore. Restrictions apply.
+    978-1-5090-0970-1/16/$31.00 ©2016 IEEE                                127
+
+    2016 IEEE Systems and Information Engineering Design Conference (SIEDS '16)
+
+
+
+
+Medicine Clinics is achieving improved patient flow through                          •    Adding a receptionist may improve patient flow in
+optimized scheduling and resource utilization. Therefore, we                              each clinic.
+developed alternatives regarding these interests. It was
+important to address the true causes of inefficiency while                          In addition to findings based on the simulation model,
+ensuring that proposed solutions were actually viable for                      general takeaways were garnered throughout the course of
+implementation. The following alternatives were tested to                      the project. Better data collection and storage will help
+analyze their expected impact if implemented in the clinics:                   future analyses. Many assumptions and limitations of the
+    • Alternative 1: 10 min schedule slots rather than 15,                     model resulted from the lack of volume or organization of
+         with appointments distributed more evenly                             data. The inability to separate provider time from time in
+    • Alternative 2: Adding an additional X-ray resource                       examination room prevented an optimal representation of the
+    • Alternative 3: Adding additional receptionists                           time providers spent with the patient. Therefore, provider
+                                                                               utilization could not be calculated and patient service times
+II. Results of Simulation Modeling                                             were dependent on the service of other patients. An
+The simulation model was used to test the three                                increased volume of data would provide a larger sample size
+aforementioned alternatives, and compare these to the                          of patients for each provider, which would better predict the
+current scenario at the clinic. Comparisons were based on                      number of expected patients each day. Predicting patient
+the defined performance measures, with the goal of                             volume allows for the development of more effective
+maximizing patient volume without sacrificing patient                          schedule templates for providers.
+waiting times and provider overtime. For each scenario, 10                          Other takeaways included the possible use of an
+replications were run to further validate and increase                         automated text-messaging reminder system, which would
+confidence in the results. Analyzing multiple replications                     likely decrease clinic costs and failure-to-attend rates. Using
+reduces the uncertainty of the simulation outputs due to the                   provider templates to create daily schedules will decrease
+randomness of process time distributions. Conclusions were                     the variability in patient waiting times.
+then drawn based on these results.                                                  Implementing operational changes based on model and
+     Implementing 10 minute rather than 15 minute schedule                     general takeaways will likely result in increased patient
+slots showed a decrease in the total time patients who see                     throughput while maintaining if not improving patient
+physicians spend in the clinics by roughly three minutes.                      satisfaction. Further, these operational changes will facilitate
+There is no significant decrease in total time for patients of                 future works of similar nature in these clinics.
+physician assistants, which is likely due to their smaller
+                                                                                                           FUTURE WORKS
+patient volume. An additional X-ray resource did not
+significantly decrease total time patients spend in the clinic                 The nature of this project supports future analysis to track
+and did not have a high utilization. This is likely attributed                 the effectiveness of operational changes made and discover
+to the clinic’s recent expansion to their imaging services,                    new innovations in patient throughput. The DES model can
+which lessened the need for additional physical resources.                     be easily used in future projects with little to no adjustment
+By adding a receptionist in each clinic, the total time spent                  depending on the operations of the clinic relative to those
+by patients in the clinic was reduced by an average of                         employed in 2015. With better data collection in the future,
+roughly two and a half minutes. Queue lengths and waiting                      fewer assumptions and limitations will be necessary and
+times similarly decreased by adding these staff members.                       more factors can be investigated and understood. A major
+These model results validate the clinic’s decision to hire                     limitation of this study was the inability to separate provider
+additional front-desk staff.                                                   service times from the amount of time patients spent in the
+                                                                               exam room. Additional factors not addressed in the scope of
+                           CONCLUSION
+                                                                               this project include potential seasonality and variation
+To combat the issues of congestion and patient throughput                      among days of the week, as well as analysis of different visit
+within the Orthopedic and Sports Medicine Clinics of the                       types beyond follow-up and initial visits. More complete
+UVA Health System, operational changes are recommended.                        data would allow better assessment of operational changes
+These changes were hypothesized based on researched best                       with fewer limitations and assumptions applied to the model.
+practices in clinic flow and related fields, data analysis, and
+                                                                                                        ACKNOWLEDGMENT
+in-clinic observations. The hypothesized changes were then
+tested using a DES model designed to reflect both the                          We would like to thank the staff at the UVA Orthopaedic
+current clinic condition and future scenarios for comparison.                  and Sports Medicine Clinics for allowing us to work with
+The simulation model results indicate the following:                           them to help improve their operations. We would also like to
+     • Ten minute schedule slots may improve physician                         thank the UVA IT staff who pulled the historical data used
+          patient throughput but may not have an effect on                     in the analysis. And finally, thank you to our advisors for
+          physician assistant patient throughput.                              their assistance throughout the course of this project.
+     • An additional physical X-ray resource may not
+          decrease total patient time at the clinic at this point                                            REFERENCES
+          in time.
+
+
+
+
+      Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:58:32 UTC from IEEE Xplore. Restrictions apply.
+    978-1-5090-0970-1/16/$31.00 ©2016 IEEE                                128
+
+      2016 IEEE Systems and Information Engineering Design Conference (SIEDS '16)
+
+
+
+
+[1]  Belich, S. Özaltin, E., & Murray, C. July 2008. “How does
+     satisfaction with the health-care system relate to patient experience?”
+     Retrieved October 22, 2015.
+[2] Rohleder, T. R., Lewkonia, P., Bischak, D. P., Duffy, P., & Hendijani,
+     R. 2011. “Using simulation modeling to improve patient flow at an
+     outpatient orthopedic clinic.” Health Care Management Science,
+     14(2), 135–145. http://doi.org/10.1007/s10729-010-9145-4
+[3] Baril, Chantal, Gascon, Viviane, Cartier, and Stéphanie. December
+     2014. "Design and analysis of an outpatient orthopaedic clinic
+     performance with discrete event simulation and design of
+     experiments." Computers & Industrial Engineering, 78, 285-298
+[4] LaGanga, L. R., & Lawrence, S. R. 2007. “Clinic Overbooking to
+     Improve Patient Access and Increase Provider Productivity.” Decision
+     Sciences,       38(2),     251–276.      http://doi.org/10.1111/j.1540-
+     5915.2007.00158.x
+[5] Kaandorp, G. C., & Koole, G. 2007. “Optimal outpatient appointment
+     scheduling.” Health Care Management Science, 10(3), 217–229.
+     http://doi.org/10.1007/s10729-007-9015-x
+[6] Zacharias, C., & Pinedo, M. 2014. “Appointment Scheduling with No-
+     Shows and Overbooking.” Production & Operations Management,
+     23(5), 788–801. http://doi.org/10.1111/poms.12065
+[7] Bosch, P. M. V., & Dietz, D. C. 2001. “Scheduling and Sequencing
+     Arrivals to an Appointment System.” Journal of Service Research,
+     4(1), 15–25. http://doi.org/10.1177/109467050141002
+[8] Congdon, P. 2006. “Forecasting Demand for Regional Healthcare.” In
+     R. W. Hall (Ed.), Patient Flow: Reducing Delay in Healthcare
+     Delivery (pp. 253–280). Springer US. Retrieved from
+     http://link.springer.com /chapter/10.1007/978-0-387-33636-7_ 9
+[9] Downer, S., Meara, J., Costa, A., & Sethuraman, K. 2006. “SMS text
+     messaging improves outpatient attendance.” Retrieved October 22,
+     2015.
+[10] Lund, I. March 2014. “2013 Imaging Turnaround Times Survey
+     Results.” Retrieved October 22, 2015.
+[11] Belson, D. 2006. “Managing a Patient Flow Improvement Project.” In
+     R. W. Hall (Ed.), Patient Flow: Reducing Delay in Healthcare
+     Delivery (pp. 429–452). Springer US. Retrieved from
+     http://link.springer.com /chapter/10.1007/978-0-387-33636-7_15
+[12] Bhattacharjee, P., & Ray, P. K. 2014. “Patient flow modelling and
+     performance analysis of healthcare delivery processes in hospitals: A
+     review and reflections.” Computers & Industrial Engineering, 78,
+     299–312. http://doi.org/10.1016/j.cie.2014.04.016
+
+                      AUTHOR INFORMATION
+Glen Johnson, Undergraduate Student, Department of Systems and
+Information Engineering, University of Virginia.
+Jeremy Kiernan, Undergraduate Student, Department of Systems and
+Information Engineering, University of Virginia.
+Ashley Swan, Undergraduate Student, Department of Systems and
+Information Engineering, University of Virginia.
+Elliott Botwick, Undergraduate Student, Department of Systems and
+Information Engineering, University of Virginia.
+Walker Spier, Undergraduate Student, Department of Systems and
+Information Engineering, University of Virginia.
+K. Preston White, Jr., Professor, Department of Systems and Information
+Engineering, University of Virginia.
+Jose Valdez, Senior Health Systems Engineer at UVA Medical Center,
+Department of Systems and Engineering, University of Virginia.
+Hyojung Kang, Research Assistant Professor, Department of Systems and
+Information Engineering, University of Virginia.
+Jennifer M. Lobo, Assistant Professor, Department of Public Health
+Sciences, University of Virginia.
+
+
+
+
+       Authorized licensed use limited to: University of Exeter. Downloaded on February 25,2025 at 15:58:32 UTC from IEEE Xplore. Restrictions apply.
+      978-1-5090-0970-1/16/$31.00 ©2016 IEEE                               129
+
