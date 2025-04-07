@@ -23,9 +23,6 @@ line_data <- fullset %>%
 
 
 ###################################
-#Plot by year and document type
-##################################################################
-##################################################################
 # Extend authors - exploratory investigation of author relationships
 
 fullset$authors_clean <- fullset$authors %>%

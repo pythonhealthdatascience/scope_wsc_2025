@@ -219,7 +219,6 @@ simulation_corr_long <- data %>%
   melt(id.vars = "topic")
 
 # Compute boundaries for horizontal lines.
-# The y-axis (factor(topic)) will have positions 1, 2, ..., n.
 topic_levels <- levels(factor(simulation_corr_long$topic))
 n_topics <- length(topic_levels)
 # Calculate the y positions for the boundaries (between each row)
@@ -252,7 +251,6 @@ outcome_corr_long <- data %>%
                    mean, na.rm = TRUE)) %>%
   melt(id.vars = "topic")
 
-# Assuming outcome_corr_long is created as shown:
 outcome_corr_long <- data %>%
   group_by(topic) %>%
   summarise(across(c(outcome_satisfaction, outcome_efficiency, outcome_costs, 
@@ -265,7 +263,7 @@ topic_levels <- levels(factor(outcome_corr_long$topic))
 n_topics <- length(topic_levels)
 boundary_lines <- seq(0.5, n_topics + 0.5, by = 1)
 
-# Create the plot with updated legend names and horizontal bars
+# Create plot with updated legend names and horizontal bars
 outcome_topic <- ggplot(outcome_corr_long, aes(x = value, y = fct_rev(factor(topic)), 
                                                fill = variable)) +
   geom_bar(stat = "identity", position = position_dodge(width = 0.9)) +
@@ -303,7 +301,6 @@ temporal
 
 #############################################################################
 
-#######################################
 # implementation per topic
 # Prepare data
 implem_corr_long <- data %>%
@@ -315,7 +312,7 @@ implem_corr_long <- data %>%
 
 topic_levels <- levels(factor(implem_corr_long$topic))
 n_topics <- length(topic_levels)
-# Calculate the y positions for the boundaries (between each row)
+# Calculate y positions for the boundaries 
 boundary_lines <- seq(0.5, n_topics + 0.5, by = 1)
 
 implem_topic <- ggplot(implem_corr_long, aes(x = value, y = fct_rev(factor(topic)), 
@@ -335,7 +332,7 @@ ggsave("images/implem.pdf", plot = implem_topic, device = "pdf", width = 9,
 implem_topic
 
 #######################################
-# emergecy-elective per topic
+# emergency-elective per topic
 # Prepare data
 emerg_corr_long <- data %>%
   group_by(topic) %>%
@@ -345,7 +342,7 @@ emerg_corr_long <- data %>%
 # Compute boundaries for horizontal lines.
 emerg_levels <- levels(factor(emerg_corr_long$topic))
 n_topics <- length(topic_levels)
-# Calculate the y positions for the boundaries (between each row)
+# Calculate y positions for the boundaries 
 boundary_lines <- seq(0.5, n_topics + 0.5, by = 1)
 
 emerg_topic <- ggplot(emerg_corr_long, aes(x = value, y = fct_rev(factor(topic)), 

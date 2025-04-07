@@ -121,7 +121,6 @@ manual_stopwords <- c("bmj", "data", "min", "tfc", "vfc",
 
 # Add to stopwords list
 all_stopwords <- c(stopwords_en, not_in_stopwords$term, manual_stopwords)
-#all_stopwords <- c(stopwords_en,manual_stopwords)
 
 # Pre-processing corpus- much of this has been done but double checking
 clean_corpus <- clean_corpus %>%
