@@ -35,9 +35,9 @@ This will install the package versions recorded in the renv.lock file.
 
 * Navonil Mustafee &nbsp;&nbsp; [![ORCID: Harper](https://img.shields.io/badge/ORCID-0000--0002--2204--8924-blue)](https://orcid.org/0000-0001-5274-5037)
 
-* Jonathan T. Evans
+* Jonathan T. Evans &nbsp;&nbsp; [![ORCID: Harper](https://img.shields.io/badge/ORCID-0000--0002--2204--8924-blue)](https://orcid.org/0000-0002-9464-6261)
 
-* Al-Amin Kassam
+* Al-Amin Kassam &nbsp;&nbsp; [![ORCID: Harper](https://img.shields.io/badge/ORCID-0000--0002--2204--8924-blue)](https://orcid.org/0000-0002-7926-3289)
 
 ## Search methods
 
@@ -61,7 +61,7 @@ PRISMA compliant flow diagram (Haddaway et al. 2022)
 
 <br>
 
-Haddaway NR, Page MJ, Pritchard CC, McGuinness LA. PRISMA2020: An R package and Shiny app for producing PRISMA 2020-compliant flow diagrams, with interactivity for optimised digital transparency and Open Synthesis. Campbell Syst Rev. 2022 Mar 27;18(2):e1230. doi: 10.1002/cl2.1230. PMID: 36911350; PMCID: PMC8958186.
+Haddaway NR, Page MJ, Pritchard CC, McGuinness LA. PRISMA2020: An R package and Shiny app for producing PRISMA 2020-compliant flow diagrams, with interactivity for optimised digital transparency and Open Synthesis. Campbell Syst Rev. 2022 Mar 27;18(2):e1230. doi: 10.1002/cl2.1230.
 
 <br>
 
